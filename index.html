@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pieter Shiffler Carpentier — Mycology & Indoor Microbiology</title>
+<meta name="description" content="Pieter Shiffler Carpentier, MSc Biology — indoor microbiology specialist, mycologist, and guide to the world of fungi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f6f2ea;
+    --cream-2:#efe8db;
+    --ink:#2b271f;
+    --ink-soft:#5a5346;
+    --moss:#4a5d3a;
+    --moss-dark:#38492c;
+    --clay:#a8683f;
+    --line:#ded3bf;
+    --max:920px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:500;
+    line-height:1.15;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:.72rem;
+    font-weight:600;
+    color:var(--moss);
+  }
+
+  /* Nav */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,242,234,.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:16px;padding-bottom:16px;
+  }
+  .brand{
+    font-family:'Fraunces',serif;font-size:1.02rem;font-weight:600;
+    letter-spacing:.01em;
+  }
+  .navlinks{display:flex;gap:26px;font-size:.86rem;}
+  .navlinks a{text-decoration:none;color:var(--ink-soft);transition:color .2s;}
+  .navlinks a:hover{color:var(--moss-dark);}
+  @media (max-width:640px){ .navlinks{display:none;} }
+
+  /* Hero */
+  .hero{
+    padding:96px 0 84px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;right:-120px;top:-140px;
+    width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, var(--cream-2), transparent 70%);
+    z-index:0;
+  }
+  .hero .inner{position:relative;z-index:1;max-width:640px;}
+  .hero h1{
+    font-size:clamp(2.2rem, 5vw, 3.3rem);
+    margin:14px 0 20px;
+  }
+  .hero p.lead{
+    font-size:1.12rem;color:var(--ink-soft);max-width:540px;
+  }
+  .hero .cta-row{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:13px 24px;
+    border-radius:2px;
+    font-size:.92rem;
+    font-weight:600;
+    text-decoration:none;
+    transition:transform .15s ease, background .2s ease;
+  }
+  .btn-primary{background:var(--moss);color:#fff;}
+  .btn-primary:hover{background:var(--moss-dark);transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--moss);color:var(--moss-dark);}
+
+  /* Section shell */
+  section{padding:76px 0;border-top:1px solid var(--line);}
+  section .section-head{max-width:620px;margin-bottom:40px;}
+  section .section-head h2{font-size:clamp(1.6rem,3vw,2.1rem);margin-top:10px;}
+  section .section-head p{color:var(--ink-soft);margin-top:12px;font-size:1.02rem;}
+
+  /* About */
+  .about-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;
+  }
+  @media (max-width:760px){ .about-grid{grid-template-columns:1fr;} }
+  .credentials{
+    background:var(--cream-2);
+    border:1px solid var(--line);
+    padding:22px 24px;
+    font-size:.92rem;
+  }
+  .credentials div{padding:9px 0;border-bottom:1px solid var(--line);}
+  .credentials div:last-child{border-bottom:none;}
+  .credentials .k{color:var(--ink-soft);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;}
+
+  /* Services / cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media (max-width:820px){ .cards{grid-template-columns:1fr;} }
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:26px 24px;
+  }
+  .card h3{font-size:1.08rem;margin-bottom:10px;}
+  .card p{color:var(--ink-soft);font-size:.94rem;}
+  .card .tag{
+    display:inline-block;font-size:.7rem;text-transform:uppercase;
+    letter-spacing:.08em;color:var(--clay);font-weight:600;margin-bottom:10px;
+  }
+
+  /* Explorations */
+  .split{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start;}
+  @media (max-width:800px){ .split{grid-template-columns:1fr;gap:32px;} }
+  .list-plain{list-style:none;}
+  .list-plain li{
+    padding:14px 0;border-bottom:1px solid var(--line);
+    display:flex;gap:14px;
+  }
+  .list-plain li:first-child{padding-top:0;}
+  .list-plain .num{color:var(--moss);font-family:'Fraunces',serif;font-size:.95rem;min-width:20px;}
+  .list-plain strong{display:block;font-size:1rem;margin-bottom:3px;}
+  .list-plain span.desc{color:var(--ink-soft);font-size:.92rem;}
+
+  .callout{
+    background:var(--moss);
+    color:#f2efe6;
+    padding:30px 28px;
+    font-size:.98rem;
+  }
+  .callout h3{color:#fff;font-family:'Fraunces',serif;font-size:1.15rem;margin-bottom:12px;font-weight:500;}
+  .callout p + p{margin-top:12px;}
+  .callout .note{
+    margin-top:18px;font-size:.78rem;text-transform:uppercase;
+    letter-spacing:.08em;color:#cdd8be;
+  }
+
+  /* Photography */
+  .photo-strip{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  }
+  @media (max-width:700px){ .photo-strip{grid-template-columns:repeat(2,1fr);} }
+  .photo-tile{
+    aspect-ratio:1/1;
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-size:.7rem;color:var(--ink-soft);
+    background:
+      repeating-linear-gradient(135deg, var(--cream-2) 0 14px, #fff 14px 28px);
+    text-align:center;padding:10px;
+  }
+
+  /* Contact */
+  .contact-box{
+    display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;
+  }
+  .contact-box a.email{
+    font-family:'Fraunces',serif;font-size:1.5rem;text-decoration:none;color:var(--moss-dark);
+    border-bottom:1px solid var(--moss-dark);
+  }
+  footer{
+    padding:36px 0;color:var(--ink-soft);font-size:.82rem;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Pieter Shiffler Carpentier</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#microbiology">Indoor Microbiology</a>
+      <a href="#mycology">Mycology</a>
+      <a href="#exploration">Exploration</a>
+      <a href="#photography">Photography</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap inner">
+    <div class="eyebrow">MSc Biology · Mycologist · Indoor Microbiology Specialist</div>
+    <h1>Reading the hidden signs of fungi — in your home, and in the wild.</h1>
+    <p class="lead">I help people understand and resolve indoor microbial problems with rigorous lab science, and I spend the rest of my time in the woods, in the lab, and at the edge of what biology can explain.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#contact">Get in touch</a>
+      <a class="btn btn-ghost" href="#microbiology">See my services</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">About</div>
+      <h2>Science first. Curiosity always.</h2>
+      <p>I hold an MSc in Biology and specialise in mycology — the study of fungi. My work sits at the intersection of careful laboratory practice and a lifelong fascination with the roles fungi play, above and below ground.</p>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p style="color:var(--ink-soft)">Professionally, I work as an indoor microbiology specialist: sampling buildings, analysing what I find in the lab, and helping people understand and remediate what's growing where it shouldn't. Outside of that, mycology is also where I spend my free time — cultivating mushrooms, foraging, and following fungi into stranger territory: the guided tours, workshops, and integrative work I'm building toward now.</p>
+      </div>
+      <div class="credentials">
+        <div><div class="k">Education</div>MSc, Biology</div>
+        <div><div class="k">Specialisation</div>Mycology</div>
+        <div><div class="k">Primary practice</div>Indoor Microbiology (sampling, lab analysis, remediation)</div>
+        <div><div class="k">Also known for</div>Mushroom cultivation & foraging</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="microbiology">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Services</div>
+      <h2>Indoor Microbiology</h2>
+      <p>For homeowners, landlords, and businesses dealing with mould, damp, or unexplained air quality issues. I bring lab-grade rigour to a problem that's usually diagnosed by guesswork.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="tag">01 · On-site</div>
+        <h3>Sampling</h3>
+        <p>Careful, methodical collection of air and surface samples to identify what's actually present — not just what's visible.</p>
+      </div>
+      <div class="card">
+        <div class="tag">02 · Laboratory</div>
+        <h3>Analysis & Interpretation</h3>
+        <p>Microscopy and lab analysis of samples, translated into a clear, plain-language read of what's growing and why.</p>
+      </div>
+      <div class="card">
+        <div class="tag">03 · Resolution</div>
+        <h3>Remediation Guidance</h3>
+        <p>Practical, evidence-based recommendations for resolving the underlying issue — not just masking the symptoms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mycology">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Practice</div>
+      <h2>Cultivation & Foraging</h2>
+      <p>Alongside the lab work, fungi are where I spend my own time. Cultivation and foraging keep me close to the organisms I study professionally — and to the ecosystems they belong to.</p>
+    </div>
+    <div class="split">
+      <ul class="list-plain">
+        <li>
+          <span class="num">01</span>
+          <div><strong>Mushroom cultivation</strong><span class="desc">Growing edible and medicinal species, from substrate to harvest.</span></div>
+        </li>
+        <li>
+          <span class="num">02</span>
+          <div><strong>Foraging</strong><span class="desc">Identifying and gathering wild fungi, with an emphasis on doing it safely and sustainably.</span></div>
+        </li>
+        <li>
+          <span class="num">03</span>
+          <div><strong>Guided nature tours</strong> <span class="desc">In development — small-group walks focused on fungi, forest ecology, and how to actually see what's around you.</span></div>
+        </li>
+      </ul>
+      <div class="callout">
+        <h3>Interested in a guided tour?</h3>
+        <p>I'm currently developing guided nature tours and small-group foraging walks. If you'd like to be first to hear when these open up, reach out — I'd love to know what you're interested in.</p>
+        <p class="note">In development</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="exploration">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Beyond the lab</div>
+      <h2>Where biology meets the unseen</h2>
+      <p>Alongside my clinical and field work, I'm drawn to the wider questions fungi raise — about consciousness, meaning, and how humans relate to the living world. This is the territory I'm slowly building future work toward: the intersection of biology with Jungian psychology, animism, esotericism, mysticism, and compassion-based approaches to healing, including the study of psychedelics.</p>
+    </div>
+    <p style="color:var(--ink-soft);max-width:640px;font-size:.98rem;">This isn't a formal service yet — it's an ongoing personal and intellectual pursuit, and the direction I'd like my work to grow into. If this resonates with you, or you want to talk about it, I'm always happy to hear from people thinking along similar lines.</p>
+  </div>
+</section>
+
+<section id="photography">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Also in progress</div>
+      <h2>Photography</h2>
+      <p>Photography is a growing passion of mine, and I'm working on bringing it into my practice — documenting fungi, forests, and fieldwork, and eventually offering it as part of my tours and services.</p>
+    </div>
+    <div class="photo-strip">
+      <div class="photo-tile">Gallery coming soon</div>
+      <div class="photo-tile">Gallery coming soon</div>
+      <div class="photo-tile">Gallery coming soon</div>
+      <div class="photo-tile">Gallery coming soon</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Let's talk</h2>
+      <p>Whether it's a microbiology issue you need looked at, a question about foraging or cultivation, or interest in future tours and workshops — reach out.</p>
+    </div>
+    <div class="contact-box">
+      <a class="email" href="mailto:pietershiffler@gmail.com">pietershiffler@gmail.com</a>
+      <a class="btn btn-primary" href="mailto:pietershiffler@gmail.com">Send an email</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap contact-box" style="align-items:center;">
+    <div>© <span id="year"></span> Pieter Shiffler Carpentier</div>
+    <div>MSc Biology · Mycology · Indoor Microbiology</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
