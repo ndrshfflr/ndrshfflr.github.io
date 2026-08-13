@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sporexplore — Nordic Boletales identifier</title>
+<style>
+:root{
+  --bg:#131315; --panel:#1b1b1e; --panel2:#232326; --line:#35353a;
+  --ink:#f2f2f4; --dim:#a1a1a8; --dim2:#78787f;
+  --acc:#e2827d; --acc2:#eeaba6;
+  --good:#7fb069; --warn:#d99a35; --bad:#c85a4a; --deadly:#a83232;
+  --r:10px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font:15px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--acc2)}
+.wrap{max-width:1280px;margin:0 auto;padding:20px 18px 60px}
+
+header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+h1{font-size:23px;margin:0;letter-spacing:-.02em;font-weight:650;color:#ffffff}
+h1 .x{color:var(--acc)}
+.sub{color:var(--dim);font-size:13px}
+.warnbar{
+  margin:14px 0 18px;padding:10px 13px;border-radius:var(--r);
+  background:var(--panel2);border:1px solid var(--acc);color:var(--ink);font-size:12.5px;line-height:1.5
+}
+.warnbar strong{color:var(--acc2)}
+
+.layout{display:grid;grid-template-columns:335px 1fr;gap:18px;align-items:start}
+@media(max-width:940px){.layout{grid-template-columns:1fr}}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:15px}
+.card + .card{margin-top:14px}
+.card h2{font-size:11.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--dim);
+  margin:0 0 11px;font-weight:600}
+
+label.f{display:block;font-size:12px;color:var(--dim);margin:0 0 4px}
+.row{display:flex;gap:9px}
+.row > *{flex:1;min-width:0}
+input[type=number],select{
+  width:100%;background:var(--panel2);color:var(--ink);border:1px solid var(--line);
+  border-radius:7px;padding:7px 9px;font:inherit;font-size:14px
+}
+input:focus,select:focus{outline:none;border-color:var(--acc)}
+.fld{margin-bottom:11px}
+
+.qbox{background:var(--panel2);border:1px solid var(--line);border-radius:7px;
+  padding:8px 10px;font-size:12.5px;color:var(--dim);margin-bottom:11px}
+.qbox b{color:var(--acc2);font-variant-numeric:tabular-nums}
+
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{
+  background:var(--panel2);border:1px solid var(--line);color:var(--dim);
+  border-radius:20px;padding:3.5px 10px;font-size:12px;cursor:pointer;user-select:none;
+  transition:.12s
+}
+.chip:hover{border-color:var(--dim2);color:var(--ink)}
+.chip.on{background:var(--acc);border-color:var(--acc);color:var(--bg);font-weight:600}
+
+.btn{
+  width:100%;background:var(--acc);color:var(--bg);border:0;border-radius:8px;
+  padding:9px;font:inherit;font-weight:650;cursor:pointer;font-size:14px
+}
+.btn:hover{background:var(--acc2)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--dim);font-weight:500}
+.btn.ghost:hover{color:var(--ink);border-color:var(--dim2)}
+
+.rhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;flex-wrap:wrap;gap:10px 16px}
+.rhead h2{margin:0}
+.rcount{font-size:12.5px;color:var(--dim)}
+
+.threshold{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--dim)}
+.threshold.disabled{opacity:.45}
+.threshold label{white-space:nowrap}
+.threshold input[type=range]{
+  -webkit-appearance:none;appearance:none;width:120px;height:4px;border-radius:3px;
+  outline:none;cursor:pointer;background:var(--line);
+}
+.threshold input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;width:14px;height:14px;border-radius:50%;
+  background:var(--acc);cursor:pointer;border:2px solid var(--bg);box-shadow:0 0 0 1px var(--acc);
+}
+.threshold input[type=range]::-moz-range-thumb{
+  width:14px;height:14px;border-radius:50%;background:var(--acc);cursor:pointer;
+  border:2px solid var(--bg);box-shadow:0 0 0 1px var(--acc)
+}
+.threshold #minMatchVal{color:var(--ink);font-weight:650;font-variant-numeric:tabular-nums;min-width:32px}
+
+.hit{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+  padding:12px 14px;margin-bottom:9px;cursor:pointer;transition:.12s
+}
+.hit:hover{border-color:var(--dim2)}
+.hit.open{border-color:var(--acc)}
+.hrow{display:flex;align-items:center;gap:11px}
+.rank{font-size:12px;color:var(--dim2);width:20px;flex:none;font-variant-numeric:tabular-nums}
+.nm{flex:1;min-width:0}
+.nm .sci{font-style:italic;font-weight:600;font-size:15px}
+.nm .au{font-style:normal;font-weight:400;color:var(--dim2);font-size:12px}
+.nm .dk{font-size:12.5px;color:var(--dim);margin-top:1px}
+.nm .syn{font-size:11.5px;color:var(--dim2);font-style:italic}
+
+.score{flex:none;text-align:right;width:96px}
+.sval{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
+.sbar{height:4px;background:var(--panel2);border-radius:3px;margin-top:3px;overflow:hidden}
+.sfill{height:100%;border-radius:3px}
+
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.tag{font-size:11px;padding:2px 7px;border-radius:5px;background:var(--panel2);
+  border:1px solid var(--line);color:var(--dim)}
+.tag.hit{border-color:#3d5c33;background:#1e2a1a;color:#a7cd94}
+.tag.miss{border-color:#5c3330;background:#2a1a19;color:#d99a91}
+.ed{font-size:11px;padding:2px 7px;border-radius:5px;font-weight:600}
+.ed.choice,.ed.edible{background:#1e2a1a;color:#a7cd94;border:1px solid #3d5c33}
+.ed.inedible,.ed.caution{background:#2a2419;color:#d9bd8a;border:1px solid #5c4c2e}
+.ed\.toxic,.ed.toxic,.ed.toxic-raw{background:#2a1a19;color:#e39a8f;border:1px solid #6b3430}
+.ed.deadly{background:#3d1512;color:#ff9d90;border:1px solid #8a2f28;font-weight:700}
+
+.detail{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);display:none}
+.hit.open .detail{display:block}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin-bottom:11px}
+.dk2{font-size:11px;color:var(--dim2);text-transform:uppercase;letter-spacing:.05em}
+.dv{font-size:13px;margin-top:2px}
+.note{font-size:13px;color:var(--dim);background:var(--panel2);padding:9px 11px;
+  border-radius:7px;border-left:2px solid var(--acc);margin-bottom:11px}
+.srcline{font-size:11.5px;color:var(--dim2);margin-bottom:10px}
+
+.dist{margin-top:10px}
+.dgrid2{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.terr{background:var(--panel2);border:1px solid var(--line);border-radius:7px;
+  padding:5px 9px;font-size:11.5px;min-width:76px}
+.terr .tc{color:var(--dim);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em}
+.terr .tn{font-variant-numeric:tabular-nums;font-weight:600;margin-top:1px}
+.terr.has{border-color:#3d5c33}
+.terr.none{opacity:.45}
+.terr .tn.pend{color:var(--dim2);font-weight:400}
+
+.hintbar{background:#1a2229;border:1px solid #2d3f4c;color:#a8c6d9;border-radius:var(--r);
+  padding:10px 13px;font-size:12.5px;line-height:1.5;margin-bottom:11px}
+.hintbar strong{color:#d0e4f0}
+.micro{margin-top:10px;margin-bottom:11px}
+.mgrid{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.mchip{font-size:11.5px;padding:3px 8px;border-radius:6px;background:var(--panel2);
+  border:1px solid var(--line);color:var(--dim)}
+.mchip.species{border-color:#4a5c33;color:#c3d9a8;background:#1d2419}
+.mchip sup{font-size:9px;opacity:.8}
+.quote{font-size:12px;color:var(--dim);font-style:italic;margin-top:7px;
+  padding-left:9px;border-left:2px solid var(--line)}
+.prov{font-size:11px;color:var(--dim2);margin-top:6px;line-height:1.45}
+
+.photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:8px;margin-top:7px}
+.ph{background:var(--panel2);border:1px solid var(--line);border-radius:8px;overflow:hidden;
+  display:block;text-decoration:none;color:inherit}
+.ph:hover{border-color:var(--acc)}
+.ph img{width:100%;height:110px;object-fit:cover;display:block;background:var(--bg)}
+.ph .cap{padding:5px 7px;font-size:10.5px;color:var(--dim2);line-height:1.35}
+.ph .cap b{color:var(--dim);font-weight:600;display:block}
+.phnote{font-size:11.5px;color:var(--dim2);margin-top:7px;line-height:1.45}
+.phmsg{font-size:12.5px;color:var(--dim);padding:10px 0}
+
+.empty{padding:32px;text-align:center;color:var(--dim);background:var(--panel);
+  border:1px dashed var(--line);border-radius:var(--r)}
+footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);
+  font-size:12px;color:var(--dim2);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Spore<span class="x">×</span>plore</h1>
+  <span class="sub">Spore &amp; morphology identifier — Boletales of the Nordics</span>
+</header>
+
+<div class="warnbar">
+  <strong>Not an authority on edibility.</strong> This tool ranks candidates from measurements you enter; it does not
+  identify your collection. <em>Paxillus involutus</em> is deadly poisonous and resembles common edible species.
+  Never eat a fungus on the strength of a ranked list — confirm with a key, a reference collection, or a mycologist.
+</div>
+
+<div class="layout">
+
+  <!-- ================= INPUT ================= -->
+  <div>
+    <div class="card">
+      <h2>Spore measurements</h2>
+      <div class="fld">
+        <label class="f">Length (µm)</label>
+        <div class="row">
+          <input type="number" id="lmin" step="0.1" placeholder="min" oninput="update()">
+          <input type="number" id="lmax" step="0.1" placeholder="max" oninput="update()">
+        </div>
+      </div>
+      <div class="fld">
+        <label class="f">Width (µm)</label>
+        <div class="row">
+          <input type="number" id="wmin" step="0.1" placeholder="min" oninput="update()">
+          <input type="number" id="wmax" step="0.1" placeholder="max" oninput="update()">
+        </div>
+      </div>
+      <div class="qbox" id="qbox">Q ratio — enter length and width</div>
+      <div class="fld">
+        <label class="f">Tolerance</label>
+        <select id="tol" onchange="update()">
+          <option value="0.5">Strict (±0.5 µm)</option>
+          <option value="1.5" selected>Normal (±1.5 µm)</option>
+          <option value="3">Loose (±3 µm)</option>
+        </select>
+      </div>
+      <div class="fld">
+        <label class="f">Spore shape</label>
+        <select id="shape" onchange="update()"><option value="">— any —</option></select>
+      </div>
+      <div class="fld">
+        <label class="f">Spore print colour</label>
+        <select id="print" onchange="update()"><option value="">— any —</option></select>
+      </div>
+      <div class="fld">
+        <label class="f">Ornamentation</label>
+        <select id="orn" onchange="update()"><option value="">— any —</option></select>
+      </div>
+      <div class="fld">
+        <label class="f">Apex</label>
+        <select id="apex" onchange="update()"><option value="">— any —</option></select>
+      </div>
+      <div class="fld">
+        <label class="f">Wall thickness</label>
+        <select id="wall" onchange="update()"><option value="">— any —</option></select>
+      </div>
+      <div class="fld" style="margin-bottom:0">
+        <label class="f">Melzer's reagent</label>
+        <select id="melzer" onchange="update()"><option value="">— any —</option></select>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Macro characters</h2>
+      <div class="fld">
+        <label class="f">Fruitbody type</label>
+        <select id="ft" onchange="update()"><option value="">— any —</option></select>
+      </div>
+      <div class="fld">
+        <label class="f">Bluing / colour change</label>
+        <select id="blue" onchange="update()"><option value="">— any —</option></select>
+      </div>
+      <div class="fld">
+        <label class="f">Taste</label>
+        <select id="taste" onchange="update()"><option value="">— any —</option></select>
+      </div>
+      <div class="fld">
+        <label class="f">Pore colour <span style="color:var(--dim2)">(select any that apply)</span></label>
+        <div class="chips" id="c-pore"></div>
+      </div>
+      <div class="fld">
+        <label class="f">Stipe surface</label>
+        <div class="chips" id="c-stipe"></div>
+      </div>
+      <div class="fld">
+        <label class="f">Cap colour</label>
+        <div class="chips" id="c-cap"></div>
+      </div>
+      <div class="fld" style="margin-bottom:0">
+        <label class="f">Host / habitat</label>
+        <div class="chips" id="c-host"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Territory</h2>
+      <div class="chips" id="c-terr"></div>
+      <div style="margin-top:12px"><button class="btn ghost" onclick="reset()">Reset all</button></div>
+    </div>
+  </div>
+
+  <!-- ================= RESULTS ================= -->
+  <div>
+    <div class="rhead">
+      <h2 style="font-size:11.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--dim);font-weight:600">
+        Candidates</h2>
+      <div class="threshold" id="thresholdCtl">
+        <label for="minMatch">Min. match</label>
+        <input type="range" id="minMatch" min="0" max="95" value="28" step="1" oninput="onThreshold()">
+        <span id="minMatchVal">28%</span>
+      </div>
+      <span class="rcount" id="rcount"></span>
+    </div>
+    <div id="results"></div>
+  </div>
+</div>
+
+<footer>
+  <strong>Data.</strong> Spore dimensions, Q-values and diagnoses marked <em>Svampeatlas</em> are taken from the
+  species descriptions on <a href="https://svampe.databasen.org" target="_blank" rel="noopener">Danmarks
+  Svampeatlas</a> (Foreningen til Svampekundskabens Fremme). Records marked <em>literature</em> are from standard
+  works — chiefly <em>Funga Nordica</em> (Knudsen &amp; Vesterholt) and Assyov's <em>Boletes of Europe</em> — used
+  where Svampeatlas carries no measurement. Every species card names its source.<br>
+  <strong>Distribution.</strong> Occurrence counts are fetched live from the
+  <a href="https://www.gbif.org" target="_blank" rel="noopener">GBIF</a> API, which aggregates the national portals:
+  Svampeatlas (DK), Artsobservasjoner/Artskart (NO), Artportalen (SE), laji.fi (FI), and records from Iceland,
+  Greenland and the Faroes. Counts are observation records, not abundance.<br>
+  <strong>Photographs.</strong> Field photos attached to GBIF occurrence records, fetched live and
+  filtered to Creative Commons and public-domain licences only — each image's own licence is
+  checked, because GBIF's record-level licence field is frequently more restrictive than the
+  photo's and filtering on it server-side discards most usable images. All-rights-reserved
+  material (much of the Norwegian Artsobservasjoner library) is never displayed. Photographer,
+  licence and country are shown on every thumbnail and each links to its source record.
+  These are recorder determinations, not verified identifications.<br>
+  <strong>Spore micro-characters.</strong> Ornamentation, apex, wall, Melzer's reaction,
+  cyanophily, guttulation and symmetry. Boletales are conservative in these characters, so where
+  a species has no separately published value it inherits its family's typical state — marked
+  with <strong>°</strong> throughout, and never presented as if it had been checked for that
+  species. Unmarked values are documented for the species itself, usually quoted from Svampeatlas.<br>
+  <strong>Nomenclature</strong> follows current generic concepts (Boletus <em>s.str.</em> split into Suillellus,
+  Neoboletus, Rubroboletus, Caloboletus, Butyriboletus, Imperator, Cyanoboletus, Hortiboletus, Xerocomellus,
+  Imleria, Hemileccinum); Svampeatlas names are shown as synonyms where they differ.
+</footer>
+</div>
+
+<script>
+// Nordic Boletales dataset — Sporexplore v1
+// src: "SA" = Danmarks Svampeatlas taxon page (svampe.databasen.org/taxon/<saId>)
+//      "LIT" = mycological literature (Funga Nordica; Boletes of Europe, Assyov)
+// Spore dims in µm. q = length/width ratio.
+// nordic: presence per territory, best-effort from portal/atlas data. Verify live via GBIF in-app.
+
+const SPECIES = [
+/* ---------- BOLETACEAE : porcini group ---------- */
+{n:"Boletus edulis",a:"Bull.",dk:"Almindelig Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11069,src:"SA",
+ sp:{lo:14,hi:17,wlo:4.5,whi:6,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["white","yellow","olive"],blue:"none",stipe:"reticulate-white",cap:["brown","pale-brown"],host:["spruce","pine","beech","oak","birch"],taste:"mild"},
+ size:"large",ed:"choice",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:1,GL:0,FO:1},
+ note:"Sej hathud; hvidt net på stok, kød uforanderligt hvidt."},
+
+{n:"Boletus reticulatus",a:"Schaeff.",dk:"Sommer-Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11093,src:"SA",
+ sp:{lo:13,hi:17,wlo:4,whi:5.5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["white","yellow"],blue:"none",stipe:"reticulate-white",cap:["pale-brown","brown"],host:["oak","beech"],taste:"mild"},
+ size:"large",ed:"choice",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Tør, ofte sprækkende, fint filtet hat; net over hele stokken."},
+
+{n:"Boletus pinophilus",a:"Pilát & Dermek",dk:"Rødbrun Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11083,src:"SA",
+ sp:{lo:15,hi:19,wlo:4.5,whi:5.5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["white","yellow"],blue:"none",stipe:"reticulate-white",cap:["red-brown","dark-brown"],host:["pine","spruce"],taste:"mild"},
+ size:"large",ed:"choice",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Knudret, rødbrun hat; længste sporer i edulis-gruppen."},
+
+{n:"Boletus aereus",a:"Bull.",dk:"Bronze-Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11061,src:"SA",
+ sp:{lo:14,hi:17,wlo:4.5,whi:6,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["white","yellow"],blue:"none",stipe:"reticulate-white",cap:["dark-brown","black-brown"],host:["oak","beech"],taste:"mild"},
+ size:"large",ed:"choice",
+ nordic:{DK:1,NO:0,SE:0,FI:0,IS:0,GL:0,FO:0},
+ note:"Tør, mørkt gråbrun, meget fint filtet hat. Sjælden i Norden."},
+
+/* ---------- BOLETACEAE : bluing / toxic group ---------- */
+{n:"Suillellus luridus",a:"(Schaeff.) Murrill",syn:"Boletus luridus",dk:"Netstokket Indigo-Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11078,src:"LIT",
+ sp:{lo:11,hi:15,wlo:5,whi:6.5,q:[2.1,2.4],shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["orange","red"],blue:"strong",stipe:"reticulate-red",cap:["yellow-brown","cinnamon","honey"],host:["oak","beech","lime"],taste:"mild"},
+ size:"large",ed:"toxic-raw",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Rød linje over rørene (Bataille-linje); orangerødt net langt ned ad stokken. Sporemål fra litteratur — Svampeatlas angiver kun Q 2,1–2,4."},
+
+{n:"Neoboletus luridiformis",a:"(Rostk.) Gelardi et al.",syn:"Boletus erythropus",dk:"Punktstokket Indigo-Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11077,src:"LIT",
+ sp:{lo:12,hi:18,wlo:4.5,whi:6,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["red","orange"],blue:"strong",stipe:"punctate-red",cap:["red-brown","dark-brown"],host:["spruce","beech","oak","birch"],taste:"mild"},
+ size:"large",ed:"toxic-raw",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Intet net — stok med orangerøde til cinnoberrøde prikker. Sporemål fra litteratur."},
+
+{n:"Rubroboletus satanas",a:"(Lenz) Kuan Zhao & Zhu L. Yang",syn:"Boletus satanas",dk:"Satans Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11096,src:"LIT",
+ sp:{lo:10,hi:15,wlo:4.5,whi:6,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["red","orange"],blue:"moderate",stipe:"reticulate-red",cap:["whitish","pale-grey"],host:["oak","beech"],taste:"mild"},
+ size:"very-large",ed:"toxic",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Bleg hat, rosa net, kvalmende lugt. Sporemål fra litteratur."},
+
+{n:"Rubroboletus legaliae",a:"(Pilát) Della Magg. et al.",syn:"Boletus legaliae",dk:"Rosahattet Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11074,src:"LIT",
+ sp:{lo:11,hi:15,wlo:4.5,whi:6,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["orange","red"],blue:"moderate",stipe:"reticulate-red",cap:["pink","pale-brown"],host:["oak","beech"],taste:"mild"},
+ size:"large",ed:"toxic",
+ nordic:{DK:1,NO:0,SE:0,FI:0,IS:0,GL:0,FO:0},
+ note:"Orange rørmundinger, ± blegrosa hat, orange net. Meget sjælden."},
+
+{n:"Rubroboletus rhodoxanthus",a:"(Krombh.) Kuan Zhao & Zhu L. Yang",dk:"Rosastokket Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11094,src:"SA",
+ sp:{lo:10,hi:14,wlo:4,whi:5.5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["orange","red"],blue:"moderate",stipe:"reticulate-red",cap:["pink","pale-grey"],host:["oak","beech"],taste:"mild"},
+ size:"very-large",ed:"toxic",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Kød i stokbasis blåner ikke — kun gult/rødt. Meget sjælden."},
+
+{n:"Suillellus queletii",a:"(Schulzer) Vizzini et al.",syn:"Boletus queletii",dk:"Blodrød Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11090,src:"LIT",
+ sp:{lo:11,hi:15,wlo:5,whi:6.5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["orange","red"],blue:"strong",stipe:"smooth",cap:["red-brown","orange-brown"],host:["oak","lime"],taste:"mild"},
+ size:"large",ed:"toxic-raw",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Uden net; beetroot-rødt kød i stokbasis. Sporemål fra litteratur."},
+
+{n:"Imperator rhodopurpureus",a:"(Smotl.) Assyov et al.",dk:"Purpur-Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11089,src:"LIT",
+ sp:{lo:11,hi:16,wlo:5,whi:6.5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow","red","orange"],blue:"strong",stipe:"reticulate-red",cap:["purple","pink","pale-grey"],host:["oak","beech"],taste:"mild"},
+ size:"large",ed:"toxic",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Blåner momentant og intensivt overalt. Sporemål fra litteratur."},
+
+{n:"Cyanoboletus pulverulentus",a:"(Opat.) Gelardi et al.",dk:"Sortblånende Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11088,src:"SA",
+ sp:{lo:11,hi:15,wlo:4,whi:6,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow"],blue:"strong",stipe:"smooth",cap:["brown","dark-brown"],host:["oak","beech"],taste:"mild"},
+ size:"medium",ed:"caution",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Blåner omgående i ALLE dele inkl. hatoverfladen — næsten sortblå. Intet net."},
+
+/* ---------- BOLETACEAE : bitter / butter boletes ---------- */
+{n:"Caloboletus calopus",a:"(Pers.) Vizzini",dk:"Rødstokket Bitterrørhat",fam:"Boletaceae",ft:"boletoid",saId:11068,src:"SA",
+ sp:{lo:12,hi:16,wlo:4.5,whi:6,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow"],blue:"moderate",stipe:"reticulate-red",cap:["grey-brown","pale-brown"],host:["spruce","pine","beech","oak"],taste:"bitter"},
+ size:"large",ed:"inedible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Meget bitter; karminrød nedre stok med net."},
+
+{n:"Caloboletus radicans",a:"(Pers.) Vizzini",dk:"Rodfiltet Bitterrørhat",fam:"Boletaceae",ft:"boletoid",saId:11091,src:"SA",
+ sp:{lo:11,hi:15,wlo:4.5,whi:6,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow"],blue:"moderate",stipe:"reticulate-yellow",cap:["whitish","pale-grey"],host:["oak","lime","beech"],taste:"bitter"},
+ size:"very-large",ed:"inedible",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Meget stor, tung, lyst gråbrun; bitter; rodagtig stokbasis."},
+
+{n:"Butyriboletus appendiculatus",a:"(Schaeff.) D. Arora & J.L. Frank",dk:"Guldporet Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11062,src:"SA",
+ sp:{lo:12,hi:14.5,wlo:3.5,whi:4.5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow"],blue:"weak",stipe:"reticulate-yellow",cap:["cinnamon","brown","grey-brown"],host:["oak","beech"],taste:"mild"},
+ size:"large",ed:"edible",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Kanelbrun til gråbrun; gult kød, svagt blånende; rodende stokbasis."},
+
+{n:"Butyriboletus fechtneri",a:"(Velen.) D. Arora & J.L. Frank",dk:"Sølvhvid Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11070,src:"SA",
+ sp:{lo:12,hi:14.5,wlo:5,whi:5.5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow"],blue:"moderate",stipe:"reticulate-yellow",cap:["whitish","pale-grey"],host:["oak","beech"],taste:"mild"},
+ size:"large",ed:"edible",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Gråligt sølvskinnende hat; fine gule rørmundinger; rød zone i stokbasis."},
+
+/* ---------- BOLETACEAE : Xerocomus & allies ---------- */
+{n:"Imleria badia",a:"(Fr.) Vizzini",syn:"Boletus badius",dk:"Brun Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11064,src:"SA",
+ sp:{lo:12,hi:15,wlo:4,whi:5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["white","yellow","olive"],blue:"weak",stipe:"smooth",cap:["red-brown","dark-brown"],host:["spruce","pine","beech"],taste:"mild"},
+ size:"medium",ed:"choice",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:1},
+ note:"Fedtet-slimet hjortebrun hat; rørmundinger blåner ved tryk."},
+
+{n:"Xerocomus subtomentosus",a:"(L.) Quél.",dk:"Fløjls-Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11101,src:"SA",
+ sp:{lo:11,hi:13,wlo:4.5,whi:5.5,q:[2.5,2.5],shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow"],blue:"weak",stipe:"smooth",cap:["olive","yellow-brown","brown"],host:["oak","beech","spruce","birch"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Tør, filtet, brungul til oliventonet hat; grove gule porer."},
+
+{n:"Xerocomus ferrugineus",a:"(Schaeff.) Alessio",dk:"Brunkødet Fløjls-Rørhat",fam:"Boletaceae",ft:"boletoid",saId:40854,src:"LIT",
+ sp:{lo:11,hi:15,wlo:4,whi:5.5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow"],blue:"none",stipe:"smooth",cap:["dark-brown","olive"],host:["spruce","beech","oak"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Mørkere end subtomentosus; hvidt myceliefilt i basis; kød uforanderligt."},
+
+{n:"Xerocomellus chrysenteron",a:"(Bull.) Šutara",dk:"Rødsprækket Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11082,src:"SA",
+ sp:{lo:13,hi:14.5,wlo:4.5,whi:5.5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow"],blue:"weak",stipe:"smooth",cap:["grey-brown","brown"],host:["beech","oak","spruce"],taste:"mild"},
+ size:"small",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Hat sprækker rødligt op; glatte sporer."},
+
+{n:"Xerocomellus pruinatus",a:"(Fr. & Hök) Šutara",dk:"Dugget Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11086,src:"SA",
+ sp:{lo:13,hi:14.5,wlo:4.5,whi:5.5,shape:"fusiform",orn:"finely striate (Melzer)",print:"olive-brown"},
+ m:{pore:["yellow"],blue:"weak",stipe:"smooth",cap:["purple-brown","red-brown","grey-brown"],host:["beech","oak","spruce"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Dugget hat med smal rødlig rand; sporer fint stribede i Melzers — nøglekarakter."},
+
+{n:"Xerocomellus porosporus",a:"(Imler) Šutara",dk:"Afskårensporet Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11085,src:"SA",
+ sp:{lo:13,hi:15,wlo:5,whi:6,shape:"truncate",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow"],blue:"weak",stipe:"smooth",cap:["grey-brown","olive-brown"],host:["oak","beech"],taste:"mild"},
+ size:"small",ed:"edible",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Hat sprækker HVIDLIGT (ikke rødt); mange sporer med afskåret spids — diagnostisk."},
+
+{n:"Xerocomellus engelii",a:"(Hlaváček) Šutara",dk:"Orangeprikket Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11063,src:"SA",
+ sp:{lo:12,hi:15,wlo:4.5,whi:5.5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow"],blue:"weak",stipe:"smooth",cap:["grey-brown","cinnamon","coral-red"],host:["oak","beech"],taste:"mild"},
+ size:"small",ed:"edible",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Små orange prikker i det basale stokkød — nøglekarakter."},
+
+{n:"Hortiboletus rubellus",a:"(Krombh.) Simonini et al.",dk:"Blodrød Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11095,src:"SA",
+ sp:{lo:11.5,hi:12.5,wlo:5,whi:5.5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow"],blue:"weak",stipe:"smooth",cap:["red","coral-red"],host:["oak","lime"],taste:"mild"},
+ size:"small",ed:"edible",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Blodrød til koralrød filtet hat; orange prikker i stokbasis."},
+
+{n:"Hortiboletus bubalinus",a:"(Oolbekk. & Duin) L. Albert & Dima",dk:"Bøffelbrun Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11067,src:"SA",
+ sp:{lo:11.5,hi:12,wlo:4.5,whi:5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow"],blue:"weak",stipe:"smooth",cap:["pale-brown","pink"],host:["oak","lime","poplar"],taste:"mild"},
+ size:"small",ed:"edible",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Træbrun til rosabrun, dugget hat; kød rosa i hatten."},
+
+{n:"Aureoboletus gentilis",a:"(Quél.) Pouzar",dk:"Guldporet Slimrørhat",fam:"Boletaceae",ft:"boletoid",saId:10933,src:"SA",
+ sp:{lo:11,hi:16,wlo:4.5,whi:6,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow","golden"],blue:"none",stipe:"smooth",cap:["pink","pale-brown","red"],host:["oak","beech"],taste:"mild"},
+ size:"small",ed:"edible",
+ nordic:{DK:1,NO:0,SE:0,FI:0,IS:0,GL:0,FO:0},
+ note:"Syrlig hatslim; blegt rosabrun hat; gyldengule porer. Sjælden."},
+
+{n:"Hemileccinum impolitum",a:"(Fr.) Šutara",dk:"Gulporet Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11073,src:"SA",
+ sp:{lo:11,hi:16,wlo:4,whi:5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow"],blue:"none",stipe:"smooth",cap:["pale-brown","pink","ochre"],host:["oak"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:0,SE:0,FI:0,IS:0,GL:0,FO:0},
+ note:"Lugt af jodoform/karbol i stokbasis; kød uforanderligt."},
+
+{n:"Pseudoboletus parasiticus",a:"(Bull.) Šutara",dk:"Snylte-Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11081,src:"SA",
+ sp:{lo:12,hi:17.5,wlo:4,whi:5.5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow","olive"],blue:"none",stipe:"smooth",cap:["olive","yellow-brown"],host:["scleroderma"],taste:"mild"},
+ size:"small",ed:"inedible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Vokser KUN på Scleroderma citrinum — entydig."},
+
+{n:"Chalciporus piperatus",a:"(Bull.) Bataille",dk:"Peber-Rørhat",fam:"Boletaceae",ft:"boletoid",saId:11573,src:"SA",
+ sp:{lo:8,hi:11,wlo:4,whi:5,shape:"fusiform",orn:"smooth",print:"cinnamon-brown"},
+ m:{pore:["rust","cinnamon","red-brown"],blue:"none",stipe:"smooth",cap:["cinnamon","pale-brown","pink"],host:["birch","pine","spruce"],taste:"peppery"},
+ size:"small",ed:"inedible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Brændende peberagtig smag; rustrøde porer; gult kød i stokbasis. Små sporer."},
+
+{n:"Chalciporus rubinus",a:"(W.G. Sm.) Singer",dk:"Rubin-Rørhat",fam:"Boletaceae",ft:"boletoid",saId:41333,src:"LIT",
+ sp:{lo:4,hi:5.5,wlo:3,whi:4,shape:"ellipsoid",orn:"smooth",print:"pink-brown"},
+ m:{pore:["red","pink"],blue:"none",stipe:"smooth",cap:["pale-brown","olive"],host:["oak"],taste:"mild"},
+ size:"small",ed:"inedible",
+ nordic:{DK:1,NO:0,SE:0,FI:0,IS:0,GL:0,FO:0},
+ note:"Meget små, brede sporer (Q~1,4) — helt atypisk for en rørhat. Meget sjælden."},
+
+{n:"Tylopilus felleus",a:"(Bull.) P. Karst.",dk:"Gald-Rørhat",fam:"Boletaceae",ft:"boletoid",saId:21358,src:"SA",
+ sp:{lo:11,hi:15,wlo:4,whi:5,shape:"fusiform",orn:"smooth",print:"pink"},
+ m:{pore:["white","pink"],blue:"none",stipe:"reticulate-dark",cap:["cinnamon","pale-brown"],host:["spruce","beech","oak","pine"],taste:"bitter"},
+ size:"large",ed:"inedible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"ROSA sporeaftryk — adskiller straks fra Boletus edulis. Meget bitter; groft mørkt net."},
+
+{n:"Porphyrellus porphyrosporus",a:"(Fr. & Hök) E.-J. Gilbert",dk:"Dyster Rørhat",fam:"Boletaceae",ft:"boletoid",saId:19022,src:"LIT",
+ sp:{lo:12,hi:17,wlo:6,whi:8,shape:"ellipsoid-fusiform",orn:"smooth",print:"purple-brown"},
+ m:{pore:["grey","brown","olive"],blue:"weak",stipe:"smooth",cap:["dark-brown","grey-brown","black-brown"],host:["spruce","beech"],taste:"mild"},
+ size:"medium",ed:"inedible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Purpurbrunt sporeaftryk; helt mørkebrun/sodfarvet. Brede sporer."},
+
+{n:"Strobilomyces strobilaceus",a:"(Scop.) Berk.",dk:"Kogle-Rørhat",fam:"Boletaceae",ft:"boletoid",saId:20681,src:"SA",
+ sp:{lo:10,hi:12,wlo:8.5,whi:11,shape:"subglobose",orn:"coarse reticulate",print:"blackish"},
+ m:{pore:["grey","white"],blue:"moderate",stipe:"shaggy-ringed",cap:["dark-grey","black"],host:["beech","oak"],taste:"mild"},
+ size:"large",ed:"edible",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Entydig: næsten kugleformede, groft netornamenterede, sorte sporer. Grovskællet grå hat med ring."},
+
+{n:"Phylloporus pelletieri",a:"(Lév.) Quél.",dk:"Guldbladet Rørhat",fam:"Boletaceae",ft:"agaricoid",saId:60908,src:"LIT",
+ sp:{lo:11,hi:15,wlo:4,whi:5.5,shape:"fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow"],blue:"weak",stipe:"smooth",cap:["brown","olive-brown"],host:["beech","oak","spruce"],taste:"mild"},
+ size:"small",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Rørhat med LAMELLER — tykke, gyldengule, nedløbende. Sjælden."},
+
+/* ---------- BOLETACEAE : Leccinum ---------- */
+{n:"Leccinum scabrum",a:"(Bull.) Gray",dk:"Brun Skælrørhat",fam:"Boletaceae",ft:"boletoid",saId:16111,src:"SA",
+ sp:{lo:14,hi:20,wlo:5,whi:6,q:[3.0,3.3],shape:"fusiform",orn:"smooth",print:"snuff-brown"},
+ m:{pore:["white","grey","brown"],blue:"none",stipe:"scabrous-dark",cap:["brown","dark-brown"],host:["birch"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:1,GL:1,FO:1},
+ note:"Kød uforanderligt eller svagt rødmende, ALDRIG grønt. Gråbrune til gråsorte stokskæl."},
+
+{n:"Leccinum variicolor",a:"Watling",dk:"Broget Skælrørhat",fam:"Boletaceae",ft:"boletoid",saId:16116,src:"SA",
+ sp:{lo:13.5,hi:17.5,wlo:5,whi:6.5,q:[2.6,2.8],shape:"fusiform",orn:"smooth",print:"snuff-brown"},
+ m:{pore:["white","grey"],blue:"none",stipe:"scabrous-dark",cap:["dark-brown","grey-brown"],host:["birch"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Mørke og lyse „flammer\" på hatten; pletvis grønfarvet eller blånende kød."},
+
+{n:"Leccinum schistophilum",a:"(Bon) Bon",dk:"Turkisbasis-Skælrørhat",fam:"Boletaceae",ft:"boletoid",saId:16100,src:"SA",
+ sp:{lo:13.5,hi:17,wlo:5,whi:6.5,q:[2.8,2.9],shape:"fusiform",orn:"smooth",print:"snuff-brown"},
+ m:{pore:["white","grey"],blue:"none",stipe:"scabrous-pale",cap:["pale-brown","grey-brown"],host:["birch"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Kød misfarves turkis i stokbasis; ret lyse gråbrune stokskæl."},
+
+{n:"Leccinum holopus",a:"(Rostk.) Watling",dk:"Hvid Skælrørhat",fam:"Boletaceae",ft:"boletoid",saId:16092,src:"SA",
+ sp:{lo:17.5,hi:20,wlo:5.5,whi:6.5,q:[2.6,2.8],shape:"fusiform",orn:"smooth",print:"snuff-brown"},
+ m:{pore:["white"],blue:"none",stipe:"scabrous-pale",cap:["whitish","pale-grey"],host:["birch"],taste:"mild"},
+ size:"small",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:1,GL:0,FO:0},
+ note:"Hvidlig, i moser/sphagnum under birk. Meget lange sporer."},
+
+{n:"Leccinum cyaneobasileucum",a:"Lannoy & Estadès",dk:"Blånende Skælrørhat",fam:"Boletaceae",ft:"boletoid",saId:16083,src:"SA",
+ sp:{lo:14,hi:19.5,wlo:4,whi:6.5,q:[3.1,3.5],shape:"fusiform",orn:"smooth",print:"snuff-brown"},
+ m:{pore:["white","grey"],blue:"none",stipe:"scabrous-dark",cap:["pale-grey","grey-brown"],host:["birch"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Pletvist grønfarvet eller blånende kød i stokbasis."},
+
+{n:"Leccinum rotundifoliae",a:"(Singer) A.H. Sm. et al.",dk:"Dværgbirke-Skælrørhat",fam:"Boletaceae",ft:"boletoid",saId:16107,src:"SA",
+ sp:{lo:13.5,hi:17.5,wlo:4.5,whi:7,q:[2.5,2.7],shape:"fusiform",orn:"smooth",print:"snuff-brown"},
+ m:{pore:["white","grey"],blue:"none",stipe:"scabrous-dark",cap:["brown","pale-brown"],host:["dwarf-birch"],taste:"mild"},
+ size:"small",ed:"edible",
+ nordic:{DK:0,NO:1,SE:1,FI:1,IS:1,GL:1,FO:0},
+ note:"Arktisk-alpin, ved dværgbirk (Betula nana). Nøgleart for Grønland/Island."},
+
+{n:"Leccinum duriusculum",a:"(Schulzer ex Kalchbr.) Singer",dk:"Poppel-Skælrørhat",fam:"Boletaceae",ft:"boletoid",saId:16090,src:"SA",
+ sp:{lo:14.5,hi:16,wlo:4.5,whi:6,q:[2.3,2.7],shape:"fusiform",orn:"smooth",print:"snuff-brown"},
+ m:{pore:["white","grey"],blue:"none",stipe:"scabrous-dark",cap:["brown","grey-brown"],host:["poplar","aspen"],taste:"mild"},
+ size:"large",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Ved poppel/asp; kød rødmer og sortner; lav Q-værdi."},
+
+{n:"Leccinum versipelle",a:"(Fr. & Hök) Snell",dk:"Rødbrun Skælrørhat",fam:"Boletaceae",ft:"boletoid",saId:16117,src:"SA",
+ sp:{lo:12.5,hi:16,wlo:4,whi:5,q:[3.0,3.3],shape:"fusiform",orn:"smooth",print:"snuff-brown"},
+ m:{pore:["white","grey"],blue:"none",stipe:"scabrous-dark",cap:["orange","orange-brown"],host:["birch"],taste:"mild"},
+ size:"large",ed:"choice",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:1,GL:0,FO:1},
+ note:"Brunorange hat med overhængende hathud; SORTE stokskæl; kød sortner. Ved birk."},
+
+{n:"Leccinum albostipitatum",a:"den Bakker & Noordel.",dk:"Hvidstokket Skælrørhat",fam:"Boletaceae",ft:"boletoid",saId:16080,src:"SA",
+ sp:{lo:11,hi:17,wlo:4,whi:5,q:[3.1,3.1],shape:"fusiform",orn:"smooth",print:"snuff-brown"},
+ m:{pore:["white","grey"],blue:"none",stipe:"scabrous-pale",cap:["orange","orange-brown"],host:["poplar","aspen"],taste:"mild"},
+ size:"large",ed:"choice",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Brunorange hat, HVIDE stokskæl, ved asp/poppel; kød sortner."},
+
+{n:"Leccinum aurantiacum",a:"(Bull.) Gray",dk:"Orange Skælrørhat",fam:"Boletaceae",ft:"boletoid",saId:16081,src:"SA",
+ sp:{lo:12.5,hi:18.5,wlo:3.5,whi:5,q:[3.2,3.6],shape:"fusiform",orn:"smooth",print:"snuff-brown"},
+ m:{pore:["white","grey"],blue:"none",stipe:"scabrous-brown",cap:["orange","orange-brown"],host:["poplar","aspen","oak"],taste:"mild"},
+ size:"large",ed:"choice",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Stor, fastkødet, brunorange; høj Q-værdi (slanke sporer)."},
+
+{n:"Leccinum vulpinum",a:"Watling",dk:"Ræverød Skælrørhat",fam:"Boletaceae",ft:"boletoid",saId:16118,src:"SA",
+ sp:{lo:12.5,hi:15,wlo:3,whi:4,q:[3.2,3.4],shape:"fusiform",orn:"smooth",print:"snuff-brown"},
+ m:{pore:["white","grey"],blue:"none",stipe:"scabrous-brown",cap:["red-brown","orange-brown"],host:["pine","spruce"],taste:"mild"},
+ size:"large",ed:"choice",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Ved nåletræ; brunrøde stokskæl fra start; meget smalle sporer (3–4 µm)."},
+
+{n:"Leccinum quercinum",a:"(Pilát) E.E. Green & Watling",dk:"Ege-Skælrørhat",fam:"Boletaceae",ft:"boletoid",saId:16105,src:"SA",
+ sp:{lo:12.5,hi:18.5,wlo:3.5,whi:5,q:[3.2,3.6],shape:"fusiform",orn:"smooth",print:"snuff-brown"},
+ m:{pore:["white","grey"],blue:"none",stipe:"scabrous-brown",cap:["red-brown","orange-brown"],host:["oak"],taste:"mild"},
+ size:"large",ed:"choice",
+ nordic:{DK:1,NO:0,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Ved eg; rødbrune stokskæl."},
+
+{n:"Leccinellum crocipodium",a:"(Letell.) Della Magg. & Trassin.",dk:"Gulporet Skælrørhat",fam:"Boletaceae",ft:"boletoid",saId:16088,src:"SA",
+ sp:{lo:12,hi:18,wlo:5,whi:7,q:[2.3,2.4],shape:"fusiform",orn:"smooth",print:"snuff-brown"},
+ m:{pore:["yellow"],blue:"none",stipe:"scabrous-yellow",cap:["yellow","yellow-brown"],host:["oak"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:0,SE:0,FI:0,IS:0,GL:0,FO:0},
+ note:"Eneste Leccinum med GULE porer; kød sortner. Sjælden."},
+
+{n:"Leccinellum pseudoscabrum",a:"(Kallenb.) Mikšík",syn:"Leccinum carpini",dk:"Avnbøg-Skælrørhat",fam:"Boletaceae",ft:"boletoid",saId:16084,src:"LIT",
+ sp:{lo:12,hi:18,wlo:5,whi:6.5,q:[2.4,2.8],shape:"fusiform",orn:"smooth",print:"snuff-brown"},
+ m:{pore:["white","grey","yellow"],blue:"none",stipe:"scabrous-dark",cap:["dark-brown","grey-brown"],host:["hornbeam","hazel"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Rynket-hamret hat; ved avnbøg/hassel; kød violetsort ved snit."},
+
+/* ---------- SUILLACEAE ---------- */
+{n:"Suillus luteus",a:"(L.) Roussel",dk:"Almindelig Slimrørhat",fam:"Suillaceae",ft:"boletoid",saId:20734,src:"SA",
+ sp:{lo:7,hi:10,wlo:3,whi:3.5,shape:"ellipsoid-fusiform",orn:"smooth",print:"ochre-brown"},
+ m:{pore:["yellow"],blue:"none",stipe:"ring",cap:["red-brown","dark-brown"],host:["pine"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:1,GL:0,FO:1},
+ note:"Meget slimet rødbrun hat + tydelig membranøs RING. Ved 2-nålet fyr."},
+
+{n:"Suillus granulatus",a:"(L.) Roussel",dk:"Ringløs Slimrørhat",fam:"Suillaceae",ft:"boletoid",saId:20731,src:"SA",
+ sp:{lo:8,hi:10,wlo:2.5,whi:3.5,shape:"ellipsoid-fusiform",orn:"smooth",print:"ochre-brown"},
+ m:{pore:["yellow"],blue:"none",stipe:"glandular-dots",cap:["orange-brown","cinnamon"],host:["pine"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:1,GL:0,FO:0},
+ note:"Ingen ring; mælkehvide dråber fra porerne når frisk; kirtelprikker på stok."},
+
+{n:"Suillus bovinus",a:"(L.) Roussel",dk:"Ru Slimrørhat",fam:"Suillaceae",ft:"boletoid",saId:20726,src:"SA",
+ sp:{lo:8,hi:10,wlo:3,whi:4,shape:"ellipsoid-fusiform",orn:"smooth",print:"ochre-brown"},
+ m:{pore:["olive","yellow","grey"],blue:"none",stipe:"smooth",cap:["pale-brown","ochre"],host:["pine"],taste:"mild"},
+ size:"small",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:1,GL:0,FO:1},
+ note:"Grove, sammensatte, olivengrå porer; ofte med Gomphidius roseus."},
+
+{n:"Suillus variegatus",a:"(Sw.) Richon & Roze",dk:"Broget Slimrørhat",fam:"Suillaceae",ft:"boletoid",saId:20739,src:"SA",
+ sp:{lo:7.5,hi:11,wlo:3,whi:4,shape:"ellipsoid-fusiform",orn:"smooth",print:"ochre-brown"},
+ m:{pore:["olive","brown"],blue:"weak",stipe:"smooth",cap:["ochre","yellow-brown"],host:["pine"],taste:"mild"},
+ size:"large",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Næsten tør, småskællet hat; svagt blånende kød; lugt af karbol."},
+
+{n:"Suillus grevillei",a:"(Klotzsch) Singer",dk:"Lærke-Slimrørhat",fam:"Suillaceae",ft:"boletoid",saId:63736,src:"SA",
+ sp:{lo:8,hi:11,wlo:3,whi:4,shape:"ellipsoid-fusiform",orn:"smooth",print:"ochre-brown"},
+ m:{pore:["yellow"],blue:"none",stipe:"ring",cap:["yellow","orange-brown"],host:["larch"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:1,GL:0,FO:0},
+ note:"Kun ved LÆRK; klar gul til brunorange slimet hat med ring."},
+
+{n:"Suillus viscidus",a:"(L.) Roussel",syn:"Suillus aeruginascens",dk:"Grå Slimrørhat",fam:"Suillaceae",ft:"boletoid",saId:20723,src:"SA",
+ sp:{lo:10,hi:13,wlo:4,whi:5.5,shape:"ellipsoid-fusiform",orn:"smooth",print:"ochre-brown"},
+ m:{pore:["grey","olive","white"],blue:"weak",stipe:"ring",cap:["grey","olive-grey"],host:["larch"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Ved lærk; olivengrå marmoreret hat; største sporer i slægten."},
+
+{n:"Suillus tridentinus",a:"(Bres.) Singer",dk:"Orange Slimrørhat",fam:"Suillaceae",ft:"boletoid",saId:20738,src:"SA",
+ sp:{lo:9,hi:13,wlo:4,whi:6,shape:"ellipsoid-fusiform",orn:"smooth",print:"ochre-brown"},
+ m:{pore:["orange","rust"],blue:"none",stipe:"ring",cap:["orange","yellow-brown"],host:["larch"],taste:"mild"},
+ size:"large",ed:"edible",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Ved lærk; orange-rustfarvede porer. Brede sporer. Sjælden."},
+
+{n:"Suillus placidus",a:"(Bonord.) Singer",dk:"Hvid Slimrørhat",fam:"Suillaceae",ft:"boletoid",saId:20736,src:"SA",
+ sp:{lo:7.5,hi:9,wlo:3,whi:3.5,shape:"ellipsoid-fusiform",orn:"smooth",print:"ochre-brown"},
+ m:{pore:["white","yellow"],blue:"none",stipe:"glandular-dots",cap:["whitish","pale-yellow"],host:["pine"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Hvidlig til lyst lædergul hat; ved 5-nålet fyr (Pinus strobus/cembra)."},
+
+{n:"Suillus flavidus",a:"(Fr.) J. Presl",dk:"Mose-Slimrørhat",fam:"Suillaceae",ft:"boletoid",saId:20730,src:"SA",
+ sp:{lo:8,hi:10,wlo:3.5,whi:4.5,shape:"ellipsoid-fusiform",orn:"smooth",print:"ochre-brown"},
+ m:{pore:["yellow","olive"],blue:"none",stipe:"ring",cap:["yellow","ochre"],host:["pine"],taste:"mild"},
+ size:"small",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Lille, konisk gul hat; i fugtige moser under fyr."},
+
+{n:"Suillus collinitus",a:"(Fr.) Kuntze",dk:"Rodfiltet Slimrørhat",fam:"Suillaceae",ft:"boletoid",saId:20728,src:"SA",
+ sp:{lo:8.5,hi:9.5,wlo:3.5,whi:4,shape:"ellipsoid-fusiform",orn:"smooth",print:"ochre-brown"},
+ m:{pore:["yellow"],blue:"none",stipe:"glandular-dots",cap:["cinnamon","brown"],host:["pine"],taste:"mild"},
+ size:"large",ed:"edible",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Rosa myceliefilt i stokbasis — nøglekarakter mod S. granulatus."},
+
+{n:"Suillus lapponicus",a:"Kers",dk:"Lapsk Slimrørhat",fam:"Suillaceae",ft:"boletoid",saId:20733,src:"LIT",
+ sp:{lo:8,hi:11,wlo:3,whi:4.5,shape:"ellipsoid-fusiform",orn:"smooth",print:"ochre-brown"},
+ m:{pore:["yellow"],blue:"weak",stipe:"ring",cap:["yellow-brown","olive"],host:["spruce"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:0,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Nordskandinavisk; ved gran i fjeldbirkeskov. Sjælden."},
+
+{n:"Suillus cavipes",a:"(Opat.) A.H. Sm. & Thiers",dk:"Hulstokket Slimrørhat",fam:"Suillaceae",ft:"boletoid",saId:63734,src:"LIT",
+ sp:{lo:7,hi:10,wlo:3,whi:4,shape:"ellipsoid-fusiform",orn:"smooth",print:"olive-brown"},
+ m:{pore:["yellow","olive"],blue:"none",stipe:"ring",cap:["red-brown","brown"],host:["larch"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:0,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Tør, skællet-filtet hat; HUL stok — entydig. Ved lærk."},
+
+/* ---------- GYROPORACEAE ---------- */
+{n:"Gyroporus castaneus",a:"(Bull.) Quél.",dk:"Kastanje-Rørhat",fam:"Gyroporaceae",ft:"boletoid",saId:14462,src:"SA",
+ sp:{lo:8,hi:11,wlo:5,whi:6,shape:"ellipsoid",orn:"smooth",print:"pale-yellow"},
+ m:{pore:["white","yellow"],blue:"none",stipe:"smooth",cap:["cinnamon","orange-brown"],host:["oak","beech"],taste:"mild"},
+ size:"small",ed:"edible",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"BLEGT GULT sporeaftryk (ikke olivenbrunt) — nøglekarakter. Skør, hul stok."},
+
+{n:"Gyroporus cyanescens",a:"(Bull.) Quél.",dk:"Blånende Rørhat",fam:"Gyroporaceae",ft:"boletoid",saId:14463,src:"SA",
+ sp:{lo:9,hi:11,wlo:4.5,whi:6,shape:"ellipsoid",orn:"smooth",print:"pale-yellow"},
+ m:{pore:["white","yellow"],blue:"strong",stipe:"smooth",cap:["ochre","pale-brown","straw"],host:["birch","oak","pine"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Blåner momentant koboltblåt; blegt gult sporeaftryk; skør, kammeret stok."},
+
+{n:"Gyrodon lividus",a:"(Bull.) Sacc.",dk:"El-Rørhat",fam:"Paxillaceae",ft:"boletoid",saId:14452,src:"SA",
+ sp:{lo:4.5,hi:6,wlo:3,whi:4,shape:"ellipsoid",orn:"smooth",print:"olive-yellow"},
+ m:{pore:["yellow","olive"],blue:"moderate",stipe:"smooth",cap:["pale-grey","olive","ochre"],host:["alder"],taste:"mild"},
+ size:"medium",ed:"inedible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Kun ved EL; meget små sporer (4,5–6 µm) — entydigt for en rørhat. Nedløbende porer."},
+
+/* ---------- PAXILLACEAE / TAPINELLACEAE / HYGROPHOROPSIDACEAE ---------- */
+{n:"Paxillus involutus",a:"(Batsch) Fr.",dk:"Almindelig Netbladhat",fam:"Paxillaceae",ft:"agaricoid",saId:18007,src:"SA",
+ sp:{lo:7,hi:11,wlo:5,whi:6.5,shape:"ellipsoid",orn:"smooth",print:"sienna-brown"},
+ m:{pore:["n/a"],blue:"none",stipe:"smooth",cap:["brown","ochre-brown"],host:["birch","spruce","pine"],taste:"mild"},
+ size:"medium",ed:"deadly",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:1,GL:0,FO:1},
+ note:"DØDELIGT GIFTIG (immunhæmolyse). Lameller nedløbende, gaffeldelte, brunplettede ved tryk; indrullet ribbet rand."},
+
+{n:"Paxillus obscurisporus",a:"C. Hahn",dk:"Storsporet Netbladhat",fam:"Paxillaceae",ft:"agaricoid",saId:60821,src:"SA",
+ sp:{lo:7,hi:10.5,wlo:5,whi:6.5,shape:"ellipsoid",orn:"smooth",print:"olive-brown"},
+ m:{pore:["n/a"],blue:"none",stipe:"smooth",cap:["brown","dark-brown"],host:["lime","oak","birch"],taste:"mild"},
+ size:"large",ed:"deadly",
+ nordic:{DK:1,NO:1,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Meget kraftig, kort- og tykstokket; ofte vinrøde misfarvninger. Parker og haver."},
+
+{n:"Paxillus filamentosus",a:"Fr.",syn:"Paxillus rubicundulus",dk:"El-Netbladhat",fam:"Paxillaceae",ft:"agaricoid",saId:18005,src:"SA",
+ sp:{lo:5.5,hi:8.5,wlo:4,whi:5,shape:"ellipsoid",orn:"smooth",print:"sienna-brown"},
+ m:{pore:["n/a"],blue:"none",stipe:"smooth",cap:["ochre","yellow-brown"],host:["alder"],taste:"mild"},
+ size:"medium",ed:"deadly",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Kun ved EL; spinklere, stærkt randribbet, gultonet kød. Mindste sporer i slægten."},
+
+{n:"Tapinella atrotomentosa",a:"(Batsch) Šutara",syn:"Paxillus atrotomentosus",dk:"Fløjlsfodet Netbladhat",fam:"Tapinellaceae",ft:"agaricoid",saId:20828,src:"LIT",
+ sp:{lo:4.5,hi:6,wlo:3,whi:4,shape:"ellipsoid",orn:"smooth",print:"pale-yellow-brown"},
+ m:{pore:["n/a"],blue:"none",stipe:"velvety-black",cap:["brown","ochre-brown"],host:["pine-stumps","conifer-wood"],taste:"bitter"},
+ size:"large",ed:"inedible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"På nåletræsstubbe; sortbrun fløjlsagtig excentrisk stok — entydig."},
+
+{n:"Tapinella panuoides",a:"(Fr.) E.-J. Gilbert",syn:"Paxillus panuoides",dk:"Stokløs Netbladhat",fam:"Tapinellaceae",ft:"agaricoid",saId:20829,src:"LIT",
+ sp:{lo:4,hi:6,wlo:3,whi:4,shape:"ellipsoid",orn:"smooth",print:"pale-yellow-brown"},
+ m:{pore:["n/a"],blue:"none",stipe:"absent",cap:["ochre","yellow-brown"],host:["conifer-wood"],taste:"mild"},
+ size:"small",ed:"inedible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Vifteformet, uden stok, på nåletræ; stærkt gaffeldelte krusede lameller."},
+
+{n:"Hygrophoropsis aurantiaca",a:"(Wulfen) Maire",dk:"Falsk Kantarel",fam:"Hygrophoropsidaceae",ft:"agaricoid",saId:14886,src:"SA",
+ sp:{lo:5,hi:7,wlo:3.5,whi:4.5,shape:"ellipsoid",orn:"smooth (dextrinoid)",print:"white"},
+ m:{pore:["n/a"],blue:"none",stipe:"smooth",cap:["orange"],host:["pine","spruce","heath"],taste:"mild"},
+ size:"small",ed:"caution",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:1,GL:0,FO:1},
+ note:"HVIDT sporeaftryk + DEXTRINOIDE sporer — adskiller fra ægte kantarel og fra Paxillus."},
+
+/* ---------- GOMPHIDIACEAE ---------- */
+{n:"Gomphidius glutinosus",a:"(Schaeff.) Fr.",dk:"Stor Sløjhat",fam:"Gomphidiaceae",ft:"agaricoid",saId:14369,src:"SA",
+ sp:{lo:17,hi:20,wlo:5.5,whi:6.5,shape:"fusiform",orn:"smooth",print:"blackish"},
+ m:{pore:["n/a"],blue:"none",stipe:"yellow-base",cap:["grey-brown","purple-grey"],host:["spruce"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:1,GL:0,FO:0},
+ note:"Meget slimet grågul hat; KANARIEGUL stokbasis; sorte lameller. Ved gran."},
+
+{n:"Gomphidius roseus",a:"(Fr.) Fr.",dk:"Rosa Sløjhat",fam:"Gomphidiaceae",ft:"agaricoid",saId:14371,src:"SA",
+ sp:{lo:17,hi:20,wlo:5,whi:5.5,shape:"fusiform",orn:"smooth",print:"blackish"},
+ m:{pore:["n/a"],blue:"none",stipe:"white",cap:["red","pink"],host:["pine"],taste:"mild"},
+ size:"small",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Klart rosarød hat; INGEN gul farve i stokkød. Altid sammen med Suillus bovinus."},
+
+{n:"Gomphidius maculatus",a:"(Scop.) Fr.",dk:"Plettet Sløjhat",fam:"Gomphidiaceae",ft:"agaricoid",saId:14370,src:"SA",
+ sp:{lo:17,hi:23,wlo:6,whi:8,shape:"fusiform",orn:"smooth",print:"blackish"},
+ m:{pore:["n/a"],blue:"none",stipe:"yellow-base",cap:["ochre-brown","pale-brown"],host:["larch"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Ved LÆRK; rødmer ved tryk og sortner siden. Største sporer i familien."},
+
+{n:"Chroogomphus rutilus",a:"(Schaeff.) O.K. Mill.",dk:"Rødbrun Sløjhat",fam:"Gomphidiaceae",ft:"agaricoid",saId:11614,src:"SA",
+ sp:{lo:15,hi:22,wlo:5.5,whi:7,shape:"fusiform",orn:"smooth",print:"blackish"},
+ m:{pore:["n/a"],blue:"none",stipe:"ochre",cap:["red-brown","copper"],host:["pine"],taste:"mild"},
+ size:"medium",ed:"edible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Tykvæggede cylindriske cystider; okkergult til safranfarvet kød. Ved fyr."},
+
+/* ---------- SCLERODERMATACEAE ---------- */
+{n:"Scleroderma citrinum",a:"Pers.",dk:"Almindelig Bruskbold",fam:"Sclerodermataceae",ft:"gasteroid",saId:20219,src:"SA",
+ sp:{lo:10,hi:12,wlo:10,whi:12,shape:"globose",orn:"incomplete reticulum",print:"blackish-brown"},
+ m:{pore:["n/a"],blue:"none",stipe:"absent",cap:["yellow","ochre"],host:["oak","birch","heath"],taste:"n/a"},
+ size:"medium",ed:"toxic",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Tykskindet, grovskællet, gullig; INGEN stok. Vært for Pseudoboletus parasiticus."},
+
+{n:"Scleroderma verrucosum",a:"(Bull.) Pers.",dk:"Vortet Bruskbold",fam:"Sclerodermataceae",ft:"gasteroid",saId:20225,src:"SA",
+ sp:{lo:8,hi:11,wlo:8,whi:11,shape:"globose",orn:"spiny",print:"blackish-brown"},
+ m:{pore:["n/a"],blue:"none",stipe:"rooting",cap:["brown","ochre-brown"],host:["oak","beech"],taste:"n/a"},
+ size:"medium",ed:"toxic",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Kraftig rod-/stokagtig forlængelse; piggede sporer UDEN netmønster."},
+
+{n:"Scleroderma areolatum",a:"Ehrenb.",dk:"Netbruskbold",fam:"Sclerodermataceae",ft:"gasteroid",saId:20216,src:"SA",
+ sp:{lo:10,hi:13,wlo:10,whi:13,shape:"globose",orn:"short-spiny",print:"blackish-brown"},
+ m:{pore:["n/a"],blue:"none",stipe:"rooting",cap:["brown","ochre-brown"],host:["oak","beech","willow"],taste:"n/a"},
+ size:"small",ed:"toxic",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Tyndt peridium med tydelige, små, regelmæssige mørke skæl."},
+
+{n:"Scleroderma bovista",a:"Fr.",dk:"Glat Bruskbold",fam:"Sclerodermataceae",ft:"gasteroid",saId:20217,src:"SA",
+ sp:{lo:9,hi:13,wlo:9,whi:13,shape:"globose",orn:"complete reticulum",print:"blackish-brown"},
+ m:{pore:["n/a"],blue:"none",stipe:"rooting",cap:["ochre","pale-brown"],host:["oak","grassland"],taste:"n/a"},
+ size:"medium",ed:"toxic",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"KOMPLET netmønster på sporerne (mod citrinums ufuldstændige). Med øskner."},
+
+{n:"Scleroderma cepa",a:"Pers.",dk:"Løg-Bruskbold",fam:"Sclerodermataceae",ft:"gasteroid",saId:20218,src:"SA",
+ sp:{lo:10,hi:12,wlo:10,whi:12,shape:"globose",orn:"long-spiny (~2µm)",print:"blackish-brown"},
+ m:{pore:["n/a"],blue:"none",stipe:"absent",cap:["whitish","pale-brown"],host:["oak","beech"],taste:"n/a"},
+ size:"medium",ed:"toxic",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Kartoffelagtig, uden stok; langpiggede sporer (ca. 2 µm pigge)."},
+
+{n:"Scleroderma septentrionale",a:"Jeppson",dk:"Sand-Bruskbold",fam:"Sclerodermataceae",ft:"gasteroid",saId:20223,src:"SA",
+ sp:{lo:9,hi:15,wlo:9,whi:15,shape:"globose",orn:"complete reticulum",print:"blackish-brown"},
+ m:{pore:["n/a"],blue:"none",stipe:"rooting",cap:["ochre","pale-brown"],host:["dune","pine"],taste:"n/a"},
+ size:"large",ed:"toxic",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"I klitsand med kraftig rodagtig forlængelse ned i sandet. Nordisk specialitet."},
+
+{n:"Pisolithus arhizus",a:"(Scop.) Rauschert",dk:"Ærtebold",fam:"Sclerodermataceae",ft:"gasteroid",saId:18788,src:"SA",
+ sp:{lo:7,hi:8,wlo:7,whi:8,shape:"globose",orn:"spiny",print:"brown"},
+ m:{pore:["n/a"],blue:"none",stipe:"stalked",cap:["brown","ochre"],host:["pine","birch","disturbed-ground"],taste:"n/a"},
+ size:"large",ed:"inedible",
+ nordic:{DK:1,NO:0,SE:1,FI:0,IS:0,GL:0,FO:0},
+ note:"Indre delt i ærteagtige peridioler; stor stok og udvidet hoved. Meget små runde sporer."},
+
+/* ---------- RHIZOPOGONACEAE ---------- */
+{n:"Rhizopogon luteolus",a:"Fr. & Nordholm",dk:"Gul Skægtrøffel",fam:"Rhizopogonaceae",ft:"gasteroid",saId:47475,src:"SA",
+ sp:{lo:5,hi:8.5,wlo:2,whi:4,shape:"truncate-ellipsoid",orn:"smooth",print:"olive-brown"},
+ m:{pore:["n/a"],blue:"none",stipe:"absent",cap:["ochre","yellow-brown"],host:["pine"],taste:"n/a"},
+ size:"small",ed:"inedible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Hypogæisk knold med tydeligt mørkere hyfestrenge udenpå. Sporer afskåret i enden."},
+
+{n:"Rhizopogon roseolus",a:"(Corda) Th. Fr.",syn:"Rhizopogon rubescens",dk:"Rødmende Skægtrøffel",fam:"Rhizopogonaceae",ft:"gasteroid",saId:19807,src:"SA",
+ sp:{lo:6,hi:8,wlo:2.5,whi:4,shape:"truncate-ellipsoid",orn:"smooth",print:"olive-brown"},
+ m:{pore:["n/a"],blue:"none",stipe:"absent",cap:["whitish","pale-yellow"],host:["pine"],taste:"n/a"},
+ size:"small",ed:"inedible",
+ nordic:{DK:1,NO:1,SE:1,FI:1,IS:0,GL:0,FO:0},
+ note:"Lyst gullig, rødmer ved berøring; uden markante hyfestrenge."}
+];
+
+// Character vocabularies for the UI
+const VOCAB = {
+  pore:["white","yellow","golden","olive","grey","orange","red","pink","rust","cinnamon","brown","red-brown","n/a"],
+  blue:["none","weak","moderate","strong"],
+  stipe:["smooth","reticulate-white","reticulate-yellow","reticulate-red","reticulate-dark","punctate-red","glandular-dots","scabrous-dark","scabrous-pale","scabrous-brown","scabrous-yellow","ring","velvety-black","yellow-base","ochre","white","rooting","stalked","shaggy-ringed","absent"],
+  cap:["whitish","pale-grey","grey","grey-brown","pale-brown","brown","dark-brown","black-brown","red-brown","cinnamon","orange","orange-brown","yellow","yellow-brown","honey","ochre","ochre-brown","olive","olive-brown","olive-grey","straw","pale-yellow","pink","purple","purple-brown","purple-grey","red","coral-red","copper","dark-grey","black"],
+  host:["birch","dwarf-birch","oak","beech","hornbeam","hazel","lime","poplar","aspen","alder","willow","pine","spruce","larch","heath","dune","grassland","conifer-wood","pine-stumps","scleroderma","disturbed-ground"],
+  taste:["mild","bitter","peppery","n/a"],
+  print:["olive-brown","snuff-brown","ochre-brown","olive-yellow","pale-yellow","pale-yellow-brown","cinnamon-brown","pink","pink-brown","purple-brown","sienna-brown","blackish","blackish-brown","brown","white"],
+  ft:["boletoid","agaricoid","gasteroid"]
+};
+
+const LABELS = {
+  ft:{boletoid:"Bolete (pores/tubes)",agaricoid:"Gilled",gasteroid:"Puffball-like / hypogeous"},
+  blue:{none:"No bluing",weak:"Weak / slow",moderate:"Moderate",strong:"Strong / instant"},
+  ed:{choice:"Choice edible",edible:"Edible",inedible:"Inedible",caution:"Caution",
+      "toxic-raw":"Toxic raw",toxic:"Toxic",deadly:"Deadly poisonous"}
+};
+
+const TERRITORIES = [
+  {c:"DK",name:"Denmark",gbif:"DK"},{c:"NO",name:"Norway",gbif:"NO"},
+  {c:"SE",name:"Sweden",gbif:"SE"},{c:"FI",name:"Finland",gbif:"FI"},
+  {c:"IS",name:"Iceland",gbif:"IS"},{c:"GL",name:"Greenland",gbif:"GL"},
+  {c:"FO",name:"Faroe Islands",gbif:"FO"}
+];
+
+/* ============================================================
+   EXPANDED SPORE MICRO-CHARACTERS
+   Boletales spore characters are strongly conserved at family level, so the
+   baseline below is applied per family and individual species override it.
+   Anything in SPORE_OVERRIDE is documented for THAT species (mostly verbatim
+   from the Svampeatlas description); anything inherited from FAMILY_SPORE is
+   family-typical and is labelled as such in the UI, so an inherited value is
+   never presented as if it had been checked for that species.
+   ============================================================ */
+
+const FAMILY_SPORE = {
+  Boletaceae:          {orn:"smooth",apex:"rounded",wall:"thin",melzer:"inamyloid",cyano:"acyanophilic",gutt:"often",sym:"inequilateral"},
+  Suillaceae:          {orn:"smooth",apex:"rounded",wall:"thin",melzer:"inamyloid",cyano:"acyanophilic",gutt:"often",sym:"inequilateral"},
+  Gyroporaceae:        {orn:"smooth",apex:"rounded",wall:"thin",melzer:"inamyloid",cyano:"acyanophilic",gutt:"often",sym:"equilateral"},
+  Paxillaceae:         {orn:"smooth",apex:"rounded",wall:"thin",melzer:"inamyloid",cyano:"acyanophilic",gutt:"rare",sym:"equilateral"},
+  Tapinellaceae:       {orn:"smooth",apex:"rounded",wall:"thin",melzer:"inamyloid",cyano:"acyanophilic",gutt:"rare",sym:"equilateral"},
+  Hygrophoropsidaceae: {orn:"smooth",apex:"rounded",wall:"slightly-thickened",melzer:"dextrinoid",cyano:"acyanophilic",gutt:"rare",sym:"equilateral"},
+  Gomphidiaceae:       {orn:"smooth",apex:"tapered",wall:"slightly-thickened",melzer:"inamyloid",cyano:"acyanophilic",gutt:"rare",sym:"inequilateral"},
+  Sclerodermataceae:   {orn:"spiny",apex:"rounded",wall:"thick",melzer:"inamyloid",cyano:"acyanophilic",gutt:"absent",sym:"equilateral"},
+  Rhizopogonaceae:     {orn:"smooth",apex:"truncate",wall:"thin",melzer:"inamyloid",cyano:"acyanophilic",gutt:"rare",sym:"equilateral"}
+};
+
+// Species-level documented characters. `q` marks the verbatim source phrase where one exists.
+const SPORE_OVERRIDE = {
+  "Xerocomellus pruinatus":   {orn:"finely-striate", q:"very finely striate when seen in Melzer's reagent"},
+  "Xerocomellus porosporus":  {apex:"truncate",      q:"mange sporer med afskåret spids (porospor)"},
+  "Xerocomellus chrysenteron":{orn:"smooth",         q:"De glatte sporer måler 13-14,5 x 4,5-5,5 μm"},
+  "Strobilomyces strobilaceus":{orn:"reticulate-coarse",wall:"thick",sym:"equilateral",
+                               q:"De stort set kugleformede, mørke sporer har et groft netornament"},
+  "Cyanoboletus pulverulentus":{orn:"smooth",        q:"De glatte sporer måler 11-15 x 4-6 μm"},
+  "Chalciporus piperatus":    {orn:"smooth",         q:"De glatte, ± tenformede sporer måler 8-11 x 4-5 μm"},
+  "Gyroporus cyanescens":     {orn:"smooth",         q:"De ellipsoidiske, glatte, farveløse sporer"},
+  "Gyrodon lividus":          {orn:"smooth",         q:"De ellipsoidiske, lysebrune sporer måler 4,5-6 x 3-4 μm"},
+  "Paxillus involutus":       {orn:"smooth",         q:"De glatte sporer måler 7-11 x 5-6,5 μm"},
+  "Tylopilus felleus":        {orn:"smooth",         q:"The spores are smooth, ± fusiform"},
+  "Chroogomphus rutilus":     {orn:"smooth",         q:"Sporer glatte, ± tenformede, med tykvæggede, ± cylindriske cystider"},
+  "Hygrophoropsis aurantiaca":{orn:"smooth",wall:"slightly-thickened",melzer:"dextrinoid",
+                               q:"De glatte, lidt tykvæggede, dextrinoide sporer"},
+  "Boletus edulis":           {orn:"smooth",         q:"De svagt tonede, ± tenformede sporer"},
+  "Scleroderma citrinum":     {orn:"reticulate-incomplete",
+                               q:"kuglerunde og har et ikke helt komplet netmønster"},
+  "Scleroderma bovista":      {orn:"reticulate-complete",
+                               q:"Sporer med komplet netmønster, 9-13 µm uden ornament"},
+  "Scleroderma septentrionale":{orn:"reticulate-complete",
+                               q:"Sporerne har et komplet netmønster og måler 9-15 µm uden ornament"},
+  "Scleroderma verrucosum":   {orn:"spiny",
+                               q:"De ret små, piggede, kuglerunde sporer måler 8-10(-11) µm (uden ornament)"},
+  "Scleroderma areolatum":    {orn:"short-spiny",
+                               q:"De ret kortpiggede sporer måler 10-13 µm uden ornament"},
+  "Scleroderma cepa":         {orn:"long-spiny",
+                               q:"Sporer langpiggede (ca. 2 µm), 10-12 µm"},
+  "Pisolithus arhizus":       {orn:"spiny",
+                               q:"De piggede sporer bliver til sidst samlet i et brunt pulver"},
+  "Rhizopogon luteolus":      {apex:"truncate",      q:"De i enden afskårne sporer måler (4,8-)5-8,5(-11) x 2-4 µm"},
+  "Rhizopogon roseolus":      {apex:"truncate",      q:"Sporerne måler (5-)6-8(-10) x (2-)2,5-4(-5) µm"},
+  "Gomphidius glutinosus":    {orn:"smooth",         q:"The ± fusiform spores measure 17–20 × 5.5–6.5 µm"},
+  "Gomphidius maculatus":     {orn:"smooth",         q:"The ± fusiform spores measure 17–23 × 6–8 µm"},
+  "Gomphidius roseus":        {orn:"smooth",         q:"The ± fusiform spores measure 17–20 × 5–5.5 µm"}
+};
+
+// Merge family baseline with species overrides; record provenance per character.
+const MICRO_KEYS = ["orn","apex","wall","melzer","cyano","gutt","sym"];
+SPECIES.forEach(s=>{
+  const base = FAMILY_SPORE[s.fam] || {};
+  const ov   = SPORE_OVERRIDE[s.n] || {};
+  s.micro = {}; s.microSrc = {};
+  MICRO_KEYS.forEach(k=>{
+    if(ov[k]!==undefined){ s.micro[k]=ov[k]; s.microSrc[k]='species'; }
+    else if(base[k]!==undefined){ s.micro[k]=base[k]; s.microSrc[k]='family'; }
+  });
+  // shape/ornament already partly encoded on sp.orn from v1 — keep the richer of the two
+  if(s.sp.orn && s.sp.orn!=='smooth' && !ov.orn){
+    const t=s.sp.orn.toLowerCase();
+    if(t.includes('reticulate')) { s.micro.orn = t.includes('coarse')?'reticulate-coarse':'reticulate-complete'; s.microSrc.orn='species'; }
+    else if(t.includes('striate')){ s.micro.orn='finely-striate'; s.microSrc.orn='species'; }
+    else if(t.includes('spiny'))  { s.micro.orn = t.includes('short')?'short-spiny':t.includes('long')?'long-spiny':'spiny'; s.microSrc.orn='species'; }
+  }
+  if(s.sp.shape==='truncate' && !ov.apex){ s.micro.apex='truncate'; s.microSrc.apex='species'; }
+  if(ov.q) s.microQuote = ov.q;
+});
+
+Object.assign(VOCAB,{
+  orn:["smooth","finely-striate","verrucose","short-spiny","spiny","long-spiny",
+       "reticulate-incomplete","reticulate-complete","reticulate-coarse"],
+  apex:["rounded","truncate","tapered"],
+  wall:["thin","slightly-thickened","thick"],
+  melzer:["inamyloid","dextrinoid","amyloid"],
+  cyano:["acyanophilic","cyanophilic"],
+  gutt:["absent","rare","often"],
+  sym:["equilateral","inequilateral"]
+});
+
+Object.assign(LABELS,{
+  orn:{"smooth":"Smooth","finely-striate":"Finely striate (Melzer's)","verrucose":"Verrucose / warted",
+       "short-spiny":"Short-spiny","spiny":"Spiny","long-spiny":"Long-spiny (~2 µm)",
+       "reticulate-incomplete":"Reticulate — incomplete net","reticulate-complete":"Reticulate — complete net",
+       "reticulate-coarse":"Coarsely reticulate"},
+  apex:{"rounded":"Rounded","truncate":"Truncate (germ pore / porospore)","tapered":"Tapered"},
+  wall:{"thin":"Thin-walled","slightly-thickened":"Slightly thickened","thick":"Thick-walled"},
+  melzer:{"inamyloid":"Inamyloid (no reaction)","dextrinoid":"Dextrinoid (red-brown)","amyloid":"Amyloid (blue-grey)"},
+  cyano:{"acyanophilic":"Acyanophilic","cyanophilic":"Cyanophilic"},
+  gutt:{"absent":"No guttules","rare":"Guttules rare","often":"Guttules often present"},
+  sym:{"equilateral":"Equilateral in profile","inequilateral":"Inequilateral in profile"}
+});
+
+
+/* ---------- state ---------- */
+const S = {pore:new Set(),stipe:new Set(),cap:new Set(),host:new Set(),terr:new Set()};
+const nice = s => s.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+
+/* ---------- minimum-match threshold ---------- */
+function paintSlider(el){
+  const p = (el.value-el.min)/(el.max-el.min)*100;
+  el.style.background = `linear-gradient(to right, var(--acc) ${p}%, var(--line) ${p}%)`;
+}
+function onThreshold(){
+  const el=document.getElementById('minMatch');
+  document.getElementById('minMatchVal').textContent = el.value+'%';
+  paintSlider(el);
+  update();
+}
+paintSlider(document.getElementById('minMatch'));
+
+/* ---------- build controls ---------- */
+function fillSel(id,vals,labels){
+  const el=document.getElementById(id);
+  vals.forEach(v=>{const o=document.createElement('option');o.value=v;
+    o.textContent=(labels&&labels[v])||nice(v);el.appendChild(o);});
+}
+function fillChips(id,vals,set){
+  const el=document.getElementById(id);
+  vals.forEach(v=>{
+    const c=document.createElement('span');c.className='chip';c.textContent=nice(v);
+    c.onclick=()=>{set.has(v)?set.delete(v):set.add(v);c.classList.toggle('on');update();};
+    el.appendChild(c);
+  });
+}
+const SHAPES=[...new Set(SPECIES.map(s=>s.sp.shape))].sort();
+fillSel('shape',SHAPES);
+fillSel('print',VOCAB.print);
+fillSel('orn',VOCAB.orn,LABELS.orn);
+fillSel('apex',VOCAB.apex,LABELS.apex);
+fillSel('wall',VOCAB.wall,LABELS.wall);
+fillSel('melzer',VOCAB.melzer,LABELS.melzer);
+fillSel('ft',VOCAB.ft,LABELS.ft);
+fillSel('blue',VOCAB.blue,LABELS.blue);
+fillSel('taste',VOCAB.taste);
+fillChips('c-pore',VOCAB.pore.filter(v=>v!=='n/a'),S.pore);
+fillChips('c-stipe',VOCAB.stipe,S.stipe);
+fillChips('c-cap',VOCAB.cap,S.cap);
+fillChips('c-host',VOCAB.host,S.host);
+(function(){
+  const el=document.getElementById('c-terr');
+  TERRITORIES.forEach(t=>{
+    const c=document.createElement('span');c.className='chip';c.textContent=t.name;
+    c.onclick=()=>{S.terr.has(t.c)?S.terr.delete(t.c):S.terr.add(t.c);c.classList.toggle('on');update();};
+    el.appendChild(c);
+  });
+})();
+
+/* ---------- scoring ---------- */
+// Fit of the user's measured interval [a,b] against the published range [x,y].
+// Graded, not binary: rewards (1) how much of the measurement falls inside the
+// published range, and (2) how centred it sits in that range. Two species whose
+// ranges both overlap the measurement are NOT equal if one is centred on it.
+function dimScore(a,b,x,y,tol){
+  if(a==null&&b==null) return null;
+  let lo = a!=null?a:b, hi = b!=null?b:a;
+  if(lo>hi) [lo,hi]=[hi,lo];
+  const uw = hi-lo;
+  const ov = Math.max(0, Math.min(hi,y)-Math.max(lo,x));
+  let frac = uw>0 ? Math.min(1, ov/uw) : (lo>=x && lo<=y ? 1 : 0);
+  if(frac===0){                                   // no real overlap: partial credit inside tolerance
+    const gap = Math.max(0, lo-y, x-hi);          // true separation, never negative
+    frac = Math.max(0, 1-gap/tol) * 0.6;
+  }
+  const um=(lo+hi)/2, sm=(x+y)/2, half=(y-x)/2;
+  const centrality = Math.max(0, 1 - Math.abs(um-sm)/(half+tol));
+  return 0.75*frac + 0.25*centrality;
+}
+function setScore(sel,vals){
+  if(!sel||!sel.length) return null;
+  const v=new Set(vals||[]);
+  for(const s of sel) if(v.has(s)) return 1;
+  return 0;
+}
+
+const W = {len:3.0,wid:3.0,q:1.5,shape:1.0,print:1.5,ft:2.0,blue:1.2,taste:1.0,
+           pore:1.2,stipe:1.5,cap:0.8,host:1.5,
+           orn:1.6,apex:1.4,wall:0.8,melzer:1.0};
+
+// Pure scoring core: takes a plain query object, touches no DOM, so the test
+// harness can exercise exactly the code that ships rather than a copy of it.
+function score(sp,Q){
+  const tol=Q.tol??1.5;
+  const parts=[]; let num=0,den=0;
+
+  const add=(key,val,label)=>{
+    if(val===null||val===undefined) return;
+    num+=val*W[key]; den+=W[key];
+    parts.push({label,ok:val>=0.85,part:val});
+  };
+
+  add('len',dimScore(Q.lmin,Q.lmax,sp.sp.lo,sp.sp.hi,tol),`L ${sp.sp.lo}–${sp.sp.hi} µm`);
+  add('wid',dimScore(Q.wmin,Q.wmax,sp.sp.wlo,sp.sp.whi,tol),`W ${sp.sp.wlo}–${sp.sp.whi} µm`);
+
+  // Q — user's mean Q against the species' stated Q range, or one derived from its dimensions
+  const uL=(Q.lmin!=null&&Q.lmax!=null)?(Q.lmin+Q.lmax)/2:(Q.lmin??Q.lmax);
+  const uW=(Q.wmin!=null&&Q.wmax!=null)?(Q.wmin+Q.wmax)/2:(Q.wmin??Q.wmax);
+  if(uL!=null&&uW!=null&&uW>0){
+    const uq=uL/uW;
+    const qr = sp.sp.q || [sp.sp.lo/sp.sp.whi, sp.sp.hi/sp.sp.wlo];
+    const v = (uq>=qr[0]-0.15 && uq<=qr[1]+0.15) ? 1
+            : Math.max(0,1-Math.min(Math.abs(uq-qr[0]),Math.abs(uq-qr[1]))/0.8);
+    add('q',v,`Q ${qr[0].toFixed(1)}–${qr[1].toFixed(1)}`);
+  }
+
+  const eq=(u,a)=>(u==null||u==='')?null:(u===a?1:0);
+  add('shape',eq(Q.shape,sp.sp.shape),`shape ${sp.sp.shape}`);
+  add('print',eq(Q.print,sp.sp.print),`print ${sp.sp.print}`);
+  // micro-characters; a value inherited from the family baseline is flagged with °
+  ['orn','apex','wall','melzer'].forEach(k=>{
+    const v=eq(Q[k],sp.micro[k]); if(v===null) return;
+    add(k, v, `${k==='melzer'?'Melzer':k} ${LABELS[k][sp.micro[k]]}${sp.microSrc[k]==='family'?'°':''}`);
+  });
+  add('ft',eq(Q.ft,sp.ft),LABELS.ft[sp.ft]);
+  add('blue',eq(Q.blue,sp.m.blue),LABELS.blue[sp.m.blue]);
+  add('taste',eq(Q.taste,sp.m.taste),`taste ${sp.m.taste}`);
+  add('pore',setScore(Q.pore,sp.m.pore),`pores ${sp.m.pore.join('/')}`);
+  add('stipe',setScore(Q.stipe,[sp.m.stipe]),`stipe ${nice(sp.m.stipe)}`);
+  add('cap',setScore(Q.cap,sp.m.cap),`cap ${sp.m.cap.join('/')}`);
+  add('host',setScore(Q.host,sp.m.host),`host ${sp.m.host.join('/')}`);
+
+  return {pct: den? num/den : null, parts};
+}
+
+// Read the DOM into a plain query object.
+function readQuery(){
+  const g=id=>{const v=parseFloat(document.getElementById(id).value);return isNaN(v)?null:v;};
+  const sv=id=>document.getElementById(id).value||null;
+  return {
+    lmin:g('lmin'),lmax:g('lmax'),wmin:g('wmin'),wmax:g('wmax'),
+    tol:parseFloat(document.getElementById('tol').value),
+    shape:sv('shape'),print:sv('print'),ft:sv('ft'),blue:sv('blue'),taste:sv('taste'),
+    orn:sv('orn'),apex:sv('apex'),wall:sv('wall'),melzer:sv('melzer'),
+    pore:[...S.pore],stipe:[...S.stipe],cap:[...S.cap],host:[...S.host]
+  };
+}
+
+/* ---------- discriminator hint ----------
+   When the top candidates are tied, work out which character the user has NOT yet
+   specified would split them most evenly, and say so. */
+const CHARS = [
+  {k:'ft',    label:'fruitbody type',  ctl:'ft',    get:s=>[s.ft]},
+  {k:'print', label:'spore print colour', ctl:'print', get:s=>[s.sp.print]},
+  {k:'blue',  label:'bluing reaction', ctl:'blue',  get:s=>[s.m.blue]},
+  {k:'taste', label:'taste',           ctl:'taste', get:s=>[s.m.taste]},
+  {k:'shape', label:'spore shape',     ctl:'shape', get:s=>[s.sp.shape]},
+  {k:'orn',   label:'spore ornamentation', ctl:'orn',   get:s=>[s.micro.orn]},
+  {k:'apex',  label:'spore apex',      ctl:'apex',  get:s=>[s.micro.apex]},
+  {k:'melzer',label:"Melzer's reaction", ctl:'melzer', get:s=>[s.micro.melzer]},
+  {k:'wall',  label:'spore wall thickness', ctl:'wall', get:s=>[s.micro.wall]},
+  {k:'pore',  label:'pore colour',     set:'pore',  get:s=>s.m.pore},
+  {k:'stipe', label:'stipe surface',   set:'stipe', get:s=>[s.m.stipe]},
+  {k:'host',  label:'host tree / habitat', set:'host', get:s=>s.m.host},
+  {k:'cap',   label:'cap colour',      set:'cap',   get:s=>s.m.cap}
+];
+function discriminator(shown){
+  // "tied" = within 4 points of the leader; that band is what the user must still separate
+  const top = shown.filter(r=>r.pct >= shown[0].pct - 0.04);
+  if(top.length < 3) return '';
+  const pool = top.slice(0,12).map(r=>r.s);
+
+  let best=null;
+  for(const c of CHARS){
+    const alreadySet = c.ctl ? !!document.getElementById(c.ctl).value : S[c.set].size>0;
+    if(alreadySet) continue;
+    const counts={};
+    pool.forEach(s=>c.get(s).forEach(v=>{counts[v]=(counts[v]||0)+1;}));
+    const groups=Object.values(counts);
+    if(groups.length<2) continue;
+    // best splitter = smallest largest-group, i.e. divides the tie most evenly
+    const worst=Math.max(...groups);
+    if(!best||worst<best.worst) best={c,worst,n:groups.length};
+  }
+  if(!best) return '';
+  const n = top.length >= 30 ? '30+' : top.length;
+  return `<div class="hintbar">
+    <strong>${n} candidates score within 4 points of each other.</strong>
+    Spore size alone rarely separates Boletales. The character that would split this group
+    fastest is <strong>${best.c.label}</strong> — it divides them into ${best.n} groups.</div>`;
+}
+
+/* ---------- render ---------- */
+function update(){
+  const g=id=>{const v=parseFloat(document.getElementById(id).value);return isNaN(v)?null:v;};
+  const lmin=g('lmin'),lmax=g('lmax'),wmin=g('wmin'),wmax=g('wmax');
+  const uL=(lmin!=null&&lmax!=null)?(lmin+lmax)/2:(lmin??lmax);
+  const uW=(wmin!=null&&wmax!=null)?(wmin+wmax)/2:(wmin??wmax);
+  document.getElementById('qbox').innerHTML =
+    (uL!=null&&uW!=null&&uW>0)
+      ? `Q ratio <b>${(uL/uW).toFixed(2)}</b> &nbsp;<span style="color:var(--dim2)">from ${uL.toFixed(1)} × ${uW.toFixed(1)} µm</span>`
+      : 'Q ratio — enter length and width';
+
+  const Q = readQuery();
+  let list = SPECIES.slice();
+  if(S.terr.size) list = list.filter(s=>[...S.terr].some(t=>s.nordic[t]));
+
+  const scored = list.map(s=>({s,...score(s,Q)}));
+  const anyInput = scored.some(r=>r.pct!==null);
+
+  if(anyInput) scored.sort((a,b)=>(b.pct??-1)-(a.pct??-1));
+  else scored.sort((a,b)=>a.s.n.localeCompare(b.s.n));
+
+  const thresholdEl = document.getElementById('minMatch');
+  const minMatch = parseInt(thresholdEl.value,10)/100;
+  document.getElementById('thresholdCtl').classList.toggle('disabled', !anyInput);
+
+  const shown = anyInput ? scored.filter(r=>r.pct>=minMatch) : scored;
+
+  document.getElementById('rcount').textContent =
+    anyInput ? `${shown.length} of ${list.length} ≥ ${thresholdEl.value}% match` : `${list.length} species`;
+
+  const box=document.getElementById('results');
+  if(!shown.length){
+    box.innerHTML='<div class="empty">No candidates score above that threshold.<br>'+
+      '<span style="font-size:12.5px">Lower the minimum match, loosen the tolerance, or clear a macro character.</span></div>';
+    return;
+  }
+
+  const hint = anyInput ? discriminator(shown) : '';
+
+  box.innerHTML = hint + shown.map((r,i)=>{
+    const s=r.s, pct=r.pct==null?null:Math.round(r.pct*100);
+    const col = pct==null?'var(--dim2)':pct>=80?'var(--good)':pct>=55?'var(--warn)':'var(--bad)';
+    const tags = r.parts.map(p=>`<span class="tag ${p.ok?'hit':(p.part<0.5?'miss':'')}">${p.label}</span>`).join('');
+    return `
+    <div class="hit" data-i="${i}" onclick="toggle(this,'${s.n.replace(/'/g,"\\'")}')">
+      <div class="hrow">
+        <span class="rank">${anyInput?i+1:''}</span>
+        <span class="nm">
+          <span class="sci">${s.n}</span> <span class="au">${s.a}</span>
+          ${s.syn?`<div class="syn">= ${s.syn} <span style="font-style:normal;color:var(--dim2)">(Svampeatlas)</span></div>`:''}
+          <div class="dk">${s.dk} · ${s.fam}</div>
+        </span>
+        ${pct!=null?`<span class="score">
+          <span class="sval" style="color:${col}">${pct}%</span>
+          <span class="sbar"><span class="sfill" style="width:${pct}%;background:${col}"></span></span>
+        </span>`:''}
+      </div>
+      <div class="tags">
+        <span class="ed ${s.ed}">${LABELS.ed[s.ed]}</span>
+        <span class="tag">${s.sp.lo}–${s.sp.hi} × ${s.sp.wlo}–${s.sp.whi} µm</span>
+        ${tags}
+      </div>
+      <div class="detail">
+        <div class="note">${s.note}</div>
+        <div class="dgrid">
+          <div><div class="dk2">Spores</div><div class="dv">${s.sp.lo}–${s.sp.hi} × ${s.sp.wlo}–${s.sp.whi} µm${s.sp.q?`, Q ${s.sp.q[0]}–${s.sp.q[1]}`:''}</div></div>
+          <div><div class="dk2">Shape / ornament</div><div class="dv">${nice(s.sp.shape)}, ${s.sp.orn}</div></div>
+          <div><div class="dk2">Spore print</div><div class="dv">${nice(s.sp.print)}</div></div>
+          <div><div class="dk2">Pores</div><div class="dv">${s.m.pore.map(nice).join(', ')}</div></div>
+          <div><div class="dk2">Bluing</div><div class="dv">${LABELS.blue[s.m.blue]}</div></div>
+          <div><div class="dk2">Stipe</div><div class="dv">${nice(s.m.stipe)}</div></div>
+          <div><div class="dk2">Cap</div><div class="dv">${s.m.cap.map(nice).join(', ')}</div></div>
+          <div><div class="dk2">Host / habitat</div><div class="dv">${s.m.host.map(nice).join(', ')}</div></div>
+          <div><div class="dk2">Taste</div><div class="dv">${nice(s.m.taste)}</div></div>
+        </div>
+        <div class="srcline">
+          Spore data: <strong>${s.src==='SA'?'Danmarks Svampeatlas':'Literature (Funga Nordica / Assyov)'}</strong>
+          ${s.saId?` · <a href="https://svampe.databasen.org/taxon/${s.saId}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Svampeatlas taxon page ↗</a>`:''}
+          · <a href="https://www.gbif.org/species/search?q=${encodeURIComponent(s.n)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">GBIF ↗</a>
+        </div>
+        <div class="micro">
+          <div class="dk2">Spore micro-characters</div>
+          <div class="mgrid">
+            ${['orn','apex','wall','melzer','cyano','gutt','sym'].filter(k=>s.micro[k]).map(k=>
+              `<span class="mchip ${s.microSrc[k]}">${LABELS[k][s.micro[k]]}${s.microSrc[k]==='family'?'<sup>°</sup>':''}</span>`
+            ).join('')}
+          </div>
+          ${s.microQuote?`<div class="quote">“${s.microQuote}”</div>`:''}
+          <div class="prov">° family-typical for ${s.fam}, not separately documented for this species.
+            Unmarked characters are documented for the species itself.</div>
+        </div>
+
+        <div class="dist">
+          <div class="dk2">Nordic occurrence records (live from GBIF)</div>
+          <div class="dgrid2" data-dist="${s.n}"></div>
+        </div>
+
+        <div class="dist">
+          <div class="dk2">Photographs <span style="text-transform:none;letter-spacing:0">— openly licensed, live from GBIF</span></div>
+          <div class="photos" data-photo="${s.n}"></div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ---------- detail toggle + GBIF ---------- */
+function toggle(el,name){
+  const wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.hit.open').forEach(h=>h.classList.remove('open'));
+  if(wasOpen) return;
+  el.classList.add('open');
+  loadDist(el.querySelector('[data-dist]'),name);
+  loadPhotos(el.querySelector('[data-photo]'),name);
+}
+
+/* ---------- photographs ----------
+   GBIF's occurrence-level `license` field is often more restrictive than the licence on the
+   image itself, so filtering server-side with &license= drops common species to one or two
+   photos. Instead we pull an unfiltered batch and keep only media whose OWN licence is
+   Creative Commons or public domain — full coverage, nothing all-rights-reserved embedded. */
+const NORDIC_Q = ['DK','NO','SE','FI','IS','GL','FO'].map(c=>'country='+c).join('&');
+const OPEN_LIC = /creativecommons\.org|publicdomain/i;
+const photoCache={};
+
+function licLabel(u){
+  if(/publicdomain\/zero/i.test(u)) return 'CC0';
+  const m=/licenses\/([a-z-]+)\//i.exec(u||'');
+  return m ? 'CC '+m[1].toUpperCase() : 'CC';
+}
+// iNaturalist originals are multi-MB; their CDN exposes a `medium` rendition at the same path.
+const thumb = u => u.replace(/(inaturalist[^\s]*\/photos\/\d+\/)original(\.\w+)/i,'$1medium$2');
+
+function harvest(json){
+  const out=[];
+  (json.results||[]).forEach(r=>{
+    (r.media||[]).forEach(m=>{
+      if(!m.identifier || !OPEN_LIC.test(m.license||'')) return;
+      out.push({url:m.identifier, lic:m.license, who:m.creator||m.rightsHolder||'Unknown',
+                cc:r.countryCode||'', key:r.key, date:(r.eventDate||'').slice(0,10)});
+    });
+  });
+  // one photo per occurrence keeps a single prolific recorder from filling the grid
+  const seen=new Set();
+  return out.filter(p=>seen.has(p.key)?false:(seen.add(p.key),true));
+}
+
+function loadPhotos(box,name){
+  if(!box) return;
+  if(photoCache[name]){ paintPhotos(box,photoCache[name],name); return; }
+  box.innerHTML='<div class="phmsg">Loading photographs…</div>';
+  const base='https://api.gbif.org/v1/occurrence/search?scientificName='+encodeURIComponent(name)
+             +'&mediaType=StillImage&limit=20';
+  fetch(base+'&'+NORDIC_Q)
+    .then(r=>r.json())
+    .then(j=>{
+      const nordic=harvest(j);
+      if(nordic.length>=3) return {pics:nordic,scope:'Nordic'};
+      // too few openly-licensed Nordic images — widen to global, still CC only
+      return fetch(base).then(r=>r.json()).then(j2=>{
+        const keys=new Set(nordic.map(p=>p.key));
+        const extra=harvest(j2).filter(p=>!keys.has(p.key));
+        // only call it "widened" if widening actually contributed something
+        return {pics:nordic.concat(extra), scope: extra.length?'global':'Nordic'};
+      }).catch(()=>({pics:nordic,scope:'Nordic'}));
+    })
+    .then(({pics,scope})=>{ photoCache[name]={pics,scope}; paintPhotos(box,photoCache[name],name); })
+    .catch(()=>{ box.innerHTML='<div class="phmsg">Could not reach GBIF for photographs.</div>'; });
+}
+
+function paintPhotos(box,{pics,scope},name){
+  if(!pics.length){
+    box.innerHTML='<div class="phmsg">No openly-licensed photograph found for this species. '
+      +`<a href="https://www.gbif.org/species/search?q=${encodeURIComponent(name)}" target="_blank" `
+      +'rel="noopener" onclick="event.stopPropagation()">Browse on GBIF ↗</a></div>';
+    return;
+  }
+  box.innerHTML = pics.slice(0,6).map(p=>`
+    <a class="ph" href="https://www.gbif.org/occurrence/${p.key}" target="_blank" rel="noopener"
+       onclick="event.stopPropagation()">
+      <img loading="lazy" src="${thumb(p.url)}" alt="${name}"
+           onerror="this.parentNode.style.display='none'">
+      <span class="cap"><b>${p.who}</b>${licLabel(p.lic)}${p.cc?' · '+p.cc:''}${p.date?' · '+p.date:''}</span>
+    </a>`).join('')
+    + `<div class="phnote" style="grid-column:1/-1">
+        Field photographs of GBIF occurrence records${scope==='global'?' (widened beyond the Nordics — too few openly-licensed Nordic images)':''}.
+        Each was identified by the recorder and is <strong>not verified here</strong> — treat them as
+        illustrative, not as a determination. Click through for the full record and licence.</div>`;
+}
+
+const distCache={};
+function loadDist(box,name){
+  if(!box) return;
+  box.innerHTML = TERRITORIES.map(t=>
+    `<div class="terr" data-c="${t.c}"><div class="tc">${t.c}</div><div class="tn pend">…</div></div>`).join('');
+
+  TERRITORIES.forEach(t=>{
+    const key=name+'|'+t.c;
+    const cell=box.querySelector(`[data-c="${t.c}"]`);
+    const paint=n=>{
+      if(!cell) return;
+      cell.querySelector('.tn').textContent = n===null?'—':n.toLocaleString();
+      cell.querySelector('.tn').classList.remove('pend');
+      cell.classList.add(n?'has':'none');
+      cell.title=`${t.name}: ${n===null?'lookup failed':n.toLocaleString()+' GBIF records'}`;
+    };
+    if(key in distCache){paint(distCache[key]);return;}
+    const url=`https://api.gbif.org/v1/occurrence/search?scientificName=${encodeURIComponent(name)}&country=${t.gbif}&limit=0`;
+    fetch(url).then(r=>r.json()).then(d=>{distCache[key]=d.count;paint(d.count);})
+      .catch(()=>{distCache[key]=null;paint(null);});
+  });
+}
+
+function reset(){
+  ['lmin','lmax','wmin','wmax'].forEach(i=>document.getElementById(i).value='');
+  ['shape','print','ft','blue','taste','orn','apex','wall','melzer']
+    .forEach(i=>document.getElementById(i).value='');
+  document.getElementById('tol').value='1.5';
+  Object.values(S).forEach(s=>s.clear());
+  document.querySelectorAll('.chip.on').forEach(c=>c.classList.remove('on'));
+  const mm=document.getElementById('minMatch'); mm.value='28';
+  document.getElementById('minMatchVal').textContent='28%';
+  paintSlider(mm);
+  update();
+}
+
+update();
+</script>
+</body>
+</html>
