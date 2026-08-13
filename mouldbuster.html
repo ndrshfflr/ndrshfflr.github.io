@@ -3,216 +3,299 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sporexplore: Mouldbuster</title>
+<title>Sporexplore: mouldbuster</title>
 <style>
-  :root{
-    --bg:#0f1410; --panel:#161d17; --panel2:#1c241d; --border:#2b352c;
-    --text:#e7ede6; --muted:#98a596; --accent:#6fb37a; --accent2:#e0b04a;
-    --danger:#d8735c; --radius:10px;
-    font-synthesis:none;
-  }
-  *{box-sizing:border-box;}
-  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.45;}
-  header{padding:22px 24px 16px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,#141a15,#0f1410);}
-  header h1{margin:0 0 4px;font-size:1.4rem;letter-spacing:.2px;}
-  header p{margin:0;color:var(--muted);font-size:.92rem;max-width:70ch;}
-  .disclaimer{margin:12px 24px 0;padding:10px 14px;border:1px solid #4a3a22;background:#231c12;border-radius:var(--radius);color:#e8c98a;font-size:.85rem;}
-  .disclaimer b{color:#f2d9a5;}
-  main{display:grid;grid-template-columns:340px 1fr;gap:18px;padding:18px 24px 40px;align-items:start;}
-  @media (max-width:900px){ main{grid-template-columns:1fr;} }
-  .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:16px;}
-  .panel h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 10px;}
-  fieldset{border:none;margin:0 0 16px;padding:0;}
-  legend{font-size:.82rem;color:var(--text);margin-bottom:6px;font-weight:600;}
-  label.opt{display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--muted);padding:3px 0;cursor:pointer;}
-  label.opt input{accent-color:var(--accent);}
-  select,input[type=range]{width:100%;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 8px;font-size:.85rem;}
-  .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-  .rangebox{font-size:.78rem;color:var(--muted);margin-top:4px;display:flex;justify-content:space-between;}
-  .minmatch{display:flex;align-items:center;gap:10px;margin-top:4px;}
-  .minmatch input{flex:1;}
-  .minmatch span{font-size:.8rem;color:var(--accent2);min-width:34px;text-align:right;}
-  #resetBtn{width:100%;padding:8px;background:var(--panel2);border:1px solid var(--border);color:var(--muted);border-radius:6px;cursor:pointer;font-size:.82rem;}
-  #resetBtn:hover{color:var(--text);border-color:var(--accent);}
+:root{
+  --bg:#10140f; --panel:#161d17; --panel2:#1c241d; --line:#2b352c;
+  --ink:#eef2ea; --dim:#9fb09a; --dim2:#77896f;
+  --acc:#6fb37a; --acc2:#9fd1a4;
+  --good:#7fb069; --warn:#d99a35; --bad:#c85a4a; --deadly:#a83232;
+  --r:10px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font:15px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--acc2)}
+.wrap{max-width:1280px;margin:0 auto;padding:20px 18px 60px}
 
-  .results-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:16px;flex-wrap:wrap;}
-  .results-header .titlegroup{display:flex;align-items:baseline;gap:8px;}
-  .results-header h2{margin:0;font-size:1rem;color:var(--text);}
-  .results-header span{font-size:.8rem;color:var(--muted);}
-  .minmatch{display:flex;align-items:center;gap:8px;}
-  .minmatch label{font-size:.78rem;color:var(--muted);white-space:nowrap;}
-  .minmatch input[type=range]{width:130px;}
-  .minmatch .val{font-size:.8rem;color:var(--accent2);min-width:34px;text-align:right;}
+header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+h1{font-size:23px;margin:0;letter-spacing:-.02em;font-weight:650;color:#ffffff}
+h1 .x{color:var(--acc)}
+.sub{color:var(--dim);font-size:13px}
+.warnbar{
+  margin:14px 0 18px;padding:10px 13px;border-radius:var(--r);
+  background:var(--panel2);border:1px solid var(--acc);color:var(--ink);font-size:12.5px;line-height:1.5
+}
+.warnbar strong{color:var(--acc2)}
 
-  .card-wrap{border:1px solid var(--border);border-radius:var(--radius);background:var(--panel2);margin-bottom:10px;overflow:hidden;transition:border-color .15s;}
-  .card-wrap:hover{border-color:var(--accent);}
-  .card-wrap.expanded{border-color:var(--accent);}
-  .card{display:flex;gap:12px;padding:12px;cursor:pointer;align-items:center;}
-  .card .icon{flex:0 0 auto;background:#10160f;border-radius:8px;padding:6px;}
-  .card .info{flex:1 1 auto;min-width:0;}
-  .card .name{font-weight:600;font-size:.95rem;}
-  .card .name i{font-style:italic;}
-  .card .meta{font-size:.78rem;color:var(--muted);margin-top:2px;}
-  .card .score{flex:0 0 auto;text-align:right;font-weight:700;font-size:1rem;color:var(--accent);}
-  .score.low{color:var(--muted);}
-  .card .chevron{flex:0 0 auto;color:var(--muted);font-size:.8rem;width:14px;text-align:center;}
+.layout{display:grid;grid-template-columns:335px 1fr;gap:18px;align-items:start}
+@media(max-width:940px){.layout{grid-template-columns:1fr}}
 
-  .card-detail{padding:16px;border-top:1px solid var(--border);background:var(--panel);}
-  .detail-top{display:flex;gap:16px;align-items:flex-start;margin-bottom:12px;}
-  .detail-top .icon{background:#10160f;border-radius:10px;padding:10px;flex:0 0 auto;}
-  .detail-top h3{margin:0 0 2px;font-size:1.15rem;}
-  .detail-top .sub{color:var(--muted);font-size:.85rem;}
-  .badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
-  .badge{font-size:.72rem;padding:3px 8px;border-radius:20px;border:1px solid var(--border);color:var(--muted);}
-  .badge.health{border-color:#6a3a2e;color:#e8a184;}
-  .badge.tox{border-color:#6a5a2e;color:#e8c984;}
-  dl.traits{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.85rem;margin:0;}
-  dl.traits dt{color:var(--muted);}
-  dl.traits dd{margin:0;}
-  .section-title{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:18px 0 8px;}
-  .note{font-size:.83rem;color:var(--text);background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;}
-  .empty{color:var(--muted);font-size:.9rem;padding:30px 10px;text-align:center;}
-  footer{padding:20px 24px 40px;color:var(--muted);font-size:.78rem;border-top:1px solid var(--border);margin-top:10px;}
-  footer a{color:var(--accent);}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:15px}
+.card + .card{margin-top:14px}
+.card h2{font-size:11.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--dim);
+  margin:0 0 11px;font-weight:600}
 
-  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:0;}
-  .gallery figure{margin:0;background:#0e130f;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
-  .gallery img{width:100%;height:110px;object-fit:cover;display:block;background:#0a0d0a;}
-  .gallery figcaption{padding:6px 8px;font-size:.7rem;color:var(--muted);line-height:1.3;}
-  .gallery figcaption b{color:var(--text);display:block;font-size:.72rem;}
-  .gallery figcaption a{color:var(--accent);text-decoration:none;}
-  .gallery-empty{font-size:.8rem;color:var(--muted);font-style:italic;}
+label.f{display:block;font-size:12px;color:var(--dim);margin:0 0 4px}
+.row{display:flex;gap:9px}
+.row > *{flex:1;min-width:0}
+input[type=number],select{
+  width:100%;background:var(--panel2);color:var(--ink);border:1px solid var(--line);
+  border-radius:7px;padding:7px 9px;font:inherit;font-size:14px
+}
+input:focus,select:focus{outline:none;border-color:var(--acc)}
+.fld{margin-bottom:11px}
+
+.qbox{background:var(--panel2);border:1px solid var(--line);border-radius:7px;
+  padding:8px 10px;font-size:12.5px;color:var(--dim);margin-bottom:11px}
+.qbox b{color:var(--acc2);font-variant-numeric:tabular-nums}
+
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{
+  background:var(--panel2);border:1px solid var(--line);color:var(--dim);
+  border-radius:20px;padding:3.5px 10px;font-size:12px;cursor:pointer;user-select:none;
+  transition:.12s
+}
+.chip:hover{border-color:var(--dim2);color:var(--ink)}
+.chip.on{background:var(--acc);border-color:var(--acc);color:var(--bg);font-weight:600}
+
+.btn{
+  width:100%;background:var(--acc);color:var(--bg);border:0;border-radius:8px;
+  padding:9px;font:inherit;font-weight:650;cursor:pointer;font-size:14px
+}
+.btn:hover{background:var(--acc2)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--dim);font-weight:500}
+.btn.ghost:hover{color:var(--ink);border-color:var(--dim2)}
+
+.rhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;flex-wrap:wrap;gap:10px 16px}
+.rhead h2{margin:0}
+.rcount{font-size:12.5px;color:var(--dim)}
+
+.threshold{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--dim)}
+.threshold.disabled{opacity:.45}
+.threshold label{white-space:nowrap}
+.threshold input[type=range]{
+  -webkit-appearance:none;appearance:none;width:120px;height:4px;border-radius:3px;
+  outline:none;cursor:pointer;background:var(--line);
+}
+.threshold input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;width:14px;height:14px;border-radius:50%;
+  background:var(--acc);cursor:pointer;border:2px solid var(--bg);box-shadow:0 0 0 1px var(--acc);
+}
+.threshold input[type=range]::-moz-range-thumb{
+  width:14px;height:14px;border-radius:50%;background:var(--acc);cursor:pointer;
+  border:2px solid var(--bg);box-shadow:0 0 0 1px var(--acc)
+}
+.threshold #minMatchVal{color:var(--ink);font-weight:650;font-variant-numeric:tabular-nums;min-width:32px}
+
+.hit{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+  padding:12px 14px;margin-bottom:9px;cursor:pointer;transition:.12s
+}
+.hit:hover{border-color:var(--dim2)}
+.hit.open{border-color:var(--acc)}
+.hrow{display:flex;align-items:center;gap:11px}
+.rank{font-size:12px;color:var(--dim2);width:20px;flex:none;font-variant-numeric:tabular-nums}
+.spicon{flex:none;display:flex;align-items:center;line-height:0}
+.spicon-svg{display:block}
+.spicon-lg{flex:none}
+.nm{flex:1;min-width:0}
+.nm .sci{font-style:italic;font-weight:600;font-size:15px}
+.nm .au{font-style:normal;font-weight:400;color:var(--dim2);font-size:12px}
+.nm .dk{font-size:12.5px;color:var(--dim);margin-top:1px}
+.nm .syn{font-size:11.5px;color:var(--dim2);font-style:italic}
+
+.score{flex:none;text-align:right;width:96px}
+.sval{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
+.sbar{height:4px;background:var(--panel2);border-radius:3px;margin-top:3px;overflow:hidden}
+.sfill{height:100%;border-radius:3px}
+
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.tag{font-size:11px;padding:2px 7px;border-radius:5px;background:var(--panel2);
+  border:1px solid var(--line);color:var(--dim)}
+.tag.hit{border-color:#3d5c33;background:#1e2a1a;color:#a7cd94}
+.tag.miss{border-color:#5c3330;background:#2a1a19;color:#d99a91}
+.ed{font-size:11px;padding:2px 7px;border-radius:5px;font-weight:600}
+.ed.edible{background:#1e2a1a;color:#a7cd94;border:1px solid #3d5c33}
+.ed.caution{background:#2a2419;color:#d9bd8a;border:1px solid #5c4c2e}
+.ed.toxic{background:#2a1a19;color:#e39a8f;border:1px solid #6b3430}
+.ed.deadly{background:#3d1512;color:#ff9d90;border:1px solid #8a2f28;font-weight:700}
+
+.detail{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);display:none}
+.hit.open .detail{display:block}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin-bottom:11px}
+.dk2{font-size:11px;color:var(--dim2);text-transform:uppercase;letter-spacing:.05em}
+.dv{font-size:13px;margin-top:2px}
+.note{font-size:13px;color:var(--dim);background:var(--panel2);padding:9px 11px;
+  border-radius:7px;border-left:2px solid var(--acc);margin-bottom:11px}
+.srcline{font-size:11.5px;color:var(--dim2);margin-bottom:10px}
+
+.hintbar{background:#1a2229;border:1px solid #2d3f4c;color:#a8c6d9;border-radius:var(--r);
+  padding:10px 13px;font-size:12.5px;line-height:1.5;margin-bottom:11px}
+.hintbar strong{color:#d0e4f0}
+.micro{margin-top:10px;margin-bottom:11px}
+.mgrid{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.mchip{font-size:11.5px;padding:3px 8px;border-radius:6px;background:var(--panel2);
+  border:1px solid var(--line);color:var(--dim)}
+.mchip.species{border-color:#4a5c33;color:#c3d9a8;background:#1d2419}
+.mchip sup{font-size:9px;opacity:.8}
+.quote{font-size:12px;color:var(--dim);font-style:italic;margin-top:7px;
+  padding-left:9px;border-left:2px solid var(--line)}
+.prov{font-size:11px;color:var(--dim2);margin-top:6px;line-height:1.45}
+
+.photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:8px;margin-top:7px}
+.ph{background:var(--panel2);border:1px solid var(--line);border-radius:8px;overflow:hidden;
+  display:block;text-decoration:none;color:inherit}
+.ph:hover{border-color:var(--acc)}
+.ph img{width:100%;height:110px;object-fit:cover;display:block;background:var(--bg)}
+.ph .cap{padding:5px 7px;font-size:10.5px;color:var(--dim2);line-height:1.35}
+.ph .cap b{color:var(--dim);font-weight:600;display:block}
+.phnote{font-size:11.5px;color:var(--dim2);margin-top:7px;line-height:1.45}
+.phmsg{font-size:12.5px;color:var(--dim);padding:10px 0}
+
+.empty{padding:32px;text-align:center;color:var(--dim);background:var(--panel);
+  border:1px dashed var(--line);border-radius:var(--r)}
+footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);
+  font-size:12px;color:var(--dim2);line-height:1.6}
+footer a{color:var(--dim)}
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<header>
-  <h1>Sporexplore: Mouldbuster</h1>
-  <p>Microscopy-assisted identification for the two genera most often implicated in water-damaged buildings: <i>Penicillium</i> and <i>Aspergillus</i>. Match on colony appearance and conidiophore/conidial microscopy.</p>
-</header>
-<div class="disclaimer">
-  <b>Not a diagnostic tool.</b> Reliable mould identification requires culturing on standard media (MEA/CYA) at controlled temperature and a calibrated microscope. This app narrows candidates from morphology you can observe — it does not replace a mycology lab, and it should never be used to rule out health-relevant species. If anyone in the building has respiratory symptoms, or the affected area is large, get a professional assessment.
+  <header>
+    <h1>Spore<span class="x">x</span>plore: mouldbuster</h1>
+    <span class="sub">Microscopy-assisted identification for indoor <i>Penicillium</i> &amp; <i>Aspergillus</i> — the moulds most often implicated in water-damaged buildings.</span>
+  </header>
+
+  <div class="warnbar">
+    <strong>Not a diagnostic tool.</strong> Reliable mould identification requires culturing on standard media (MEA/CYA) at controlled temperature and a calibrated microscope. This app narrows candidates from morphology you can observe — it does not replace a mycology lab, and it should never be used to rule out health-relevant species. If anyone in the building has respiratory symptoms, or the affected area is large, get a professional assessment.
+  </div>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <h2>Query</h2>
+
+        <div class="fld">
+          <label class="f">Genus (conidiophore type)</label>
+          <select id="genus">
+            <option value="">Any / unsure</option>
+            <option value="Penicillium">Penicillium — verticillate brush ("penicillus")</option>
+            <option value="Aspergillus">Aspergillus — single vesicle, radiating phialides</option>
+          </select>
+        </div>
+
+        <div class="fld">
+          <label class="f">Spore (conidia) length (µm)</label>
+          <div class="row">
+            <input type="number" id="cLenLo" step="0.1" min="1" max="10" placeholder="min">
+            <input type="number" id="cLenHi" step="0.1" min="1" max="10" placeholder="max">
+          </div>
+        </div>
+
+        <div class="fld">
+          <label class="f">Spore (conidia) width (µm)</label>
+          <div class="row">
+            <input type="number" id="cWidLo" step="0.1" min="1" max="10" placeholder="min">
+            <input type="number" id="cWidHi" step="0.1" min="1" max="10" placeholder="max">
+          </div>
+        </div>
+
+        <div class="fld">
+          <label class="f">Conidia shape</label>
+          <select id="cShape">
+            <option value="">Any</option>
+            <option value="globose">Globose (round)</option>
+            <option value="subglobose">Subglobose</option>
+            <option value="ellipsoidal">Ellipsoidal</option>
+          </select>
+        </div>
+
+        <div class="fld">
+          <label class="f">Conidial wall ornamentation</label>
+          <select id="cOrn">
+            <option value="">Any</option>
+            <option value="smooth">Smooth</option>
+            <option value="finely-rough">Finely roughened</option>
+            <option value="echinulate">Distinctly rough / echinulate (spiny)</option>
+          </select>
+        </div>
+
+        <div class="fld">
+          <label class="f">Colony colour (obverse, 7d/25°C)</label>
+          <select id="colColor">
+            <option value="">Any</option>
+            <option value="blue-green">Blue-green / dull green</option>
+            <option value="yellow-green">Yellow-green / olive</option>
+            <option value="black">Black / dark brown</option>
+            <option value="variable">Variable (pink/salmon/beige/green)</option>
+          </select>
+        </div>
+
+        <div class="fld">
+          <label class="f">Growth rate at 25°C</label>
+          <select id="growth">
+            <option value="">Any</option>
+            <option value="slow">Slow (colony &lt;30 mm / 7d)</option>
+            <option value="moderate">Moderate</option>
+            <option value="fast">Fast (colony &gt;45 mm / 7d)</option>
+          </select>
+        </div>
+
+        <div class="fld">
+          <label class="f">Substrate found on</label>
+          <div class="chips" id="substrateChips">
+            <div class="chip" data-value="wallpaper">damp wallpaper/paint</div>
+            <div class="chip" data-value="wood">wood/timber</div>
+            <div class="chip" data-value="gypsum">gypsum board/drywall</div>
+            <div class="chip" data-value="hvac">HVAC ducts/dust</div>
+            <div class="chip" data-value="food">food residue</div>
+            <div class="chip" data-value="grout">tile grout/silicone</div>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label class="f">Thermotolerant (grows &gt;42°C)</label>
+          <select id="thermo">
+            <option value="">Any</option>
+            <option value="yes">Yes</option>
+            <option value="no">No / not notably</option>
+          </select>
+        </div>
+
+        <button class="btn ghost" id="resetBtn">Reset all filters</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="rhead">
+          <h2>Candidates <span class="rcount" id="resultCount"></span></h2>
+          <div class="threshold">
+            <label for="minMatch">Min. match</label>
+            <input type="range" id="minMatch" min="0" max="95" value="25">
+            <span id="minMatchVal">25%</span>
+          </div>
+        </div>
+        <div id="results"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Colony and microscopy figures compiled from standard mycological references (Pitt &amp; Hocking, <i>Fungi and Food Spoilage</i>; Samson et al., <i>Food and Indoor Fungi</i>) and cross-checked against
+    <a href="https://mycology.adelaide.edu.au/fungal-descriptions-and-antifungal-susceptibility/hyphomycetes-conidial-moulds/aspergillus" target="_blank">Mycology Online (Adelaide)</a> and
+    <a href="https://drfungus.org/knowledge-base/aspergillus-versicolor/" target="_blank">DoctorFungus</a>. Eight species, first release — flag any species you need added.
+    <br><br>
+    Photos are hotlinked from openly-licensed collections — CDC Public Health Image Library (public domain) and iNaturalist / GBIF / Mushroom Observer / Landcare Research NZ (CC BY or CC BY-NC, credited per image). We could not find freely-licensed photographs specifically on MEA, CYA, or V8 agar for most species — that level of specificity mostly lives in paywalled taxonomic monographs. Where the medium is known it's stated in the caption (mostly SDA for the CDC Aspergillus cultures); several Penicillium photos are field shots on natural substrate rather than lab culture.
+  </footer>
+
 </div>
-
-<main>
-  <div class="panel" id="queryPanel">
-    <h2>Query</h2>
-
-    <fieldset>
-      <legend>Genus (conidiophore type)</legend>
-      <select id="genus">
-        <option value="">Any / unsure</option>
-        <option value="Penicillium">Penicillium — verticillate brush ("penicillus")</option>
-        <option value="Aspergillus">Aspergillus — single vesicle, radiating phialides</option>
-      </select>
-    </fieldset>
-
-    <fieldset>
-      <legend>Spore (conidia) length (µm)</legend>
-      <div class="row2">
-        <input type="number" id="cLenLo" step="0.1" min="1" max="10" placeholder="min">
-        <input type="number" id="cLenHi" step="0.1" min="1" max="10" placeholder="max">
-      </div>
-    </fieldset>
-
-    <fieldset>
-      <legend>Spore (conidia) width (µm)</legend>
-      <div class="row2">
-        <input type="number" id="cWidLo" step="0.1" min="1" max="10" placeholder="min">
-        <input type="number" id="cWidHi" step="0.1" min="1" max="10" placeholder="max">
-      </div>
-    </fieldset>
-
-    <fieldset>
-      <legend>Conidia shape</legend>
-      <select id="cShape">
-        <option value="">Any</option>
-        <option value="globose">Globose (round)</option>
-        <option value="subglobose">Subglobose</option>
-        <option value="ellipsoidal">Ellipsoidal</option>
-      </select>
-    </fieldset>
-
-    <fieldset>
-      <legend>Conidial wall ornamentation</legend>
-      <select id="cOrn">
-        <option value="">Any</option>
-        <option value="smooth">Smooth</option>
-        <option value="finely-rough">Finely roughened</option>
-        <option value="echinulate">Distinctly rough / echinulate (spiny)</option>
-      </select>
-    </fieldset>
-
-    <fieldset>
-      <legend>Colony colour (obverse, 7d/25°C)</legend>
-      <select id="colColor">
-        <option value="">Any</option>
-        <option value="blue-green">Blue-green / dull green</option>
-        <option value="yellow-green">Yellow-green / olive</option>
-        <option value="black">Black / dark brown</option>
-        <option value="variable">Variable (pink/salmon/beige/green)</option>
-      </select>
-    </fieldset>
-
-    <fieldset>
-      <legend>Growth rate at 25°C</legend>
-      <select id="growth">
-        <option value="">Any</option>
-        <option value="slow">Slow (colony &lt;30 mm / 7d)</option>
-        <option value="moderate">Moderate</option>
-        <option value="fast">Fast (colony &gt;45 mm / 7d)</option>
-      </select>
-    </fieldset>
-
-    <fieldset>
-      <legend>Substrate found on</legend>
-      <label class="opt"><input type="checkbox" value="wallpaper"> Damp wallpaper / paint / plaster</label>
-      <label class="opt"><input type="checkbox" value="wood"> Wood / timber</label>
-      <label class="opt"><input type="checkbox" value="gypsum"> Gypsum board / drywall</label>
-      <label class="opt"><input type="checkbox" value="hvac"> HVAC ducts / filters / dust</label>
-      <label class="opt"><input type="checkbox" value="food"> Food residue / organic debris</label>
-      <label class="opt"><input type="checkbox" value="grout"> Tile grout / bathroom silicone</label>
-    </fieldset>
-
-    <fieldset>
-      <legend>Thermotolerant (grows &gt;42°C)</legend>
-      <select id="thermo">
-        <option value="">Any</option>
-        <option value="yes">Yes</option>
-        <option value="no">No / not notably</option>
-      </select>
-    </fieldset>
-
-    <div style="margin-top:14px;">
-      <button id="resetBtn">Reset all filters</button>
-    </div>
-  </div>
-
-  <div>
-    <div class="panel" id="resultsPanel">
-      <div class="results-header">
-        <div class="titlegroup">
-          <h2>Candidates</h2>
-          <span id="resultCount"></span>
-        </div>
-        <div class="minmatch">
-          <label for="minMatch">Min. match</label>
-          <input type="range" id="minMatch" min="0" max="95" value="25">
-          <span class="val" id="minMatchVal">25%</span>
-        </div>
-      </div>
-      <div id="results"></div>
-    </div>
-  </div>
-</main>
-
-<footer>
-  Colony and microscopy figures compiled from standard mycological references (Pitt &amp; Hocking, <i>Fungi and Food Spoilage</i>; Samson et al., <i>Food and Indoor Fungi</i>) and cross-checked against
-  <a href="https://mycology.adelaide.edu.au/fungal-descriptions-and-antifungal-susceptibility/hyphomycetes-conidial-moulds/aspergillus" target="_blank">Mycology Online (Adelaide)</a> and
-  <a href="https://drfungus.org/knowledge-base/aspergillus-versicolor/" target="_blank">DoctorFungus</a>. Eight species, first release — flag any species you need added.
-  <br><br>
-  Photos are hotlinked from openly-licensed collections — CDC Public Health Image Library (public domain) and iNaturalist / GBIF / Mushroom Observer / Landcare Research NZ (CC BY or CC BY-NC, credited per image). We could not find freely-licensed photographs specifically on MEA, CYA, or V8 agar for most species — that level of specificity mostly lives in paywalled taxonomic monographs. Where the medium is known it's stated in the caption (mostly SDA for the CDC Aspergillus cultures); several Penicillium photos are field shots on natural substrate rather than lab culture. Treat photo captions, not this note, as the source of truth per image.
-</footer>
 
 <script>
 /* ---------------- Species data ---------------- */
@@ -229,7 +312,7 @@ const SPECIES = [
     thermo:false,
     substrate:["wallpaper","food","gypsum"],
     ecology:"One of the most common indoor moulds worldwide — damp wallpaper, dust, spoiled food. The species that yielded the original penicillin strain, though wild indoor isolates are not therapeutic sources.",
-    health:"Common allergen; low acute toxin concern relative to A. flavus/A. fumigatus.", tox:false,
+    health:"Common allergen; low acute toxin concern relative to A. flavus/A. fumigatus.", tox:false, sev:"edible",
     images:{
       macro:[{url:"https://inaturalist-open-data.s3.amazonaws.com/photos/223743132/original.jpeg", label:"Field/substrate colony (medium unspecified — not a lab agar plate)", license:"CC BY-NC 4.0", credit:"Josh McGinnis, iNaturalist", page:"https://www.inaturalist.org/observations/131474030"}],
       micro:[
@@ -250,7 +333,7 @@ const SPECIES = [
     thermo:false,
     substrate:["wood","wallpaper","food"],
     ecology:"Classic fruit blue-mould rot; indoors found on damp wood and wallpaper paste. Produces a strong musty odour and the mycotoxin patulin.",
-    health:"Patulin producer — avoid handling contaminated food/material without protection.", tox:true,
+    health:"Patulin producer — avoid handling contaminated food/material without protection.", tox:true, sev:"toxic",
     images:{
       macro:[{url:"https://inaturalist-open-data.s3.amazonaws.com/photos/390125812/original.jpg", label:"Growing on stone fruit (natural substrate, not an agar plate)", license:"CC BY 4.0", credit:"Jared Shorma, iNaturalist", page:"https://api.gbif.org/v1/occurrence/4875148875"}],
       micro:[{url:"https://inaturalist-open-data.s3.amazonaws.com/photos/472125821/original.jpeg", label:"Conidiophore, metulae & phialides (observer field notes)", license:"CC BY-NC 4.0", credit:"Tyson Ehlers, iNaturalist", page:"https://api.gbif.org/v1/occurrence/5761054461"}]
@@ -268,7 +351,7 @@ const SPECIES = [
     thermo:false,
     substrate:["wallpaper","gypsum"],
     ecology:"Frequently isolated from damp building materials; its compact, slow-growing colony is the easiest field cue distinguishing it from the faster P. expansum.",
-    health:"Source of mycophenolic acid; moderate allergen.", tox:true,
+    health:"Source of mycophenolic acid; moderate allergen.", tox:true, sev:"caution",
     images:{
       macro:[{url:"https://mushroomobserver.org/images/1280/1880246.jpg", label:"Colony (medium unspecified)", license:"CC BY-NC 4.0", credit:"pipsissewa, Mushroom Observer", page:"https://mushroomobserver.org/obs/609282"}],
       micro:[]
@@ -286,7 +369,7 @@ const SPECIES = [
     thermo:false,
     substrate:["hvac","food","wallpaper"],
     ecology:"Very common in indoor dust and on stored grain; frequently recovered from HVAC filters.",
-    health:"Citrinin (nephrotoxic mycotoxin) producer.", tox:true,
+    health:"Citrinin (nephrotoxic mycotoxin) producer.", tox:true, sev:"toxic",
     images:{
       macro:[{url:"https://inaturalist-open-data.s3.amazonaws.com/photos/246781982/original.jpg", label:"Colony (medium unspecified)", license:"CC BY-NC 4.0", credit:"bobasil, iNaturalist", page:"https://www.inaturalist.org/observations/143853527"}],
       micro:[]
@@ -305,7 +388,7 @@ const SPECIES = [
     substrate:["grout","hvac","gypsum","wood"],
     ecology:"Extremely common worldwide — damp basements, bathroom grout, HVAC systems. Often the species behind visually 'black mould' reports, though frequently confused with Stachybotrys chartarum, an unrelated and slower-growing genus.",
     vesicle:"Globose, large, 45–75 µm.",
-    health:"Common allergen; can cause otomycosis and, rarely, invasive disease in immunocompromised people.", tox:false,
+    health:"Common allergen; can cause otomycosis and, rarely, invasive disease in immunocompromised people.", tox:false, sev:"caution",
     images:{
       macro:[{url:"https://phil.cdc.gov/PHIL_Images/23019/23019_lores.jpg", label:"Culture, Sabouraud dextrose agar (SDA), 11 days", license:"Public domain (US Govt/CDC)", credit:"CDC/Dr. Hilliard F. Hardin", page:"https://phil.cdc.gov/Details.aspx?pid=23019"}],
       micro:[
@@ -327,7 +410,7 @@ const SPECIES = [
     substrate:["hvac","wood","gypsum"],
     ecology:"Thermotolerant — grows up to 50–55°C, so it favours warm, humid microhabitats: compost, insulation, HVAC ducts, decaying organic building material.",
     vesicle:"Flask-shaped, 20–30 µm.",
-    health:"Clinically the most important indoor Aspergillus — causal agent of invasive and allergic aspergillosis in immunocompromised or asthmatic/CF patients. Any suspected colony should be handled with care and confirmed by a lab.", tox:false,
+    health:"Clinically the most important indoor Aspergillus — causal agent of invasive and allergic aspergillosis in immunocompromised or asthmatic/CF patients. Any suspected colony should be handled with care and confirmed by a lab.", tox:false, sev:"deadly",
     images:{
       macro:[{url:"https://inaturalist-open-data.s3.amazonaws.com/photos/512331745/original.jpg", label:"Culture, malt extract agar (MEA — per observer field notes)", license:"CC BY-NC 4.0", credit:"shawn_nasty, iNaturalist", page:"https://www.inaturalist.org/observations/284916826"}],
       micro:[
@@ -349,7 +432,7 @@ const SPECIES = [
     substrate:["food","hvac","wallpaper"],
     ecology:"Common on stored grain/food residue and in HVAC dust; less specifically a 'damp building' species than the others here — often arrives with food waste or organic debris.",
     vesicle:"Subglobose, 25–45 µm.",
-    health:"Aflatoxin producer — a potent carcinogen. Treat suspected colonies as a priority for lab confirmation and remediation, particularly near food-prep areas.", tox:true,
+    health:"Aflatoxin producer — a potent carcinogen. Treat suspected colonies as a priority for lab confirmation and remediation, particularly near food-prep areas.", tox:true, sev:"deadly",
     images:{
       macro:[
         {url:"https://phil.cdc.gov/PHIL_Images/21720/21720_lores.jpg", label:"Culture, Sabouraud dextrose agar (SDA)", license:"Public domain", credit:"CDC/Dr. Lucille K. Georg", page:"https://phil.cdc.gov/Details.aspx?pid=21720"},
@@ -371,7 +454,7 @@ const SPECIES = [
     substrate:["wallpaper","gypsum","wood"],
     ecology:"A xerophilic species — tolerates lower water activity than most indoor moulds, so it's one of the earliest and most reliable indicator species for chronic, low-level damp (as opposed to a single flood event). Growth restricted above 35°C.",
     vesicle:"Small, 9–16 µm, variably shaped.",
-    health:"Common allergen; often used as a marker of water damage in building surveys.", tox:false,
+    health:"Common allergen; often used as a marker of water damage in building surveys.", tox:false, sev:"caution",
     images:{
       macro:[{url:"https://data.landcareresearch.co.nz/Image/62VN/NZVH", label:"Herbarium specimen photo (not a culture plate)", license:"CC BY 4.0", credit:"H. Cook, Manaaki Whenua – Landcare Research (NZ)", page:"https://api.gbif.org/v1/occurrence/1135796667"}],
       micro:[{url:"https://phil.cdc.gov/PHIL_Images/19407/19407_lores.jpg", label:"Conidial head — biseriate metulae & phialides (475×)", license:"Public domain", credit:"CDC/Dr. Lucille K. Georg", page:"https://phil.cdc.gov/Details.aspx?pid=19407"}]
@@ -392,7 +475,6 @@ function score(sp, Q){
     add(2, fam.includes(Q.cShape) ? 1 : 0.15);
   }
   if (Q.cOrn){
-    const orns = sp.conidia.orn.split("-").join("-"); // normalize
     let match = 0;
     if (Q.cOrn === "smooth") match = sp.conidia.orn.includes("smooth") ? 1 : 0.1;
     if (Q.cOrn === "finely-rough") match = sp.conidia.orn.includes("finely-rough") ? 1 : (sp.conidia.orn==="echinulate"?0.3:0.15);
@@ -434,7 +516,7 @@ function rangeMatch(qLo, qHi, x, y){
 /* ---------------- Query reading ---------------- */
 function readQuery(){
   const num = v => v === "" || v == null ? null : parseFloat(v);
-  const substrate = Array.from(document.querySelectorAll('#queryPanel input[type=checkbox]:checked')).map(c => c.value);
+  const substrate = Array.from(document.querySelectorAll('#substrateChips .chip.on')).map(c => c.dataset.value);
   return {
     genus: document.getElementById('genus').value,
     cShape: document.getElementById('cShape').value,
@@ -459,22 +541,20 @@ function conidiaIconSVG(sp, w, h){
   const cx = w/2, cy = h/2;
   let body = "";
   if (sp.genus === "Penicillium"){
-    // brush / penicillus silhouette
     const stemTop = cy - 4;
-    body += `<line x1="${cx}" y1="${h-4}" x2="${cx}" y2="${stemTop}" stroke="var(--muted)" stroke-width="1.4"/>`;
+    body += `<line x1="${cx}" y1="${h-4}" x2="${cx}" y2="${stemTop}" stroke="var(--dim)" stroke-width="1.4"/>`;
     const n = 5;
     for(let i=0;i<n;i++){
       const angle = -Math.PI/2 + (i-(n-1)/2)*0.42;
       const x2 = cx + Math.sin(angle)*13;
       const y2 = stemTop - Math.cos(angle)*13;
-      body += `<line x1="${cx}" y1="${stemTop}" x2="${x2}" y2="${y2}" stroke="var(--muted)" stroke-width="1.1"/>`;
+      body += `<line x1="${cx}" y1="${stemTop}" x2="${x2}" y2="${y2}" stroke="var(--dim)" stroke-width="1.1"/>`;
       body += `<circle cx="${x2}" cy="${y2}" r="2.1" fill="${fill}" clip-path="url(#${id})"/>`;
     }
   } else {
-    // Aspergillus: vesicle + radiating phialides
     const vy = cy - 2;
-    body += `<line x1="${cx}" y1="${h-4}" x2="${cx}" y2="${vy}" stroke="var(--muted)" stroke-width="1.4"/>`;
-    body += `<ellipse cx="${cx}" cy="${vy}" rx="6" ry="7" fill="none" stroke="var(--muted)" stroke-width="1"/>`;
+    body += `<line x1="${cx}" y1="${h-4}" x2="${cx}" y2="${vy}" stroke="var(--dim)" stroke-width="1.4"/>`;
+    body += `<ellipse cx="${cx}" cy="${vy}" rx="6" ry="7" fill="none" stroke="var(--dim)" stroke-width="1"/>`;
     const n = 9;
     for(let i=0;i<n;i++){
       const angle = (i/n)*Math.PI*2;
@@ -483,7 +563,7 @@ function conidiaIconSVG(sp, w, h){
       body += `<circle cx="${x2}" cy="${y2}" r="1.8" fill="${fill}" clip-path="url(#${id})"/>`;
     }
   }
-  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+  return `<svg class="spicon-svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
     <defs><clipPath id="${id}"><rect x="0" y="0" width="${w}" height="${h}"/></clipPath></defs>
     ${body}
   </svg>`;
@@ -492,57 +572,64 @@ function conidiaIconSVG(sp, w, h){
 /* ---------------- Rendering ---------------- */
 let expandedId = null; // accordion: only one card open at a time, click again to collapse
 
+function scoreColor(s){
+  if (s >= 0.7) return "var(--good)";
+  if (s >= 0.4) return "var(--acc)";
+  return "var(--dim2)";
+}
+
 function galleryHTML(images, emptyMsg){
-  if (!images || !images.length) return `<div class="gallery-empty">${emptyMsg}</div>`;
-  return `<div class="gallery">${images.map(img => `
-    <figure>
+  if (!images || !images.length) return `<div class="phmsg">${emptyMsg}</div>`;
+  return `<div class="photos">${images.map(img => `
+    <a class="ph" href="${img.page}" target="_blank" rel="noopener">
       <img src="${img.url}" alt="${img.label}" loading="lazy" referrerpolicy="no-referrer">
-      <figcaption><b>${img.label}</b>${img.credit} · ${img.license}<br><a href="${img.page}" target="_blank" rel="noopener">source</a></figcaption>
-    </figure>`).join('')}</div>`;
+      <div class="cap"><b>${img.label}</b>${img.credit} · ${img.license}</div>
+    </a>`).join('')}</div>`;
+}
+
+function sevBadge(sp){
+  const label = {edible:"low health concern", caution:"moderate health concern", toxic:"mycotoxin producer", deadly:"clinically significant"}[sp.sev] || "";
+  return `<span class="ed ${sp.sev}">${label}</span>`;
 }
 
 function detailHTML(sp){
+  const micro = [
+    {k:"Branching", v:sp.branch},
+    {k:"Conidiophore", v:sp.conidiophore},
+    sp.vesicle ? {k:"Vesicle", v:sp.vesicle} : null,
+    {k:"Metulae", v:sp.metulae},
+    {k:"Phialides", v:sp.phialides}
+  ].filter(Boolean);
+
   return `
-    <div class="detail-top">
-      <div class="icon">${conidiaIconSVG(sp, 64, 64)}</div>
-      <div>
-        <h3><i>${sp.genus} ${sp.epithet}</i></h3>
-        <div class="sub">${sp.common}</div>
-        <div class="badges">
-          <span class="badge">${sp.colony.growth} growth · ${sp.colony.diamMm}</span>
-          ${sp.thermo?'<span class="badge health">thermotolerant &gt;42°C</span>':''}
-          ${sp.tox?'<span class="badge tox">known mycotoxin producer</span>':''}
-        </div>
-      </div>
+    <div class="dgrid">
+      <div><div class="dk2">Growth (25°C)</div><div class="dv">${sp.colony.growth}, ${sp.colony.diamMm}</div></div>
+      <div><div class="dk2">Reverse</div><div class="dv">${sp.colony.reverse}</div></div>
+      <div><div class="dk2">Conidia size</div><div class="dv">${sp.conidia.lenLo}–${sp.conidia.lenHi} × ${sp.conidia.widLo}–${sp.conidia.widHi} µm</div></div>
+      <div><div class="dk2">Thermotolerant</div><div class="dv">${sp.thermo ? 'yes, &gt;42°C' : 'no'}</div></div>
     </div>
 
-    <div class="section-title">Colony (MEA/CYA, 25°C, 7 days)</div>
-    <p style="font-size:.88rem;margin:0 0 4px;">${sp.colony.colorText}</p>
-    <dl class="traits">
-      <dt>Reverse</dt><dd>${sp.colony.reverse}</dd>
-    </dl>
+    <div class="srcline">Colony (obverse): ${sp.colony.colorText}</div>
 
-    <div class="section-title">Microscopy</div>
-    <dl class="traits">
-      <dt>Branching</dt><dd>${sp.branch}</dd>
-      <dt>Conidiophore</dt><dd>${sp.conidiophore}</dd>
-      ${sp.vesicle?`<dt>Vesicle</dt><dd>${sp.vesicle}</dd>`:''}
-      ${sp.metulae?`<dt>Metulae</dt><dd>${sp.metulae}</dd>`:''}
-      <dt>Phialides</dt><dd>${sp.phialides}</dd>
-      <dt>Conidia</dt><dd>${sp.conidia.shape.replace('-',' / ')}, ${sp.conidia.lenLo}–${sp.conidia.lenHi} × ${sp.conidia.widLo}–${sp.conidia.widHi} µm, ${sp.conidia.orn.replace('-',' ')}. ${sp.conidia.colorText}</dd>
-    </dl>
+    <div class="micro">
+      <div class="dk2">Microscopy</div>
+      <div class="mgrid">
+        ${micro.map(m => `<span class="mchip species">${m.k}<sup></sup>: ${m.v}</span>`).join('')}
+      </div>
+      <div class="quote">${sp.conidia.shape.replace('-',' / ')} conidia, ${sp.conidia.orn.replace('-',' ')}. ${sp.conidia.colorText}</div>
+    </div>
 
-    <div class="section-title">Macroscopic photos</div>
+    <div class="note">${sp.health}</div>
+
+    <div class="dk2" style="margin-bottom:6px;">Where it's found / ecology</div>
+    <div class="prov" style="font-size:12.5px;color:var(--dim);margin-bottom:11px;">${sp.ecology}</div>
+
+    <div class="dk2" style="margin-bottom:2px;">Macroscopic photos</div>
     ${galleryHTML(sp.images && sp.images.macro, "No openly-licensed colony photo on a standard medium (MEA/CYA/V8) found yet for this species.")}
 
-    <div class="section-title">Microscopic photos</div>
+    <div class="dk2" style="margin:11px 0 2px;">Microscopic photos</div>
     ${galleryHTML(sp.images && sp.images.micro, "No openly-licensed micrograph found yet for this species.")}
-
-    <div class="section-title">Where it's found / ecology</div>
-    <p style="font-size:.88rem;margin:0;">${sp.ecology}</p>
-
-    <div class="section-title">Health note</div>
-    <div class="note">${sp.health}</div>
+    <div class="phnote">Photo media (SDA / MEA / field substrate / unspecified) is noted per caption — see the footer for the full sourcing caveat.</div>
   `;
 }
 
@@ -563,42 +650,55 @@ function render(){
   if (!scored.length){
     resultsEl.innerHTML = '<div class="empty">No species clear the match threshold — widen filters or lower "Min. match".</div>';
   } else {
-    resultsEl.innerHTML = scored.map(r => {
+    resultsEl.innerHTML = scored.map((r, i) => {
       const isOpen = r.sp.id === expandedId;
+      const pct = Math.round(r.s*100);
+      const col = scoreColor(r.s);
       return `
-      <div class="card-wrap ${isOpen?'expanded':''}" data-id="${r.sp.id}">
-        <div class="card">
-          <div class="icon">${conidiaIconSVG(r.sp, 40, 40)}</div>
-          <div class="info">
-            <div class="name"><i>${r.sp.genus} ${r.sp.epithet}</i> — ${r.sp.common}</div>
-            <div class="meta">${r.sp.colony.growth} growth · ${r.sp.conidia.shape.replace('-',' / ')} conidia, ${r.sp.conidia.lenLo}–${r.sp.conidia.lenHi} × ${r.sp.conidia.widLo}–${r.sp.conidia.widHi} µm</div>
+      <div class="hit ${isOpen?'open':''}" data-id="${r.sp.id}">
+        <div class="hrow">
+          <div class="rank">${i+1}</div>
+          <div class="spicon">${conidiaIconSVG(r.sp, 34, 34)}</div>
+          <div class="nm">
+            <div class="sci"><i>${r.sp.genus} ${r.sp.epithet}</i> <span class="au">— ${r.sp.common}</span></div>
+            <div class="dk">${r.sp.colony.growth} growth · ${r.sp.conidia.shape.replace('-',' / ')} conidia, ${r.sp.conidia.lenLo}–${r.sp.conidia.lenHi} × ${r.sp.conidia.widLo}–${r.sp.conidia.widHi} µm</div>
           </div>
-          <div class="score ${r.s<0.5?'low':''}">${Math.round(r.s*100)}%</div>
-          <div class="chevron">${isOpen?'▾':'▸'}</div>
+          <div class="score">
+            <div class="sval" style="color:${col}">${pct}%</div>
+            <div class="sbar"><div class="sfill" style="width:${pct}%;background:${col}"></div></div>
+          </div>
         </div>
-        ${isOpen ? `<div class="card-detail">${detailHTML(r.sp)}</div>` : ''}
+        <div class="detail">
+          ${detailHTML(r.sp)}
+          <div class="tags">${sevBadge(r.sp)}${r.sp.thermo?'<span class="tag">thermotolerant</span>':''}</div>
+        </div>
       </div>`;
     }).join('');
   }
 
-  resultsEl.querySelectorAll('.card').forEach(c => c.addEventListener('click', () => {
-    const wrap = c.closest('.card-wrap');
-    const id = wrap.dataset.id;
+  resultsEl.querySelectorAll('.hit').forEach(el => el.querySelector('.hrow').addEventListener('click', () => {
+    const id = el.dataset.id;
     expandedId = (expandedId === id) ? null : id;
     render();
-    if (expandedId) wrap.scrollIntoView({behavior:'smooth', block:'nearest'});
+    if (expandedId) document.querySelector(`.hit[data-id="${id}"]`).scrollIntoView({behavior:'smooth', block:'nearest'});
   }));
 }
 
 /* ---------------- Wire up ---------------- */
-document.querySelectorAll('#queryPanel select, #queryPanel input').forEach(el => {
+document.querySelectorAll('#genus, #cShape, #cOrn, #colColor, #growth, #thermo, #cLenLo, #cLenHi, #cWidLo, #cWidHi, #minMatch').forEach(el => {
   el.addEventListener('input', render);
   el.addEventListener('change', render);
 });
+document.getElementById('substrateChips').addEventListener('click', (e) => {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  chip.classList.toggle('on');
+  render();
+});
 document.getElementById('resetBtn').addEventListener('click', () => {
-  document.querySelectorAll('#queryPanel select').forEach(s => s.value = '');
-  document.querySelectorAll('#queryPanel input[type=checkbox]').forEach(c => c.checked = false);
-  document.querySelectorAll('#queryPanel input[type=number]').forEach(n => n.value = '');
+  document.querySelectorAll('.layout select').forEach(s => s.value = '');
+  document.querySelectorAll('#substrateChips .chip').forEach(c => c.classList.remove('on'));
+  document.querySelectorAll('.layout input[type=number]').forEach(n => n.value = '');
   document.getElementById('minMatch').value = 25;
   render();
 });
