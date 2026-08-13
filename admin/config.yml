@@ -1,0 +1,140 @@
+backend:
+  name: github
+  repo: ndrshfflr/ndrshfflr.github.io
+  branch: main
+  # Replace with your own deployed OAuth proxy URL (see setup guide).
+  base_url: https://REPLACE-WITH-YOUR-OAUTH-PROXY.example.workers.dev
+  auth_endpoint: auth
+
+# Where images go by default when uploaded through the CMS.
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: simple
+
+collections:
+  - name: "home"
+    label: "Main Page"
+    files:
+      - file: "content/home.json"
+        label: "Main Page Content"
+        name: "home"
+        format: "json"
+        fields:
+          - label: "Hero (top of page)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Small label above headline", name: "eyebrow", widget: "string" }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Paragraph under headline", name: "lead", widget: "text" }
+              - { label: "Primary button text", name: "primaryCtaLabel", widget: "string" }
+              - { label: "Primary button link", name: "primaryCtaLink", widget: "string", hint: "e.g. #contact or a full https:// link" }
+              - { label: "Secondary button text", name: "secondaryCtaLabel", widget: "string" }
+              - { label: "Secondary button link", name: "secondaryCtaLink", widget: "string" }
+
+          - label: "About section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Small label", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro paragraph", name: "intro", widget: "text" }
+              - { label: "Main paragraph", name: "body", widget: "text" }
+              - { label: "Portrait photo (optional)", name: "portrait", widget: "image", required: false, media_folder: "/images/uploads", public_folder: "/images/uploads" }
+              - label: "Credentials list"
+                name: "credentials"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Value", name: "value", widget: "string" }
+
+          - label: "Services section (Indoor Microbiology)"
+            name: "services"
+            widget: "object"
+            fields:
+              - { label: "Small label", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro paragraph", name: "intro", widget: "text" }
+              - label: "Service cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Small tag (e.g. 01 · On-site)", name: "tag", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "text", widget: "text" }
+
+          - label: "Mycology section"
+            name: "mycology"
+            widget: "object"
+            fields:
+              - { label: "Small label", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro paragraph", name: "intro", widget: "text" }
+              - label: "List items"
+                name: "list"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "desc", widget: "text" }
+              - { label: "Callout box heading", name: "calloutHeading", widget: "string" }
+              - { label: "Callout box text", name: "calloutBody", widget: "text" }
+              - { label: "Callout box small note", name: "calloutNote", widget: "string" }
+
+          - label: "Exploration section"
+            name: "exploration"
+            widget: "object"
+            fields:
+              - { label: "Small label", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro paragraph", name: "intro", widget: "text" }
+              - { label: "Second paragraph", name: "body", widget: "text" }
+
+          - label: "Photography section"
+            name: "photography"
+            widget: "object"
+            fields:
+              - { label: "Small label", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro paragraph", name: "intro", widget: "text" }
+
+          - label: "Contact section"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Small label", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro paragraph", name: "intro", widget: "text" }
+              - { label: "Email address", name: "email", widget: "string" }
+
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Tagline", name: "tagline", widget: "string" }
+
+  - name: "gallery"
+    label: "Photo Gallery"
+    files:
+      - file: "content/gallery.json"
+        label: "Gallery Photos"
+        name: "gallery"
+        format: "json"
+        fields:
+          - label: "Photos"
+            name: "images"
+            widget: "list"
+            summary: "{{caption}}"
+            fields:
+              - { label: "Photo", name: "image", widget: "image", media_folder: "/images/gallery", public_folder: "/images/gallery" }
+              - { label: "Caption (optional)", name: "caption", widget: "string", required: false }
+
+  - name: "pages"
+    label: "Extra Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Content", name: "body", widget: "markdown" }

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<script>
+(function () {
+  try {
+    var stored = localStorage.getItem('theme');
+    var theme = (stored === 'light' || stored === 'dark') ? stored : 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pieter Shiffler Carpentier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand mark">
+      <svg viewBox="0 0 48 32" aria-hidden="true">
+        <path d="M4 20C4 10 14 4 24 4C34 4 44 10 44 20C44 20 34 16 24 16C14 16 4 20 4 20Z" fill="var(--accent-2)"/>
+        <rect x="20" y="16" width="8" height="14" rx="3" fill="var(--text)"/>
+        <ellipse cx="24" cy="30" rx="9" ry="2" fill="var(--text-soft)" opacity=".35"/>
+      </svg>
+      <a href="index.html" style="text-decoration:none;color:inherit;">Pieter Shiffler Carpentier</a>
+    </div>
+    <div class="nav-right">
+      <div class="navlinks">
+        <a href="index.html#about">About</a>
+        <a href="index.html#microbiology">Indoor Microbiology</a>
+        <a href="index.html#mycology">Mycology</a>
+        <a href="index.html#exploration">Exploration</a>
+        <a href="index.html#photography">Photography</a>
+        <span id="nav-dynamic"></span>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle day and night mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"/>
+          <path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="wrap">
+    <h1 id="page-title">&nbsp;</h1>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="page-body" id="page-body">
+    <p class="page-loading">Loading…</p>
+  </div>
+  <a class="page-back" href="index.html">&larr; Back to the main page</a>
+</div>
+
+<footer>
+  <div class="wrap contact-box" style="align-items:center;">
+    <div>© <span id="year"></span> Pieter Shiffler Carpentier</div>
+    <div>MSc Biology · Mycology · Indoor Microbiology</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+</script>
+
+<script>
+// --- Tiny, dependency-free markdown renderer: headings, paragraphs, bold,
+// italic, links, images, and simple lists. Enough for a personal page —
+// not a full CommonMark implementation. ---
+(function () {
+  function escapeHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function inline(text) {
+    let t = escapeHtml(text);
+    t = t.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
+    t = t.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+    t = t.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    t = t.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    return t;
+  }
+
+  function renderMarkdown(md) {
+    const lines = md.replace(/\r\n/g, '\n').split('\n');
+    let html = '';
+    let i = 0;
+    while (i < lines.length) {
+      let line = lines[i];
+
+      if (/^\s*$/.test(line)) { i++; continue; }
+
+      let m = line.match(/^(#{1,3})\s+(.*)$/);
+      if (m) {
+        const level = m[1].length + 1; // page's own <h1> is the title, so body headings start one level down (# -> h2, ## -> h3, ### -> h4)
+        html += `<h${level}>${inline(m[2])}</h${level}>\n`;
+        i++; continue;
+      }
+
+      if (/^\s*[-*]\s+/.test(line)) {
+        html += '<ul>\n';
+        while (i < lines.length && /^\s*[-*]\s+/.test(lines[i])) {
+          html += `<li>${inline(lines[i].replace(/^\s*[-*]\s+/, ''))}</li>\n`;
+          i++;
+        }
+        html += '</ul>\n';
+        continue;
+      }
+
+      if (/^\s*\d+\.\s+/.test(line)) {
+        html += '<ol>\n';
+        while (i < lines.length && /^\s*\d+\.\s+/.test(lines[i])) {
+          html += `<li>${inline(lines[i].replace(/^\s*\d+\.\s+/, ''))}</li>\n`;
+          i++;
+        }
+        html += '</ol>\n';
+        continue;
+      }
+
+      // paragraph: consume until blank line
+      let para = [line];
+      i++;
+      while (i < lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,3})\s+/.test(lines[i]) && !/^\s*[-*]\s+/.test(lines[i]) && !/^\s*\d+\.\s+/.test(lines[i])) {
+        para.push(lines[i]);
+        i++;
+      }
+      html += `<p>${inline(para.join(' '))}</p>\n`;
+    }
+    return html;
+  }
+
+  function parseFrontmatter(text) {
+    const match = text.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
+    if (!match) return { meta: {}, body: text };
+    const meta = {};
+    match[1].split('\n').forEach(line => {
+      const kv = line.match(/^([a-zA-Z0-9_]+):\s*(.*)$/);
+      if (kv) meta[kv[1]] = kv[2].trim().replace(/^["']|["']$/g, '');
+    });
+    return { meta, body: match[2] };
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('slug');
+  const titleEl = document.getElementById('page-title');
+  const bodyEl = document.getElementById('page-body');
+
+  if (!slug) {
+    titleEl.textContent = 'Page not found';
+    bodyEl.innerHTML = '<p>No page was specified.</p>';
+  } else {
+    fetch(`content/pages/${slug}.md`)
+      .then(res => { if (!res.ok) throw new Error('not found'); return res.text(); })
+      .then(text => {
+        const { meta, body } = parseFrontmatter(text);
+        document.title = (meta.title || slug) + ' — Pieter Shiffler Carpentier';
+        titleEl.textContent = meta.title || slug;
+        bodyEl.innerHTML = renderMarkdown(body);
+      })
+      .catch(() => {
+        titleEl.textContent = 'Page not found';
+        bodyEl.innerHTML = "<p>Sorry, this page couldn't be found.</p>";
+      });
+  }
+
+  // populate the same dynamic-pages nav links as the main site
+  (async function () {
+    const host = window.location.hostname;
+    if (!host || !host.endsWith('.github.io')) return;
+    const owner = host.split('.')[0];
+    const repo = host;
+    try {
+      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/content/pages`);
+      if (!res.ok) return;
+      const files = await res.json();
+      if (!Array.isArray(files)) return;
+      const mdFiles = files.filter(f => f.name && f.name.endsWith('.md'));
+      const mount = document.getElementById('nav-dynamic');
+      if (!mount) return;
+      for (const f of mdFiles) {
+        try {
+          const raw = await fetch(f.download_url);
+          const text = await raw.text();
+          const { meta } = parseFrontmatter(text);
+          const pageSlug = f.name.replace(/\.md$/, '');
+          const a = document.createElement('a');
+          a.href = `page.html?slug=${encodeURIComponent(pageSlug)}`;
+          a.textContent = meta.title || pageSlug;
+          mount.appendChild(a);
+        } catch (e) { /* skip */ }
+      }
+    } catch (e) { /* GitHub API unreachable — nav just shows the fixed links */ }
+  })();
+})();
+</script>
+</body>
+</html>
