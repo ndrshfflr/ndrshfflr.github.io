@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <style>
   :root{
     --cream:#f6f2ea;
@@ -44,6 +45,55 @@
     font-weight:600;
     color:var(--moss);
   }
+
+  /* Hologram intro */
+  .intro{
+    position:relative;height:100svh;min-height:480px;width:100%;
+    background:#050505;overflow:hidden;
+  }
+  .intro canvas{position:absolute;inset:0;display:block;width:100%!important;height:100%!important;}
+  .intro-veil{
+    position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 45%, transparent 35%, #050505 92%);
+    pointer-events:none;
+  }
+  .intro-copy{
+    position:absolute;left:0;right:0;top:14%;
+    text-align:center;color:#f4f1ec;pointer-events:none;
+    padding:0 24px;
+  }
+  .intro-copy .eyebrow{color:#c9a8ea;}
+  .intro-copy h1{
+    font-size:clamp(1.6rem,4.4vw,2.4rem);
+    margin-top:12px;color:#fff;
+  }
+  .intro-bottom{
+    position:absolute;left:0;right:0;bottom:6%;
+    text-align:center;color:#cfc9c0;font-size:.82rem;
+    letter-spacing:.04em;
+  }
+  .intro-bottom .chevron{
+    margin:0 auto 10px;width:20px;height:20px;
+    border-right:1px solid #cfc9c0;border-bottom:1px solid #cfc9c0;
+    transform:rotate(45deg);
+    animation:bob 2.2s ease-in-out infinite;
+    cursor:pointer;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(45deg);}50%{transform:translateY(6px) rotate(45deg);}}
+  .motion-btn{
+    pointer-events:auto;
+    display:none;
+    margin:0 auto 16px;
+    padding:11px 22px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.35);
+    color:#fff;border-radius:999px;
+    font-family:'Inter',sans-serif;font-size:.82rem;font-weight:500;
+    backdrop-filter:blur(6px);
+    cursor:pointer;
+  }
+  .motion-btn:hover{background:rgba(255,255,255,.16);}
+  .intro.no-webgl{display:none;}
 
   /* Nav */
   nav{
@@ -100,6 +150,44 @@
   .btn-primary:hover{background:var(--moss-dark);transform:translateY(-1px);}
   .btn-ghost{border:1px solid var(--line);color:var(--ink);}
   .btn-ghost:hover{border-color:var(--moss);color:var(--moss-dark);}
+
+  /* Mark / logo */
+  .mark{display:inline-flex;align-items:center;gap:8px;}
+  .mark svg{width:20px;height:14px;flex-shrink:0;}
+
+  /* Mycelium hero art */
+  .mycelium{
+    position:absolute;inset:0;width:100%;height:100%;
+    z-index:0;pointer-events:none;
+  }
+  .mycelium path{
+    fill:none;stroke:var(--moss);stroke-width:1.4;stroke-linecap:round;
+    opacity:.4;
+    stroke-dasharray:600;stroke-dashoffset:600;
+    animation:draw 2.6s ease-out forwards;
+  }
+  .mycelium circle{
+    fill:var(--clay);opacity:0;
+    animation:spore-pop .6s ease-out forwards;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes spore-pop{ to{ opacity:.55; } }
+  @keyframes float{
+    0%,100%{ transform:translateY(0); opacity:.5; }
+    50%{ transform:translateY(-12px); opacity:.9; }
+  }
+  .spore{
+    position:absolute;border-radius:50%;background:var(--clay);
+    animation:float 6s ease-in-out infinite;
+  }
+
+  /* Scroll reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  /* Card hover lift */
+  .card{transition:transform .25s ease, box-shadow .25s ease;}
+  .card:hover{transform:translateY(-5px);box-shadow:0 14px 28px rgba(43,39,31,.09);}
 
   /* Section shell */
   section{padding:76px 0;border-top:1px solid var(--line);}
@@ -194,9 +282,29 @@
 </head>
 <body>
 
+<section class="intro" id="intro">
+  <div class="intro-veil"></div>
+  <div class="intro-copy">
+    <div class="eyebrow">MSc Biology · Mycology · Indoor Microbiology</div>
+    <h1>Pieter Shiffler Carpentier</h1>
+  </div>
+  <div class="intro-bottom">
+    <button class="motion-btn" id="motion-btn" type="button">Enable motion</button>
+    <div class="chevron" id="intro-chevron" aria-hidden="true"></div>
+    <div id="intro-hint">tilt to explore &middot; scroll to enter</div>
+  </div>
+</section>
+
 <nav>
   <div class="wrap">
-    <div class="brand">Pieter Shiffler Carpentier</div>
+    <div class="brand mark">
+      <svg viewBox="0 0 48 32" aria-hidden="true">
+        <path d="M4 20C4 10 14 4 24 4C34 4 44 10 44 20C44 20 34 16 24 16C14 16 4 20 4 20Z" fill="var(--clay)"/>
+        <rect x="20" y="16" width="8" height="14" rx="3" fill="var(--ink)"/>
+        <ellipse cx="24" cy="30" rx="9" ry="2" fill="var(--ink-soft)" opacity=".35"/>
+      </svg>
+      Pieter Shiffler Carpentier
+    </div>
     <div class="navlinks">
       <a href="#about">About</a>
       <a href="#microbiology">Indoor Microbiology</a>
@@ -209,6 +317,24 @@
 </nav>
 
 <header class="hero">
+  <svg class="mycelium" viewBox="0 0 900 500" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+    <path d="M780 60 C 700 90, 690 140, 620 150 C 560 158, 540 200, 470 210" style="animation-delay:.1s"/>
+    <path d="M620 150 C 640 190, 700 210, 720 260 C 735 300, 790 310, 820 350" style="animation-delay:.4s"/>
+    <path d="M470 210 C 430 230, 420 270, 370 290 C 330 305, 320 340, 270 355" style="animation-delay:.7s"/>
+    <path d="M720 260 C 690 280, 660 270, 630 300 C 605 325, 560 320, 540 355" style="animation-delay:1s"/>
+    <path d="M820 350 C 790 380, 800 420, 760 440" style="animation-delay:1.3s"/>
+    <path d="M540 355 C 520 390, 470 390, 450 430" style="animation-delay:1.5s"/>
+    <circle cx="780" cy="60" r="4" style="animation-delay:2.6s"/>
+    <circle cx="470" cy="210" r="3.5" style="animation-delay:2.9s"/>
+    <circle cx="270" cy="355" r="4" style="animation-delay:3.2s"/>
+    <circle cx="760" cy="440" r="3" style="animation-delay:3.4s"/>
+    <circle cx="450" cy="430" r="3.5" style="animation-delay:3.6s"/>
+    <circle cx="820" cy="350" r="3" style="animation-delay:3s"/>
+  </svg>
+  <span class="spore" style="width:6px;height:6px;left:12%;top:24%;animation-delay:.2s;"></span>
+  <span class="spore" style="width:4px;height:4px;left:82%;top:70%;animation-delay:1.4s;"></span>
+  <span class="spore" style="width:5px;height:5px;left:70%;top:20%;animation-delay:.8s;"></span>
+  <span class="spore" style="width:3px;height:3px;left:35%;top:78%;animation-delay:2.1s;"></span>
   <div class="wrap inner">
     <div class="eyebrow">MSc Biology · Mycologist · Indoor Microbiology Specialist</div>
     <h1>Reading the hidden signs of fungi — in your home, and in the wild.</h1>
@@ -222,12 +348,12 @@
 
 <section id="about">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow">About</div>
       <h2>Science first. Curiosity always.</h2>
       <p>I hold an MSc in Biology and specialise in mycology — the study of fungi. My work sits at the intersection of careful laboratory practice and a lifelong fascination with the roles fungi play, above and below ground.</p>
     </div>
-    <div class="about-grid">
+    <div class="about-grid reveal">
       <div>
         <p style="color:var(--ink-soft)">Professionally, I work as an indoor microbiology specialist: sampling buildings, analysing what I find in the lab, and helping people understand and remediate what's growing where it shouldn't. Outside of that, mycology is also where I spend my free time — cultivating mushrooms, foraging, and following fungi into stranger territory: the guided tours, workshops, and integrative work I'm building toward now.</p>
       </div>
@@ -243,12 +369,12 @@
 
 <section id="microbiology">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow">Services</div>
       <h2>Indoor Microbiology</h2>
       <p>For homeowners, landlords, and businesses dealing with mould, damp, or unexplained air quality issues. I bring lab-grade rigour to a problem that's usually diagnosed by guesswork.</p>
     </div>
-    <div class="cards">
+    <div class="cards reveal">
       <div class="card">
         <div class="tag">01 · On-site</div>
         <h3>Sampling</h3>
@@ -270,12 +396,12 @@
 
 <section id="mycology">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow">Practice</div>
       <h2>Cultivation & Foraging</h2>
       <p>Alongside the lab work, fungi are where I spend my own time. Cultivation and foraging keep me close to the organisms I study professionally — and to the ecosystems they belong to.</p>
     </div>
-    <div class="split">
+    <div class="split reveal">
       <ul class="list-plain">
         <li>
           <span class="num">01</span>
@@ -301,7 +427,7 @@
 
 <section id="exploration">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow">Beyond the lab</div>
       <h2>Where biology meets the unseen</h2>
       <p>Alongside my clinical and field work, I'm drawn to the wider questions fungi raise — about consciousness, meaning, and how humans relate to the living world. This is the territory I'm slowly building future work toward: the intersection of biology with Jungian psychology, animism, esotericism, mysticism, and compassion-based approaches to healing, including the study of psychedelics.</p>
@@ -312,12 +438,12 @@
 
 <section id="photography">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow">Also in progress</div>
       <h2>Photography</h2>
       <p>Photography is a growing passion of mine, and I'm working on bringing it into my practice — documenting fungi, forests, and fieldwork, and eventually offering it as part of my tours and services.</p>
     </div>
-    <div class="photo-strip">
+    <div class="photo-strip reveal">
       <div class="photo-tile">Gallery coming soon</div>
       <div class="photo-tile">Gallery coming soon</div>
       <div class="photo-tile">Gallery coming soon</div>
@@ -328,12 +454,12 @@
 
 <section id="contact">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow">Get in touch</div>
       <h2>Let's talk</h2>
       <p>Whether it's a microbiology issue you need looked at, a question about foraging or cultivation, or interest in future tours and workshops — reach out.</p>
     </div>
-    <div class="contact-box">
+    <div class="contact-box reveal">
       <a class="email" href="mailto:pietershiffler@gmail.com">pietershiffler@gmail.com</a>
       <a class="btn btn-primary" href="mailto:pietershiffler@gmail.com">Send an email</a>
     </div>
@@ -349,6 +475,260 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in-view'));
+  }
+
+  document.getElementById('intro-chevron').addEventListener('click', () => {
+    document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+
+<script>
+(function () {
+  const introEl = document.getElementById('intro');
+
+  function fail() {
+    introEl.classList.add('no-webgl');
+  }
+
+  function supportsWebGL() {
+    try {
+      const c = document.createElement('canvas');
+      return !!(window.WebGLRenderingContext &&
+        (c.getContext('webgl') || c.getContext('experimental-webgl')));
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function boot() {
+    if (typeof THREE === 'undefined' || !supportsWebGL()) { fail(); return; }
+
+    try {
+      const width = introEl.clientWidth;
+      const height = introEl.clientHeight;
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setSize(width, height);
+      renderer.setClearColor(0x050505, 1);
+      introEl.insertBefore(renderer.domElement, introEl.firstChild);
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(48, width / height, 0.1, 100);
+      camera.position.set(0, 0, 9);
+
+      const group = new THREE.Group();
+      scene.add(group);
+
+      // --- palette: violet -> magenta -> hot pink -> red/orange (matches QR + page accents) ---
+      function hueSweepColor(t, h0 = 268, h1 = 372, s = 0.75, v = 0.95) {
+        const h = ((h0 + t * (h1 - h0)) % 360) / 360;
+        const c = new THREE.Color();
+        c.setHSL(h, s, v * 0.5);
+        return c;
+      }
+
+      // --- procedural 3D mycelium network ---
+      function growNetwork() {
+        const rnd = mulberry32(7);
+        const radius = 3.4;
+        const seeds = 8;
+        const tasks = [];
+        for (let i = 0; i < seeds; i++) {
+          const dir = randomDir(rnd);
+          tasks.push({
+            pos: new THREE.Vector3(0, 0, 0),
+            dir: dir,
+            len: radius * (0.8 + rnd() * 0.3),
+            depth: 0,
+            t: i / seeds
+          });
+        }
+
+        let guard = 0;
+        while (tasks.length && guard < 400) {
+          guard++;
+          const task = tasks.pop();
+          if (task.len < radius * 0.12 || task.depth > 3) continue;
+
+          const steps = Math.max(4, Math.floor(task.len / (radius * 0.09)));
+          const segLen = task.len / steps;
+          const pts = [task.pos.clone()];
+          let pos = task.pos.clone();
+          let dir = task.dir.clone();
+
+          for (let s = 0; s < steps; s++) {
+            dir = perturb(dir, rnd, 14);
+            const next = pos.clone().addScaledVector(dir, segLen);
+            if (next.length() > radius) break;
+            pts.push(next);
+            pos = next;
+          }
+
+          if (pts.length > 1) {
+            const curve = new THREE.CatmullRomCurve3(pts);
+            const tubeR = Math.max(0.012, 0.05 * (1 - task.depth * 0.22));
+            const geo = new THREE.TubeGeometry(curve, pts.length * 2, tubeR, 5, false);
+            const mat = new THREE.MeshBasicMaterial({ color: hueSweepColor(task.t) });
+            group.add(new THREE.Mesh(geo, mat));
+
+            const nodeGeo = new THREE.SphereGeometry(tubeR * 1.8, 6, 6);
+            const node = new THREE.Mesh(nodeGeo, mat);
+            node.position.copy(pos);
+            group.add(node);
+          }
+
+          if (task.depth < 3 && rnd() < 0.85) {
+            const branches = 1 + Math.floor(rnd() * 2);
+            for (let b = 0; b < branches; b++) {
+              tasks.push({
+                pos: pos.clone(),
+                dir: perturb(dir, rnd, 45),
+                len: task.len * (0.55 + rnd() * 0.2),
+                depth: task.depth + 1,
+                t: Math.min(1, Math.max(0, task.t + (rnd() - 0.5) * 0.12))
+              });
+            }
+          }
+        }
+      }
+
+      function randomDir(rnd) {
+        const v = new THREE.Vector3(rnd() * 2 - 1, rnd() * 2 - 1, rnd() * 2 - 1);
+        return v.lengthSq() > 0 ? v.normalize() : new THREE.Vector3(0, 1, 0);
+      }
+
+      function perturb(dir, rnd, maxDeg) {
+        const axis = randomDir(rnd);
+        const angle = THREE.MathUtils.degToRad((rnd() - 0.5) * 2 * maxDeg);
+        const q = new THREE.Quaternion().setFromAxisAngle(axis, angle);
+        return dir.clone().applyQuaternion(q).normalize();
+      }
+
+      function mulberry32(seed) {
+        return function () {
+          seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+          let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }
+
+      growNetwork();
+
+      // ambient spore particles
+      const sporeCount = 140;
+      const sporePos = new Float32Array(sporeCount * 3);
+      const sporeCol = new Float32Array(sporeCount * 3);
+      const rnd2 = mulberry32(42);
+      for (let i = 0; i < sporeCount; i++) {
+        const r = 3.6 + rnd2() * 2.2;
+        const dir = randomDir(rnd2);
+        sporePos[i * 3] = dir.x * r;
+        sporePos[i * 3 + 1] = dir.y * r;
+        sporePos[i * 3 + 2] = dir.z * r;
+        const c = hueSweepColor(rnd2());
+        sporeCol[i * 3] = c.r; sporeCol[i * 3 + 1] = c.g; sporeCol[i * 3 + 2] = c.b;
+      }
+      const sporeGeo = new THREE.BufferGeometry();
+      sporeGeo.setAttribute('position', new THREE.BufferAttribute(sporePos, 3));
+      sporeGeo.setAttribute('color', new THREE.BufferAttribute(sporeCol, 3));
+      const sporeMat = new THREE.PointsMaterial({ size: 0.05, vertexColors: true, transparent: true, opacity: 0.85 });
+      const spores = new THREE.Points(sporeGeo, sporeMat);
+      scene.add(spores);
+
+      // --- interaction: device tilt (mobile) or pointer position (desktop) ---
+      let targetRotX = 0, targetRotY = 0;
+      let curRotX = 0, curRotY = 0;
+
+      function onOrientation(e) {
+        if (e.beta === null || e.gamma === null) return;
+        const beta = Math.max(-45, Math.min(45, e.beta - 45)); // typical hold angle ~45deg
+        const gamma = Math.max(-45, Math.min(45, e.gamma));
+        targetRotX = THREE.MathUtils.degToRad(beta * 0.5);
+        targetRotY = THREE.MathUtils.degToRad(gamma * 0.6);
+      }
+
+      function onPointer(e) {
+        const x = (e.clientX / window.innerWidth) * 2 - 1;
+        const y = (e.clientY / height) * 2 - 1;
+        targetRotY = x * 0.5;
+        targetRotX = y * 0.35;
+      }
+
+      const motionBtn = document.getElementById('motion-btn');
+      if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function') {
+        motionBtn.style.display = 'inline-block';
+        motionBtn.addEventListener('click', () => {
+          DeviceOrientationEvent.requestPermission().then(state => {
+            if (state === 'granted') {
+              window.addEventListener('deviceorientation', onOrientation);
+              motionBtn.style.display = 'none';
+            }
+          }).catch(() => {});
+        });
+      } else if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', onOrientation);
+      } else {
+        introEl.addEventListener('pointermove', onPointer);
+      }
+
+      // --- render loop, paused when intro scrolls out of view ---
+      let running = true;
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((entries) => {
+          running = entries[0].isIntersecting;
+        }, { threshold: 0.05 }).observe(introEl);
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+        if (!running) return;
+        group.rotation.y += 0.0016;
+        curRotX += (targetRotX - curRotX) * 0.06;
+        curRotY += (targetRotY - curRotY) * 0.06;
+        group.rotation.x = curRotX;
+        spores.rotation.y = group.rotation.y * 0.6;
+        spores.rotation.x = curRotX * 0.4;
+        group.rotation.y += curRotY * 0.02;
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        const w = introEl.clientWidth, h = introEl.clientHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+      });
+    } catch (err) {
+      fail();
+    }
+  }
+
+  window.addEventListener('load', () => {
+    // three.js is loaded with `defer`; give it a tick if not yet ready
+    if (typeof THREE === 'undefined') {
+      setTimeout(boot, 150);
+    } else {
+      boot();
+    }
+  });
+})();
 </script>
 </body>
 </html>
