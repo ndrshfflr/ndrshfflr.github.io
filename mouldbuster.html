@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sporexplore: Mouldbuster</title>
+<style>
+  :root{
+    --bg:#0f1410; --panel:#161d17; --panel2:#1c241d; --border:#2b352c;
+    --text:#e7ede6; --muted:#98a596; --accent:#6fb37a; --accent2:#e0b04a;
+    --danger:#d8735c; --radius:10px;
+    font-synthesis:none;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.45;}
+  header{padding:22px 24px 16px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,#141a15,#0f1410);}
+  header h1{margin:0 0 4px;font-size:1.4rem;letter-spacing:.2px;}
+  header p{margin:0;color:var(--muted);font-size:.92rem;max-width:70ch;}
+  .disclaimer{margin:12px 24px 0;padding:10px 14px;border:1px solid #4a3a22;background:#231c12;border-radius:var(--radius);color:#e8c98a;font-size:.85rem;}
+  .disclaimer b{color:#f2d9a5;}
+  main{display:grid;grid-template-columns:340px 1fr;gap:18px;padding:18px 24px 40px;align-items:start;}
+  @media (max-width:900px){ main{grid-template-columns:1fr;} }
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:16px;}
+  .panel h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 10px;}
+  fieldset{border:none;margin:0 0 16px;padding:0;}
+  legend{font-size:.82rem;color:var(--text);margin-bottom:6px;font-weight:600;}
+  label.opt{display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--muted);padding:3px 0;cursor:pointer;}
+  label.opt input{accent-color:var(--accent);}
+  select,input[type=range]{width:100%;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 8px;font-size:.85rem;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .rangebox{font-size:.78rem;color:var(--muted);margin-top:4px;display:flex;justify-content:space-between;}
+  .minmatch{display:flex;align-items:center;gap:10px;margin-top:4px;}
+  .minmatch input{flex:1;}
+  .minmatch span{font-size:.8rem;color:var(--accent2);min-width:34px;text-align:right;}
+  #resetBtn{width:100%;padding:8px;background:var(--panel2);border:1px solid var(--border);color:var(--muted);border-radius:6px;cursor:pointer;font-size:.82rem;}
+  #resetBtn:hover{color:var(--text);border-color:var(--accent);}
+
+  .results-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:16px;flex-wrap:wrap;}
+  .results-header .titlegroup{display:flex;align-items:baseline;gap:8px;}
+  .results-header h2{margin:0;font-size:1rem;color:var(--text);}
+  .results-header span{font-size:.8rem;color:var(--muted);}
+  .minmatch{display:flex;align-items:center;gap:8px;}
+  .minmatch label{font-size:.78rem;color:var(--muted);white-space:nowrap;}
+  .minmatch input[type=range]{width:130px;}
+  .minmatch .val{font-size:.8rem;color:var(--accent2);min-width:34px;text-align:right;}
+
+  .card-wrap{border:1px solid var(--border);border-radius:var(--radius);background:var(--panel2);margin-bottom:10px;overflow:hidden;transition:border-color .15s;}
+  .card-wrap:hover{border-color:var(--accent);}
+  .card-wrap.expanded{border-color:var(--accent);}
+  .card{display:flex;gap:12px;padding:12px;cursor:pointer;align-items:center;}
+  .card .icon{flex:0 0 auto;background:#10160f;border-radius:8px;padding:6px;}
+  .card .info{flex:1 1 auto;min-width:0;}
+  .card .name{font-weight:600;font-size:.95rem;}
+  .card .name i{font-style:italic;}
+  .card .meta{font-size:.78rem;color:var(--muted);margin-top:2px;}
+  .card .score{flex:0 0 auto;text-align:right;font-weight:700;font-size:1rem;color:var(--accent);}
+  .score.low{color:var(--muted);}
+  .card .chevron{flex:0 0 auto;color:var(--muted);font-size:.8rem;width:14px;text-align:center;}
+
+  .card-detail{padding:16px;border-top:1px solid var(--border);background:var(--panel);}
+  .detail-top{display:flex;gap:16px;align-items:flex-start;margin-bottom:12px;}
+  .detail-top .icon{background:#10160f;border-radius:10px;padding:10px;flex:0 0 auto;}
+  .detail-top h3{margin:0 0 2px;font-size:1.15rem;}
+  .detail-top .sub{color:var(--muted);font-size:.85rem;}
+  .badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
+  .badge{font-size:.72rem;padding:3px 8px;border-radius:20px;border:1px solid var(--border);color:var(--muted);}
+  .badge.health{border-color:#6a3a2e;color:#e8a184;}
+  .badge.tox{border-color:#6a5a2e;color:#e8c984;}
+  dl.traits{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.85rem;margin:0;}
+  dl.traits dt{color:var(--muted);}
+  dl.traits dd{margin:0;}
+  .section-title{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:18px 0 8px;}
+  .note{font-size:.83rem;color:var(--text);background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;}
+  .empty{color:var(--muted);font-size:.9rem;padding:30px 10px;text-align:center;}
+  footer{padding:20px 24px 40px;color:var(--muted);font-size:.78rem;border-top:1px solid var(--border);margin-top:10px;}
+  footer a{color:var(--accent);}
+
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:0;}
+  .gallery figure{margin:0;background:#0e130f;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+  .gallery img{width:100%;height:110px;object-fit:cover;display:block;background:#0a0d0a;}
+  .gallery figcaption{padding:6px 8px;font-size:.7rem;color:var(--muted);line-height:1.3;}
+  .gallery figcaption b{color:var(--text);display:block;font-size:.72rem;}
+  .gallery figcaption a{color:var(--accent);text-decoration:none;}
+  .gallery-empty{font-size:.8rem;color:var(--muted);font-style:italic;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Sporexplore: Mouldbuster</h1>
+  <p>Microscopy-assisted identification for the two genera most often implicated in water-damaged buildings: <i>Penicillium</i> and <i>Aspergillus</i>. Match on colony appearance and conidiophore/conidial microscopy.</p>
+</header>
+<div class="disclaimer">
+  <b>Not a diagnostic tool.</b> Reliable mould identification requires culturing on standard media (MEA/CYA) at controlled temperature and a calibrated microscope. This app narrows candidates from morphology you can observe — it does not replace a mycology lab, and it should never be used to rule out health-relevant species. If anyone in the building has respiratory symptoms, or the affected area is large, get a professional assessment.
+</div>
+
+<main>
+  <div class="panel" id="queryPanel">
+    <h2>Query</h2>
+
+    <fieldset>
+      <legend>Genus (conidiophore type)</legend>
+      <select id="genus">
+        <option value="">Any / unsure</option>
+        <option value="Penicillium">Penicillium — verticillate brush ("penicillus")</option>
+        <option value="Aspergillus">Aspergillus — single vesicle, radiating phialides</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>Spore (conidia) length (µm)</legend>
+      <div class="row2">
+        <input type="number" id="cLenLo" step="0.1" min="1" max="10" placeholder="min">
+        <input type="number" id="cLenHi" step="0.1" min="1" max="10" placeholder="max">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Spore (conidia) width (µm)</legend>
+      <div class="row2">
+        <input type="number" id="cWidLo" step="0.1" min="1" max="10" placeholder="min">
+        <input type="number" id="cWidHi" step="0.1" min="1" max="10" placeholder="max">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Conidia shape</legend>
+      <select id="cShape">
+        <option value="">Any</option>
+        <option value="globose">Globose (round)</option>
+        <option value="subglobose">Subglobose</option>
+        <option value="ellipsoidal">Ellipsoidal</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>Conidial wall ornamentation</legend>
+      <select id="cOrn">
+        <option value="">Any</option>
+        <option value="smooth">Smooth</option>
+        <option value="finely-rough">Finely roughened</option>
+        <option value="echinulate">Distinctly rough / echinulate (spiny)</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>Colony colour (obverse, 7d/25°C)</legend>
+      <select id="colColor">
+        <option value="">Any</option>
+        <option value="blue-green">Blue-green / dull green</option>
+        <option value="yellow-green">Yellow-green / olive</option>
+        <option value="black">Black / dark brown</option>
+        <option value="variable">Variable (pink/salmon/beige/green)</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>Growth rate at 25°C</legend>
+      <select id="growth">
+        <option value="">Any</option>
+        <option value="slow">Slow (colony &lt;30 mm / 7d)</option>
+        <option value="moderate">Moderate</option>
+        <option value="fast">Fast (colony &gt;45 mm / 7d)</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>Substrate found on</legend>
+      <label class="opt"><input type="checkbox" value="wallpaper"> Damp wallpaper / paint / plaster</label>
+      <label class="opt"><input type="checkbox" value="wood"> Wood / timber</label>
+      <label class="opt"><input type="checkbox" value="gypsum"> Gypsum board / drywall</label>
+      <label class="opt"><input type="checkbox" value="hvac"> HVAC ducts / filters / dust</label>
+      <label class="opt"><input type="checkbox" value="food"> Food residue / organic debris</label>
+      <label class="opt"><input type="checkbox" value="grout"> Tile grout / bathroom silicone</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Thermotolerant (grows &gt;42°C)</legend>
+      <select id="thermo">
+        <option value="">Any</option>
+        <option value="yes">Yes</option>
+        <option value="no">No / not notably</option>
+      </select>
+    </fieldset>
+
+    <div style="margin-top:14px;">
+      <button id="resetBtn">Reset all filters</button>
+    </div>
+  </div>
+
+  <div>
+    <div class="panel" id="resultsPanel">
+      <div class="results-header">
+        <div class="titlegroup">
+          <h2>Candidates</h2>
+          <span id="resultCount"></span>
+        </div>
+        <div class="minmatch">
+          <label for="minMatch">Min. match</label>
+          <input type="range" id="minMatch" min="0" max="95" value="25">
+          <span class="val" id="minMatchVal">25%</span>
+        </div>
+      </div>
+      <div id="results"></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  Colony and microscopy figures compiled from standard mycological references (Pitt &amp; Hocking, <i>Fungi and Food Spoilage</i>; Samson et al., <i>Food and Indoor Fungi</i>) and cross-checked against
+  <a href="https://mycology.adelaide.edu.au/fungal-descriptions-and-antifungal-susceptibility/hyphomycetes-conidial-moulds/aspergillus" target="_blank">Mycology Online (Adelaide)</a> and
+  <a href="https://drfungus.org/knowledge-base/aspergillus-versicolor/" target="_blank">DoctorFungus</a>. Eight species, first release — flag any species you need added.
+  <br><br>
+  Photos are hotlinked from openly-licensed collections — CDC Public Health Image Library (public domain) and iNaturalist / GBIF / Mushroom Observer / Landcare Research NZ (CC BY or CC BY-NC, credited per image). We could not find freely-licensed photographs specifically on MEA, CYA, or V8 agar for most species — that level of specificity mostly lives in paywalled taxonomic monographs. Where the medium is known it's stated in the caption (mostly SDA for the CDC Aspergillus cultures); several Penicillium photos are field shots on natural substrate rather than lab culture. Treat photo captions, not this note, as the source of truth per image.
+</footer>
+
+<script>
+/* ---------------- Species data ---------------- */
+const SPECIES = [
+  {
+    id:"pen-chrysogenum", genus:"Penicillium", epithet:"chrysogenum", common:"Common green mould",
+    colony:{color:"blue-green", colorText:"Dull blue-green, velvety, white margin; often a yellow pigment diffuses into the agar; clear to yellowish exudate droplets.",
+      reverse:"Yellow to yellowish-brown.", diamMm:"25–45 mm / 7d", growth:"moderate"},
+    branch:"terverticillate–biverticillate (mixed)",
+    conidiophore:"Smooth-walled stipes, 200–300 µm.",
+    metulae:"3–5 per verticil, 10–15 × 3–3.5 µm.",
+    phialides:"Ampulliform, 8–11 × 2–2.5 µm.",
+    conidia:{shape:"globose-subglobose", orn:"smooth-finely-rough", lenLo:2.5, lenHi:3.5, widLo:2.5, widHi:3.5, colorText:"Blue-green en masse, formed in long dry chains."},
+    thermo:false,
+    substrate:["wallpaper","food","gypsum"],
+    ecology:"One of the most common indoor moulds worldwide — damp wallpaper, dust, spoiled food. The species that yielded the original penicillin strain, though wild indoor isolates are not therapeutic sources.",
+    health:"Common allergen; low acute toxin concern relative to A. flavus/A. fumigatus.", tox:false,
+    images:{
+      macro:[{url:"https://inaturalist-open-data.s3.amazonaws.com/photos/223743132/original.jpeg", label:"Field/substrate colony (medium unspecified — not a lab agar plate)", license:"CC BY-NC 4.0", credit:"Josh McGinnis, iNaturalist", page:"https://www.inaturalist.org/observations/131474030"}],
+      micro:[
+        {url:"https://inaturalist-open-data.s3.amazonaws.com/photos/459982091/original.jpeg", label:"Penicillus — conidiophore with metulae & phialides", license:"CC BY 4.0", credit:"Bohan Jia, iNaturalist", page:"https://api.gbif.org/v1/occurrence/5176978455"},
+        {url:"https://inaturalist-open-data.s3.amazonaws.com/photos/459982109/original.jpeg", label:"Same series, second angle", license:"CC BY 4.0", credit:"Bohan Jia, iNaturalist", page:"https://api.gbif.org/v1/occurrence/5176978455"}
+      ]
+    }
+  },
+  {
+    id:"pen-expansum", genus:"Penicillium", epithet:"expansum", common:"Blue mould rot",
+    colony:{color:"blue-green", colorText:"Dull green to greyish turquoise, floccose, white margin, clear exudate.",
+      reverse:"Pale to yellowish, sometimes brownish.", diamMm:"40–60 mm / 7d", growth:"fast"},
+    branch:"terverticillate",
+    conidiophore:"Smooth, long stipes up to 500 µm.",
+    metulae:"3–6 per verticil, 12–18 × 3–3.5 µm.",
+    phialides:"Ampulliform, 7–10 × 2–2.5 µm.",
+    conidia:{shape:"ellipsoidal", orn:"smooth-finely-rough", lenLo:3, lenHi:3.5, widLo:2.8, widHi:3.2, colorText:"Green, formed in long chains."},
+    thermo:false,
+    substrate:["wood","wallpaper","food"],
+    ecology:"Classic fruit blue-mould rot; indoors found on damp wood and wallpaper paste. Produces a strong musty odour and the mycotoxin patulin.",
+    health:"Patulin producer — avoid handling contaminated food/material without protection.", tox:true,
+    images:{
+      macro:[{url:"https://inaturalist-open-data.s3.amazonaws.com/photos/390125812/original.jpg", label:"Growing on stone fruit (natural substrate, not an agar plate)", license:"CC BY 4.0", credit:"Jared Shorma, iNaturalist", page:"https://api.gbif.org/v1/occurrence/4875148875"}],
+      micro:[{url:"https://inaturalist-open-data.s3.amazonaws.com/photos/472125821/original.jpeg", label:"Conidiophore, metulae & phialides (observer field notes)", license:"CC BY-NC 4.0", credit:"Tyson Ehlers, iNaturalist", page:"https://api.gbif.org/v1/occurrence/5761054461"}]
+    }
+  },
+  {
+    id:"pen-brevicompactum", genus:"Penicillium", epithet:"brevicompactum", common:"Compact green mould",
+    colony:{color:"blue-green", colorText:"Dull green, velvety, radially furrowed, restricted/compact growth.",
+      reverse:"Cream to pale brown.", diamMm:"20–30 mm / 7d", growth:"slow"},
+    branch:"terverticillate (short, tightly packed columns)",
+    conidiophore:"Rough-walled stipes.",
+    metulae:"Short, 8–12 × 3 µm, densely packed.",
+    phialides:"Ampulliform, 7–9 × 2–2.5 µm.",
+    conidia:{shape:"globose-subglobose", orn:"finely-rough", lenLo:3, lenHi:3.5, widLo:3, widHi:3.5, colorText:"Green."},
+    thermo:false,
+    substrate:["wallpaper","gypsum"],
+    ecology:"Frequently isolated from damp building materials; its compact, slow-growing colony is the easiest field cue distinguishing it from the faster P. expansum.",
+    health:"Source of mycophenolic acid; moderate allergen.", tox:true,
+    images:{
+      macro:[{url:"https://mushroomobserver.org/images/1280/1880246.jpg", label:"Colony (medium unspecified)", license:"CC BY-NC 4.0", credit:"pipsissewa, Mushroom Observer", page:"https://mushroomobserver.org/obs/609282"}],
+      micro:[]
+    }
+  },
+  {
+    id:"pen-citrinum", genus:"Penicillium", epithet:"citrinum", common:"Citrus mould",
+    colony:{color:"yellow-green", colorText:"Pale yellow-green to greyish-green, velvety-floccose, often a yellow diffusible pigment.",
+      reverse:"Yellow to brownish-orange.", diamMm:"30–45 mm / 7d", growth:"fast"},
+    branch:"biverticillate (occasionally terverticillate)",
+    conidiophore:"Smooth stipes.",
+    metulae:"Appressed/divaricate, 8–12 × 2.5–3 µm.",
+    phialides:"Ampulliform, 7–9 × 2 µm.",
+    conidia:{shape:"subglobose-ellipsoidal", orn:"smooth", lenLo:2.5, lenHi:3, widLo:2.5, widHi:3, colorText:"Formed in loose columns."},
+    thermo:false,
+    substrate:["hvac","food","wallpaper"],
+    ecology:"Very common in indoor dust and on stored grain; frequently recovered from HVAC filters.",
+    health:"Citrinin (nephrotoxic mycotoxin) producer.", tox:true,
+    images:{
+      macro:[{url:"https://inaturalist-open-data.s3.amazonaws.com/photos/246781982/original.jpg", label:"Colony (medium unspecified)", license:"CC BY-NC 4.0", credit:"bobasil, iNaturalist", page:"https://www.inaturalist.org/observations/143853527"}],
+      micro:[]
+    }
+  },
+  {
+    id:"asp-niger", genus:"Aspergillus", epithet:"niger", common:"Black mould",
+    colony:{color:"black", colorText:"White-to-yellow basal felt densely covered by black conidial heads; granular, appears black/dark-brown en masse.",
+      reverse:"Pale to yellowish, uncoloured.", diamMm:"60–70 mm / 7d", growth:"fast"},
+    branch:"biseriate, radiate becoming loosely columnar",
+    conidiophore:"Smooth, hyaline stipe darkening toward the vesicle.",
+    metulae:"15–25 × 4.5–6 µm, brown, cover entire vesicle.",
+    phialides:"7–9 × 3–3.5 µm.",
+    conidia:{shape:"globose-subglobose", orn:"echinulate", lenLo:3.5, lenHi:5, widLo:3.5, widHi:5, colorText:"Dark brown to black, strongly rough-walled."},
+    thermo:false,
+    substrate:["grout","hvac","gypsum","wood"],
+    ecology:"Extremely common worldwide — damp basements, bathroom grout, HVAC systems. Often the species behind visually 'black mould' reports, though frequently confused with Stachybotrys chartarum, an unrelated and slower-growing genus.",
+    vesicle:"Globose, large, 45–75 µm.",
+    health:"Common allergen; can cause otomycosis and, rarely, invasive disease in immunocompromised people.", tox:false,
+    images:{
+      macro:[{url:"https://phil.cdc.gov/PHIL_Images/23019/23019_lores.jpg", label:"Culture, Sabouraud dextrose agar (SDA), 11 days", license:"Public domain (US Govt/CDC)", credit:"CDC/Dr. Hilliard F. Hardin", page:"https://phil.cdc.gov/Details.aspx?pid=23019"}],
+      micro:[
+        {url:"https://phil.cdc.gov/PHIL_Images/3964/3964_lores.jpg", label:"Conidiophore & conidial head", license:"Public domain", credit:"CDC/Dr. Lucille K. Georg", page:"https://phil.cdc.gov/Details.aspx?pid=3964"},
+        {url:"https://phil.cdc.gov/PHIL_Images/23077/23077_lores.jpg", label:"Conidiophore, vesicle, metulae & phialides (100×)", license:"Public domain", credit:"CDC/Dr. Hilliard F. Hardin", page:"https://phil.cdc.gov/Details.aspx?pid=23077"}
+      ]
+    }
+  },
+  {
+    id:"asp-fumigatus", genus:"Aspergillus", epithet:"fumigatus", common:"Smoke-grey mould",
+    colony:{color:"blue-green", colorText:"Blue-green to grey-green, suede-like/velvety, darkening with age.",
+      reverse:"Uncoloured to pale.", diamMm:"40–65 mm / 7d", growth:"fast"},
+    branch:"uniseriate, compact columnar heads",
+    conidiophore:"Short, smooth stipe with a flask/clavate vesicle, fertile only on the upper ⅔.",
+    metulae:"None (uniseriate — phialides sit directly on the vesicle).",
+    phialides:"6–8 × 2–2.5 µm, directly on vesicle.",
+    conidia:{shape:"globose-subglobose", orn:"finely-rough", lenLo:2.5, lenHi:3, widLo:2.5, widHi:3, colorText:"Green, in long chains."},
+    thermo:true,
+    substrate:["hvac","wood","gypsum"],
+    ecology:"Thermotolerant — grows up to 50–55°C, so it favours warm, humid microhabitats: compost, insulation, HVAC ducts, decaying organic building material.",
+    vesicle:"Flask-shaped, 20–30 µm.",
+    health:"Clinically the most important indoor Aspergillus — causal agent of invasive and allergic aspergillosis in immunocompromised or asthmatic/CF patients. Any suspected colony should be handled with care and confirmed by a lab.", tox:false,
+    images:{
+      macro:[{url:"https://inaturalist-open-data.s3.amazonaws.com/photos/512331745/original.jpg", label:"Culture, malt extract agar (MEA — per observer field notes)", license:"CC BY-NC 4.0", credit:"shawn_nasty, iNaturalist", page:"https://www.inaturalist.org/observations/284916826"}],
+      micro:[
+        {url:"https://phil.cdc.gov/PHIL_Images/25204/25204_lores.jpg", label:"Conidiophore & conidial head, pure culture", license:"Public domain", credit:"CDC/Dr. Libero Ajello", page:"https://phil.cdc.gov/Details.aspx?pid=25204"},
+        {url:"https://phil.cdc.gov/PHIL_Images/300/300_lores.jpg", label:"Conidiophore with phialides, scattered conidia", license:"Public domain", credit:"CDC", page:"https://phil.cdc.gov/Details.aspx?pid=300"}
+      ]
+    }
+  },
+  {
+    id:"asp-flavus", genus:"Aspergillus", epithet:"flavus", common:"Yellow-green mould",
+    colony:{color:"yellow-green", colorText:"Granular, flat, yellow at first becoming bright-to-dark yellow-green with age, radial grooves.",
+      reverse:"Uncoloured to reddish-brown.", diamMm:"60–70 mm / 7d", growth:"fast"},
+    branch:"biseriate (some uniseriate heads), radiate splitting into loose columns",
+    conidiophore:"Coarsely roughened, colourless stipe.",
+    metulae:"Cover upper ⅔–¾ of vesicle, 6–10 × 3–4 µm.",
+    phialides:"6–10 × 3–3.5 µm.",
+    conidia:{shape:"globose-subglobose", orn:"echinulate", lenLo:3, lenHi:6, widLo:3, widHi:6, colorText:"Pale green, conspicuously spiny (echinulate). Some strains form brownish sclerotia."},
+    thermo:false,
+    substrate:["food","hvac","wallpaper"],
+    ecology:"Common on stored grain/food residue and in HVAC dust; less specifically a 'damp building' species than the others here — often arrives with food waste or organic debris.",
+    vesicle:"Subglobose, 25–45 µm.",
+    health:"Aflatoxin producer — a potent carcinogen. Treat suspected colonies as a priority for lab confirmation and remediation, particularly near food-prep areas.", tox:true,
+    images:{
+      macro:[
+        {url:"https://phil.cdc.gov/PHIL_Images/21720/21720_lores.jpg", label:"Culture, Sabouraud dextrose agar (SDA)", license:"Public domain", credit:"CDC/Dr. Lucille K. Georg", page:"https://phil.cdc.gov/Details.aspx?pid=21720"},
+        {url:"https://phil.cdc.gov/PHIL_Images/19546/19546_lores.jpg", label:"Culture, Sabouraud dextrose agar (SDA)", license:"Public domain", credit:"CDC/Dr. Hardin", page:"https://phil.cdc.gov/details.aspx?pid=19546"}
+      ],
+      micro:[{url:"https://phil.cdc.gov/PHIL_Images/4299/4299_lores.jpg", label:"Coarsely roughened conidiophore with metulae & phialides", license:"Public domain", credit:"CDC/Dr. Libero Ajello", page:"https://phil.cdc.gov/Details.aspx?pid=4299"}]
+    }
+  },
+  {
+    id:"asp-versicolor", genus:"Aspergillus", epithet:"versicolor", common:"Damp-indicator mould",
+    colony:{color:"variable", colorText:"Highly variable ('versicolor'): pale green, greenish-beige, pinkish-green, salmon, or dark green, often with pink-to-reddish-brown exudate.",
+      reverse:"Reddish to uncoloured.", diamMm:"15–30 mm / 7d", growth:"slow"},
+    branch:"biseriate, loosely radiate",
+    conidiophore:"120–700 µm, hyaline to pale brown, smooth, brittle — tends to break during mounting (useful handling cue).",
+    metulae:"Cover most of a small vesicle.",
+    phialides:"Cover most of vesicle surface alongside metulae.",
+    conidia:{shape:"globose", orn:"finely-rough", lenLo:2.5, lenHi:3, widLo:2.5, widHi:3, colorText:"Fine to distinctly roughened."},
+    thermo:false,
+    substrate:["wallpaper","gypsum","wood"],
+    ecology:"A xerophilic species — tolerates lower water activity than most indoor moulds, so it's one of the earliest and most reliable indicator species for chronic, low-level damp (as opposed to a single flood event). Growth restricted above 35°C.",
+    vesicle:"Small, 9–16 µm, variably shaped.",
+    health:"Common allergen; often used as a marker of water damage in building surveys.", tox:false,
+    images:{
+      macro:[{url:"https://data.landcareresearch.co.nz/Image/62VN/NZVH", label:"Herbarium specimen photo (not a culture plate)", license:"CC BY 4.0", credit:"H. Cook, Manaaki Whenua – Landcare Research (NZ)", page:"https://api.gbif.org/v1/occurrence/1135796667"}],
+      micro:[{url:"https://phil.cdc.gov/PHIL_Images/19407/19407_lores.jpg", label:"Conidial head — biseriate metulae & phialides (475×)", license:"Public domain", credit:"CDC/Dr. Lucille K. Georg", page:"https://phil.cdc.gov/Details.aspx?pid=19407"}]
+    }
+  }
+];
+
+/* ---------------- Pure scoring function ---------------- */
+// score(sp, Q) in [0,1]. Q fields mirror the query panel.
+function score(sp, Q){
+  let total = 0, weight = 0;
+
+  function add(w, s){ weight += w; total += w * Math.max(0, Math.min(1, s)); }
+
+  if (Q.genus){ add(3, sp.genus === Q.genus ? 1 : 0); }
+  if (Q.cShape){
+    const fam = sp.conidia.shape.split("-");
+    add(2, fam.includes(Q.cShape) ? 1 : 0.15);
+  }
+  if (Q.cOrn){
+    const orns = sp.conidia.orn.split("-").join("-"); // normalize
+    let match = 0;
+    if (Q.cOrn === "smooth") match = sp.conidia.orn.includes("smooth") ? 1 : 0.1;
+    if (Q.cOrn === "finely-rough") match = sp.conidia.orn.includes("finely-rough") ? 1 : (sp.conidia.orn==="echinulate"?0.3:0.15);
+    if (Q.cOrn === "echinulate") match = sp.conidia.orn === "echinulate" ? 1 : 0.1;
+    add(2, match);
+  }
+  if (Q.colColor){ add(2, sp.colony.color === Q.colColor ? 1 : 0.1); }
+  if (Q.growth){ add(1.5, sp.colony.growth === Q.growth ? 1 : 0.25); }
+  if (Q.thermo){ add(1.5, (sp.thermo === (Q.thermo === "yes")) ? 1 : 0); }
+  if (Q.substrate && Q.substrate.length){
+    const hits = Q.substrate.filter(s => sp.substrate.includes(s)).length;
+    add(2.5, hits / Q.substrate.length);
+  }
+  if (Q.cLenLo != null || Q.cLenHi != null){
+    add(3, rangeMatch(Q.cLenLo, Q.cLenHi, sp.conidia.lenLo, sp.conidia.lenHi));
+  }
+  if (Q.cWidLo != null || Q.cWidHi != null){
+    add(3, rangeMatch(Q.cWidLo, Q.cWidHi, sp.conidia.widLo, sp.conidia.widHi));
+  }
+
+  if (weight === 0) return 0.4; // no filters set: neutral baseline so all show, sorted alphabetically by tie
+  return total / weight;
+}
+
+// Graded overlap of a queried [lo,hi] against a species' published [x,y] range:
+// 75% overlap-fraction + 25% how centred the query sits in that range.
+// Regression guard: gap must be clamped at 0, else touching-but-not-overlapping
+// intervals (lo===y or x===hi) produce a negative gap and inflate the score past 1.
+function rangeMatch(qLo, qHi, x, y){
+  const lo = qLo != null ? qLo : x;
+  const hi = qHi != null ? qHi : y;
+  const overlap = Math.max(0, Math.min(hi, y) - Math.max(lo, x));
+  const overlapFrac = overlap / Math.max(1e-6, (y - x));
+  const gap = Math.max(0, lo - y, x - hi);
+  const centered = gap === 0 ? 1 : Math.max(0, 1 - gap / Math.max(1, (hi - lo)));
+  return 0.75 * overlapFrac + 0.25 * centered;
+}
+
+/* ---------------- Query reading ---------------- */
+function readQuery(){
+  const num = v => v === "" || v == null ? null : parseFloat(v);
+  const substrate = Array.from(document.querySelectorAll('#queryPanel input[type=checkbox]:checked')).map(c => c.value);
+  return {
+    genus: document.getElementById('genus').value,
+    cShape: document.getElementById('cShape').value,
+    cOrn: document.getElementById('cOrn').value,
+    colColor: document.getElementById('colColor').value,
+    growth: document.getElementById('growth').value,
+    thermo: document.getElementById('thermo').value,
+    cLenLo: num(document.getElementById('cLenLo').value),
+    cLenHi: num(document.getElementById('cLenHi').value),
+    cWidLo: num(document.getElementById('cWidLo').value),
+    cWidHi: num(document.getElementById('cWidHi').value),
+    substrate
+  };
+}
+
+/* ---------------- Icon (pure fn of species data) ---------------- */
+let ICON_SEQ = 0;
+function conidiaIconSVG(sp, w, h){
+  const id = 'ic' + (ICON_SEQ++);
+  const colorMap = { "blue-green":"#5a8f6b", "yellow-green":"#9aa84a", "black":"#33302c", "variable":"#b98a6a" };
+  const fill = colorMap[sp.colony.color] || "#7a8a72";
+  const cx = w/2, cy = h/2;
+  let body = "";
+  if (sp.genus === "Penicillium"){
+    // brush / penicillus silhouette
+    const stemTop = cy - 4;
+    body += `<line x1="${cx}" y1="${h-4}" x2="${cx}" y2="${stemTop}" stroke="var(--muted)" stroke-width="1.4"/>`;
+    const n = 5;
+    for(let i=0;i<n;i++){
+      const angle = -Math.PI/2 + (i-(n-1)/2)*0.42;
+      const x2 = cx + Math.sin(angle)*13;
+      const y2 = stemTop - Math.cos(angle)*13;
+      body += `<line x1="${cx}" y1="${stemTop}" x2="${x2}" y2="${y2}" stroke="var(--muted)" stroke-width="1.1"/>`;
+      body += `<circle cx="${x2}" cy="${y2}" r="2.1" fill="${fill}" clip-path="url(#${id})"/>`;
+    }
+  } else {
+    // Aspergillus: vesicle + radiating phialides
+    const vy = cy - 2;
+    body += `<line x1="${cx}" y1="${h-4}" x2="${cx}" y2="${vy}" stroke="var(--muted)" stroke-width="1.4"/>`;
+    body += `<ellipse cx="${cx}" cy="${vy}" rx="6" ry="7" fill="none" stroke="var(--muted)" stroke-width="1"/>`;
+    const n = 9;
+    for(let i=0;i<n;i++){
+      const angle = (i/n)*Math.PI*2;
+      const x2 = cx + Math.cos(angle)*11;
+      const y2 = vy + Math.sin(angle)*11;
+      body += `<circle cx="${x2}" cy="${y2}" r="1.8" fill="${fill}" clip-path="url(#${id})"/>`;
+    }
+  }
+  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+    <defs><clipPath id="${id}"><rect x="0" y="0" width="${w}" height="${h}"/></clipPath></defs>
+    ${body}
+  </svg>`;
+}
+
+/* ---------------- Rendering ---------------- */
+let expandedId = null; // accordion: only one card open at a time, click again to collapse
+
+function galleryHTML(images, emptyMsg){
+  if (!images || !images.length) return `<div class="gallery-empty">${emptyMsg}</div>`;
+  return `<div class="gallery">${images.map(img => `
+    <figure>
+      <img src="${img.url}" alt="${img.label}" loading="lazy" referrerpolicy="no-referrer">
+      <figcaption><b>${img.label}</b>${img.credit} · ${img.license}<br><a href="${img.page}" target="_blank" rel="noopener">source</a></figcaption>
+    </figure>`).join('')}</div>`;
+}
+
+function detailHTML(sp){
+  return `
+    <div class="detail-top">
+      <div class="icon">${conidiaIconSVG(sp, 64, 64)}</div>
+      <div>
+        <h3><i>${sp.genus} ${sp.epithet}</i></h3>
+        <div class="sub">${sp.common}</div>
+        <div class="badges">
+          <span class="badge">${sp.colony.growth} growth · ${sp.colony.diamMm}</span>
+          ${sp.thermo?'<span class="badge health">thermotolerant &gt;42°C</span>':''}
+          ${sp.tox?'<span class="badge tox">known mycotoxin producer</span>':''}
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Colony (MEA/CYA, 25°C, 7 days)</div>
+    <p style="font-size:.88rem;margin:0 0 4px;">${sp.colony.colorText}</p>
+    <dl class="traits">
+      <dt>Reverse</dt><dd>${sp.colony.reverse}</dd>
+    </dl>
+
+    <div class="section-title">Microscopy</div>
+    <dl class="traits">
+      <dt>Branching</dt><dd>${sp.branch}</dd>
+      <dt>Conidiophore</dt><dd>${sp.conidiophore}</dd>
+      ${sp.vesicle?`<dt>Vesicle</dt><dd>${sp.vesicle}</dd>`:''}
+      ${sp.metulae?`<dt>Metulae</dt><dd>${sp.metulae}</dd>`:''}
+      <dt>Phialides</dt><dd>${sp.phialides}</dd>
+      <dt>Conidia</dt><dd>${sp.conidia.shape.replace('-',' / ')}, ${sp.conidia.lenLo}–${sp.conidia.lenHi} × ${sp.conidia.widLo}–${sp.conidia.widHi} µm, ${sp.conidia.orn.replace('-',' ')}. ${sp.conidia.colorText}</dd>
+    </dl>
+
+    <div class="section-title">Macroscopic photos</div>
+    ${galleryHTML(sp.images && sp.images.macro, "No openly-licensed colony photo on a standard medium (MEA/CYA/V8) found yet for this species.")}
+
+    <div class="section-title">Microscopic photos</div>
+    ${galleryHTML(sp.images && sp.images.micro, "No openly-licensed micrograph found yet for this species.")}
+
+    <div class="section-title">Where it's found / ecology</div>
+    <p style="font-size:.88rem;margin:0;">${sp.ecology}</p>
+
+    <div class="section-title">Health note</div>
+    <div class="note">${sp.health}</div>
+  `;
+}
+
+function render(){
+  const Q = readQuery();
+  const minMatch = parseInt(document.getElementById('minMatch').value, 10) / 100;
+  document.getElementById('minMatchVal').textContent = document.getElementById('minMatch').value + '%';
+
+  const scored = SPECIES.map(sp => ({sp, s: score(sp, Q)}))
+    .filter(r => r.s >= minMatch)
+    .sort((a,b) => b.s - a.s || a.sp.epithet.localeCompare(b.sp.epithet));
+
+  const resultsEl = document.getElementById('results');
+  document.getElementById('resultCount').textContent = scored.length + ' / ' + SPECIES.length;
+
+  if (expandedId && !scored.find(r => r.sp.id === expandedId)) expandedId = null;
+
+  if (!scored.length){
+    resultsEl.innerHTML = '<div class="empty">No species clear the match threshold — widen filters or lower "Min. match".</div>';
+  } else {
+    resultsEl.innerHTML = scored.map(r => {
+      const isOpen = r.sp.id === expandedId;
+      return `
+      <div class="card-wrap ${isOpen?'expanded':''}" data-id="${r.sp.id}">
+        <div class="card">
+          <div class="icon">${conidiaIconSVG(r.sp, 40, 40)}</div>
+          <div class="info">
+            <div class="name"><i>${r.sp.genus} ${r.sp.epithet}</i> — ${r.sp.common}</div>
+            <div class="meta">${r.sp.colony.growth} growth · ${r.sp.conidia.shape.replace('-',' / ')} conidia, ${r.sp.conidia.lenLo}–${r.sp.conidia.lenHi} × ${r.sp.conidia.widLo}–${r.sp.conidia.widHi} µm</div>
+          </div>
+          <div class="score ${r.s<0.5?'low':''}">${Math.round(r.s*100)}%</div>
+          <div class="chevron">${isOpen?'▾':'▸'}</div>
+        </div>
+        ${isOpen ? `<div class="card-detail">${detailHTML(r.sp)}</div>` : ''}
+      </div>`;
+    }).join('');
+  }
+
+  resultsEl.querySelectorAll('.card').forEach(c => c.addEventListener('click', () => {
+    const wrap = c.closest('.card-wrap');
+    const id = wrap.dataset.id;
+    expandedId = (expandedId === id) ? null : id;
+    render();
+    if (expandedId) wrap.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }));
+}
+
+/* ---------------- Wire up ---------------- */
+document.querySelectorAll('#queryPanel select, #queryPanel input').forEach(el => {
+  el.addEventListener('input', render);
+  el.addEventListener('change', render);
+});
+document.getElementById('resetBtn').addEventListener('click', () => {
+  document.querySelectorAll('#queryPanel select').forEach(s => s.value = '');
+  document.querySelectorAll('#queryPanel input[type=checkbox]').forEach(c => c.checked = false);
+  document.querySelectorAll('#queryPanel input[type=number]').forEach(n => n.value = '');
+  document.getElementById('minMatch').value = 25;
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
