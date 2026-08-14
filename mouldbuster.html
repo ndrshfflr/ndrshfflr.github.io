@@ -25,12 +25,20 @@ a{color:var(--acc2)}
 header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
 h1{font-size:23px;margin:0;letter-spacing:-.02em;font-weight:650;color:#ffffff}
 h1 .x{color:var(--acc)}
-.sub{color:var(--dim);font-size:13px}
+.sub{color:var(--dim);font-size:13px;flex:1;min-width:220px}
+.langpick{display:flex;align-items:center;gap:7px;flex:none}
+.langpick label{font-size:11.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--dim2)}
+.langpick select{width:auto;padding:5px 8px;font-size:13px}
 .warnbar{
   margin:14px 0 18px;padding:10px 13px;border-radius:var(--r);
   background:var(--panel2);border:1px solid var(--acc);color:var(--ink);font-size:12.5px;line-height:1.5
 }
 .warnbar strong{color:var(--acc2)}
+.langbar{
+  margin:0 0 18px;padding:10px 13px;border-radius:var(--r);
+  background:#1a2229;border:1px solid #2d3f4c;color:#a8c6d9;font-size:12.5px;line-height:1.5;display:none
+}
+.langbar strong{color:#d0e4f0}
 
 .layout{display:grid;grid-template-columns:335px 1fr;gap:18px;align-items:start}
 @media(max-width:940px){.layout{grid-template-columns:1fr}}
@@ -49,10 +57,6 @@ input[type=number],select{
 }
 input:focus,select:focus{outline:none;border-color:var(--acc)}
 .fld{margin-bottom:11px}
-
-.qbox{background:var(--panel2);border:1px solid var(--line);border-radius:7px;
-  padding:8px 10px;font-size:12.5px;color:var(--dim);margin-bottom:11px}
-.qbox b{color:var(--acc2);font-variant-numeric:tabular-nums}
 
 .chips{display:flex;flex-wrap:wrap;gap:5px}
 .chip{
@@ -76,7 +80,6 @@ input:focus,select:focus{outline:none;border-color:var(--acc)}
 .rcount{font-size:12.5px;color:var(--dim)}
 
 .threshold{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--dim)}
-.threshold.disabled{opacity:.45}
 .threshold label{white-space:nowrap}
 .threshold input[type=range]{
   -webkit-appearance:none;appearance:none;width:120px;height:4px;border-radius:3px;
@@ -102,12 +105,12 @@ input:focus,select:focus{outline:none;border-color:var(--acc)}
 .rank{font-size:12px;color:var(--dim2);width:20px;flex:none;font-variant-numeric:tabular-nums}
 .spicon{flex:none;display:flex;align-items:center;line-height:0}
 .spicon-svg{display:block}
-.spicon-lg{flex:none}
 .nm{flex:1;min-width:0}
 .nm .sci{font-style:italic;font-weight:600;font-size:15px}
 .nm .au{font-style:normal;font-weight:400;color:var(--dim2);font-size:12px}
 .nm .dk{font-size:12.5px;color:var(--dim);margin-top:1px}
-.nm .syn{font-size:11.5px;color:var(--dim2);font-style:italic}
+.nm .vn{font-size:12.5px;color:var(--acc2);font-style:normal;font-weight:600}
+.nm .nolocal{font-size:11.5px;color:var(--dim2);font-style:italic}
 
 .score{flex:none;text-align:right;width:96px}
 .sval{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
@@ -117,8 +120,6 @@ input:focus,select:focus{outline:none;border-color:var(--acc)}
 .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
 .tag{font-size:11px;padding:2px 7px;border-radius:5px;background:var(--panel2);
   border:1px solid var(--line);color:var(--dim)}
-.tag.hit{border-color:#3d5c33;background:#1e2a1a;color:#a7cd94}
-.tag.miss{border-color:#5c3330;background:#2a1a19;color:#d99a91}
 .ed{font-size:11px;padding:2px 7px;border-radius:5px;font-weight:600}
 .ed.edible{background:#1e2a1a;color:#a7cd94;border:1px solid #3d5c33}
 .ed.caution{background:#2a2419;color:#d9bd8a;border:1px solid #5c4c2e}
@@ -134,18 +135,19 @@ input:focus,select:focus{outline:none;border-color:var(--acc)}
   border-radius:7px;border-left:2px solid var(--acc);margin-bottom:11px}
 .srcline{font-size:11.5px;color:var(--dim2);margin-bottom:10px}
 
-.hintbar{background:#1a2229;border:1px solid #2d3f4c;color:#a8c6d9;border-radius:var(--r);
-  padding:10px 13px;font-size:12.5px;line-height:1.5;margin-bottom:11px}
-.hintbar strong{color:#d0e4f0}
 .micro{margin-top:10px;margin-bottom:11px}
 .mgrid{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
 .mchip{font-size:11.5px;padding:3px 8px;border-radius:6px;background:var(--panel2);
   border:1px solid var(--line);color:var(--dim)}
 .mchip.species{border-color:#4a5c33;color:#c3d9a8;background:#1d2419}
-.mchip sup{font-size:9px;opacity:.8}
 .quote{font-size:12px;color:var(--dim);font-style:italic;margin-top:7px;
   padding-left:9px;border-left:2px solid var(--line)}
 .prov{font-size:11px;color:var(--dim2);margin-top:6px;line-height:1.45}
+
+.vtable{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:12.5px;margin-top:6px}
+.vtable .vl{color:var(--dim2);white-space:nowrap}
+.vtable .vv{color:var(--ink)}
+.vtable .vv.none{color:var(--dim2);font-style:italic}
 
 .photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:8px;margin-top:7px}
 .ph{background:var(--panel2);border:1px solid var(--line);border-radius:8px;overflow:hidden;
@@ -169,115 +171,126 @@ footer a{color:var(--dim)}
 
   <header>
     <h1>Spore<span class="x">x</span>plore: mouldbuster</h1>
-    <span class="sub">Microscopy-assisted identification for indoor <i>Penicillium</i> &amp; <i>Aspergillus</i> — the moulds most often implicated in water-damaged buildings.</span>
+    <span class="sub" id="subtitle"></span>
+    <div class="langpick">
+      <label for="lang">Language</label>
+      <select id="lang">
+        <option value="eng">English</option>
+        <option value="dan">Dansk</option>
+        <option value="swe">Svenska</option>
+        <option value="nob">Norsk (bokmål)</option>
+        <option value="fin">Suomi</option>
+        <option value="kal">Kalaallisut</option>
+        <option value="fao">Føroyskt</option>
+      </select>
+    </div>
   </header>
 
-  <div class="warnbar">
-    <strong>Not a diagnostic tool.</strong> Reliable mould identification requires culturing on standard media (MEA/CYA) at controlled temperature and a calibrated microscope. This app narrows candidates from morphology you can observe — it does not replace a mycology lab, and it should never be used to rule out health-relevant species. If anyone in the building has respiratory symptoms, or the affected area is large, get a professional assessment.
-  </div>
+  <div class="warnbar" id="warnbar"></div>
+  <div class="langbar" id="langbar"></div>
 
   <div class="layout">
     <div>
       <div class="card">
-        <h2>Query</h2>
+        <h2 id="lbl-query"></h2>
 
         <div class="fld">
-          <label class="f">Genus (conidiophore type)</label>
+          <label class="f" id="lbl-genus"></label>
           <select id="genus">
-            <option value="">Any / unsure</option>
-            <option value="Penicillium">Penicillium — verticillate brush ("penicillus")</option>
-            <option value="Aspergillus">Aspergillus — single vesicle, radiating phialides</option>
+            <option value="">·</option>
+            <option value="Penicillium">·</option>
+            <option value="Aspergillus">·</option>
           </select>
         </div>
 
         <div class="fld">
-          <label class="f">Spore (conidia) length (µm)</label>
+          <label class="f" id="lbl-len"></label>
           <div class="row">
-            <input type="number" id="cLenLo" step="0.1" min="1" max="10" placeholder="min">
-            <input type="number" id="cLenHi" step="0.1" min="1" max="10" placeholder="max">
+            <input type="number" id="cLenLo" step="0.1" min="1" max="10">
+            <input type="number" id="cLenHi" step="0.1" min="1" max="10">
           </div>
         </div>
 
         <div class="fld">
-          <label class="f">Spore (conidia) width (µm)</label>
+          <label class="f" id="lbl-wid"></label>
           <div class="row">
-            <input type="number" id="cWidLo" step="0.1" min="1" max="10" placeholder="min">
-            <input type="number" id="cWidHi" step="0.1" min="1" max="10" placeholder="max">
+            <input type="number" id="cWidLo" step="0.1" min="1" max="10">
+            <input type="number" id="cWidHi" step="0.1" min="1" max="10">
           </div>
         </div>
 
         <div class="fld">
-          <label class="f">Conidia shape</label>
+          <label class="f" id="lbl-shape"></label>
           <select id="cShape">
-            <option value="">Any</option>
-            <option value="globose">Globose (round)</option>
-            <option value="subglobose">Subglobose</option>
-            <option value="ellipsoidal">Ellipsoidal</option>
+            <option value="">·</option>
+            <option value="globose">·</option>
+            <option value="subglobose">·</option>
+            <option value="ellipsoidal">·</option>
           </select>
         </div>
 
         <div class="fld">
-          <label class="f">Conidial wall ornamentation</label>
+          <label class="f" id="lbl-orn"></label>
           <select id="cOrn">
-            <option value="">Any</option>
-            <option value="smooth">Smooth</option>
-            <option value="finely-rough">Finely roughened</option>
-            <option value="echinulate">Distinctly rough / echinulate (spiny)</option>
+            <option value="">·</option>
+            <option value="smooth">·</option>
+            <option value="finely-rough">·</option>
+            <option value="echinulate">·</option>
           </select>
         </div>
 
         <div class="fld">
-          <label class="f">Colony colour (obverse, 7d/25°C)</label>
+          <label class="f" id="lbl-colour"></label>
           <select id="colColor">
-            <option value="">Any</option>
-            <option value="blue-green">Blue-green / dull green</option>
-            <option value="yellow-green">Yellow-green / olive</option>
-            <option value="black">Black / dark brown</option>
-            <option value="variable">Variable (pink/salmon/beige/green)</option>
+            <option value="">·</option>
+            <option value="blue-green">·</option>
+            <option value="yellow-green">·</option>
+            <option value="black">·</option>
+            <option value="variable">·</option>
           </select>
         </div>
 
         <div class="fld">
-          <label class="f">Growth rate at 25°C</label>
+          <label class="f" id="lbl-growth"></label>
           <select id="growth">
-            <option value="">Any</option>
-            <option value="slow">Slow (colony &lt;30 mm / 7d)</option>
-            <option value="moderate">Moderate</option>
-            <option value="fast">Fast (colony &gt;45 mm / 7d)</option>
+            <option value="">·</option>
+            <option value="slow">·</option>
+            <option value="moderate">·</option>
+            <option value="fast">·</option>
           </select>
         </div>
 
         <div class="fld">
-          <label class="f">Substrate found on</label>
+          <label class="f" id="lbl-substrate"></label>
           <div class="chips" id="substrateChips">
-            <div class="chip" data-value="wallpaper">damp wallpaper/paint</div>
-            <div class="chip" data-value="wood">wood/timber</div>
-            <div class="chip" data-value="gypsum">gypsum board/drywall</div>
-            <div class="chip" data-value="hvac">HVAC ducts/dust</div>
-            <div class="chip" data-value="food">food residue</div>
-            <div class="chip" data-value="grout">tile grout/silicone</div>
+            <div class="chip" data-value="wallpaper"></div>
+            <div class="chip" data-value="wood"></div>
+            <div class="chip" data-value="gypsum"></div>
+            <div class="chip" data-value="hvac"></div>
+            <div class="chip" data-value="food"></div>
+            <div class="chip" data-value="grout"></div>
           </div>
         </div>
 
         <div class="fld">
-          <label class="f">Thermotolerant (grows &gt;42°C)</label>
+          <label class="f" id="lbl-thermo"></label>
           <select id="thermo">
-            <option value="">Any</option>
-            <option value="yes">Yes</option>
-            <option value="no">No / not notably</option>
+            <option value="">·</option>
+            <option value="yes">·</option>
+            <option value="no">·</option>
           </select>
         </div>
 
-        <button class="btn ghost" id="resetBtn">Reset all filters</button>
+        <button class="btn ghost" id="resetBtn"></button>
       </div>
     </div>
 
     <div>
       <div class="card">
         <div class="rhead">
-          <h2>Candidates <span class="rcount" id="resultCount"></span></h2>
+          <h2><span id="lbl-candidates"></span> <span class="rcount" id="resultCount"></span></h2>
           <div class="threshold">
-            <label for="minMatch">Min. match</label>
+            <label for="minMatch" id="lbl-minmatch"></label>
             <input type="range" id="minMatch" min="0" max="95" value="25">
             <span id="minMatchVal">25%</span>
           </div>
@@ -287,21 +300,342 @@ footer a{color:var(--dim)}
     </div>
   </div>
 
-  <footer>
-    Colony and microscopy figures compiled from standard mycological references (Pitt &amp; Hocking, <i>Fungi and Food Spoilage</i>; Samson et al., <i>Food and Indoor Fungi</i>) and cross-checked against
-    <a href="https://mycology.adelaide.edu.au/fungal-descriptions-and-antifungal-susceptibility/hyphomycetes-conidial-moulds/aspergillus" target="_blank">Mycology Online (Adelaide)</a> and
-    <a href="https://drfungus.org/knowledge-base/aspergillus-versicolor/" target="_blank">DoctorFungus</a>. Eight species, first release — flag any species you need added.
-    <br><br>
-    Photos are hotlinked from openly-licensed collections — CDC Public Health Image Library (public domain) and iNaturalist / GBIF / Mushroom Observer / Landcare Research NZ (CC BY or CC BY-NC, credited per image). We could not find freely-licensed photographs specifically on MEA, CYA, or V8 agar for most species — that level of specificity mostly lives in paywalled taxonomic monographs. Where the medium is known it's stated in the caption (mostly SDA for the CDC Aspergillus cultures); several Penicillium photos are field shots on natural substrate rather than lab culture.
-  </footer>
+  <footer id="footer"></footer>
 
 </div>
 
 <script>
-/* ---------------- Species data ---------------- */
+/* ============================================================
+   LANGUAGES
+   ------------------------------------------------------------
+   Translation confidence, stated honestly:
+     eng, dan, swe, nob  — high confidence
+     fin                 — good for UI chrome, mycological terms less certain
+     fao                 — moderate, unreviewed by a native speaker
+     kal (Kalaallisut)   — DELIBERATELY PARTIAL. Only high-confidence terms are
+                           translated; everything else falls back to English via
+                           t(). Inventing Greenlandic mycological vocabulary would
+                           be the same failure mode as inventing species names.
+   t(key) falls back eng -> key, so a partial dictionary degrades to English
+   rather than rendering blank or fabricated text.
+   ============================================================ */
+
+const I18N = {
+eng:{
+  subtitle:"Microscopy-assisted identification for indoor Penicillium & Aspergillus — the moulds most often implicated in water-damaged buildings.",
+  warnTitle:"Not a diagnostic tool.",
+  warnBody:"Reliable mould identification requires culturing on standard media (MEA/CYA) at controlled temperature and a calibrated microscope. This app narrows candidates from morphology you can observe — it does not replace a mycology lab, and it should never be used to rule out health-relevant species. If anyone in the building has respiratory symptoms, or the affected area is large, get a professional assessment.",
+  query:"Query",
+  genus:"Genus (conidiophore type)", anyUnsure:"Any / unsure",
+  penOpt:"Penicillium — verticillate brush (\"penicillus\")",
+  aspOpt:"Aspergillus — single vesicle, radiating phialides",
+  sporeLen:"Spore (conidia) length (µm)", sporeWid:"Spore (conidia) width (µm)",
+  min:"min", max:"max",
+  shape:"Conidia shape", any:"Any",
+  globose:"Globose (round)", subglobose:"Subglobose", ellipsoidal:"Ellipsoidal",
+  orn:"Conidial wall ornamentation",
+  ornSmooth:"Smooth", ornFine:"Finely roughened", ornEchin:"Distinctly rough / echinulate (spiny)",
+  colour:"Colony colour (obverse, 7d/25°C)",
+  colBlueGreen:"Blue-green / dull green", colYellowGreen:"Yellow-green / olive",
+  colBlack:"Black / dark brown", colVariable:"Variable (pink/salmon/beige/green)",
+  growth:"Growth rate at 25°C",
+  growthSlow:"Slow (colony <30 mm / 7d)", growthMod:"Moderate", growthFast:"Fast (colony >45 mm / 7d)",
+  gSlow:"slow", gMod:"moderate", gFast:"fast",
+  substrate:"Substrate found on",
+  subWallpaper:"damp wallpaper/paint", subWood:"wood/timber", subGypsum:"gypsum board/drywall",
+  subHvac:"HVAC ducts/dust", subFood:"food residue", subGrout:"tile grout/silicone",
+  thermo:"Thermotolerant (grows >42°C)", yes:"Yes", no:"No / not notably",
+  reset:"Reset all filters",
+  candidates:"Candidates", minMatch:"Min. match",
+  empty:"No species clear the match threshold — widen filters or lower \"Min. match\".",
+  dGrowth:"Growth (25°C)", dReverse:"Reverse", dConidiaSize:"Conidia size", dThermo:"Thermotolerant",
+  dColony:"Colony (obverse)", dMicroscopy:"Microscopy",
+  mBranching:"Branching", mConidiophore:"Conidiophore", mVesicle:"Vesicle",
+  mMetulae:"Metulae", mPhialides:"Phialides",
+  dEcology:"Where it's found / ecology", dHealth:"Health",
+  dMacro:"Macroscopic photos", dMicro:"Microscopic photos",
+  dVern:"Vernacular names (GBIF-verified)",
+  noMacro:"No openly-licensed colony photo on a standard medium (MEA/CYA/V8) found yet for this species.",
+  noMicro:"No openly-licensed micrograph found yet for this species.",
+  noVern:"no established name",
+  genusName:"genus name",
+  photoNote:"Photo medium (SDA / MEA / field substrate / unspecified) is noted per caption — see the footer for the full sourcing caveat.",
+  proseNote:"Scientific descriptions are kept in English in every language setting — see the footer for why.",
+  sevLow:"low health concern", sevModerate:"moderate health concern",
+  sevToxic:"mycotoxin producer", sevClinical:"clinically significant",
+  thermoTag:"thermotolerant",
+  langNoteKal:"<strong>Kalaallisut: partial translation.</strong> Only terms I could translate with confidence are shown in Greenlandic; everything else falls back to English. GBIF holds no Greenlandic vernacular name for any Penicillium or Aspergillus species, so all species appear under their scientific names. This is a real gap in the record, not a loading error.",
+  langNoteFao:"<strong>Føroyskt: unreviewed translation.</strong> The interface has been translated but not checked by a native speaker, and mycological terminology in particular may be off. GBIF holds no Faroese vernacular name for any Penicillium or Aspergillus species, so all species appear under their scientific names.",
+  langNoteNoNames:"<strong>Note.</strong> GBIF holds no vernacular name in this language for most species here — those appear under their scientific name, which is the correct way to refer to them.",
+  footer:"Colony and microscopy figures compiled from standard mycological references (Pitt &amp; Hocking, <i>Fungi and Food Spoilage</i>; Samson et al., <i>Food and Indoor Fungi</i>) and cross-checked against <a href=\"https://mycology.adelaide.edu.au/fungal-descriptions-and-antifungal-susceptibility/hyphomycetes-conidial-moulds/aspergillus\" target=\"_blank\">Mycology Online (Adelaide)</a> and <a href=\"https://drfungus.org/knowledge-base/aspergillus-versicolor/\" target=\"_blank\">DoctorFungus</a>.<br><br><b>On names.</b> Every vernacular name in this app comes from the GBIF vernacular-name API (<code>/species/{key}/vernacularNames</code>), retrieved 14 Aug 2026, and is shown only for the language GBIF records it under. Where GBIF holds no name, the app says so and shows the scientific name — no name has been translated, adapted or invented. Species-level names for these microfungi are genuinely sparse: there are none at all in Danish, Finnish, Greenlandic or Faroese, and only scattered Swedish and Norwegian ones. Genus-level names do exist in Danish and Swedish and are shown as such.<br><br><b>On descriptions.</b> The UI is translated into all seven languages, but the scientific descriptions stay in English throughout. Machine-translating ~290 technical mycological phrases into six languages without a way to verify them is exactly how wrong names get into an app in the first place.<br><br>Photos are hotlinked from openly-licensed collections — CDC Public Health Image Library (public domain) and iNaturalist / GBIF / Mushroom Observer / Landcare Research NZ (CC BY or CC BY-NC, credited per image). Freely-licensed photographs specifically on MEA, CYA or V8 agar could not be found for most species; where the medium is known it is stated in the caption."
+},
+
+dan:{
+  subtitle:"Mikroskopi-assisteret bestemmelse af indendørs Penicillium og Aspergillus — de skimmelsvampe der oftest optræder i fugtskadede bygninger.",
+  warnTitle:"Ikke et diagnostisk værktøj.",
+  warnBody:"Pålidelig bestemmelse af skimmelsvampe kræver dyrkning på standardmedier (MEA/CYA) ved kontrolleret temperatur og et kalibreret mikroskop. Denne app indsnævrer kandidater ud fra morfologi, du selv kan observere — den erstatter ikke et mykologisk laboratorium, og den bør aldrig bruges til at udelukke sundhedsrelevante arter. Hvis nogen i bygningen har luftvejssymptomer, eller det angrebne areal er stort, bør du få en professionel vurdering.",
+  query:"Søgekriterier",
+  genus:"Slægt (konidiebærertype)", anyUnsure:"Alle / usikker",
+  penOpt:"Penicillium — kvastformet konidiebærer (\"penicillus\")",
+  aspOpt:"Aspergillus — enkelt vesikel med udstrålende fialider",
+  sporeLen:"Sporelængde (konidier, µm)", sporeWid:"Sporebredde (konidier, µm)",
+  min:"min", max:"maks",
+  shape:"Konidieform", any:"Alle",
+  globose:"Kugleformet (globos)", subglobose:"Næsten kugleformet (subglobos)", ellipsoidal:"Ellipsoid",
+  orn:"Konidievæggens ornamentering",
+  ornSmooth:"Glat", ornFine:"Fint ru", ornEchin:"Tydeligt ru / pigget (echinulat)",
+  colour:"Koloniens farve (overside, 7 d/25 °C)",
+  colBlueGreen:"Blågrøn / mat grøn", colYellowGreen:"Gulgrøn / oliven",
+  colBlack:"Sort / mørkebrun", colVariable:"Varierende (lyserød/laksefarvet/beige/grøn)",
+  growth:"Væksthastighed ved 25 °C",
+  growthSlow:"Langsom (koloni <30 mm / 7 d)", growthMod:"Moderat", growthFast:"Hurtig (koloni >45 mm / 7 d)",
+  gSlow:"langsom", gMod:"moderat", gFast:"hurtig",
+  substrate:"Fundet på substrat",
+  subWallpaper:"fugtigt tapet/maling", subWood:"træ/tømmer", subGypsum:"gipsplade",
+  subHvac:"ventilationskanaler/støv", subFood:"madrester", subGrout:"flisefuger/silikone",
+  thermo:"Termotolerant (vokser >42 °C)", yes:"Ja", no:"Nej / ikke udpræget",
+  reset:"Nulstil alle filtre",
+  candidates:"Kandidater", minMatch:"Min. match",
+  empty:"Ingen arter når over matchgrænsen — udvid filtrene eller sænk \"Min. match\".",
+  dGrowth:"Vækst (25 °C)", dReverse:"Underside", dConidiaSize:"Konidiestørrelse", dThermo:"Termotolerant",
+  dColony:"Koloni (overside)", dMicroscopy:"Mikroskopi",
+  mBranching:"Forgrening", mConidiophore:"Konidiebærer", mVesicle:"Vesikel",
+  mMetulae:"Metulae", mPhialides:"Fialider",
+  dEcology:"Forekomst / økologi", dHealth:"Sundhed",
+  dMacro:"Makroskopiske billeder", dMicro:"Mikroskopiske billeder",
+  dVern:"Folkelige navne (verificeret via GBIF)",
+  noMacro:"Der er endnu ikke fundet et frit licenseret kolonifoto på et standardmedie (MEA/CYA/V8) for denne art.",
+  noMicro:"Der er endnu ikke fundet et frit licenseret mikroskopifoto for denne art.",
+  noVern:"intet etableret navn",
+  genusName:"slægtsnavn",
+  photoNote:"Fotoets dyrkningsmedie (SDA / MEA / naturligt substrat / uoplyst) står i billedteksten — se foden for det fulde forbehold.",
+  proseNote:"De videnskabelige beskrivelser er bevaret på engelsk i alle sprogindstillinger — se foden for begrundelsen.",
+  sevLow:"lav sundhedsrisiko", sevModerate:"moderat sundhedsrisiko",
+  sevToxic:"mykotoksinproducent", sevClinical:"klinisk betydningsfuld",
+  thermoTag:"termotolerant",
+  langNoteNoNames:"<strong>Bemærk.</strong> GBIF har ingen dansk artsnavne for Penicillium- og Aspergillus-arterne i denne app — kun slægtsnavne (Penselskimmel, Vandkandeskimmel). Arterne vises derfor under deres videnskabelige navne, hvilket er den korrekte måde at omtale dem på.",
+  footer:"Koloni- og mikroskopidata er sammenstillet fra mykologiske standardværker (Pitt &amp; Hocking, <i>Fungi and Food Spoilage</i>; Samson et al., <i>Food and Indoor Fungi</i>) og krydstjekket mod <a href=\"https://mycology.adelaide.edu.au/fungal-descriptions-and-antifungal-susceptibility/hyphomycetes-conidial-moulds/aspergillus\" target=\"_blank\">Mycology Online (Adelaide)</a> og <a href=\"https://drfungus.org/knowledge-base/aspergillus-versicolor/\" target=\"_blank\">DoctorFungus</a>.<br><br><b>Om navnene.</b> Alle folkelige navne i denne app kommer fra GBIF's vernacular-name API (<code>/species/{key}/vernacularNames</code>), hentet 14. august 2026, og vises kun under det sprog, GBIF registrerer dem på. Hvor GBIF ikke har et navn, siger appen det og viser det videnskabelige navn — intet navn er oversat, tilpasset eller opfundet. Artsnavne for disse mikrosvampe er reelt sparsomme: der findes ingen på dansk, finsk, grønlandsk eller færøsk, og kun spredte på svensk og norsk. Slægtsnavne findes på dansk og svensk og vises som sådan.<br><br><b>Om beskrivelserne.</b> Brugerfladen er oversat til alle syv sprog, men de videnskabelige beskrivelser er bevaret på engelsk. At maskinoversætte ~290 fagmykologiske formuleringer til seks sprog uden mulighed for verifikation er præcis sådan forkerte navne ender i en app.<br><br>Fotos er hotlinket fra frit licenserede samlinger — CDC Public Health Image Library (public domain) samt iNaturalist / GBIF / Mushroom Observer / Landcare Research NZ (CC BY eller CC BY-NC, krediteret pr. billede). Frit licenserede fotos specifikt på MEA, CYA eller V8 kunne ikke findes for de fleste arter; hvor mediet kendes, står det i billedteksten."
+},
+
+swe:{
+  subtitle:"Mikroskopistödd bestämning av inomhus-Penicillium och Aspergillus — de mögelsvampar som oftast förekommer i fuktskadade byggnader.",
+  warnTitle:"Inte ett diagnostiskt verktyg.",
+  warnBody:"Tillförlitlig bestämning av mögelsvampar kräver odling på standardmedier (MEA/CYA) vid kontrollerad temperatur och ett kalibrerat mikroskop. Appen smalnar av kandidater utifrån morfologi du själv kan observera — den ersätter inte ett mykologiskt laboratorium och bör aldrig användas för att utesluta hälsorelevanta arter. Om någon i byggnaden har luftvägssymtom, eller om det angripna området är stort, bör du anlita en fackman.",
+  query:"Sökkriterier",
+  genus:"Släkte (konidiebärartyp)", anyUnsure:"Alla / osäker",
+  penOpt:"Penicillium — penselformad konidiebärare (\"penicillus\")",
+  aspOpt:"Aspergillus — enkel vesikel med utstrålande fialider",
+  sporeLen:"Sporlängd (konidier, µm)", sporeWid:"Sporbredd (konidier, µm)",
+  min:"min", max:"max",
+  shape:"Konidieform", any:"Alla",
+  globose:"Klotrund (globos)", subglobose:"Nästan klotrund (subglobos)", ellipsoidal:"Ellipsoid",
+  orn:"Konidieväggens ornamentering",
+  ornSmooth:"Slät", ornFine:"Fint skrovlig", ornEchin:"Tydligt skrovlig / taggig (echinulat)",
+  colour:"Kolonins färg (ovansida, 7 d/25 °C)",
+  colBlueGreen:"Blågrön / matt grön", colYellowGreen:"Gulgrön / oliv",
+  colBlack:"Svart / mörkbrun", colVariable:"Varierande (rosa/laxfärgad/beige/grön)",
+  growth:"Tillväxthastighet vid 25 °C",
+  growthSlow:"Långsam (koloni <30 mm / 7 d)", growthMod:"Måttlig", growthFast:"Snabb (koloni >45 mm / 7 d)",
+  gSlow:"långsam", gMod:"måttlig", gFast:"snabb",
+  substrate:"Funnen på substrat",
+  subWallpaper:"fuktig tapet/färg", subWood:"trä/virke", subGypsum:"gipsskiva",
+  subHvac:"ventilationskanaler/damm", subFood:"matrester", subGrout:"kakelfog/silikon",
+  thermo:"Termotolerant (växer >42 °C)", yes:"Ja", no:"Nej / inte utpräglat",
+  reset:"Återställ alla filter",
+  candidates:"Kandidater", minMatch:"Min. match",
+  empty:"Inga arter når över matchgränsen — vidga filtren eller sänk \"Min. match\".",
+  dGrowth:"Tillväxt (25 °C)", dReverse:"Undersida", dConidiaSize:"Konidiestorlek", dThermo:"Termotolerant",
+  dColony:"Koloni (ovansida)", dMicroscopy:"Mikroskopi",
+  mBranching:"Förgrening", mConidiophore:"Konidiebärare", mVesicle:"Vesikel",
+  mMetulae:"Metulae", mPhialides:"Fialider",
+  dEcology:"Förekomst / ekologi", dHealth:"Hälsa",
+  dMacro:"Makroskopiska bilder", dMicro:"Mikroskopiska bilder",
+  dVern:"Trivialnamn (verifierade via GBIF)",
+  noMacro:"Inget fritt licensierat kolonifoto på standardmedium (MEA/CYA/V8) har hittats för denna art ännu.",
+  noMicro:"Inget fritt licensierat mikroskopifoto har hittats för denna art ännu.",
+  noVern:"inget etablerat namn",
+  genusName:"släktnamn",
+  photoNote:"Fotots odlingsmedium (SDA / MEA / naturligt substrat / ej angivet) anges i bildtexten — se foten för hela förbehållet.",
+  proseNote:"De vetenskapliga beskrivningarna behålls på engelska i alla språkinställningar — se foten för skälet.",
+  sevLow:"låg hälsorisk", sevModerate:"måttlig hälsorisk",
+  sevToxic:"mykotoxinproducent", sevClinical:"kliniskt betydelsefull",
+  thermoTag:"termotolerant",
+  langNoteNoNames:"<strong>Observera.</strong> GBIF har svenska trivialnamn för endast två av arterna här (Aspergillus niger, A. flavus). Övriga visas under sina vetenskapliga namn, vilket är det korrekta sättet att benämna dem.",
+  footer:"Koloni- och mikroskopiuppgifter är sammanställda från mykologiska standardverk (Pitt &amp; Hocking, <i>Fungi and Food Spoilage</i>; Samson et al., <i>Food and Indoor Fungi</i>) och korskontrollerade mot <a href=\"https://mycology.adelaide.edu.au/fungal-descriptions-and-antifungal-susceptibility/hyphomycetes-conidial-moulds/aspergillus\" target=\"_blank\">Mycology Online (Adelaide)</a> och <a href=\"https://drfungus.org/knowledge-base/aspergillus-versicolor/\" target=\"_blank\">DoctorFungus</a>.<br><br><b>Om namnen.</b> Alla trivialnamn i appen kommer från GBIF:s vernacular-name-API (<code>/species/{key}/vernacularNames</code>), hämtat 14 augusti 2026, och visas endast under det språk GBIF registrerar dem på. Där GBIF saknar namn säger appen det och visar det vetenskapliga namnet — inget namn har översatts, anpassats eller uppfunnits. Artnamn för dessa mikrosvampar är genuint sparsamma: det finns inga alls på danska, finska, grönländska eller färöiska, och endast spridda på svenska och norska.<br><br><b>Om beskrivningarna.</b> Gränssnittet är översatt till alla sju språk, men de vetenskapliga beskrivningarna behålls på engelska. Att maskinöversätta ~290 fackmykologiska formuleringar till sex språk utan möjlighet att verifiera dem är precis så felaktiga namn hamnar i en app.<br><br>Foton är hotlänkade från fritt licensierade samlingar — CDC Public Health Image Library (public domain) samt iNaturalist / GBIF / Mushroom Observer / Landcare Research NZ (CC BY eller CC BY-NC, krediterade per bild)."
+},
+
+nob:{
+  subtitle:"Mikroskopistøttet bestemmelse av innendørs Penicillium og Aspergillus — muggsoppene som oftest opptrer i fuktskadde bygninger.",
+  warnTitle:"Ikke et diagnostisk verktøy.",
+  warnBody:"Pålitelig bestemmelse av muggsopp krever dyrking på standardmedier (MEA/CYA) ved kontrollert temperatur og et kalibrert mikroskop. Appen snevrer inn kandidater ut fra morfologi du selv kan observere — den erstatter ikke et mykologisk laboratorium, og bør aldri brukes til å utelukke helserelevante arter. Hvis noen i bygningen har luftveissymptomer, eller det angrepne arealet er stort, bør du få en fagkyndig vurdering.",
+  query:"Søkekriterier",
+  genus:"Slekt (konidiebærertype)", anyUnsure:"Alle / usikker",
+  penOpt:"Penicillium — penselformet konidiebærer (\"penicillus\")",
+  aspOpt:"Aspergillus — enkel vesikkel med utstrålende fialider",
+  sporeLen:"Sporelengde (konidier, µm)", sporeWid:"Sporebredde (konidier, µm)",
+  min:"min", max:"maks",
+  shape:"Konidieform", any:"Alle",
+  globose:"Kuleformet (globos)", subglobose:"Nesten kuleformet (subglobos)", ellipsoidal:"Ellipsoid",
+  orn:"Konidieveggens ornamentering",
+  ornSmooth:"Glatt", ornFine:"Fint ru", ornEchin:"Tydelig ru / pigget (echinulat)",
+  colour:"Koloniens farge (overside, 7 d/25 °C)",
+  colBlueGreen:"Blågrønn / matt grønn", colYellowGreen:"Gulgrønn / oliven",
+  colBlack:"Svart / mørkebrun", colVariable:"Varierende (rosa/laksefarget/beige/grønn)",
+  growth:"Veksthastighet ved 25 °C",
+  growthSlow:"Langsom (koloni <30 mm / 7 d)", growthMod:"Moderat", growthFast:"Rask (koloni >45 mm / 7 d)",
+  gSlow:"langsom", gMod:"moderat", gFast:"rask",
+  substrate:"Funnet på substrat",
+  subWallpaper:"fuktig tapet/maling", subWood:"tre/trevirke", subGypsum:"gipsplate",
+  subHvac:"ventilasjonskanaler/støv", subFood:"matrester", subGrout:"flisefuger/silikon",
+  thermo:"Termotolerant (vokser >42 °C)", yes:"Ja", no:"Nei / ikke utpreget",
+  reset:"Nullstill alle filtre",
+  candidates:"Kandidater", minMatch:"Min. match",
+  empty:"Ingen arter når over matchgrensen — utvid filtrene eller senk \"Min. match\".",
+  dGrowth:"Vekst (25 °C)", dReverse:"Underside", dConidiaSize:"Konidiestørrelse", dThermo:"Termotolerant",
+  dColony:"Koloni (overside)", dMicroscopy:"Mikroskopi",
+  mBranching:"Forgrening", mConidiophore:"Konidiebærer", mVesicle:"Vesikkel",
+  mMetulae:"Metulae", mPhialides:"Fialider",
+  dEcology:"Forekomst / økologi", dHealth:"Helse",
+  dMacro:"Makroskopiske bilder", dMicro:"Mikroskopiske bilder",
+  dVern:"Norske navn (verifisert via GBIF)",
+  noMacro:"Det er ennå ikke funnet et fritt lisensiert kolonifoto på standardmedium (MEA/CYA/V8) for denne arten.",
+  noMicro:"Det er ennå ikke funnet et fritt lisensiert mikroskopifoto for denne arten.",
+  noVern:"ikke noe etablert navn",
+  genusName:"slektsnavn",
+  photoNote:"Fotoets dyrkingsmedium (SDA / MEA / naturlig substrat / uoppgitt) står i bildeteksten — se foten for hele forbeholdet.",
+  proseNote:"De vitenskapelige beskrivelsene beholdes på engelsk i alle språkinnstillinger — se foten for begrunnelsen.",
+  sevLow:"lav helserisiko", sevModerate:"moderat helserisiko",
+  sevToxic:"mykotoksinprodusent", sevClinical:"klinisk betydningsfull",
+  thermoTag:"termotolerant",
+  langNoteNoNames:"<strong>Merk.</strong> Norsk er det språket med best dekning her — GBIF har norske navn for seks av åtte arter. De to uten vises under sine vitenskapelige navn.",
+  footer:"Koloni- og mikroskopidata er sammenstilt fra mykologiske standardverk (Pitt &amp; Hocking, <i>Fungi and Food Spoilage</i>; Samson et al., <i>Food and Indoor Fungi</i>) og krysssjekket mot <a href=\"https://mycology.adelaide.edu.au/fungal-descriptions-and-antifungal-susceptibility/hyphomycetes-conidial-moulds/aspergillus\" target=\"_blank\">Mycology Online (Adelaide)</a> og <a href=\"https://drfungus.org/knowledge-base/aspergillus-versicolor/\" target=\"_blank\">DoctorFungus</a>.<br><br><b>Om navnene.</b> Alle folkelige navn i appen kommer fra GBIFs vernacular-name-API (<code>/species/{key}/vernacularNames</code>), hentet 14. august 2026, og vises kun under språket GBIF registrerer dem på. Der GBIF mangler navn, sier appen det og viser det vitenskapelige navnet — ingen navn er oversatt, tilpasset eller oppfunnet.<br><br><b>Om beskrivelsene.</b> Grensesnittet er oversatt til alle sju språk, men de vitenskapelige beskrivelsene beholdes på engelsk. Å maskinoversette ~290 fagmykologiske formuleringer til seks språk uten mulighet for verifisering er nøyaktig slik feil navn havner i en app.<br><br>Bilder er hotlinket fra fritt lisensierte samlinger — CDC Public Health Image Library (public domain) samt iNaturalist / GBIF / Mushroom Observer / Landcare Research NZ (CC BY eller CC BY-NC, kreditert per bilde)."
+},
+
+fin:{
+  subtitle:"Mikroskopiavusteinen tunnistus sisätilojen Penicillium- ja Aspergillus-homeille — yleisimmin kosteusvaurioituneissa rakennuksissa esiintyville.",
+  warnTitle:"Ei diagnostinen työkalu.",
+  warnBody:"Luotettava homeiden tunnistus vaatii kasvatuksen vakioelatusalustoilla (MEA/CYA) hallitussa lämpötilassa sekä kalibroidun mikroskoopin. Sovellus rajaa vaihtoehtoja itse havaittavan morfologian perusteella — se ei korvaa mykologista laboratoriota eikä sitä pidä käyttää terveydelle merkityksellisten lajien poissulkemiseen. Jos rakennuksessa on hengitystieoireita tai vaurioalue on laaja, hanki ammattilaisen arvio.",
+  query:"Hakuehdot",
+  genus:"Suku (kuromankannattimen tyyppi)", anyUnsure:"Kaikki / epävarma",
+  penOpt:"Penicillium — siveltimenmuotoinen kuromankannatin (\"penicillus\")",
+  aspOpt:"Aspergillus — yksi rakkula, säteittäiset fialidit",
+  sporeLen:"Itiön (kuroman) pituus (µm)", sporeWid:"Itiön (kuroman) leveys (µm)",
+  min:"min", max:"maks",
+  shape:"Kuroman muoto", any:"Kaikki",
+  globose:"Pallomainen (globosi)", subglobose:"Lähes pallomainen (subglobosi)", ellipsoidal:"Ellipsoidinen",
+  orn:"Kuroman seinämän ornamentaatio",
+  ornSmooth:"Sileä", ornFine:"Hienokarhea", ornEchin:"Selvästi karhea / piikkinen (echinulaatti)",
+  colour:"Pesäkkeen väri (yläpuoli, 7 vrk/25 °C)",
+  colBlueGreen:"Sinivihreä / himmeän vihreä", colYellowGreen:"Keltavihreä / oliivi",
+  colBlack:"Musta / tummanruskea", colVariable:"Vaihteleva (vaaleanpunainen/lohenvärinen/beige/vihreä)",
+  growth:"Kasvunopeus 25 °C:ssa",
+  growthSlow:"Hidas (pesäke <30 mm / 7 vrk)", growthMod:"Kohtalainen", growthFast:"Nopea (pesäke >45 mm / 7 vrk)",
+  gSlow:"hidas", gMod:"kohtalainen", gFast:"nopea",
+  substrate:"Kasvualusta, jolta löydetty",
+  subWallpaper:"kostea tapetti/maali", subWood:"puu/puutavara", subGypsum:"kipsilevy",
+  subHvac:"ilmanvaihtokanavat/pöly", subFood:"ruoantähteet", subGrout:"laattasaumat/silikoni",
+  thermo:"Lämmönkestävä (kasvaa >42 °C)", yes:"Kyllä", no:"Ei / ei erityisesti",
+  reset:"Nollaa kaikki suodattimet",
+  candidates:"Ehdokkaat", minMatch:"Vähimmäisosuma",
+  empty:"Yksikään laji ei ylitä osumarajaa — laajenna suodattimia tai laske vähimmäisosumaa.",
+  dGrowth:"Kasvu (25 °C)", dReverse:"Alapuoli", dConidiaSize:"Kuroman koko", dThermo:"Lämmönkestävä",
+  dColony:"Pesäke (yläpuoli)", dMicroscopy:"Mikroskopia",
+  mBranching:"Haaroittuminen", mConidiophore:"Kuromankannatin", mVesicle:"Rakkula",
+  mMetulae:"Metulat", mPhialides:"Fialidit",
+  dEcology:"Esiintyminen / ekologia", dHealth:"Terveys",
+  dMacro:"Makroskooppiset kuvat", dMicro:"Mikroskooppiset kuvat",
+  dVern:"Kansankieliset nimet (GBIF-varmennetut)",
+  noMacro:"Tälle lajille ei ole vielä löytynyt vapaasti lisensoitua pesäkekuvaa vakioalustalla (MEA/CYA/V8).",
+  noMicro:"Tälle lajille ei ole vielä löytynyt vapaasti lisensoitua mikroskooppikuvaa.",
+  noVern:"ei vakiintunutta nimeä",
+  genusName:"suvun nimi",
+  photoNote:"Kuvan kasvualusta (SDA / MEA / luonnollinen alusta / ei ilmoitettu) mainitaan kuvatekstissä.",
+  proseNote:"Tieteelliset kuvaukset säilytetään englanniksi kaikilla kieliasetuksilla — perustelu alaviitteessä.",
+  sevLow:"vähäinen terveysriski", sevModerate:"kohtalainen terveysriski",
+  sevToxic:"mykotoksiinin tuottaja", sevClinical:"kliinisesti merkittävä",
+  thermoTag:"lämmönkestävä",
+  langNoteNoNames:"<strong>Huomio.</strong> GBIF ei sisällä yhtään suomenkielistä lajinimeä näille Penicillium- ja Aspergillus-lajeille, joten kaikki lajit esitetään tieteellisillä nimillään. Tämä on todellinen aukko aineistossa, ei latausvirhe.",
+  footer:"Pesäke- ja mikroskopiatiedot on koottu mykologian vakioteoksista (Pitt &amp; Hocking, <i>Fungi and Food Spoilage</i>; Samson ym., <i>Food and Indoor Fungi</i>) ja ristiintarkistettu lähteitä <a href=\"https://mycology.adelaide.edu.au/fungal-descriptions-and-antifungal-susceptibility/hyphomycetes-conidial-moulds/aspergillus\" target=\"_blank\">Mycology Online (Adelaide)</a> ja <a href=\"https://drfungus.org/knowledge-base/aspergillus-versicolor/\" target=\"_blank\">DoctorFungus</a> vasten.<br><br><b>Nimistä.</b> Kaikki sovelluksen kansankieliset nimet ovat peräisin GBIF:n vernacular-name-rajapinnasta (<code>/species/{key}/vernacularNames</code>), haettu 14.8.2026, ja ne näytetään vain sillä kielellä, jolle GBIF ne kirjaa. Missä GBIF:llä ei ole nimeä, sovellus kertoo sen ja näyttää tieteellisen nimen — yhtään nimeä ei ole käännetty, mukautettu tai keksitty. Suomenkielisiä lajinimiä näille mikrosienille ei ole lainkaan.<br><br><b>Kuvauksista.</b> Käyttöliittymä on käännetty kaikille seitsemälle kielelle, mutta tieteelliset kuvaukset säilyvät englanniksi. Noin 290 mykologisen erikoisilmauksen konekääntäminen kuudelle kielelle ilman varmennusmahdollisuutta on juuri se tapa, jolla virheelliset nimet päätyvät sovellukseen."
+},
+
+/* Kalaallisut — deliberately partial; untranslated keys fall back to English. */
+kal:{
+  query:"Ujarlerneq",
+  any:"Tamarmik", anyUnsure:"Tamarmik / nalunngilaq",
+  yes:"Aap", no:"Naamik",
+  colour:"Qalipaataa",
+  min:"minnerpaaq", max:"annerpaaq",
+  candidates:"Immikkoortut",
+  reset:"Tamaasa nutaamik aallartikkit",
+  dHealth:"Peqqissuseq",
+  langNoteKal:"<strong>Kalaallisut: partial translation.</strong> Only terms translatable with confidence are shown in Greenlandic; everything else falls back to English. GBIF holds no Greenlandic vernacular name for any Penicillium or Aspergillus species, so all species appear under their scientific names. This is a real gap in the record, not a loading error."
+},
+
+fao:{
+  subtitle:"Mikroskop-stuðlað eyðmerking av innandura Penicillium og Aspergillus — teimum myglusløgunum sum oftast eru í vátaskaddum bygningum.",
+  warnTitle:"Ikki eitt diagnostiskt amboð.",
+  warnBody:"Álítandi eyðmerking av myglu krevur rakstur á vanligum vaksialtum (MEA/CYA) við stýrdum hita og eitt kalibrerað mikroskop. Hetta amboðið avmarkar møguleikar út frá formfrøði tú sjálvur kanst síggja — tað kemur ikki í staðin fyri eitt mykologiskt rannsóknarstovu, og tað eigur ongantíð at verða nýtt til at útiloka sløg sum hava týdning fyri heilsuna. Hevur onkur í bygninginum andingartrupulleikar, ella er økið stórt, fá tá ein fakmann at meta um tað.",
+  query:"Leitingarkrøv",
+  genus:"Ætt (slag av konidiibera)", anyUnsure:"Øll / óvist",
+  sporeLen:"Sporulongd (konidiir, µm)", sporeWid:"Sporubreidd (konidiir, µm)",
+  min:"minst", max:"mest",
+  shape:"Konidiiform", any:"Øll",
+  globose:"Bollutur (globos)", subglobose:"Næstan bollutur (subglobos)", ellipsoidal:"Ellipsuformaður",
+  orn:"Prýði á konidiiveggi",
+  ornSmooth:"Slættur", ornFine:"Fínt ruggutur", ornEchin:"Greitt ruggutur / broddutur (echinulat)",
+  colour:"Litur á kolonii (ovasíða, 7 d/25 °C)",
+  colBlueGreen:"Blágrønur / dupur grønur", colYellowGreen:"Gulgrønur / oliv",
+  colBlack:"Svartur / myrkabrúnur", colVariable:"Broytiligur (rósa/laksalitur/beige/grønur)",
+  growth:"Vakstrarferð við 25 °C",
+  growthSlow:"Seinur (kolonii <30 mm / 7 d)", growthMod:"Miðal", growthFast:"Skjótur (kolonii >45 mm / 7 d)",
+  gSlow:"seinur", gMod:"miðal", gFast:"skjótur",
+  substrate:"Funnin á undirlagi",
+  subWallpaper:"vátt vegglím/máling", subWood:"viður/timbur", subGypsum:"gipsplata",
+  subHvac:"luftrásir/dust", subFood:"matarleivdir", subGrout:"flísafúgur/silikon",
+  thermo:"Hitatolandi (veksur >42 °C)", yes:"Ja", no:"Nei / ikki serliga",
+  reset:"Nullstilla øll filtur",
+  candidates:"Møguleikar", minMatch:"Minsta samsvar",
+  empty:"Onki slag røkkur markinum — víðka filturini ella lækka minsta samsvar.",
+  dGrowth:"Vøkstur (25 °C)", dReverse:"Undirsíða", dConidiaSize:"Konidiistødd", dThermo:"Hitatolandi",
+  dColony:"Kolonii (ovasíða)", dMicroscopy:"Mikroskopi",
+  mBranching:"Greining", mConidiophore:"Konidiiberi", mVesicle:"Vesikul",
+  mMetulae:"Metulae", mPhialides:"Fialidir",
+  dEcology:"Hvar tað finst / økologi", dHealth:"Heilsa",
+  dMacro:"Makroskopiskar myndir", dMicro:"Mikroskopiskar myndir",
+  dVern:"Fólkanøvn (váttað gjøgnum GBIF)",
+  noVern:"onki fast navn",
+  genusName:"ættarnavn",
+  sevLow:"lítil heilsuváði", sevModerate:"miðal heilsuváði",
+  sevToxic:"mykotoksin-framleiðari", sevClinical:"kliniskt týdningarmikil",
+  thermoTag:"hitatolandi",
+  langNoteFao:"<strong>Føroyskt: ókannað umseting.</strong> Brúkaramyndin er umsett men ikki kannað av einum føroyskum málkønum, og serliga mykologisk orðatøk kunnu vera skeiv. GBIF hevur onki føroyskt navn fyri nakað Penicillium- ella Aspergillus-slag, so øll sløg standa við sínum vísindaliga navni."
+}
+};
+
+let LANG = "eng";
+function t(k){
+  const d = I18N[LANG];
+  if (d && d[k] != null) return d[k];
+  return I18N.eng[k] != null ? I18N.eng[k] : k;
+}
+
+/* ============================================================
+   VERNACULAR NAMES — GBIF /species/{key}/vernacularNames
+   Retrieved 14 Aug 2026. An absent language key means GBIF holds
+   NO name in that language. Do not fill these in by translating
+   the English or the scientific name: an invented vernacular name
+   is worse than no name, because it looks authoritative.
+   ============================================================ */
+const GENUS_VERN = {
+  Penicillium:{ gbifKey:7635114, dan:["Penselskimmel"], swe:["penselmögel","grönmögel"], nob:["penselmuggsopper"] },
+  Aspergillus:{ gbifKey:8884233, dan:["Vandkandeskimmel"], swe:["borstmögel","borstmögelsläktet"] }
+};
+
 const SPECIES = [
   {
-    id:"pen-chrysogenum", genus:"Penicillium", epithet:"chrysogenum", common:"Common green mould",
+    id:"pen-chrysogenum", genus:"Penicillium", epithet:"chrysogenum", gbifKey:3466349,
+    descriptor:"common green mould",
+    vern:{ nob:["penicillinmugg"] },
     colony:{color:"blue-green", colorText:"Dull blue-green, velvety, white margin; often a yellow pigment diffuses into the agar; clear to yellowish exudate droplets.",
       reverse:"Yellow to yellowish-brown.", diamMm:"25–45 mm / 7d", growth:"moderate"},
     branch:"terverticillate–biverticillate (mixed)",
@@ -312,7 +646,7 @@ const SPECIES = [
     thermo:false,
     substrate:["wallpaper","food","gypsum"],
     ecology:"One of the most common indoor moulds worldwide — damp wallpaper, dust, spoiled food. The species that yielded the original penicillin strain, though wild indoor isolates are not therapeutic sources.",
-    health:"Common allergen; low acute toxin concern relative to A. flavus/A. fumigatus.", tox:false, sev:"edible",
+    health:"Common allergen; low acute toxin concern relative to A. flavus/A. fumigatus.", sev:"edible",
     images:{
       macro:[{url:"https://inaturalist-open-data.s3.amazonaws.com/photos/223743132/original.jpeg", label:"Field/substrate colony (medium unspecified — not a lab agar plate)", license:"CC BY-NC 4.0", credit:"Josh McGinnis, iNaturalist", page:"https://www.inaturalist.org/observations/131474030"}],
       micro:[
@@ -322,7 +656,9 @@ const SPECIES = [
     }
   },
   {
-    id:"pen-expansum", genus:"Penicillium", epithet:"expansum", common:"Blue mould rot",
+    id:"pen-expansum", genus:"Penicillium", epithet:"expansum", gbifKey:2597789,
+    descriptor:"blue mould rot",
+    vern:{ nob:["eplepenselmugg"] },
     colony:{color:"blue-green", colorText:"Dull green to greyish turquoise, floccose, white margin, clear exudate.",
       reverse:"Pale to yellowish, sometimes brownish.", diamMm:"40–60 mm / 7d", growth:"fast"},
     branch:"terverticillate",
@@ -333,14 +669,16 @@ const SPECIES = [
     thermo:false,
     substrate:["wood","wallpaper","food"],
     ecology:"Classic fruit blue-mould rot; indoors found on damp wood and wallpaper paste. Produces a strong musty odour and the mycotoxin patulin.",
-    health:"Patulin producer — avoid handling contaminated food/material without protection.", tox:true, sev:"toxic",
+    health:"Patulin producer — avoid handling contaminated food/material without protection.", sev:"toxic",
     images:{
       macro:[{url:"https://inaturalist-open-data.s3.amazonaws.com/photos/390125812/original.jpg", label:"Growing on stone fruit (natural substrate, not an agar plate)", license:"CC BY 4.0", credit:"Jared Shorma, iNaturalist", page:"https://api.gbif.org/v1/occurrence/4875148875"}],
       micro:[{url:"https://inaturalist-open-data.s3.amazonaws.com/photos/472125821/original.jpeg", label:"Conidiophore, metulae & phialides (observer field notes)", license:"CC BY-NC 4.0", credit:"Tyson Ehlers, iNaturalist", page:"https://api.gbif.org/v1/occurrence/5761054461"}]
     }
   },
   {
-    id:"pen-brevicompactum", genus:"Penicillium", epithet:"brevicompactum", common:"Compact green mould",
+    id:"pen-brevicompactum", genus:"Penicillium", epithet:"brevicompactum", gbifKey:2597936,
+    descriptor:"compact green mould",
+    vern:{},
     colony:{color:"blue-green", colorText:"Dull green, velvety, radially furrowed, restricted/compact growth.",
       reverse:"Cream to pale brown.", diamMm:"20–30 mm / 7d", growth:"slow"},
     branch:"terverticillate (short, tightly packed columns)",
@@ -351,14 +689,16 @@ const SPECIES = [
     thermo:false,
     substrate:["wallpaper","gypsum"],
     ecology:"Frequently isolated from damp building materials; its compact, slow-growing colony is the easiest field cue distinguishing it from the faster P. expansum.",
-    health:"Source of mycophenolic acid; moderate allergen.", tox:true, sev:"caution",
+    health:"Source of mycophenolic acid; moderate allergen.", sev:"caution",
     images:{
       macro:[{url:"https://mushroomobserver.org/images/1280/1880246.jpg", label:"Colony (medium unspecified)", license:"CC BY-NC 4.0", credit:"pipsissewa, Mushroom Observer", page:"https://mushroomobserver.org/obs/609282"}],
       micro:[]
     }
   },
   {
-    id:"pen-citrinum", genus:"Penicillium", epithet:"citrinum", common:"Citrus mould",
+    id:"pen-citrinum", genus:"Penicillium", epithet:"citrinum", gbifKey:2597681,
+    descriptor:"citrus mould",
+    vern:{},
     colony:{color:"yellow-green", colorText:"Pale yellow-green to greyish-green, velvety-floccose, often a yellow diffusible pigment.",
       reverse:"Yellow to brownish-orange.", diamMm:"30–45 mm / 7d", growth:"fast"},
     branch:"biverticillate (occasionally terverticillate)",
@@ -369,14 +709,16 @@ const SPECIES = [
     thermo:false,
     substrate:["hvac","food","wallpaper"],
     ecology:"Very common in indoor dust and on stored grain; frequently recovered from HVAC filters.",
-    health:"Citrinin (nephrotoxic mycotoxin) producer.", tox:true, sev:"toxic",
+    health:"Citrinin (nephrotoxic mycotoxin) producer.", sev:"toxic",
     images:{
       macro:[{url:"https://inaturalist-open-data.s3.amazonaws.com/photos/246781982/original.jpg", label:"Colony (medium unspecified)", license:"CC BY-NC 4.0", credit:"bobasil, iNaturalist", page:"https://www.inaturalist.org/observations/143853527"}],
       micro:[]
     }
   },
   {
-    id:"asp-niger", genus:"Aspergillus", epithet:"niger", common:"Black mould",
+    id:"asp-niger", genus:"Aspergillus", epithet:"niger", gbifKey:3465658,
+    descriptor:"black mould",
+    vern:{ eng:["Black Mold"], swe:["svart borstmögel","svartmögel"], nob:["svartstrålemugg"] },
     colony:{color:"black", colorText:"White-to-yellow basal felt densely covered by black conidial heads; granular, appears black/dark-brown en masse.",
       reverse:"Pale to yellowish, uncoloured.", diamMm:"60–70 mm / 7d", growth:"fast"},
     branch:"biseriate, radiate becoming loosely columnar",
@@ -388,7 +730,7 @@ const SPECIES = [
     substrate:["grout","hvac","gypsum","wood"],
     ecology:"Extremely common worldwide — damp basements, bathroom grout, HVAC systems. Often the species behind visually 'black mould' reports, though frequently confused with Stachybotrys chartarum, an unrelated and slower-growing genus.",
     vesicle:"Globose, large, 45–75 µm.",
-    health:"Common allergen; can cause otomycosis and, rarely, invasive disease in immunocompromised people.", tox:false, sev:"caution",
+    health:"Common allergen; can cause otomycosis and, rarely, invasive disease in immunocompromised people.", sev:"caution",
     images:{
       macro:[{url:"https://phil.cdc.gov/PHIL_Images/23019/23019_lores.jpg", label:"Culture, Sabouraud dextrose agar (SDA), 11 days", license:"Public domain (US Govt/CDC)", credit:"CDC/Dr. Hilliard F. Hardin", page:"https://phil.cdc.gov/Details.aspx?pid=23019"}],
       micro:[
@@ -398,7 +740,9 @@ const SPECIES = [
     }
   },
   {
-    id:"asp-fumigatus", genus:"Aspergillus", epithet:"fumigatus", common:"Smoke-grey mould",
+    id:"asp-fumigatus", genus:"Aspergillus", epithet:"fumigatus", gbifKey:5260010,
+    descriptor:"smoke-grey mould",
+    vern:{ nob:["grønn strålemugg"] },
     colony:{color:"blue-green", colorText:"Blue-green to grey-green, suede-like/velvety, darkening with age.",
       reverse:"Uncoloured to pale.", diamMm:"40–65 mm / 7d", growth:"fast"},
     branch:"uniseriate, compact columnar heads",
@@ -410,7 +754,7 @@ const SPECIES = [
     substrate:["hvac","wood","gypsum"],
     ecology:"Thermotolerant — grows up to 50–55°C, so it favours warm, humid microhabitats: compost, insulation, HVAC ducts, decaying organic building material.",
     vesicle:"Flask-shaped, 20–30 µm.",
-    health:"Clinically the most important indoor Aspergillus — causal agent of invasive and allergic aspergillosis in immunocompromised or asthmatic/CF patients. Any suspected colony should be handled with care and confirmed by a lab.", tox:false, sev:"deadly",
+    health:"Clinically the most important indoor Aspergillus — causal agent of invasive and allergic aspergillosis in immunocompromised or asthmatic/CF patients. Any suspected colony should be handled with care and confirmed by a lab.", sev:"deadly",
     images:{
       macro:[{url:"https://inaturalist-open-data.s3.amazonaws.com/photos/512331745/original.jpg", label:"Culture, malt extract agar (MEA — per observer field notes)", license:"CC BY-NC 4.0", credit:"shawn_nasty, iNaturalist", page:"https://www.inaturalist.org/observations/284916826"}],
       micro:[
@@ -420,7 +764,9 @@ const SPECIES = [
     }
   },
   {
-    id:"asp-flavus", genus:"Aspergillus", epithet:"flavus", common:"Yellow-green mould",
+    id:"asp-flavus", genus:"Aspergillus", epithet:"flavus", gbifKey:5259820,
+    descriptor:"yellow-green mould",
+    vern:{ swe:["gult borstmögel"], nob:["gulgrønn strålemugg","lumsk strålemugg"] },
     colony:{color:"yellow-green", colorText:"Granular, flat, yellow at first becoming bright-to-dark yellow-green with age, radial grooves.",
       reverse:"Uncoloured to reddish-brown.", diamMm:"60–70 mm / 7d", growth:"fast"},
     branch:"biseriate (some uniseriate heads), radiate splitting into loose columns",
@@ -432,7 +778,7 @@ const SPECIES = [
     substrate:["food","hvac","wallpaper"],
     ecology:"Common on stored grain/food residue and in HVAC dust; less specifically a 'damp building' species than the others here — often arrives with food waste or organic debris.",
     vesicle:"Subglobose, 25–45 µm.",
-    health:"Aflatoxin producer — a potent carcinogen. Treat suspected colonies as a priority for lab confirmation and remediation, particularly near food-prep areas.", tox:true, sev:"deadly",
+    health:"Aflatoxin producer — a potent carcinogen. Treat suspected colonies as a priority for lab confirmation and remediation, particularly near food-prep areas.", sev:"deadly",
     images:{
       macro:[
         {url:"https://phil.cdc.gov/PHIL_Images/21720/21720_lores.jpg", label:"Culture, Sabouraud dextrose agar (SDA)", license:"Public domain", credit:"CDC/Dr. Lucille K. Georg", page:"https://phil.cdc.gov/Details.aspx?pid=21720"},
@@ -442,7 +788,9 @@ const SPECIES = [
     }
   },
   {
-    id:"asp-versicolor", genus:"Aspergillus", epithet:"versicolor", common:"Damp-indicator mould",
+    id:"asp-versicolor", genus:"Aspergillus", epithet:"versicolor", gbifKey:5259999,
+    descriptor:"damp-indicator mould",
+    vern:{ nob:["fuktstrålemugg"] },
     colony:{color:"variable", colorText:"Highly variable ('versicolor'): pale green, greenish-beige, pinkish-green, salmon, or dark green, often with pink-to-reddish-brown exudate.",
       reverse:"Reddish to uncoloured.", diamMm:"15–30 mm / 7d", growth:"slow"},
     branch:"biseriate, loosely radiate",
@@ -454,7 +802,7 @@ const SPECIES = [
     substrate:["wallpaper","gypsum","wood"],
     ecology:"A xerophilic species — tolerates lower water activity than most indoor moulds, so it's one of the earliest and most reliable indicator species for chronic, low-level damp (as opposed to a single flood event). Growth restricted above 35°C.",
     vesicle:"Small, 9–16 µm, variably shaped.",
-    health:"Common allergen; often used as a marker of water damage in building surveys.", tox:false, sev:"caution",
+    health:"Common allergen; often used as a marker of water damage in building surveys.", sev:"caution",
     images:{
       macro:[{url:"https://data.landcareresearch.co.nz/Image/62VN/NZVH", label:"Herbarium specimen photo (not a culture plate)", license:"CC BY 4.0", credit:"H. Cook, Manaaki Whenua – Landcare Research (NZ)", page:"https://api.gbif.org/v1/occurrence/1135796667"}],
       micro:[{url:"https://phil.cdc.gov/PHIL_Images/19407/19407_lores.jpg", label:"Conidial head — biseriate metulae & phialides (475×)", license:"Public domain", credit:"CDC/Dr. Lucille K. Georg", page:"https://phil.cdc.gov/Details.aspx?pid=19407"}]
@@ -462,11 +810,22 @@ const SPECIES = [
   }
 ];
 
+/* ---------------- Name resolution ---------------- */
+// Returns the verified vernacular names for a species in the active language,
+// or [] if GBIF holds none. Never derives a name from another language.
+function vernFor(sp, lang){
+  const v = sp.vern && sp.vern[lang];
+  return Array.isArray(v) ? v : [];
+}
+function genusVernFor(sp, lang){
+  const g = GENUS_VERN[sp.genus];
+  const v = g && g[lang];
+  return Array.isArray(v) ? v : [];
+}
+
 /* ---------------- Pure scoring function ---------------- */
-// score(sp, Q) in [0,1]. Q fields mirror the query panel.
 function score(sp, Q){
   let total = 0, weight = 0;
-
   function add(w, s){ weight += w; total += w * Math.max(0, Math.min(1, s)); }
 
   if (Q.genus){ add(3, sp.genus === Q.genus ? 1 : 0); }
@@ -495,14 +854,12 @@ function score(sp, Q){
     add(3, rangeMatch(Q.cWidLo, Q.cWidHi, sp.conidia.widLo, sp.conidia.widHi));
   }
 
-  if (weight === 0) return 0.4; // no filters set: neutral baseline so all show, sorted alphabetically by tie
+  if (weight === 0) return 0.4;
   return total / weight;
 }
 
-// Graded overlap of a queried [lo,hi] against a species' published [x,y] range:
-// 75% overlap-fraction + 25% how centred the query sits in that range.
-// Regression guard: gap must be clamped at 0, else touching-but-not-overlapping
-// intervals (lo===y or x===hi) produce a negative gap and inflate the score past 1.
+// 75% overlap-fraction + 25% centredness. gap clamped at 0, else touching
+// intervals produce a negative gap and inflate the score past 1.
 function rangeMatch(qLo, qHi, x, y){
   const lo = qLo != null ? qLo : x;
   const hi = qHi != null ? qHi : y;
@@ -532,7 +889,7 @@ function readQuery(){
   };
 }
 
-/* ---------------- Icon (pure fn of species data) ---------------- */
+/* ---------------- Icon ---------------- */
 let ICON_SEQ = 0;
 function conidiaIconSVG(sp, w, h){
   const id = 'ic' + (ICON_SEQ++);
@@ -570,7 +927,9 @@ function conidiaIconSVG(sp, w, h){
 }
 
 /* ---------------- Rendering ---------------- */
-let expandedId = null; // accordion: only one card open at a time, click again to collapse
+let expandedId = null;
+
+function growthLabel(g){ return {slow:t("gSlow"), moderate:t("gMod"), fast:t("gFast")}[g] || g; }
 
 function scoreColor(s){
   if (s >= 0.7) return "var(--good)";
@@ -588,48 +947,69 @@ function galleryHTML(images, emptyMsg){
 }
 
 function sevBadge(sp){
-  const label = {edible:"low health concern", caution:"moderate health concern", toxic:"mycotoxin producer", deadly:"clinically significant"}[sp.sev] || "";
+  const label = {edible:t("sevLow"), caution:t("sevModerate"), toxic:t("sevToxic"), deadly:t("sevClinical")}[sp.sev] || "";
   return `<span class="ed ${sp.sev}">${label}</span>`;
+}
+
+const VERN_LANGS = [
+  {code:"eng", label:"English"}, {code:"dan", label:"Dansk"}, {code:"swe", label:"Svenska"},
+  {code:"nob", label:"Norsk"}, {code:"fin", label:"Suomi"},
+  {code:"kal", label:"Kalaallisut"}, {code:"fao", label:"Føroyskt"}
+];
+
+function vernTableHTML(sp){
+  return `<div class="vtable">${VERN_LANGS.map(l => {
+    const names = vernFor(sp, l.code);
+    const gnames = genusVernFor(sp, l.code);
+    let val;
+    if (names.length) val = `<span class="vv">${names.join(", ")}</span>`;
+    else if (gnames.length) val = `<span class="vv none">${t("noVern")} — <i>${sp.genus}</i> = ${gnames.join(", ")} (${t("genusName")})</span>`;
+    else val = `<span class="vv none">${t("noVern")}</span>`;
+    return `<span class="vl">${l.label}</span>${val}`;
+  }).join("")}</div>`;
 }
 
 function detailHTML(sp){
   const micro = [
-    {k:"Branching", v:sp.branch},
-    {k:"Conidiophore", v:sp.conidiophore},
-    sp.vesicle ? {k:"Vesicle", v:sp.vesicle} : null,
-    {k:"Metulae", v:sp.metulae},
-    {k:"Phialides", v:sp.phialides}
+    {k:t("mBranching"), v:sp.branch},
+    {k:t("mConidiophore"), v:sp.conidiophore},
+    sp.vesicle ? {k:t("mVesicle"), v:sp.vesicle} : null,
+    {k:t("mMetulae"), v:sp.metulae},
+    {k:t("mPhialides"), v:sp.phialides}
   ].filter(Boolean);
 
   return `
     <div class="dgrid">
-      <div><div class="dk2">Growth (25°C)</div><div class="dv">${sp.colony.growth}, ${sp.colony.diamMm}</div></div>
-      <div><div class="dk2">Reverse</div><div class="dv">${sp.colony.reverse}</div></div>
-      <div><div class="dk2">Conidia size</div><div class="dv">${sp.conidia.lenLo}–${sp.conidia.lenHi} × ${sp.conidia.widLo}–${sp.conidia.widHi} µm</div></div>
-      <div><div class="dk2">Thermotolerant</div><div class="dv">${sp.thermo ? 'yes, &gt;42°C' : 'no'}</div></div>
+      <div><div class="dk2">${t("dGrowth")}</div><div class="dv">${growthLabel(sp.colony.growth)}, ${sp.colony.diamMm}</div></div>
+      <div><div class="dk2">${t("dReverse")}</div><div class="dv">${sp.colony.reverse}</div></div>
+      <div><div class="dk2">${t("dConidiaSize")}</div><div class="dv">${sp.conidia.lenLo}–${sp.conidia.lenHi} × ${sp.conidia.widLo}–${sp.conidia.widHi} µm</div></div>
+      <div><div class="dk2">${t("dThermo")}</div><div class="dv">${sp.thermo ? t("yes") : t("no")}</div></div>
     </div>
 
-    <div class="srcline">Colony (obverse): ${sp.colony.colorText}</div>
+    <div class="dk2" style="margin-bottom:3px;">${t("dVern")}</div>
+    ${vernTableHTML(sp)}
+
+    <div class="srcline" style="margin-top:11px;">${t("dColony")}: ${sp.colony.colorText}</div>
 
     <div class="micro">
-      <div class="dk2">Microscopy</div>
+      <div class="dk2">${t("dMicroscopy")}</div>
       <div class="mgrid">
-        ${micro.map(m => `<span class="mchip species">${m.k}<sup></sup>: ${m.v}</span>`).join('')}
+        ${micro.map(m => `<span class="mchip species">${m.k}: ${m.v}</span>`).join('')}
       </div>
       <div class="quote">${sp.conidia.shape.replace('-',' / ')} conidia, ${sp.conidia.orn.replace('-',' ')}. ${sp.conidia.colorText}</div>
     </div>
 
     <div class="note">${sp.health}</div>
 
-    <div class="dk2" style="margin-bottom:6px;">Where it's found / ecology</div>
-    <div class="prov" style="font-size:12.5px;color:var(--dim);margin-bottom:11px;">${sp.ecology}</div>
+    <div class="dk2" style="margin-bottom:6px;">${t("dEcology")}</div>
+    <div style="font-size:12.5px;color:var(--dim);margin-bottom:11px;">${sp.ecology}</div>
 
-    <div class="dk2" style="margin-bottom:2px;">Macroscopic photos</div>
-    ${galleryHTML(sp.images && sp.images.macro, "No openly-licensed colony photo on a standard medium (MEA/CYA/V8) found yet for this species.")}
+    <div class="dk2" style="margin-bottom:2px;">${t("dMacro")}</div>
+    ${galleryHTML(sp.images && sp.images.macro, t("noMacro"))}
 
-    <div class="dk2" style="margin:11px 0 2px;">Microscopic photos</div>
-    ${galleryHTML(sp.images && sp.images.micro, "No openly-licensed micrograph found yet for this species.")}
-    <div class="phnote">Photo media (SDA / MEA / field substrate / unspecified) is noted per caption — see the footer for the full sourcing caveat.</div>
+    <div class="dk2" style="margin:11px 0 2px;">${t("dMicro")}</div>
+    ${galleryHTML(sp.images && sp.images.micro, t("noMicro"))}
+    <div class="phnote">${t("photoNote")}<br>${t("proseNote")}</div>
   `;
 }
 
@@ -648,20 +1028,26 @@ function render(){
   if (expandedId && !scored.find(r => r.sp.id === expandedId)) expandedId = null;
 
   if (!scored.length){
-    resultsEl.innerHTML = '<div class="empty">No species clear the match threshold — widen filters or lower "Min. match".</div>';
+    resultsEl.innerHTML = `<div class="empty">${t("empty")}</div>`;
   } else {
     resultsEl.innerHTML = scored.map((r, i) => {
       const isOpen = r.sp.id === expandedId;
       const pct = Math.round(r.s*100);
       const col = scoreColor(r.s);
+      const names = vernFor(r.sp, LANG);
+      // Scientific name is always the primary label. A vernacular name is shown
+      // only where GBIF actually records one for the active language.
+      const nameLine = names.length
+        ? `<span class="vn">${names[0]}</span> <span class="au">— <i>${r.sp.genus} ${r.sp.epithet}</i></span>`
+        : `<i>${r.sp.genus} ${r.sp.epithet}</i>${LANG==="eng" ? ` <span class="au">— ${r.sp.descriptor}</span>` : ` <span class="nolocal">— ${t("noVern")}</span>`}`;
       return `
       <div class="hit ${isOpen?'open':''}" data-id="${r.sp.id}">
         <div class="hrow">
           <div class="rank">${i+1}</div>
           <div class="spicon">${conidiaIconSVG(r.sp, 34, 34)}</div>
           <div class="nm">
-            <div class="sci"><i>${r.sp.genus} ${r.sp.epithet}</i> <span class="au">— ${r.sp.common}</span></div>
-            <div class="dk">${r.sp.colony.growth} growth · ${r.sp.conidia.shape.replace('-',' / ')} conidia, ${r.sp.conidia.lenLo}–${r.sp.conidia.lenHi} × ${r.sp.conidia.widLo}–${r.sp.conidia.widHi} µm</div>
+            <div class="sci">${nameLine}</div>
+            <div class="dk">${growthLabel(r.sp.colony.growth)} · ${r.sp.conidia.lenLo}–${r.sp.conidia.lenHi} × ${r.sp.conidia.widLo}–${r.sp.conidia.widHi} µm</div>
           </div>
           <div class="score">
             <div class="sval" style="color:${col}">${pct}%</div>
@@ -670,7 +1056,7 @@ function render(){
         </div>
         <div class="detail">
           ${detailHTML(r.sp)}
-          <div class="tags">${sevBadge(r.sp)}${r.sp.thermo?'<span class="tag">thermotolerant</span>':''}</div>
+          <div class="tags">${sevBadge(r.sp)}${r.sp.thermo?`<span class="tag">${t("thermoTag")}</span>`:''}</div>
         </div>
       </div>`;
     }).join('');
@@ -684,6 +1070,52 @@ function render(){
   }));
 }
 
+/* ---------------- Static UI text ---------------- */
+function setOpts(id, pairs){
+  const el = document.getElementById(id);
+  pairs.forEach((txt, i) => { if (el.options[i]) el.options[i].textContent = txt; });
+}
+
+function applyLanguage(){
+  document.documentElement.lang = {eng:"en",dan:"da",swe:"sv",nob:"nb",fin:"fi",kal:"kl",fao:"fo"}[LANG] || "en";
+  document.getElementById('subtitle').textContent = t("subtitle");
+  document.getElementById('warnbar').innerHTML = `<strong>${t("warnTitle")}</strong> ${t("warnBody")}`;
+
+  const lb = document.getElementById('langbar');
+  let note = "";
+  if (LANG === "kal") note = t("langNoteKal");
+  else if (LANG === "fao") note = t("langNoteFao");
+  else if (I18N[LANG] && I18N[LANG].langNoteNoNames) note = I18N[LANG].langNoteNoNames;
+  else if (LANG === "eng") note = t("langNoteNoNames");
+  if (note){ lb.innerHTML = note; lb.style.display = "block"; } else { lb.style.display = "none"; }
+
+  document.getElementById('lbl-query').textContent = t("query");
+  document.getElementById('lbl-genus').textContent = t("genus");
+  setOpts('genus', [t("anyUnsure"), t("penOpt"), t("aspOpt")]);
+  document.getElementById('lbl-len').textContent = t("sporeLen");
+  document.getElementById('lbl-wid').textContent = t("sporeWid");
+  ['cLenLo','cWidLo'].forEach(id => document.getElementById(id).placeholder = t("min"));
+  ['cLenHi','cWidHi'].forEach(id => document.getElementById(id).placeholder = t("max"));
+  document.getElementById('lbl-shape').textContent = t("shape");
+  setOpts('cShape', [t("any"), t("globose"), t("subglobose"), t("ellipsoidal")]);
+  document.getElementById('lbl-orn').textContent = t("orn");
+  setOpts('cOrn', [t("any"), t("ornSmooth"), t("ornFine"), t("ornEchin")]);
+  document.getElementById('lbl-colour').textContent = t("colour");
+  setOpts('colColor', [t("any"), t("colBlueGreen"), t("colYellowGreen"), t("colBlack"), t("colVariable")]);
+  document.getElementById('lbl-growth').textContent = t("growth");
+  setOpts('growth', [t("any"), t("growthSlow"), t("growthMod"), t("growthFast")]);
+  document.getElementById('lbl-substrate').textContent = t("substrate");
+  const subMap = {wallpaper:"subWallpaper", wood:"subWood", gypsum:"subGypsum", hvac:"subHvac", food:"subFood", grout:"subGrout"};
+  document.querySelectorAll('#substrateChips .chip').forEach(c => { c.textContent = t(subMap[c.dataset.value]); });
+  document.getElementById('lbl-thermo').textContent = t("thermo");
+  setOpts('thermo', [t("any"), t("yes"), t("no")]);
+  document.getElementById('resetBtn').textContent = t("reset");
+  document.getElementById('lbl-candidates').textContent = t("candidates");
+  document.getElementById('lbl-minmatch').textContent = t("minMatch");
+  document.getElementById('footer').innerHTML = t("footer");
+  render();
+}
+
 /* ---------------- Wire up ---------------- */
 document.querySelectorAll('#genus, #cShape, #cOrn, #colColor, #growth, #thermo, #cLenLo, #cLenHi, #cWidLo, #cWidHi, #minMatch').forEach(el => {
   el.addEventListener('input', render);
@@ -695,6 +1127,10 @@ document.getElementById('substrateChips').addEventListener('click', (e) => {
   chip.classList.toggle('on');
   render();
 });
+document.getElementById('lang').addEventListener('change', (e) => {
+  LANG = e.target.value;
+  applyLanguage();
+});
 document.getElementById('resetBtn').addEventListener('click', () => {
   document.querySelectorAll('.layout select').forEach(s => s.value = '');
   document.querySelectorAll('#substrateChips .chip').forEach(c => c.classList.remove('on'));
@@ -703,7 +1139,14 @@ document.getElementById('resetBtn').addEventListener('click', () => {
   render();
 });
 
-render();
+(function init(){
+  // Honour the browser's preferred language on first load, if we support it.
+  const browser = (navigator.language || "").slice(0,2).toLowerCase();
+  const map = {en:"eng", da:"dan", sv:"swe", nb:"nob", nn:"nob", no:"nob", fi:"fin", kl:"kal", fo:"fao"};
+  if (map[browser] && I18N[map[browser]]) LANG = map[browser];
+  document.getElementById('lang').value = LANG;
+  applyLanguage();
+})();
 </script>
 </body>
 </html>
