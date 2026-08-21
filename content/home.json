@@ -4,7 +4,12 @@
     "heading": "Let's talk",
     "intro": "Whether it's a microbiology issue you need looked at, a question about foraging or cultivation, or interest in future tours and workshops — reach out.",
     "email": "pietershiffler@proton.me",
-    "socials": []
+    "socials": [
+      {
+        "label": "instagram",
+        "url": "https://instagram.com/shfflr"
+      }
+    ]
   },
   "nav": {
     "about": "About",
