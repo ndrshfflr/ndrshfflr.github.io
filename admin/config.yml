@@ -3,7 +3,7 @@ backend:
   repo: ndrshfflr/ndrshfflr.github.io
   branch: main
   # Replace with your own deployed OAuth proxy URL (see setup guide).
-  base_url: https://REPLACE-WITH-YOUR-OAUTH-PROXY.example.workers.dev
+  base_url: https://decap-proxy.shhflr.workers.dev
   auth_endpoint: auth
 
 # Where images go by default when uploaded through the CMS.
