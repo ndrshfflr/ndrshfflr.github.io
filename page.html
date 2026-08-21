@@ -15,10 +15,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pieter Shiffler Carpentier</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<!-- Open Graph / social link previews. This template is shared by every CMS-added
+     page, so these are a generic fallback rather than per-page — the alternative
+     (filling them in from the page's own content) would need to happen before the
+     page's JS runs, which link-preview bots don't wait for. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pieter Shiffler Carpentier">
+<meta property="og:title" content="Pieter Shiffler Carpentier">
+<meta property="og:description" content="MSc Biology — indoor microbiology specialist, mycologist, and guide to the world of fungi.">
+<meta property="og:image" content="https://ndrshfflr.github.io/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ndrshfflr.github.io/og-image.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<!-- Cloudflare Web Analytics — same token as index.html (see setup guide). -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
 </head>
 <body>
 
@@ -34,13 +54,13 @@
     </div>
     <div class="nav-right">
       <div class="navlinks">
-        <a href="index.html#about">About</a>
-        <a href="index.html#microbiology">Indoor Microbiology</a>
-        <a href="index.html#mycology">Mycology</a>
-        <a href="index.html#exploration">Exploration</a>
-        <a href="index.html#photography">Photography</a>
+        <a href="index.html#about" id="nav-label-about">About</a>
+        <a href="index.html#microbiology" id="nav-label-microbiology">Indoor Microbiology</a>
+        <a href="index.html#mycology" id="nav-label-mycology">Mycology</a>
+        <a href="index.html#exploration" id="nav-label-exploration">Exploration</a>
+        <a href="index.html#photography" id="nav-label-photography">Photography</a>
         <span id="nav-dynamic"></span>
-        <a href="index.html#contact">Contact</a>
+        <a href="index.html#contact" id="nav-label-contact">Contact</a>
       </div>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle day and night mode">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
@@ -186,6 +206,17 @@
         bodyEl.innerHTML = "<p>Sorry, this page couldn't be found.</p>";
       });
   }
+
+  // keep nav labels in sync with content/home.json, same as the main site
+  fetch('content/home.json').then(r => r.ok ? r.json() : null).then(data => {
+    if (!data || !data.nav) return;
+    const map = { about: 'nav-label-about', microbiology: 'nav-label-microbiology', mycology: 'nav-label-mycology', exploration: 'nav-label-exploration', photography: 'nav-label-photography', contact: 'nav-label-contact' };
+    Object.keys(map).forEach(key => {
+      if (!data.nav[key]) return;
+      const el = document.getElementById(map[key]);
+      if (el) el.textContent = data.nav[key];
+    });
+  }).catch(() => {});
 
   // populate the same dynamic-pages nav links as the main site
   (async function () {

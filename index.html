@@ -16,11 +16,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pieter Shiffler Carpentier — Mycology & Indoor Microbiology</title>
 <meta name="description" content="Pieter Shiffler Carpentier, MSc Biology — indoor microbiology specialist, mycologist, and guide to the world of fungi.">
+<link rel="canonical" href="https://ndrshfflr.github.io/">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<!-- Open Graph / social link previews (Slack, iMessage, WhatsApp, Facebook, LinkedIn) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pieter Shiffler Carpentier">
+<meta property="og:title" content="Pieter Shiffler Carpentier — Mycology & Indoor Microbiology">
+<meta property="og:description" content="MSc Biology — indoor microbiology specialist, mycologist, and guide to the world of fungi.">
+<meta property="og:url" content="https://ndrshfflr.github.io/">
+<meta property="og:image" content="https://ndrshfflr.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter/X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pieter Shiffler Carpentier — Mycology & Indoor Microbiology">
+<meta name="twitter:description" content="MSc Biology — indoor microbiology specialist, mycologist, and guide to the world of fungi.">
+<meta name="twitter:image" content="https://ndrshfflr.github.io/og-image.png">
+
+<!-- Structured data, helps search engines understand who this site is about -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Pieter Shiffler Carpentier",
+  "jobTitle": "Indoor Microbiology Specialist & Mycologist",
+  "description": "MSc Biology — indoor microbiology specialist, mycologist, and guide to the world of fungi.",
+  "url": "https://ndrshfflr.github.io/"
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <link rel="stylesheet" href="styles.css">
+<!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
+     token below with your own from the Cloudflare dashboard (see setup guide). -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
 </head>
 <body>
 
@@ -49,13 +87,13 @@
     </div>
     <div class="nav-right">
       <div class="navlinks">
-        <a href="#about">About</a>
-        <a href="#microbiology">Indoor Microbiology</a>
-        <a href="#mycology">Mycology</a>
-        <a href="#exploration">Exploration</a>
-        <a href="#photography">Photography</a>
+        <a href="#about" id="nav-label-about">About</a>
+        <a href="#microbiology" id="nav-label-microbiology">Indoor Microbiology</a>
+        <a href="#mycology" id="nav-label-mycology">Mycology</a>
+        <a href="#exploration" id="nav-label-exploration">Exploration</a>
+        <a href="#photography" id="nav-label-photography">Photography</a>
         <span id="nav-dynamic"></span>
-        <a href="#contact">Contact</a>
+        <a href="#contact" id="nav-label-contact">Contact</a>
       </div>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle day and night mode">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
@@ -218,6 +256,7 @@
       <a class="email" href="mailto:pietershiffler@gmail.com" id="contact-email">pietershiffler@gmail.com</a>
       <a class="btn btn-primary" href="mailto:pietershiffler@gmail.com" id="contact-cta">Send an email</a>
     </div>
+    <div class="socials reveal" id="contact-socials"></div>
   </div>
 </section>
 
@@ -280,6 +319,15 @@
 
   function applyHome(data) {
     if (!data || typeof data !== 'object') return;
+
+    if (data.nav) {
+      setText('nav-label-about', data.nav.about);
+      setText('nav-label-microbiology', data.nav.microbiology);
+      setText('nav-label-mycology', data.nav.mycology);
+      setText('nav-label-exploration', data.nav.exploration);
+      setText('nav-label-photography', data.nav.photography);
+      setText('nav-label-contact', data.nav.contact);
+    }
 
     if (data.hero) {
       setText('hero-eyebrow', data.hero.eyebrow);
@@ -393,6 +441,23 @@
         setText('contact-email', data.contact.email);
         setHref('contact-email', 'mailto:' + data.contact.email);
         setHref('contact-cta', 'mailto:' + data.contact.email);
+      }
+      if (Array.isArray(data.contact.socials) && data.contact.socials.length) {
+        const box = document.getElementById('contact-socials');
+        if (box) {
+          box.innerHTML = '';
+          data.contact.socials.forEach(link => {
+            if (!link || !link.url || !link.label) return;
+            const a = document.createElement('a');
+            a.href = link.url;
+            a.textContent = link.label;
+            if (/^https?:\/\//i.test(link.url)) {
+              a.target = '_blank';
+              a.rel = 'noopener noreferrer';
+            }
+            box.appendChild(a);
+          });
+        }
       }
     }
 

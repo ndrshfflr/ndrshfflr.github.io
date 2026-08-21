@@ -3,14 +3,14 @@ backend:
   repo: ndrshfflr/ndrshfflr.github.io
   branch: main
   # Replace with your own deployed OAuth proxy URL (see setup guide).
-  base_url: https://decap-proxy.shhflr.workers.dev
+  base_url: https://REPLACE-WITH-YOUR-OAUTH-PROXY.example.workers.dev
   auth_endpoint: auth
 
 # Where images go by default when uploaded through the CMS.
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
-publish_mode: simple
+publish_mode: editorial_workflow
 
 collections:
   - name: "home"
@@ -21,6 +21,18 @@ collections:
         name: "home"
         format: "json"
         fields:
+          - label: "Navigation menu labels"
+            name: "nav"
+            widget: "object"
+            hint: "The links in the top menu. These stay pointed at the same sections — you're only changing the visible label text."
+            fields:
+              - { label: "\"About\" label", name: "about", widget: "string" }
+              - { label: "\"Indoor Microbiology\" label", name: "microbiology", widget: "string" }
+              - { label: "\"Mycology\" label", name: "mycology", widget: "string" }
+              - { label: "\"Exploration\" label", name: "exploration", widget: "string" }
+              - { label: "\"Photography\" label", name: "photography", widget: "string" }
+              - { label: "\"Contact\" label", name: "contact", widget: "string" }
+
           - label: "Hero (top of page)"
             name: "hero"
             widget: "object"
@@ -106,6 +118,15 @@ collections:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Intro paragraph", name: "intro", widget: "text" }
               - { label: "Email address", name: "email", widget: "string" }
+              - label: "Social / other links"
+                name: "socials"
+                widget: "list"
+                required: false
+                summary: "{{label}}"
+                hint: "Optional. Add a row per link — e.g. Instagram, LinkedIn, a booking page. Leave empty to show none."
+                fields:
+                  - { label: "Label (what visitors see)", name: "label", widget: "string", hint: "e.g. Instagram" }
+                  - { label: "Link", name: "url", widget: "string", hint: "Full address, e.g. https://instagram.com/yourname" }
 
           - label: "Footer"
             name: "footer"

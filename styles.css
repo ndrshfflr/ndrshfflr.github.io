@@ -310,6 +310,14 @@
     font-family:'Fraunces',serif;font-size:1.5rem;text-decoration:none;color:var(--accent-strong);
     border-bottom:1px solid var(--accent-strong);
   }
+  .socials{display:flex;gap:20px;flex-wrap:wrap;margin-top:22px;font-size:.86rem;}
+  .socials:empty{display:none;margin-top:0;}
+  .socials a{
+    text-decoration:none;color:var(--text-soft);
+    border-bottom:1px solid transparent;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .socials a:hover{color:var(--accent-strong);border-color:var(--accent-strong);}
   footer{
     padding:36px 0;color:var(--text-soft);font-size:.82rem;
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
