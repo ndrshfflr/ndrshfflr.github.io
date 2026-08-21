@@ -1,4 +1,11 @@
 {
+  "contact": {
+    "eyebrow": "Get in touch",
+    "heading": "Let's talk",
+    "intro": "Whether it's a microbiology issue you need looked at, a question about foraging or cultivation, or interest in future tours and workshops — reach out.",
+    "email": "pietershiffler@proton.me",
+    "socials": []
+  },
   "nav": {
     "about": "About",
     "microbiology": "Indoor Microbiology",
@@ -6,6 +13,59 @@
     "exploration": "Exploration",
     "photography": "Photography",
     "contact": "Contact"
+  },
+  "exploration": {
+    "eyebrow": "Beyond the lab",
+    "heading": "Where biology meets the unseen",
+    "intro": "Alongside my clinical and field work, I'm drawn to the wider questions fungi raise — about consciousness, meaning, and how humans relate to the living world. This is the territory I'm slowly building future work toward: the intersection of biology with Jungian psychology, animism, esotericism, mysticism, and compassion-based approaches to healing, including the study of psychedelics.",
+    "body": "This isn't a formal service yet — it's an ongoing personal and intellectual pursuit, and the direction I'd like my work to grow into. If this resonates with you, or you want to talk about it, I'm always happy to hear from people thinking along similar lines."
+  },
+  "mycology": {
+    "eyebrow": "Practice",
+    "heading": "Cultivation & Foraging",
+    "intro": "Alongside the lab work, fungi are where I spend my own time. Cultivation and foraging keep me close to the organisms I study professionally — and to the ecosystems they belong to.",
+    "list": [
+      {
+        "title": "Mushroom cultivation",
+        "desc": "Growing edible and medicinal species, from substrate to harvest."
+      },
+      {
+        "title": "Foraging",
+        "desc": "Identifying and gathering wild fungi, with an emphasis on doing it safely and sustainably."
+      },
+      {
+        "title": "Guided nature tours",
+        "desc": "In development — small-group walks focused on fungi, forest ecology, and how to actually see what's around you."
+      }
+    ],
+    "calloutHeading": "Interested in a guided tour?",
+    "calloutBody": "I'm currently developing guided nature tours and small-group foraging walks. If you'd like to be first to hear when these open up, reach out — I'd love to know what you're interested in.",
+    "calloutNote": "In development"
+  },
+  "about": {
+    "eyebrow": "About",
+    "heading": "Science first. Curiosity always.",
+    "intro": "I hold an MSc in Biology and specialise in mycology — the study of fungi. My work sits at the intersection of careful laboratory practice and a lifelong fascination with the roles fungi play, above and below ground.",
+    "body": "Professionally, I work as an indoor microbiology specialist: sampling buildings, analysing what I find in the lab, and helping people understand and remediate what's growing where it shouldn't. Outside of that, mycology is also where I spend my free time — cultivating mushrooms, foraging, and following fungi into stranger territory: the guided tours, workshops, and integrative work I'm building toward now.",
+    "portrait": "",
+    "credentials": [
+      {
+        "label": "Education",
+        "value": "MSc, Biology"
+      },
+      {
+        "label": "Specialisation",
+        "value": "Mycology"
+      },
+      {
+        "label": "Primary practice",
+        "value": "Indoor Microbiology (sampling, lab analysis, remediation)"
+      },
+      {
+        "label": "Also known for",
+        "value": "Mushroom cultivation & foraging"
+      }
+    ]
   },
   "hero": {
     "eyebrow": "MSc Biology · Mycologist · Indoor Microbiology Specialist",
@@ -16,61 +76,34 @@
     "secondaryCtaLabel": "See my services",
     "secondaryCtaLink": "#microbiology"
   },
-  "about": {
-    "eyebrow": "About",
-    "heading": "Science first. Curiosity always.",
-    "intro": "I hold an MSc in Biology and specialise in mycology — the study of fungi. My work sits at the intersection of careful laboratory practice and a lifelong fascination with the roles fungi play, above and below ground.",
-    "body": "Professionally, I work as an indoor microbiology specialist: sampling buildings, analysing what I find in the lab, and helping people understand and remediate what's growing where it shouldn't. Outside of that, mycology is also where I spend my free time — cultivating mushrooms, foraging, and following fungi into stranger territory: the guided tours, workshops, and integrative work I'm building toward now.",
-    "portrait": "",
-    "credentials": [
-      { "label": "Education", "value": "MSc, Biology" },
-      { "label": "Specialisation", "value": "Mycology" },
-      { "label": "Primary practice", "value": "Indoor Microbiology (sampling, lab analysis, remediation)" },
-      { "label": "Also known for", "value": "Mushroom cultivation & foraging" }
-    ]
-  },
-  "services": {
-    "eyebrow": "Services",
-    "heading": "Indoor Microbiology",
-    "intro": "For homeowners, landlords, and businesses dealing with mould, damp, or unexplained air quality issues. I bring lab-grade rigour to a problem that's usually diagnosed by guesswork.",
-    "cards": [
-      { "tag": "01 · On-site", "title": "Sampling", "text": "Careful, methodical collection of air and surface samples to identify what's actually present — not just what's visible." },
-      { "tag": "02 · Laboratory", "title": "Analysis & Interpretation", "text": "Microscopy and lab analysis of samples, translated into a clear, plain-language read of what's growing and why." },
-      { "tag": "03 · Resolution", "title": "Remediation Guidance", "text": "Practical, evidence-based recommendations for resolving the underlying issue — not just masking the symptoms." }
-    ]
-  },
-  "mycology": {
-    "eyebrow": "Practice",
-    "heading": "Cultivation & Foraging",
-    "intro": "Alongside the lab work, fungi are where I spend my own time. Cultivation and foraging keep me close to the organisms I study professionally — and to the ecosystems they belong to.",
-    "list": [
-      { "title": "Mushroom cultivation", "desc": "Growing edible and medicinal species, from substrate to harvest." },
-      { "title": "Foraging", "desc": "Identifying and gathering wild fungi, with an emphasis on doing it safely and sustainably." },
-      { "title": "Guided nature tours", "desc": "In development — small-group walks focused on fungi, forest ecology, and how to actually see what's around you." }
-    ],
-    "calloutHeading": "Interested in a guided tour?",
-    "calloutBody": "I'm currently developing guided nature tours and small-group foraging walks. If you'd like to be first to hear when these open up, reach out — I'd love to know what you're interested in.",
-    "calloutNote": "In development"
-  },
-  "exploration": {
-    "eyebrow": "Beyond the lab",
-    "heading": "Where biology meets the unseen",
-    "intro": "Alongside my clinical and field work, I'm drawn to the wider questions fungi raise — about consciousness, meaning, and how humans relate to the living world. This is the territory I'm slowly building future work toward: the intersection of biology with Jungian psychology, animism, esotericism, mysticism, and compassion-based approaches to healing, including the study of psychedelics.",
-    "body": "This isn't a formal service yet — it's an ongoing personal and intellectual pursuit, and the direction I'd like my work to grow into. If this resonates with you, or you want to talk about it, I'm always happy to hear from people thinking along similar lines."
+  "footer": {
+    "tagline": "MSc Biology · Mycology · Indoor Microbiology"
   },
   "photography": {
     "eyebrow": "Also in progress",
     "heading": "Photography",
     "intro": "Photography is a growing passion of mine, and I'm working on bringing it into my practice — documenting fungi, forests, and fieldwork, and eventually offering it as part of my tours and services."
   },
-  "contact": {
-    "eyebrow": "Get in touch",
-    "heading": "Let's talk",
-    "intro": "Whether it's a microbiology issue you need looked at, a question about foraging or cultivation, or interest in future tours and workshops — reach out.",
-    "email": "pietershiffler@gmail.com",
-    "socials": []
-  },
-  "footer": {
-    "tagline": "MSc Biology · Mycology · Indoor Microbiology"
+  "services": {
+    "eyebrow": "Services",
+    "heading": "Indoor Microbiology",
+    "intro": "For homeowners, landlords, and businesses dealing with mould, damp, or unexplained air quality issues. I bring lab-grade rigour to a problem that's usually diagnosed by guesswork.",
+    "cards": [
+      {
+        "tag": "01 · On-site",
+        "title": "Sampling",
+        "text": "Careful, methodical collection of air and surface samples to identify what's actually present — not just what's visible."
+      },
+      {
+        "tag": "02 · Laboratory",
+        "title": "Analysis & Interpretation",
+        "text": "Microscopy and lab analysis of samples, translated into a clear, plain-language read of what's growing and why."
+      },
+      {
+        "tag": "03 · Resolution",
+        "title": "Remediation Guidance",
+        "text": "Practical, evidence-based recommendations for resolving the underlying issue — not just masking the symptoms."
+      }
+    ]
   }
 }
