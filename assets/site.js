@@ -188,7 +188,7 @@
         meta.appendChild(el('span', 'offer-price', o.price || s.priceFallback || ''));
         if (o.turnaround) meta.appendChild(el('span', 'offer-turnaround', (UI.turnaround || 'Turnaround') + ': ' + o.turnaround));
         art.appendChild(meta);
-        var cta = el('a', 'offer-cta', (UI.offerCta || 'Ask about this') + ' →');
+        var cta = el('a', 'offer-cta', UI.offerCta || 'Ask about this');
         cta.href = '#contact';
         cta.setAttribute('data-offer', o.title || '');
         art.appendChild(cta);
@@ -262,7 +262,7 @@
         div.appendChild(el('strong', null, it.title || ''));
         div.appendChild(el('span', 'desc', it.desc || ''));
         if (it.link) {
-          var a = el('a', 'tl-link', (it.linkLabel || it.link) + ' →');
+          var a = el('a', 'tl-link', it.linkLabel || it.link);
           a.href = it.link;
           if (isExternal(it.link)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
           div.appendChild(a);

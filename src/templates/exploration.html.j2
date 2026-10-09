@@ -2,10 +2,11 @@
 {% block main %}
 <header class="page-header">
   <div class="wrap">
-    <div class="eyebrow" id="exploration-eyebrow">{{ d.exploration.eyebrow }}</div>
+    <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.exploration.title }}">{{ runes.exploration.glyph }}</span><span id="exploration-eyebrow">{{ d.exploration.eyebrow }}</span></div>
     <h1 id="exploration-heading">{{ d.exploration.heading }}</h1>
   </div>
 </header>
+<div class="carve" aria-hidden="true"></div>
 <div class="wrap">
   <div class="page-body">
     <p id="exploration-intro">{{ d.exploration.intro }}</p>

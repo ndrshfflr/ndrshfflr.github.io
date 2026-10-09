@@ -47,7 +47,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
      token below with your own from the Cloudflare dashboard (see setup guide). -->
@@ -101,7 +102,14 @@
     <img id="hero-image" src="" alt="" fetchpriority="high" hidden>
   </div>
   <div class="hero-shade"></div>
+  <svg class="rune-ring" viewBox="0 0 600 600" aria-hidden="true">
+    <defs><path id="rune-path" d="M300,300 m-246,0 a246,246 0 1,1 492,0 a246,246 0 1,1 -492,0"/></defs>
+    <circle cx="300" cy="300" r="282"/>
+    <circle cx="300" cy="300" r="212"/>
+    <text><textPath href="#rune-path" textLength="1540" lengthAdjust="spacing">ᛈᛁᛖᛏᛖᚱ ᛬ ᛊᚺᛁᚠᚠᛚᛖᚱ ᛬ ᚲᚨᚱᛈᛖᚾᛏᛁᛖᚱ ᛭ ᛈᛁᛖᛏᛖᚱ ᛬ ᛊᚺᛁᚠᚠᛚᛖᚱ ᛬ ᚲᚨᚱᛈᛖᚾᛏᛁᛖᚱ ᛭</textPath></text>
+  </svg>
   <div class="wrap inner">
+    <span class="runes hero-runes" aria-hidden="true" title="Pieter Shiffler Carpentier, written in Elder Futhark runes"><span style="animation-delay:0.25s">ᛈᛁᛖᛏᛖᚱ</span> <span style="animation-delay:0.60s">᛬</span> <span style="animation-delay:0.95s">ᛊᚺᛁᚠᚠᛚᛖᚱ</span> <span style="animation-delay:1.30s">᛬</span> <span style="animation-delay:1.65s">ᚲᚨᚱᛈᛖᚾᛏᛁᛖᚱ</span></span>
     <div class="eyebrow" id="hero-eyebrow">MSc Biology · Mycologist · Indoor Microbiology Specialist</div>
     <h1 id="hero-headline">Reading the hidden signs of fungi — in your home, and in the wild.</h1>
     <p class="lead" id="hero-lead">I help people understand and resolve indoor microbial problems with rigorous lab science, and I spend the rest of my time in the woods, in the lab, and at the edge of what biology can explain.</p>
@@ -115,7 +123,7 @@
 <section id="about">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="about-eyebrow">About</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="mannaz — humankind">ᛗ</span><span id="about-eyebrow">About</span></div>
       <h2 id="about-heading">Science first. Curiosity always.</h2>
       <p id="about-intro">I hold an MSc in Biology and specialise in mycology — the study of fungi. My work sits at the intersection of careful laboratory practice and a lifelong fascination with the roles fungi play, above and below ground.</p>
     </div>
@@ -138,7 +146,7 @@
 <section id="microbiology">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="services-eyebrow">Services</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="laguz — water">ᛚ</span><span id="services-eyebrow">Services</span></div>
       <h2 id="services-heading">Indoor Microbiology</h2>
       <p id="services-intro">For homeowners, landlords, and businesses dealing with mould, damp, or unexplained air quality issues. I bring lab-grade rigour to a problem that&#39;s usually diagnosed by guesswork.</p>
     </div>
@@ -172,7 +180,7 @@
           <span class="offer-price">Free</span>
           
         </div>
-        <a class="offer-cta" href="#contact" data-offer="Free first call">Ask about this →</a>
+        <a class="offer-cta" href="#contact" data-offer="Free first call">Ask about this</a>
       </article>
       <article class="offer">
         <h4>Inspection &amp; sampling visit</h4>
@@ -183,7 +191,7 @@
           <span class="offer-price">Price on request</span>
           
         </div>
-        <a class="offer-cta" href="#contact" data-offer="Inspection &amp; sampling visit">Ask about this →</a>
+        <a class="offer-cta" href="#contact" data-offer="Inspection &amp; sampling visit">Ask about this</a>
       </article>
       <article class="offer">
         <h4>Full assessment with lab report</h4>
@@ -194,7 +202,7 @@
           <span class="offer-price">Price on request</span>
           
         </div>
-        <a class="offer-cta" href="#contact" data-offer="Full assessment with lab report">Ask about this →</a>
+        <a class="offer-cta" href="#contact" data-offer="Full assessment with lab report">Ask about this</a>
       </article>
       
     </div>
@@ -204,7 +212,7 @@
 <section id="trust" hidden>
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="trust-eyebrow">Track record</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="tīwaz — justice">ᛏ</span><span id="trust-eyebrow">Track record</span></div>
       <h2 id="trust-heading">Cases &amp; references</h2>
       <p id="trust-intro" hidden></p>
     </div>
@@ -217,7 +225,7 @@
 <section id="projects">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="projects-eyebrow">Research &amp; projects</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="kenaz — torch, knowledge">ᚲ</span><span id="projects-eyebrow">Research &amp; projects</span></div>
       <h2 id="projects-heading">Selected work</h2>
       <p id="projects-intro" hidden></p>
     </div>
@@ -235,7 +243,7 @@
         <div>
           <strong>Spore×plore</strong>
           <span class="desc">An interactive identifier for Nordic Boletales based on spore characteristics, drawing on Funga Nordica and live GBIF occurrence records.</span>
-          <a class="tl-link" href="sporexplore.html">Open Spore×plore →</a>
+          <a class="tl-link" href="sporexplore.html">Open Spore×plore</a>
         </div>
       </li>
       <li>
@@ -266,7 +274,7 @@
 <section id="mycology">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="mycology-eyebrow">Practice</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="jēra — harvest">ᛃ</span><span id="mycology-eyebrow">Practice</span></div>
       <h2 id="mycology-heading">Cultivation &amp; Foraging</h2>
       <p id="mycology-intro">Alongside the lab work, fungi are where I spend my own time. Cultivation and foraging keep me close to the organisms I study professionally — and to the ecosystems they belong to.</p>
     </div>
@@ -298,7 +306,7 @@
 <section id="photography">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="photography-eyebrow">Also in progress</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="dagaz — daylight">ᛞ</span><span id="photography-eyebrow">Also in progress</span></div>
       <h2 id="photography-heading">Photography</h2>
       <p id="photography-intro">Photography is a growing passion of mine, and I&#39;m working on bringing it into my practice — documenting fungi, forests, and fieldwork, and eventually offering it as part of my tours and services.</p>
     </div>
@@ -312,7 +320,7 @@
 <section id="faq">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="faq-eyebrow">FAQ</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="ansuz — speech, wisdom">ᚨ</span><span id="faq-eyebrow">FAQ</span></div>
       <h2 id="faq-heading">Common questions</h2>
     </div>
     <div class="faq-list reveal" id="faq-list">
@@ -340,7 +348,7 @@
 <section id="contact">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="contact-eyebrow">Get in touch</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="ehwaz — partnership">ᛖ</span><span id="contact-eyebrow">Get in touch</span></div>
       <h2 id="contact-heading">Let&#39;s talk</h2>
       <p id="contact-intro">Whether it&#39;s a microbiology issue you need looked at, a question about foraging or cultivation, or interest in future tours and workshops — reach out.</p>
     </div>
@@ -382,10 +390,11 @@
   <div class="wrap footer-row">
     <div>© <span id="year">2026</span> Pieter Shiffler Carpentier<span id="footer-cvr" class="footer-cvr" hidden> · CVR <span id="footer-cvr-value"></span></span></div>
     <div class="footer-links">
-      <a href="exploration.html" id="footer-exploration">Beyond the lab →</a>
+      <a href="exploration.html" id="footer-exploration">Beyond the lab</a>
       <a href="da.html" hreflang="da" lang="da" data-lang-switch>Dansk</a>
     </div>
     <div id="footer-tagline">MSc Biology · Mycology · Indoor Microbiology</div>
+    <div class="runes footer-runes" aria-hidden="true" title="Pieter Shiffler Carpentier, written in Elder Futhark runes">ᛈᛁᛖᛏᛖᚱ ᛬ ᛊᚺᛁᚠᚠᛚᛖᚱ ᛬ ᚲᚨᚱᛈᛖᚾᛏᛁᛖᚱ</div>
   </div>
 </footer>
 
@@ -393,7 +402,7 @@
   <div class="egg-stage" id="egg-stage"></div>
   <div class="egg-veil"></div>
   <div class="egg-copy">
-    <div class="eyebrow">You found it</div>
+    <div class="eyebrow"><span class="rune" aria-hidden="true">ᛜ</span>You found it</div>
     <div class="egg-title">Enter the mycelium</div>
   </div>
   <div class="egg-bottom">
@@ -404,7 +413,7 @@
   <p class="egg-fallback" id="egg-fallback" hidden>This needs WebGL, which your browser doesn&#39;t seem to support. The network is still out there.</p>
 </div>
 
-<script id="ui-strings" type="application/json">{"area": "Service area", "back": "Back to the main page", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Research or collaboration", "Something else"], "loading": "Loading\u2026", "menu": "Menu", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "phone": "Phone", "skip": "Skip to content", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
+<script id="ui-strings" type="application/json">{"area": "Service area", "back": "Back to the main page", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Research or collaboration", "Something else"], "loading": "Loading\u2026", "menu": "Menu", "nameRunesTitle": "Pieter Shiffler Carpentier, written in Elder Futhark runes", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "phone": "Phone", "skip": "Skip to content", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
 
 <script src="assets/site.js" defer></script>
 </body>

@@ -10,7 +10,14 @@
     <img id="hero-image" src="{{ d.hero.image }}" alt="{{ d.hero.imageAlt }}" fetchpriority="high"{% if not d.hero.image %} hidden{% endif %}>
   </div>
   <div class="hero-shade"></div>
+  <svg class="rune-ring" viewBox="0 0 600 600" aria-hidden="true">
+    <defs><path id="rune-path" d="M300,300 m-246,0 a246,246 0 1,1 492,0 a246,246 0 1,1 -492,0"/></defs>
+    <circle cx="300" cy="300" r="282"/>
+    <circle cx="300" cy="300" r="212"/>
+    <text><textPath href="#rune-path" textLength="1540" lengthAdjust="spacing">{{ name_runes }} ᛭ {{ name_runes }} ᛭</textPath></text>
+  </svg>
   <div class="wrap inner">
+    <span class="runes hero-runes" aria-hidden="true" title="{{ ui.nameRunesTitle }}">{% for word in name_runes.split(' ') %}<span style="animation-delay:{{ '%.2f' % (0.25 + loop.index0 * 0.35) }}s">{{ word }}</span>{% if not loop.last %} {% endif %}{% endfor %}</span>
     <div class="eyebrow" id="hero-eyebrow">{{ d.hero.eyebrow }}</div>
     <h1 id="hero-headline">{{ d.hero.headline }}</h1>
     <p class="lead" id="hero-lead">{{ d.hero.lead }}</p>
@@ -24,7 +31,7 @@
 <section id="about">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="about-eyebrow">{{ d.about.eyebrow }}</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.about.title }}">{{ runes.about.glyph }}</span><span id="about-eyebrow">{{ d.about.eyebrow }}</span></div>
       <h2 id="about-heading">{{ d.about.heading }}</h2>
       <p id="about-intro">{{ d.about.intro }}</p>
     </div>
@@ -44,7 +51,7 @@
 <section id="microbiology">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="services-eyebrow">{{ d.services.eyebrow }}</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.services.title }}">{{ runes.services.glyph }}</span><span id="services-eyebrow">{{ d.services.eyebrow }}</span></div>
       <h2 id="services-heading">{{ d.services.heading }}</h2>
       <p id="services-intro">{{ d.services.intro }}</p>
     </div>
@@ -68,7 +75,7 @@
           <span class="offer-price">{{ o.price or d.services.priceFallback }}</span>
           {% if o.turnaround %}<span class="offer-turnaround">{{ ui.turnaround }}: {{ o.turnaround }}</span>{% endif %}
         </div>
-        <a class="offer-cta" href="#contact" data-offer="{{ o.title }}">{{ ui.offerCta }} →</a>
+        <a class="offer-cta" href="#contact" data-offer="{{ o.title }}">{{ ui.offerCta }}</a>
       </article>
       {% endfor %}
     </div>
@@ -78,7 +85,7 @@
 <section id="trust" hidden>
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="trust-eyebrow">{{ d.trust.eyebrow }}</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.trust.title }}">{{ runes.trust.glyph }}</span><span id="trust-eyebrow">{{ d.trust.eyebrow }}</span></div>
       <h2 id="trust-heading">{{ d.trust.heading }}</h2>
       <p id="trust-intro" hidden></p>
     </div>
@@ -91,7 +98,7 @@
 <section id="projects">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="projects-eyebrow">{{ d.projects.eyebrow }}</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.projects.title }}">{{ runes.projects.glyph }}</span><span id="projects-eyebrow">{{ d.projects.eyebrow }}</span></div>
       <h2 id="projects-heading">{{ d.projects.heading }}</h2>
       <p id="projects-intro"{% if not d.projects.intro %} hidden{% endif %}>{{ d.projects.intro }}</p>
     </div>
@@ -101,7 +108,7 @@
         <div>
           <strong>{{ p.title }}</strong>
           <span class="desc">{{ p.desc }}</span>
-          {% if p.link %}<a class="tl-link" href="{{ p.link }}">{{ p.linkLabel or p.link }} →</a>{% endif %}
+          {% if p.link %}<a class="tl-link" href="{{ p.link }}">{{ p.linkLabel or p.link }}</a>{% endif %}
         </div>
       </li>
       {% endfor %}
@@ -116,7 +123,7 @@
 <section id="mycology">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="mycology-eyebrow">{{ d.mycology.eyebrow }}</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.mycology.title }}">{{ runes.mycology.glyph }}</span><span id="mycology-eyebrow">{{ d.mycology.eyebrow }}</span></div>
       <h2 id="mycology-heading">{{ d.mycology.heading }}</h2>
       <p id="mycology-intro">{{ d.mycology.intro }}</p>
     </div>
@@ -140,7 +147,7 @@
 <section id="photography"{% if not gallery %} hidden{% endif %}>
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="photography-eyebrow">{{ d.photography.eyebrow }}</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.photography.title }}">{{ runes.photography.glyph }}</span><span id="photography-eyebrow">{{ d.photography.eyebrow }}</span></div>
       <h2 id="photography-heading">{{ d.photography.heading }}</h2>
       <p id="photography-intro">{{ d.photography.intro }}</p>
     </div>
@@ -154,7 +161,7 @@
 <section id="faq">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="faq-eyebrow">{{ d.faq.eyebrow }}</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.faq.title }}">{{ runes.faq.glyph }}</span><span id="faq-eyebrow">{{ d.faq.eyebrow }}</span></div>
       <h2 id="faq-heading">{{ d.faq.heading }}</h2>
     </div>
     <div class="faq-list reveal" id="faq-list">
@@ -170,7 +177,7 @@
 <section id="contact">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow" id="contact-eyebrow">{{ d.contact.eyebrow }}</div>
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.contact.title }}">{{ runes.contact.glyph }}</span><span id="contact-eyebrow">{{ d.contact.eyebrow }}</span></div>
       <h2 id="contact-heading">{{ d.contact.heading }}</h2>
       <p id="contact-intro">{{ d.contact.intro }}</p>
     </div>
