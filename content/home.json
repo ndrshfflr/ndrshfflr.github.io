@@ -9,15 +9,19 @@
         "label": "instagram",
         "url": "https://instagram.com/shfflr"
       }
-    ]
+    ],
+    "phone": "",
+    "area": "",
+    "bookingUrl": "",
+    "bookingLabel": "Book a free 15-min call",
+    "formEndpoint": ""
   },
   "nav": {
     "about": "About",
     "microbiology": "Indoor Microbiology",
     "mycology": "Mycology",
-    "exploration": "Exploration",
-    "photography": "Photography",
-    "contact": "Contact"
+    "contact": "Contact",
+    "projects": "Projects"
   },
   "exploration": {
     "eyebrow": "Beyond the lab",
@@ -79,10 +83,13 @@
     "primaryCtaLabel": "Get in touch",
     "primaryCtaLink": "#contact",
     "secondaryCtaLabel": "See my services",
-    "secondaryCtaLink": "#microbiology"
+    "secondaryCtaLink": "#microbiology",
+    "image": "",
+    "imageAlt": ""
   },
   "footer": {
-    "tagline": "MSc Biology · Mycology · Indoor Microbiology"
+    "tagline": "MSc Biology · Mycology · Indoor Microbiology",
+    "explorationLabel": "Beyond the lab →"
   },
   "photography": {
     "eyebrow": "Also in progress",
@@ -109,6 +116,104 @@
         "title": "Remediation Guidance",
         "text": "Practical, evidence-based recommendations for resolving the underlying issue — not just masking the symptoms."
       }
+    ],
+    "offersHeading": "Ways to work with me",
+    "offers": [
+      {
+        "title": "Free first call",
+        "audience": "Not sure whether you need testing at all?",
+        "includes": "15-minute phone or video call\nDescribe what you see, smell or suspect\nAn honest view on whether sampling makes sense",
+        "turnaround": "",
+        "price": "Free"
+      },
+      {
+        "title": "Inspection & sampling visit",
+        "audience": "Homeowners, tenants and landlords with visible mould, damp or a musty smell.",
+        "includes": "On-site inspection of the affected rooms\nAir and surface sampling where relevant\nFirst findings explained on the spot",
+        "turnaround": "",
+        "price": ""
+      },
+      {
+        "title": "Full assessment with lab report",
+        "audience": "When you need documentation — for a landlord, a buyer, an insurer, or your own peace of mind.",
+        "includes": "Everything in the sampling visit\nMicroscopy and lab analysis of samples\nWritten report in plain language\nEvidence-based remediation recommendations",
+        "turnaround": "",
+        "price": ""
+      }
+    ],
+    "priceFallback": "Price on request"
+  },
+  "trust": {
+    "eyebrow": "Track record",
+    "heading": "Cases & references",
+    "intro": "",
+    "cases": [],
+    "testimonials": [],
+    "sampleReport": "",
+    "sampleReportLabel": "See an example report (PDF)"
+  },
+  "projects": {
+    "eyebrow": "Research & projects",
+    "heading": "Selected work",
+    "intro": "",
+    "items": [
+      {
+        "year": "2026–now",
+        "title": "Molecular detection of hidden mould in buildings",
+        "desc": "Using molecular methods to reveal hidden mould growth in buildings.",
+        "link": "",
+        "linkLabel": ""
+      },
+      {
+        "year": "Tool",
+        "title": "Spore×plore",
+        "desc": "An interactive identifier for Nordic Boletales based on spore characteristics, drawing on Funga Nordica and live GBIF occurrence records.",
+        "link": "sporexplore.html",
+        "linkLabel": "Open Spore×plore"
+      },
+      {
+        "year": "2025",
+        "title": "From 2D plates to 3D structures",
+        "desc": "Does termite-farmed Termitomyces need three dimensions to grow? Poster at the Danish Microbiological Society annual convention.",
+        "link": "",
+        "linkLabel": ""
+      },
+      {
+        "year": "2026",
+        "title": "Fungal breeding techniques",
+        "desc": "Innovation project focused on fungal breeding techniques.",
+        "link": "",
+        "linkLabel": ""
+      }
+    ],
+    "cvLabel": "Read my full CV",
+    "cvLink": "page.html?slug=cv",
+    "cvPdfLabel": "Download CV (PDF)",
+    "cvPdf": "cv.pdf"
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "heading": "Common questions",
+    "items": [
+      {
+        "q": "Do I need testing, or should I just remove the mould?",
+        "a": "If the growth is small, visible and the cause is obvious — a leak, condensation on a cold wall — fixing the moisture and cleaning may be enough. Testing is worth it when you smell mould but can't see it, after water damage, when symptoms persist, or when you need documentation for a landlord, buyer or insurer."
+      },
+      {
+        "q": "Is “black mould” dangerous?",
+        "a": "Colour doesn't tell you the species — many common moulds look dark. What matters is that damp and mould indoors are linked to respiratory symptoms and asthma, so any growth should be dealt with, whatever its colour. Identifying what's there helps decide how carefully it needs to be handled."
+      },
+      {
+        "q": "Will bleach fix it?",
+        "a": "Bleach can remove the visible colour from hard surfaces, but it doesn't reach growth inside porous materials like plaster, wood or wallpaper, and it does nothing about the moisture. Unless the source of damp is fixed, the mould comes back."
+      },
+      {
+        "q": "What happens during a visit?",
+        "a": "I inspect the affected rooms, take samples where they'll actually answer a question, and analyse them in the lab. You get a plain-language explanation of what's growing, why, and what to do about it."
+      }
     ]
+  },
+  "business": {
+    "cvr": ""
   }
 }

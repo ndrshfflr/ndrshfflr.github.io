@@ -1,0 +1,17 @@
+{% extends "base.html.j2" %}
+{% block main %}
+<header class="page-header">
+  <div class="wrap">
+    <div class="eyebrow" id="exploration-eyebrow">{{ d.exploration.eyebrow }}</div>
+    <h1 id="exploration-heading">{{ d.exploration.heading }}</h1>
+  </div>
+</header>
+<div class="wrap">
+  <div class="page-body">
+    <p id="exploration-intro">{{ d.exploration.intro }}</p>
+    <p id="exploration-body">{{ d.exploration.body }}</p>
+    <p class="egg-glyph-row"><button class="egg-glyph" type="button" data-egg aria-label="{{ ui.eggTitle }}" title="…">⁂</button></p>
+  </div>
+  <a class="page-back" href="{{ home_href }}">&larr; {{ ui.back }}</a>
+</div>
+{% endblock %}

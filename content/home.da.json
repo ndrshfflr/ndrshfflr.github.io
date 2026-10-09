@@ -1,0 +1,219 @@
+{
+  "nav": {
+    "about": "Om mig",
+    "microbiology": "Skimmelsvamp",
+    "mycology": "Mykologi",
+    "contact": "Kontakt",
+    "projects": "Projekter"
+  },
+  "hero": {
+    "eyebrow": "MSc Biologi · Mykolog · Specialist i indeklimamikrobiologi",
+    "headline": "Jeg læser svampenes skjulte tegn — i dit hjem og i naturen.",
+    "lead": "Jeg hjælper folk med at forstå og løse mikrobielle problemer i indeklimaet med grundig laboratorievidenskab, og resten af tiden bruger jeg i skoven, i laboratoriet og ved kanten af det, biologien kan forklare.",
+    "primaryCtaLabel": "Kontakt mig",
+    "primaryCtaLink": "#contact",
+    "secondaryCtaLabel": "Se mine ydelser",
+    "secondaryCtaLink": "#microbiology",
+    "image": "",
+    "imageAlt": ""
+  },
+  "about": {
+    "eyebrow": "Om mig",
+    "heading": "Videnskab først. Nysgerrighed altid.",
+    "intro": "Jeg har en MSc i biologi og er specialiseret i mykologi — læren om svampe. Mit arbejde ligger i krydsfeltet mellem omhyggelig laboratoriepraksis og en livslang fascination af de roller, svampe spiller over og under jorden.",
+    "body": "Professionelt arbejder jeg som specialist i indeklimamikrobiologi: Jeg tager prøver i bygninger, analyserer dem i laboratoriet og hjælper folk med at forstå og udbedre det, der vokser, hvor det ikke burde. Uden for arbejdet er mykologi også der, hvor jeg bruger min fritid — jeg dyrker svampe, sanker og følger svampene ind i mere ukendt land: de guidede ture, workshops og det tværfaglige arbejde, jeg er ved at bygge op.",
+    "portrait": "",
+    "credentials": [
+      {
+        "label": "Uddannelse",
+        "value": "MSc, Biologi"
+      },
+      {
+        "label": "Speciale",
+        "value": "Mykologi"
+      },
+      {
+        "label": "Primært arbejdsfelt",
+        "value": "Indeklimamikrobiologi (prøvetagning, laboratorieanalyse, udbedring)"
+      },
+      {
+        "label": "Kendt for",
+        "value": "Svampedyrkning & svampesankning"
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "Ydelser",
+    "heading": "Skimmelsvamp & indeklima",
+    "intro": "Til boligejere, lejere, udlejere og virksomheder med skimmel, fugt eller uforklarlige problemer med luftkvaliteten. Jeg bringer laboratoriets grundighed til et problem, der ellers ofte diagnosticeres ved gætværk.",
+    "cards": [
+      {
+        "tag": "01 · På stedet",
+        "title": "Prøvetagning",
+        "text": "Omhyggelig og metodisk indsamling af luft- og overfladeprøver for at finde ud af, hvad der faktisk er til stede — ikke kun det, man kan se."
+      },
+      {
+        "tag": "02 · Laboratorium",
+        "title": "Analyse & fortolkning",
+        "text": "Mikroskopi og laboratorieanalyse af prøverne, oversat til en klar forklaring på almindeligt dansk af, hvad der vokser, og hvorfor."
+      },
+      {
+        "tag": "03 · Løsning",
+        "title": "Rådgivning om udbedring",
+        "text": "Praktiske, evidensbaserede anbefalinger til at løse det egentlige problem — ikke bare dække symptomerne til."
+      }
+    ],
+    "offersHeading": "Sådan kan vi samarbejde",
+    "offers": [
+      {
+        "title": "Gratis første samtale",
+        "audience": "I tvivl om, om der overhovedet er brug for en undersøgelse?",
+        "includes": "15 minutters telefon- eller videosamtale\nFortæl, hvad du ser, lugter eller har mistanke om\nEn ærlig vurdering af, om prøvetagning giver mening",
+        "turnaround": "",
+        "price": "Gratis"
+      },
+      {
+        "title": "Besigtigelse & prøvetagning",
+        "audience": "Boligejere, lejere og udlejere med synlig skimmel, fugt eller muggen lugt.",
+        "includes": "Besigtigelse af de berørte rum\nLuft- og overfladeprøver, hvor det er relevant\nFørste fund forklaret på stedet",
+        "turnaround": "",
+        "price": ""
+      },
+      {
+        "title": "Fuld undersøgelse med laboratorierapport",
+        "audience": "Når du har brug for dokumentation — til udlejer, køber, forsikring eller din egen ro i maven.",
+        "includes": "Alt fra besigtigelsen\nMikroskopi og laboratorieanalyse af prøverne\nSkriftlig rapport i et forståeligt sprog\nEvidensbaserede anbefalinger til udbedring",
+        "turnaround": "",
+        "price": ""
+      }
+    ],
+    "priceFallback": "Pris efter aftale"
+  },
+  "trust": {
+    "eyebrow": "Erfaring",
+    "heading": "Sager & referencer",
+    "intro": "",
+    "cases": [],
+    "testimonials": [],
+    "sampleReport": "",
+    "sampleReportLabel": "Se et eksempel på en rapport (PDF)"
+  },
+  "projects": {
+    "eyebrow": "Forskning & projekter",
+    "heading": "Udvalgte projekter",
+    "intro": "",
+    "items": [
+      {
+        "year": "2026–nu",
+        "title": "Molekylær påvisning af skjult skimmel i bygninger",
+        "desc": "Brug af molekylære metoder til at afsløre skjult skimmelvækst i bygninger.",
+        "link": "",
+        "linkLabel": ""
+      },
+      {
+        "year": "Værktøj",
+        "title": "Spore×plore",
+        "desc": "Et interaktivt bestemmelsesværktøj til nordiske rørhatte (Boletales) baseret på sporekarakterer, med data fra Funga Nordica og GBIF-fund i realtid.",
+        "link": "sporexplore.html",
+        "linkLabel": "Åbn Spore×plore"
+      },
+      {
+        "year": "2025",
+        "title": "Fra 2D-plader til 3D-strukturer",
+        "desc": "Har termitdyrket Termitomyces brug for tre dimensioner for at vokse? Poster ved Dansk Mikrobiologisk Selskabs årsmøde.",
+        "link": "",
+        "linkLabel": ""
+      },
+      {
+        "year": "2026",
+        "title": "Forædling af svampe",
+        "desc": "Innovationsprojekt med fokus på teknikker til svampeforædling.",
+        "link": "",
+        "linkLabel": ""
+      }
+    ],
+    "cvLabel": "Læs mit fulde CV",
+    "cvLink": "page.html?slug=cv",
+    "cvPdfLabel": "Download CV (PDF)",
+    "cvPdf": "cv.pdf"
+  },
+  "faq": {
+    "eyebrow": "Spørgsmål",
+    "heading": "Ofte stillede spørgsmål",
+    "items": [
+      {
+        "q": "Skal jeg have lavet en undersøgelse, eller skal jeg bare fjerne skimlen?",
+        "a": "Hvis væksten er lille og synlig, og årsagen er åbenlys — et utæt rør, kondens på en kold væg — kan det være nok at stoppe fugten og rengøre. En undersøgelse giver mening, når du kan lugte skimmel, men ikke se den, efter vandskade, når gener bliver ved, eller når du har brug for dokumentation til udlejer, køber eller forsikring."
+      },
+      {
+        "q": "Er “sort skimmel” farlig?",
+        "a": "Farven fortæller ikke, hvilken art det er — mange almindelige skimmelsvampe er mørke. Det vigtige er, at fugt og skimmel indendørs hænger sammen med luftvejsgener og astma, så al vækst bør håndteres, uanset farven. At vide, hvad der vokser, hjælper med at afgøre, hvor forsigtigt det skal håndteres."
+      },
+      {
+        "q": "Kan klorin løse problemet?",
+        "a": "Klorin kan fjerne den synlige farve fra hårde overflader, men det når ikke væksten inde i porøse materialer som puds, træ og tapet, og det gør intet ved fugten. Hvis kilden til fugten ikke bliver fjernet, kommer skimlen igen."
+      },
+      {
+        "q": "Hvad sker der ved et besøg?",
+        "a": "Jeg besigtiger de berørte rum, tager prøver dér, hvor de rent faktisk kan besvare et spørgsmål, og analyserer dem i laboratoriet. Du får en forklaring i et almindeligt sprog af, hvad der vokser, hvorfor, og hvad du kan gøre ved det."
+      }
+    ]
+  },
+  "mycology": {
+    "eyebrow": "Praksis",
+    "heading": "Dyrkning & sankning",
+    "intro": "Ved siden af laboratoriearbejdet er det svampene, jeg bruger min egen tid på. Dyrkning og sankning holder mig tæt på de organismer, jeg studerer professionelt — og på de økosystemer, de hører til i.",
+    "list": [
+      {
+        "title": "Svampedyrkning",
+        "desc": "Dyrkning af spiselige og medicinske arter, fra substrat til høst."
+      },
+      {
+        "title": "Svampesankning",
+        "desc": "Bestemmelse og indsamling af vilde svampe med vægt på at gøre det sikkert og bæredygtigt."
+      },
+      {
+        "title": "Guidede naturture",
+        "desc": "Under udvikling — ture for små grupper med fokus på svampe, skovens økologi, og hvordan man rent faktisk får øje på det, der er omkring en."
+      }
+    ],
+    "calloutHeading": "Interesseret i en guidet tur?",
+    "calloutBody": "Jeg er ved at udvikle guidede naturture og svampeture for små grupper. Hvis du vil være blandt de første, der hører, når de åbner, så skriv til mig — jeg vil gerne høre, hvad du er interesseret i.",
+    "calloutNote": "Under udvikling"
+  },
+  "exploration": {
+    "eyebrow": "Ud over laboratoriet",
+    "heading": "Hvor biologien møder det usete",
+    "intro": "Ved siden af mit kliniske arbejde og feltarbejde er jeg draget af de større spørgsmål, svampene rejser — om bevidsthed, mening, og hvordan mennesker forholder sig til den levende verden. Det er det område, jeg langsomt bygger mit fremtidige arbejde op imod: krydsfeltet mellem biologi og jungiansk psykologi, animisme, esoterik, mystik og medfølelsesbaserede tilgange til heling, herunder studiet af psykedelika.",
+    "body": "Det er endnu ikke en egentlig ydelse — det er en personlig og intellektuel fordybelse, og den retning, jeg gerne vil have mit arbejde til at vokse i. Hvis det vækker genklang hos dig, eller du har lyst til at tale om det, hører jeg altid gerne fra folk, der tænker i samme baner."
+  },
+  "photography": {
+    "eyebrow": "Også undervejs",
+    "heading": "Fotografi",
+    "intro": "Fotografi er en voksende passion, og jeg arbejder på at bringe det ind i min praksis — dokumentation af svampe, skove og feltarbejde, og på sigt som en del af mine ture og ydelser."
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "heading": "Lad os tale sammen",
+    "intro": "Uanset om det er et skimmelproblem, du gerne vil have undersøgt, et spørgsmål om svampesankning eller -dyrkning, eller interesse i kommende ture og workshops — så skriv til mig.",
+    "email": "pietershiffler@proton.me",
+    "socials": [
+      {
+        "label": "instagram",
+        "url": "https://instagram.com/shfflr"
+      }
+    ],
+    "phone": "",
+    "area": "",
+    "bookingUrl": "",
+    "bookingLabel": "Book en gratis samtale (15 min)",
+    "formEndpoint": ""
+  },
+  "business": {
+    "cvr": ""
+  },
+  "footer": {
+    "tagline": "MSc Biologi · Mykologi · Indeklimamikrobiologi",
+    "explorationLabel": "Ud over laboratoriet →"
+  }
+}

@@ -1,0 +1,208 @@
+{% extends "base.html.j2" %}
+
+{% block jsonld %}
+<script type="application/ld+json">{{ jsonld | tojson }}</script>
+{% endblock %}
+
+{% block main %}
+<header class="hero" id="top">
+  <div class="hero-media">
+    <img id="hero-image" src="{{ d.hero.image }}" alt="{{ d.hero.imageAlt }}" fetchpriority="high"{% if not d.hero.image %} hidden{% endif %}>
+  </div>
+  <div class="hero-shade"></div>
+  <div class="wrap inner">
+    <div class="eyebrow" id="hero-eyebrow">{{ d.hero.eyebrow }}</div>
+    <h1 id="hero-headline">{{ d.hero.headline }}</h1>
+    <p class="lead" id="hero-lead">{{ d.hero.lead }}</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="{{ d.hero.primaryCtaLink }}" id="hero-cta-primary">{{ d.hero.primaryCtaLabel }}</a>
+      <a class="btn btn-ghost-light" href="{{ d.hero.secondaryCtaLink }}" id="hero-cta-secondary">{{ d.hero.secondaryCtaLabel }}</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" id="about-eyebrow">{{ d.about.eyebrow }}</div>
+      <h2 id="about-heading">{{ d.about.heading }}</h2>
+      <p id="about-intro">{{ d.about.intro }}</p>
+    </div>
+    <div class="about-grid reveal">
+      <div>
+        <img id="about-portrait" class="portrait" src="{{ d.about.portrait }}" alt="Pieter Shiffler Carpentier"{% if not d.about.portrait %} hidden{% endif %}>
+        <p class="body-soft" id="about-body">{{ d.about.body }}</p>
+      </div>
+      <div class="credentials" id="about-credentials">
+        {% for row in d.about.credentials %}<div><div class="k">{{ row.label }}</div>{{ row.value }}</div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="microbiology">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" id="services-eyebrow">{{ d.services.eyebrow }}</div>
+      <h2 id="services-heading">{{ d.services.heading }}</h2>
+      <p id="services-intro">{{ d.services.intro }}</p>
+    </div>
+    <div class="cards reveal" id="services-cards">
+      {% for card in d.services.cards %}<div class="card">
+        <div class="tag">{{ card.tag }}</div>
+        <h3>{{ card.title }}</h3>
+        <p>{{ card.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <h3 class="sub-heading reveal" id="offers-heading"{% if not d.services.offers %} hidden{% endif %}>{{ d.services.offersHeading }}</h3>
+    <div class="offers reveal" id="services-offers">
+      {% for o in d.services.offers %}<article class="offer">
+        <h4>{{ o.title }}</h4>
+        {% if o.audience %}<p class="offer-audience">{{ o.audience }}</p>{% endif %}
+        {% set inc = (o.includes or '').split('\n') | map('trim') | select | list %}
+        {% if inc %}<ul class="offer-includes">{% for line in inc %}<li>{{ line }}</li>{% endfor %}</ul>{% endif %}
+        <div class="offer-meta">
+          <span class="offer-price">{{ o.price or d.services.priceFallback }}</span>
+          {% if o.turnaround %}<span class="offer-turnaround">{{ ui.turnaround }}: {{ o.turnaround }}</span>{% endif %}
+        </div>
+        <a class="offer-cta" href="#contact" data-offer="{{ o.title }}">{{ ui.offerCta }} →</a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="trust" hidden>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" id="trust-eyebrow">{{ d.trust.eyebrow }}</div>
+      <h2 id="trust-heading">{{ d.trust.heading }}</h2>
+      <p id="trust-intro" hidden></p>
+    </div>
+    <div class="cases reveal" id="trust-cases"></div>
+    <div class="testimonials reveal" id="trust-testimonials"></div>
+    <a class="btn btn-ghost reveal" id="trust-report" href="#" target="_blank" rel="noopener" hidden>{{ d.trust.sampleReportLabel }}</a>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" id="projects-eyebrow">{{ d.projects.eyebrow }}</div>
+      <h2 id="projects-heading">{{ d.projects.heading }}</h2>
+      <p id="projects-intro"{% if not d.projects.intro %} hidden{% endif %}>{{ d.projects.intro }}</p>
+    </div>
+    <ul class="timeline reveal" id="projects-list">
+      {% for p in d.projects["items"] %}<li>
+        <span class="tl-year">{{ p.year }}</span>
+        <div>
+          <strong>{{ p.title }}</strong>
+          <span class="desc">{{ p.desc }}</span>
+          {% if p.link %}<a class="tl-link" href="{{ p.link }}">{{ p.linkLabel or p.link }} →</a>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="cta-row reveal">
+      <a class="btn btn-primary" id="projects-cv" href="{{ d.projects.cvLink }}">{{ d.projects.cvLabel }}</a>
+      <a class="btn btn-ghost" id="projects-cvpdf" href="{{ d.projects.cvPdf }}" download{% if not d.projects.cvPdf %} hidden{% endif %}>{{ d.projects.cvPdfLabel }}</a>
+    </div>
+  </div>
+</section>
+
+<section id="mycology">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" id="mycology-eyebrow">{{ d.mycology.eyebrow }}</div>
+      <h2 id="mycology-heading">{{ d.mycology.heading }}</h2>
+      <p id="mycology-intro">{{ d.mycology.intro }}</p>
+    </div>
+    <div class="split reveal">
+      <ul class="list-plain" id="mycology-list">
+        {% for item in d.mycology.list %}<li>
+          <span class="num">{{ '%02d' % loop.index }}</span>
+          <div><strong>{{ item.title }}</strong><span class="desc">{{ item.desc }}</span></div>
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="callout">
+        <h3 id="mycology-callout-heading">{{ d.mycology.calloutHeading }}</h3>
+        <p id="mycology-callout-body">{{ d.mycology.calloutBody }}</p>
+        <p class="note" id="mycology-callout-note">{{ d.mycology.calloutNote }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="photography"{% if not gallery %} hidden{% endif %}>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" id="photography-eyebrow">{{ d.photography.eyebrow }}</div>
+      <h2 id="photography-heading">{{ d.photography.heading }}</h2>
+      <p id="photography-intro">{{ d.photography.intro }}</p>
+    </div>
+    <div class="photo-strip reveal" id="photography-strip">
+      {% for item in gallery %}<figure class="photo-tile has-image"><img src="{{ item.image }}" alt="{{ item.caption or '' }}" loading="lazy">{% if item.caption %}<figcaption class="cap">{{ item.caption }}</figcaption>{% endif %}</figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" id="faq-eyebrow">{{ d.faq.eyebrow }}</div>
+      <h2 id="faq-heading">{{ d.faq.heading }}</h2>
+    </div>
+    <div class="faq-list reveal" id="faq-list">
+      {% for f in d.faq["items"] %}<details>
+        <summary>{{ f.q }}</summary>
+        <p>{{ f.a }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" id="contact-eyebrow">{{ d.contact.eyebrow }}</div>
+      <h2 id="contact-heading">{{ d.contact.heading }}</h2>
+      <p id="contact-intro">{{ d.contact.intro }}</p>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-details">
+        <a class="email" href="mailto:{{ d.contact.email }}" id="contact-email">{{ d.contact.email }}</a>
+        <dl class="contact-facts">
+          <div id="contact-phone-row"{% if not d.contact.phone %} hidden{% endif %}><dt>{{ ui.phone }}</dt><dd><a id="contact-phone" href="tel:{{ d.contact.phone | replace(' ', '') }}">{{ d.contact.phone }}</a></dd></div>
+          <div id="contact-area-row"{% if not d.contact.area %} hidden{% endif %}><dt>{{ ui.area }}</dt><dd id="contact-area">{{ d.contact.area }}</dd></div>
+        </dl>
+        <a class="btn btn-primary" id="contact-booking" href="{{ d.contact.bookingUrl or '#' }}" target="_blank" rel="noopener"{% if not d.contact.bookingUrl %} hidden{% endif %}>{{ d.contact.bookingLabel }}</a>
+        <div class="socials" id="contact-socials">{% for s in d.contact.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">{{ s.label }}</a>{% endfor %}</div>
+      </div>
+
+      <form class="contact-form" id="contact-form" data-endpoint="{{ d.contact.formEndpoint }}" data-email="{{ d.contact.email }}" novalidate>
+        <div class="field-row">
+          <label>{{ ui.formName }}<input name="name" autocomplete="name" required></label>
+          <label>{{ ui.formEmail }}<input name="email" type="email" autocomplete="email" required></label>
+        </div>
+        <label>{{ ui.formTopic }}
+          <select name="topic" id="form-topic">
+            {% for t in ui.formTopics %}<option>{{ t }}</option>{% endfor %}
+          </select>
+        </label>
+        <label>{{ ui.formMessage }}<textarea name="message" rows="5" required></textarea></label>
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-foot">
+          <button class="btn btn-primary" type="submit">{{ ui.formSend }}</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
