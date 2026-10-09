@@ -43,7 +43,9 @@ UI = {
         "back": "Back to the main page", "loading": "Loading…",
         "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn't be found.",
         "downloadPdf": "Download as PDF",
-        "nameRunesTitle": "Pieter Shiffler Carpentier, written in Elder Futhark runes",
+        "pathsLabel": "Where to start",
+        "faqMore": "Something else on your mind?",
+        "faqMoreLink": "Ask me directly.",
     },
     "da": {
         "skip": "Gå til indhold",
@@ -70,7 +72,9 @@ UI = {
         "back": "Tilbage til forsiden", "loading": "Indlæser…",
         "notFound": "Siden blev ikke fundet", "notFoundBody": "Beklager, siden kunne ikke findes.",
         "downloadPdf": "Download som PDF",
-        "nameRunesTitle": "Pieter Shiffler Carpentier, skrevet med den ældre futhark",
+        "pathsLabel": "Hvor vil du starte?",
+        "faqMore": "Har du et andet spørgsmål?",
+        "faqMoreLink": "Spørg mig direkte.",
     },
 }
 
@@ -86,8 +90,6 @@ META = {
         "ogDescription": "MSc Biologi — specialist i indeklimamikrobiologi, mykolog og guide til svampenes verden.",
     },
 }
-
-NAME_RUNES = "ᛈᛁᛖᛏᛖᚱ ᛬ ᛊᚺᛁᚠᚠᛚᛖᚱ ᛬ ᚲᚨᚱᛈᛖᚾᛏᛁᛖᚱ"
 
 # One Elder Futhark rune per section, chosen for its traditional meaning.
 # (Runes co-opted by extremist groups — ōþila, algiz, double sōwilō — are avoided.)
@@ -194,7 +196,6 @@ def main():
             site_url=SITE_URL, home_href=("" if is_home else HOME[lang]), other_lang_href=other_href,
             exploration_href=EXPLORATION[lang], gallery=gallery, year=year,
             jsonld=jsonld(d, lang), body_class=("home" if is_home else "subpage"),
-            name_runes=NAME_RUNES,
             runes={k: {"glyph": g, "title": t} for k, (g, t) in RUNES[lang].items()},
         )
         (ROOT / out).write_text(html, encoding="utf-8")

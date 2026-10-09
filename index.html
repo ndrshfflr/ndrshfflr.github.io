@@ -45,9 +45,9 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of Copenhagen"}, "description": "MSc Biology \u2014 indoor microbiology specialist, mycologist, and guide to the world of fungi.", "email": "mailto:pietershiffler@proton.me", "jobTitle": "Indoor Microbiology Specialist \u0026 Mycologist", "knowsAbout": ["Mycology", "Indoor microbiology", "Mould", "Building moisture damage", "Fungal identification", "Mushroom cultivation"], "knowsLanguage": ["da", "en"], "name": "Pieter Shiffler Carpentier", "sameAs": ["https://instagram.com/shfflr"], "url": "https://ndrshfflr.github.io/"}</script>
 
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Fonts are self-hosted (no requests to Google — simpler under GDPR) -->
+<link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
@@ -102,195 +102,222 @@
     <img id="hero-image" src="" alt="" fetchpriority="high" hidden>
   </div>
   <div class="hero-shade"></div>
-  <svg class="rune-ring" viewBox="0 0 600 600" aria-hidden="true">
-    <defs><path id="rune-path" d="M300,300 m-246,0 a246,246 0 1,1 492,0 a246,246 0 1,1 -492,0"/></defs>
-    <circle cx="300" cy="300" r="282"/>
-    <circle cx="300" cy="300" r="212"/>
-    <text><textPath href="#rune-path" textLength="1540" lengthAdjust="spacing">ᛈᛁᛖᛏᛖᚱ ᛬ ᛊᚺᛁᚠᚠᛚᛖᚱ ᛬ ᚲᚨᚱᛈᛖᚾᛏᛁᛖᚱ ᛭ ᛈᛁᛖᛏᛖᚱ ᛬ ᛊᚺᛁᚠᚠᛚᛖᚱ ᛬ ᚲᚨᚱᛈᛖᚾᛏᛁᛖᚱ ᛭</textPath></text>
-  </svg>
-  <div class="wrap inner">
-    <span class="runes hero-runes" aria-hidden="true" title="Pieter Shiffler Carpentier, written in Elder Futhark runes"><span style="animation-delay:0.25s">ᛈᛁᛖᛏᛖᚱ</span> <span style="animation-delay:0.60s">᛬</span> <span style="animation-delay:0.95s">ᛊᚺᛁᚠᚠᛚᛖᚱ</span> <span style="animation-delay:1.30s">᛬</span> <span style="animation-delay:1.65s">ᚲᚨᚱᛈᛖᚾᛏᛁᛖᚱ</span></span>
-    <div class="eyebrow" id="hero-eyebrow">MSc Biology · Mycologist · Indoor Microbiology Specialist</div>
-    <h1 id="hero-headline">Reading the hidden signs of fungi — in your home, and in the wild.</h1>
-    <p class="lead" id="hero-lead">I help people understand and resolve indoor microbial problems with rigorous lab science, and I spend the rest of my time in the woods, in the lab, and at the edge of what biology can explain.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="#contact" id="hero-cta-primary">Get in touch</a>
-      <a class="btn btn-ghost-light" href="#microbiology" id="hero-cta-secondary">See my services</a>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <div class="hero-eyebrow" id="hero-eyebrow">MSc Biology · Mycologist · Indoor Microbiology Specialist</div>
+      <h1 id="hero-headline">Reading the hidden signs of fungi — in your home, and in the wild.</h1>
+      <p class="lead" id="hero-lead">I help people understand and resolve indoor microbial problems with rigorous lab science, and I spend the rest of my time in the woods, in the lab, and at the edge of what biology can explain.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contact" id="hero-cta-primary">Get in touch</a>
+        <a class="btn btn-ghost-light" href="#microbiology" id="hero-cta-secondary">See my services</a>
+      </div>
     </div>
   </div>
+  <nav class="hero-paths wrap" id="hero-paths" aria-label="Where to start">
+    <a class="path" href="#microbiology">
+      <span class="path-rune" aria-hidden="true">ᛚ</span>
+      <span class="path-text"><strong>Mould or damp at home?</strong><span>Sampling, lab analysis and a clear plan.</span></span>
+    </a>
+    <a class="path" href="#projects">
+      <span class="path-rune" aria-hidden="true">ᚲ</span>
+      <span class="path-text"><strong>Hiring or collaborating?</strong><span>Research, projects and my CV.</span></span>
+    </a>
+    <a class="path" href="#mycology">
+      <span class="path-rune" aria-hidden="true">ᛃ</span>
+      <span class="path-text"><strong>Into fungi?</strong><span>Cultivation, foraging and tours in development.</span></span>
+    </a>
+    
+  </nav>
 </header>
 
-<section id="about">
-  <div class="wrap">
-    <div class="section-head reveal">
+<section id="about" data-rune="ᛗ">
+  <div class="wrap about-layout">
+    <aside class="about-side">
+      <img id="about-portrait" class="portrait" src="" alt="Pieter Shiffler Carpentier" hidden>
+      <dl class="credentials" id="about-credentials">
+        <div><dt>Education</dt><dd>MSc, Biology</dd></div>
+        <div><dt>Specialisation</dt><dd>Mycology</dd></div>
+        <div><dt>Primary practice</dt><dd>Indoor Microbiology (sampling, lab analysis, remediation)</dd></div>
+        <div><dt>Also known for</dt><dd>Mushroom cultivation &amp; foraging</dd></div>
+        
+      </dl>
+    </aside>
+    <div class="about-main">
       <div class="eyebrow"><span class="rune" aria-hidden="true" title="mannaz — humankind">ᛗ</span><span id="about-eyebrow">About</span></div>
       <h2 id="about-heading">Science first. Curiosity always.</h2>
-      <p id="about-intro">I hold an MSc in Biology and specialise in mycology — the study of fungi. My work sits at the intersection of careful laboratory practice and a lifelong fascination with the roles fungi play, above and below ground.</p>
-    </div>
-    <div class="about-grid reveal">
-      <div>
-        <img id="about-portrait" class="portrait" src="" alt="Pieter Shiffler Carpentier" hidden>
-        <p class="body-soft" id="about-body">Professionally, I work as an indoor microbiology specialist: sampling buildings, analysing what I find in the lab, and helping people understand and remediate what&#39;s growing where it shouldn&#39;t. Outside of that, mycology is also where I spend my free time — cultivating mushrooms, foraging, and following fungi into stranger territory: the guided tours, workshops, and integrative work I&#39;m building toward now.</p>
-      </div>
-      <div class="credentials" id="about-credentials">
-        <div><div class="k">Education</div>MSc, Biology</div>
-        <div><div class="k">Specialisation</div>Mycology</div>
-        <div><div class="k">Primary practice</div>Indoor Microbiology (sampling, lab analysis, remediation)</div>
-        <div><div class="k">Also known for</div>Mushroom cultivation &amp; foraging</div>
-        
-      </div>
+      <p class="about-intro" id="about-intro">I hold an MSc in Biology and specialise in mycology — the study of fungi. My work sits at the intersection of careful laboratory practice and a lifelong fascination with the roles fungi play, above and below ground.</p>
+      <p class="body-soft" id="about-body">Professionally, I work as an indoor microbiology specialist: sampling buildings, analysing what I find in the lab, and helping people understand and remediate what&#39;s growing where it shouldn&#39;t. Outside of that, mycology is also where I spend my free time — cultivating mushrooms, foraging, and following fungi into stranger territory: the guided tours, workshops, and integrative work I&#39;m building toward now.</p>
     </div>
   </div>
 </section>
 
-<section id="microbiology">
+<section id="microbiology" class="band" data-rune="ᛚ">
   <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow"><span class="rune" aria-hidden="true" title="laguz — water">ᛚ</span><span id="services-eyebrow">Services</span></div>
-      <h2 id="services-heading">Indoor Microbiology</h2>
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="laguz — water">ᛚ</span><span id="services-eyebrow">Services</span></div>
+        <h2 id="services-heading">Indoor Microbiology</h2>
+      </div>
       <p id="services-intro">For homeowners, landlords, and businesses dealing with mould, damp, or unexplained air quality issues. I bring lab-grade rigour to a problem that&#39;s usually diagnosed by guesswork.</p>
     </div>
-    <div class="cards reveal" id="services-cards">
-      <div class="card">
-        <div class="tag">01 · On-site</div>
+
+    <ol class="steps" id="services-cards">
+      <li class="step">
+        <span class="step-tag">01 · On-site</span>
         <h3>Sampling</h3>
         <p>Careful, methodical collection of air and surface samples to identify what&#39;s actually present — not just what&#39;s visible.</p>
-      </div>
-      <div class="card">
-        <div class="tag">02 · Laboratory</div>
+      </li>
+      <li class="step">
+        <span class="step-tag">02 · Laboratory</span>
         <h3>Analysis &amp; Interpretation</h3>
         <p>Microscopy and lab analysis of samples, translated into a clear, plain-language read of what&#39;s growing and why.</p>
-      </div>
-      <div class="card">
-        <div class="tag">03 · Resolution</div>
+      </li>
+      <li class="step">
+        <span class="step-tag">03 · Resolution</span>
         <h3>Remediation Guidance</h3>
         <p>Practical, evidence-based recommendations for resolving the underlying issue — not just masking the symptoms.</p>
-      </div>
+      </li>
       
-    </div>
+    </ol>
 
-    <h3 class="sub-heading reveal" id="offers-heading">Ways to work with me</h3>
-    <div class="offers reveal" id="services-offers">
+    <h3 class="sub-heading" id="offers-heading">Ways to work with me</h3>
+    <div class="offers" id="services-offers">
       <article class="offer">
-        <h4>Free first call</h4>
-        <p class="offer-audience">Not sure whether you need testing at all?</p>
+        <div class="offer-head">
+          <h4>Free first call</h4>
+          <p class="offer-audience">Not sure whether you need testing at all?</p>
+        </div>
         
         <ul class="offer-includes"><li>15-minute phone or video call</li><li>Describe what you see, smell or suspect</li><li>An honest view on whether sampling makes sense</li></ul>
-        <div class="offer-meta">
-          <span class="offer-price">Free</span>
-          
+        <div class="offer-foot">
+          <div class="offer-meta">
+            <span class="offer-price">Free</span>
+            
+          </div>
+          <a class="offer-cta" href="#contact" data-offer="Free first call">Ask about this</a>
         </div>
-        <a class="offer-cta" href="#contact" data-offer="Free first call">Ask about this</a>
       </article>
       <article class="offer">
-        <h4>Inspection &amp; sampling visit</h4>
-        <p class="offer-audience">Homeowners, tenants and landlords with visible mould, damp or a musty smell.</p>
+        <div class="offer-head">
+          <h4>Inspection &amp; sampling visit</h4>
+          <p class="offer-audience">Homeowners, tenants and landlords with visible mould, damp or a musty smell.</p>
+        </div>
         
         <ul class="offer-includes"><li>On-site inspection of the affected rooms</li><li>Air and surface sampling where relevant</li><li>First findings explained on the spot</li></ul>
-        <div class="offer-meta">
-          <span class="offer-price">Price on request</span>
-          
+        <div class="offer-foot">
+          <div class="offer-meta">
+            <span class="offer-price">Price on request</span>
+            
+          </div>
+          <a class="offer-cta" href="#contact" data-offer="Inspection &amp; sampling visit">Ask about this</a>
         </div>
-        <a class="offer-cta" href="#contact" data-offer="Inspection &amp; sampling visit">Ask about this</a>
       </article>
       <article class="offer">
-        <h4>Full assessment with lab report</h4>
-        <p class="offer-audience">When you need documentation — for a landlord, a buyer, an insurer, or your own peace of mind.</p>
+        <div class="offer-head">
+          <h4>Full assessment with lab report</h4>
+          <p class="offer-audience">When you need documentation — for a landlord, a buyer, an insurer, or your own peace of mind.</p>
+        </div>
         
         <ul class="offer-includes"><li>Everything in the sampling visit</li><li>Microscopy and lab analysis of samples</li><li>Written report in plain language</li><li>Evidence-based remediation recommendations</li></ul>
-        <div class="offer-meta">
-          <span class="offer-price">Price on request</span>
-          
+        <div class="offer-foot">
+          <div class="offer-meta">
+            <span class="offer-price">Price on request</span>
+            
+          </div>
+          <a class="offer-cta" href="#contact" data-offer="Full assessment with lab report">Ask about this</a>
         </div>
-        <a class="offer-cta" href="#contact" data-offer="Full assessment with lab report">Ask about this</a>
       </article>
       
     </div>
   </div>
 </section>
 
-<section id="trust" hidden>
+<section id="trust" data-rune="ᛏ" hidden>
   <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow"><span class="rune" aria-hidden="true" title="tīwaz — justice">ᛏ</span><span id="trust-eyebrow">Track record</span></div>
-      <h2 id="trust-heading">Cases &amp; references</h2>
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="tīwaz — justice">ᛏ</span><span id="trust-eyebrow">Track record</span></div>
+        <h2 id="trust-heading">Cases &amp; references</h2>
+      </div>
       <p id="trust-intro" hidden></p>
     </div>
-    <div class="cases reveal" id="trust-cases"></div>
-    <div class="testimonials reveal" id="trust-testimonials"></div>
-    <a class="btn btn-ghost reveal" id="trust-report" href="#" target="_blank" rel="noopener" hidden>See an example report (PDF)</a>
+    <div class="cases" id="trust-cases"></div>
+    <div class="testimonials" id="trust-testimonials"></div>
+    <a class="btn btn-ghost" id="trust-report" href="#" target="_blank" rel="noopener" hidden>See an example report (PDF)</a>
   </div>
 </section>
 
-<section id="projects">
-  <div class="wrap">
-    <div class="section-head reveal">
+<section id="projects" data-rune="ᚲ">
+  <div class="wrap side-layout">
+    <div class="side-head">
       <div class="eyebrow"><span class="rune" aria-hidden="true" title="kenaz — torch, knowledge">ᚲ</span><span id="projects-eyebrow">Research &amp; projects</span></div>
       <h2 id="projects-heading">Selected work</h2>
       <p id="projects-intro" hidden></p>
+      <div class="side-actions">
+        <a class="btn btn-primary" id="projects-cv" href="page.html?slug=cv">Read my full CV</a>
+        <a class="btn btn-ghost" id="projects-cvpdf" href="cv.pdf" download>Download CV (PDF)</a>
+      </div>
     </div>
-    <ul class="timeline reveal" id="projects-list">
+    <ul class="timeline" id="projects-list">
       <li>
         <span class="tl-year">2026–now</span>
         <div>
-          <strong>Molecular detection of hidden mould in buildings</strong>
-          <span class="desc">Using molecular methods to reveal hidden mould growth in buildings.</span>
+          <h3>Molecular detection of hidden mould in buildings</h3>
+          <p class="desc">Using molecular methods to reveal hidden mould growth in buildings.</p>
           
         </div>
       </li>
       <li>
         <span class="tl-year">Tool</span>
         <div>
-          <strong>Spore×plore</strong>
-          <span class="desc">An interactive identifier for Nordic Boletales based on spore characteristics, drawing on Funga Nordica and live GBIF occurrence records.</span>
+          <h3>Spore×plore</h3>
+          <p class="desc">An interactive identifier for Nordic Boletales based on spore characteristics, drawing on Funga Nordica and live GBIF occurrence records.</p>
           <a class="tl-link" href="sporexplore.html">Open Spore×plore</a>
         </div>
       </li>
       <li>
         <span class="tl-year">2025</span>
         <div>
-          <strong>From 2D plates to 3D structures</strong>
-          <span class="desc">Does termite-farmed Termitomyces need three dimensions to grow? Poster at the Danish Microbiological Society annual convention.</span>
+          <h3>From 2D plates to 3D structures</h3>
+          <p class="desc">Does termite-farmed Termitomyces need three dimensions to grow? Poster at the Danish Microbiological Society annual convention.</p>
           
         </div>
       </li>
       <li>
         <span class="tl-year">2026</span>
         <div>
-          <strong>Fungal breeding techniques</strong>
-          <span class="desc">Innovation project focused on fungal breeding techniques.</span>
+          <h3>Fungal breeding techniques</h3>
+          <p class="desc">Innovation project focused on fungal breeding techniques.</p>
           
         </div>
       </li>
       
     </ul>
-    <div class="cta-row reveal">
-      <a class="btn btn-primary" id="projects-cv" href="page.html?slug=cv">Read my full CV</a>
-      <a class="btn btn-ghost" id="projects-cvpdf" href="cv.pdf" download>Download CV (PDF)</a>
-    </div>
   </div>
 </section>
 
-<section id="mycology">
+<section id="mycology" class="band" data-rune="ᛃ">
   <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow"><span class="rune" aria-hidden="true" title="jēra — harvest">ᛃ</span><span id="mycology-eyebrow">Practice</span></div>
-      <h2 id="mycology-heading">Cultivation &amp; Foraging</h2>
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="jēra — harvest">ᛃ</span><span id="mycology-eyebrow">Practice</span></div>
+        <h2 id="mycology-heading">Cultivation &amp; Foraging</h2>
+      </div>
       <p id="mycology-intro">Alongside the lab work, fungi are where I spend my own time. Cultivation and foraging keep me close to the organisms I study professionally — and to the ecosystems they belong to.</p>
     </div>
-    <div class="split reveal">
+    <div class="myco-layout">
       <ul class="list-plain" id="mycology-list">
         <li>
           <span class="num">01</span>
-          <div><strong>Mushroom cultivation</strong><span class="desc">Growing edible and medicinal species, from substrate to harvest.</span></div>
+          <div><h3>Mushroom cultivation</h3><span class="desc">Growing edible and medicinal species, from substrate to harvest.</span></div>
         </li>
         <li>
           <span class="num">02</span>
-          <div><strong>Foraging</strong><span class="desc">Identifying and gathering wild fungi, with an emphasis on doing it safely and sustainably.</span></div>
+          <div><h3>Foraging</h3><span class="desc">Identifying and gathering wild fungi, with an emphasis on doing it safely and sustainably.</span></div>
         </li>
         <li>
           <span class="num">03</span>
-          <div><strong>Guided nature tours</strong><span class="desc">In development — small-group walks focused on fungi, forest ecology, and how to actually see what&#39;s around you.</span></div>
+          <div><h3>Guided nature tours</h3><span class="desc">In development — small-group walks focused on fungi, forest ecology, and how to actually see what&#39;s around you.</span></div>
         </li>
         
       </ul>
@@ -303,27 +330,30 @@
   </div>
 </section>
 
-<section id="photography">
+<section id="photography" data-rune="ᛞ">
   <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow"><span class="rune" aria-hidden="true" title="dagaz — daylight">ᛞ</span><span id="photography-eyebrow">Also in progress</span></div>
-      <h2 id="photography-heading">Photography</h2>
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="dagaz — daylight">ᛞ</span><span id="photography-eyebrow">Also in progress</span></div>
+        <h2 id="photography-heading">Photography</h2>
+      </div>
       <p id="photography-intro">Photography is a growing passion of mine, and I&#39;m working on bringing it into my practice — documenting fungi, forests, and fieldwork, and eventually offering it as part of my tours and services.</p>
     </div>
-    <div class="photo-strip reveal" id="photography-strip">
+    <div class="photo-strip" id="photography-strip">
       <figure class="photo-tile has-image"><img src="/images/gallery/226f3774-b44a-42ff-a6c3-5b8dae01e53e.jpg" alt="veryniiiiice" loading="lazy"><figcaption class="cap">veryniiiiice</figcaption></figure>
       
     </div>
   </div>
 </section>
 
-<section id="faq">
-  <div class="wrap">
-    <div class="section-head reveal">
+<section id="faq" data-rune="ᚨ">
+  <div class="wrap side-layout">
+    <div class="side-head">
       <div class="eyebrow"><span class="rune" aria-hidden="true" title="ansuz — speech, wisdom">ᚨ</span><span id="faq-eyebrow">FAQ</span></div>
       <h2 id="faq-heading">Common questions</h2>
+      <p class="side-note">Something else on your mind? <a href="#contact">Ask me directly.</a></p>
     </div>
-    <div class="faq-list reveal" id="faq-list">
+    <div class="faq-list" id="faq-list">
       <details>
         <summary>Do I need testing, or should I just remove the mould?</summary>
         <p>If the growth is small, visible and the cause is obvious — a leak, condensation on a cold wall — fixing the moisture and cleaning may be enough. Testing is worth it when you smell mould but can&#39;t see it, after water damage, when symptoms persist, or when you need documentation for a landlord, buyer or insurer.</p>
@@ -345,42 +375,38 @@
   </div>
 </section>
 
-<section id="contact">
-  <div class="wrap">
-    <div class="section-head reveal">
+<section id="contact" class="deep" data-rune="ᛖ">
+  <div class="wrap contact-grid">
+    <div class="contact-details">
       <div class="eyebrow"><span class="rune" aria-hidden="true" title="ehwaz — partnership">ᛖ</span><span id="contact-eyebrow">Get in touch</span></div>
       <h2 id="contact-heading">Let&#39;s talk</h2>
-      <p id="contact-intro">Whether it&#39;s a microbiology issue you need looked at, a question about foraging or cultivation, or interest in future tours and workshops — reach out.</p>
+      <p class="contact-intro" id="contact-intro">Whether it&#39;s a microbiology issue you need looked at, a question about foraging or cultivation, or interest in future tours and workshops — reach out.</p>
+      <a class="email" href="mailto:pietershiffler@proton.me" id="contact-email">pietershiffler@proton.me</a>
+      <dl class="contact-facts">
+        <div id="contact-phone-row" hidden><dt>Phone</dt><dd><a id="contact-phone" href="tel:"></a></dd></div>
+        <div id="contact-area-row" hidden><dt>Service area</dt><dd id="contact-area"></dd></div>
+      </dl>
+      <a class="btn btn-primary" id="contact-booking" href="#" target="_blank" rel="noopener" hidden>Book a free 15-min call</a>
+      <div class="socials" id="contact-socials"><a href="https://instagram.com/shfflr" target="_blank" rel="noopener noreferrer">instagram</a></div>
     </div>
-    <div class="contact-grid reveal">
-      <div class="contact-details">
-        <a class="email" href="mailto:pietershiffler@proton.me" id="contact-email">pietershiffler@proton.me</a>
-        <dl class="contact-facts">
-          <div id="contact-phone-row" hidden><dt>Phone</dt><dd><a id="contact-phone" href="tel:"></a></dd></div>
-          <div id="contact-area-row" hidden><dt>Service area</dt><dd id="contact-area"></dd></div>
-        </dl>
-        <a class="btn btn-primary" id="contact-booking" href="#" target="_blank" rel="noopener" hidden>Book a free 15-min call</a>
-        <div class="socials" id="contact-socials"><a href="https://instagram.com/shfflr" target="_blank" rel="noopener noreferrer">instagram</a></div>
-      </div>
 
-      <form class="contact-form" id="contact-form" data-endpoint="" data-email="pietershiffler@proton.me" novalidate>
-        <div class="field-row">
-          <label>Name<input name="name" autocomplete="name" required></label>
-          <label>Email<input name="email" type="email" autocomplete="email" required></label>
-        </div>
-        <label>What&#39;s it about?
-          <select name="topic" id="form-topic">
-            <option>Mould or damp in a building</option><option>Foraging or cultivation</option><option>Tours &amp; workshops</option><option>Research or collaboration</option><option>Something else</option>
-          </select>
-        </label>
-        <label>Message<textarea name="message" rows="5" required></textarea></label>
-        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div class="form-foot">
-          <button class="btn btn-primary" type="submit">Send message</button>
-          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-        </div>
-      </form>
-    </div>
+    <form class="contact-form" id="contact-form" data-endpoint="" data-email="pietershiffler@proton.me" novalidate>
+      <div class="field-row">
+        <label>Name<input name="name" autocomplete="name" required></label>
+        <label>Email<input name="email" type="email" autocomplete="email" required></label>
+      </div>
+      <label>What&#39;s it about?
+        <select name="topic" id="form-topic">
+          <option>Mould or damp in a building</option><option>Foraging or cultivation</option><option>Tours &amp; workshops</option><option>Research or collaboration</option><option>Something else</option>
+        </select>
+      </label>
+      <label>Message<textarea name="message" rows="5" required></textarea></label>
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="form-foot">
+        <button class="btn btn-primary" type="submit">Send message</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -394,7 +420,6 @@
       <a href="da.html" hreflang="da" lang="da" data-lang-switch>Dansk</a>
     </div>
     <div id="footer-tagline">MSc Biology · Mycology · Indoor Microbiology</div>
-    <div class="runes footer-runes" aria-hidden="true" title="Pieter Shiffler Carpentier, written in Elder Futhark runes">ᛈᛁᛖᛏᛖᚱ ᛬ ᛊᚺᛁᚠᚠᛚᛖᚱ ᛬ ᚲᚨᚱᛈᛖᚾᛏᛁᛖᚱ</div>
   </div>
 </footer>
 
@@ -413,7 +438,7 @@
   <p class="egg-fallback" id="egg-fallback" hidden>This needs WebGL, which your browser doesn&#39;t seem to support. The network is still out there.</p>
 </div>
 
-<script id="ui-strings" type="application/json">{"area": "Service area", "back": "Back to the main page", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Research or collaboration", "Something else"], "loading": "Loading\u2026", "menu": "Menu", "nameRunesTitle": "Pieter Shiffler Carpentier, written in Elder Futhark runes", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "phone": "Phone", "skip": "Skip to content", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
+<script id="ui-strings" type="application/json">{"area": "Service area", "back": "Back to the main page", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "faqMore": "Something else on your mind?", "faqMoreLink": "Ask me directly.", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Research or collaboration", "Something else"], "loading": "Loading\u2026", "menu": "Menu", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "pathsLabel": "Where to start", "phone": "Phone", "skip": "Skip to content", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
 
 <script src="assets/site.js" defer></script>
 </body>

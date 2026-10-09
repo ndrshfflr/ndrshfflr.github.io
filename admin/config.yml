@@ -45,6 +45,17 @@ collections:
               - { label: "Primary button link", name: "primaryCtaLink", widget: "string", hint: "e.g. #contact or a full https:// link" }
               - { label: "Secondary button text", name: "secondaryCtaLabel", widget: "string" }
               - { label: "Secondary button link", name: "secondaryCtaLink", widget: "string" }
+              - label: "Shortcuts at the bottom of the hero"
+                name: "paths"
+                widget: "list"
+                required: false
+                summary: "{{rune}} {{title}}"
+                hint: "Up to three quick routes for different visitors (clients, recruiters, fungi people)."
+                fields:
+                  - { label: "Rune (decoration)", name: "rune", widget: "string", required: false, hint: "One Elder Futhark rune, e.g. ᛚ ᚲ ᛃ ᛗ ᛖ ᚨ ᛞ ᛏ ᛈ" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Short line", name: "text", widget: "string" }
+                  - { label: "Link", name: "link", widget: "string", hint: "e.g. #microbiology, #projects, #mycology" }
 
           - label: "About section"
             name: "about"
@@ -81,6 +92,7 @@ collections:
                 name: "offers"
                 widget: "list"
                 required: false
+                hint: "The first offer is shown as a wide band above the others — a good place for the free first call."
                 summary: "{{title}} — {{price}}"
                 fields:
                   - { label: "Name", name: "title", widget: "string" }

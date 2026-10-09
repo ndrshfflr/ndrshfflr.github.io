@@ -45,9 +45,9 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of Copenhagen"}, "description": "MSc Biologi \u2014 specialist i indeklimamikrobiologi, mykolog og guide til svampenes verden.", "email": "mailto:pietershiffler@proton.me", "jobTitle": "Specialist i indeklimamikrobiologi \u0026 mykolog", "knowsAbout": ["Mycology", "Indoor microbiology", "Mould", "Building moisture damage", "Fungal identification", "Mushroom cultivation"], "knowsLanguage": ["da", "en"], "name": "Pieter Shiffler Carpentier", "sameAs": ["https://instagram.com/shfflr"], "url": "https://ndrshfflr.github.io/da.html"}</script>
 
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Fonts are self-hosted (no requests to Google — simpler under GDPR) -->
+<link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
@@ -102,195 +102,222 @@
     <img id="hero-image" src="" alt="" fetchpriority="high" hidden>
   </div>
   <div class="hero-shade"></div>
-  <svg class="rune-ring" viewBox="0 0 600 600" aria-hidden="true">
-    <defs><path id="rune-path" d="M300,300 m-246,0 a246,246 0 1,1 492,0 a246,246 0 1,1 -492,0"/></defs>
-    <circle cx="300" cy="300" r="282"/>
-    <circle cx="300" cy="300" r="212"/>
-    <text><textPath href="#rune-path" textLength="1540" lengthAdjust="spacing">ᛈᛁᛖᛏᛖᚱ ᛬ ᛊᚺᛁᚠᚠᛚᛖᚱ ᛬ ᚲᚨᚱᛈᛖᚾᛏᛁᛖᚱ ᛭ ᛈᛁᛖᛏᛖᚱ ᛬ ᛊᚺᛁᚠᚠᛚᛖᚱ ᛬ ᚲᚨᚱᛈᛖᚾᛏᛁᛖᚱ ᛭</textPath></text>
-  </svg>
-  <div class="wrap inner">
-    <span class="runes hero-runes" aria-hidden="true" title="Pieter Shiffler Carpentier, skrevet med den ældre futhark"><span style="animation-delay:0.25s">ᛈᛁᛖᛏᛖᚱ</span> <span style="animation-delay:0.60s">᛬</span> <span style="animation-delay:0.95s">ᛊᚺᛁᚠᚠᛚᛖᚱ</span> <span style="animation-delay:1.30s">᛬</span> <span style="animation-delay:1.65s">ᚲᚨᚱᛈᛖᚾᛏᛁᛖᚱ</span></span>
-    <div class="eyebrow" id="hero-eyebrow">MSc Biologi · Mykolog · Specialist i indeklimamikrobiologi</div>
-    <h1 id="hero-headline">Jeg læser svampenes skjulte tegn — i dit hjem og i naturen.</h1>
-    <p class="lead" id="hero-lead">Jeg hjælper folk med at forstå og løse mikrobielle problemer i indeklimaet med grundig laboratorievidenskab, og resten af tiden bruger jeg i skoven, i laboratoriet og ved kanten af det, biologien kan forklare.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="#contact" id="hero-cta-primary">Kontakt mig</a>
-      <a class="btn btn-ghost-light" href="#microbiology" id="hero-cta-secondary">Se mine ydelser</a>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <div class="hero-eyebrow" id="hero-eyebrow">MSc Biologi · Mykolog · Specialist i indeklimamikrobiologi</div>
+      <h1 id="hero-headline">Jeg læser svampenes skjulte tegn — i dit hjem og i naturen.</h1>
+      <p class="lead" id="hero-lead">Jeg hjælper folk med at forstå og løse mikrobielle problemer i indeklimaet med grundig laboratorievidenskab, og resten af tiden bruger jeg i skoven, i laboratoriet og ved kanten af det, biologien kan forklare.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contact" id="hero-cta-primary">Kontakt mig</a>
+        <a class="btn btn-ghost-light" href="#microbiology" id="hero-cta-secondary">Se mine ydelser</a>
+      </div>
     </div>
   </div>
+  <nav class="hero-paths wrap" id="hero-paths" aria-label="Hvor vil du starte?">
+    <a class="path" href="#microbiology">
+      <span class="path-rune" aria-hidden="true">ᛚ</span>
+      <span class="path-text"><strong>Skimmel eller fugt i hjemmet?</strong><span>Prøvetagning, laboratorieanalyse og en klar plan.</span></span>
+    </a>
+    <a class="path" href="#projects">
+      <span class="path-rune" aria-hidden="true">ᚲ</span>
+      <span class="path-text"><strong>Vil du ansætte eller samarbejde?</strong><span>Forskning, projekter og mit CV.</span></span>
+    </a>
+    <a class="path" href="#mycology">
+      <span class="path-rune" aria-hidden="true">ᛃ</span>
+      <span class="path-text"><strong>Interesseret i svampe?</strong><span>Dyrkning, sankning og ture under udvikling.</span></span>
+    </a>
+    
+  </nav>
 </header>
 
-<section id="about">
-  <div class="wrap">
-    <div class="section-head reveal">
+<section id="about" data-rune="ᛗ">
+  <div class="wrap about-layout">
+    <aside class="about-side">
+      <img id="about-portrait" class="portrait" src="" alt="Pieter Shiffler Carpentier" hidden>
+      <dl class="credentials" id="about-credentials">
+        <div><dt>Uddannelse</dt><dd>MSc, Biologi</dd></div>
+        <div><dt>Speciale</dt><dd>Mykologi</dd></div>
+        <div><dt>Primært arbejdsfelt</dt><dd>Indeklimamikrobiologi (prøvetagning, laboratorieanalyse, udbedring)</dd></div>
+        <div><dt>Kendt for</dt><dd>Svampedyrkning &amp; svampesankning</dd></div>
+        
+      </dl>
+    </aside>
+    <div class="about-main">
       <div class="eyebrow"><span class="rune" aria-hidden="true" title="mannaz — menneske">ᛗ</span><span id="about-eyebrow">Om mig</span></div>
       <h2 id="about-heading">Videnskab først. Nysgerrighed altid.</h2>
-      <p id="about-intro">Jeg har en MSc i biologi og er specialiseret i mykologi — læren om svampe. Mit arbejde ligger i krydsfeltet mellem omhyggelig laboratoriepraksis og en livslang fascination af de roller, svampe spiller over og under jorden.</p>
-    </div>
-    <div class="about-grid reveal">
-      <div>
-        <img id="about-portrait" class="portrait" src="" alt="Pieter Shiffler Carpentier" hidden>
-        <p class="body-soft" id="about-body">Professionelt arbejder jeg som specialist i indeklimamikrobiologi: Jeg tager prøver i bygninger, analyserer dem i laboratoriet og hjælper folk med at forstå og udbedre det, der vokser, hvor det ikke burde. Uden for arbejdet er mykologi også der, hvor jeg bruger min fritid — jeg dyrker svampe, sanker og følger svampene ind i mere ukendt land: de guidede ture, workshops og det tværfaglige arbejde, jeg er ved at bygge op.</p>
-      </div>
-      <div class="credentials" id="about-credentials">
-        <div><div class="k">Uddannelse</div>MSc, Biologi</div>
-        <div><div class="k">Speciale</div>Mykologi</div>
-        <div><div class="k">Primært arbejdsfelt</div>Indeklimamikrobiologi (prøvetagning, laboratorieanalyse, udbedring)</div>
-        <div><div class="k">Kendt for</div>Svampedyrkning &amp; svampesankning</div>
-        
-      </div>
+      <p class="about-intro" id="about-intro">Jeg har en MSc i biologi og er specialiseret i mykologi — læren om svampe. Mit arbejde ligger i krydsfeltet mellem omhyggelig laboratoriepraksis og en livslang fascination af de roller, svampe spiller over og under jorden.</p>
+      <p class="body-soft" id="about-body">Professionelt arbejder jeg som specialist i indeklimamikrobiologi: Jeg tager prøver i bygninger, analyserer dem i laboratoriet og hjælper folk med at forstå og udbedre det, der vokser, hvor det ikke burde. Uden for arbejdet er mykologi også der, hvor jeg bruger min fritid — jeg dyrker svampe, sanker og følger svampene ind i mere ukendt land: de guidede ture, workshops og det tværfaglige arbejde, jeg er ved at bygge op.</p>
     </div>
   </div>
 </section>
 
-<section id="microbiology">
+<section id="microbiology" class="band" data-rune="ᛚ">
   <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow"><span class="rune" aria-hidden="true" title="laguz — vand">ᛚ</span><span id="services-eyebrow">Ydelser</span></div>
-      <h2 id="services-heading">Skimmelsvamp &amp; indeklima</h2>
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="laguz — vand">ᛚ</span><span id="services-eyebrow">Ydelser</span></div>
+        <h2 id="services-heading">Skimmelsvamp &amp; indeklima</h2>
+      </div>
       <p id="services-intro">Til boligejere, lejere, udlejere og virksomheder med skimmel, fugt eller uforklarlige problemer med luftkvaliteten. Jeg bringer laboratoriets grundighed til et problem, der ellers ofte diagnosticeres ved gætværk.</p>
     </div>
-    <div class="cards reveal" id="services-cards">
-      <div class="card">
-        <div class="tag">01 · På stedet</div>
+
+    <ol class="steps" id="services-cards">
+      <li class="step">
+        <span class="step-tag">01 · På stedet</span>
         <h3>Prøvetagning</h3>
         <p>Omhyggelig og metodisk indsamling af luft- og overfladeprøver for at finde ud af, hvad der faktisk er til stede — ikke kun det, man kan se.</p>
-      </div>
-      <div class="card">
-        <div class="tag">02 · Laboratorium</div>
+      </li>
+      <li class="step">
+        <span class="step-tag">02 · Laboratorium</span>
         <h3>Analyse &amp; fortolkning</h3>
         <p>Mikroskopi og laboratorieanalyse af prøverne, oversat til en klar forklaring på almindeligt dansk af, hvad der vokser, og hvorfor.</p>
-      </div>
-      <div class="card">
-        <div class="tag">03 · Løsning</div>
+      </li>
+      <li class="step">
+        <span class="step-tag">03 · Løsning</span>
         <h3>Rådgivning om udbedring</h3>
         <p>Praktiske, evidensbaserede anbefalinger til at løse det egentlige problem — ikke bare dække symptomerne til.</p>
-      </div>
+      </li>
       
-    </div>
+    </ol>
 
-    <h3 class="sub-heading reveal" id="offers-heading">Sådan kan vi samarbejde</h3>
-    <div class="offers reveal" id="services-offers">
+    <h3 class="sub-heading" id="offers-heading">Sådan kan vi samarbejde</h3>
+    <div class="offers" id="services-offers">
       <article class="offer">
-        <h4>Gratis første samtale</h4>
-        <p class="offer-audience">I tvivl om, om der overhovedet er brug for en undersøgelse?</p>
+        <div class="offer-head">
+          <h4>Gratis første samtale</h4>
+          <p class="offer-audience">I tvivl om, om der overhovedet er brug for en undersøgelse?</p>
+        </div>
         
         <ul class="offer-includes"><li>15 minutters telefon- eller videosamtale</li><li>Fortæl, hvad du ser, lugter eller har mistanke om</li><li>En ærlig vurdering af, om prøvetagning giver mening</li></ul>
-        <div class="offer-meta">
-          <span class="offer-price">Gratis</span>
-          
+        <div class="offer-foot">
+          <div class="offer-meta">
+            <span class="offer-price">Gratis</span>
+            
+          </div>
+          <a class="offer-cta" href="#contact" data-offer="Gratis første samtale">Spørg om dette</a>
         </div>
-        <a class="offer-cta" href="#contact" data-offer="Gratis første samtale">Spørg om dette</a>
       </article>
       <article class="offer">
-        <h4>Besigtigelse &amp; prøvetagning</h4>
-        <p class="offer-audience">Boligejere, lejere og udlejere med synlig skimmel, fugt eller muggen lugt.</p>
+        <div class="offer-head">
+          <h4>Besigtigelse &amp; prøvetagning</h4>
+          <p class="offer-audience">Boligejere, lejere og udlejere med synlig skimmel, fugt eller muggen lugt.</p>
+        </div>
         
         <ul class="offer-includes"><li>Besigtigelse af de berørte rum</li><li>Luft- og overfladeprøver, hvor det er relevant</li><li>Første fund forklaret på stedet</li></ul>
-        <div class="offer-meta">
-          <span class="offer-price">Pris efter aftale</span>
-          
+        <div class="offer-foot">
+          <div class="offer-meta">
+            <span class="offer-price">Pris efter aftale</span>
+            
+          </div>
+          <a class="offer-cta" href="#contact" data-offer="Besigtigelse &amp; prøvetagning">Spørg om dette</a>
         </div>
-        <a class="offer-cta" href="#contact" data-offer="Besigtigelse &amp; prøvetagning">Spørg om dette</a>
       </article>
       <article class="offer">
-        <h4>Fuld undersøgelse med laboratorierapport</h4>
-        <p class="offer-audience">Når du har brug for dokumentation — til udlejer, køber, forsikring eller din egen ro i maven.</p>
+        <div class="offer-head">
+          <h4>Fuld undersøgelse med laboratorierapport</h4>
+          <p class="offer-audience">Når du har brug for dokumentation — til udlejer, køber, forsikring eller din egen ro i maven.</p>
+        </div>
         
         <ul class="offer-includes"><li>Alt fra besigtigelsen</li><li>Mikroskopi og laboratorieanalyse af prøverne</li><li>Skriftlig rapport i et forståeligt sprog</li><li>Evidensbaserede anbefalinger til udbedring</li></ul>
-        <div class="offer-meta">
-          <span class="offer-price">Pris efter aftale</span>
-          
+        <div class="offer-foot">
+          <div class="offer-meta">
+            <span class="offer-price">Pris efter aftale</span>
+            
+          </div>
+          <a class="offer-cta" href="#contact" data-offer="Fuld undersøgelse med laboratorierapport">Spørg om dette</a>
         </div>
-        <a class="offer-cta" href="#contact" data-offer="Fuld undersøgelse med laboratorierapport">Spørg om dette</a>
       </article>
       
     </div>
   </div>
 </section>
 
-<section id="trust" hidden>
+<section id="trust" data-rune="ᛏ" hidden>
   <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow"><span class="rune" aria-hidden="true" title="tīwaz — retfærdighed">ᛏ</span><span id="trust-eyebrow">Erfaring</span></div>
-      <h2 id="trust-heading">Sager &amp; referencer</h2>
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="tīwaz — retfærdighed">ᛏ</span><span id="trust-eyebrow">Erfaring</span></div>
+        <h2 id="trust-heading">Sager &amp; referencer</h2>
+      </div>
       <p id="trust-intro" hidden></p>
     </div>
-    <div class="cases reveal" id="trust-cases"></div>
-    <div class="testimonials reveal" id="trust-testimonials"></div>
-    <a class="btn btn-ghost reveal" id="trust-report" href="#" target="_blank" rel="noopener" hidden>Se et eksempel på en rapport (PDF)</a>
+    <div class="cases" id="trust-cases"></div>
+    <div class="testimonials" id="trust-testimonials"></div>
+    <a class="btn btn-ghost" id="trust-report" href="#" target="_blank" rel="noopener" hidden>Se et eksempel på en rapport (PDF)</a>
   </div>
 </section>
 
-<section id="projects">
-  <div class="wrap">
-    <div class="section-head reveal">
+<section id="projects" data-rune="ᚲ">
+  <div class="wrap side-layout">
+    <div class="side-head">
       <div class="eyebrow"><span class="rune" aria-hidden="true" title="kenaz — fakkel, viden">ᚲ</span><span id="projects-eyebrow">Forskning &amp; projekter</span></div>
       <h2 id="projects-heading">Udvalgte projekter</h2>
       <p id="projects-intro" hidden></p>
+      <div class="side-actions">
+        <a class="btn btn-primary" id="projects-cv" href="page.html?slug=cv">Læs mit fulde CV</a>
+        <a class="btn btn-ghost" id="projects-cvpdf" href="cv.pdf" download>Download CV (PDF)</a>
+      </div>
     </div>
-    <ul class="timeline reveal" id="projects-list">
+    <ul class="timeline" id="projects-list">
       <li>
         <span class="tl-year">2026–nu</span>
         <div>
-          <strong>Molekylær påvisning af skjult skimmel i bygninger</strong>
-          <span class="desc">Brug af molekylære metoder til at afsløre skjult skimmelvækst i bygninger.</span>
+          <h3>Molekylær påvisning af skjult skimmel i bygninger</h3>
+          <p class="desc">Brug af molekylære metoder til at afsløre skjult skimmelvækst i bygninger.</p>
           
         </div>
       </li>
       <li>
         <span class="tl-year">Værktøj</span>
         <div>
-          <strong>Spore×plore</strong>
-          <span class="desc">Et interaktivt bestemmelsesværktøj til nordiske rørhatte (Boletales) baseret på sporekarakterer, med data fra Funga Nordica og GBIF-fund i realtid.</span>
+          <h3>Spore×plore</h3>
+          <p class="desc">Et interaktivt bestemmelsesværktøj til nordiske rørhatte (Boletales) baseret på sporekarakterer, med data fra Funga Nordica og GBIF-fund i realtid.</p>
           <a class="tl-link" href="sporexplore.html">Åbn Spore×plore</a>
         </div>
       </li>
       <li>
         <span class="tl-year">2025</span>
         <div>
-          <strong>Fra 2D-plader til 3D-strukturer</strong>
-          <span class="desc">Har termitdyrket Termitomyces brug for tre dimensioner for at vokse? Poster ved Dansk Mikrobiologisk Selskabs årsmøde.</span>
+          <h3>Fra 2D-plader til 3D-strukturer</h3>
+          <p class="desc">Har termitdyrket Termitomyces brug for tre dimensioner for at vokse? Poster ved Dansk Mikrobiologisk Selskabs årsmøde.</p>
           
         </div>
       </li>
       <li>
         <span class="tl-year">2026</span>
         <div>
-          <strong>Forædling af svampe</strong>
-          <span class="desc">Innovationsprojekt med fokus på teknikker til svampeforædling.</span>
+          <h3>Forædling af svampe</h3>
+          <p class="desc">Innovationsprojekt med fokus på teknikker til svampeforædling.</p>
           
         </div>
       </li>
       
     </ul>
-    <div class="cta-row reveal">
-      <a class="btn btn-primary" id="projects-cv" href="page.html?slug=cv">Læs mit fulde CV</a>
-      <a class="btn btn-ghost" id="projects-cvpdf" href="cv.pdf" download>Download CV (PDF)</a>
-    </div>
   </div>
 </section>
 
-<section id="mycology">
+<section id="mycology" class="band" data-rune="ᛃ">
   <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow"><span class="rune" aria-hidden="true" title="jēra — høst">ᛃ</span><span id="mycology-eyebrow">Praksis</span></div>
-      <h2 id="mycology-heading">Dyrkning &amp; sankning</h2>
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="jēra — høst">ᛃ</span><span id="mycology-eyebrow">Praksis</span></div>
+        <h2 id="mycology-heading">Dyrkning &amp; sankning</h2>
+      </div>
       <p id="mycology-intro">Ved siden af laboratoriearbejdet er det svampene, jeg bruger min egen tid på. Dyrkning og sankning holder mig tæt på de organismer, jeg studerer professionelt — og på de økosystemer, de hører til i.</p>
     </div>
-    <div class="split reveal">
+    <div class="myco-layout">
       <ul class="list-plain" id="mycology-list">
         <li>
           <span class="num">01</span>
-          <div><strong>Svampedyrkning</strong><span class="desc">Dyrkning af spiselige og medicinske arter, fra substrat til høst.</span></div>
+          <div><h3>Svampedyrkning</h3><span class="desc">Dyrkning af spiselige og medicinske arter, fra substrat til høst.</span></div>
         </li>
         <li>
           <span class="num">02</span>
-          <div><strong>Svampesankning</strong><span class="desc">Bestemmelse og indsamling af vilde svampe med vægt på at gøre det sikkert og bæredygtigt.</span></div>
+          <div><h3>Svampesankning</h3><span class="desc">Bestemmelse og indsamling af vilde svampe med vægt på at gøre det sikkert og bæredygtigt.</span></div>
         </li>
         <li>
           <span class="num">03</span>
-          <div><strong>Guidede naturture</strong><span class="desc">Under udvikling — ture for små grupper med fokus på svampe, skovens økologi, og hvordan man rent faktisk får øje på det, der er omkring en.</span></div>
+          <div><h3>Guidede naturture</h3><span class="desc">Under udvikling — ture for små grupper med fokus på svampe, skovens økologi, og hvordan man rent faktisk får øje på det, der er omkring en.</span></div>
         </li>
         
       </ul>
@@ -303,27 +330,30 @@
   </div>
 </section>
 
-<section id="photography">
+<section id="photography" data-rune="ᛞ">
   <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow"><span class="rune" aria-hidden="true" title="dagaz — dag">ᛞ</span><span id="photography-eyebrow">Også undervejs</span></div>
-      <h2 id="photography-heading">Fotografi</h2>
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="dagaz — dag">ᛞ</span><span id="photography-eyebrow">Også undervejs</span></div>
+        <h2 id="photography-heading">Fotografi</h2>
+      </div>
       <p id="photography-intro">Fotografi er en voksende passion, og jeg arbejder på at bringe det ind i min praksis — dokumentation af svampe, skove og feltarbejde, og på sigt som en del af mine ture og ydelser.</p>
     </div>
-    <div class="photo-strip reveal" id="photography-strip">
+    <div class="photo-strip" id="photography-strip">
       <figure class="photo-tile has-image"><img src="/images/gallery/226f3774-b44a-42ff-a6c3-5b8dae01e53e.jpg" alt="veryniiiiice" loading="lazy"><figcaption class="cap">veryniiiiice</figcaption></figure>
       
     </div>
   </div>
 </section>
 
-<section id="faq">
-  <div class="wrap">
-    <div class="section-head reveal">
+<section id="faq" data-rune="ᚨ">
+  <div class="wrap side-layout">
+    <div class="side-head">
       <div class="eyebrow"><span class="rune" aria-hidden="true" title="ansuz — tale, visdom">ᚨ</span><span id="faq-eyebrow">Spørgsmål</span></div>
       <h2 id="faq-heading">Ofte stillede spørgsmål</h2>
+      <p class="side-note">Har du et andet spørgsmål? <a href="#contact">Spørg mig direkte.</a></p>
     </div>
-    <div class="faq-list reveal" id="faq-list">
+    <div class="faq-list" id="faq-list">
       <details>
         <summary>Skal jeg have lavet en undersøgelse, eller skal jeg bare fjerne skimlen?</summary>
         <p>Hvis væksten er lille og synlig, og årsagen er åbenlys — et utæt rør, kondens på en kold væg — kan det være nok at stoppe fugten og rengøre. En undersøgelse giver mening, når du kan lugte skimmel, men ikke se den, efter vandskade, når gener bliver ved, eller når du har brug for dokumentation til udlejer, køber eller forsikring.</p>
@@ -345,42 +375,38 @@
   </div>
 </section>
 
-<section id="contact">
-  <div class="wrap">
-    <div class="section-head reveal">
+<section id="contact" class="deep" data-rune="ᛖ">
+  <div class="wrap contact-grid">
+    <div class="contact-details">
       <div class="eyebrow"><span class="rune" aria-hidden="true" title="ehwaz — partnerskab">ᛖ</span><span id="contact-eyebrow">Kontakt</span></div>
       <h2 id="contact-heading">Lad os tale sammen</h2>
-      <p id="contact-intro">Uanset om det er et skimmelproblem, du gerne vil have undersøgt, et spørgsmål om svampesankning eller -dyrkning, eller interesse i kommende ture og workshops — så skriv til mig.</p>
+      <p class="contact-intro" id="contact-intro">Uanset om det er et skimmelproblem, du gerne vil have undersøgt, et spørgsmål om svampesankning eller -dyrkning, eller interesse i kommende ture og workshops — så skriv til mig.</p>
+      <a class="email" href="mailto:pietershiffler@proton.me" id="contact-email">pietershiffler@proton.me</a>
+      <dl class="contact-facts">
+        <div id="contact-phone-row" hidden><dt>Telefon</dt><dd><a id="contact-phone" href="tel:"></a></dd></div>
+        <div id="contact-area-row" hidden><dt>Område</dt><dd id="contact-area"></dd></div>
+      </dl>
+      <a class="btn btn-primary" id="contact-booking" href="#" target="_blank" rel="noopener" hidden>Book en gratis samtale (15 min)</a>
+      <div class="socials" id="contact-socials"><a href="https://instagram.com/shfflr" target="_blank" rel="noopener noreferrer">instagram</a></div>
     </div>
-    <div class="contact-grid reveal">
-      <div class="contact-details">
-        <a class="email" href="mailto:pietershiffler@proton.me" id="contact-email">pietershiffler@proton.me</a>
-        <dl class="contact-facts">
-          <div id="contact-phone-row" hidden><dt>Telefon</dt><dd><a id="contact-phone" href="tel:"></a></dd></div>
-          <div id="contact-area-row" hidden><dt>Område</dt><dd id="contact-area"></dd></div>
-        </dl>
-        <a class="btn btn-primary" id="contact-booking" href="#" target="_blank" rel="noopener" hidden>Book en gratis samtale (15 min)</a>
-        <div class="socials" id="contact-socials"><a href="https://instagram.com/shfflr" target="_blank" rel="noopener noreferrer">instagram</a></div>
-      </div>
 
-      <form class="contact-form" id="contact-form" data-endpoint="" data-email="pietershiffler@proton.me" novalidate>
-        <div class="field-row">
-          <label>Navn<input name="name" autocomplete="name" required></label>
-          <label>E-mail<input name="email" type="email" autocomplete="email" required></label>
-        </div>
-        <label>Hvad drejer det sig om?
-          <select name="topic" id="form-topic">
-            <option>Skimmel eller fugt i en bygning</option><option>Svampesankning eller dyrkning</option><option>Ture &amp; workshops</option><option>Forskning eller samarbejde</option><option>Noget andet</option>
-          </select>
-        </label>
-        <label>Besked<textarea name="message" rows="5" required></textarea></label>
-        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div class="form-foot">
-          <button class="btn btn-primary" type="submit">Send besked</button>
-          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-        </div>
-      </form>
-    </div>
+    <form class="contact-form" id="contact-form" data-endpoint="" data-email="pietershiffler@proton.me" novalidate>
+      <div class="field-row">
+        <label>Navn<input name="name" autocomplete="name" required></label>
+        <label>E-mail<input name="email" type="email" autocomplete="email" required></label>
+      </div>
+      <label>Hvad drejer det sig om?
+        <select name="topic" id="form-topic">
+          <option>Skimmel eller fugt i en bygning</option><option>Svampesankning eller dyrkning</option><option>Ture &amp; workshops</option><option>Forskning eller samarbejde</option><option>Noget andet</option>
+        </select>
+      </label>
+      <label>Besked<textarea name="message" rows="5" required></textarea></label>
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="form-foot">
+        <button class="btn btn-primary" type="submit">Send besked</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -394,7 +420,6 @@
       <a href="index.html" hreflang="en" lang="en" data-lang-switch>English</a>
     </div>
     <div id="footer-tagline">MSc Biologi · Mykologi · Indeklimamikrobiologi</div>
-    <div class="runes footer-runes" aria-hidden="true" title="Pieter Shiffler Carpentier, skrevet med den ældre futhark">ᛈᛁᛖᛏᛖᚱ ᛬ ᛊᚺᛁᚠᚠᛚᛖᚱ ᛬ ᚲᚨᚱᛈᛖᚾᛏᛁᛖᚱ</div>
   </div>
 </footer>
 
@@ -413,7 +438,7 @@
   <p class="egg-fallback" id="egg-fallback" hidden>Det her kræver WebGL, som din browser vist ikke understøtter. Netværket er der stadig.</p>
 </div>
 
-<script id="ui-strings" type="application/json">{"area": "Omr\u00e5de", "back": "Tilbage til forsiden", "caseFinding": "Hvad jeg fandt", "caseOutcome": "Resultat", "caseProblem": "Problemet", "close": "Luk", "downloadPdf": "Download som PDF", "eggEyebrow": "Du fandt den", "eggFallback": "Det her kr\u00e6ver WebGL, som din browser vist ikke underst\u00f8tter. Netv\u00e6rket er der stadig.", "eggHint": "bev\u00e6g eller vip for at udforske \u00b7 esc for at lukke", "eggTitle": "Tr\u00e6d ind i myceliet", "enableMotion": "Sl\u00e5 bev\u00e6gelse til", "formEmail": "E-mail", "formError": "Noget gik galt. Skriv venligst direkte til min e-mail i stedet.", "formInvalid": "Udfyld venligst navn, en gyldig e-mailadresse og en besked.", "formMailto": "Dit mailprogram burde \u00e5bne med beskeden udfyldt \u2014 tryk bare send.", "formMessage": "Besked", "formName": "Navn", "formSend": "Send besked", "formSending": "Sender\u2026", "formSent": "Tak \u2014 din besked er sendt. Jeg vender tilbage hurtigst muligt.", "formTopic": "Hvad drejer det sig om?", "formTopics": ["Skimmel eller fugt i en bygning", "Svampesankning eller dyrkning", "Ture \u0026 workshops", "Forskning eller samarbejde", "Noget andet"], "loading": "Indl\u00e6ser\u2026", "menu": "Menu", "nameRunesTitle": "Pieter Shiffler Carpentier, skrevet med den \u00e6ldre futhark", "notFound": "Siden blev ikke fundet", "notFoundBody": "Beklager, siden kunne ikke findes.", "offerCta": "Sp\u00f8rg om dette", "offerPrefill": "Ang\u00e5ende: ", "otherLang": "en", "otherLangLabel": "EN", "otherLangName": "English", "phone": "Telefon", "skip": "G\u00e5 til indhold", "themeToggle": "Skift mellem lyst og m\u00f8rkt tema", "turnaround": "Leveringstid"}</script>
+<script id="ui-strings" type="application/json">{"area": "Omr\u00e5de", "back": "Tilbage til forsiden", "caseFinding": "Hvad jeg fandt", "caseOutcome": "Resultat", "caseProblem": "Problemet", "close": "Luk", "downloadPdf": "Download som PDF", "eggEyebrow": "Du fandt den", "eggFallback": "Det her kr\u00e6ver WebGL, som din browser vist ikke underst\u00f8tter. Netv\u00e6rket er der stadig.", "eggHint": "bev\u00e6g eller vip for at udforske \u00b7 esc for at lukke", "eggTitle": "Tr\u00e6d ind i myceliet", "enableMotion": "Sl\u00e5 bev\u00e6gelse til", "faqMore": "Har du et andet sp\u00f8rgsm\u00e5l?", "faqMoreLink": "Sp\u00f8rg mig direkte.", "formEmail": "E-mail", "formError": "Noget gik galt. Skriv venligst direkte til min e-mail i stedet.", "formInvalid": "Udfyld venligst navn, en gyldig e-mailadresse og en besked.", "formMailto": "Dit mailprogram burde \u00e5bne med beskeden udfyldt \u2014 tryk bare send.", "formMessage": "Besked", "formName": "Navn", "formSend": "Send besked", "formSending": "Sender\u2026", "formSent": "Tak \u2014 din besked er sendt. Jeg vender tilbage hurtigst muligt.", "formTopic": "Hvad drejer det sig om?", "formTopics": ["Skimmel eller fugt i en bygning", "Svampesankning eller dyrkning", "Ture \u0026 workshops", "Forskning eller samarbejde", "Noget andet"], "loading": "Indl\u00e6ser\u2026", "menu": "Menu", "notFound": "Siden blev ikke fundet", "notFoundBody": "Beklager, siden kunne ikke findes.", "offerCta": "Sp\u00f8rg om dette", "offerPrefill": "Ang\u00e5ende: ", "otherLang": "en", "otherLangLabel": "EN", "otherLangName": "English", "pathsLabel": "Hvor vil du starte?", "phone": "Telefon", "skip": "G\u00e5 til indhold", "themeToggle": "Skift mellem lyst og m\u00f8rkt tema", "turnaround": "Leveringstid"}</script>
 
 <script src="assets/site.js" defer></script>
 </body>

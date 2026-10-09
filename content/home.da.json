@@ -15,7 +15,27 @@
     "secondaryCtaLabel": "Se mine ydelser",
     "secondaryCtaLink": "#microbiology",
     "image": "",
-    "imageAlt": ""
+    "imageAlt": "",
+    "paths": [
+      {
+        "rune": "ᛚ",
+        "title": "Skimmel eller fugt i hjemmet?",
+        "text": "Prøvetagning, laboratorieanalyse og en klar plan.",
+        "link": "#microbiology"
+      },
+      {
+        "rune": "ᚲ",
+        "title": "Vil du ansætte eller samarbejde?",
+        "text": "Forskning, projekter og mit CV.",
+        "link": "#projects"
+      },
+      {
+        "rune": "ᛃ",
+        "title": "Interesseret i svampe?",
+        "text": "Dyrkning, sankning og ture under udvikling.",
+        "link": "#mycology"
+      }
+    ]
   },
   "about": {
     "eyebrow": "Om mig",

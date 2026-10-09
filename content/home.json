@@ -85,7 +85,27 @@
     "secondaryCtaLabel": "See my services",
     "secondaryCtaLink": "#microbiology",
     "image": "",
-    "imageAlt": ""
+    "imageAlt": "",
+    "paths": [
+      {
+        "rune": "ᛚ",
+        "title": "Mould or damp at home?",
+        "text": "Sampling, lab analysis and a clear plan.",
+        "link": "#microbiology"
+      },
+      {
+        "rune": "ᚲ",
+        "title": "Hiring or collaborating?",
+        "text": "Research, projects and my CV.",
+        "link": "#projects"
+      },
+      {
+        "rune": "ᛃ",
+        "title": "Into fungi?",
+        "text": "Cultivation, foraging and tours in development.",
+        "link": "#mycology"
+      }
+    ]
   },
   "footer": {
     "tagline": "MSc Biology · Mycology · Indoor Microbiology",

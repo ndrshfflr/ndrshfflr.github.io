@@ -125,6 +125,23 @@
     setHref('hero-cta-primary', h.primaryCtaLink);
     setText('hero-cta-secondary', h.secondaryCtaLabel);
     setHref('hero-cta-secondary', h.secondaryCtaLink);
+    var paths = $('hero-paths');
+    if (paths && Array.isArray(h.paths)) {
+      paths.innerHTML = '';
+      h.paths.forEach(function (p) {
+        if (!p || !p.title) return;
+        var a = el('a', 'path');
+        a.href = p.link || '#';
+        var r = el('span', 'path-rune', p.rune || '');
+        r.setAttribute('aria-hidden', 'true');
+        var t = el('span', 'path-text');
+        t.appendChild(el('strong', null, p.title));
+        t.appendChild(el('span', null, p.text || ''));
+        a.appendChild(r); a.appendChild(t);
+        paths.appendChild(a);
+      });
+      paths.hidden = paths.children.length === 0;
+    }
     var img = $('hero-image');
     if (img && h.image) {
       if (img.getAttribute('src') !== h.image) img.src = h.image;
@@ -146,8 +163,8 @@
       box.innerHTML = '';
       a.credentials.forEach(function (row) {
         var div = el('div');
-        div.appendChild(el('div', 'k', row.label || ''));
-        div.appendChild(document.createTextNode(row.value || ''));
+        div.appendChild(el('dt', null, row.label || ''));
+        div.appendChild(el('dd', null, row.value || ''));
         box.appendChild(div);
       });
     }
@@ -162,8 +179,8 @@
     if (box && Array.isArray(s.cards) && s.cards.length) {
       box.innerHTML = '';
       s.cards.forEach(function (card) {
-        var c = el('div', 'card');
-        c.appendChild(el('div', 'tag', card.tag || ''));
+        var c = el('li', 'step');
+        c.appendChild(el('span', 'step-tag', card.tag || ''));
         c.appendChild(el('h3', null, card.title || ''));
         c.appendChild(el('p', null, card.text || ''));
         box.appendChild(c);
@@ -176,8 +193,10 @@
       show('offers-heading', s.offers.length > 0);
       s.offers.forEach(function (o) {
         var art = el('article', 'offer');
-        art.appendChild(el('h4', null, o.title || ''));
-        if (o.audience) art.appendChild(el('p', 'offer-audience', o.audience));
+        var head = el('div', 'offer-head');
+        head.appendChild(el('h4', null, o.title || ''));
+        if (o.audience) head.appendChild(el('p', 'offer-audience', o.audience));
+        art.appendChild(head);
         var inc = lines(o.includes);
         if (inc.length) {
           var ul = el('ul', 'offer-includes');
@@ -187,11 +206,13 @@
         var meta = el('div', 'offer-meta');
         meta.appendChild(el('span', 'offer-price', o.price || s.priceFallback || ''));
         if (o.turnaround) meta.appendChild(el('span', 'offer-turnaround', (UI.turnaround || 'Turnaround') + ': ' + o.turnaround));
-        art.appendChild(meta);
+        var foot = el('div', 'offer-foot');
+        foot.appendChild(meta);
         var cta = el('a', 'offer-cta', UI.offerCta || 'Ask about this');
         cta.href = '#contact';
         cta.setAttribute('data-offer', o.title || '');
-        art.appendChild(cta);
+        foot.appendChild(cta);
+        art.appendChild(foot);
         offers.appendChild(art);
       });
     }
@@ -259,8 +280,8 @@
         var li = el('li');
         li.appendChild(el('span', 'tl-year', it.year || ''));
         var div = el('div');
-        div.appendChild(el('strong', null, it.title || ''));
-        div.appendChild(el('span', 'desc', it.desc || ''));
+        div.appendChild(el('h3', null, it.title || ''));
+        div.appendChild(el('p', 'desc', it.desc || ''));
         if (it.link) {
           var a = el('a', 'tl-link', it.linkLabel || it.link);
           a.href = it.link;
@@ -293,7 +314,7 @@
         var li = el('li');
         li.appendChild(el('span', 'num', String(i + 1).padStart(2, '0')));
         var div = el('div');
-        div.appendChild(el('strong', null, item.title || ''));
+        div.appendChild(el('h3', null, item.title || ''));
         div.appendChild(el('span', 'desc', item.desc || ''));
         li.appendChild(div);
         list.appendChild(li);
