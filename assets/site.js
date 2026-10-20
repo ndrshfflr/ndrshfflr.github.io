@@ -10,6 +10,8 @@
   'use strict';
 
   var LANG = (document.documentElement.lang || 'en').slice(0, 2);
+  var SELF = document.currentScript;
+  var MYCELIUM_SRC = (SELF && SELF.getAttribute('data-mycelium')) || 'assets/mycelium.js';
   var CONTENT_URL = LANG === 'da' ? 'content/home.da.json' : 'content/home.json';
   var UI = {};
   try { UI = JSON.parse(document.getElementById('ui-strings').textContent); } catch (e) {}
@@ -567,7 +569,7 @@
     $('egg-fallback').hidden = true;
     $('egg-close').focus();
     loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js')
-      .then(function () { return loadScript('assets/mycelium.js'); })
+      .then(function () { return loadScript(MYCELIUM_SRC); })
       .then(function () {
         if (egg.hidden) return;
         scene = window.MyceliumScene && window.MyceliumScene.start($('egg-stage'), {

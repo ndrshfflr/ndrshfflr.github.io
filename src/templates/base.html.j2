@@ -45,7 +45,7 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v={{ v.css }}">
 <!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
      token below with your own from the Cloudflare dashboard (see setup guide). -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
@@ -123,6 +123,6 @@
 
 <script id="ui-strings" type="application/json">{{ ui | tojson }}</script>
 {% block scripts %}{% endblock %}
-<script src="assets/site.js" defer></script>
+<script src="assets/site.js?v={{ v.js }}" data-mycelium="assets/mycelium.js?v={{ v.mycelium }}" defer></script>
 </body>
 </html>

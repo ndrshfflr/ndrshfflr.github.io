@@ -9,6 +9,7 @@ re-running this just bakes those edits into the HTML for search engines.
     python3 src/build.py
 """
 import datetime
+import hashlib
 import json
 from pathlib import Path
 
@@ -153,12 +154,21 @@ def jsonld(d, lang):
     return person
 
 
+def asset_version(rel):
+    """Short content hash, appended as ?v=… so browsers fetch a changed file
+    immediately instead of serving a cached copy. Re-run this script after
+    editing styles.css or the scripts so the hash updates."""
+    return hashlib.sha1((ROOT / rel).read_bytes()).hexdigest()[:8]
+
+
 def main():
     env = Environment(loader=FileSystemLoader(ROOT / "src" / "templates"), autoescape=select_autoescape(["j2", "html"]),
                       trim_blocks=False, lstrip_blocks=False)
     content = {"en": load("home.json"), "da": load("home.da.json")}
     gallery = [g for g in load("gallery.json").get("images", []) if g.get("image")]
     year = datetime.date.today().year
+    versions = {"css": asset_version("styles.css"), "js": asset_version("assets/site.js"),
+                "mycelium": asset_version("assets/mycelium.js")}
 
     for out, (tpl, lang) in PAGES.items():
         d = content[lang]
@@ -195,7 +205,7 @@ def main():
             d=d, lang=lang, ui=UI[lang], meta=dict(meta, canonical=canonical, alternates=alternates),
             site_url=SITE_URL, home_href=("" if is_home else HOME[lang]), other_lang_href=other_href,
             exploration_href=EXPLORATION[lang], gallery=gallery, year=year,
-            jsonld=jsonld(d, lang), body_class=("home" if is_home else "subpage"),
+            jsonld=jsonld(d, lang), body_class=("home" if is_home else "subpage"), v=versions,
             runes={k: {"glyph": g, "title": t} for k, (g, t) in RUNES[lang].items()},
         )
         (ROOT / out).write_text(html, encoding="utf-8")
