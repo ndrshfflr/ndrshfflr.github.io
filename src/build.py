@@ -165,6 +165,10 @@ def main():
     env = Environment(loader=FileSystemLoader(ROOT / "src" / "templates"), autoescape=select_autoescape(["j2", "html"]),
                       trim_blocks=False, lstrip_blocks=False)
     content = {"en": load("home.json"), "da": load("home.da.json")}
+    # Photos are shared: the Danish page falls back to the English hero photo/portrait.
+    for key, sub in (("image", "hero"), ("imageAlt", "hero"), ("portrait", "about")):
+        if not content["da"][sub].get(key):
+            content["da"][sub][key] = content["en"][sub].get(key, "")
     gallery = [g for g in load("gallery.json").get("images", []) if g.get("image")]
     year = datetime.date.today().year
     versions = {"css": asset_version("styles.css"), "js": asset_version("assets/site.js"),

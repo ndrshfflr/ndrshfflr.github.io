@@ -469,7 +469,23 @@
       .catch(function () {});
   }
 
-  fetch(CONTENT_URL, { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(applyHome).catch(function () {});
+  function getJSON(url) {
+    return fetch(url, { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; });
+  }
+  // Photos are shared between languages: if the Danish page has no hero photo
+  // or portrait of its own, it uses the ones set on the English page.
+  function withSharedPhotos(d) {
+    if (!d || LANG === 'en') return d;
+    var needHero = d.hero && !d.hero.image;
+    var needPortrait = d.about && !d.about.portrait;
+    if (!needHero && !needPortrait) return d;
+    return getJSON('content/home.json').then(function (en) {
+      if (en && needHero && en.hero) { d.hero.image = en.hero.image; d.hero.imageAlt = d.hero.imageAlt || en.hero.imageAlt; }
+      if (en && needPortrait && en.about) d.about.portrait = en.about.portrait;
+      return d;
+    }).catch(function () { return d; });
+  }
+  getJSON(CONTENT_URL).then(withSharedPhotos).then(applyHome).catch(function () {});
   if ($('photography')) {
     fetch('content/gallery.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(applyGallery).catch(function () {});
   }

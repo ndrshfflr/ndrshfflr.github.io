@@ -36,7 +36,7 @@ collections:
             name: "hero"
             widget: "object"
             fields:
-              - { label: "Background photo", name: "image", widget: "image", required: false, media_folder: "/images/uploads", public_folder: "/images/uploads", hint: "Landscape, about 2000 px wide and under ~500 KB. The left/bottom is darkened so the headline stays readable. Leave empty for the plain dark-green background." }
+              - { label: "Background photo", name: "image", widget: "image", required: false, media_folder: "/images/uploads", public_folder: "/images/uploads", hint: "Landscape, about 2000 px wide and under ~500 KB. The left/bottom is darkened so the headline stays readable. On the Danish page, leave empty to use the English photo." }
               - { label: "Photo description (for screen readers)", name: "imageAlt", widget: "string", required: false, hint: "e.g. Fruiting bodies of … on a beech log" }
               - { label: "Small label above headline", name: "eyebrow", widget: "string" }
               - { label: "Headline", name: "headline", widget: "string" }
