@@ -158,26 +158,6 @@
   }
   .hero-media{position:absolute;inset:0;z-index:0;}
   .hero-media img{width:100%;height:100%;object-fit:cover;display:block;}
-  /* Wide screens: the photo fills the right two-thirds and fades into the dark
-     on the left, so whatever is in the middle of the photo stays clear of the text. */
-  @media (min-width:900px){
-    .hero-media{left:34%;}
-    .hero-media img{
-      -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 34%);
-              mask-image:linear-gradient(to right, transparent 0%, #000 34%);
-    }
-    .hero:has(.hero-media img:not([hidden])) .hero-shade{
-      background:linear-gradient(to top, rgba(8,11,12,.9) 0%, rgba(8,11,12,.45) 30%, rgba(8,11,12,.08) 60%, rgba(8,11,12,.25) 100%);
-    }
-  }
-  @media (max-width:899px){
-    .hero .hero-shade{background:linear-gradient(to top, rgba(8,11,12,.93) 0%, rgba(8,11,12,.72) 45%, rgba(8,11,12,.45) 100%);}
-  }
-  @media (min-width:900px) and (max-width:1199px){
-    .hero-media{left:40%;}
-    .hero-copy{max-width:540px;}
-    .hero h1{font-size:clamp(2.4rem,4.6vw,3.2rem);}
-  }
   .hero-shade{
     position:absolute;inset:0;z-index:1;pointer-events:none;
     background:
