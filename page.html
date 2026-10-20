@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!-- GENERATED FILE — built by src/build.py from src/templates/. Text content is
+     also loaded live from content/*.json (edited through /admin), so most
+     wording changes never need a rebuild. -->
 <html lang="en" data-theme="dark">
 <head>
 <script>
@@ -15,53 +18,62 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pieter Shiffler Carpentier</title>
+<meta name="description" content="Pieter Shiffler Carpentier, MSc Biology — indoor microbiology specialist and mycologist. Mould and damp sampling, lab analysis and remediation guidance.">
 
-<!-- Favicon -->
+
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<!-- Open Graph / social link previews. This template is shared by every CMS-added
-     page, so these are a generic fallback rather than per-page — the alternative
-     (filling them in from the page's own content) would need to happen before the
-     page's JS runs, which link-preview bots don't wait for. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pieter Shiffler Carpentier">
 <meta property="og:title" content="Pieter Shiffler Carpentier">
 <meta property="og:description" content="MSc Biology — indoor microbiology specialist, mycologist, and guide to the world of fungi.">
+
+<meta property="og:locale" content="en_GB">
 <meta property="og:image" content="https://ndrshfflr.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pieter Shiffler Carpentier">
+<meta name="twitter:description" content="MSc Biology — indoor microbiology specialist, mycologist, and guide to the world of fungi.">
 <meta name="twitter:image" content="https://ndrshfflr.github.io/og-image.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Fonts are self-hosted (no requests to Google — simpler under GDPR) -->
+<link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
-<!-- Cloudflare Web Analytics — same token as index.html (see setup guide). -->
+<!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
+     token below with your own from the Cloudflare dashboard (see setup guide). -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
 </head>
-<body>
+<body class="subpage">
+<a class="skip-link" href="#main">Skip to content</a>
 
-<nav>
+<nav id="site-nav">
   <div class="wrap">
     <div class="brand mark">
-      <svg viewBox="0 0 48 32" aria-hidden="true">
-        <path d="M4 20C4 10 14 4 24 4C34 4 44 10 44 20C44 20 34 16 24 16C14 16 4 20 4 20Z" fill="var(--accent-2)"/>
-        <rect x="20" y="16" width="8" height="14" rx="3" fill="var(--text)"/>
-        <ellipse cx="24" cy="30" rx="9" ry="2" fill="var(--text-soft)" opacity=".35"/>
-      </svg>
-      <a href="index.html" style="text-decoration:none;color:inherit;">Pieter Shiffler Carpentier</a>
+      <button class="egg-trigger" type="button" data-egg aria-label="Enter the mycelium" title="…">
+        <svg viewBox="0 0 48 32" aria-hidden="true">
+          <path d="M4 20C4 10 14 4 24 4C34 4 44 10 44 20C44 20 34 16 24 16C14 16 4 20 4 20Z" fill="var(--accent-2)"/>
+          <rect x="20" y="16" width="8" height="14" rx="3" fill="var(--text)"/>
+          <ellipse cx="24" cy="30" rx="9" ry="2" fill="var(--text-soft)" opacity=".35"/>
+        </svg>
+      </button>
+      <a href="index.html#top" class="brand-name">Pieter Shiffler Carpentier</a>
     </div>
     <div class="nav-right">
-      <div class="navlinks">
+      <div class="navlinks" id="navlinks">
         <a href="index.html#about" id="nav-label-about">About</a>
         <a href="index.html#microbiology" id="nav-label-microbiology">Indoor Microbiology</a>
+        <a href="index.html#projects" id="nav-label-projects">Projects</a>
         <a href="index.html#mycology" id="nav-label-mycology">Mycology</a>
-        <a href="index.html#exploration" id="nav-label-exploration">Exploration</a>
-        <a href="index.html#photography" id="nav-label-photography">Photography</a>
-        <span id="nav-dynamic"></span>
+        <span id="nav-dynamic" class="nav-dynamic"></span>
         <a href="index.html#contact" id="nav-label-contact">Contact</a>
       </div>
+      <a class="lang-switch" href="da.html" hreflang="da" lang="da" data-lang-switch>DA</a>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle day and night mode">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
           <circle cx="12" cy="12" r="4.2"/>
@@ -71,16 +83,25 @@
           <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/>
         </svg>
       </button>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
 
+<main id="main">
+
 <header class="page-header">
   <div class="wrap">
+    <div class="print-only print-id">Pieter Shiffler Carpentier · pietershiffler@proton.me · ndrshfflr.github.io</div>
     <h1 id="page-title">&nbsp;</h1>
+    <div class="page-actions" id="page-actions" hidden>
+      <a class="btn btn-ghost" id="page-pdf" href="cv.pdf" download>Download as PDF</a>
+    </div>
   </div>
 </header>
-
+<div class="carve" aria-hidden="true"></div>
 <div class="wrap">
   <div class="page-body" id="page-body">
     <p class="page-loading">Loading…</p>
@@ -88,24 +109,35 @@
   <a class="page-back" href="index.html">&larr; Back to the main page</a>
 </div>
 
-<footer>
-  <div class="wrap contact-box" style="align-items:center;">
-    <div>© <span id="year"></span> Pieter Shiffler Carpentier</div>
-    <div>MSc Biology · Mycology · Indoor Microbiology</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div>© <span id="year">2026</span> Pieter Shiffler Carpentier<span id="footer-cvr" class="footer-cvr" hidden> · CVR <span id="footer-cvr-value"></span></span></div>
+    <div class="footer-links">
+      <a href="exploration.html" id="footer-exploration">Beyond the lab</a>
+      <a href="da.html" hreflang="da" lang="da" data-lang-switch>Dansk</a>
+    </div>
+    <div id="footer-tagline">MSc Biology · Mycology · Indoor Microbiology</div>
   </div>
 </footer>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+<div class="egg" id="egg" hidden role="dialog" aria-modal="true" aria-label="Enter the mycelium">
+  <div class="egg-stage" id="egg-stage"></div>
+  <div class="egg-veil"></div>
+  <div class="egg-copy">
+    <div class="eyebrow"><span class="rune" aria-hidden="true">ᛜ</span>You found it</div>
+    <div class="egg-title">Enter the mycelium</div>
+  </div>
+  <div class="egg-bottom">
+    <button class="motion-btn" id="motion-btn" type="button">Enable motion</button>
+    <div id="egg-hint">move or tilt to explore · esc to close</div>
+  </div>
+  <button class="egg-close" id="egg-close" type="button" aria-label="Close">&times;</button>
+  <p class="egg-fallback" id="egg-fallback" hidden>This needs WebGL, which your browser doesn&#39;t seem to support. The network is still out there.</p>
+</div>
 
-  const themeToggle = document.getElementById('theme-toggle');
-  themeToggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) {}
-  });
-</script>
+<script id="ui-strings" type="application/json">{"area": "Service area", "back": "Back to the main page", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "faqMore": "Something else on your mind?", "faqMoreLink": "Ask me directly.", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Research or collaboration", "Something else"], "loading": "Loading\u2026", "menu": "Menu", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "pathsLabel": "Where to start", "phone": "Phone", "skip": "Skip to content", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
 
 <script>
 // --- Tiny, dependency-free markdown renderer: headings, paragraphs, bold,
@@ -115,7 +147,6 @@
   function escapeHtml(s) {
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
-
   function inline(text) {
     let t = escapeHtml(text);
     t = t.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
@@ -124,23 +155,19 @@
     t = t.replace(/\*([^*]+)\*/g, '<em>$1</em>');
     return t;
   }
-
   function renderMarkdown(md) {
     const lines = md.replace(/\r\n/g, '\n').split('\n');
     let html = '';
     let i = 0;
     while (i < lines.length) {
       let line = lines[i];
-
       if (/^\s*$/.test(line)) { i++; continue; }
-
       let m = line.match(/^(#{1,3})\s+(.*)$/);
       if (m) {
-        const level = m[1].length + 1; // page's own <h1> is the title, so body headings start one level down (# -> h2, ## -> h3, ### -> h4)
+        const level = m[1].length + 1; // page's own <h1> is the title, so # -> h2
         html += `<h${level}>${inline(m[2])}</h${level}>\n`;
         i++; continue;
       }
-
       if (/^\s*[-*]\s+/.test(line)) {
         html += '<ul>\n';
         while (i < lines.length && /^\s*[-*]\s+/.test(lines[i])) {
@@ -150,7 +177,6 @@
         html += '</ul>\n';
         continue;
       }
-
       if (/^\s*\d+\.\s+/.test(line)) {
         html += '<ol>\n';
         while (i < lines.length && /^\s*\d+\.\s+/.test(lines[i])) {
@@ -160,8 +186,6 @@
         html += '</ol>\n';
         continue;
       }
-
-      // paragraph: consume until blank line
       let para = [line];
       i++;
       while (i < lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,3})\s+/.test(lines[i]) && !/^\s*[-*]\s+/.test(lines[i]) && !/^\s*\d+\.\s+/.test(lines[i])) {
@@ -172,7 +196,6 @@
     }
     return html;
   }
-
   function parseFrontmatter(text) {
     const match = text.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
     if (!match) return { meta: {}, body: text };
@@ -184,14 +207,17 @@
     return { meta, body: match[2] };
   }
 
+  const ui = JSON.parse(document.getElementById('ui-strings').textContent);
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('slug');
   const titleEl = document.getElementById('page-title');
   const bodyEl = document.getElementById('page-body');
 
+  if (slug === 'cv') document.getElementById('page-actions').hidden = false;
+
   if (!slug) {
-    titleEl.textContent = 'Page not found';
-    bodyEl.innerHTML = '<p>No page was specified.</p>';
+    titleEl.textContent = ui.notFound;
+    bodyEl.innerHTML = '<p>' + ui.notFoundBody + '</p>';
   } else {
     fetch(`content/pages/${slug}.md`)
       .then(res => { if (!res.ok) throw new Error('not found'); return res.text(); })
@@ -202,51 +228,13 @@
         bodyEl.innerHTML = renderMarkdown(body);
       })
       .catch(() => {
-        titleEl.textContent = 'Page not found';
-        bodyEl.innerHTML = "<p>Sorry, this page couldn't be found.</p>";
+        titleEl.textContent = ui.notFound;
+        bodyEl.innerHTML = '<p>' + ui.notFoundBody + '</p>';
       });
   }
-
-  // keep nav labels in sync with content/home.json, same as the main site
-  fetch('content/home.json').then(r => r.ok ? r.json() : null).then(data => {
-    if (!data || !data.nav) return;
-    const map = { about: 'nav-label-about', microbiology: 'nav-label-microbiology', mycology: 'nav-label-mycology', exploration: 'nav-label-exploration', photography: 'nav-label-photography', contact: 'nav-label-contact' };
-    Object.keys(map).forEach(key => {
-      if (!data.nav[key]) return;
-      const el = document.getElementById(map[key]);
-      if (el) el.textContent = data.nav[key];
-    });
-  }).catch(() => {});
-
-  // populate the same dynamic-pages nav links as the main site
-  (async function () {
-    const host = window.location.hostname;
-    if (!host || !host.endsWith('.github.io')) return;
-    const owner = host.split('.')[0];
-    const repo = host;
-    try {
-      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/content/pages`);
-      if (!res.ok) return;
-      const files = await res.json();
-      if (!Array.isArray(files)) return;
-      const mdFiles = files.filter(f => f.name && f.name.endsWith('.md'));
-      const mount = document.getElementById('nav-dynamic');
-      if (!mount) return;
-      for (const f of mdFiles) {
-        try {
-          const raw = await fetch(f.download_url);
-          const text = await raw.text();
-          const { meta } = parseFrontmatter(text);
-          const pageSlug = f.name.replace(/\.md$/, '');
-          const a = document.createElement('a');
-          a.href = `page.html?slug=${encodeURIComponent(pageSlug)}`;
-          a.textContent = meta.title || pageSlug;
-          mount.appendChild(a);
-        } catch (e) { /* skip */ }
-      }
-    } catch (e) { /* GitHub API unreachable — nav just shows the fixed links */ }
-  })();
 })();
 </script>
+
+<script src="assets/site.js" defer></script>
 </body>
 </html>

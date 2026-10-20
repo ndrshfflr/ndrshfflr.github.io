@@ -17,26 +17,27 @@ collections:
     label: "Main Page"
     files:
       - file: "content/home.json"
-        label: "Main Page Content"
+        label: "Main Page — English"
         name: "home"
         format: "json"
-        fields:
+        fields: &homefields
           - label: "Navigation menu labels"
             name: "nav"
             widget: "object"
-            hint: "The links in the top menu. These stay pointed at the same sections — you're only changing the visible label text."
+            hint: "The links in the top menu. These stay pointed at the same sections — you're only changing the visible label text. (The CV link appears automatically from Extra Pages.)"
             fields:
               - { label: "\"About\" label", name: "about", widget: "string" }
               - { label: "\"Indoor Microbiology\" label", name: "microbiology", widget: "string" }
+              - { label: "\"Projects\" label", name: "projects", widget: "string" }
               - { label: "\"Mycology\" label", name: "mycology", widget: "string" }
-              - { label: "\"Exploration\" label", name: "exploration", widget: "string" }
-              - { label: "\"Photography\" label", name: "photography", widget: "string" }
               - { label: "\"Contact\" label", name: "contact", widget: "string" }
 
           - label: "Hero (top of page)"
             name: "hero"
             widget: "object"
             fields:
+              - { label: "Background photo", name: "image", widget: "image", required: false, media_folder: "/images/uploads", public_folder: "/images/uploads", hint: "Landscape, about 2000 px wide and under ~500 KB. The left/bottom is darkened so the headline stays readable. Leave empty for the plain dark-green background." }
+              - { label: "Photo description (for screen readers)", name: "imageAlt", widget: "string", required: false, hint: "e.g. Fruiting bodies of … on a beech log" }
               - { label: "Small label above headline", name: "eyebrow", widget: "string" }
               - { label: "Headline", name: "headline", widget: "string" }
               - { label: "Paragraph under headline", name: "lead", widget: "text" }
@@ -44,6 +45,17 @@ collections:
               - { label: "Primary button link", name: "primaryCtaLink", widget: "string", hint: "e.g. #contact or a full https:// link" }
               - { label: "Secondary button text", name: "secondaryCtaLabel", widget: "string" }
               - { label: "Secondary button link", name: "secondaryCtaLink", widget: "string" }
+              - label: "Shortcuts at the bottom of the hero"
+                name: "paths"
+                widget: "list"
+                required: false
+                summary: "{{rune}} {{title}}"
+                hint: "Up to three quick routes for different visitors (clients, recruiters, fungi people)."
+                fields:
+                  - { label: "Rune (decoration)", name: "rune", widget: "string", required: false, hint: "One Elder Futhark rune, e.g. ᛚ ᚲ ᛃ ᛗ ᛖ ᚨ ᛞ ᛏ ᛈ" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Short line", name: "text", widget: "string" }
+                  - { label: "Link", name: "link", widget: "string", hint: "e.g. #microbiology, #projects, #mycology" }
 
           - label: "About section"
             name: "about"
@@ -53,7 +65,7 @@ collections:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Intro paragraph", name: "intro", widget: "text" }
               - { label: "Main paragraph", name: "body", widget: "text" }
-              - { label: "Portrait photo (optional)", name: "portrait", widget: "image", required: false, media_folder: "/images/uploads", public_folder: "/images/uploads" }
+              - { label: "Portrait photo (optional)", name: "portrait", widget: "image", required: false, media_folder: "/images/uploads", public_folder: "/images/uploads", hint: "Shown cropped to portrait format (4:5)." }
               - label: "Credentials list"
                 name: "credentials"
                 widget: "list"
@@ -68,13 +80,77 @@ collections:
               - { label: "Small label", name: "eyebrow", widget: "string" }
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Intro paragraph", name: "intro", widget: "text" }
-              - label: "Service cards"
+              - label: "Process cards"
                 name: "cards"
                 widget: "list"
                 fields:
                   - { label: "Small tag (e.g. 01 · On-site)", name: "tag", widget: "string" }
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "text", widget: "text" }
+              - { label: "Offers heading", name: "offersHeading", widget: "string" }
+              - label: "Offers (what clients can buy)"
+                name: "offers"
+                widget: "list"
+                required: false
+                hint: "The first offer is shown as a wide band above the others — a good place for the free first call."
+                summary: "{{title}} — {{price}}"
+                fields:
+                  - { label: "Name", name: "title", widget: "string" }
+                  - { label: "Who it's for", name: "audience", widget: "text", required: false }
+                  - { label: "What's included (one item per line)", name: "includes", widget: "text", required: false }
+                  - { label: "Turnaround (optional)", name: "turnaround", widget: "string", required: false, hint: "e.g. Report within 5 working days. Leave empty to hide." }
+                  - { label: "Price (optional)", name: "price", widget: "string", required: false, hint: "e.g. From DKK 2.500 incl. moms. Leave empty to show the fallback text below." }
+              - { label: "Text shown when an offer has no price", name: "priceFallback", widget: "string" }
+
+          - label: "Cases & references (hidden until you add something)"
+            name: "trust"
+            widget: "object"
+            fields:
+              - { label: "Small label", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro paragraph (optional)", name: "intro", widget: "text", required: false }
+              - label: "Case studies (anonymised)"
+                name: "cases"
+                widget: "list"
+                required: false
+                summary: "{{title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string", hint: "e.g. Musty smell in a 1930s basement flat" }
+                  - { label: "The problem", name: "problem", widget: "text", required: false }
+                  - { label: "What I found", name: "finding", widget: "text", required: false }
+                  - { label: "Outcome", name: "outcome", widget: "text", required: false }
+              - label: "Testimonials (real clients, with their permission)"
+                name: "testimonials"
+                widget: "list"
+                required: false
+                summary: "{{name}}"
+                fields:
+                  - { label: "Quote", name: "quote", widget: "text" }
+                  - { label: "Name / description", name: "name", widget: "string", required: false, hint: "e.g. Homeowner, Frederiksberg" }
+              - { label: "Example report (PDF, optional)", name: "sampleReport", widget: "file", required: false, media_folder: "/images/uploads", public_folder: "/images/uploads", hint: "An anonymised sample report clients can look at." }
+              - { label: "Example report button text", name: "sampleReportLabel", widget: "string" }
+
+          - label: "Research & projects section"
+            name: "projects"
+            widget: "object"
+            fields:
+              - { label: "Small label", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro paragraph (optional)", name: "intro", widget: "text", required: false }
+              - label: "Projects"
+                name: "items"
+                widget: "list"
+                summary: "{{year}} — {{title}}"
+                fields:
+                  - { label: "Year / label", name: "year", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "desc", widget: "text" }
+                  - { label: "Link (optional)", name: "link", widget: "string", required: false, hint: "e.g. sporexplore.html or a full https:// link to a paper" }
+                  - { label: "Link text", name: "linkLabel", widget: "string", required: false }
+              - { label: "CV button text", name: "cvLabel", widget: "string" }
+              - { label: "CV button link", name: "cvLink", widget: "string" }
+              - { label: "CV PDF button text", name: "cvPdfLabel", widget: "string" }
+              - { label: "CV PDF file", name: "cvPdf", widget: "string", required: false, hint: "Path to the PDF, normally cv.pdf. Leave empty to hide the button." }
 
           - label: "Mycology section"
             name: "mycology"
@@ -93,22 +169,27 @@ collections:
               - { label: "Callout box text", name: "calloutBody", widget: "text" }
               - { label: "Callout box small note", name: "calloutNote", widget: "string" }
 
-          - label: "Exploration section"
-            name: "exploration"
-            widget: "object"
-            fields:
-              - { label: "Small label", name: "eyebrow", widget: "string" }
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Intro paragraph", name: "intro", widget: "text" }
-              - { label: "Second paragraph", name: "body", widget: "text" }
-
-          - label: "Photography section"
+          - label: "Photography section (shown only when the gallery has photos)"
             name: "photography"
             widget: "object"
             fields:
               - { label: "Small label", name: "eyebrow", widget: "string" }
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Intro paragraph", name: "intro", widget: "text" }
+
+          - label: "FAQ"
+            name: "faq"
+            widget: "object"
+            fields:
+              - { label: "Small label", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Questions"
+                name: "items"
+                widget: "list"
+                summary: "{{q}}"
+                fields:
+                  - { label: "Question", name: "q", widget: "string" }
+                  - { label: "Answer", name: "a", widget: "text" }
 
           - label: "Contact section"
             name: "contact"
@@ -118,21 +199,49 @@ collections:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Intro paragraph", name: "intro", widget: "text" }
               - { label: "Email address", name: "email", widget: "string" }
+              - { label: "Phone (optional)", name: "phone", widget: "string", required: false, hint: "e.g. +45 12 34 56 78. Leave empty to hide." }
+              - { label: "Service area (optional)", name: "area", widget: "string", required: false, hint: "e.g. Copenhagen and Zealand. Leave empty to hide." }
+              - { label: "Booking link (optional)", name: "bookingUrl", widget: "string", required: false, hint: "A Cal.com / Calendly link for the free first call. Leave empty to hide the button." }
+              - { label: "Booking button text", name: "bookingLabel", widget: "string" }
+              - { label: "Form endpoint (optional)", name: "formEndpoint", widget: "string", required: false, hint: "Your Formspree form URL, e.g. https://formspree.io/f/abcdwxyz. Leave empty and the form opens the visitor's email app instead." }
               - label: "Social / other links"
                 name: "socials"
                 widget: "list"
                 required: false
                 summary: "{{label}}"
-                hint: "Optional. Add a row per link — e.g. Instagram, LinkedIn, a booking page. Leave empty to show none."
+                hint: "Optional. Add a row per link — e.g. Instagram, LinkedIn, ORCID. Leave empty to show none."
                 fields:
-                  - { label: "Label (what visitors see)", name: "label", widget: "string", hint: "e.g. Instagram" }
-                  - { label: "Link", name: "url", widget: "string", hint: "Full address, e.g. https://instagram.com/yourname" }
+                  - { label: "Label (what visitors see)", name: "label", widget: "string", hint: "e.g. LinkedIn" }
+                  - { label: "Link", name: "url", widget: "string", hint: "Full address, e.g. https://www.linkedin.com/in/yourname" }
+
+          - label: "Beyond the lab (separate page)"
+            name: "exploration"
+            widget: "object"
+            hint: "Lives on its own page, linked from the footer."
+            fields:
+              - { label: "Small label", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro paragraph", name: "intro", widget: "text" }
+              - { label: "Second paragraph", name: "body", widget: "text" }
+
+          - label: "Business details"
+            name: "business"
+            widget: "object"
+            fields:
+              - { label: "CVR number (optional)", name: "cvr", widget: "string", required: false, hint: "Shown in the footer once you register a business. Leave empty to hide." }
 
           - label: "Footer"
             name: "footer"
             widget: "object"
             fields:
               - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "\"Beyond the lab\" link text", name: "explorationLabel", widget: "string" }
+
+      - file: "content/home.da.json"
+        label: "Forside — Dansk"
+        name: "home_da"
+        format: "json"
+        fields: *homefields
 
   - name: "gallery"
     label: "Photo Gallery"
