@@ -49,7 +49,7 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=5feb3bcf">
+<link rel="stylesheet" href="styles.css?v=8b46d767">
 <!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
      token below with your own from the Cloudflare dashboard (see setup guide). -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
@@ -76,6 +76,7 @@
         <a href="#projects" id="nav-label-projects">Projekter</a>
         <a href="#mycology" id="nav-label-mycology">Mykologi</a>
         <span id="nav-dynamic" class="nav-dynamic"></span>
+        <a href="blog.da.html" id="nav-label-blog" hidden>Blog</a>
         <a href="#contact" id="nav-label-contact">Kontakt</a>
       </div>
       <a class="lang-switch" href="index.html" hreflang="en" lang="en" data-lang-switch>EN</a>
@@ -391,6 +392,21 @@
   </div>
 </section>
 
+<section id="blog-latest" data-rune="ᚨ" hidden>
+  <div class="wrap">
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="ansuz — tale, ordet">ᚨ</span><span id="blog-eyebrow">Blog</span></div>
+        <h2 id="blog-latest-heading">Seneste feltnoter</h2>
+      </div>
+      <p><a class="tl-link" href="blog.da.html" id="blog-all-link">Alle indlæg &rarr;</a></p>
+    </div>
+    <div class="post-list post-list-latest" id="blog-latest-list">
+      
+    </div>
+  </div>
+</section>
+
 <section id="faq" data-rune="ᚨ">
   <div class="wrap side-layout">
     <div class="side-head">
@@ -484,8 +500,9 @@
   <p class="egg-fallback" id="egg-fallback" hidden>Det her kræver WebGL, som din browser vist ikke understøtter. Netværket er der stadig.</p>
 </div>
 
-<script id="ui-strings" type="application/json">{"area": "Omr\u00e5de", "askAvailability": "Sp\u00f8rg om de kan f\u00e5s", "back": "Tilbage til forsiden", "book": "Book en plads", "buy": "K\u00f8b", "careGuide": "Plejeguide", "caseFinding": "Hvad jeg fandt", "caseOutcome": "Resultat", "caseProblem": "Problemet", "close": "Luk", "downloadPdf": "Download som PDF", "duration": "Varighed", "eggEyebrow": "Du fandt den", "eggFallback": "Det her kr\u00e6ver WebGL, som din browser vist ikke underst\u00f8tter. Netv\u00e6rket er der stadig.", "eggHint": "bev\u00e6g eller vip for at udforske \u00b7 esc for at lukke", "eggTitle": "Tr\u00e6d ind i myceliet", "enableMotion": "Sl\u00e5 bev\u00e6gelse til", "faqMore": "Har du et andet sp\u00f8rgsm\u00e5l?", "faqMoreLink": "Sp\u00f8rg mig direkte.", "formEmail": "E-mail", "formError": "Noget gik galt. Skriv venligst direkte til min e-mail i stedet.", "formInvalid": "Udfyld venligst navn, en gyldig e-mailadresse og en besked.", "formMailto": "Dit mailprogram burde \u00e5bne med beskeden udfyldt \u2014 tryk bare send.", "formMessage": "Besked", "formName": "Navn", "formSend": "Send besked", "formSending": "Sender\u2026", "formSent": "Tak \u2014 din besked er sendt. Jeg vender tilbage hurtigst muligt.", "formTopic": "Hvad drejer det sig om?", "formTopics": ["Skimmel eller fugt i en bygning", "Svampesankning eller dyrkning", "Ture \u0026 workshops", "K\u00f8b af en kultur", "Insekter \u0026 terrarier", "Forskning eller samarbejde", "Noget andet"], "format": "Format", "inStock": "P\u00e5 lager", "inhabitants": "Beboere", "loading": "Indl\u00e6ser\u2026", "menu": "Menu", "notFound": "Siden blev ikke fundet", "notFoundBody": "Beklager, siden kunne ikke findes.", "offerCta": "Sp\u00f8rg om dette", "offerPrefill": "Ang\u00e5ende: ", "orderCulture": "Bestil denne kultur", "origin": "Oprindelse", "otherLang": "en", "otherLangLabel": "EN", "otherLangName": "English", "pathsLabel": "Hvor vil du starte?", "phone": "Telefon", "skip": "G\u00e5 til indhold", "soldOut": "Ikke p\u00e5 lager lige nu", "themeToggle": "Skift mellem lyst og m\u00f8rkt tema", "turnaround": "Leveringstid"}</script>
+<script id="ui-strings" type="application/json">{"allPosts": "Alle indl\u00e6g", "area": "Omr\u00e5de", "askAvailability": "Sp\u00f8rg om de kan f\u00e5s", "back": "Tilbage til forsiden", "book": "Book en plads", "buy": "K\u00f8b", "careGuide": "Plejeguide", "caseFinding": "Hvad jeg fandt", "caseOutcome": "Resultat", "caseProblem": "Problemet", "close": "Luk", "downloadPdf": "Download som PDF", "duration": "Varighed", "eggEyebrow": "Du fandt den", "eggFallback": "Det her kr\u00e6ver WebGL, som din browser vist ikke underst\u00f8tter. Netv\u00e6rket er der stadig.", "eggHint": "bev\u00e6g eller vip for at udforske \u00b7 esc for at lukke", "eggTitle": "Tr\u00e6d ind i myceliet", "enableMotion": "Sl\u00e5 bev\u00e6gelse til", "faqMore": "Har du et andet sp\u00f8rgsm\u00e5l?", "faqMoreLink": "Sp\u00f8rg mig direkte.", "filterTags": "Filtr\u00e9r indl\u00e6g efter emne", "formEmail": "E-mail", "formError": "Noget gik galt. Skriv venligst direkte til min e-mail i stedet.", "formInvalid": "Udfyld venligst navn, en gyldig e-mailadresse og en besked.", "formMailto": "Dit mailprogram burde \u00e5bne med beskeden udfyldt \u2014 tryk bare send.", "formMessage": "Besked", "formName": "Navn", "formSend": "Send besked", "formSending": "Sender\u2026", "formSent": "Tak \u2014 din besked er sendt. Jeg vender tilbage hurtigst muligt.", "formTopic": "Hvad drejer det sig om?", "formTopics": ["Skimmel eller fugt i en bygning", "Svampesankning eller dyrkning", "Ture \u0026 workshops", "K\u00f8b af en kultur", "Insekter \u0026 terrarier", "Forskning eller samarbejde", "Noget andet"], "format": "Format", "inStock": "P\u00e5 lager", "inhabitants": "Beboere", "loading": "Indl\u00e6ser\u2026", "menu": "Menu", "notFound": "Siden blev ikke fundet", "notFoundBody": "Beklager, siden kunne ikke findes.", "offerCta": "Sp\u00f8rg om dette", "offerPrefill": "Ang\u00e5ende: ", "orderCulture": "Bestil denne kultur", "origin": "Oprindelse", "otherLang": "en", "otherLangLabel": "EN", "otherLangName": "English", "pathsLabel": "Hvor vil du starte?", "phone": "Telefon", "readMore": "L\u00e6s mere", "skip": "G\u00e5 til indhold", "soldOut": "Ikke p\u00e5 lager lige nu", "themeToggle": "Skift mellem lyst og m\u00f8rkt tema", "turnaround": "Leveringstid"}</script>
+<script src="assets/markdown.js?v=d4f718c0"></script>
 
-<script src="assets/site.js?v=949d24ee" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
+<script src="assets/site.js?v=81a746e9" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
 </body>
 </html>

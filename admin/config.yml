@@ -30,6 +30,7 @@ collections:
               - { label: "\"Indoor Microbiology\" label", name: "microbiology", widget: "string" }
               - { label: "\"Projects\" label", name: "projects", widget: "string" }
               - { label: "\"Mycology\" label", name: "mycology", widget: "string" }
+              - { label: "\"Blog\" label", name: "blog", widget: "string", hint: "Shown once the blog has at least one post." }
               - { label: "\"Contact\" label", name: "contact", widget: "string" }
 
           - label: "Hero (top of page)"
@@ -381,6 +382,16 @@ collections:
               - { label: "Contact band heading", name: "contactHeading", widget: "string" }
               - { label: "Contact band intro", name: "contactIntro", widget: "text" }
 
+          - label: "Blog (texts around the posts — the posts themselves are under Blog posts)"
+            name: "blog"
+            widget: "object"
+            fields:
+              - { label: "Small label", name: "eyebrow", widget: "string" }
+              - { label: "Blog page heading", name: "heading", widget: "string" }
+              - { label: "Blog page intro", name: "intro", widget: "text" }
+              - { label: "Heading above the latest posts on the main page", name: "latestHeading", widget: "string" }
+              - { label: "Text shown while there are no posts", name: "emptyText", widget: "string" }
+
           - label: "Business details"
             name: "business"
             widget: "object"
@@ -415,6 +426,29 @@ collections:
             fields:
               - { label: "Photo", name: "image", widget: "image", media_folder: "/images/gallery", public_folder: "/images/gallery" }
               - { label: "Caption (optional)", name: "caption", widget: "string", required: false }
+
+  - name: "posts"
+    label: "Blog posts"
+    label_singular: "Blog post"
+    description: "Field notes, finds, projects. Newest first on the blog page; the three newest also appear on the main page."
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    sortable_fields: ["date", "title"]
+    summary: "{{title}} — {{date | date('YYYY-MM-DD')}}"
+    view_filters:
+      - { label: "English", field: "language", pattern: "en" }
+      - { label: "Danish", field: "language", pattern: "da" }
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Language", name: "language", widget: "select", options: [{ label: "English", value: "en" }, { label: "Dansk", value: "da" }], default: "en" }
+      - { label: "Summary", name: "summary", widget: "text", required: false, hint: "One or two sentences, shown on the post cards and under the title." }
+      - { label: "Cover photo (optional)", name: "cover", widget: "image", required: false, media_folder: "/images/blog", public_folder: "/images/blog", hint: "Landscape works best. Without one, the card shows a carved rune." }
+      - { label: "Topics (optional)", name: "tags", widget: "list", required: false, hint: "Comma-separated, e.g. Fungi, Foraging, Terrarium. Used for the filter buttons on the blog page." }
+      - { label: "Text", name: "body", widget: "markdown", buttons: ["bold", "italic", "link", "heading-two", "heading-three", "quote", "bulleted-list", "numbered-list"], editor_components: ["image"] }
 
   - name: "pages"
     label: "Extra Pages"

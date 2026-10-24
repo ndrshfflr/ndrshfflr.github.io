@@ -44,7 +44,7 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=5feb3bcf">
+<link rel="stylesheet" href="styles.css?v=8b46d767">
 <!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
      token below with your own from the Cloudflare dashboard (see setup guide). -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
@@ -71,6 +71,7 @@
         <a href="index.html#projects" id="nav-label-projects">Projects</a>
         <a href="index.html#mycology" id="nav-label-mycology">Mycology</a>
         <span id="nav-dynamic" class="nav-dynamic"></span>
+        <a href="blog.html" id="nav-label-blog" hidden>Blog</a>
         <a href="index.html#contact" id="nav-label-contact">Contact</a>
       </div>
       <a class="lang-switch" href="da.html" hreflang="da" lang="da" data-lang-switch>DA</a>
@@ -137,76 +138,11 @@
   <p class="egg-fallback" id="egg-fallback" hidden>This needs WebGL, which your browser doesn&#39;t seem to support. The network is still out there.</p>
 </div>
 
-<script id="ui-strings" type="application/json">{"area": "Service area", "askAvailability": "Ask about availability", "back": "Back to the main page", "book": "Book a spot", "buy": "Buy", "careGuide": "Care guide", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "duration": "Duration", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "faqMore": "Something else on your mind?", "faqMoreLink": "Ask me directly.", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Buying a culture", "Insects \u0026 terrariums", "Research or collaboration", "Something else"], "format": "Format", "inStock": "Available", "inhabitants": "Lives here", "loading": "Loading\u2026", "menu": "Menu", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "orderCulture": "Order this culture", "origin": "Origin", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "pathsLabel": "Where to start", "phone": "Phone", "skip": "Skip to content", "soldOut": "Not available right now", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
+<script id="ui-strings" type="application/json">{"allPosts": "All posts", "area": "Service area", "askAvailability": "Ask about availability", "back": "Back to the main page", "book": "Book a spot", "buy": "Buy", "careGuide": "Care guide", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "duration": "Duration", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "faqMore": "Something else on your mind?", "faqMoreLink": "Ask me directly.", "filterTags": "Filter posts by topic", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Buying a culture", "Insects \u0026 terrariums", "Research or collaboration", "Something else"], "format": "Format", "inStock": "Available", "inhabitants": "Lives here", "loading": "Loading\u2026", "menu": "Menu", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "orderCulture": "Order this culture", "origin": "Origin", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "pathsLabel": "Where to start", "phone": "Phone", "readMore": "Read more", "skip": "Skip to content", "soldOut": "Not available right now", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
+<script src="assets/markdown.js?v=d4f718c0"></script>
 
 <script>
-// --- Tiny, dependency-free markdown renderer: headings, paragraphs, bold,
-// italic, links, images, and simple lists. Enough for a personal page —
-// not a full CommonMark implementation. ---
 (function () {
-  function escapeHtml(s) {
-    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-  function inline(text) {
-    let t = escapeHtml(text);
-    t = t.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
-    t = t.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
-    t = t.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-    t = t.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-    return t;
-  }
-  function renderMarkdown(md) {
-    const lines = md.replace(/\r\n/g, '\n').split('\n');
-    let html = '';
-    let i = 0;
-    while (i < lines.length) {
-      let line = lines[i];
-      if (/^\s*$/.test(line)) { i++; continue; }
-      let m = line.match(/^(#{1,3})\s+(.*)$/);
-      if (m) {
-        const level = m[1].length + 1; // page's own <h1> is the title, so # -> h2
-        html += `<h${level}>${inline(m[2])}</h${level}>\n`;
-        i++; continue;
-      }
-      if (/^\s*[-*]\s+/.test(line)) {
-        html += '<ul>\n';
-        while (i < lines.length && /^\s*[-*]\s+/.test(lines[i])) {
-          html += `<li>${inline(lines[i].replace(/^\s*[-*]\s+/, ''))}</li>\n`;
-          i++;
-        }
-        html += '</ul>\n';
-        continue;
-      }
-      if (/^\s*\d+\.\s+/.test(line)) {
-        html += '<ol>\n';
-        while (i < lines.length && /^\s*\d+\.\s+/.test(lines[i])) {
-          html += `<li>${inline(lines[i].replace(/^\s*\d+\.\s+/, ''))}</li>\n`;
-          i++;
-        }
-        html += '</ol>\n';
-        continue;
-      }
-      let para = [line];
-      i++;
-      while (i < lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,3})\s+/.test(lines[i]) && !/^\s*[-*]\s+/.test(lines[i]) && !/^\s*\d+\.\s+/.test(lines[i])) {
-        para.push(lines[i]);
-        i++;
-      }
-      html += `<p>${inline(para.join(' '))}</p>\n`;
-    }
-    return html;
-  }
-  function parseFrontmatter(text) {
-    const match = text.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
-    if (!match) return { meta: {}, body: text };
-    const meta = {};
-    match[1].split('\n').forEach(line => {
-      const kv = line.match(/^([a-zA-Z0-9_]+):\s*(.*)$/);
-      if (kv) meta[kv[1]] = kv[2].trim().replace(/^["']|["']$/g, '');
-    });
-    return { meta, body: match[2] };
-  }
-
   const ui = JSON.parse(document.getElementById('ui-strings').textContent);
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('slug');
@@ -215,26 +151,26 @@
 
   if (slug === 'cv') document.getElementById('page-actions').hidden = false;
 
-  if (!slug) {
+  function notFound() {
     titleEl.textContent = ui.notFound;
     bodyEl.innerHTML = '<p>' + ui.notFoundBody + '</p>';
+  }
+  if (!slug || !/^[A-Za-z0-9._-]+$/.test(slug)) {
+    notFound();
   } else {
     fetch(`content/pages/${slug}.md`)
       .then(res => { if (!res.ok) throw new Error('not found'); return res.text(); })
       .then(text => {
-        const { meta, body } = parseFrontmatter(text);
+        const { meta, body } = window.SiteMD.parseFrontmatter(text);
         document.title = (meta.title || slug) + ' — Pieter Shiffler Carpentier';
         titleEl.textContent = meta.title || slug;
-        bodyEl.innerHTML = renderMarkdown(body);
+        bodyEl.innerHTML = window.SiteMD.render(body);
       })
-      .catch(() => {
-        titleEl.textContent = ui.notFound;
-        bodyEl.innerHTML = '<p>' + ui.notFoundBody + '</p>';
-      });
+      .catch(notFound);
   }
 })();
 </script>
 
-<script src="assets/site.js?v=949d24ee" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
+<script src="assets/site.js?v=81a746e9" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
 </body>
 </html>

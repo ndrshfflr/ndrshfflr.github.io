@@ -1,0 +1,25 @@
+{% extends "base.html.j2" %}
+{% block main %}
+{% set b = d.blog %}
+<header class="page-header blog-header" id="top">
+  <div class="wrap">
+    <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.blog.title }}">{{ runes.blog.glyph }}</span><span id="blog-eyebrow">{{ b.eyebrow }}</span></div>
+    <h1 id="blog-heading">{{ b.heading }}</h1>
+    <p class="lead blog-intro" id="blog-intro">{{ b.intro }}</p>
+  </div>
+</header>
+<div class="carve" aria-hidden="true"></div>
+<section class="blog-section" id="blog">
+  <div class="wrap">
+    {% set all_tags = [] %}{% for p in posts %}{% for t in p.tags %}{% if t not in all_tags %}{% set _ = all_tags.append(t) %}{% endif %}{% endfor %}{% endfor %}
+    <div class="tag-filter" id="blog-tags" role="group" aria-label="{{ ui.filterTags }}"{% if all_tags | length < 2 %} hidden{% endif %}>
+      <button type="button" class="tag-chip is-on" data-tag="">{{ ui.allPosts }}</button>
+      {% for t in all_tags %}<button type="button" class="tag-chip" data-tag="{{ t }}">{{ t }}</button>{% endfor %}
+    </div>
+    <div class="post-list" id="blog-list">
+      {% for p in posts %}{% include '_postcard.html.j2' %}{% endfor %}
+    </div>
+    <p class="blog-empty" id="blog-empty"{% if posts %} hidden{% endif %}>{{ b.emptyText }}</p>
+  </div>
+</section>
+{% endblock %}

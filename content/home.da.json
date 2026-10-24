@@ -4,7 +4,8 @@
     "microbiology": "Skimmelsvamp",
     "mycology": "Mykologi",
     "contact": "Kontakt",
-    "projects": "Projekter"
+    "projects": "Projekter",
+    "blog": "Blog"
   },
   "hero": {
     "eyebrow": "MSc Biologi · Mykolog · Specialist i indeklimamikrobiologi",
@@ -350,5 +351,12 @@
     },
     "contactHeading": "Spørgsmål om insekter eller terrarier?",
     "contactIntro": "Spørg om en art, en opsætning eller hvordan man kommer i gang — jeg hjælper gerne."
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "heading": "Feltnoter",
+    "intro": "Fund fra skoven, det der gror på arbejdsbordet, livet i terrarierne, og det jeg læser og arbejder med.",
+    "latestHeading": "Seneste feltnoter",
+    "emptyText": "De første indlæg er på vej."
   }
 }

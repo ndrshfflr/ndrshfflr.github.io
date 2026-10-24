@@ -102,7 +102,7 @@
   // ---------- content overlay ----------
   function applyNav(d) {
     if (!d.nav) return;
-    ['about', 'microbiology', 'projects', 'mycology', 'contact'].forEach(function (k) {
+    ['about', 'microbiology', 'projects', 'mycology', 'blog', 'contact'].forEach(function (k) {
       setText('nav-label-' + k, d.nav[k]);
     });
   }
@@ -553,6 +553,153 @@
     setText('contact-intro', tt.contactIntro);
   }
 
+  // ---------- blog ----------
+  // Posts are markdown files in content/posts/, written through /admin.
+  // The HTML ships with the list as it was at the last build; here the live
+  // list is fetched from GitHub so a newly published post appears right away.
+  function applyBlogText(b) {
+    if (!b) return;
+    setText('blog-eyebrow', b.eyebrow);
+    setText('blog-heading', b.heading);
+    setText('blog-intro', b.intro);
+    setText('blog-latest-heading', b.latestHeading);
+    setText('blog-empty', b.emptyText);
+  }
+
+  var MONTHS = {
+    en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    da: ['januar', 'februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december']
+  };
+  function dateLabel(iso) {
+    var m = String(iso || '').match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!m) return '';
+    var day = +m[3], month = MONTHS[LANG === 'da' ? 'da' : 'en'][+m[2] - 1], year = m[1];
+    return LANG === 'da' ? day + '. ' + month + ' ' + year : day + ' ' + month + ' ' + year;
+  }
+  function postCard(p) {
+    var art = el('article', 'post-card');
+    if (p.tags.length) art.setAttribute('data-tags', p.tags.join('|'));
+    var a = el('a', 'post-link');
+    a.href = 'post.html?slug=' + encodeURIComponent(p.slug);
+    var cover = el('span', 'post-cover' + (p.cover ? ' has-image' : ''));
+    if (p.cover) { var img = el('img'); img.src = p.cover; img.alt = ''; img.loading = 'lazy'; cover.appendChild(img); }
+    else {
+      var r = el('span', 'post-cover-rune', 'ᚨ'); r.setAttribute('aria-hidden', 'true'); cover.appendChild(r);
+    }
+    a.appendChild(cover);
+    var text = el('span', 'post-text');
+    var meta = el('span', 'post-meta');
+    var t = el('time', null, dateLabel(p.date)); t.dateTime = p.date; meta.appendChild(t);
+    if (p.language && p.language !== LANG) meta.appendChild(el('span', 'post-lang', p.language.toUpperCase()));
+    text.appendChild(meta);
+    text.appendChild(el('span', 'post-title', p.title));
+    if (p.summary) text.appendChild(el('span', 'post-summary', p.summary));
+    if (p.tags.length) {
+      var tg = el('span', 'post-tags');
+      p.tags.forEach(function (x) { tg.appendChild(el('span', null, x)); });
+      text.appendChild(tg);
+    }
+    var more = el('span', 'post-more', (UI.readMore || 'Read more') + ' ');
+    var arrow = el('span', null, '→'); arrow.setAttribute('aria-hidden', 'true'); more.appendChild(arrow);
+    text.appendChild(more);
+    a.appendChild(text);
+    art.appendChild(a);
+    return art;
+  }
+  function toPost(file, text) {
+    var parsed = window.SiteMD ? window.SiteMD.parseFrontmatter(text) : { meta: {} };
+    var m = parsed.meta || {};
+    if (!m.title) return null;
+    var slug = file.name.replace(/\.md$/, '');
+    var date = String(m.date || slug.slice(0, 10));
+    var d = new Date(date);
+    var iso = isNaN(d) ? slug.slice(0, 10) : d.toISOString().slice(0, 10);
+    var tags = Array.isArray(m.tags) ? m.tags : (m.tags ? String(m.tags).split(',') : []);
+    return {
+      slug: slug, title: m.title, summary: m.summary || '', cover: m.cover || '', language: m.language || '',
+      date: iso, tags: tags.map(function (x) { return String(x).trim(); }).filter(Boolean)
+    };
+  }
+  function renderPosts(posts) {
+    var list = $('blog-list');
+    var latest = $('blog-latest-list');
+    if (list) {
+      list.innerHTML = '';
+      posts.forEach(function (p) { list.appendChild(postCard(p)); });
+      show('blog-empty', posts.length === 0);
+      buildTagChips(posts);
+    }
+    if (latest) {
+      latest.innerHTML = '';
+      posts.slice(0, 3).forEach(function (p) { latest.appendChild(postCard(p)); });
+      show('blog-latest', posts.length > 0);
+    }
+    show('nav-label-blog', posts.length > 0);
+  }
+  function buildTagChips(posts) {
+    var box = $('blog-tags');
+    if (!box) return;
+    var tags = [];
+    posts.forEach(function (p) { p.tags.forEach(function (t) { if (tags.indexOf(t) < 0) tags.push(t); }); });
+    box.innerHTML = '';
+    var all = el('button', 'tag-chip is-on', UI.allPosts || 'All posts');
+    all.type = 'button'; all.setAttribute('data-tag', '');
+    box.appendChild(all);
+    tags.forEach(function (t) {
+      var b = el('button', 'tag-chip', t); b.type = 'button'; b.setAttribute('data-tag', t); box.appendChild(b);
+    });
+    box.hidden = tags.length < 2;
+  }
+  function wireTagFilter() {
+    var box = $('blog-tags');
+    if (!box) return;
+    box.addEventListener('click', function (e) {
+      var chip = e.target.closest && e.target.closest('.tag-chip');
+      if (!chip) return;
+      var tag = chip.getAttribute('data-tag');
+      box.querySelectorAll('.tag-chip').forEach(function (c) {
+        c.classList.toggle('is-on', c === chip);
+        c.setAttribute('aria-pressed', c === chip ? 'true' : 'false');
+      });
+      document.querySelectorAll('#blog-list .post-card').forEach(function (card) {
+        var tags = (card.getAttribute('data-tags') || '').split('|');
+        card.hidden = !!tag && tags.indexOf(tag) < 0;
+      });
+    });
+  }
+  function loadPosts() {
+    if (!$('blog-list') && !$('blog-latest-list') && !$('nav-label-blog')) return;
+    var host = window.location.hostname;
+    if (!host || !/\.github\.io$/.test(host)) return;
+    var KEY = 'posts-v1';
+    try {
+      var cached = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+      if (cached && Date.now() - cached.at < 5 * 60 * 1000 && Array.isArray(cached.posts)) { renderPosts(cached.posts); return; }
+    } catch (e) {}
+    var owner = host.split('.')[0];
+    fetch('https://api.github.com/repos/' + owner + '/' + host + '/contents/content/posts', { cache: 'no-cache' })
+      .then(function (r) { if (r.status === 404) return []; if (!r.ok) throw new Error('api'); return r.json(); })
+      .then(function (files) {
+        if (!Array.isArray(files)) throw new Error('api');
+        var md = files.filter(function (f) { return f.name && /\.md$/.test(f.name); });
+        return Promise.all(md.map(function (f) {
+          // read from this site, not raw.githubusercontent, so a post is only listed once it's actually published here
+          return fetch('content/posts/' + encodeURIComponent(f.name), { cache: 'no-cache' })
+            .then(function (r) { return r.ok ? r.text() : null; })
+            .then(function (t) { return t ? toPost(f, t) : null; })
+            .catch(function () { return null; });
+        }));
+      })
+      .then(function (posts) {
+        posts = posts.filter(Boolean).sort(function (a, b) {
+          return a.date === b.date ? (a.slug < b.slug ? 1 : -1) : (a.date < b.date ? 1 : -1);
+        });
+        try { sessionStorage.setItem(KEY, JSON.stringify({ at: Date.now(), posts: posts })); } catch (e) {}
+        renderPosts(posts);
+      })
+      .catch(function () {}); // keep the list baked into the page
+  }
+
   function applyExploration(x) {
     if (!x) return;
     setText('exploration-eyebrow', x.eyebrow);
@@ -640,6 +787,7 @@
     applyContact(d.contact);
     applyFungi(d.fungi, d);
     applyTerrarium(d.terrarium, d);
+    applyBlogText(d.blog);
   }
 
   function applyGallery(data) {
@@ -721,6 +869,8 @@
     fetch('content/gallery.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(applyGallery).catch(function () {});
   }
   applyDynamicPages();
+  loadPosts();
+  wireTagFilter();
 
   // ---------- contact form ----------
   // With a Formspree (or similar) endpoint set in the CMS, messages are sent
