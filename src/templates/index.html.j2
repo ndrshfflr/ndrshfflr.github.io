@@ -178,6 +178,32 @@
   </div>
 </section>
 
+<section id="terrarium-teaser" class="teaser-band" data-rune="{{ runes.terrarium.glyph }}">
+  <div class="wrap">
+    <a class="portal-door terra-door" href="{{ terrarium_href }}" id="terra-door">
+      <span class="portal-arch terra-arch" aria-hidden="true">
+        <svg class="portal-hyphae" viewBox="0 0 200 260" preserveAspectRatio="xMidYMax slice">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M100 262V170"/><path d="M100 214C84 206 70 192 64 172"/><path d="M100 196C118 190 132 176 138 156"/>
+            <path d="M100 170C96 150 100 132 108 116"/>
+            <path d="M64 172C54 168 44 168 36 172"/><path d="M138 156C150 150 162 150 170 154"/>
+            <path d="M108 116C120 112 132 104 136 92M108 116C100 104 88 98 76 98"/>
+            <path d="M52 248c10-6 22-6 32 0M118 252c10-6 24-6 34 0"/>
+          </g>
+          <g fill="currentColor"><ellipse cx="136" cy="88" rx="4" ry="2.4"/><ellipse cx="74" cy="96" rx="4" ry="2.4"/><ellipse cx="34" cy="172" rx="4" ry="2.2"/><ellipse cx="172" cy="154" rx="4" ry="2.2"/></g>
+        </svg>
+        <span class="portal-rune">{{ runes.terrarium.glyph }}</span>
+      </span>
+      <span class="portal-copy">
+        <span class="portal-eyebrow" id="terra-door-eyebrow">{{ d.terrarium.teaserEyebrow }}</span>
+        <span class="portal-heading" id="terra-door-heading">{{ d.terrarium.teaserHeading }}</span>
+        <span class="portal-text" id="terra-door-text">{{ d.terrarium.teaserText }}</span>
+        <span class="portal-cta"><span id="terra-door-cta">{{ d.terrarium.teaserCta }}</span> <span aria-hidden="true">&rarr;</span></span>
+      </span>
+    </a>
+  </div>
+</section>
+
 <section id="photography" data-rune="{{ runes.photography.glyph }}"{% if not gallery %} hidden{% endif %}>
   <div class="wrap">
     <div class="split-head">

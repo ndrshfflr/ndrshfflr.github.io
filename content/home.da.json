@@ -328,5 +328,27 @@
       "orderNote": "Kulturer laves på bestilling og sendes med posten inden for Danmark. Skriv, hvis du har spørgsmål til en stamme, før du køber.",
       "items": []
     }
+  },
+  "terrarium": {
+    "teaserEyebrow": "Også i samlingen",
+    "teaserHeading": "Insekter & terrarier",
+    "teaserText": "Vandrende pinde og blade, biller, kakerlakker og bænkebidere — og de små levende verdener, jeg bygger til dem.",
+    "teaserCta": "Kig indenfor",
+    "eyebrow": "Terrarier",
+    "heading": "Små verdener, holdt i live",
+    "intro": "Ved siden af svampene holder jeg vandrende pinde og blade, biller, kakerlakker og bænkebidere i terrarier, jeg selv bygger. Her er dem, der bor hos mig lige nu.",
+    "note": "Plejeguides og dyr til salg er på vej.",
+    "tanks": {
+      "heading": "Terrarierne",
+      "intro": "Hvordan hvert enkelt er bygget, og hvem der bor i det.",
+      "items": []
+    },
+    "species": {
+      "heading": "Beboerne",
+      "intro": "De arter, jeg holder, med et par noter om hver.",
+      "items": []
+    },
+    "contactHeading": "Spørgsmål om insekter eller terrarier?",
+    "contactIntro": "Spørg om en art, en opsætning eller hvordan man kommer i gang — jeg hjælper gerne."
   }
 }
