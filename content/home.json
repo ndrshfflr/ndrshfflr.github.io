@@ -240,7 +240,7 @@
   "fungi": {
     "eyebrow": "Fungi portal",
     "heading": "Grow them. Find them.",
-    "intro": "Two ways into the world of fungi: learn to grow mushrooms yourself, or come with me into the forest to find, identify and understand them.",
+    "intro": "Learn to grow mushrooms yourself, or come with me into the forest to find, identify and understand them.",
     "grow": {
       "eyebrow": "Grow",
       "heading": "Learn to grow mushrooms",
@@ -319,6 +319,14 @@
       ]
     },
     "contactHeading": "Book a spot or ask a question",
-    "contactIntro": "Tell me whether you're interested in growing, a tour or both — and roughly when and for how many people."
+    "contactIntro": "Tell me whether you're interested in growing, a tour or both — and roughly when and for how many people.",
+    "library": {
+      "eyebrow": "Library",
+      "heading": "The culture library",
+      "doorText": "Living cultures from my own collection, for sale.",
+      "intro": "Cultures from my personal collection, kept and expanded over the years. Each one comes with its origin and how I keep it.",
+      "orderNote": "Cultures are made to order and sent by post within Denmark. Write if you have questions about a strain before you buy.",
+      "items": []
+    }
   }
 }
