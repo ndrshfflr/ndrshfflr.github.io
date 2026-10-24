@@ -93,6 +93,14 @@
         {
           "available": true,
           "name": "Pleurotus eryngii"
+        },
+        {
+          "available": true,
+          "name": "Pleurotus pulmonarius"
+        },
+        {
+          "available": true,
+          "name": "Lyophyllum cf. fumosum"
         }
       ]
     },
