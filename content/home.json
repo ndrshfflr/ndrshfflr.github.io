@@ -89,6 +89,10 @@
         {
           "available": true,
           "name": "Pleurotus ostreatus"
+        },
+        {
+          "available": true,
+          "name": "Pleurotus eryngii"
         }
       ]
     },
@@ -335,25 +339,25 @@
     "priceFallback": "Price on request"
   },
   "terrarium": {
-    "teaserEyebrow": "Also in the collection",
-    "teaserHeading": "Insects & terrariums",
-    "teaserText": "Stick and leaf insects, beetles, cockroaches and isopods — and the small living worlds I build for them.",
     "teaserCta": "Have a look",
-    "eyebrow": "Terrariums",
+    "contactHeading": "Questions about insects or terrariums?",
     "heading": "Small worlds, kept alive",
-    "intro": "Next to the fungi, I keep stick and leaf insects, beetles, cockroaches and isopods, in terrariums I build myself. Here is what lives with me right now.",
-    "note": "Care guides and animals for sale are on their way.",
     "tanks": {
       "heading": "The terrariums",
       "intro": "How each one is built, and who lives in it.",
       "items": []
     },
+    "eyebrow": "Terrariums",
+    "contactIntro": "Ask about a species, a setup or how to get started — I'm happy to help.",
+    "intro": "Next to the fungi, I keep stick and leaf insects, beetles, cockroaches and isopods, in terrariums I build myself. Here is what lives with me right now.",
+    "teaserHeading": "Insects & terrariums",
+    "note": "Care guides and animals for sale are on their way.",
+    "teaserEyebrow": "Also in the collection",
     "species": {
       "heading": "The inhabitants",
       "intro": "The species I keep, with a few notes on each.",
       "items": []
     },
-    "contactHeading": "Questions about insects or terrariums?",
-    "contactIntro": "Ask about a species, a setup or how to get started — I'm happy to help."
+    "teaserText": "Stick and leaf insects, beetles, cockroaches and isopods — and the small living worlds I build for them."
   }
 }
