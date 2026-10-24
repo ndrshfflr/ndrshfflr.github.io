@@ -22,7 +22,7 @@
 {%- endmacro %}
 
 {% block main %}
-{% set f = d.fungi %}
+{% set f = d.fungi %}{% set lib = f.library %}{% set cultures = lib['items'] | selectattr('name') | list %}
 <header class="portal-header" id="top">
   <div class="wrap">
     <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.fungi.title }}">{{ runes.fungi.glyph }}</span><span id="fungi-eyebrow">{{ f.eyebrow }}</span></div>
@@ -41,6 +41,12 @@
       <span class="door-label" id="fungi-tours-door-label">{{ f.tours.eyebrow }}</span>
       <strong id="fungi-tours-door-heading">{{ f.tours.heading }}</strong>
       <span class="door-text" id="fungi-tours-door-text">{{ f.tours.doorText }}</span>
+    </a>
+    <a class="door" href="#library" id="fungi-library-door"{% if not cultures %} hidden{% endif %}>
+      <span class="door-rune" aria-hidden="true" title="{{ runes.library.title }}">{{ runes.library.glyph }}</span>
+      <span class="door-label" id="fungi-library-door-label">{{ lib.eyebrow }}</span>
+      <strong id="fungi-library-door-heading">{{ lib.heading }}</strong>
+      <span class="door-text" id="fungi-library-door-text">{{ lib.doorText }}</span>
     </a>
   </nav>
 </header>
@@ -83,6 +89,43 @@
         </li>
         {% endfor %}
       </ul>
+    </div>
+  </div>
+</section>
+
+<section id="library" class="band" data-rune="{{ runes.library.glyph }}"{% if not cultures %} hidden{% endif %}>
+  <div class="wrap">
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.library.title }}">{{ runes.library.glyph }}</span><span id="fungi-library-eyebrow">{{ lib.eyebrow }}</span></div>
+        <h2 id="fungi-library-heading">{{ lib.heading }}</h2>
+      </div>
+      <div>
+        <p id="fungi-library-intro">{{ lib.intro }}</p>
+        <p class="season-note" id="fungi-library-note"{% if not lib.orderNote %} hidden{% endif %}>{{ lib.orderNote }}</p>
+      </div>
+    </div>
+    <div class="cultures" id="fungi-library-list">
+      {% for c in cultures %}<article class="culture{% if c.available == false %} is-out{% endif %}">
+        <div class="dish{% if c.image %} has-image{% endif %}">{% if c.image %}<img src="{{ c.image }}" alt="{{ c.name }}" loading="lazy">{% else %}<span class="dish-mark" aria-hidden="true">{{ c.name[:1] }}</span>{% endif %}</div>
+        <div class="culture-label">
+          <h3><em>{{ c.name }}</em></h3>
+          {% if c.common %}<p class="culture-common">{{ c.common }}</p>{% endif %}
+          <dl class="culture-facts">
+            {% if c.origin %}<div><dt>{{ ui.origin }}</dt><dd>{{ c.origin }}</dd></div>{% endif %}
+            {% if c.format %}<div><dt>{{ ui.format }}</dt><dd>{{ c.format }}</dd></div>{% endif %}
+          </dl>
+          {% if c.notes %}<p class="culture-notes">{{ c.notes }}</p>{% endif %}
+        </div>
+        <div class="offer-foot">
+          <div class="offer-meta">
+            <span class="offer-price">{{ c.price or d.services.priceFallback }}</span>
+            <span class="offer-turnaround">{{ ui.inStock if c.available != false else ui.soldOut }}</span>
+          </div>
+          {% if c.available != false %}{% if c.buyLink %}<a class="btn btn-primary btn-small" href="{{ c.buyLink }}" target="_blank" rel="noopener">{{ ui.buy }}</a>{% else %}<a class="offer-cta" href="#contact" data-offer="{{ c.name }}{% if c.format %} ({{ c.format }}){% endif %}" data-topic="3">{{ ui.orderCulture }}</a>{% endif %}{% endif %}
+        </div>
+      </article>
+      {% endfor %}
     </div>
   </div>
 </section>

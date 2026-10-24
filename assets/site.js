@@ -358,6 +358,63 @@
     });
   }
 
+  function applyLibrary(lib, fallback) {
+    if (!lib) return;
+    var items = Array.isArray(lib.items) ? lib.items.filter(function (c) { return c && c.name; }) : [];
+    ['eyebrow', 'heading'].forEach(function (k) {
+      setText('fungi-library-' + k, lib[k]);
+      setText('fungi-library-door-' + (k === 'eyebrow' ? 'label' : k), lib[k]);
+    });
+    setText('fungi-library-door-text', lib.doorText);
+    setText('fungi-library-intro', lib.intro);
+    setText('fungi-library-note', lib.orderNote);
+    show('fungi-library-note', !!lib.orderNote);
+    show('library', items.length > 0);
+    show('fungi-library-door', items.length > 0);
+    var box = $('fungi-library-list');
+    if (!box) return;
+    box.innerHTML = '';
+    items.forEach(function (c) {
+      var avail = c.available !== false;
+      var art = el('article', 'culture' + (avail ? '' : ' is-out'));
+      var dish = el('div', 'dish' + (c.image ? ' has-image' : ''));
+      if (c.image) { var img = el('img'); img.src = c.image; img.alt = c.name; img.loading = 'lazy'; dish.appendChild(img); }
+      else { var m = el('span', 'dish-mark', c.name.charAt(0)); m.setAttribute('aria-hidden', 'true'); dish.appendChild(m); }
+      art.appendChild(dish);
+      var label = el('div', 'culture-label');
+      var h = el('h3'); h.appendChild(el('em', null, c.name)); label.appendChild(h);
+      if (c.common) label.appendChild(el('p', 'culture-common', c.common));
+      var dl = el('dl', 'culture-facts');
+      [['origin', UI.origin], ['format', UI.format]].forEach(function (pair) {
+        if (!c[pair[0]]) return;
+        var row = el('div'); row.appendChild(el('dt', null, pair[1])); row.appendChild(el('dd', null, c[pair[0]])); dl.appendChild(row);
+      });
+      if (dl.children.length) label.appendChild(dl);
+      if (c.notes) label.appendChild(el('p', 'culture-notes', c.notes));
+      art.appendChild(label);
+      var foot = el('div', 'offer-foot');
+      var meta = el('div', 'offer-meta');
+      meta.appendChild(el('span', 'offer-price', c.price || fallback || ''));
+      meta.appendChild(el('span', 'offer-turnaround', avail ? (UI.inStock || '') : (UI.soldOut || '')));
+      foot.appendChild(meta);
+      if (avail) {
+        var a;
+        if (c.buyLink) {
+          a = el('a', 'btn btn-primary btn-small', UI.buy || 'Buy');
+          a.href = c.buyLink; a.target = '_blank'; a.rel = 'noopener';
+        } else {
+          a = el('a', 'offer-cta', UI.orderCulture || 'Order this culture');
+          a.href = '#contact';
+          a.setAttribute('data-offer', c.name + (c.format ? ' (' + c.format + ')' : ''));
+          a.setAttribute('data-topic', '3');
+        }
+        foot.appendChild(a);
+      }
+      art.appendChild(foot);
+      box.appendChild(art);
+    });
+  }
+
   function applyFungi(f, d) {
     if (!f || !$('fungi-heading')) return;
     var fallback = d.services && d.services.priceFallback;
@@ -414,6 +471,7 @@
         });
       }
     }
+    applyLibrary(f.library, fallback);
     // the closing contact band on this page has its own heading and intro
     setText('contact-heading', f.contactHeading);
     setText('contact-intro', f.contactIntro);

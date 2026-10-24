@@ -30,7 +30,7 @@ UI = {
         "phone": "Phone", "area": "Service area",
         "caseProblem": "The problem", "caseFinding": "What I found", "caseOutcome": "Outcome",
         "formName": "Name", "formEmail": "Email", "formTopic": "What's it about?", "formMessage": "Message",
-        "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours & workshops", "Research or collaboration", "Something else"],
+        "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours & workshops", "Buying a culture", "Research or collaboration", "Something else"],
         "formSend": "Send message",
         "formSending": "Sending…",
         "formSent": "Thanks — your message is on its way. I'll get back to you soon.",
@@ -49,6 +49,9 @@ UI = {
         "faqMoreLink": "Ask me directly.",
         "duration": "Duration",
         "book": "Book a spot",
+        "origin": "Origin", "format": "Format",
+        "inStock": "Available", "soldOut": "Not available right now",
+        "buy": "Buy", "orderCulture": "Order this culture",
     },
     "da": {
         "skip": "Gå til indhold",
@@ -61,7 +64,7 @@ UI = {
         "phone": "Telefon", "area": "Område",
         "caseProblem": "Problemet", "caseFinding": "Hvad jeg fandt", "caseOutcome": "Resultat",
         "formName": "Navn", "formEmail": "E-mail", "formTopic": "Hvad drejer det sig om?", "formMessage": "Besked",
-        "formTopics": ["Skimmel eller fugt i en bygning", "Svampesankning eller dyrkning", "Ture & workshops", "Forskning eller samarbejde", "Noget andet"],
+        "formTopics": ["Skimmel eller fugt i en bygning", "Svampesankning eller dyrkning", "Ture & workshops", "Køb af en kultur", "Forskning eller samarbejde", "Noget andet"],
         "formSend": "Send besked",
         "formSending": "Sender…",
         "formSent": "Tak — din besked er sendt. Jeg vender tilbage hurtigst muligt.",
@@ -80,6 +83,9 @@ UI = {
         "faqMoreLink": "Spørg mig direkte.",
         "duration": "Varighed",
         "book": "Book en plads",
+        "origin": "Oprindelse", "format": "Format",
+        "inStock": "På lager", "soldOut": "Ikke på lager lige nu",
+        "buy": "Køb", "orderCulture": "Bestil denne kultur",
     },
 }
 
@@ -112,6 +118,7 @@ RUNES = {
         "fungi": ("ᛜ", "ingwaz — seed"),
         "grow": ("ᛃ", "jēra — harvest"),
         "tours": ("ᚱ", "raidō — journey"),
+        "library": ("ᛒ", "berkanan — birch, growth"),
     },
     "da": {
         "about": ("ᛗ", "mannaz — menneske"),
@@ -126,6 +133,7 @@ RUNES = {
         "fungi": ("ᛜ", "ingwaz — frø"),
         "grow": ("ᛃ", "jēra — høst"),
         "tours": ("ᚱ", "raidō — rejse"),
+        "library": ("ᛒ", "berkanan — birk, vækst"),
     },
 }
 

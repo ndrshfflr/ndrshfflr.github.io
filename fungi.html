@@ -18,7 +18,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Learn to grow mushrooms · Guided mushroom tours — Pieter Shiffler Carpentier</title>
-<meta name="description" content="Two ways into the world of fungi: learn to grow mushrooms yourself, or come with me into the forest to find, identify and understand">
+<meta name="description" content="Learn to grow mushrooms yourself, or come with me into the forest to find, identify and understand">
 <link rel="canonical" href="https://ndrshfflr.github.io/fungi.html">
 <link rel="alternate" hreflang="en" href="https://ndrshfflr.github.io/fungi.html">
 <link rel="alternate" hreflang="da" href="https://ndrshfflr.github.io/fungi.da.html">
@@ -30,7 +30,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pieter Shiffler Carpentier">
 <meta property="og:title" content="Learn to grow mushrooms · Guided mushroom tours — Pieter Shiffler Carpentier">
-<meta property="og:description" content="Two ways into the world of fungi: learn to grow mushrooms yourself, or come with me into the forest to find, identify and understand">
+<meta property="og:description" content="Learn to grow mushrooms yourself, or come with me into the forest to find, identify and understand">
 <meta property="og:url" content="https://ndrshfflr.github.io/fungi.html">
 <meta property="og:locale" content="en_GB">
 <meta property="og:image" content="https://ndrshfflr.github.io/og-image.png">
@@ -38,7 +38,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Learn to grow mushrooms · Guided mushroom tours — Pieter Shiffler Carpentier">
-<meta name="twitter:description" content="Two ways into the world of fungi: learn to grow mushrooms yourself, or come with me into the forest to find, identify and understand">
+<meta name="twitter:description" content="Learn to grow mushrooms yourself, or come with me into the forest to find, identify and understand">
 <meta name="twitter:image" content="https://ndrshfflr.github.io/og-image.png">
 
 
@@ -46,7 +46,7 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=b96e9991">
+<link rel="stylesheet" href="styles.css?v=b4c7badf">
 <!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
      token below with your own from the Cloudflare dashboard (see setup guide). -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
@@ -99,7 +99,7 @@
   <div class="wrap">
     <div class="eyebrow"><span class="rune" aria-hidden="true" title="ingwaz — seed">ᛜ</span><span id="fungi-eyebrow">Fungi portal</span></div>
     <h1 id="fungi-heading">Grow them. Find them.</h1>
-    <p class="lead" id="fungi-intro">Two ways into the world of fungi: learn to grow mushrooms yourself, or come with me into the forest to find, identify and understand them.</p>
+    <p class="lead" id="fungi-intro">Learn to grow mushrooms yourself, or come with me into the forest to find, identify and understand them.</p>
   </div>
   <nav class="wrap portal-doors" aria-label="Fungi portal">
     <a class="door" href="#grow">
@@ -113,6 +113,12 @@
       <span class="door-label" id="fungi-tours-door-label">Tours</span>
       <strong id="fungi-tours-door-heading">Guided mushroom tours</strong>
       <span class="door-text" id="fungi-tours-door-text">Small-group walks to find and identify wild fungi.</span>
+    </a>
+    <a class="door" href="#library" id="fungi-library-door" hidden>
+      <span class="door-rune" aria-hidden="true" title="berkanan — birch, growth">ᛒ</span>
+      <span class="door-label" id="fungi-library-door-label">Library</span>
+      <strong id="fungi-library-door-heading">The culture library</strong>
+      <span class="door-text" id="fungi-library-door-text">Living cultures from my own collection, for sale.</span>
     </a>
   </nav>
 </header>
@@ -233,6 +239,24 @@
   </div>
 </section>
 
+<section id="library" class="band" data-rune="ᛒ" hidden>
+  <div class="wrap">
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="berkanan — birch, growth">ᛒ</span><span id="fungi-library-eyebrow">Library</span></div>
+        <h2 id="fungi-library-heading">The culture library</h2>
+      </div>
+      <div>
+        <p id="fungi-library-intro">Cultures from my personal collection, kept and expanded over the years. Each one comes with its origin and how I keep it.</p>
+        <p class="season-note" id="fungi-library-note">Cultures are made to order and sent by post within Denmark. Write if you have questions about a strain before you buy.</p>
+      </div>
+    </div>
+    <div class="cultures" id="fungi-library-list">
+      
+    </div>
+  </div>
+</section>
+
 <section id="practical" class="band" data-rune="ᚨ">
   <div class="wrap side-layout">
     <div class="side-head">
@@ -284,7 +308,7 @@
       </div>
       <label>What&#39;s it about?
         <select name="topic" id="form-topic">
-          <option>Mould or damp in a building</option><option>Foraging or cultivation</option><option selected>Tours &amp; workshops</option><option>Research or collaboration</option><option>Something else</option>
+          <option>Mould or damp in a building</option><option>Foraging or cultivation</option><option selected>Tours &amp; workshops</option><option>Buying a culture</option><option>Research or collaboration</option><option>Something else</option>
         </select>
       </label>
       <label>Message<textarea name="message" rows="5" required></textarea></label>
@@ -325,8 +349,8 @@
   <p class="egg-fallback" id="egg-fallback" hidden>This needs WebGL, which your browser doesn&#39;t seem to support. The network is still out there.</p>
 </div>
 
-<script id="ui-strings" type="application/json">{"area": "Service area", "back": "Back to the main page", "book": "Book a spot", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "duration": "Duration", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "faqMore": "Something else on your mind?", "faqMoreLink": "Ask me directly.", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Research or collaboration", "Something else"], "loading": "Loading\u2026", "menu": "Menu", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "pathsLabel": "Where to start", "phone": "Phone", "skip": "Skip to content", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
+<script id="ui-strings" type="application/json">{"area": "Service area", "back": "Back to the main page", "book": "Book a spot", "buy": "Buy", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "duration": "Duration", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "faqMore": "Something else on your mind?", "faqMoreLink": "Ask me directly.", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Buying a culture", "Research or collaboration", "Something else"], "format": "Format", "inStock": "Available", "loading": "Loading\u2026", "menu": "Menu", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "orderCulture": "Order this culture", "origin": "Origin", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "pathsLabel": "Where to start", "phone": "Phone", "skip": "Skip to content", "soldOut": "Not available right now", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
 
-<script src="assets/site.js?v=cd0573de" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
+<script src="assets/site.js?v=5b3f2498" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
 </body>
 </html>

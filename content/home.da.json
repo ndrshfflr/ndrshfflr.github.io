@@ -240,7 +240,7 @@
   "fungi": {
     "eyebrow": "Svampeportalen",
     "heading": "Dyrk dem. Find dem.",
-    "intro": "To veje ind i svampenes verden: lær selv at dyrke svampe, eller tag med mig i skoven og lær at finde, bestemme og forstå dem.",
+    "intro": "Lær selv at dyrke svampe, eller tag med mig i skoven og lær at finde, bestemme og forstå dem.",
     "grow": {
       "eyebrow": "Dyrk",
       "heading": "Lær at dyrke svampe",
@@ -319,6 +319,14 @@
       ]
     },
     "contactHeading": "Book en plads eller stil et spørgsmål",
-    "contactIntro": "Fortæl mig, om du er interesseret i dyrkning, en tur eller begge dele — og cirka hvornår og hvor mange I er."
+    "contactIntro": "Fortæl mig, om du er interesseret i dyrkning, en tur eller begge dele — og cirka hvornår og hvor mange I er.",
+    "library": {
+      "eyebrow": "Bibliotek",
+      "heading": "Kulturbiblioteket",
+      "doorText": "Levende kulturer fra min egen samling, til salg.",
+      "intro": "Kulturer fra min personlige samling, holdt ved lige og udvidet gennem årene. Til hver kultur står dens oprindelse, og hvordan jeg opbevarer den.",
+      "orderNote": "Kulturer laves på bestilling og sendes med posten inden for Danmark. Skriv, hvis du har spørgsmål til en stamme, før du køber.",
+      "items": []
+    }
   }
 }

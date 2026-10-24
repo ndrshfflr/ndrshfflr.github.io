@@ -446,7 +446,7 @@
   .portal-header h1{color:#fff;font-size:clamp(2.5rem,6vw,4.4rem);line-height:1.02;margin:6px 0 22px;text-wrap:balance;}
   .portal-header h1::first-letter{font-size:1.32em;line-height:.7;color:#e39a5c;margin-right:-.045em;}
   .portal-header .lead{font-size:1.15rem;color:rgba(241,236,225,.82);max-width:600px;margin:0 auto;}
-  .portal-doors{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:64px;padding-bottom:0;}
+  .portal-doors{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:20px;margin-top:64px;padding-bottom:0;}
   .door{
     display:flex;flex-direction:column;gap:6px;text-decoration:none;color:#f1ece1;
     padding:30px 30px 34px;border:1px solid rgba(255,255,255,.14);border-bottom:0;
@@ -462,7 +462,7 @@
   .door-text{font-size:.94rem;color:rgba(241,236,225,.68);max-width:34ch;}
   @media (max-width:700px){
     .portal-header{padding-top:72px;}
-    .portal-doors{grid-template-columns:1fr;margin-top:44px;gap:0;}
+    .portal-doors{grid-auto-flow:row;grid-template-columns:1fr;margin-top:44px;gap:0;}
     .door{border-radius:0;border-bottom:1px solid rgba(255,255,255,.14);flex-direction:row;flex-wrap:wrap;text-align:left;align-items:baseline;gap:4px 14px;padding:20px 4px;border-left:0;border-right:0;background:none;}
     .door + .door{border-top:0;}
     .door-rune{margin:0;font-size:1.8rem;}
@@ -479,6 +479,36 @@
   .offers-even .offer:first-child .offer-foot{flex-direction:row;align-items:flex-end;margin-top:auto;}
   .offers-even{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));}
   section:not(.band) .offers-even .offer{background:var(--bg-2);}
+  /* culture library: each culture as a petri dish with a specimen label */
+  .cultures{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:22px;}
+  .culture{
+    display:flex;flex-direction:column;gap:18px;background:var(--bg);padding:26px 24px 22px;
+    clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px);
+  }
+  .dish{
+    width:132px;aspect-ratio:1;border-radius:50%;overflow:hidden;align-self:center;position:relative;
+    background:radial-gradient(circle at 50% 50%, #e8dfc4 0 30%, #d9cda8 31% 58%, #c9bb92 59% 100%);
+    box-shadow:0 0 0 5px var(--bg), 0 0 0 6px var(--border), inset 0 0 0 4px rgba(255,255,255,.22);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .dish::after{content:"";position:absolute;inset:0;border-radius:50%;
+    background:radial-gradient(ellipse 40% 22% at 34% 26%, rgba(255,255,255,.35), transparent 70%);pointer-events:none;}
+  .dish img{width:100%;height:100%;object-fit:cover;display:block;}
+  .dish-mark{font-family:var(--serif);font-style:italic;font-size:2.6rem;color:#7d6e48;opacity:.7;}
+  .culture-label{border-top:2px solid var(--accent-2);padding-top:14px;}
+  .culture h3{font-size:1.22rem;}
+  .culture h3 em{font-style:italic;}
+  .culture h3::first-letter{font-family:var(--serif);}
+  .culture-common{color:var(--text-soft);font-size:.92rem;margin-top:2px;}
+  .culture-facts{margin-top:12px;font-size:.88rem;}
+  .culture-facts div{display:grid;grid-template-columns:84px 1fr;gap:10px;padding:5px 0;border-top:1px solid var(--border);}
+  .culture-facts dt{color:var(--text-soft);}
+  .culture-notes{margin-top:10px;font-size:.9rem;color:var(--text-soft);}
+  .culture .offer-foot{margin-top:auto;}
+  .culture .offer-price{font-size:1.25rem;}
+  .culture.is-out .dish{filter:grayscale(.8);opacity:.6;}
+  .btn-small{padding:9px 18px;font-size:.86rem;}
+
   .season-note{margin-top:14px;font-size:.92rem;padding-left:14px;border-left:2px solid var(--accent-2);}
   .dates{margin-top:72px;}
   .date-list{list-style:none;border-top:1px solid var(--border);}
