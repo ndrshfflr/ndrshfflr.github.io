@@ -150,11 +150,30 @@
         </li>
         {% endfor %}
       </ul>
-      <div class="callout">
-        <h3 id="mycology-callout-heading">{{ d.mycology.calloutHeading }}</h3>
-        <p id="mycology-callout-body">{{ d.mycology.calloutBody }}</p>
-        <p class="note" id="mycology-callout-note">{{ d.mycology.calloutNote }}</p>
-      </div>
+      <a class="portal-door" href="{{ fungi_href }}" id="mycology-portal">
+        <span class="portal-arch" aria-hidden="true">
+          <svg class="portal-hyphae" viewBox="0 0 200 260" preserveAspectRatio="xMidYMax slice">
+            <g fill="none" stroke="currentColor" stroke-linecap="round">
+              <path d="M100 262C98 220 104 196 92 168C82 146 66 136 60 112C55 92 62 74 54 58"/>
+              <path d="M100 262C103 228 112 204 126 182C140 160 150 132 146 104C143 84 150 66 160 52"/>
+              <path d="M92 168C110 150 116 128 108 100C102 80 108 60 100 38"/>
+              <path d="M126 182C110 170 98 160 74 150C58 144 44 132 34 116"/>
+              <path d="M60 112C76 104 88 90 90 70"/><path d="M146 104C130 96 122 80 126 62"/>
+              <path d="M108 100C120 92 136 90 150 78"/><path d="M74 150C70 172 54 186 40 194"/>
+              <path d="M126 182C146 186 160 200 168 214"/><path d="M54 58C48 46 40 40 30 36"/>
+              <path d="M100 38C104 28 112 22 120 18"/><path d="M160 52C168 44 176 42 184 42"/>
+            </g>
+            <g fill="currentColor"><circle cx="54" cy="58" r="2.4"/><circle cx="160" cy="52" r="2.4"/><circle cx="100" cy="38" r="2.6"/><circle cx="34" cy="116" r="2"/><circle cx="168" cy="214" r="2"/><circle cx="90" cy="70" r="1.8"/><circle cx="126" cy="62" r="1.8"/><circle cx="150" cy="78" r="1.8"/><circle cx="40" cy="194" r="1.8"/><circle cx="30" cy="36" r="1.6"/><circle cx="120" cy="18" r="1.6"/><circle cx="184" cy="42" r="1.6"/></g>
+          </svg>
+          <span class="portal-rune">{{ runes.fungi.glyph }}</span>
+        </span>
+        <span class="portal-copy">
+          <span class="portal-eyebrow" id="mycology-portal-eyebrow">{{ d.mycology.portalEyebrow }}</span>
+          <span class="portal-heading" id="mycology-portal-heading">{{ d.mycology.portalHeading }}</span>
+          <span class="portal-text" id="mycology-portal-text">{{ d.mycology.portalText }}</span>
+          <span class="portal-cta"><span id="mycology-portal-cta">{{ d.mycology.portalCta }}</span> <span aria-hidden="true">&rarr;</span></span>
+        </span>
+      </a>
     </div>
   </div>
 </section>
@@ -192,38 +211,6 @@
   </div>
 </section>
 
-<section id="contact" class="deep" data-rune="{{ runes.contact.glyph }}">
-  <div class="wrap contact-grid">
-    <div class="contact-details">
-      {{ label('contact', d.contact.eyebrow) }}
-      <h2 id="contact-heading">{{ d.contact.heading }}</h2>
-      <p class="contact-intro" id="contact-intro">{{ d.contact.intro }}</p>
-      <a class="email" href="mailto:{{ d.contact.email }}" id="contact-email">{{ d.contact.email }}</a>
-      <dl class="contact-facts">
-        <div id="contact-phone-row"{% if not d.contact.phone %} hidden{% endif %}><dt>{{ ui.phone }}</dt><dd><a id="contact-phone" href="tel:{{ d.contact.phone | replace(' ', '') }}">{{ d.contact.phone }}</a></dd></div>
-        <div id="contact-area-row"{% if not d.contact.area %} hidden{% endif %}><dt>{{ ui.area }}</dt><dd id="contact-area">{{ d.contact.area }}</dd></div>
-      </dl>
-      <a class="btn btn-primary" id="contact-booking" href="{{ d.contact.bookingUrl or '#' }}" target="_blank" rel="noopener"{% if not d.contact.bookingUrl %} hidden{% endif %}>{{ d.contact.bookingLabel }}</a>
-      <div class="socials" id="contact-socials">{% for s in d.contact.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">{{ s.label }}</a>{% endfor %}</div>
-    </div>
-
-    <form class="contact-form" id="contact-form" data-endpoint="{{ d.contact.formEndpoint }}" data-email="{{ d.contact.email }}" novalidate>
-      <div class="field-row">
-        <label>{{ ui.formName }}<input name="name" autocomplete="name" required></label>
-        <label>{{ ui.formEmail }}<input name="email" type="email" autocomplete="email" required></label>
-      </div>
-      <label>{{ ui.formTopic }}
-        <select name="topic" id="form-topic">
-          {% for t in ui.formTopics %}<option>{{ t }}</option>{% endfor %}
-        </select>
-      </label>
-      <label>{{ ui.formMessage }}<textarea name="message" rows="5" required></textarea></label>
-      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <div class="form-foot">
-        <button class="btn btn-primary" type="submit">{{ ui.formSend }}</button>
-        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-      </div>
-    </form>
-  </div>
-</section>
+{% set contact_heading = d.contact.heading %}{% set contact_intro = d.contact.intro %}{% set topic_index = 0 %}
+{% include '_contact.html.j2' %}
 {% endblock %}

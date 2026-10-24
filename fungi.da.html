@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<!-- GENERATED FILE — built by src/build.py from src/templates/. Text content is
+     also loaded live from content/*.json (edited through /admin), so most
+     wording changes never need a rebuild. -->
+<html lang="da" data-theme="dark">
+<head>
+<script>
+(function () {
+  try {
+    var stored = localStorage.getItem('theme');
+    var theme = (stored === 'light' || stored === 'dark') ? stored : 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lær at dyrke svampe · Guidede svampeture — Pieter Shiffler Carpentier</title>
+<meta name="description" content="To veje ind i svampenes verden: lær selv at dyrke svampe, eller tag med mig i skoven og lær at finde, bestemme og forstå">
+<link rel="canonical" href="https://ndrshfflr.github.io/fungi.da.html">
+<link rel="alternate" hreflang="en" href="https://ndrshfflr.github.io/fungi.html">
+<link rel="alternate" hreflang="da" href="https://ndrshfflr.github.io/fungi.da.html">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pieter Shiffler Carpentier">
+<meta property="og:title" content="Lær at dyrke svampe · Guidede svampeture — Pieter Shiffler Carpentier">
+<meta property="og:description" content="To veje ind i svampenes verden: lær selv at dyrke svampe, eller tag med mig i skoven og lær at finde, bestemme og forstå">
+<meta property="og:url" content="https://ndrshfflr.github.io/fungi.da.html">
+<meta property="og:locale" content="da_DK">
+<meta property="og:image" content="https://ndrshfflr.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lær at dyrke svampe · Guidede svampeture — Pieter Shiffler Carpentier">
+<meta name="twitter:description" content="To veje ind i svampenes verden: lær selv at dyrke svampe, eller tag med mig i skoven og lær at finde, bestemme og forstå">
+<meta name="twitter:image" content="https://ndrshfflr.github.io/og-image.png">
+
+
+<!-- Fonts are self-hosted (no requests to Google — simpler under GDPR) -->
+<link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css?v=b96e9991">
+<!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
+     token below with your own from the Cloudflare dashboard (see setup guide). -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
+</head>
+<body class="subpage portal-page">
+<a class="skip-link" href="#main">Gå til indhold</a>
+
+<nav id="site-nav">
+  <div class="wrap">
+    <div class="brand mark">
+      <button class="egg-trigger" type="button" data-egg aria-label="Træd ind i myceliet" title="…">
+        <svg viewBox="0 0 48 32" aria-hidden="true">
+          <path d="M4 20C4 10 14 4 24 4C34 4 44 10 44 20C44 20 34 16 24 16C14 16 4 20 4 20Z" fill="var(--accent-2)"/>
+          <rect x="20" y="16" width="8" height="14" rx="3" fill="var(--text)"/>
+          <ellipse cx="24" cy="30" rx="9" ry="2" fill="var(--text-soft)" opacity=".35"/>
+        </svg>
+      </button>
+      <a href="da.html#top" class="brand-name">Pieter Shiffler Carpentier</a>
+    </div>
+    <div class="nav-right">
+      <div class="navlinks" id="navlinks">
+        <a href="da.html#about" id="nav-label-about">Om mig</a>
+        <a href="da.html#microbiology" id="nav-label-microbiology">Skimmelsvamp</a>
+        <a href="da.html#projects" id="nav-label-projects">Projekter</a>
+        <a href="da.html#mycology" id="nav-label-mycology">Mykologi</a>
+        <span id="nav-dynamic" class="nav-dynamic"></span>
+        <a href="da.html#contact" id="nav-label-contact">Kontakt</a>
+      </div>
+      <a class="lang-switch" href="fungi.html" hreflang="en" lang="en" data-lang-switch>EN</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Skift mellem lyst og mørkt tema">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"/>
+          <path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/>
+        </svg>
+      </button>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+
+<header class="portal-header" id="top">
+  <div class="wrap">
+    <div class="eyebrow"><span class="rune" aria-hidden="true" title="ingwaz — frø">ᛜ</span><span id="fungi-eyebrow">Svampeportalen</span></div>
+    <h1 id="fungi-heading">Dyrk dem. Find dem.</h1>
+    <p class="lead" id="fungi-intro">To veje ind i svampenes verden: lær selv at dyrke svampe, eller tag med mig i skoven og lær at finde, bestemme og forstå dem.</p>
+  </div>
+  <nav class="wrap portal-doors" aria-label="Svampeportalen">
+    <a class="door" href="#grow">
+      <span class="door-rune" aria-hidden="true" title="jēra — høst">ᛃ</span>
+      <span class="door-label" id="fungi-grow-door-label">Dyrk</span>
+      <strong id="fungi-grow-door-heading">Lær at dyrke svampe</strong>
+      <span class="door-text" id="fungi-grow-door-text">Workshops og kurser i svampedyrkning.</span>
+    </a>
+    <a class="door" href="#tours">
+      <span class="door-rune" aria-hidden="true" title="raidō — rejse">ᚱ</span>
+      <span class="door-label" id="fungi-tours-door-label">Ture</span>
+      <strong id="fungi-tours-door-heading">Guidede svampeture</strong>
+      <span class="door-text" id="fungi-tours-door-text">Ture for små grupper, hvor vi finder og bestemmer vilde svampe.</span>
+    </a>
+  </nav>
+</header>
+
+<section id="grow" class="band" data-rune="ᛃ">
+  <div class="wrap">
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="jēra — høst">ᛃ</span><span id="fungi-grow-eyebrow">Dyrk</span></div>
+        <h2 id="fungi-grow-heading">Lær at dyrke svampe</h2>
+      </div>
+      <p id="fungi-grow-intro">Fra en pose østershatte på køkkenbordet til dine egne kulturer og din egen yngel. Praktisk, og med biologien forklaret undervejs.</p>
+    </div>
+    <div class="offers offers-even" id="fungi-grow-offers">
+  <article class="offer">
+    <div class="offer-head">
+      <h4>Introworkshop: din første høst</h4>
+      <p class="offer-audience">Begyndere, der vil dyrke svampe derhjemme uden specialudstyr.</p>
+    </div>
+    
+    <ul class="offer-includes"><li>Svampens livscyklus, fra spore til frugtlegeme</li><li>Pod din egen dyrkningspose og tag den med hjem</li><li>Sådan får du frugtlegemer, høster og starter forfra</li></ul>
+    <div class="offer-foot">
+      <div class="offer-meta">
+        <span class="offer-price">Pris efter aftale</span>
+        <span class="offer-turnaround">Varighed: Ca. 3 timer</span>
+      </div>
+      <a class="offer-cta" href="#contact" data-offer="Introworkshop: din første høst" data-topic="2">Spørg om dette</a>
+    </div>
+  </article>
+  <article class="offer">
+    <div class="offer-head">
+      <h4>Dyrkningskursus: fra kultur til høst</h4>
+      <p class="offer-audience">Til dig, der vil dyrke flere arter og forstå hvert trin.</p>
+    </div>
+    
+    <ul class="offer-includes"><li>Ren arbejdsteknik uden laboratorium</li><li>Agar, kornyngel og substrat</li><li>Genkend almindelige forureninger</li><li>Arter, der passer til danske forhold</li></ul>
+    <div class="offer-foot">
+      <div class="offer-meta">
+        <span class="offer-price">Pris efter aftale</span>
+        <span class="offer-turnaround">Varighed: Flere gange</span>
+      </div>
+      <a class="offer-cta" href="#contact" data-offer="Dyrkningskursus: fra kultur til høst" data-topic="2">Spørg om dette</a>
+    </div>
+  </article>
+  <article class="offer">
+    <div class="offer-head">
+      <h4>Private forløb og grupper</h4>
+      <p class="offer-audience">Skoler, arbejdspladser, foreninger og haveforeninger.</p>
+    </div>
+    
+    <ul class="offer-includes"><li>Tilpasset jeres gruppe og rammer</li><li>Hos jer eller udendørs</li></ul>
+    <div class="offer-foot">
+      <div class="offer-meta">
+        <span class="offer-price">Pris efter aftale</span>
+        
+      </div>
+      <a class="offer-cta" href="#contact" data-offer="Private forløb og grupper" data-topic="2">Spørg om dette</a>
+    </div>
+  </article>
+  
+</div>
+  </div>
+</section>
+
+<section id="tours" data-rune="ᚱ">
+  <div class="wrap">
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="raidō — rejse">ᚱ</span><span id="fungi-tours-eyebrow">Ture</span></div>
+        <h2 id="fungi-tours-heading">Guidede svampeture</h2>
+      </div>
+      <div>
+        <p id="fungi-tours-intro">Ture i skoven for små grupper: hvordan man finder svampe, kender dem fra hinanden, sanker ansvarligt — og hvad de egentlig laver der.</p>
+        <p class="season-note" id="fungi-tours-season">De fleste ture ligger i svampesæsonen, fra sensommer til sent efterår.</p>
+      </div>
+    </div>
+    <div class="offers offers-even" id="fungi-tours-offers">
+  <article class="offer">
+    <div class="offer-head">
+      <h4>Svampetur</h4>
+      <p class="offer-audience">Alle, der er nysgerrige på svampe. Ingen erfaring nødvendig.</p>
+    </div>
+    
+    <ul class="offer-includes"><li>En lille gruppe i en dansk skov</li><li>Vi finder og bestemmer det, der står</li><li>Dødelige forvekslinger og reglerne for sikker spisning</li><li>Svampenes økologi: nedbrydere, partnere og parasitter</li></ul>
+    <div class="offer-foot">
+      <div class="offer-meta">
+        <span class="offer-price">Pris efter aftale</span>
+        <span class="offer-turnaround">Varighed: Ca. 2–3 timer</span>
+      </div>
+      <a class="offer-cta" href="#contact" data-offer="Svampetur" data-topic="2">Spørg om dette</a>
+    </div>
+  </article>
+  <article class="offer">
+    <div class="offer-head">
+      <h4>Privat tur</h4>
+      <p class="offer-audience">Familie, venner, kolleger — eller en anderledes fødselsdag.</p>
+    </div>
+    
+    <ul class="offer-includes"><li>Jeres dato og jeres gruppe</li><li>Tempo og fokus tilpasset dem, der kommer</li></ul>
+    <div class="offer-foot">
+      <div class="offer-meta">
+        <span class="offer-price">Pris efter aftale</span>
+        
+      </div>
+      <a class="offer-cta" href="#contact" data-offer="Privat tur" data-topic="2">Spørg om dette</a>
+    </div>
+  </article>
+  
+</div>
+
+    
+    <div class="dates" id="fungi-dates" hidden>
+      <h3 class="sub-heading" id="fungi-dates-heading">Kommende datoer</h3>
+      <ul class="date-list" id="fungi-dates-list">
+        
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="practical" class="band" data-rune="ᚨ">
+  <div class="wrap side-layout">
+    <div class="side-head">
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="ansuz — tale, visdom">ᚨ</span><span>Spørgsmål</span></div>
+      <h2 id="fungi-practical-heading">Godt at vide</h2>
+    </div>
+    <div class="faq-list" id="fungi-practical-list">
+      <details>
+        <summary>Skal jeg have erfaring?</summary>
+        <p>Nej. Workshops og ture er lavet til begyndere, og spørgsmål er hele pointen.</p>
+      </details>
+      <details>
+        <summary>Må vi spise det, vi finder?</summary>
+        <p>Kun det, der er bestemt med sikkerhed. På turene gennemgår vi alle fund sammen, og reglen er enkel: er du i tvivl, så lad den stå.</p>
+      </details>
+      <details>
+        <summary>Hvad skal jeg have med?</summary>
+        <p>Tøj og fodtøj efter vejret, en kurv eller papirpose (ikke plastik) og en lille kniv. Til workshops er alt inkluderet.</p>
+      </details>
+      <details>
+        <summary>Hvad hvis det regner?</summary>
+        <p>Svampe kan lide regn, så turene gennemføres i de fleste slags vejr. Er forholdene utrygge, flytter vi datoen.</p>
+      </details>
+      
+    </div>
+  </div>
+</section>
+
+
+<section id="contact" class="deep" data-rune="ᛖ">
+  <div class="wrap contact-grid">
+    <div class="contact-details">
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="ehwaz — partnerskab">ᛖ</span><span id="contact-eyebrow">Kontakt</span></div>
+      <h2 id="contact-heading">Book en plads eller stil et spørgsmål</h2>
+      <p class="contact-intro" id="contact-intro">Fortæl mig, om du er interesseret i dyrkning, en tur eller begge dele — og cirka hvornår og hvor mange I er.</p>
+      <a class="email" href="mailto:pietershiffler@proton.me" id="contact-email">pietershiffler@proton.me</a>
+      <dl class="contact-facts">
+        <div id="contact-phone-row" hidden><dt>Telefon</dt><dd><a id="contact-phone" href="tel:"></a></dd></div>
+        <div id="contact-area-row" hidden><dt>Område</dt><dd id="contact-area"></dd></div>
+      </dl>
+      <a class="btn btn-primary" id="contact-booking" href="#" target="_blank" rel="noopener" hidden>Book en gratis samtale (15 min)</a>
+      <div class="socials" id="contact-socials"><a href="https://instagram.com/shfflr" target="_blank" rel="noopener noreferrer">instagram</a></div>
+    </div>
+
+    <form class="contact-form" id="contact-form" data-endpoint="" data-email="pietershiffler@proton.me" novalidate>
+      <div class="field-row">
+        <label>Navn<input name="name" autocomplete="name" required></label>
+        <label>E-mail<input name="email" type="email" autocomplete="email" required></label>
+      </div>
+      <label>Hvad drejer det sig om?
+        <select name="topic" id="form-topic">
+          <option>Skimmel eller fugt i en bygning</option><option>Svampesankning eller dyrkning</option><option selected>Ture &amp; workshops</option><option>Forskning eller samarbejde</option><option>Noget andet</option>
+        </select>
+      </label>
+      <label>Besked<textarea name="message" rows="5" required></textarea></label>
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="form-foot">
+        <button class="btn btn-primary" type="submit">Send besked</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div>© <span id="year">2026</span> Pieter Shiffler Carpentier<span id="footer-cvr" class="footer-cvr" hidden> · CVR <span id="footer-cvr-value"></span></span></div>
+    <div class="footer-links">
+      <a href="exploration.da.html" id="footer-exploration">Ud over laboratoriet</a>
+      <a href="fungi.html" hreflang="en" lang="en" data-lang-switch>English</a>
+    </div>
+    <div id="footer-tagline">MSc Biologi · Mykologi · Indeklimamikrobiologi</div>
+  </div>
+</footer>
+
+<div class="egg" id="egg" hidden role="dialog" aria-modal="true" aria-label="Træd ind i myceliet">
+  <div class="egg-stage" id="egg-stage"></div>
+  <div class="egg-veil"></div>
+  <div class="egg-copy">
+    <div class="eyebrow"><span class="rune" aria-hidden="true">ᛜ</span>Du fandt den</div>
+    <div class="egg-title">Træd ind i myceliet</div>
+  </div>
+  <div class="egg-bottom">
+    <button class="motion-btn" id="motion-btn" type="button">Slå bevægelse til</button>
+    <div id="egg-hint">bevæg eller vip for at udforske · esc for at lukke</div>
+  </div>
+  <button class="egg-close" id="egg-close" type="button" aria-label="Luk">&times;</button>
+  <p class="egg-fallback" id="egg-fallback" hidden>Det her kræver WebGL, som din browser vist ikke understøtter. Netværket er der stadig.</p>
+</div>
+
+<script id="ui-strings" type="application/json">{"area": "Omr\u00e5de", "back": "Tilbage til forsiden", "book": "Book en plads", "caseFinding": "Hvad jeg fandt", "caseOutcome": "Resultat", "caseProblem": "Problemet", "close": "Luk", "downloadPdf": "Download som PDF", "duration": "Varighed", "eggEyebrow": "Du fandt den", "eggFallback": "Det her kr\u00e6ver WebGL, som din browser vist ikke underst\u00f8tter. Netv\u00e6rket er der stadig.", "eggHint": "bev\u00e6g eller vip for at udforske \u00b7 esc for at lukke", "eggTitle": "Tr\u00e6d ind i myceliet", "enableMotion": "Sl\u00e5 bev\u00e6gelse til", "faqMore": "Har du et andet sp\u00f8rgsm\u00e5l?", "faqMoreLink": "Sp\u00f8rg mig direkte.", "formEmail": "E-mail", "formError": "Noget gik galt. Skriv venligst direkte til min e-mail i stedet.", "formInvalid": "Udfyld venligst navn, en gyldig e-mailadresse og en besked.", "formMailto": "Dit mailprogram burde \u00e5bne med beskeden udfyldt \u2014 tryk bare send.", "formMessage": "Besked", "formName": "Navn", "formSend": "Send besked", "formSending": "Sender\u2026", "formSent": "Tak \u2014 din besked er sendt. Jeg vender tilbage hurtigst muligt.", "formTopic": "Hvad drejer det sig om?", "formTopics": ["Skimmel eller fugt i en bygning", "Svampesankning eller dyrkning", "Ture \u0026 workshops", "Forskning eller samarbejde", "Noget andet"], "loading": "Indl\u00e6ser\u2026", "menu": "Menu", "notFound": "Siden blev ikke fundet", "notFoundBody": "Beklager, siden kunne ikke findes.", "offerCta": "Sp\u00f8rg om dette", "offerPrefill": "Ang\u00e5ende: ", "otherLang": "en", "otherLangLabel": "EN", "otherLangName": "English", "pathsLabel": "Hvor vil du starte?", "phone": "Telefon", "skip": "G\u00e5 til indhold", "themeToggle": "Skift mellem lyst og m\u00f8rkt tema", "turnaround": "Leveringstid"}</script>
+
+<script src="assets/site.js?v=cd0573de" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
+</body>
+</html>

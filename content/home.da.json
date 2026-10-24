@@ -197,9 +197,10 @@
         "desc": "Under udvikling — ture for små grupper med fokus på svampe, skovens økologi, og hvordan man rent faktisk får øje på det, der er omkring en."
       }
     ],
-    "calloutHeading": "Interesseret i en guidet tur?",
-    "calloutBody": "Jeg er ved at udvikle guidede naturture og svampeture for små grupper. Hvis du vil være blandt de første, der hører, når de åbner, så skriv til mig — jeg vil gerne høre, hvad du er interesseret i.",
-    "calloutNote": "Under udvikling"
+    "portalEyebrow": "Lær med mig",
+    "portalHeading": "Svampeportalen",
+    "portalText": "Workshops i at dyrke dine egne svampe og guidede svampeture i skoven.",
+    "portalCta": "Træd indenfor"
   },
   "exploration": {
     "eyebrow": "Ud over laboratoriet",
@@ -235,5 +236,89 @@
   "footer": {
     "tagline": "MSc Biologi · Mykologi · Indeklimamikrobiologi",
     "explorationLabel": "Ud over laboratoriet"
+  },
+  "fungi": {
+    "eyebrow": "Svampeportalen",
+    "heading": "Dyrk dem. Find dem.",
+    "intro": "To veje ind i svampenes verden: lær selv at dyrke svampe, eller tag med mig i skoven og lær at finde, bestemme og forstå dem.",
+    "grow": {
+      "eyebrow": "Dyrk",
+      "heading": "Lær at dyrke svampe",
+      "intro": "Fra en pose østershatte på køkkenbordet til dine egne kulturer og din egen yngel. Praktisk, og med biologien forklaret undervejs.",
+      "doorText": "Workshops og kurser i svampedyrkning.",
+      "offers": [
+        {
+          "title": "Introworkshop: din første høst",
+          "audience": "Begyndere, der vil dyrke svampe derhjemme uden specialudstyr.",
+          "includes": "Svampens livscyklus, fra spore til frugtlegeme\nPod din egen dyrkningspose og tag den med hjem\nSådan får du frugtlegemer, høster og starter forfra",
+          "duration": "Ca. 3 timer",
+          "price": ""
+        },
+        {
+          "title": "Dyrkningskursus: fra kultur til høst",
+          "audience": "Til dig, der vil dyrke flere arter og forstå hvert trin.",
+          "includes": "Ren arbejdsteknik uden laboratorium\nAgar, kornyngel og substrat\nGenkend almindelige forureninger\nArter, der passer til danske forhold",
+          "duration": "Flere gange",
+          "price": ""
+        },
+        {
+          "title": "Private forløb og grupper",
+          "audience": "Skoler, arbejdspladser, foreninger og haveforeninger.",
+          "includes": "Tilpasset jeres gruppe og rammer\nHos jer eller udendørs",
+          "duration": "",
+          "price": ""
+        }
+      ]
+    },
+    "tours": {
+      "eyebrow": "Ture",
+      "heading": "Guidede svampeture",
+      "intro": "Ture i skoven for små grupper: hvordan man finder svampe, kender dem fra hinanden, sanker ansvarligt — og hvad de egentlig laver der.",
+      "doorText": "Ture for små grupper, hvor vi finder og bestemmer vilde svampe.",
+      "season": "De fleste ture ligger i svampesæsonen, fra sensommer til sent efterår.",
+      "offers": [
+        {
+          "title": "Svampetur",
+          "audience": "Alle, der er nysgerrige på svampe. Ingen erfaring nødvendig.",
+          "includes": "En lille gruppe i en dansk skov\nVi finder og bestemmer det, der står\nDødelige forvekslinger og reglerne for sikker spisning\nSvampenes økologi: nedbrydere, partnere og parasitter",
+          "duration": "Ca. 2–3 timer",
+          "price": ""
+        },
+        {
+          "title": "Privat tur",
+          "audience": "Familie, venner, kolleger — eller en anderledes fødselsdag.",
+          "includes": "Jeres dato og jeres gruppe\nTempo og fokus tilpasset dem, der kommer",
+          "duration": "",
+          "price": ""
+        }
+      ]
+    },
+    "dates": {
+      "heading": "Kommende datoer",
+      "items": []
+    },
+    "practical": {
+      "heading": "Godt at vide",
+      "items": [
+        {
+          "q": "Skal jeg have erfaring?",
+          "a": "Nej. Workshops og ture er lavet til begyndere, og spørgsmål er hele pointen."
+        },
+        {
+          "q": "Må vi spise det, vi finder?",
+          "a": "Kun det, der er bestemt med sikkerhed. På turene gennemgår vi alle fund sammen, og reglen er enkel: er du i tvivl, så lad den stå."
+        },
+        {
+          "q": "Hvad skal jeg have med?",
+          "a": "Tøj og fodtøj efter vejret, en kurv eller papirpose (ikke plastik) og en lille kniv. Til workshops er alt inkluderet."
+        },
+        {
+          "q": "Hvad hvis det regner?",
+          "a": "Svampe kan lide regn, så turene gennemføres i de fleste slags vejr. Er forholdene utrygge, flytter vi datoen."
+        }
+      ]
+    },
+    "contactHeading": "Book en plads eller stil et spørgsmål",
+    "contactIntro": "Fortæl mig, om du er interesseret i dyrkning, en tur eller begge dele — og cirka hvornår og hvor mange I er."
   }
 }

@@ -47,6 +47,8 @@ UI = {
         "pathsLabel": "Where to start",
         "faqMore": "Something else on your mind?",
         "faqMoreLink": "Ask me directly.",
+        "duration": "Duration",
+        "book": "Book a spot",
     },
     "da": {
         "skip": "Gå til indhold",
@@ -76,6 +78,8 @@ UI = {
         "pathsLabel": "Hvor vil du starte?",
         "faqMore": "Har du et andet spørgsmål?",
         "faqMoreLink": "Spørg mig direkte.",
+        "duration": "Varighed",
+        "book": "Book en plads",
     },
 }
 
@@ -105,6 +109,9 @@ RUNES = {
         "faq": ("ᚨ", "ansuz — speech, wisdom"),
         "contact": ("ᛖ", "ehwaz — partnership"),
         "exploration": ("ᛈ", "perþ — mystery"),
+        "fungi": ("ᛜ", "ingwaz — seed"),
+        "grow": ("ᛃ", "jēra — harvest"),
+        "tours": ("ᚱ", "raidō — journey"),
     },
     "da": {
         "about": ("ᛗ", "mannaz — menneske"),
@@ -116,6 +123,9 @@ RUNES = {
         "faq": ("ᚨ", "ansuz — tale, visdom"),
         "contact": ("ᛖ", "ehwaz — partnerskab"),
         "exploration": ("ᛈ", "perþ — mysterium"),
+        "fungi": ("ᛜ", "ingwaz — frø"),
+        "grow": ("ᛃ", "jēra — høst"),
+        "tours": ("ᚱ", "raidō — rejse"),
     },
 }
 
@@ -125,10 +135,13 @@ PAGES = {
     "da.html": ("index.html.j2", "da"),
     "exploration.html": ("exploration.html.j2", "en"),
     "exploration.da.html": ("exploration.html.j2", "da"),
+    "fungi.html": ("fungi.html.j2", "en"),
+    "fungi.da.html": ("fungi.html.j2", "da"),
     "page.html": ("page.html.j2", "en"),
 }
 HOME = {"en": "index.html", "da": "da.html"}
 EXPLORATION = {"en": "exploration.html", "da": "exploration.da.html"}
+FUNGI = {"en": "fungi.html", "da": "fungi.da.html"}
 
 
 def load(name):
@@ -179,6 +192,7 @@ def main():
         other = "da" if lang == "en" else "en"
         is_home = tpl == "index.html.j2"
         is_expl = tpl == "exploration.html.j2"
+        is_fungi = tpl == "fungi.html.j2"
         if is_home:
             canonical = SITE_URL + ("" if lang == "en" else "da.html")
             alternates = [
@@ -198,6 +212,18 @@ def main():
             meta = dict(META[lang])
             meta["title"] = d["exploration"]["heading"] + " — Pieter Shiffler Carpentier"
             meta["description"] = d["exploration"]["intro"][:155].rsplit(" ", 1)[0] + "…"
+        elif is_fungi:
+            canonical = SITE_URL + FUNGI[lang]
+            alternates = [
+                {"hreflang": "en", "href": SITE_URL + FUNGI["en"]},
+                {"hreflang": "da", "href": SITE_URL + FUNGI["da"]},
+            ]
+            other_href = FUNGI[other]
+            meta = dict(META[lang])
+            f = d["fungi"]
+            meta["title"] = f["grow"]["heading"] + " · " + f["tours"]["heading"] + " — Pieter Shiffler Carpentier"
+            meta["description"] = f["intro"][:155].rsplit(" ", 1)[0] + ("…" if len(f["intro"]) > 155 else "")
+            meta["ogDescription"] = meta["description"]
         else:  # page.html — generic CMS pages, English
             canonical = ""
             alternates = []
@@ -208,15 +234,15 @@ def main():
         html = env.get_template(tpl).render(
             d=d, lang=lang, ui=UI[lang], meta=dict(meta, canonical=canonical, alternates=alternates),
             site_url=SITE_URL, home_href=("" if is_home else HOME[lang]), other_lang_href=other_href,
-            exploration_href=EXPLORATION[lang], gallery=gallery, year=year,
-            jsonld=jsonld(d, lang), body_class=("home" if is_home else "subpage"), v=versions,
+            exploration_href=EXPLORATION[lang], fungi_href=FUNGI[lang], gallery=gallery, year=year,
+            jsonld=jsonld(d, lang), body_class=("home" if is_home else "subpage portal-page" if is_fungi else "subpage"), v=versions,
             runes={k: {"glyph": g, "title": t} for k, (g, t) in RUNES[lang].items()},
         )
         (ROOT / out).write_text(html, encoding="utf-8")
         print("wrote", out)
 
     # sitemap
-    urls = ["", "da.html", "exploration.html", "exploration.da.html", "page.html?slug=cv"]
+    urls = ["", "da.html", "fungi.html", "fungi.da.html", "exploration.html", "exploration.da.html", "page.html?slug=cv"]
     today = datetime.date.today().isoformat()
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']

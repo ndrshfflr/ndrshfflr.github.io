@@ -1,0 +1,108 @@
+{% extends "base.html.j2" %}
+
+{% macro offer_list(id, offers) -%}
+<div class="offers offers-even" id="{{ id }}">
+  {% for o in offers %}<article class="offer">
+    <div class="offer-head">
+      <h4>{{ o.title }}</h4>
+      {% if o.audience %}<p class="offer-audience">{{ o.audience }}</p>{% endif %}
+    </div>
+    {% set inc = (o.includes or '').split('\n') | map('trim') | select | list %}
+    {% if inc %}<ul class="offer-includes">{% for line in inc %}<li>{{ line }}</li>{% endfor %}</ul>{% endif %}
+    <div class="offer-foot">
+      <div class="offer-meta">
+        <span class="offer-price">{{ o.price or d.services.priceFallback }}</span>
+        {% if o.duration %}<span class="offer-turnaround">{{ ui.duration }}: {{ o.duration }}</span>{% endif %}
+      </div>
+      <a class="offer-cta" href="#contact" data-offer="{{ o.title }}" data-topic="2">{{ ui.offerCta }}</a>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{%- endmacro %}
+
+{% block main %}
+{% set f = d.fungi %}
+<header class="portal-header" id="top">
+  <div class="wrap">
+    <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.fungi.title }}">{{ runes.fungi.glyph }}</span><span id="fungi-eyebrow">{{ f.eyebrow }}</span></div>
+    <h1 id="fungi-heading">{{ f.heading }}</h1>
+    <p class="lead" id="fungi-intro">{{ f.intro }}</p>
+  </div>
+  <nav class="wrap portal-doors" aria-label="{{ f.eyebrow }}">
+    <a class="door" href="#grow">
+      <span class="door-rune" aria-hidden="true" title="{{ runes.grow.title }}">{{ runes.grow.glyph }}</span>
+      <span class="door-label" id="fungi-grow-door-label">{{ f.grow.eyebrow }}</span>
+      <strong id="fungi-grow-door-heading">{{ f.grow.heading }}</strong>
+      <span class="door-text" id="fungi-grow-door-text">{{ f.grow.doorText }}</span>
+    </a>
+    <a class="door" href="#tours">
+      <span class="door-rune" aria-hidden="true" title="{{ runes.tours.title }}">{{ runes.tours.glyph }}</span>
+      <span class="door-label" id="fungi-tours-door-label">{{ f.tours.eyebrow }}</span>
+      <strong id="fungi-tours-door-heading">{{ f.tours.heading }}</strong>
+      <span class="door-text" id="fungi-tours-door-text">{{ f.tours.doorText }}</span>
+    </a>
+  </nav>
+</header>
+
+<section id="grow" class="band" data-rune="{{ runes.grow.glyph }}">
+  <div class="wrap">
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.grow.title }}">{{ runes.grow.glyph }}</span><span id="fungi-grow-eyebrow">{{ f.grow.eyebrow }}</span></div>
+        <h2 id="fungi-grow-heading">{{ f.grow.heading }}</h2>
+      </div>
+      <p id="fungi-grow-intro">{{ f.grow.intro }}</p>
+    </div>
+    {{ offer_list('fungi-grow-offers', f.grow.offers) }}
+  </div>
+</section>
+
+<section id="tours" data-rune="{{ runes.tours.glyph }}">
+  <div class="wrap">
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.tours.title }}">{{ runes.tours.glyph }}</span><span id="fungi-tours-eyebrow">{{ f.tours.eyebrow }}</span></div>
+        <h2 id="fungi-tours-heading">{{ f.tours.heading }}</h2>
+      </div>
+      <div>
+        <p id="fungi-tours-intro">{{ f.tours.intro }}</p>
+        <p class="season-note" id="fungi-tours-season"{% if not f.tours.season %} hidden{% endif %}>{{ f.tours.season }}</p>
+      </div>
+    </div>
+    {{ offer_list('fungi-tours-offers', f.tours.offers) }}
+
+    {% set dates = f.dates['items'] | selectattr('date') | list %}
+    <div class="dates" id="fungi-dates"{% if not dates %} hidden{% endif %}>
+      <h3 class="sub-heading" id="fungi-dates-heading">{{ f.dates.heading }}</h3>
+      <ul class="date-list" id="fungi-dates-list">
+        {% for x in dates %}<li>
+          <span class="date-when">{{ x.date }}</span>
+          <span class="date-what"><strong>{{ x.title }}</strong>{% if x.place %}<span>{{ x.place }}</span>{% endif %}</span>
+          {% if x.link %}<a class="offer-cta" href="{{ x.link }}" target="_blank" rel="noopener">{{ ui.book }}</a>{% else %}<a class="offer-cta" href="#contact" data-offer="{{ x.title }} — {{ x.date }}" data-topic="2">{{ ui.book }}</a>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="practical" class="band" data-rune="{{ runes.faq.glyph }}">
+  <div class="wrap side-layout">
+    <div class="side-head">
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.faq.title }}">{{ runes.faq.glyph }}</span><span>{{ d.faq.eyebrow }}</span></div>
+      <h2 id="fungi-practical-heading">{{ f.practical.heading }}</h2>
+    </div>
+    <div class="faq-list" id="fungi-practical-list">
+      {% for x in f.practical['items'] %}<details>
+        <summary>{{ x.q }}</summary>
+        <p>{{ x.a }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% set contact_heading = f.contactHeading %}{% set contact_intro = f.contactIntro %}{% set topic_index = 2 %}
+{% include '_contact.html.j2' %}
+{% endblock %}
