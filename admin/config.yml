@@ -165,9 +165,10 @@ collections:
                 fields:
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "desc", widget: "text" }
-              - { label: "Callout box heading", name: "calloutHeading", widget: "string" }
-              - { label: "Callout box text", name: "calloutBody", widget: "text" }
-              - { label: "Callout box small note", name: "calloutNote", widget: "string" }
+              - { label: "Portal door: small label", name: "portalEyebrow", widget: "string", hint: "The arched 'door' next to the list. It leads to the Fungi portal page (edit that page further down)." }
+              - { label: "Portal door: heading", name: "portalHeading", widget: "string" }
+              - { label: "Portal door: short text", name: "portalText", widget: "text" }
+              - { label: "Portal door: link text", name: "portalCta", widget: "string" }
 
           - label: "Photography section (shown only when the gallery has photos)"
             name: "photography"
@@ -223,6 +224,84 @@ collections:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Intro paragraph", name: "intro", widget: "text" }
               - { label: "Second paragraph", name: "body", widget: "text" }
+
+          - label: "Fungi portal (separate page: fungi.html)"
+            name: "fungi"
+            widget: "object"
+            hint: "The page behind the portal door in the Mycology section — growing workshops and mushroom tours."
+            fields:
+              - { label: "Small label", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro paragraph", name: "intro", widget: "text" }
+              - label: "Grow (cultivation teaching)"
+                name: "grow"
+                widget: "object"
+                fields:
+                  - { label: "Small label", name: "eyebrow", widget: "string" }
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Short line on the door at the top", name: "doorText", widget: "string" }
+                  - { label: "Intro paragraph", name: "intro", widget: "text" }
+                  - label: "Offers"
+                    name: "offers"
+                    widget: "list"
+                    required: false
+                    summary: "{{title}} — {{price}}"
+                    fields:
+                      - { label: "Name", name: "title", widget: "string" }
+                      - { label: "Who it's for", name: "audience", widget: "text", required: false }
+                      - { label: "What's included (one item per line)", name: "includes", widget: "text", required: false }
+                      - { label: "Duration (optional)", name: "duration", widget: "string", required: false, hint: "e.g. About 3 hours. Leave empty to hide." }
+                      - { label: "Price (optional)", name: "price", widget: "string", required: false, hint: "e.g. DKK 450 per person, materials included. Leave empty to show the 'no price' text from the Services section." }
+              - label: "Tours"
+                name: "tours"
+                widget: "object"
+                fields:
+                  - { label: "Small label", name: "eyebrow", widget: "string" }
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Short line on the door at the top", name: "doorText", widget: "string" }
+                  - { label: "Intro paragraph", name: "intro", widget: "text" }
+                  - { label: "Season note (optional)", name: "season", widget: "string", required: false }
+                  - label: "Offers"
+                    name: "offers"
+                    widget: "list"
+                    required: false
+                    summary: "{{title}} — {{price}}"
+                    fields:
+                      - { label: "Name", name: "title", widget: "string" }
+                      - { label: "Who it's for", name: "audience", widget: "text", required: false }
+                      - { label: "What's included (one item per line)", name: "includes", widget: "text", required: false }
+                      - { label: "Duration (optional)", name: "duration", widget: "string", required: false, hint: "e.g. About 3 hours. Leave empty to hide." }
+                      - { label: "Price (optional)", name: "price", widget: "string", required: false, hint: "e.g. DKK 450 per person, materials included. Leave empty to show the 'no price' text from the Services section." }
+              - label: "Upcoming dates (hidden while empty)"
+                name: "dates"
+                widget: "object"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - label: "Dates"
+                    name: "items"
+                    widget: "list"
+                    required: false
+                    summary: "{{date}} — {{title}}"
+                    hint: "Add a row per walk or workshop. Remove past dates yourself."
+                    fields:
+                      - { label: "Date and time", name: "date", widget: "string", hint: "e.g. Sun 12 Oct, 10:00" }
+                      - { label: "What", name: "title", widget: "string", hint: "e.g. Mushroom walk" }
+                      - { label: "Where (optional)", name: "place", widget: "string", required: false }
+                      - { label: "Booking link (optional)", name: "link", widget: "string", required: false, hint: "e.g. a ticket page. Leave empty and the button opens the contact form instead." }
+              - label: "Good to know (questions & answers)"
+                name: "practical"
+                widget: "object"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - label: "Questions"
+                    name: "items"
+                    widget: "list"
+                    summary: "{{q}}"
+                    fields:
+                      - { label: "Question", name: "q", widget: "string" }
+                      - { label: "Answer", name: "a", widget: "text" }
+              - { label: "Contact band heading", name: "contactHeading", widget: "string" }
+              - { label: "Contact band intro", name: "contactIntro", widget: "text" }
 
           - label: "Business details"
             name: "business"

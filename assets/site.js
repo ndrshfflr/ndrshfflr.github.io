@@ -306,9 +306,10 @@
     setText('mycology-eyebrow', m.eyebrow);
     setText('mycology-heading', m.heading);
     setText('mycology-intro', m.intro);
-    setText('mycology-callout-heading', m.calloutHeading);
-    setText('mycology-callout-body', m.calloutBody);
-    setText('mycology-callout-note', m.calloutNote);
+    setText('mycology-portal-eyebrow', m.portalEyebrow);
+    setText('mycology-portal-heading', m.portalHeading);
+    setText('mycology-portal-text', m.portalText);
+    setText('mycology-portal-cta', m.portalCta);
     var list = $('mycology-list');
     if (list && Array.isArray(m.list) && m.list.length) {
       list.innerHTML = '';
@@ -322,6 +323,100 @@
         list.appendChild(li);
       });
     }
+  }
+
+  // ---------- the fungi portal page (fungi.html / fungi.da.html) ----------
+  function renderOffers(id, offers, fallback, durationLabel) {
+    var box = $(id);
+    if (!box || !Array.isArray(offers)) return;
+    box.innerHTML = '';
+    offers.forEach(function (o) {
+      if (!o || !o.title) return;
+      var art = el('article', 'offer');
+      var head = el('div', 'offer-head');
+      head.appendChild(el('h4', null, o.title));
+      if (o.audience) head.appendChild(el('p', 'offer-audience', o.audience));
+      art.appendChild(head);
+      var inc = lines(o.includes);
+      if (inc.length) {
+        var ul = el('ul', 'offer-includes');
+        inc.forEach(function (l) { ul.appendChild(el('li', null, l)); });
+        art.appendChild(ul);
+      }
+      var meta = el('div', 'offer-meta');
+      meta.appendChild(el('span', 'offer-price', o.price || fallback || ''));
+      if (o.duration) meta.appendChild(el('span', 'offer-turnaround', durationLabel + ': ' + o.duration));
+      var foot = el('div', 'offer-foot');
+      foot.appendChild(meta);
+      var cta = el('a', 'offer-cta', UI.offerCta || 'Ask about this');
+      cta.href = '#contact';
+      cta.setAttribute('data-offer', o.title);
+      cta.setAttribute('data-topic', '2');
+      foot.appendChild(cta);
+      art.appendChild(foot);
+      box.appendChild(art);
+    });
+  }
+
+  function applyFungi(f, d) {
+    if (!f || !$('fungi-heading')) return;
+    var fallback = d.services && d.services.priceFallback;
+    var dur = UI.duration || 'Duration';
+    setText('fungi-eyebrow', f.eyebrow);
+    setText('fungi-heading', f.heading);
+    setText('fungi-intro', f.intro);
+    ['grow', 'tours'].forEach(function (k) {
+      var s = f[k];
+      if (!s) return;
+      setText('fungi-' + k + '-door-label', s.eyebrow);
+      setText('fungi-' + k + '-door-heading', s.heading);
+      setText('fungi-' + k + '-door-text', s.doorText);
+      setText('fungi-' + k + '-eyebrow', s.eyebrow);
+      setText('fungi-' + k + '-heading', s.heading);
+      setText('fungi-' + k + '-intro', s.intro);
+      renderOffers('fungi-' + k + '-offers', s.offers, fallback, dur);
+    });
+    if (f.tours) {
+      setText('fungi-tours-season', f.tours.season);
+      show('fungi-tours-season', !!f.tours.season);
+    }
+    var dates = f.dates && Array.isArray(f.dates.items) ? f.dates.items.filter(function (x) { return x && x.date; }) : [];
+    if (f.dates) setText('fungi-dates-heading', f.dates.heading);
+    var dl = $('fungi-dates-list');
+    if (dl) {
+      dl.innerHTML = '';
+      dates.forEach(function (x) {
+        var li = el('li');
+        li.appendChild(el('span', 'date-when', x.date));
+        var what = el('span', 'date-what');
+        what.appendChild(el('strong', null, x.title || ''));
+        if (x.place) what.appendChild(el('span', null, x.place));
+        li.appendChild(what);
+        var a = el('a', 'offer-cta', UI.book || 'Book a spot');
+        if (x.link) { a.href = x.link; a.target = '_blank'; a.rel = 'noopener'; }
+        else { a.href = '#contact'; a.setAttribute('data-offer', (x.title || '') + ' — ' + x.date); a.setAttribute('data-topic', '2'); }
+        li.appendChild(a);
+        dl.appendChild(li);
+      });
+    }
+    show('fungi-dates', dates.length > 0);
+    if (f.practical) {
+      setText('fungi-practical-heading', f.practical.heading);
+      var pl = $('fungi-practical-list');
+      if (pl && Array.isArray(f.practical.items)) {
+        pl.innerHTML = '';
+        f.practical.items.forEach(function (it) {
+          if (!it || !it.q) return;
+          var det = el('details');
+          det.appendChild(el('summary', null, it.q));
+          lines(it.a).forEach(function (para) { det.appendChild(el('p', null, para)); });
+          pl.appendChild(det);
+        });
+      }
+    }
+    // the closing contact band on this page has its own heading and intro
+    setText('contact-heading', f.contactHeading);
+    setText('contact-intro', f.contactIntro);
   }
 
   function applyExploration(x) {
@@ -409,6 +504,7 @@
     applyPhotography(d.photography);
     applyFaq(d.faq);
     applyContact(d.contact);
+    applyFungi(d.fungi, d);
   }
 
   function applyGallery(data) {
@@ -504,7 +600,8 @@
       if (!link) return;
       var topic = $('form-topic');
       var msg = form.querySelector('textarea[name="message"]');
-      if (topic && topic.options.length) topic.selectedIndex = 0;
+      var ti = parseInt(link.getAttribute('data-topic') || '0', 10);
+      if (topic && topic.options.length) topic.selectedIndex = Math.min(ti || 0, topic.options.length - 1);
       if (msg && !msg.value) msg.value = (UI.offerPrefill || 'About: ') + link.getAttribute('data-offer') + '\n\n';
     });
 

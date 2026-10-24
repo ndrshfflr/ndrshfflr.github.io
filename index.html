@@ -49,7 +49,7 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=1268ab01">
+<link rel="stylesheet" href="styles.css?v=b96e9991">
 <!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
      token below with your own from the Cloudflare dashboard (see setup guide). -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
@@ -321,11 +321,30 @@
         </li>
         
       </ul>
-      <div class="callout">
-        <h3 id="mycology-callout-heading">Interested in a guided tour?</h3>
-        <p id="mycology-callout-body">I&#39;m currently developing guided nature tours and small-group foraging walks. If you&#39;d like to be first to hear when these open up, reach out — I&#39;d love to know what you&#39;re interested in.</p>
-        <p class="note" id="mycology-callout-note">In development</p>
-      </div>
+      <a class="portal-door" href="fungi.html" id="mycology-portal">
+        <span class="portal-arch" aria-hidden="true">
+          <svg class="portal-hyphae" viewBox="0 0 200 260" preserveAspectRatio="xMidYMax slice">
+            <g fill="none" stroke="currentColor" stroke-linecap="round">
+              <path d="M100 262C98 220 104 196 92 168C82 146 66 136 60 112C55 92 62 74 54 58"/>
+              <path d="M100 262C103 228 112 204 126 182C140 160 150 132 146 104C143 84 150 66 160 52"/>
+              <path d="M92 168C110 150 116 128 108 100C102 80 108 60 100 38"/>
+              <path d="M126 182C110 170 98 160 74 150C58 144 44 132 34 116"/>
+              <path d="M60 112C76 104 88 90 90 70"/><path d="M146 104C130 96 122 80 126 62"/>
+              <path d="M108 100C120 92 136 90 150 78"/><path d="M74 150C70 172 54 186 40 194"/>
+              <path d="M126 182C146 186 160 200 168 214"/><path d="M54 58C48 46 40 40 30 36"/>
+              <path d="M100 38C104 28 112 22 120 18"/><path d="M160 52C168 44 176 42 184 42"/>
+            </g>
+            <g fill="currentColor"><circle cx="54" cy="58" r="2.4"/><circle cx="160" cy="52" r="2.4"/><circle cx="100" cy="38" r="2.6"/><circle cx="34" cy="116" r="2"/><circle cx="168" cy="214" r="2"/><circle cx="90" cy="70" r="1.8"/><circle cx="126" cy="62" r="1.8"/><circle cx="150" cy="78" r="1.8"/><circle cx="40" cy="194" r="1.8"/><circle cx="30" cy="36" r="1.6"/><circle cx="120" cy="18" r="1.6"/><circle cx="184" cy="42" r="1.6"/></g>
+          </svg>
+          <span class="portal-rune">ᛜ</span>
+        </span>
+        <span class="portal-copy">
+          <span class="portal-eyebrow" id="mycology-portal-eyebrow">Learn with me</span>
+          <span class="portal-heading" id="mycology-portal-heading">The fungi portal</span>
+          <span class="portal-text" id="mycology-portal-text">Workshops in growing your own mushrooms, and guided mushroom tours in the forest.</span>
+          <span class="portal-cta"><span id="mycology-portal-cta">Step inside</span> <span aria-hidden="true">&rarr;</span></span>
+        </span>
+      </a>
     </div>
   </div>
 </section>
@@ -375,6 +394,7 @@
   </div>
 </section>
 
+
 <section id="contact" class="deep" data-rune="ᛖ">
   <div class="wrap contact-grid">
     <div class="contact-details">
@@ -397,7 +417,7 @@
       </div>
       <label>What&#39;s it about?
         <select name="topic" id="form-topic">
-          <option>Mould or damp in a building</option><option>Foraging or cultivation</option><option>Tours &amp; workshops</option><option>Research or collaboration</option><option>Something else</option>
+          <option selected>Mould or damp in a building</option><option>Foraging or cultivation</option><option>Tours &amp; workshops</option><option>Research or collaboration</option><option>Something else</option>
         </select>
       </label>
       <label>Message<textarea name="message" rows="5" required></textarea></label>
@@ -438,8 +458,8 @@
   <p class="egg-fallback" id="egg-fallback" hidden>This needs WebGL, which your browser doesn&#39;t seem to support. The network is still out there.</p>
 </div>
 
-<script id="ui-strings" type="application/json">{"area": "Service area", "back": "Back to the main page", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "faqMore": "Something else on your mind?", "faqMoreLink": "Ask me directly.", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Research or collaboration", "Something else"], "loading": "Loading\u2026", "menu": "Menu", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "pathsLabel": "Where to start", "phone": "Phone", "skip": "Skip to content", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
+<script id="ui-strings" type="application/json">{"area": "Service area", "back": "Back to the main page", "book": "Book a spot", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "duration": "Duration", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "faqMore": "Something else on your mind?", "faqMoreLink": "Ask me directly.", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Research or collaboration", "Something else"], "loading": "Loading\u2026", "menu": "Menu", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "pathsLabel": "Where to start", "phone": "Phone", "skip": "Skip to content", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
 
-<script src="assets/site.js?v=128909e2" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
+<script src="assets/site.js?v=cd0573de" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
 </body>
 </html>

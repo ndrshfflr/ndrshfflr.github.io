@@ -1,0 +1,34 @@
+<section id="contact" class="deep" data-rune="{{ runes.contact.glyph }}">
+  <div class="wrap contact-grid">
+    <div class="contact-details">
+      <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.contact.title }}">{{ runes.contact.glyph }}</span><span id="contact-eyebrow">{{ d.contact.eyebrow }}</span></div>
+      <h2 id="contact-heading">{{ contact_heading }}</h2>
+      <p class="contact-intro" id="contact-intro">{{ contact_intro }}</p>
+      <a class="email" href="mailto:{{ d.contact.email }}" id="contact-email">{{ d.contact.email }}</a>
+      <dl class="contact-facts">
+        <div id="contact-phone-row"{% if not d.contact.phone %} hidden{% endif %}><dt>{{ ui.phone }}</dt><dd><a id="contact-phone" href="tel:{{ d.contact.phone | replace(' ', '') }}">{{ d.contact.phone }}</a></dd></div>
+        <div id="contact-area-row"{% if not d.contact.area %} hidden{% endif %}><dt>{{ ui.area }}</dt><dd id="contact-area">{{ d.contact.area }}</dd></div>
+      </dl>
+      <a class="btn btn-primary" id="contact-booking" href="{{ d.contact.bookingUrl or '#' }}" target="_blank" rel="noopener"{% if not d.contact.bookingUrl %} hidden{% endif %}>{{ d.contact.bookingLabel }}</a>
+      <div class="socials" id="contact-socials">{% for s in d.contact.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">{{ s.label }}</a>{% endfor %}</div>
+    </div>
+
+    <form class="contact-form" id="contact-form" data-endpoint="{{ d.contact.formEndpoint }}" data-email="{{ d.contact.email }}" novalidate>
+      <div class="field-row">
+        <label>{{ ui.formName }}<input name="name" autocomplete="name" required></label>
+        <label>{{ ui.formEmail }}<input name="email" type="email" autocomplete="email" required></label>
+      </div>
+      <label>{{ ui.formTopic }}
+        <select name="topic" id="form-topic">
+          {% for t in ui.formTopics %}<option{% if loop.index0 == topic_index %} selected{% endif %}>{{ t }}</option>{% endfor %}
+        </select>
+      </label>
+      <label>{{ ui.formMessage }}<textarea name="message" rows="5" required></textarea></label>
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="form-foot">
+        <button class="btn btn-primary" type="submit">{{ ui.formSend }}</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
+</section>

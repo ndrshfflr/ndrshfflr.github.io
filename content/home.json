@@ -50,9 +50,10 @@
         "desc": "In development — small-group walks focused on fungi, forest ecology, and how to actually see what's around you."
       }
     ],
-    "calloutHeading": "Interested in a guided tour?",
-    "calloutBody": "I'm currently developing guided nature tours and small-group foraging walks. If you'd like to be first to hear when these open up, reach out — I'd love to know what you're interested in.",
-    "calloutNote": "In development"
+    "portalEyebrow": "Learn with me",
+    "portalHeading": "The fungi portal",
+    "portalText": "Workshops in growing your own mushrooms, and guided mushroom tours in the forest.",
+    "portalCta": "Step inside"
   },
   "about": {
     "eyebrow": "About",
@@ -235,5 +236,89 @@
       }
     ],
     "priceFallback": "Price on request"
+  },
+  "fungi": {
+    "eyebrow": "Fungi portal",
+    "heading": "Grow them. Find them.",
+    "intro": "Two ways into the world of fungi: learn to grow mushrooms yourself, or come with me into the forest to find, identify and understand them.",
+    "grow": {
+      "eyebrow": "Grow",
+      "heading": "Learn to grow mushrooms",
+      "intro": "From a bag of oyster mushrooms on the kitchen counter to your own cultures and spawn. Hands-on, with the biology explained along the way.",
+      "doorText": "Workshops and courses in mushroom cultivation.",
+      "offers": [
+        {
+          "title": "Intro workshop: your first harvest",
+          "audience": "Beginners who want to grow mushrooms at home without special equipment.",
+          "includes": "The mushroom life cycle, from spore to fruiting body\nInoculate your own grow bag to take home\nHow to fruit, harvest and start again",
+          "duration": "About 3 hours",
+          "price": ""
+        },
+        {
+          "title": "Cultivation course: from culture to harvest",
+          "audience": "For those who want to grow more species and understand every step.",
+          "includes": "Clean technique without a lab\nAgar, grain spawn and bulk substrate\nRecognising common contaminants\nSpecies that suit Danish conditions",
+          "duration": "Several sessions",
+          "price": ""
+        },
+        {
+          "title": "Private and group sessions",
+          "audience": "Schools, workplaces, associations and garden groups.",
+          "includes": "Tailored to your group and setting\nAt your place or outdoors",
+          "duration": "",
+          "price": ""
+        }
+      ]
+    },
+    "tours": {
+      "eyebrow": "Tours",
+      "heading": "Guided mushroom tours",
+      "intro": "Small-group walks in the forest: how to find fungi, tell them apart, pick responsibly — and what they are doing there in the first place.",
+      "doorText": "Small-group walks to find and identify wild fungi.",
+      "season": "Most tours run in the main fungi season, from late summer to late autumn.",
+      "offers": [
+        {
+          "title": "Mushroom walk",
+          "audience": "Anyone curious about fungi. No experience needed.",
+          "includes": "A small group in a Danish forest\nFinding and identifying what's there\nDeadly lookalikes and the rules for safe eating\nFungal ecology: decomposers, partners and parasites",
+          "duration": "About 2–3 hours",
+          "price": ""
+        },
+        {
+          "title": "Private tour",
+          "audience": "Families, friends, colleagues — or a birthday with a difference.",
+          "includes": "Your date and your group\nPace and focus adjusted to who's coming",
+          "duration": "",
+          "price": ""
+        }
+      ]
+    },
+    "dates": {
+      "heading": "Upcoming dates",
+      "items": []
+    },
+    "practical": {
+      "heading": "Good to know",
+      "items": [
+        {
+          "q": "Do I need any experience?",
+          "a": "No. Workshops and walks are made for beginners, and questions are the point."
+        },
+        {
+          "q": "Can we eat what we find?",
+          "a": "Only what is identified with certainty. On tours we go through every find together, and the rule is simple: if in doubt, leave it out."
+        },
+        {
+          "q": "What should I bring?",
+          "a": "Clothes and footwear for the weather, a basket or paper bag (not plastic) and a small knife. For workshops, everything is provided."
+        },
+        {
+          "q": "What if it rains?",
+          "a": "Fungi like rain, so walks go ahead in most weather. If conditions are unsafe, we move the date."
+        }
+      ]
+    },
+    "contactHeading": "Book a spot or ask a question",
+    "contactIntro": "Tell me whether you're interested in growing, a tour or both — and roughly when and for how many people."
   }
 }
