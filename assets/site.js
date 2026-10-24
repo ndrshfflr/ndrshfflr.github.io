@@ -477,6 +477,82 @@
     setText('contact-intro', f.contactIntro);
   }
 
+  // ---------- the terrarium page (terrarium.html / terrarium.da.html) ----------
+  function applyTerrarium(tt, d) {
+    if (!tt) return;
+    setText('terra-door-eyebrow', tt.teaserEyebrow);
+    setText('terra-door-heading', tt.teaserHeading);
+    setText('terra-door-text', tt.teaserText);
+    setText('terra-door-cta', tt.teaserCta);
+    if (!$('terra-heading')) return;
+    setText('terra-eyebrow', tt.eyebrow);
+    setText('terra-heading', tt.heading);
+    setText('terra-intro', tt.intro);
+    setText('terra-note', tt.note);
+    show('terra-note', !!tt.note);
+    var fallback = d.services && d.services.priceFallback;
+    var tanks = tt.tanks && Array.isArray(tt.tanks.items) ? tt.tanks.items.filter(function (x) { return x && x.name; }) : [];
+    if (tt.tanks) { setText('terra-tanks-eyebrow', tt.eyebrow); setText('terra-tanks-heading', tt.tanks.heading); setText('terra-tanks-intro', tt.tanks.intro); }
+    show('tanks', tanks.length > 0);
+    var tl = $('terra-tanks-list');
+    if (tl) {
+      tl.innerHTML = '';
+      tanks.forEach(function (x) {
+        var art = el('article', 'tank');
+        var ph = el('div', 'tank-photo');
+        if (x.image) { var img = el('img'); img.src = x.image; img.alt = x.name; img.loading = 'lazy'; ph.appendChild(img); }
+        art.appendChild(ph);
+        var body = el('div', 'tank-body');
+        body.appendChild(el('h3', null, x.name));
+        if (x.size) body.appendChild(el('p', 'tank-size', x.size));
+        if (x.setup) body.appendChild(el('p', 'tank-setup', x.setup));
+        if (x.inhabitants) {
+          var pi = el('p', 'tank-inhabitants');
+          pi.appendChild(el('span', null, (UI.inhabitants || 'Lives here') + ':'));
+          pi.appendChild(document.createTextNode(' ' + x.inhabitants));
+          body.appendChild(pi);
+        }
+        art.appendChild(body);
+        tl.appendChild(art);
+      });
+    }
+    var sp = tt.species && Array.isArray(tt.species.items) ? tt.species.items.filter(function (x) { return x && x.name; }) : [];
+    if (tt.species) { setText('terra-species-eyebrow', tt.eyebrow); setText('terra-species-heading', tt.species.heading); setText('terra-species-intro', tt.species.intro); }
+    show('species', sp.length > 0);
+    var sl = $('terra-species-list');
+    if (sl) {
+      sl.innerHTML = '';
+      sp.forEach(function (c) {
+        var art = el('article', 'culture critter');
+        var ph = el('div', 'dish critter-photo' + (c.image ? ' has-image' : ''));
+        if (c.image) { var img = el('img'); img.src = c.image; img.alt = c.name; img.loading = 'lazy'; ph.appendChild(img); }
+        else { var m = el('span', 'dish-mark', c.name.charAt(0)); m.setAttribute('aria-hidden', 'true'); ph.appendChild(m); }
+        art.appendChild(ph);
+        var label = el('div', 'culture-label');
+        if (c.group) label.appendChild(el('p', 'critter-group', c.group));
+        var h = el('h3'); h.appendChild(el('em', null, c.name)); label.appendChild(h);
+        if (c.common) label.appendChild(el('p', 'culture-common', c.common));
+        if (c.notes) label.appendChild(el('p', 'culture-notes', c.notes));
+        art.appendChild(label);
+        if (c.careGuide || c.forSale) {
+          var foot = el('div', 'offer-foot');
+          if (c.forSale) { var meta = el('div', 'offer-meta'); meta.appendChild(el('span', 'offer-price', c.price || fallback || '')); foot.appendChild(meta); }
+          if (c.careGuide) { var g = el('a', 'offer-cta', UI.careGuide || 'Care guide'); g.href = c.careGuide; foot.appendChild(g); }
+          if (c.forSale) {
+            var a;
+            if (c.buyLink) { a = el('a', 'btn btn-primary btn-small', UI.buy || 'Buy'); a.href = c.buyLink; a.target = '_blank'; a.rel = 'noopener'; }
+            else { a = el('a', 'offer-cta', UI.askAvailability || 'Ask about availability'); a.href = '#contact'; a.setAttribute('data-offer', c.name); a.setAttribute('data-topic', '4'); }
+            foot.appendChild(a);
+          }
+          art.appendChild(foot);
+        }
+        sl.appendChild(art);
+      });
+    }
+    setText('contact-heading', tt.contactHeading);
+    setText('contact-intro', tt.contactIntro);
+  }
+
   function applyExploration(x) {
     if (!x) return;
     setText('exploration-eyebrow', x.eyebrow);
@@ -563,6 +639,7 @@
     applyFaq(d.faq);
     applyContact(d.contact);
     applyFungi(d.fungi, d);
+    applyTerrarium(d.terrarium, d);
   }
 
   function applyGallery(data) {

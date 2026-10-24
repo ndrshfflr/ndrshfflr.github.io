@@ -1,0 +1,71 @@
+{% extends "base.html.j2" %}
+
+{% block main %}
+{% set t = d.terrarium %}
+{% set tanks = t.tanks['items'] | selectattr('name') | list %}
+{% set species = t.species['items'] | selectattr('name') | list %}
+<header class="portal-header terra-header" id="top">
+  <div class="wrap">
+    <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.terrarium.title }}">{{ runes.terrarium.glyph }}</span><span id="terra-eyebrow">{{ t.eyebrow }}</span></div>
+    <h1 id="terra-heading">{{ t.heading }}</h1>
+    <p class="lead" id="terra-intro">{{ t.intro }}</p>
+    <p class="terra-note" id="terra-note"{% if not t.note %} hidden{% endif %}>{{ t.note }}</p>
+  </div>
+</header>
+
+<section id="tanks" class="band" data-rune="{{ runes.tanks.glyph }}"{% if not tanks %} hidden{% endif %}>
+  <div class="wrap">
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.tanks.title }}">{{ runes.tanks.glyph }}</span><span id="terra-tanks-eyebrow">{{ t.eyebrow }}</span></div>
+        <h2 id="terra-tanks-heading">{{ t.tanks.heading }}</h2>
+      </div>
+      <p id="terra-tanks-intro">{{ t.tanks.intro }}</p>
+    </div>
+    <div class="tanks" id="terra-tanks-list">
+      {% for x in tanks %}<article class="tank">
+        <div class="tank-photo">{% if x.image %}<img src="{{ x.image }}" alt="{{ x.name }}" loading="lazy">{% endif %}</div>
+        <div class="tank-body">
+          <h3>{{ x.name }}</h3>
+          {% if x.size %}<p class="tank-size">{{ x.size }}</p>{% endif %}
+          {% if x.setup %}<p class="tank-setup">{{ x.setup }}</p>{% endif %}
+          {% if x.inhabitants %}<p class="tank-inhabitants"><span>{{ ui.inhabitants }}:</span> {{ x.inhabitants }}</p>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="species" data-rune="{{ runes.species.glyph }}"{% if not species %} hidden{% endif %}>
+  <div class="wrap">
+    <div class="split-head">
+      <div>
+        <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.species.title }}">{{ runes.species.glyph }}</span><span id="terra-species-eyebrow">{{ t.eyebrow }}</span></div>
+        <h2 id="terra-species-heading">{{ t.species.heading }}</h2>
+      </div>
+      <p id="terra-species-intro">{{ t.species.intro }}</p>
+    </div>
+    <div class="cultures" id="terra-species-list">
+      {% for c in species %}<article class="culture critter">
+        <div class="dish critter-photo{% if c.image %} has-image{% endif %}">{% if c.image %}<img src="{{ c.image }}" alt="{{ c.name }}" loading="lazy">{% else %}<span class="dish-mark" aria-hidden="true">{{ c.name[:1] }}</span>{% endif %}</div>
+        <div class="culture-label">
+          {% if c.group %}<p class="critter-group">{{ c.group }}</p>{% endif %}
+          <h3><em>{{ c.name }}</em></h3>
+          {% if c.common %}<p class="culture-common">{{ c.common }}</p>{% endif %}
+          {% if c.notes %}<p class="culture-notes">{{ c.notes }}</p>{% endif %}
+        </div>
+        {% if c.careGuide or c.forSale %}<div class="offer-foot">
+          {% if c.forSale %}<div class="offer-meta"><span class="offer-price">{{ c.price or d.services.priceFallback }}</span></div>{% endif %}
+          {% if c.careGuide %}<a class="offer-cta" href="{{ c.careGuide }}">{{ ui.careGuide }}</a>{% endif %}
+          {% if c.forSale %}{% if c.buyLink %}<a class="btn btn-primary btn-small" href="{{ c.buyLink }}" target="_blank" rel="noopener">{{ ui.buy }}</a>{% else %}<a class="offer-cta" href="#contact" data-offer="{{ c.name }}" data-topic="4">{{ ui.askAvailability }}</a>{% endif %}{% endif %}
+        </div>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% set contact_heading = t.contactHeading %}{% set contact_intro = t.contactIntro %}{% set topic_index = 4 %}
+{% include '_contact.html.j2' %}
+{% endblock %}

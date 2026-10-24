@@ -30,7 +30,7 @@ UI = {
         "phone": "Phone", "area": "Service area",
         "caseProblem": "The problem", "caseFinding": "What I found", "caseOutcome": "Outcome",
         "formName": "Name", "formEmail": "Email", "formTopic": "What's it about?", "formMessage": "Message",
-        "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours & workshops", "Buying a culture", "Research or collaboration", "Something else"],
+        "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours & workshops", "Buying a culture", "Insects & terrariums", "Research or collaboration", "Something else"],
         "formSend": "Send message",
         "formSending": "Sending…",
         "formSent": "Thanks — your message is on its way. I'll get back to you soon.",
@@ -52,6 +52,7 @@ UI = {
         "origin": "Origin", "format": "Format",
         "inStock": "Available", "soldOut": "Not available right now",
         "buy": "Buy", "orderCulture": "Order this culture",
+        "inhabitants": "Lives here", "careGuide": "Care guide", "askAvailability": "Ask about availability",
     },
     "da": {
         "skip": "Gå til indhold",
@@ -64,7 +65,7 @@ UI = {
         "phone": "Telefon", "area": "Område",
         "caseProblem": "Problemet", "caseFinding": "Hvad jeg fandt", "caseOutcome": "Resultat",
         "formName": "Navn", "formEmail": "E-mail", "formTopic": "Hvad drejer det sig om?", "formMessage": "Besked",
-        "formTopics": ["Skimmel eller fugt i en bygning", "Svampesankning eller dyrkning", "Ture & workshops", "Køb af en kultur", "Forskning eller samarbejde", "Noget andet"],
+        "formTopics": ["Skimmel eller fugt i en bygning", "Svampesankning eller dyrkning", "Ture & workshops", "Køb af en kultur", "Insekter & terrarier", "Forskning eller samarbejde", "Noget andet"],
         "formSend": "Send besked",
         "formSending": "Sender…",
         "formSent": "Tak — din besked er sendt. Jeg vender tilbage hurtigst muligt.",
@@ -86,6 +87,7 @@ UI = {
         "origin": "Oprindelse", "format": "Format",
         "inStock": "På lager", "soldOut": "Ikke på lager lige nu",
         "buy": "Køb", "orderCulture": "Bestil denne kultur",
+        "inhabitants": "Beboere", "careGuide": "Plejeguide", "askAvailability": "Spørg om de kan fås",
     },
 }
 
@@ -119,6 +121,9 @@ RUNES = {
         "grow": ("ᛃ", "jēra — harvest"),
         "tours": ("ᚱ", "raidō — journey"),
         "library": ("ᛒ", "berkanan — birch, growth"),
+        "terrarium": ("ᚹ", "wunjō — joy"),
+        "tanks": ("ᛇ", "eihwaz — yew, endurance"),
+        "species": ("ᚢ", "ūruz — wild beast"),
     },
     "da": {
         "about": ("ᛗ", "mannaz — menneske"),
@@ -134,6 +139,9 @@ RUNES = {
         "grow": ("ᛃ", "jēra — høst"),
         "tours": ("ᚱ", "raidō — rejse"),
         "library": ("ᛒ", "berkanan — birk, vækst"),
+        "terrarium": ("ᚹ", "wunjō — glæde"),
+        "tanks": ("ᛇ", "eihwaz — taks, udholdenhed"),
+        "species": ("ᚢ", "ūruz — vildt dyr"),
     },
 }
 
@@ -145,11 +153,14 @@ PAGES = {
     "exploration.da.html": ("exploration.html.j2", "da"),
     "fungi.html": ("fungi.html.j2", "en"),
     "fungi.da.html": ("fungi.html.j2", "da"),
+    "terrarium.html": ("terrarium.html.j2", "en"),
+    "terrarium.da.html": ("terrarium.html.j2", "da"),
     "page.html": ("page.html.j2", "en"),
 }
 HOME = {"en": "index.html", "da": "da.html"}
 EXPLORATION = {"en": "exploration.html", "da": "exploration.da.html"}
 FUNGI = {"en": "fungi.html", "da": "fungi.da.html"}
+TERRARIUM = {"en": "terrarium.html", "da": "terrarium.da.html"}
 
 
 def load(name):
@@ -201,6 +212,7 @@ def main():
         is_home = tpl == "index.html.j2"
         is_expl = tpl == "exploration.html.j2"
         is_fungi = tpl == "fungi.html.j2"
+        is_terra = tpl == "terrarium.html.j2"
         if is_home:
             canonical = SITE_URL + ("" if lang == "en" else "da.html")
             alternates = [
@@ -232,6 +244,18 @@ def main():
             meta["title"] = f["grow"]["heading"] + " · " + f["tours"]["heading"] + " — Pieter Shiffler Carpentier"
             meta["description"] = f["intro"][:155].rsplit(" ", 1)[0] + ("…" if len(f["intro"]) > 155 else "")
             meta["ogDescription"] = meta["description"]
+        elif is_terra:
+            canonical = SITE_URL + TERRARIUM[lang]
+            alternates = [
+                {"hreflang": "en", "href": SITE_URL + TERRARIUM["en"]},
+                {"hreflang": "da", "href": SITE_URL + TERRARIUM["da"]},
+            ]
+            other_href = TERRARIUM[other]
+            meta = dict(META[lang])
+            tt = d["terrarium"]
+            meta["title"] = tt["teaserHeading"] + " — Pieter Shiffler Carpentier"
+            meta["description"] = tt["intro"][:155].rsplit(" ", 1)[0] + ("…" if len(tt["intro"]) > 155 else "")
+            meta["ogDescription"] = meta["description"]
         else:  # page.html — generic CMS pages, English
             canonical = ""
             alternates = []
@@ -242,15 +266,15 @@ def main():
         html = env.get_template(tpl).render(
             d=d, lang=lang, ui=UI[lang], meta=dict(meta, canonical=canonical, alternates=alternates),
             site_url=SITE_URL, home_href=("" if is_home else HOME[lang]), other_lang_href=other_href,
-            exploration_href=EXPLORATION[lang], fungi_href=FUNGI[lang], gallery=gallery, year=year,
-            jsonld=jsonld(d, lang), body_class=("home" if is_home else "subpage portal-page" if is_fungi else "subpage"), v=versions,
+            exploration_href=EXPLORATION[lang], fungi_href=FUNGI[lang], terrarium_href=TERRARIUM[lang], gallery=gallery, year=year,
+            jsonld=jsonld(d, lang), body_class=("home" if is_home else "subpage portal-page" if (is_fungi or is_terra) else "subpage"), v=versions,
             runes={k: {"glyph": g, "title": t} for k, (g, t) in RUNES[lang].items()},
         )
         (ROOT / out).write_text(html, encoding="utf-8")
         print("wrote", out)
 
     # sitemap
-    urls = ["", "da.html", "fungi.html", "fungi.da.html", "exploration.html", "exploration.da.html", "page.html?slug=cv"]
+    urls = ["", "da.html", "fungi.html", "fungi.da.html", "terrarium.html", "terrarium.da.html", "exploration.html", "exploration.da.html", "page.html?slug=cv"]
     today = datetime.date.today().isoformat()
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']

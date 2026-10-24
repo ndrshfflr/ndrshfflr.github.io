@@ -327,6 +327,60 @@ collections:
               - { label: "Contact band heading", name: "contactHeading", widget: "string" }
               - { label: "Contact band intro", name: "contactIntro", widget: "text" }
 
+          - label: "Insects & terrariums (separate page: terrarium.html)"
+            name: "terrarium"
+            widget: "object"
+            hint: "The door on the main page (under Mycology) and the page behind it. Sections stay hidden until they have at least one entry."
+            fields:
+              - { label: "Main-page door: small label", name: "teaserEyebrow", widget: "string" }
+              - { label: "Main-page door: heading", name: "teaserHeading", widget: "string" }
+              - { label: "Main-page door: short text", name: "teaserText", widget: "text" }
+              - { label: "Main-page door: link text", name: "teaserCta", widget: "string" }
+              - { label: "Page: small label", name: "eyebrow", widget: "string" }
+              - { label: "Page: heading", name: "heading", widget: "string" }
+              - { label: "Page: intro paragraph", name: "intro", widget: "text" }
+              - { label: "Page: small note (optional)", name: "note", widget: "string", required: false, hint: "e.g. 'Care guides and animals for sale are on their way.' Leave empty to hide." }
+              - label: "Terrariums"
+                name: "tanks"
+                widget: "object"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Intro", name: "intro", widget: "text" }
+                  - label: "Terrariums"
+                    name: "items"
+                    widget: "list"
+                    required: false
+                    summary: "{{name}}"
+                    fields:
+                      - { label: "Name", name: "name", widget: "string", hint: "e.g. The leaf tank" }
+                      - { label: "Photo (optional)", name: "image", widget: "image", required: false, media_folder: "/images/uploads", public_folder: "/images/uploads", hint: "Landscape (4:3) works best." }
+                      - { label: "Size (optional)", name: "size", widget: "string", required: false, hint: "e.g. 45 × 45 × 60 cm" }
+                      - { label: "How it's built (optional)", name: "setup", widget: "text", required: false, hint: "Substrate, plants, ventilation, humidity, cleanup crew…" }
+                      - { label: "Who lives here (optional)", name: "inhabitants", widget: "string", required: false }
+              - label: "Species"
+                name: "species"
+                widget: "object"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Intro", name: "intro", widget: "text" }
+                  - label: "Species"
+                    name: "items"
+                    widget: "list"
+                    required: false
+                    summary: "{{group}} — {{name}}"
+                    fields:
+                      - { label: "Latin name", name: "name", widget: "string", hint: "Shown in italics" }
+                      - { label: "Common name (optional)", name: "common", widget: "string", required: false }
+                      - { label: "Group (optional)", name: "group", widget: "string", required: false, hint: "e.g. Stick insect, Isopod, Beetle" }
+                      - { label: "Photo (optional)", name: "image", widget: "image", required: false, media_folder: "/images/uploads", public_folder: "/images/uploads", hint: "Square works best." }
+                      - { label: "Notes (optional)", name: "notes", widget: "text", required: false }
+                      - { label: "Care guide link (optional)", name: "careGuide", widget: "string", required: false, hint: "For later: write the guide under Extra Pages, then put e.g. page.html?slug=isopod-care here." }
+                      - { label: "For sale", name: "forSale", widget: "boolean", default: false, required: false, hint: "For later: switch on to show a price and a buy/ask button." }
+                      - { label: "Price (optional)", name: "price", widget: "string", required: false }
+                      - { label: "Payment link (optional)", name: "buyLink", widget: "string", required: false, hint: "Leave empty and the button opens the contact form instead." }
+              - { label: "Contact band heading", name: "contactHeading", widget: "string" }
+              - { label: "Contact band intro", name: "contactIntro", widget: "text" }
+
           - label: "Business details"
             name: "business"
             widget: "object"
