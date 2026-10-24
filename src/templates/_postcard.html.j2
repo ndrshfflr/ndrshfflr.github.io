@@ -1,0 +1,12 @@
+<article class="post-card"{% if p.tags %} data-tags="{{ p.tags | join('|') }}"{% endif %}>
+  <a class="post-link" href="post.html?slug={{ p.slug }}"{% if p.language and p.language != lang %} hreflang="{{ p.language }}"{% endif %}>
+    <span class="post-cover{% if p.cover %} has-image{% endif %}">{% if p.cover %}<img src="{{ p.cover }}" alt="" loading="lazy">{% else %}<span class="post-cover-rune" aria-hidden="true">{{ runes.blog.glyph }}</span>{% endif %}</span>
+    <span class="post-text">
+      <span class="post-meta"><time datetime="{{ p.date_iso }}">{{ p.date_label[lang] }}</time>{% if p.language and p.language != lang %}<span class="post-lang">{{ p.language | upper }}</span>{% endif %}</span>
+      <span class="post-title">{{ p.title }}</span>
+      {% if p.summary %}<span class="post-summary">{{ p.summary }}</span>{% endif %}
+      {% if p.tags %}<span class="post-tags">{% for t in p.tags %}<span>{{ t }}</span>{% endfor %}</span>{% endif %}
+      <span class="post-more">{{ ui.readMore }} <span aria-hidden="true">&rarr;</span></span>
+    </span>
+  </a>
+</article>

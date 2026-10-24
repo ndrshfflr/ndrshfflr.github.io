@@ -1,0 +1,65 @@
+{% extends "base.html.j2" %}
+{% block main %}
+<article class="post" id="post">
+  <header class="page-header post-header">
+    <div class="wrap">
+      <a class="post-back" href="{{ blog_href }}">&larr; {{ ui.allPosts }}</a>
+      <div class="post-meta" id="post-meta"><time id="post-date"></time><span class="post-lang" id="post-lang" hidden></span></div>
+      <h1 id="post-title">&nbsp;</h1>
+      <p class="lead post-lead" id="post-summary" hidden></p>
+      <div class="post-tags" id="post-tags"></div>
+    </div>
+  </header>
+  <figure class="post-hero" id="post-cover" hidden><img alt=""></figure>
+  <div class="carve" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="page-body post-body" id="post-body">
+      <p class="page-loading">{{ ui.loading }}</p>
+    </div>
+    <a class="page-back" href="{{ blog_href }}">&larr; {{ ui.allPosts }}</a>
+  </div>
+</article>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+  var ui = JSON.parse(document.getElementById('ui-strings').textContent);
+  var slug = new URLSearchParams(window.location.search).get('slug');
+  var $ = function (id) { return document.getElementById(id); };
+  function notFound() {
+    $('post-title').textContent = ui.notFound;
+    $('post-body').innerHTML = '<p>' + ui.notFoundBody + '</p>';
+  }
+  function start() {
+    if (!slug || !/^[A-Za-z0-9._-]+$/.test(slug)) return notFound();
+    fetch('content/posts/' + slug + '.md', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error('404'); return r.text(); })
+      .then(function (text) {
+        var parsed = window.SiteMD.parseFrontmatter(text);
+        var m = parsed.meta;
+        var title = m.title || slug;
+        document.title = title + ' — Pieter Shiffler Carpentier';
+        $('post-title').textContent = title;
+        if (m.language) { $('post').setAttribute('lang', m.language); $('post-lang').textContent = String(m.language).toUpperCase(); $('post-lang').hidden = m.language === document.documentElement.lang; }
+        var d = m.date ? new Date(m.date) : null;
+        if (d && !isNaN(d)) {
+          $('post-date').dateTime = d.toISOString().slice(0, 10);
+          $('post-date').textContent = d.toLocaleDateString(document.documentElement.lang === 'da' ? 'da-DK' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+        }
+        if (m.summary) { $('post-summary').textContent = m.summary; $('post-summary').hidden = false; }
+        var tags = Array.isArray(m.tags) ? m.tags : (m.tags ? [m.tags] : []);
+        tags.forEach(function (t) { var s = document.createElement('span'); s.textContent = t; $('post-tags').appendChild(s); });
+        if (m.cover) { var fig = $('post-cover'); fig.querySelector('img').src = m.cover; fig.hidden = false; }
+        if (m.description || m.summary) {
+          var md = document.querySelector('meta[name="description"]');
+          if (md) md.setAttribute('content', m.description || m.summary);
+        }
+        $('post-body').innerHTML = window.SiteMD.render(parsed.body);
+      })
+      .catch(notFound);
+  }
+  if (window.SiteMD) start(); else window.addEventListener('DOMContentLoaded', start);
+})();
+</script>
+{% endblock %}

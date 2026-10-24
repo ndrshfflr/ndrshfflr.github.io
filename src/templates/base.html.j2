@@ -72,6 +72,7 @@
         <a href="{{ home_href }}#projects" id="nav-label-projects">{{ d.nav.projects }}</a>
         <a href="{{ home_href }}#mycology" id="nav-label-mycology">{{ d.nav.mycology }}</a>
         <span id="nav-dynamic" class="nav-dynamic"></span>
+        <a href="{{ blog_href }}" id="nav-label-blog"{% if not posts %} hidden{% endif %}>{{ d.nav.blog }}</a>
         <a href="{{ home_href }}#contact" id="nav-label-contact">{{ d.nav.contact }}</a>
       </div>
       <a class="lang-switch" href="{{ other_lang_href }}" hreflang="{{ ui.otherLang }}" lang="{{ ui.otherLang }}" data-lang-switch>{{ ui.otherLangLabel }}</a>
@@ -122,6 +123,7 @@
 </div>
 
 <script id="ui-strings" type="application/json">{{ ui | tojson }}</script>
+<script src="assets/markdown.js?v={{ v.md }}"></script>
 {% block scripts %}{% endblock %}
 <script src="assets/site.js?v={{ v.js }}" data-mycelium="assets/mycelium.js?v={{ v.mycelium }}" defer></script>
 </body>

@@ -220,6 +220,21 @@
   </div>
 </section>
 
+<section id="blog-latest" data-rune="{{ runes.blog.glyph }}"{% if not posts %} hidden{% endif %}>
+  <div class="wrap">
+    <div class="split-head">
+      <div>
+        {{ label('blog', d.blog.eyebrow) }}
+        <h2 id="blog-latest-heading">{{ d.blog.latestHeading }}</h2>
+      </div>
+      <p><a class="tl-link" href="{{ blog_href }}" id="blog-all-link">{{ ui.allPosts }} &rarr;</a></p>
+    </div>
+    <div class="post-list post-list-latest" id="blog-latest-list">
+      {% for p in posts[:3] %}{% include '_postcard.html.j2' %}{% endfor %}
+    </div>
+  </div>
+</section>
+
 <section id="faq" data-rune="{{ runes.faq.glyph }}">
   <div class="wrap side-layout">
     <div class="side-head">

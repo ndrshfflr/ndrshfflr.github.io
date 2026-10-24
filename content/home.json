@@ -133,7 +133,8 @@
     "microbiology": "Indoor Microbiology",
     "mycology": "Mycology",
     "contact": "Contact",
-    "projects": "Projects"
+    "projects": "Projects",
+    "blog": "Blog"
   },
   "exploration": {
     "eyebrow": "Beyond the lab",
@@ -367,5 +368,12 @@
       "items": []
     },
     "teaserText": "Stick and leaf insects, beetles, cockroaches and isopods — and the small living worlds I build for them."
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "heading": "Field notes",
+    "intro": "Finds from the forest, things growing on the bench, life in the terrariums, and what I'm reading and working on.",
+    "latestHeading": "Latest field notes",
+    "emptyText": "The first posts are on their way."
   }
 }

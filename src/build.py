@@ -9,10 +9,12 @@ re-running this just bakes those edits into the HTML for search engines.
     python3 src/build.py
 """
 import datetime
+import re
 import hashlib
 import json
 from pathlib import Path
 
+import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -52,6 +54,7 @@ UI = {
         "origin": "Origin", "format": "Format",
         "inStock": "Available", "soldOut": "Not available right now",
         "buy": "Buy", "orderCulture": "Order this culture",
+        "readMore": "Read more", "allPosts": "All posts", "filterTags": "Filter posts by topic",
         "inhabitants": "Lives here", "careGuide": "Care guide", "askAvailability": "Ask about availability",
     },
     "da": {
@@ -87,6 +90,7 @@ UI = {
         "origin": "Oprindelse", "format": "Format",
         "inStock": "På lager", "soldOut": "Ikke på lager lige nu",
         "buy": "Køb", "orderCulture": "Bestil denne kultur",
+        "readMore": "Læs mere", "allPosts": "Alle indlæg", "filterTags": "Filtrér indlæg efter emne",
         "inhabitants": "Beboere", "careGuide": "Plejeguide", "askAvailability": "Spørg om de kan fås",
     },
 }
@@ -122,6 +126,7 @@ RUNES = {
         "tours": ("ᚱ", "raidō — journey"),
         "library": ("ᛒ", "berkanan — birch, growth"),
         "terrarium": ("ᚹ", "wunjō — joy"),
+        "blog": ("ᚨ", "ansuz — speech, the word"),
         "tanks": ("ᛇ", "eihwaz — yew, endurance"),
         "species": ("ᚢ", "ūruz — wild beast"),
     },
@@ -140,6 +145,7 @@ RUNES = {
         "tours": ("ᚱ", "raidō — rejse"),
         "library": ("ᛒ", "berkanan — birk, vækst"),
         "terrarium": ("ᚹ", "wunjō — glæde"),
+        "blog": ("ᚨ", "ansuz — tale, ordet"),
         "tanks": ("ᛇ", "eihwaz — taks, udholdenhed"),
         "species": ("ᚢ", "ūruz — vildt dyr"),
     },
@@ -155,16 +161,61 @@ PAGES = {
     "fungi.da.html": ("fungi.html.j2", "da"),
     "terrarium.html": ("terrarium.html.j2", "en"),
     "terrarium.da.html": ("terrarium.html.j2", "da"),
+    "blog.html": ("blog.html.j2", "en"),
+    "blog.da.html": ("blog.html.j2", "da"),
+    "post.html": ("post.html.j2", "en"),
     "page.html": ("page.html.j2", "en"),
 }
 HOME = {"en": "index.html", "da": "da.html"}
 EXPLORATION = {"en": "exploration.html", "da": "exploration.da.html"}
 FUNGI = {"en": "fungi.html", "da": "fungi.da.html"}
 TERRARIUM = {"en": "terrarium.html", "da": "terrarium.da.html"}
+BLOG = {"en": "blog.html", "da": "blog.da.html"}
 
 
 def load(name):
     return json.loads((ROOT / "content" / name).read_text(encoding="utf-8"))
+
+
+MONTHS = {
+    "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    "da": ["januar", "februar", "marts", "april", "maj", "juni", "juli", "august", "september", "oktober", "november", "december"],
+}
+
+
+def load_posts():
+    """Blog posts written in the CMS live in content/posts/*.md (front matter +
+    markdown). They are listed newest first; site.js refreshes the list live, so
+    a new post shows up without re-running this script."""
+    posts = []
+    for f in sorted((ROOT / "content" / "posts").glob("*.md")):
+        text = f.read_text(encoding="utf-8")
+        m = re.match(r"^---\s*\n(.*?)\n---\s*\n?(.*)$", text, re.S)
+        meta = (yaml.safe_load(m.group(1)) or {}) if m else {}
+        if not meta.get("title"):
+            continue
+        raw = meta.get("date") or f.stem[:10]
+        if isinstance(raw, datetime.datetime):
+            date = raw.date()
+        elif isinstance(raw, datetime.date):
+            date = raw
+        else:
+            try:
+                date = datetime.date.fromisoformat(str(raw)[:10])
+            except ValueError:
+                date = datetime.date.today()
+        tags = meta.get("tags") or []
+        if isinstance(tags, str):
+            tags = [t.strip() for t in tags.split(",") if t.strip()]
+        posts.append({
+            "slug": f.stem, "title": str(meta["title"]), "summary": str(meta.get("summary") or "").strip(),
+            "cover": meta.get("cover") or "", "tags": [str(t) for t in tags], "language": meta.get("language") or "",
+            "date": date, "date_iso": date.isoformat(),
+            "date_label": {"en": f"{date.day} {MONTHS['en'][date.month - 1]} {date.year}",
+                           "da": f"{date.day}. {MONTHS['da'][date.month - 1]} {date.year}"},
+        })
+    posts.sort(key=lambda p: (p["date"], p["slug"]), reverse=True)
+    return posts
 
 
 def jsonld(d, lang):
@@ -204,7 +255,8 @@ def main():
     gallery = [g for g in load("gallery.json").get("images", []) if g.get("image")]
     year = datetime.date.today().year
     versions = {"css": asset_version("styles.css"), "js": asset_version("assets/site.js"),
-                "mycelium": asset_version("assets/mycelium.js")}
+                "mycelium": asset_version("assets/mycelium.js"), "md": asset_version("assets/markdown.js")}
+    posts = load_posts()
 
     for out, (tpl, lang) in PAGES.items():
         d = content[lang]
@@ -213,6 +265,7 @@ def main():
         is_expl = tpl == "exploration.html.j2"
         is_fungi = tpl == "fungi.html.j2"
         is_terra = tpl == "terrarium.html.j2"
+        is_blog = tpl == "blog.html.j2"
         if is_home:
             canonical = SITE_URL + ("" if lang == "en" else "da.html")
             alternates = [
@@ -256,7 +309,18 @@ def main():
             meta["title"] = tt["teaserHeading"] + " — Pieter Shiffler Carpentier"
             meta["description"] = tt["intro"][:155].rsplit(" ", 1)[0] + ("…" if len(tt["intro"]) > 155 else "")
             meta["ogDescription"] = meta["description"]
-        else:  # page.html — generic CMS pages, English
+        elif is_blog:
+            canonical = SITE_URL + BLOG[lang]
+            alternates = [
+                {"hreflang": "en", "href": SITE_URL + BLOG["en"]},
+                {"hreflang": "da", "href": SITE_URL + BLOG["da"]},
+            ]
+            other_href = BLOG[other]
+            meta = dict(META[lang])
+            meta["title"] = d["blog"]["heading"] + " — Pieter Shiffler Carpentier"
+            meta["description"] = d["blog"]["intro"][:155]
+            meta["ogDescription"] = meta["description"]
+        else:  # page.html / post.html — generic CMS pages, English
             canonical = ""
             alternates = []
             other_href = HOME[other]
@@ -266,7 +330,7 @@ def main():
         html = env.get_template(tpl).render(
             d=d, lang=lang, ui=UI[lang], meta=dict(meta, canonical=canonical, alternates=alternates),
             site_url=SITE_URL, home_href=("" if is_home else HOME[lang]), other_lang_href=other_href,
-            exploration_href=EXPLORATION[lang], fungi_href=FUNGI[lang], terrarium_href=TERRARIUM[lang], gallery=gallery, year=year,
+            exploration_href=EXPLORATION[lang], fungi_href=FUNGI[lang], terrarium_href=TERRARIUM[lang], blog_href=BLOG[lang], posts=posts, gallery=gallery, year=year,
             jsonld=jsonld(d, lang), body_class=("home" if is_home else "subpage portal-page" if (is_fungi or is_terra) else "subpage"), v=versions,
             runes={k: {"glyph": g, "title": t} for k, (g, t) in RUNES[lang].items()},
         )
@@ -274,10 +338,11 @@ def main():
         print("wrote", out)
 
     # sitemap
-    urls = ["", "da.html", "fungi.html", "fungi.da.html", "terrarium.html", "terrarium.da.html", "exploration.html", "exploration.da.html", "page.html?slug=cv"]
+    urls = ["", "da.html", "fungi.html", "fungi.da.html", "terrarium.html", "terrarium.da.html", "blog.html", "blog.da.html", "exploration.html", "exploration.da.html", "page.html?slug=cv"]
     today = datetime.date.today().isoformat()
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    urls += ["post.html?slug=" + p["slug"] for p in posts]
     for u in urls:
         sm.append(f"  <url>\n    <loc>{SITE_URL}{u.replace('&', '&amp;')}</loc>\n    <lastmod>{today}</lastmod>\n  </url>")
     sm.append("</urlset>")
