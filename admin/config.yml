@@ -467,8 +467,7 @@ collections:
                 name: "ebird"
                 widget: "object"
                 fields:
-                  - { label: "Use Merlin/eBird", name: "enabled", widget: "boolean", default: true }
-                  - { label: "Cleaned eBird file", name: "file", widget: "file", required: false, media_folder: "/content/imports", public_folder: "/content/imports", hint: "Merlin saves your birds in eBird, which has no automatic link. 1) ebird.org → My eBird → Download my data (arrives by email). 2) Open ndrshfflr.github.io/fieldlog-import.html and run the file through it — it removes coordinates. 3) Upload the cleaned file here. Repeat now and then to bring in new birds. Never upload the original file: it holds exact coordinates and the site's files are public." }
+                  - { label: "Use Merlin/eBird", name: "enabled", widget: "boolean", default: true, hint: "Upload your eBird file under \"Merlin / eBird upload\" in the menu on the left." }
           - label: "Options"
             name: "options"
             widget: "object"
@@ -529,6 +528,17 @@ collections:
               - { label: "Photo (optional)", name: "photo", widget: "image", required: false, media_folder: "/images/uploads", public_folder: "/images/uploads", hint: "Square-ish works best. A photo added here becomes the card's cover." }
               - { label: "Link (optional)", name: "link", widget: "string", required: false }
               - { label: "Note (optional)", name: "notes", widget: "text", required: false }
+
+  - name: "ebird"
+    label: "Merlin / eBird upload"
+    description: "Merlin saves your birds in eBird, which can't be read automatically. Every now and then: on ebird.org go to My eBird → Download my data, then upload the .zip from the email here (or the MyEBirdData.csv inside it) and publish. Coordinates and notes are removed in your browser before anything is saved."
+    files:
+      - file: "content/imports/ebird.json"
+        label: "eBird data"
+        name: "ebird"
+        format: "json"
+        fields:
+          - { label: "eBird file", name: "csv", widget: "ebird-upload", required: false }
 
   # Read-only list of synced finds — the hide/cover pickers above look things up
   # here. It is regenerated every night, so it is hidden from the menu.

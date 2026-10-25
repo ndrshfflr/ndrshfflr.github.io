@@ -9,8 +9,9 @@ Sources (each switched on/off and configured in the CMS under
   * Arter.dk             – via GBIF, which republishes Arter.dk weekly
   * DOFbasen             – via GBIF (DOF's own dataset; GBIF holds back the
                            newest ~60 days)
-  * Merlin / eBird       – from the "Download my data" CSV, cleaned with
-                           fieldlog-import.html and uploaded through the CMS
+  * Merlin / eBird       – from eBird's "Download my data" file, uploaded in
+                           the CMS, which strips coordinates in the browser and
+                           saves the rest to content/imports/ebird.json
 
 The page (fieldlog.html) merges this file with the curation in
 content/fieldlog.json (hidden finds, hidden species, cover photos, manual
@@ -25,6 +26,7 @@ date, a coarse place name, a photo and a link back to the original record.
 """
 import csv
 import datetime
+import io
 import json
 import re
 import sys
@@ -258,9 +260,16 @@ def fetch_gbif(cfg, dataset, source):
 # ---------------------------------------------------------------- eBird / Merlin
 def fetch_ebird(cfg):
     """Merlin's "This is my bird!" sightings are stored in eBird. eBird has no
-    API for a person's own records, so this reads the CSV from eBird's
-    "Download my data", cleaned first with fieldlog-import.html (which drops
-    coordinates before anything is uploaded)."""
+    API for a person's own records, so this reads eBird's "Download my data"
+    file as uploaded in the CMS ("Merlin / eBird upload"). The CMS strips the
+    coordinates in the browser and saves the rest in content/imports/ebird.json."""
+    store = ROOT / "content" / "imports" / "ebird.json"
+    if store.is_file():
+        text = (json.loads(store.read_text(encoding="utf-8")) or {}).get("csv") or ""
+        if not text.strip():
+            return None
+        return ebird_rows(list(csv.DictReader(io.StringIO(text))))
+    # older set-up: a cleaned CSV uploaded as a file
     rel = str(cfg.get("file") or "").strip().lstrip("/")
     if not rel:
         return None
@@ -278,6 +287,10 @@ def fetch_ebird(cfg):
             w.writeheader()
             w.writerows(rows)
         print(f"! {rel} contained coordinates; replaced it with a cleaned copy", file=sys.stderr)
+    return ebird_rows(rows)
+
+
+def ebird_rows(rows):
     items = []
     for row in rows:
         sci = (row.get("Scientific Name") or "").strip()
