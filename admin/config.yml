@@ -474,6 +474,7 @@ collections:
             fields:
               - { label: "iNaturalist: only Research Grade finds", name: "researchGradeOnly", widget: "boolean", default: false }
               - { label: "Show place names", name: "showPlaces", widget: "boolean", default: true, hint: "Only a general place name is ever shown — never coordinates." }
+              - { label: "Reference photos for species without a photo of my own", name: "referencePhotos", widget: "boolean", default: true, required: false, hint: "An openly licensed photo from iNaturalist, marked \"Ref. photo\" and credited. It disappears as soon as you have a photo of your own (from a find, the gallery or a hand-added find)." }
           - label: "Hide these finds"
             name: "hide"
             widget: "list"
