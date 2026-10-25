@@ -1,116 +1,116 @@
-Submission ID,Common Name,Scientific Name,Taxonomic Order,Count,State/Province,County,Location ID,Location,Latitude,Longitude,Date,Time,Protocol,Duration (Min),All Obs Reported,Distance Traveled (km),Area Covered (ha),Number of Observers,Breeding Code,Observation Details,Checklist Comments,ML Catalog Numbers
-S203093000,Graylag Goose,Anser anser,275,X,DK-01,København,L38149930,Fælledparken Fodboldbaner,55.69975,12.568751,2024-11-20,04:33 PM,eBird - Casual Observation,,0,,,1
-S204284424,Canada Goose,Branta canadensis,342,X,DK-01,Frederiksberg,L38396843,Frederiksberg Have,55.676281,12.526868,2024-12-02,03:12 PM,eBird - Casual Observation,,0,,,1
-S306627391,Whooper Swan,Cygnus cygnus,390,X,DK-09,Vejle,L59725747,Rørbæk Sø,55.931512,9.36002,2026-03-07,07:34 AM,eBird - Casual Observation,,0,,,1
-S204064341,Eurasian Wigeon,Mareca penelope,512,X,DK-01,København,L38350901,Rotteøen,55.640077,12.544838,2024-11-30,03:35 PM,eBird - Casual Observation,,0,,,1
-S203070026,Mallard,Anas platyrhynchos,545,X,DK-01,København,L38146003,Fælledsøen NØ,55.702762,12.567178,2024-11-20,10:38 AM,eBird - Casual Observation,,0,,,1
-S203092679,Mallard,Anas platyrhynchos,545,X,DK-01,København,L38146003,Fælledsøen NØ,55.702762,12.567178,2024-11-20,10:50 AM,eBird - Casual Observation,,0,,,1
-S269968590,Common Eider,Somateria mollissima,715,X,DK-04,Lolland,L52098609,Bursø Naturskole,54.757421,11.490725,2025-08-28,,eBird - Casual Observation,,0,,,1
-S260655987,Willow Ptarmigan,Lagopus lagopus,1354,X,NO-18,,L49972939,Vågakallen South Face,68.186896,14.27458,2025-07-18,,eBird - Casual Observation,,0,,,1
-S269942769,Ring-necked Pheasant,Phasianus colchicus,1477,X,DK-04,Lolland,L52115091,Bursø Naturskole,54.758171,11.489749,2025-08-28,07:51 AM,eBird - Casual Observation,,0,,,1
-S203092618,Rock Pigeon,Columba livia,1853,X,DK-01,København,L38146003,Fælledsøen NØ,55.702762,12.567178,2024-11-20,10:50 AM,eBird - Casual Observation,,0,,,1
-S306630271,Common Wood-Pigeon,Columba palumbus,1885,X,DK-09,Vejle,L59726243,Rørbæk Sø 2,55.929039,9.363122,2026-03-07,07:54 AM,eBird - Casual Observation,,0,,,1
-S294251837,Plumbeous Pigeon,Patagioenas plumbea,1980,X,BR-AM,Manaus,L57224054,RD trail3,-2.947668,-59.9621,2026-01-14,09:24 AM,eBird - Casual Observation,,0,,,1
-S370463979,Common Cuckoo,Cuculus canorus,3442,X,DK-01,Tårnby,L73083886,Kalvebod P-plads,55.581074,12.565428,2026-07-11,08:04 AM,eBird - Casual Observation,,0,,,1
-S246039455,Common Swift,Apus apus,4094,X,DK-01,København,L46685687,Hjem,55.648799,12.530303,2025-06-02,09:30 PM,eBird - Casual Observation,,0,,,1
-S359254574,Water Rail,Rallus aquaticus,5308,X,DK-01,København,L70544365,Søen,55.644719,12.529262,2026-06-18,08:36 PM,eBird - Casual Observation,,0,,,1
-S204064431,Eurasian Coot,Fulica atra,5487,X,DK-01,København,L38350901,Rotteøen,55.640077,12.544838,2024-11-30,03:35 PM,eBird - Casual Observation,,0,,,1
-S258982384,Eurasian Oystercatcher,Haematopus ostralegus,5786,X,NO-18,,L49580178,Henningsværbro,68.162929,14.213983,2025-07-11,10:36 PM,eBird - Casual Observation,,0,,,1
-S293288323,Wattled Jacana,Jacana jacana,5989,X,BR-AM,Iranduba,L57017276,Floating Community,-3.156723,-59.917421,2026-01-09,,eBird - Casual Observation,,0,,,1
-S204064401,Black-headed Gull,Chroicocephalus ridibundus,6474,X,DK-01,København,L38350901,Rotteøen,55.640077,12.544838,2024-11-30,03:35 PM,eBird - Casual Observation,,0,,,1
-S247043721,Common Gull,Larus canus,6513,X,DK-01,København,L46685687,Hjem,55.648799,12.530303,2025-06-05,09:02 PM,eBird - Casual Observation,,0,,,1
-S258982331,Great Black-backed Gull,Larus marinus,6562,X,NO-18,,L49580161,Henningsværbroen,68.160945,14.2157,2025-07-11,10:36 PM,eBird - Casual Observation,,0,,,1
-S293287817,Large-billed Tern,Phaetusa simplex,6707,X,BR-AM,Manaus,L57012998,Manaus Banana Market Harbour,-3.142441,-60.020521,2026-01-09,,eBird - Casual Observation,,0,,,1
-S269940192,Caspian Tern,Hydroprogne caspia,6718,X,DK-04,Lolland,L52115091,Bursø Naturskole,54.758171,11.489749,2025-08-28,07:41 AM,eBird - Casual Observation,,0,,,1
-S260155161,Arctic Tern,Sterna paradisaea,6733,X,NO-18,,L49856438,Henningsvær Boulders,68.151395,14.193888,2025-07-15,,eBird - Casual Observation,,0,,,1
-S259995001,Common Tern,Sterna hirundo,6748,X,NO-18,,L49604171,Henningsvær Teltplads,68.168533,14.224365,2025-07-15,07:18 AM,eBird - Casual Observation,,0,,,1
-S379781156,Sandwich Tern,Thalasseus sandvicensis,6775,X,DK-01,Dragør,L74988597,Søndre Strandvej 50  2791 Dragør  Danmark,55.582125,12.658833,2026-08-03,,eBird - Casual Observation,,0,,,1
-S321459139,Great Crested Grebe,Podiceps cristatus,6872,X,DK-01,København,L62763992,Molestien,55.642872,12.545039,2026-04-14,,eBird - Casual Observation,,0,,,1
-S269864528,Great Crested Grebe,Podiceps cristatus,6872,X,DK-04,Lolland,L52098609,Bursø Naturskole,54.757421,11.490725,2025-08-27,07:23 PM,eBird - Casual Observation,,0,,,1
-S269864669,Great Cormorant,Phalacrocorax carbo,7397,X,DK-04,Lolland,L52098609,Bursø Naturskole,54.757421,11.490725,2025-08-27,07:23 PM,eBird - Casual Observation,,0,,,1
-S293262989,Neotropic Cormorant,Nannopterum brasilianum,7431,X,BR-AM,Manaus,L57012998,Manaus Banana Market Harbour,-3.142441,-60.020521,2026-01-09,,eBird - Casual Observation,,0,,,1
-S293287586,Great Egret,Ardea alba,7729,X,BR-AM,Iranduba,L57017276,Floating Community,-3.156723,-59.917421,2026-01-09,,eBird - Casual Observation,,0,,,1
-S203092660,Gray Heron,Ardea cinerea,7745,X,DK-01,København,L38146003,Fælledsøen NØ,55.702762,12.567178,2024-11-20,10:50 AM,eBird - Casual Observation,,0,,,1
-S293263663,Black Vulture,Coragyps atratus,7811,X,BR-AM,Manaus,L57012998,Manaus Banana Market Harbour,-3.142441,-60.020521,2026-01-09,,eBird - Casual Observation,,0,,,1
-S293919486,Greater Yellow-headed Vulture,Cathartes melambrotus,7826,X,BR-AM,Manaus,L57151195,Reserva Ducke Field Station,-2.929653,-59.975461,2026-01-12,04:48 PM,eBird - Casual Observation,,0,,,1
-S269966516,European Honey-buzzard,Pernis apivorus,7905,X,DK-04,Lolland,L52098609,Bursø Naturskole,54.757421,11.490725,2025-08-28,01:03 PM,eBird - Casual Observation,,0,,,1
-S361947626,Red Kite,Milvus milvus,8342,X,DK-10,Ikast-Brande,L71118633,Shelterpladsen,55.957214,9.39411,2026-06-22,,eBird - Casual Observation,,0,,,1
-S362988318,Red Kite,Milvus milvus,8342,X,DK-10,Ikast-Brande,L71177488,Vækstcenteret,55.964495,9.389737,2026-06-24,,eBird - Casual Observation,,0,,,1
-S362988212,Red Kite,Milvus milvus,8342,X,DK-10,Ikast-Brande,L71177488,Vækstcenteret,55.964495,9.389737,2026-06-25,09:15 AM,eBird - Casual Observation,,0,,,1
-S260285279,White-tailed Eagle,Haliaeetus albicilla,8364,X,NO-18,,L49885434,Moaiern 6C,68.202177,13.975868,2025-07-16,,eBird - Casual Observation,,0,,,1
-S260285358,White-tailed Eagle,Haliaeetus albicilla,8364,X,NO-18,,L49885434,Moaiern 6C,68.202177,13.975868,2025-07-16,,eBird - Casual Observation,,0,,,1
-S260285448,White-tailed Eagle,Haliaeetus albicilla,8364,X,NO-18,,L49885434,Moaiern 6C,68.202177,13.975868,2025-07-16,,eBird - Casual Observation,,0,,,1
-S259892652,White-tailed Eagle,Haliaeetus albicilla,8364,X,NO-18,,L49796076,Paradiseggen 6C,68.181822,14.325793,2025-07-14,,eBird - Casual Observation,,0,,,1
-S204167268,Long-eared Owl,Asio otus,9253,X,DK-01,Brøndby,L38373823,Brøndbyskov,55.64962,12.429752,2024-12-01,02:13 PM,eBird - Casual Observation,,0,,,1
-S294251557,Black-tailed Trogon,Trogon melanurus,9529,X,BR-AM,Manaus,L57224001,Reserva Ducke Trails,-2.931468,-59.9735,2026-01-14,10:20 AM,eBird - Casual Observation,,0,,,1
-S293289706,Amazon Kingfisher,Chloroceryle amazona,10312,X,BR-AM,Iranduba,L57017276,Floating Community,-3.156723,-59.917421,2026-01-09,,eBird - Casual Observation,,0,,,1
-S293288639,Green Kingfisher,Chloroceryle americana,10316,X,BR-AM,Iranduba,L57017276,Floating Community,-3.156723,-59.917421,2026-01-09,,eBird - Casual Observation,,0,,,1
-S295134533,Black-fronted Nunbird,Monasa nigrifrons,10458,X,BR-AM,Manaus,L57151195,Reserva Ducke Field Station,-2.929653,-59.975461,2026-01-19,09:11 AM,eBird - Casual Observation,,0,,,1
-S293900539,Black-necked Aracari,Pteroglossus aracari,10895,X,BR-AM,Manaus,L57151195,Reserva Ducke Field Station,-2.929653,-59.975461,2026-01-12,,eBird - Casual Observation,,0,,,1
-S293919570,White-throated Toucan,Ramphastos tucanus,10931,X,BR-AM,Manaus,L57151195,Reserva Ducke Field Station,-2.929653,-59.975461,2026-01-12,03:50 PM,eBird - Casual Observation,,0,,,1
-S293173591,Channel-billed Toucan,Ramphastos vitellinus,10940,X,BR-RJ,Rio de Janeiro,L56993762,Parque Lage,-22.957804,-43.212204,2025-12-30,,eBird - Casual Observation,,0,,,1
-S204167099,Great Spotted Woodpecker,Dendrocopos major,11349,X,DK-01,Brøndby,L38373823,Brøndbyskov,55.64962,12.429752,2024-12-01,02:13 PM,eBird - Casual Observation,,0,,,1
-S294251807,Red-necked Woodpecker,Campephilus rubricollis,11553,X,BR-AM,Manaus,L57224054,RD trail3,-2.947668,-59.9621,2026-01-14,09:24 AM,eBird - Casual Observation,,0,,,1
-S294740075,Red-throated Caracara,Ibycter americanus,11965,X,BR-AM,Manaus,L57151195,Reserva Ducke Field Station,-2.929653,-59.975461,2026-01-17,02:03 PM,eBird - Casual Observation,,0,,,1
-S300333946,Eurasian Kestrel,Falco tinnunculus,11993,X,DK-01,København,L58507833,Secret Spot,55.636071,12.511366,2026-02-14,,eBird - Casual Observation,,0,,,1
-S294251494,Blue-headed Parrot,Pionus menstruus,12889,X,BR-AM,Manaus,L57151195,Reserva Ducke Field Station,-2.929653,-59.975461,2026-01-14,03:44 PM,eBird - Casual Observation,,0,,,1
-S294252029,Mealy Amazon,Amazona farinosa,12960,X,BR-AM,Manaus,L57224120,RD trail5,-2.928768,-59.975,2026-01-12,05:11 PM,eBird - Casual Observation,,0,,,1
-S293925390,Mealy Amazon,Amazona farinosa,12960,X,BR-AM,Manaus,L57151195,Reserva Ducke Field Station,-2.929653,-59.975461,2026-01-12,05:11 PM,eBird - Casual Observation,,0,,,1
-S294252057,Red-bellied Macaw,Orthopsittaca manilatus,13136,X,BR-AM,Manaus,L57112731,Communidade Saõ Thomé,-3.091868,-60.5041,2026-01-11,08:43 AM,eBird - Casual Observation,,0,,,1
-S294529939,Red-and-green Macaw,Ara chloropterus,13157,X,BR-AM,Manaus,L57151195,Reserva Ducke Field Station,-2.929653,-59.975461,2026-01-16,11:24 AM,eBird - Casual Observation,,0,,,1
-S295388286,White-eyed Parakeet,Psittacara leucophthalmus,13205,X,BR-AM,Manaus,L57470688,INPA,-3.099753,-59.984705,2026-01-20,04:44 PM,eBird - Casual Observation,,0,,,1
-S294251784,Spot-backed Antbird,Hylophylax naevius,14107,X,BR-AM,Manaus,L57224054,RD trail3,-2.947668,-59.9621,2026-01-14,09:24 AM,eBird - Casual Observation,,0,,,1
-S294251685,Golden-headed Manakin,Ceratopipra erythrocephala,15840,X,BR-AM,Manaus,L57224028,Reserva Ducke Trail2,-2.935368,-59.962,2026-01-14,09:55 AM,eBird - Casual Observation,,0,,,1
-S294251882,Capuchinbird,Perissocephalus tricolor,15920,X,BR-AM,Manaus,L57224079,RD trail4,-2.949468,-59.9619,2026-01-14,06:16 AM,eBird - Casual Observation,,0,,,1
-S294251712,Screaming Piha,Lipaugus vociferans,15933,X,BR-AM,Manaus,L57224028,Reserva Ducke Trail2,-2.935368,-59.962,2026-01-14,09:55 AM,eBird - Casual Observation,,0,,,1
-S294252148,Short-crested Flycatcher,Myiarchus ferox,17312,X,BR-AM,Iranduba,L57224138,Boattrip1,-3.113968,-60.4942,2026-01-11,06:21 AM,eBird - Casual Observation,,0,,,1
-S293179342,Great Kiskadee,Pitangus sulphuratus,17368,X,BR-AM,Manaus,L56994958,Teatro Amazonas,-3.129957,-60.022272,2026-01-08,06:09 PM,eBird - Casual Observation,,0,,,1
-S294252079,Chivi Vireo,Vireo chivi,19273,X,BR-AM,Manaus,L57112731,Communidade Saõ Thomé,-3.091868,-60.5041,2026-01-11,08:43 AM,eBird - Casual Observation,,0,,,1
-S203092825,Eurasian Magpie,Pica pica,21467,X,DK-01,København,L38146003,Fælledsøen NØ,55.702762,12.567178,2024-11-20,04:31 PM,eBird - Casual Observation,,0,,,1
-S204284213,Eurasian Jackdaw,Coloeus monedula,21514,X,DK-01,Frederiksberg,L38396843,Frederiksberg Have,55.676281,12.526868,2024-12-02,03:11 PM,eBird - Casual Observation,,0,,,1
-S203092732,Eurasian Jackdaw,Coloeus monedula,21514,X,DK-01,København,L38146003,Fælledsøen NØ,55.702762,12.567178,2024-11-20,10:50 AM,eBird - Casual Observation,,0,,,1
-S206865813,Rook,Corvus frugilegus,21554,X,DK-01,København,L38925463,Tippen lok A,55.637555,12.532327,2024-12-28,12:59 PM,eBird - Casual Observation,,0,,,1
-S206866158,Carrion Crow,Corvus corone,21575,X,DK-01,København,L38925463,Tippen lok A,55.637555,12.532327,2024-12-28,12:59 PM,eBird - Casual Observation,,0,,,1
-S203333421,Common Raven,Corvus corax,21624,X,DK-01,Lyngby-Taarbæk,L38195726,Ulvedalene,55.781542,12.5654,2024-11-23,01:34 PM,eBird - Casual Observation,,0,,,1
-S387855437,Marsh Tit,Poecile palustris,22030,X,SE-G,,L76371987,Älmhult  Sverige,56.605162,14.016827,2026-08-29,12:49 PM,eBird - Casual Observation,,0,,,1
-S203092577,Eurasian Blue Tit,Cyanistes caeruleus,22114,X,DK-01,København,L38146003,Fælledsøen NØ,55.702762,12.567178,2024-11-20,10:50 AM,eBird - Casual Observation,,0,,,1
-S203070017,Great Tit,Parus major,22175,X,DK-01,København,L38146003,Fælledsøen NØ,55.702762,12.567178,2024-11-20,10:38 AM,eBird - Casual Observation,,0,,,1
-S379788999,Bank Swallow,Riparia riparia,24051,X,DK-01,Dragør,L74988597,Søndre Strandvej 50  2791 Dragør  Danmark,55.582125,12.658833,2026-08-04,09:31 AM,eBird - Casual Observation,,0,,,1
-S269940218,Barn Swallow,Hirundo rustica,24187,X,DK-04,Lolland,L52115091,Bursø Naturskole,54.758171,11.489749,2025-08-28,07:41 AM,eBird - Casual Observation,,0,,,1
-S259084366,Common Chiffchaff,Phylloscopus collybita,24853,X,NO-18,,L49604171,Henningsvær Teltplads,68.168533,14.224365,2025-07-12,10:12 AM,eBird - Casual Observation,,0,,,1
-S206866357,Long-tailed Tit,Aegithalos caudatus,25209,X,DK-01,København,L38925463,Tippen lok A,55.637555,12.532327,2024-12-28,12:59 PM,eBird - Casual Observation,,0,,,1
-S361807080,Eurasian Blackcap,Sylvia atricapilla,25267,X,DK-10,Ikast-Brande,L71118633,Shelterpladsen,55.957214,9.39411,2026-06-22,10:20 PM,eBird - Casual Observation,,0,,,1
-S379789221,Greater Whitethroat,Curruca communis,25364,X,DK-01,Dragør,L74988597,Søndre Strandvej 50  2791 Dragør  Danmark,55.582125,12.658833,2026-08-04,09:31 AM,eBird - Casual Observation,,0,,,1
-S204167207,Goldcrest,Regulus regulus,26856,X,DK-01,Brøndby,L38373823,Brøndbyskov,55.64962,12.429752,2024-12-01,02:13 PM,eBird - Casual Observation,,0,,,1
-S269615313,Eurasian Nuthatch,Sitta europaea,26966,X,DK-04,Lolland,L52048441,Åge V Jensen Naturgenopretning,54.731853,11.574692,2025-08-26,12:45 PM,eBird - Casual Observation,,0,,,1
-S294252166,Southern House Wren,Troglodytes musculus,27209,X,BR-AM,Iranduba,L57224138,Boattrip1,-3.113968,-60.4942,2026-01-11,06:21 AM,eBird - Casual Observation,,0,,,1
-S294252200,Southern House Wren,Troglodytes musculus,27209,X,BR-AM,Iranduba,L57224138,Boattrip1,-3.113968,-60.4942,2026-01-11,06:21 AM,eBird - Casual Observation,,0,,,1
-S371041097,Eurasian Wren,Troglodytes troglodytes,27258,X,DK-02,Gribskov,L73228652,Tisvilde,56.059036,12.076434,2026-07-12,12:05 PM,eBird - Casual Observation,,0,,,1
-S361946515,Eurasian Wren,Troglodytes troglodytes,27258,X,DK-10,Ikast-Brande,L71118633,Shelterpladsen,55.957214,9.39411,2026-06-23,07:24 AM,eBird - Casual Observation,,0,,,1
-S269942750,European Starling,Sturnus vulgaris,27813,X,DK-04,Lolland,L52115091,Bursø Naturskole,54.758171,11.489749,2025-08-28,07:51 AM,eBird - Casual Observation,,0,,,1
-S306630325,Mistle Thrush,Turdus viscivorus,28429,X,DK-09,Vejle,L59726243,Rørbæk Sø 2,55.929039,9.363122,2026-03-07,07:54 AM,eBird - Casual Observation,,0,,,1
-S362083781,Song Thrush,Turdus philomelos,28433,X,DK-10,Ikast-Brande,L71177488,Vækstcenteret,55.964495,9.389737,2026-06-23,02:27 PM,eBird - Casual Observation,,0,,,1
-S203092700,Eurasian Blackbird,Turdus merula,28500,X,DK-01,København,L38146003,Fælledsøen NØ,55.702762,12.567178,2024-11-20,10:50 AM,eBird - Casual Observation,,0,,,1
-S245023903,Eurasian Blackbird,Turdus merula,28500,X,DK-01,København,L46466116,Slusebroen,55.643372,12.550568,2025-05-31,05:14 PM,eBird - Casual Observation,,0,,,1
-S261272088,Fieldfare,Turdus pilaris,28593,X,NO-18,,L50121205,Bodø,67.277995,14.368963,2025-07-20,08:47 AM,eBird - Casual Observation,,0,,,1
-S294251616,White-necked Thrush (Gray-flanked),Turdus albicollis [phaeopygus Group],28736,X,BR-AM,Manaus,L57224001,Reserva Ducke Trails,-2.931468,-59.9735,2026-01-14,10:20 AM,eBird - Casual Observation,,0,,,1
-S247044146,European Robin,Erithacus rubecula,29253,X,DK-01,København,L46685687,Hjem,55.648799,12.530303,2025-06-05,08:50 PM,eBird - Casual Observation,,0,,,1
-S245017920,Thrush Nightingale,Luscinia luscinia,29392,X,DK-01,København,L46464664,Amagerfælled Indgang Sydvest,55.648532,12.568589,2025-05-31,04:36 PM,eBird - Casual Observation,,0,,,1
-S249721055,Common Redstart,Phoenicurus phoenicurus,29609,X,DK-01,København,L46685687,Hjem,55.648799,12.530303,2025-06-13,06:44 AM,eBird - Casual Observation,,0,,,1
-S259195569,Northern Wheatear,Oenanthe oenanthe,29783,X,NO-18,,L49629325,Presten Boulders,68.178036,14.208472,2025-07-12,04:53 PM,eBird - Casual Observation,,0,,,1
-S203344138,House Sparrow,Passer domesticus,31534,X,DK-01,Lyngby-Taarbæk,L38197631,Raadvad,55.80539,12.559347,2024-11-23,03:25 PM,eBird - Casual Observation,,0,,,1
-S379789049,Western Yellow Wagtail,Motacilla flava,31682,X,DK-01,Dragør,L74988597,Søndre Strandvej 50  2791 Dragør  Danmark,55.582125,12.658833,2026-08-04,09:31 AM,eBird - Casual Observation,,0,,,1
-S269942789,White Wagtail,Motacilla alba,31720,X,DK-04,Lolland,L52115091,Bursø Naturskole,54.758171,11.489749,2025-08-28,07:51 AM,eBird - Casual Observation,,0,,,1
-S203333407,Common Chaffinch,Fringilla coelebs,31948,X,DK-01,Lyngby-Taarbæk,L38195726,Ulvedalene,55.781542,12.5654,2024-11-23,01:34 PM,eBird - Casual Observation,,0,,,1
-S204167444,Hawfinch,Coccothraustes coccothraustes,32091,X,DK-01,Brøndby,L38373823,Brøndbyskov,55.64962,12.429752,2024-12-01,02:13 PM,eBird - Casual Observation,,0,,,1
-S203070032,Eurasian Bullfinch,Pyrrhula pyrrhula,32251,X,DK-01,København,L38146003,Fælledsøen NØ,55.702762,12.567178,2024-11-20,10:38 AM,eBird - Casual Observation,,0,,,1
-S206865727,European Greenfinch,Chloris chloris,32336,X,DK-01,København,L38925463,Tippen lok A,55.637555,12.532327,2024-12-28,12:59 PM,eBird - Casual Observation,,0,,,1
-S305011393,European Goldfinch,Carduelis carduelis,32552,X,DK-01,København,L59422276,Valbyparken,55.641688,12.520554,2026-03-01,05:09 PM,eBird - Casual Observation,,0,,,1
-S306630288,Yellowhammer,Emberiza citrinella,32733,X,DK-09,Vejle,L59726243,Rørbæk Sø 2,55.929039,9.363122,2026-03-07,07:54 AM,eBird - Casual Observation,,0,,,1
-S293171737,Crested Oropendola,Psarocolius decumanus,33624,X,BR-AM,Manaus,L56993372,INPA,-3.09685,-59.987656,2026-01-08,,eBird - Casual Observation,,0,,,1
-S293716994,Yellow-rumped Cacique,Cacicus cela,33649,X,BR-AM,Manaus,L57112731,Communidade Saõ Thomé,-3.091868,-60.5041,2026-01-11,08:43 AM,eBird - Casual Observation,,0,,,1
-S294054883,Red-rumped Cacique,Cacicus haemorrhous,33660,X,BR-AM,Manaus,L57182751,Main Trail,-2.933268,-59.968115,2026-01-13,11:33 AM,eBird - Casual Observation,,0,,,1
-S294251963,Red-rumped Cacique,Cacicus haemorrhous,33660,X,BR-AM,Manaus,L57182751,Main Trail,-2.933268,-59.968115,2026-01-13,11:33 AM,eBird - Casual Observation,,0,,,1
-S293921510,Blue-gray Tanager,Thraupis episcopus,34933,X,BR-AM,Manaus,L57151195,Reserva Ducke Field Station,-2.929653,-59.975461,2026-01-12,05:01 PM,eBird - Casual Observation,,0,,,1
-S294251326,Palm Tanager,Thraupis palmarum,34957,X,BR-AM,Manaus,L57151195,Reserva Ducke Field Station,-2.929653,-59.975461,2026-01-14,05:39 PM,eBird - Casual Observation,,0,,,1
-S293175444,Orange-fronted Yellow-Finch,Sicalis columbiana,35473,X,BR-AM,Manaus,L56994142,Parque Jeferson Peres,-3.136259,-60.016395,2026-01-08,,eBird - Casual Observation,,0,,,1
+Submission ID,Common Name,Scientific Name,Date,County,State/Province,ML Catalog Numbers
+S203093000,Graylag Goose,Anser anser,2024-11-20,København,DK-01,
+S204284424,Canada Goose,Branta canadensis,2024-12-02,Frederiksberg,DK-01,
+S306627391,Whooper Swan,Cygnus cygnus,2026-03-07,Vejle,DK-09,
+S204064341,Eurasian Wigeon,Mareca penelope,2024-11-30,København,DK-01,
+S203070026,Mallard,Anas platyrhynchos,2024-11-20,København,DK-01,
+S203092679,Mallard,Anas platyrhynchos,2024-11-20,København,DK-01,
+S269968590,Common Eider,Somateria mollissima,2025-08-28,Lolland,DK-04,
+S260655987,Willow Ptarmigan,Lagopus lagopus,2025-07-18,,NO-18,
+S269942769,Ring-necked Pheasant,Phasianus colchicus,2025-08-28,Lolland,DK-04,
+S203092618,Rock Pigeon,Columba livia,2024-11-20,København,DK-01,
+S306630271,Common Wood-Pigeon,Columba palumbus,2026-03-07,Vejle,DK-09,
+S294251837,Plumbeous Pigeon,Patagioenas plumbea,2026-01-14,Manaus,BR-AM,
+S370463979,Common Cuckoo,Cuculus canorus,2026-07-11,Tårnby,DK-01,
+S246039455,Common Swift,Apus apus,2025-06-02,København,DK-01,
+S359254574,Water Rail,Rallus aquaticus,2026-06-18,København,DK-01,
+S204064431,Eurasian Coot,Fulica atra,2024-11-30,København,DK-01,
+S258982384,Eurasian Oystercatcher,Haematopus ostralegus,2025-07-11,,NO-18,
+S293288323,Wattled Jacana,Jacana jacana,2026-01-09,Iranduba,BR-AM,
+S204064401,Black-headed Gull,Chroicocephalus ridibundus,2024-11-30,København,DK-01,
+S247043721,Common Gull,Larus canus,2025-06-05,København,DK-01,
+S258982331,Great Black-backed Gull,Larus marinus,2025-07-11,,NO-18,
+S293287817,Large-billed Tern,Phaetusa simplex,2026-01-09,Manaus,BR-AM,
+S269940192,Caspian Tern,Hydroprogne caspia,2025-08-28,Lolland,DK-04,
+S260155161,Arctic Tern,Sterna paradisaea,2025-07-15,,NO-18,
+S259995001,Common Tern,Sterna hirundo,2025-07-15,,NO-18,
+S379781156,Sandwich Tern,Thalasseus sandvicensis,2026-08-03,Dragør,DK-01,
+S321459139,Great Crested Grebe,Podiceps cristatus,2026-04-14,København,DK-01,
+S269864528,Great Crested Grebe,Podiceps cristatus,2025-08-27,Lolland,DK-04,
+S269864669,Great Cormorant,Phalacrocorax carbo,2025-08-27,Lolland,DK-04,
+S293262989,Neotropic Cormorant,Nannopterum brasilianum,2026-01-09,Manaus,BR-AM,
+S293287586,Great Egret,Ardea alba,2026-01-09,Iranduba,BR-AM,
+S203092660,Gray Heron,Ardea cinerea,2024-11-20,København,DK-01,
+S293263663,Black Vulture,Coragyps atratus,2026-01-09,Manaus,BR-AM,
+S293919486,Greater Yellow-headed Vulture,Cathartes melambrotus,2026-01-12,Manaus,BR-AM,
+S269966516,European Honey-buzzard,Pernis apivorus,2025-08-28,Lolland,DK-04,
+S361947626,Red Kite,Milvus milvus,2026-06-22,Ikast-Brande,DK-10,
+S362988318,Red Kite,Milvus milvus,2026-06-24,Ikast-Brande,DK-10,
+S362988212,Red Kite,Milvus milvus,2026-06-25,Ikast-Brande,DK-10,
+S260285279,White-tailed Eagle,Haliaeetus albicilla,2025-07-16,,NO-18,
+S260285358,White-tailed Eagle,Haliaeetus albicilla,2025-07-16,,NO-18,
+S260285448,White-tailed Eagle,Haliaeetus albicilla,2025-07-16,,NO-18,
+S259892652,White-tailed Eagle,Haliaeetus albicilla,2025-07-14,,NO-18,
+S204167268,Long-eared Owl,Asio otus,2024-12-01,Brøndby,DK-01,
+S294251557,Black-tailed Trogon,Trogon melanurus,2026-01-14,Manaus,BR-AM,
+S293289706,Amazon Kingfisher,Chloroceryle amazona,2026-01-09,Iranduba,BR-AM,
+S293288639,Green Kingfisher,Chloroceryle americana,2026-01-09,Iranduba,BR-AM,
+S295134533,Black-fronted Nunbird,Monasa nigrifrons,2026-01-19,Manaus,BR-AM,
+S293900539,Black-necked Aracari,Pteroglossus aracari,2026-01-12,Manaus,BR-AM,
+S293919570,White-throated Toucan,Ramphastos tucanus,2026-01-12,Manaus,BR-AM,
+S293173591,Channel-billed Toucan,Ramphastos vitellinus,2025-12-30,Rio de Janeiro,BR-RJ,
+S204167099,Great Spotted Woodpecker,Dendrocopos major,2024-12-01,Brøndby,DK-01,
+S294251807,Red-necked Woodpecker,Campephilus rubricollis,2026-01-14,Manaus,BR-AM,
+S294740075,Red-throated Caracara,Ibycter americanus,2026-01-17,Manaus,BR-AM,
+S300333946,Eurasian Kestrel,Falco tinnunculus,2026-02-14,København,DK-01,
+S294251494,Blue-headed Parrot,Pionus menstruus,2026-01-14,Manaus,BR-AM,
+S294252029,Mealy Amazon,Amazona farinosa,2026-01-12,Manaus,BR-AM,
+S293925390,Mealy Amazon,Amazona farinosa,2026-01-12,Manaus,BR-AM,
+S294252057,Red-bellied Macaw,Orthopsittaca manilatus,2026-01-11,Manaus,BR-AM,
+S294529939,Red-and-green Macaw,Ara chloropterus,2026-01-16,Manaus,BR-AM,
+S295388286,White-eyed Parakeet,Psittacara leucophthalmus,2026-01-20,Manaus,BR-AM,
+S294251784,Spot-backed Antbird,Hylophylax naevius,2026-01-14,Manaus,BR-AM,
+S294251685,Golden-headed Manakin,Ceratopipra erythrocephala,2026-01-14,Manaus,BR-AM,
+S294251882,Capuchinbird,Perissocephalus tricolor,2026-01-14,Manaus,BR-AM,
+S294251712,Screaming Piha,Lipaugus vociferans,2026-01-14,Manaus,BR-AM,
+S294252148,Short-crested Flycatcher,Myiarchus ferox,2026-01-11,Iranduba,BR-AM,
+S293179342,Great Kiskadee,Pitangus sulphuratus,2026-01-08,Manaus,BR-AM,
+S294252079,Chivi Vireo,Vireo chivi,2026-01-11,Manaus,BR-AM,
+S203092825,Eurasian Magpie,Pica pica,2024-11-20,København,DK-01,
+S204284213,Eurasian Jackdaw,Coloeus monedula,2024-12-02,Frederiksberg,DK-01,
+S203092732,Eurasian Jackdaw,Coloeus monedula,2024-11-20,København,DK-01,
+S206865813,Rook,Corvus frugilegus,2024-12-28,København,DK-01,
+S206866158,Carrion Crow,Corvus corone,2024-12-28,København,DK-01,
+S203333421,Common Raven,Corvus corax,2024-11-23,Lyngby-Taarbæk,DK-01,
+S387855437,Marsh Tit,Poecile palustris,2026-08-29,,SE-G,
+S203092577,Eurasian Blue Tit,Cyanistes caeruleus,2024-11-20,København,DK-01,
+S203070017,Great Tit,Parus major,2024-11-20,København,DK-01,
+S379788999,Bank Swallow,Riparia riparia,2026-08-04,Dragør,DK-01,
+S269940218,Barn Swallow,Hirundo rustica,2025-08-28,Lolland,DK-04,
+S259084366,Common Chiffchaff,Phylloscopus collybita,2025-07-12,,NO-18,
+S206866357,Long-tailed Tit,Aegithalos caudatus,2024-12-28,København,DK-01,
+S361807080,Eurasian Blackcap,Sylvia atricapilla,2026-06-22,Ikast-Brande,DK-10,
+S379789221,Greater Whitethroat,Curruca communis,2026-08-04,Dragør,DK-01,
+S204167207,Goldcrest,Regulus regulus,2024-12-01,Brøndby,DK-01,
+S269615313,Eurasian Nuthatch,Sitta europaea,2025-08-26,Lolland,DK-04,
+S294252166,Southern House Wren,Troglodytes musculus,2026-01-11,Iranduba,BR-AM,
+S294252200,Southern House Wren,Troglodytes musculus,2026-01-11,Iranduba,BR-AM,
+S371041097,Eurasian Wren,Troglodytes troglodytes,2026-07-12,Gribskov,DK-02,
+S361946515,Eurasian Wren,Troglodytes troglodytes,2026-06-23,Ikast-Brande,DK-10,
+S269942750,European Starling,Sturnus vulgaris,2025-08-28,Lolland,DK-04,
+S306630325,Mistle Thrush,Turdus viscivorus,2026-03-07,Vejle,DK-09,
+S362083781,Song Thrush,Turdus philomelos,2026-06-23,Ikast-Brande,DK-10,
+S203092700,Eurasian Blackbird,Turdus merula,2024-11-20,København,DK-01,
+S245023903,Eurasian Blackbird,Turdus merula,2025-05-31,København,DK-01,
+S261272088,Fieldfare,Turdus pilaris,2025-07-20,,NO-18,
+S294251616,White-necked Thrush (Gray-flanked),Turdus albicollis [phaeopygus Group],2026-01-14,Manaus,BR-AM,
+S247044146,European Robin,Erithacus rubecula,2025-06-05,København,DK-01,
+S245017920,Thrush Nightingale,Luscinia luscinia,2025-05-31,København,DK-01,
+S249721055,Common Redstart,Phoenicurus phoenicurus,2025-06-13,København,DK-01,
+S259195569,Northern Wheatear,Oenanthe oenanthe,2025-07-12,,NO-18,
+S203344138,House Sparrow,Passer domesticus,2024-11-23,Lyngby-Taarbæk,DK-01,
+S379789049,Western Yellow Wagtail,Motacilla flava,2026-08-04,Dragør,DK-01,
+S269942789,White Wagtail,Motacilla alba,2025-08-28,Lolland,DK-04,
+S203333407,Common Chaffinch,Fringilla coelebs,2024-11-23,Lyngby-Taarbæk,DK-01,
+S204167444,Hawfinch,Coccothraustes coccothraustes,2024-12-01,Brøndby,DK-01,
+S203070032,Eurasian Bullfinch,Pyrrhula pyrrhula,2024-11-20,København,DK-01,
+S206865727,European Greenfinch,Chloris chloris,2024-12-28,København,DK-01,
+S305011393,European Goldfinch,Carduelis carduelis,2026-03-01,København,DK-01,
+S306630288,Yellowhammer,Emberiza citrinella,2026-03-07,Vejle,DK-09,
+S293171737,Crested Oropendola,Psarocolius decumanus,2026-01-08,Manaus,BR-AM,
+S293716994,Yellow-rumped Cacique,Cacicus cela,2026-01-11,Manaus,BR-AM,
+S294054883,Red-rumped Cacique,Cacicus haemorrhous,2026-01-13,Manaus,BR-AM,
+S294251963,Red-rumped Cacique,Cacicus haemorrhous,2026-01-13,Manaus,BR-AM,
+S293921510,Blue-gray Tanager,Thraupis episcopus,2026-01-12,Manaus,BR-AM,
+S294251326,Palm Tanager,Thraupis palmarum,2026-01-14,Manaus,BR-AM,
+S293175444,Orange-fronted Yellow-Finch,Sicalis columbiana,2026-01-08,Manaus,BR-AM,
