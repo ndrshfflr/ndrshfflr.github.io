@@ -56,8 +56,38 @@
           if (md) md.setAttribute('content', m.description || m.summary);
         }
         $('post-body').innerHTML = window.SiteMD.render(parsed.body);
+        showPhotos();
       })
       .catch(notFound);
+  }
+  // Gallery photos linked to this post (CMS → Photo Gallery → Blog post).
+  function showPhotos() {
+    fetch('content/gallery.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (g) {
+      var pics = (g && Array.isArray(g.images) ? g.images : []).filter(function (p) { return p && p.image && p.post === slug; });
+      if (!pics.length) return;
+      var box = document.createElement('section');
+      box.className = 'post-photos';
+      var h = document.createElement('h2'); h.textContent = ui.postPhotos || 'Photos'; box.appendChild(h);
+      var strip = document.createElement('div'); strip.className = 'photo-strip'; box.appendChild(strip);
+      var logHref = document.documentElement.lang === 'da' ? 'fieldlog.da.html' : 'fieldlog.html';
+      pics.forEach(function (p) {
+        var fig = document.createElement('figure'); fig.className = 'photo-tile has-image';
+        var img = document.createElement('img'); img.src = p.image; img.alt = p.caption || ''; img.loading = 'lazy'; fig.appendChild(img);
+        if (p.caption || p.species) {
+          var cap = document.createElement('figcaption'); cap.className = 'cap';
+          if (p.caption) cap.appendChild(document.createTextNode(p.caption));
+          if (p.species) {
+            var links = document.createElement('span'); links.className = 'cap-links';
+            var a = document.createElement('a'); a.href = logHref + '#sp=' + encodeURIComponent(p.species);
+            a.textContent = ui.photoFieldlog || 'In the field log';
+            links.appendChild(a); cap.appendChild(links);
+          }
+          fig.appendChild(cap);
+        }
+        strip.appendChild(fig);
+      });
+      $('post-body').appendChild(box);
+    }).catch(function () {});
   }
   if (window.SiteMD) start(); else window.addEventListener('DOMContentLoaded', start);
 })();

@@ -70,9 +70,14 @@
   }
 
   // ---------- merge synced finds with the CMS choices ----------
-  function build(obs, cfg) {
+  function build(obs, cfg, gallery) {
     obs = obs || {};
     cfg = cfg || {};
+    // Photos from the gallery that are linked to a species (CMS → Photo Gallery).
+    var galleryBy = {};
+    arr(gallery && gallery.images).forEach(function (g) {
+      if (g && g.image && g.species) (galleryBy[norm(g.species)] = galleryBy[norm(g.species)] || []).push(g);
+    });
     var sources = cfg.sources || {};
     var opts = cfg.options || {};
     var hidden = {}; arr(cfg.hide).forEach(function (id) { hidden[id] = 1; });
@@ -117,7 +122,8 @@
       sp.last = sp.recs[sp.recs.length - 1].date || '';
       var withPhoto = sp.recs.filter(function (r) { return r.photo; });
       var chosen = withPhoto.filter(function (r) { return covers[r.id] || r.manualCover; })[0];
-      sp.cover = (chosen || withPhoto[withPhoto.length - 1] || {}).photo || '';
+      sp.gallery = galleryBy[k] || [];
+      sp.cover = (chosen && chosen.photo) || (sp.gallery[0] && sp.gallery[0].image) || (withPhoto[withPhoto.length - 1] || {}).photo || '';
       sp.common = LANG === 'da' ? (sp.da || sp.en) : sp.en;
       sp.note = notes[k] || '';
       sp.isSpecies = isSpecies(sp.name);
@@ -265,15 +271,37 @@
 
     var photos = $('fl-d-photos');
     photos.innerHTML = '';
-    var withPhoto = sp.recs.filter(function (r) { return r.photo; });
-    var cover = withPhoto.filter(function (r) { return r.photo === sp.cover; })[0];
-    var ordered = (cover ? [cover] : []).concat(withPhoto.filter(function (r) { return r !== cover; })).slice(0, 6);
-    ordered.forEach(function (r, i) {
+    var pics = sp.gallery.map(function (g) { return { photo: g.image, caption: g.caption || '' }; })
+      .concat(sp.recs.filter(function (r) { return r.photo; }).map(function (r) { return { photo: r.photo }; }));
+    var cover = pics.filter(function (p) { return p.photo === sp.cover; })[0];
+    var seenPic = {};
+    var ordered = (cover ? [cover] : []).concat(pics).filter(function (p) {
+      if (seenPic[p.photo]) return false; seenPic[p.photo] = 1; return true;
+    }).slice(0, 6);
+    ordered.forEach(function (p, i) {
       var f = el('figure', i === 0 ? 'is-main' : '');
-      f.appendChild(img(r.photo, i === 0 ? sp.name : '', i === 0 ? 900 : 300));
+      f.appendChild(img(p.photo, p.caption || (i === 0 ? sp.name : ''), i === 0 ? 900 : 300));
       photos.appendChild(f);
     });
     photos.hidden = ordered.length === 0;
+
+    // Blog posts that photos of this species are linked to.
+    var slugs = [];
+    sp.gallery.forEach(function (g) { if (g.post && /^[A-Za-z0-9._-]+$/.test(g.post) && slugs.indexOf(g.post) < 0) slugs.push(g.post); });
+    var blog = $('fl-d-posts');
+    blog.innerHTML = '';
+    $('fl-d-blog').hidden = slugs.length === 0;
+    slugs.forEach(function (slug) {
+      var li = el('li');
+      var a = el('a', null, slug.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/-/g, ' '));
+      a.href = 'post.html?slug=' + encodeURIComponent(slug);
+      li.appendChild(a);
+      blog.appendChild(li);
+      fetch('content/posts/' + slug + '.md', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.text() : ''; }).then(function (t) {
+        var m = /^---[\s\S]*?\ntitle:\s*["']?(.+?)["']?\s*\n[\s\S]*?---/.exec(t);
+        if (m) a.textContent = m[1];
+      }).catch(function () {});
+    });
 
     var recs = $('fl-d-recs');
     recs.innerHTML = '';
@@ -327,8 +355,8 @@
   if (sort) sort.addEventListener('change', function () { state.sort = sort.value; renderGrid(); });
 
   // ---------- go ----------
-  Promise.all([getJSON('content/observations.json'), getJSON('content/fieldlog.json')]).then(function (res) {
-    data = build(res[0], res[1]);
+  Promise.all([getJSON('content/observations.json'), getJSON('content/fieldlog.json'), getJSON('content/gallery.json')]).then(function (res) {
+    data = build(res[0], res[1], res[2]);
     var empty = $('fl-empty');
     if (!data.list.length) {
       var t = window.__fieldlogText || TEXT;
@@ -343,10 +371,11 @@
     renderGrid();
     renderSync();
     $('fl-tools').hidden = false;
+    // fieldlog.html#n12 opens Nº 012; fieldlog.html#sp=Amanita%20muscaria opens that species.
     var m = /^#n(\d+)$/.exec(location.hash);
-    if (m) {
-      var sp = data.list.filter(function (s) { return s.no === +m[1]; })[0];
-      if (sp) openSpecies(sp.key);
-    }
+    var bySp = /^#sp=(.+)$/.exec(location.hash);
+    var sp = m ? data.list.filter(function (s) { return s.no === +m[1]; })[0]
+      : bySp ? data.list.filter(function (s) { return s.key === norm(decodeURIComponent(bySp[1])); })[0] : null;
+    if (sp) openSpecies(sp.key);
   });
 })();

@@ -571,6 +571,8 @@ collections:
             fields:
               - { label: "Photo", name: "image", widget: "image", media_folder: "/images/gallery", public_folder: "/images/gallery" }
               - { label: "Caption (optional)", name: "caption", widget: "string", required: false }
+              - { label: "Species in the field log (optional)", name: "species", widget: "relation", required: false, collection: "observations", file: "synced", value_field: "species.*.name", search_fields: ["species.*.label"], display_fields: ["species.*.label"], hint: "The photo then links to that species, and shows up when someone opens it in the field log. Finds you add by hand appear in this list after the next sync." }
+              - { label: "Blog post (optional)", name: "post", widget: "relation", required: false, collection: "posts", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], hint: "The photo then links to the post, and is shown at the end of it." }
 
   - name: "posts"
     label: "Blog posts"

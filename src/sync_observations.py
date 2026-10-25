@@ -356,6 +356,9 @@ def main():
     species = {}
     for i in items:
         species.setdefault(i["name"], i.get("common_da") or i.get("common_en") or "")
+    for m in settings.get("manual") or []:   # so photos can be linked to hand-added finds too
+        if m and m.get("name"):
+            species.setdefault(m["name"].strip(), m.get("commonDa") or m.get("common") or "")
     species_list = [{"name": n, "label": n + (f" ({c})" if c else "")} for n, c in sorted(species.items())]
 
     if items == prev_items and status == previous.get("status"):
