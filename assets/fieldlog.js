@@ -21,7 +21,7 @@
   try { TEXT = JSON.parse(document.getElementById('fl-text').textContent); } catch (e) {}
   var GROUPS = UI.flGroups || {};
   var GROUP_ORDER = ['fungi', 'birds', 'insects', 'arachnids', 'mammals', 'herps', 'fish', 'molluscs', 'plants', 'other'];
-  var SOURCE = { inaturalist: 'iNaturalist', svampeatlas: 'Svampeatlas', arter: 'Arter.dk', dofbasen: 'DOFbasen', manual: UI.flNotebook || 'Notebook' };
+  var SOURCE = { inaturalist: 'iNaturalist', svampeatlas: 'Svampeatlas', arter: 'Arter.dk', dofbasen: 'DOFbasen', ebird: 'Merlin/eBird', manual: UI.flNotebook || 'Notebook' };
   var MONTHS = LANG === 'da'
     ? ['jan.', 'feb.', 'mar.', 'apr.', 'maj', 'jun.', 'jul.', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.']
     : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -53,7 +53,7 @@
   // service makes a small copy. If that ever fails, the original is used.
   function thumb(url, size) {
     if (!url) return '';
-    if (/inaturalist|static\.inaturalist/.test(url) || !/^https?:/.test(url)) return url;
+    if (/inaturalist|birds\.cornell\.edu/.test(url) || !/^https?:/.test(url)) return url;
     return 'https://api.gbif.org/v1/image/unsafe/fit-in/' + (size || 480) + 'x' + (size || 480) + '/' + encodeURIComponent(url);
   }
   function img(url, alt, size) {

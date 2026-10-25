@@ -450,8 +450,7 @@ collections:
                 widget: "object"
                 fields:
                   - { label: "Use Svampeatlas", name: "enabled", widget: "boolean", default: true }
-                  - { label: "Link to any one of your own finds", name: "anyObservation", widget: "string", required: false, hint: "e.g. https://svampe.databasen.org/observations/123456 — used to look up your user number. Only finds where you are the main finder are included." }
-                  - { label: "…or your user number, if you know it", name: "userId", widget: "string", required: false }
+                  - { label: "Your user number or name", name: "userId", widget: "string", required: false, hint: "Your number is 16165 (Pieter Shiffler Carpentier). Your name or initials exactly as on Svampeatlas also work. Only finds where you are the main finder are included." }
               - label: "Arter.dk"
                 name: "arter"
                 widget: "object"
@@ -464,6 +463,12 @@ collections:
                 fields:
                   - { label: "Use DOFbasen", name: "enabled", widget: "boolean", default: true }
                   - { label: "Your observer name exactly as on GBIF", name: "recordedBy", widget: "string", required: false, hint: "Name followed by your DOF code in brackets, e.g. Jens Hansen (1234JHA). Read via GBIF, which leaves out the newest ~60 days." }
+              - label: "Merlin Bird ID (via eBird)"
+                name: "ebird"
+                widget: "object"
+                fields:
+                  - { label: "Use Merlin/eBird", name: "enabled", widget: "boolean", default: true }
+                  - { label: "Cleaned eBird file", name: "file", widget: "file", required: false, media_folder: "/content/imports", public_folder: "/content/imports", hint: "Merlin saves your birds in eBird, which has no automatic link. 1) ebird.org → My eBird → Download my data (arrives by email). 2) Open ndrshfflr.github.io/fieldlog-import.html and run the file through it — it removes coordinates. 3) Upload the cleaned file here. Repeat now and then to bring in new birds. Never upload the original file: it holds exact coordinates and the site's files are public." }
           - label: "Options"
             name: "options"
             widget: "object"
