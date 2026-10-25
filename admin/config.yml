@@ -382,6 +382,20 @@ collections:
               - { label: "Contact band heading", name: "contactHeading", widget: "string" }
               - { label: "Contact band intro", name: "contactIntro", widget: "text" }
 
+          - label: "Field log — texts (the finds themselves are under Field log)"
+            name: "fieldlog"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Door on the main page — small label", name: "teaserEyebrow", widget: "string" }
+              - { label: "Door on the main page — title", name: "teaserHeading", widget: "string" }
+              - { label: "Door on the main page — text", name: "teaserText", widget: "text" }
+              - { label: "Door on the main page — link text", name: "teaserCta", widget: "string" }
+              - { label: "Small label above the title", name: "eyebrow", widget: "string" }
+              - { label: "Page title", name: "heading", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text" }
+              - { label: "Text while the log is empty", name: "emptyText", widget: "string" }
+
           - label: "Blog (texts around the posts — the posts themselves are under Blog posts)"
             name: "blog"
             widget: "object"
@@ -410,6 +424,132 @@ collections:
         name: "home_da"
         format: "json"
         fields: *homefields
+
+  - name: "fieldlog"
+    label: "Field log"
+    description: "Your finds are pulled in every night from the sites below. Here you choose what is shown and add finds by hand. Changes appear on the page as soon as they are published."
+    files:
+      - file: "content/fieldlog.json"
+        label: "Field log — sources, hiding and your own finds"
+        name: "fieldlog"
+        format: "json"
+        fields:
+          - label: "Where to pull finds from"
+            name: "sources"
+            widget: "object"
+            hint: "Publishing a change here starts a new sync straight away (it takes a minute or two)."
+            fields:
+              - label: "iNaturalist"
+                name: "inaturalist"
+                widget: "object"
+                fields:
+                  - { label: "Use iNaturalist", name: "enabled", widget: "boolean", default: true }
+                  - { label: "Username", name: "user", widget: "string", required: false, hint: "Your login name, as in inaturalist.org/people/USERNAME. Finds marked captive/cultivated are left out." }
+              - label: "Danmarks Svampeatlas"
+                name: "svampeatlas"
+                widget: "object"
+                fields:
+                  - { label: "Use Svampeatlas", name: "enabled", widget: "boolean", default: true }
+                  - { label: "Link to any one of your own finds", name: "anyObservation", widget: "string", required: false, hint: "e.g. https://svampe.databasen.org/observations/123456 — used to look up your user number. Only finds where you are the main finder are included." }
+                  - { label: "…or your user number, if you know it", name: "userId", widget: "string", required: false }
+              - label: "Arter.dk"
+                name: "arter"
+                widget: "object"
+                fields:
+                  - { label: "Use Arter.dk", name: "enabled", widget: "boolean", default: true }
+                  - { label: "Your name exactly as Arter.dk shows it as finder", name: "recordedBy", widget: "string", required: false, hint: "Read via GBIF, which copies Arter.dk about once a week. Several names? Put one per line." }
+              - label: "DOFbasen"
+                name: "dofbasen"
+                widget: "object"
+                fields:
+                  - { label: "Use DOFbasen", name: "enabled", widget: "boolean", default: true }
+                  - { label: "Your observer name exactly as on GBIF", name: "recordedBy", widget: "string", required: false, hint: "Name followed by your DOF code in brackets, e.g. Jens Hansen (1234JHA). Read via GBIF, which leaves out the newest ~60 days." }
+          - label: "Options"
+            name: "options"
+            widget: "object"
+            fields:
+              - { label: "iNaturalist: only Research Grade finds", name: "researchGradeOnly", widget: "boolean", default: false }
+              - { label: "Show place names", name: "showPlaces", widget: "boolean", default: true, hint: "Only a general place name is ever shown — never coordinates." }
+          - label: "Hide these finds"
+            name: "hide"
+            widget: "list"
+            required: false
+            hint: "Search by date, name or species. The find stays on the source site; it is only left out here."
+            field: { label: "Find", name: "id", widget: "relation", collection: "observations", file: "synced", value_field: "items.*.id", search_fields: ["items.*.label"], display_fields: ["items.*.label"] }
+          - label: "Hide whole species"
+            name: "hideSpecies"
+            widget: "list"
+            required: false
+            field: { label: "Species", name: "name", widget: "relation", collection: "observations", file: "synced", value_field: "species.*.name", search_fields: ["species.*.label"], display_fields: ["species.*.label"] }
+          - label: "Cover photos"
+            name: "covers"
+            widget: "list"
+            required: false
+            hint: "Pick the find whose photo should be shown on a species' card. Otherwise the newest photo is used."
+            field: { label: "Find", name: "id", widget: "relation", collection: "observations", file: "synced", value_field: "items.*.id", search_fields: ["items.*.label"], display_fields: ["items.*.label"] }
+          - label: "Notes on a species"
+            name: "notes"
+            widget: "list"
+            required: false
+            summary: "{{species}}"
+            hint: "Shown when someone opens the species. Also works for finds you add by hand — type the Latin name exactly."
+            fields:
+              - { label: "Species (Latin name)", name: "species", widget: "string" }
+              - { label: "Note (English)", name: "text", widget: "text", required: false }
+              - { label: "Note (Danish)", name: "textDa", widget: "text", required: false }
+          - label: "Goals (progress bars)"
+            name: "goals"
+            widget: "list"
+            required: false
+            summary: "{{group}} — {{target}}"
+            hint: "Optional, e.g. Birds → 200. Counts species in that group."
+            fields:
+              - { label: "Group", name: "group", widget: "select", options: [{ label: "Fungi", value: "fungi" }, { label: "Birds", value: "birds" }, { label: "Insects", value: "insects" }, { label: "Spiders & kin", value: "arachnids" }, { label: "Mammals", value: "mammals" }, { label: "Amphibians & reptiles", value: "herps" }, { label: "Fish", value: "fish" }, { label: "Molluscs", value: "molluscs" }, { label: "Plants", value: "plants" }, { label: "Other", value: "other" }] }
+              - { label: "Target number of species", name: "target", widget: "number", value_type: "int", min: 1 }
+              - { label: "Label (English, optional)", name: "label", widget: "string", required: false, hint: "e.g. Danish breeding birds. Leave empty to use the group name." }
+              - { label: "Label (Danish, optional)", name: "labelDa", widget: "string", required: false }
+          - label: "Finds I add by hand"
+            name: "manual"
+            widget: "list"
+            required: false
+            summary: "{{date}} — {{name}}"
+            hint: "For finds that are in none of the sites above — from a notebook, a trip abroad, before you used the apps…"
+            fields:
+              - { label: "Latin name", name: "name", widget: "string", hint: "Same spelling as elsewhere, so it joins the same species card." }
+              - { label: "Common name (English, optional)", name: "common", widget: "string", required: false }
+              - { label: "Common name (Danish, optional)", name: "commonDa", widget: "string", required: false }
+              - { label: "Group", name: "group", widget: "select", options: [{ label: "Fungi", value: "fungi" }, { label: "Birds", value: "birds" }, { label: "Insects", value: "insects" }, { label: "Spiders & kin", value: "arachnids" }, { label: "Mammals", value: "mammals" }, { label: "Amphibians & reptiles", value: "herps" }, { label: "Fish", value: "fish" }, { label: "Molluscs", value: "molluscs" }, { label: "Plants", value: "plants" }, { label: "Other", value: "other" }] }
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
+              - { label: "Place (optional)", name: "place", widget: "string", required: false, hint: "Keep it general, e.g. Rold Skov or Abisko, Sweden." }
+              - { label: "Photo (optional)", name: "photo", widget: "image", required: false, media_folder: "/images/uploads", public_folder: "/images/uploads", hint: "Square-ish works best. A photo added here becomes the card's cover." }
+              - { label: "Link (optional)", name: "link", widget: "string", required: false }
+              - { label: "Note (optional)", name: "notes", widget: "text", required: false }
+
+  # Read-only list of synced finds — the hide/cover pickers above look things up
+  # here. It is regenerated every night, so it is hidden from the menu.
+  - name: "observations"
+    label: "Synced finds (read-only)"
+    hide: true
+    editor: { preview: false }
+    files:
+      - file: "content/observations.json"
+        label: "Synced finds"
+        name: "synced"
+        format: "json"
+        fields:
+          - { label: "Updated", name: "updated", widget: "string" }
+          - label: "Species"
+            name: "species"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+          - label: "Finds"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
 
   - name: "gallery"
     label: "Photo Gallery"

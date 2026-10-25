@@ -1,0 +1,14 @@
+{
+  "sources": {
+    "inaturalist": { "enabled": true, "user": "" },
+    "svampeatlas": { "enabled": true, "userId": "", "anyObservation": "" },
+    "arter": { "enabled": true, "recordedBy": "" },
+    "dofbasen": { "enabled": true, "recordedBy": "" }
+  },
+  "options": { "researchGradeOnly": false, "showPlaces": true },
+  "hide": [],
+  "hideSpecies": [],
+  "covers": [],
+  "goals": [],
+  "manual": []
+}

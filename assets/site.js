@@ -553,6 +553,23 @@
     setText('contact-intro', tt.contactIntro);
   }
 
+  // ---------- the field log (fieldlog.html) and its door on the main page ----------
+  // The list itself is drawn by assets/fieldlog.js; here only the editable texts.
+  function applyFieldlog(fl) {
+    if (!fl) return;
+    setText('log-door-eyebrow', fl.teaserEyebrow);
+    setText('log-door-heading', fl.teaserHeading);
+    setText('log-door-text', fl.teaserText);
+    setText('log-door-cta', fl.teaserCta);
+    if (!$('fl-heading')) return;
+    setText('fl-eyebrow', fl.eyebrow);
+    setText('fl-heading', fl.heading);
+    setText('fl-intro', fl.intro);
+    window.__fieldlogText = fl;
+    var empty = $('fl-empty');
+    if (empty && empty.getAttribute('data-state') === 'empty' && fl.emptyText) empty.textContent = fl.emptyText;
+  }
+
   // ---------- blog ----------
   // Posts are markdown files in content/posts/, written through /admin.
   // The HTML ships with the list as it was at the last build; here the live
@@ -787,6 +804,7 @@
     applyContact(d.contact);
     applyFungi(d.fungi, d);
     applyTerrarium(d.terrarium, d);
+    applyFieldlog(d.fieldlog);
     applyBlogText(d.blog);
   }
 
