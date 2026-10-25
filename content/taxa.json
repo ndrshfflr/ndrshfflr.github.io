@@ -1,0 +1,767 @@
+{
+ "Aegithalos caudatus": {
+  "inat": 7278,
+  "da": "Halemejse",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/340558404/medium.jpg",
+  "credit": "(c) caroline legg, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Amazona farinosa": {
+  "inat": 19005,
+  "da": "Farinosa-amazone",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/172081088/medium.jpeg",
+  "credit": "(c) Esteban Poveda, some rights reserved (CC BY), uploaded by Esteban Poveda",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Anas platyrhynchos": {
+  "inat": 6930,
+  "da": "Gråand",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/95268822/medium.jpg",
+  "credit": "(c) anonymous, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Anser anser": {
+  "inat": 7018,
+  "da": "Grågås",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/61333942/medium.jpg",
+  "credit": "(c) Imran Shah, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Apus apus": {
+  "inat": 6638,
+  "da": "Mursejler",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/57115088/medium.jpg",
+  "credit": "(c) Константин Селивёрстов, some rights reserved (CC BY), uploaded by Константин Селивёрстов",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Ara chloropterus": {
+  "inat": 19016,
+  "da": "mørkerød ara",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/270590858/medium.jpg",
+  "credit": "(c) DickDaniels, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Ardea alba": {
+  "inat": 144455,
+  "da": "Sølvhejre",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/359167878/medium.jpg",
+  "credit": "(c) Mike Baird, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Ardea cinerea": {
+  "inat": 4954,
+  "da": "Fiskehejre",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/73516715/medium.jpg",
+  "credit": "(c) Frank Sengpiel, some rights reserved (CC BY), uploaded by Frank Sengpiel",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Asio otus": {
+  "inat": 20307,
+  "da": "Skovhornugle",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/133553640/medium.jpg",
+  "credit": "(c) caroline legg, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Branta canadensis": {
+  "inat": 7089,
+  "da": "Canadagås",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/247715952/medium.jpeg",
+  "credit": "(c) John Barkla, some rights reserved (CC BY), uploaded by John Barkla",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Cacicus cela": {
+  "inat": 10359,
+  "da": "gulgumpet pungstær",
+  "checked": "2026-10-25"
+ },
+ "Cacicus haemorrhous": {
+  "inat": 10357,
+  "da": "Rødgumpet Pungstær",
+  "checked": "2026-10-25"
+ },
+ "Campephilus rubricollis": {
+  "inat": 18295,
+  "da": "Rødhalset Spætte",
+  "checked": "2026-10-25"
+ },
+ "Carduelis carduelis": {
+  "inat": 9398,
+  "da": "Stillits",
+  "checked": "2026-10-25"
+ },
+ "Cathartes melambrotus": {
+  "inat": 4760,
+  "da": "Stor Gulhovedet Grib",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/252473078/medium.jpeg",
+  "credit": "(c) wang cai, some rights reserved (CC BY), uploaded by wang cai",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Ceratiomyxa porioides": {
+  "inat": 1556412,
+  "da": "",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/305803470/medium.jpg",
+  "credit": "(c) Robert Roach, some rights reserved (CC BY), uploaded by Robert Roach",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Ceratopipra erythrocephala": {
+  "inat": 339674,
+  "da": "Gyldenhovedet Manakin",
+  "checked": "2026-10-25"
+ },
+ "Chloris chloris": {
+  "inat": 145360,
+  "da": "Grønirisk",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/61258110/medium.jpg",
+  "credit": "(c) Martin Kunz, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Chloroceryle amazona": {
+  "inat": 2679,
+  "da": "Amazonstødfisker",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/7976/medium.jpg",
+  "credit": "(c) Lip Kee Yap, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Chloroceryle americana": {
+  "inat": 2669,
+  "da": "grøn stødfisker",
+  "checked": "2026-10-25"
+ },
+ "Chroicocephalus ridibundus": {
+  "inat": 144510,
+  "da": "Hættemåge",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/372060792/medium.jpg",
+  "credit": "(c) Alexis Lours, some rights reserved (CC BY), uploaded by Alexis Lours",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Clavulina perplexa": {
+  "inat": 1524050,
+  "da": "",
+  "checked": "2026-10-25"
+ },
+ "Coccothraustes coccothraustes": {
+  "inat": 9801,
+  "da": "Kernebider",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/187021691/medium.jpg",
+  "credit": "(c) egorbirder, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Coloeus monedula": {
+  "inat": 336399,
+  "da": "Allike",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/66946657/medium.jpeg",
+  "credit": "(c) Gergely Nigg, some rights reserved (CC BY), uploaded by Gergely Nigg",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Columba livia": {
+  "inat": 3017,
+  "da": "Klippedue",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/466776975/medium.jpg",
+  "credit": "(c) Birds of Gilgit-Baltistan, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Columba palumbus": {
+  "inat": 3048,
+  "da": "Ringdue",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/108521205/medium.jpg",
+  "credit": "(c) hedera.baltica, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Coragyps atratus": {
+  "inat": 4765,
+  "da": "Ravnegrib",
+  "checked": "2026-10-25"
+ },
+ "Corvus corax": {
+  "inat": 8010,
+  "da": "Ravn",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/119994014/medium.jpg",
+  "credit": "(c) xulescu_g, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Corvus corone": {
+  "inat": 204496,
+  "da": "Sortkrage",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/751760823/medium.jpg",
+  "credit": "(c) cello caruso-turiello, some rights reserved (CC BY), uploaded by cello caruso-turiello",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Corvus frugilegus": {
+  "inat": 8029,
+  "da": "Råge",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/62108561/medium.jpg",
+  "credit": "(c) hedera.baltica, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Cuculus canorus": {
+  "inat": 1907,
+  "da": "Gøg",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/241715354/medium.jpeg",
+  "credit": "no rights reserved, uploaded by Юрий Носков",
+  "license": "cc0",
+  "checked": "2026-10-25"
+ },
+ "Curruca communis": {
+  "inat": 1289470,
+  "da": "Tornsanger",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/20013536/medium.jpg",
+  "credit": "(c) Nigel Voaden, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Cyanistes caeruleus": {
+  "inat": 144849,
+  "da": "Blåmejse",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/405357242/medium.jpg",
+  "credit": "(c) Bengt Nyman, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Cygnus cygnus": {
+  "inat": 6916,
+  "da": "Sangsvane",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/13096818/medium.jpg",
+  "credit": "(c) Austin 0201, some rights reserved (CC BY), uploaded by Austin 0201",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Dendrocopos major": {
+  "inat": 17871,
+  "da": "Stor flagspætte",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/11783387/medium.jpg",
+  "credit": "(c) Paolo Zucca, some rights reserved (CC BY), uploaded by Paolo Zucca",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Emberiza citrinella": {
+  "inat": 9195,
+  "da": "Gulspurv",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/500177041/medium.jpg",
+  "credit": "(c) Diego González Dopico, some rights reserved (CC BY), uploaded by Diego González Dopico",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Erithacus rubecula": {
+  "inat": 13094,
+  "da": "Rødhals",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/591732718/medium.jpg",
+  "credit": "(c) Arjan Haverkamp, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Falco tinnunculus": {
+  "inat": 472766,
+  "da": "Tårnfalk",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/115746261/medium.jpg",
+  "credit": "(c) Frank Vassen, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Fringilla coelebs": {
+  "inat": 10070,
+  "da": "Bogfinke",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/112941859/medium.jpg",
+  "credit": "(c) William Stephens, some rights reserved (CC BY), uploaded by William Stephens",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Fulica atra": {
+  "inat": 482,
+  "da": "Blishøne",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/50152632/medium.jpg",
+  "credit": "(c) Roger Culos, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Haematopus ostralegus": {
+  "inat": 4843,
+  "da": "Strandskade",
+  "checked": "2026-10-25"
+ },
+ "Haliaeetus albicilla": {
+  "inat": 5309,
+  "da": "Havørn",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/57394041/medium.jpg",
+  "credit": "(c) Алина Урусова, some rights reserved (CC BY), uploaded by Алина Урусова",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Hirundo rustica": {
+  "inat": 11901,
+  "da": "Landsvale",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/635249690/medium.jpg",
+  "credit": "(c) Donald Davesne, some rights reserved (CC BY), uploaded by Donald Davesne",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Hydroprogne caspia": {
+  "inat": 144537,
+  "da": "Rovterne",
+  "checked": "2026-10-25"
+ },
+ "Hylophylax naevius": {
+  "inat": 72934,
+  "da": "",
+  "checked": "2026-10-25"
+ },
+ "Ibycter americanus": {
+  "inat": 4729,
+  "da": "Rødstrubet Caracara",
+  "checked": "2026-10-25"
+ },
+ "Jacana jacana": {
+  "inat": 4580,
+  "da": "Jacana",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/224354834/medium.jpg",
+  "credit": "(c) Anthony Batista, some rights reserved (CC BY), uploaded by Anthony Batista",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Lagopus lagopus": {
+  "inat": 931,
+  "da": "Dalrype",
+  "checked": "2026-10-25"
+ },
+ "Larus canus": {
+  "inat": 4356,
+  "da": "Stormmåge",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/11219296/medium.jpg",
+  "credit": "(c) Bengt Nyman, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Larus marinus": {
+  "inat": 4368,
+  "da": "Svartbag",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/118677944/medium.jpg",
+  "credit": "(c) egorbirder, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Lipaugus vociferans": {
+  "inat": 8755,
+  "da": "Larmpiha",
+  "checked": "2026-10-25"
+ },
+ "Luscinia luscinia": {
+  "inat": 13075,
+  "da": "Nattergal",
+  "checked": "2026-10-25"
+ },
+ "Mareca penelope": {
+  "inat": 558441,
+  "da": "Pibeand",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/111780119/medium.jpeg",
+  "credit": "(c) Christoph Moning, some rights reserved (CC BY), uploaded by Christoph Moning",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Melanoleuca polioleuca": {
+  "inat": 351523,
+  "da": "Almindelig munkehat",
+  "checked": "2026-10-25"
+ },
+ "Milvus milvus": {
+  "inat": 5267,
+  "da": "Rød glente",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/385450468/medium.jpg",
+  "credit": "(c) Dr. Sven Gippner, some rights reserved (CC BY), uploaded by Dr. Sven Gippner",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Monasa nigrifrons": {
+  "inat": 1559,
+  "da": "Sortpandet Trappist",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/17510/medium.jpg",
+  "credit": "(c) Wagner Machado Carlos Lemes, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Motacilla alba": {
+  "inat": 13695,
+  "da": "Hvid vipstjert",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/2653533/medium.jpg",
+  "credit": "(c) Kim, Hyun-tae, some rights reserved (CC BY), uploaded by Kim, Hyun-tae",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Motacilla flava": {
+  "inat": 204545,
+  "da": "Gul vipstjert",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/25138728/medium.jpeg",
+  "credit": "(c) Karim Haddad, some rights reserved (CC BY), uploaded by Karim Haddad",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Myiarchus ferox": {
+  "inat": 16006,
+  "da": "Korttoppet Skovtyran",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/107922968/medium.jpg",
+  "credit": "(c) Christoph Moning, some rights reserved (CC BY), uploaded by Christoph Moning",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Nannopterum brasilianum": {
+  "inat": 1289601,
+  "da": "Olivenskarv",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/13246373/medium.jpg",
+  "credit": "(c) Vladimir Rebellón Palmezano, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Oenanthe oenanthe": {
+  "inat": 12822,
+  "da": "Stenpikker",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/188138096/medium.jpg",
+  "credit": "(c) Paul Lewis, some rights reserved (CC BY), uploaded by Paul Lewis",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Ophiocordyceps humbertii": {
+  "inat": 1638807,
+  "da": "",
+  "checked": "2026-10-25"
+ },
+ "Orthopsittaca manilatus": {
+  "inat": 367563,
+  "da": "Rødbuget Dværgara",
+  "checked": "2026-10-25"
+ },
+ "Parus major": {
+  "inat": 203153,
+  "da": "Musvit",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/452217076/medium.jpg",
+  "credit": "(c) hedera.baltica, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Passer domesticus": {
+  "inat": 13858,
+  "da": "Gråspurv",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/136543105/medium.jpeg",
+  "credit": "(c) Esteban Poveda, some rights reserved (CC BY), uploaded by Esteban Poveda",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Patagioenas plumbea": {
+  "inat": 3122,
+  "da": "Blygrå Due",
+  "checked": "2026-10-25"
+ },
+ "Perissocephalus tricolor": {
+  "inat": 8933,
+  "da": "Kapucinerfugl",
+  "checked": "2026-10-25"
+ },
+ "Pernis apivorus": {
+  "inat": 5325,
+  "da": "Hvepsevåge",
+  "checked": "2026-10-25"
+ },
+ "Phaetusa simplex": {
+  "inat": 4569,
+  "da": "Tyknæbbet Terne",
+  "checked": "2026-10-25"
+ },
+ "Phalacrocorax carbo": {
+  "inat": 4270,
+  "da": "Skarv",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/132916240/medium.jpg",
+  "credit": "(c) Frank Vassen, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Phasianus colchicus": {
+  "inat": 981,
+  "da": "Fasan",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/127255695/medium.jpeg",
+  "credit": "(c) John Krampl, some rights reserved (CC BY), uploaded by John Krampl",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Phoenicurus phoenicurus": {
+  "inat": 12992,
+  "da": "Rødstjert",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/125816384/medium.jpg",
+  "credit": "(c) Сергей Неклюдов, some rights reserved (CC BY), uploaded by Сергей Неклюдов",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Phylloscopus collybita": {
+  "inat": 117016,
+  "da": "Gransanger",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/120443384/medium.jpg",
+  "credit": "(c) hedera.baltica, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Pica pica": {
+  "inat": 891696,
+  "da": "Husskade",
+  "checked": "2026-10-25"
+ },
+ "Pionus menstruus": {
+  "inat": 19096,
+  "da": "blåhovedet pionus",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/12401526/medium.jpeg",
+  "credit": "(c) Luis G Restrepo, some rights reserved (CC BY), uploaded by Luis G Restrepo",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Pitangus sulphuratus": {
+  "inat": 16956,
+  "da": "kiskadie",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/1766279/medium.jpg",
+  "credit": "(c) Dario Sanches, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Podiceps cristatus": {
+  "inat": 4208,
+  "da": "Toppet lappedykker",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/556162413/medium.jpg",
+  "credit": "(c) caroline legg, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Poecile palustris": {
+  "inat": 144809,
+  "da": "Sumpmejse",
+  "checked": "2026-10-25"
+ },
+ "Psarocolius decumanus": {
+  "inat": 10126,
+  "da": "Håret Oropendola",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/93426331/medium.jpg",
+  "credit": "(c) Charles J Sharp\n, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Psittacara leucophthalmus": {
+  "inat": 367573,
+  "da": "Pavua-aratinga",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/32490589/medium.jpg",
+  "credit": "(c) RAP, some rights reserved (CC BY), uploaded by RAP",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Pteroglossus aracari": {
+  "inat": 18575,
+  "da": "Sorthalset Arasari",
+  "checked": "2026-10-25"
+ },
+ "Pyrrhula pyrrhula": {
+  "inat": 9462,
+  "da": "Dompap",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/112027404/medium.jpeg",
+  "credit": "(c) Andrew Bazdyrev, some rights reserved (CC BY), uploaded by Andrew Bazdyrev",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Rallus aquaticus": {
+  "inat": 513926,
+  "da": "Vandrikse",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/118677610/medium.jpg",
+  "credit": "(c) egorbirder, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Ramphastos tucanus": {
+  "inat": 18799,
+  "da": "Rødnæbbet Tukan",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/56615689/medium.jpg",
+  "credit": "(c) Gerry van Tonder, some rights reserved (CC BY), uploaded by Gerry van Tonder",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Ramphastos vitellinus": {
+  "inat": 18803,
+  "da": "Gulbrystet Tukan",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/139008/medium.jpg",
+  "credit": "(c) Katja Schulz, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Regulus regulus": {
+  "inat": 793469,
+  "da": "Fuglekonge",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/339460964/medium.jpg",
+  "credit": "(c) Cliff Watkinson, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Riparia riparia": {
+  "inat": 11941,
+  "da": "Digesvale",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/28082067/medium.jpg",
+  "credit": "(c) Вячеслав Юсупов, some rights reserved (CC BY), uploaded by Вячеслав Юсупов",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Sicalis columbiana": {
+  "inat": 9863,
+  "da": "Orangepandet Safranfinke",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/570854/medium.jpg",
+  "credit": "(c) Zemlinki!, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Sitta europaea": {
+  "inat": 14824,
+  "da": "Spætmejse",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/98789726/medium.jpg",
+  "credit": "(c) Frank Vassen, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Somateria mollissima": {
+  "inat": 7024,
+  "da": "Edderfugl",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/101350509/medium.jpeg",
+  "credit": "(c) Christoph Moning, some rights reserved (CC BY), uploaded by Christoph Moning",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Sterna hirundo": {
+  "inat": 4450,
+  "da": "Fjordterne",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/8318331/medium.jpg",
+  "credit": "(c) Bill Keim, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Sterna paradisaea": {
+  "inat": 4449,
+  "da": "Havterne",
+  "checked": "2026-10-25"
+ },
+ "Sturnus vulgaris": {
+  "inat": 14850,
+  "da": "Stær",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/365984069/medium.jpg",
+  "credit": "(c) Shiva Shenoy, some rights reserved (CC BY), uploaded by Shiva Shenoy",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Sylvia atricapilla": {
+  "inat": 15282,
+  "da": "Munk",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/168292216/medium.jpg",
+  "credit": "(c) Juan Emilio, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Thalasseus sandvicensis": {
+  "inat": 144541,
+  "da": "Splitterne",
+  "checked": "2026-10-25"
+ },
+ "Thraupis episcopus": {
+  "inat": 10295,
+  "da": "blågrå tangar",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/129597018/medium.jpeg",
+  "credit": "(c) Esteban Poveda, some rights reserved (CC BY), uploaded by Esteban Poveda",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Thraupis palmarum": {
+  "inat": 10297,
+  "da": "palmetangar",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/347058041/medium.jpg",
+  "credit": "(c) Lip Kee, some rights reserved (CC BY-SA)",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Troglodytes musculus": {
+  "inat": 1578442,
+  "da": "",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/230074325/medium.jpg",
+  "credit": "(c) Nicolás Villaseca Merino, some rights reserved (CC BY-SA), uploaded by Nicolás Villaseca Merino",
+  "license": "cc-by-sa",
+  "checked": "2026-10-25"
+ },
+ "Troglodytes troglodytes": {
+  "inat": 145363,
+  "da": "Gærdesmutte",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/113892317/medium.jpg",
+  "credit": "(c) caroline legg, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Trogon melanurus": {
+  "inat": 20738,
+  "da": "Sorthalet Trogon",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/64056771/medium.jpeg",
+  "credit": "(c) Vincent A. Vos, some rights reserved (CC BY), uploaded by Vincent A. Vos",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Turdus albicollis [phaeopygus Group]": {
+  "checked": "2026-10-25"
+ },
+ "Turdus merula": {
+  "inat": 12716,
+  "da": "Solsort",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/356885346/medium.jpg",
+  "credit": "(c) Luiz Lapa, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Turdus philomelos": {
+  "inat": 12748,
+  "da": "Sangdrossel",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/61267400/medium.jpg",
+  "credit": "(c) Sid Mosdell, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Turdus pilaris": {
+  "inat": 12707,
+  "da": "Sjagger",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/171598598/medium.jpg",
+  "credit": "(c) Михаил Голомысов, some rights reserved (CC BY), uploaded by Михаил Голомысов",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Turdus viscivorus": {
+  "inat": 12735,
+  "da": "Misteldrossel",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/256398718/medium.jpg",
+  "credit": "(c) Frank Sengpiel, some rights reserved (CC BY), uploaded by Frank Sengpiel",
+  "license": "cc-by",
+  "checked": "2026-10-25"
+ },
+ "Vireo chivi": {
+  "inat": 827395,
+  "da": "",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/12277881/medium.jpeg",
+  "credit": "no rights reserved, uploaded by Kahio Tiberio Mazon",
+  "license": "cc0",
+  "checked": "2026-10-25"
+ },
+ "Xenasmatella alnicola": {
+  "checked": "2026-10-25"
+ }
+}
