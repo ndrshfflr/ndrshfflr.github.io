@@ -6,8 +6,7 @@
     },
     "svampeatlas": {
       "enabled": true,
-      "userId": "Shifl",
-      "anyObservation": ""
+      "userId": "Shifl"
     },
     "arter": {
       "enabled": true,
@@ -16,6 +15,10 @@
     "dofbasen": {
       "enabled": false,
       "recordedBy": ""
+    },
+    "ebird": {
+      "enabled": true,
+      "file": ""
     }
   },
   "options": {

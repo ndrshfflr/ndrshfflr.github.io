@@ -9,6 +9,8 @@ Sources (each switched on/off and configured in the CMS under
   * Arter.dk             – via GBIF, which republishes Arter.dk weekly
   * DOFbasen             – via GBIF (DOF's own dataset; GBIF holds back the
                            newest ~60 days)
+  * Merlin / eBird       – from the "Download my data" CSV, cleaned with
+                           fieldlog-import.html and uploaded through the CMS
 
 The page (fieldlog.html) merges this file with the curation in
 content/fieldlog.json (hidden finds, hidden species, cover photos, manual
@@ -21,6 +23,7 @@ Uses only the Python standard library.
 Privacy: no coordinates and no observer details are stored — only species,
 date, a coarse place name, a photo and a link back to the original record.
 """
+import csv
 import datetime
 import json
 import re
@@ -41,7 +44,7 @@ CPH = ZoneInfo("Europe/Copenhagen")
 GBIF_ARTER = "963a6b96-4d22-4428-86e4-afee52cf4a8e"   # Species recordings from Arter.dk
 GBIF_DOF = "95db4db8-f762-11e1-a439-00145eb45e9a"     # DOF/BirdLife Denmark – DOFbasen
 
-SOURCE_LABEL = {"inaturalist": "iNaturalist", "svampeatlas": "Svampeatlas", "arter": "Arter.dk", "dofbasen": "DOFbasen"}
+SOURCE_LABEL = {"inaturalist": "iNaturalist", "svampeatlas": "Svampeatlas", "arter": "Arter.dk", "dofbasen": "DOFbasen", "ebird": "Merlin/eBird"}
 
 
 # ---------------------------------------------------------------- helpers
@@ -159,15 +162,17 @@ def fetch_inaturalist(cfg, opts):
 
 # ---------------------------------------------------------------- Svampeatlas
 def svampeatlas_user(cfg):
+    """A user number, or the name / initials exactly as on Svampeatlas."""
     uid = str(cfg.get("userId") or "").strip()
+    if not uid:
+        return None
     if uid.isdigit():
         return int(uid)
-    m = re.search(r"(\d+)\s*/?\s*$", str(cfg.get("anyObservation") or ""))
-    if m:
-        obs = get_json(f"https://svampe.databasen.org/api/observations/{m.group(1)}")
-        if obs and obs.get("primaryuser_id"):
-            return int(obs["primaryuser_id"])
-    return None
+    for field in ("name", "Initialer"):
+        users = get_json("https://svampe.databasen.org/api/users", {"where": json.dumps({field: uid})})
+        if isinstance(users, list) and len(users) == 1:
+            return int(users[0]["_id"])   # nothing else from the user record is kept
+    raise RuntimeError(f"no single Svampeatlas user called {uid!r}")
 
 
 def fetch_svampeatlas(cfg, opts):
@@ -250,6 +255,49 @@ def fetch_gbif(cfg, dataset, source):
     return items
 
 
+# ---------------------------------------------------------------- eBird / Merlin
+def fetch_ebird(cfg):
+    """Merlin's "This is my bird!" sightings are stored in eBird. eBird has no
+    API for a person's own records, so this reads the CSV from eBird's
+    "Download my data", cleaned first with fieldlog-import.html (which drops
+    coordinates before anything is uploaded)."""
+    rel = str(cfg.get("file") or "").strip().lstrip("/")
+    if not rel:
+        return None
+    path = ROOT / rel
+    if not path.is_file():
+        raise RuntimeError(f"{rel} not found")
+    with path.open(encoding="utf-8-sig", newline="") as fh:
+        rows = list(csv.DictReader(fh))
+    if rows and any(k and k.strip().lower() in ("latitude", "longitude", "location") for k in rows[0]):
+        # The original file was uploaded by mistake: overwrite it with only the
+        # columns used here (the workflow commits the cleaned file).
+        keep = ["Submission ID", "Common Name", "Scientific Name", "Date", "County", "State/Province", "ML Catalog Numbers"]
+        with path.open("w", encoding="utf-8", newline="") as fh:
+            w = csv.DictWriter(fh, fieldnames=keep, extrasaction="ignore")
+            w.writeheader()
+            w.writerows(rows)
+        print(f"! {rel} contained coordinates; replaced it with a cleaned copy", file=sys.stderr)
+    items = []
+    for row in rows:
+        sci = (row.get("Scientific Name") or "").strip()
+        sid = (row.get("Submission ID") or "").strip()
+        date = (row.get("Date") or "").strip()[:10]
+        if not sci or not sid:
+            continue
+        ml = re.findall(r"\d{5,}", row.get("ML Catalog Numbers") or "")
+        items.append({
+            "id": f"ebird:{sid}:{re.sub(r'[^a-z]+', '-', sci.lower()).strip('-')}", "source": "ebird",
+            "url": f"https://ebird.org/checklist/{sid}", "date": date,
+            "name": sci, "rank": "",
+            "common_en": (row.get("Common Name") or "").strip(), "common_da": "",
+            "group": "birds",
+            "photo": f"https://cdn.download.ams.birds.cornell.edu/api/v1/asset/{ml[0]}/640" if ml else "",
+            "place": coarse_place(row.get("County") or row.get("State/Province") or ""),
+        })
+    return items
+
+
 # ---------------------------------------------------------------- main
 def label(i):
     common = i.get("common_da") or i.get("common_en")
@@ -268,6 +316,7 @@ def main():
         "svampeatlas": lambda c: fetch_svampeatlas(c, opts),
         "arter": lambda c: fetch_gbif(c, GBIF_ARTER, "arter"),
         "dofbasen": lambda c: fetch_gbif(c, GBIF_DOF, "dofbasen"),
+        "ebird": fetch_ebird,
     }
     items, status = [], {}
     for key, fetch in fetchers.items():
@@ -290,10 +339,11 @@ def main():
         status[key] = {"state": "ok", "count": len(got)}
         print(f"{key}: {len(got)} observations")
 
-    # The same bird can reach GBIF through both Arter.dk and DOFbasen.
+    # The same bird can be logged in Merlin/eBird and DOFbasen, and reach GBIF
+    # through both Arter.dk and DOFbasen: keep one record per species and day.
     seen, deduped = {}, []
     for i in sorted(items, key=lambda x: (not x["photo"], x["id"])):
-        if i["source"] in ("arter", "dofbasen"):
+        if i["source"] in ("arter", "dofbasen", "ebird"):
             k = (i["name"], i["date"])
             if k in seen and seen[k] != i["source"]:
                 continue
@@ -306,6 +356,9 @@ def main():
     species = {}
     for i in items:
         species.setdefault(i["name"], i.get("common_da") or i.get("common_en") or "")
+    for m in settings.get("manual") or []:   # so photos can be linked to hand-added finds too
+        if m and m.get("name"):
+            species.setdefault(m["name"].strip(), m.get("commonDa") or m.get("common") or "")
     species_list = [{"name": n, "label": n + (f" ({c})" if c else "")} for n, c in sorted(species.items())]
 
     if items == prev_items and status == previous.get("status"):

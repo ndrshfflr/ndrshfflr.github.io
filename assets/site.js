@@ -808,6 +808,23 @@
     applyBlogText(d.blog);
   }
 
+  // A gallery photo can point to a species in the field log and/or a blog post.
+  function photoLinks(item) {
+    if (!item.species && !item.post) return null;
+    var box = el('span', 'cap-links');
+    if (item.species) {
+      var a = el('a', null, UI.photoFieldlog || 'In the field log');
+      a.href = (LANG === 'da' ? 'fieldlog.da.html' : 'fieldlog.html') + '#sp=' + encodeURIComponent(item.species);
+      box.appendChild(a);
+    }
+    if (item.post && /^[A-Za-z0-9._-]+$/.test(item.post)) {
+      var b = el('a', null, UI.photoPost || 'Read the post');
+      b.href = 'post.html?slug=' + encodeURIComponent(item.post);
+      box.appendChild(b);
+    }
+    return box;
+  }
+
   function applyGallery(data) {
     var section = $('photography');
     var strip = $('photography-strip');
@@ -821,7 +838,12 @@
       img.alt = item.caption || '';
       img.loading = 'lazy';
       fig.appendChild(img);
-      if (item.caption) fig.appendChild(el('figcaption', 'cap', item.caption));
+      var links = photoLinks(item);
+      if (item.caption || links) {
+        var cap = el('figcaption', 'cap', item.caption || null);
+        if (links) cap.appendChild(links);
+        fig.appendChild(cap);
+      }
       strip.appendChild(fig);
     });
     section.hidden = items.length === 0; // no empty "coming soon" boxes

@@ -18,7 +18,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The field log — Pieter Shiffler Carpentier</title>
-<meta name="description" content="Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Arter.dk and…">
+<meta name="description" content="Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Merlin,…">
 <link rel="canonical" href="https://ndrshfflr.github.io/fieldlog.html">
 <link rel="alternate" hreflang="en" href="https://ndrshfflr.github.io/fieldlog.html">
 <link rel="alternate" hreflang="da" href="https://ndrshfflr.github.io/fieldlog.da.html">
@@ -30,7 +30,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pieter Shiffler Carpentier">
 <meta property="og:title" content="The field log — Pieter Shiffler Carpentier">
-<meta property="og:description" content="Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Arter.dk and…">
+<meta property="og:description" content="Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Merlin,…">
 <meta property="og:url" content="https://ndrshfflr.github.io/fieldlog.html">
 <meta property="og:locale" content="en_GB">
 <meta property="og:image" content="https://ndrshfflr.github.io/og-image.png">
@@ -38,7 +38,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The field log — Pieter Shiffler Carpentier">
-<meta name="twitter:description" content="Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Arter.dk and…">
+<meta name="twitter:description" content="Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Merlin,…">
 <meta name="twitter:image" content="https://ndrshfflr.github.io/og-image.png">
 
 
@@ -46,7 +46,7 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=7a2e6fc1">
+<link rel="stylesheet" href="styles.css?v=f828ad6e">
 <!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
      token below with your own from the Cloudflare dashboard (see setup guide). -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
@@ -100,7 +100,7 @@
   <div class="wrap">
     <div class="eyebrow"><span class="rune" aria-hidden="true" title="fehu — wealth, what is gathered">ᚠ</span><span id="fl-eyebrow">Seen in the wild</span></div>
     <h1 id="fl-heading">The field log</h1>
-    <p class="lead" id="fl-intro">Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Arter.dk and DOFbasen, plus a few from my own notebooks.</p>
+    <p class="lead" id="fl-intro">Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Merlin, Arter.dk and DOFbasen, plus a few from my own notebooks.</p>
     <dl class="fl-stats" id="fl-stats" hidden>
       <div><dt>Species</dt><dd id="fl-stat-species">0</dd></div>
       <div><dt>Records</dt><dd id="fl-stat-records">0</dd></div>
@@ -144,12 +144,16 @@
       <p class="fl-d-common" id="fl-d-common"></p>
       <p class="fl-d-group" id="fl-d-group"></p>
       <div class="fl-d-notes" id="fl-d-notes"></div>
+      <div id="fl-d-blog" hidden>
+        <h3 class="fl-d-recs-h">From the blog</h3>
+        <ul class="fl-d-posts" id="fl-d-posts"></ul>
+      </div>
       <h3 class="fl-d-recs-h">Records</h3>
       <ul class="fl-d-recs" id="fl-d-recs"></ul>
     </div>
   </div>
 </dialog>
-<script id="fl-text" type="application/json">{"emptyText": "The log is being set up. The first finds will appear here soon.", "eyebrow": "Seen in the wild", "heading": "The field log", "intro": "Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Arter.dk and DOFbasen, plus a few from my own notebooks.", "teaserCta": "Open the log", "teaserEyebrow": "Seen in the wild", "teaserHeading": "Field log", "teaserText": "Every fungus, bird and creature I have found and identified in the wild, numbered in the order I first met it."}</script>
+<script id="fl-text" type="application/json">{"emptyText": "The log is being set up. The first finds will appear here soon.", "eyebrow": "Seen in the wild", "heading": "The field log", "intro": "Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Merlin, Arter.dk and DOFbasen, plus a few from my own notebooks.", "teaserCta": "Open the log", "teaserEyebrow": "Seen in the wild", "teaserHeading": "Field log", "teaserText": "Every fungus, bird and creature I have found and identified in the wild, numbered in the order I first met it."}</script>
 
 </main>
 
@@ -179,9 +183,9 @@
   <p class="egg-fallback" id="egg-fallback" hidden>This needs WebGL, which your browser doesn&#39;t seem to support. The network is still out there.</p>
 </div>
 
-<script id="ui-strings" type="application/json">{"allPosts": "All posts", "area": "Service area", "askAvailability": "Ask about availability", "back": "Back to the main page", "book": "Book a spot", "buy": "Buy", "careGuide": "Care guide", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "duration": "Duration", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "faqMore": "Something else on your mind?", "faqMoreLink": "Ask me directly.", "filterTags": "Filter posts by topic", "flAll": "All", "flFilter": "Show one group", "flFirst": "First found", "flGroups": {"arachnids": "Spiders \u0026 kin", "birds": "Birds", "fish": "Fish", "fungi": "Fungi", "herps": "Amphibians \u0026 reptiles", "insects": "Insects", "mammals": "Mammals", "molluscs": "Molluscs", "other": "Other", "plants": "Plants"}, "flLast": "Last seen", "flNew": "New", "flNoMatch": "Nothing in the log matches that.", "flNotebook": "My notebook", "flOf": "of", "flOpenRecord": "Open the record", "flRecords": "Records", "flSearch": "Search the log", "flSortAz": "A\u2013Z", "flSortLabel": "Sort", "flSortMost": "Most records", "flSortNewest": "Newest first", "flSortNumber": "In the order found", "flSpecies": "Species", "flSynced": "Last synced", "flThisYear": "New this year", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Buying a culture", "Insects \u0026 terrariums", "Research or collaboration", "Something else"], "format": "Format", "inStock": "Available", "inhabitants": "Lives here", "loading": "Loading\u2026", "menu": "Menu", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "orderCulture": "Order this culture", "origin": "Origin", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "pathsLabel": "Where to start", "phone": "Phone", "readMore": "Read more", "skip": "Skip to content", "soldOut": "Not available right now", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
+<script id="ui-strings" type="application/json">{"allPosts": "All posts", "area": "Service area", "askAvailability": "Ask about availability", "back": "Back to the main page", "book": "Book a spot", "buy": "Buy", "careGuide": "Care guide", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "duration": "Duration", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "faqMore": "Something else on your mind?", "faqMoreLink": "Ask me directly.", "filterTags": "Filter posts by topic", "flAll": "All", "flFilter": "Show one group", "flFirst": "First found", "flFromBlog": "From the blog", "flGroups": {"arachnids": "Spiders \u0026 kin", "birds": "Birds", "fish": "Fish", "fungi": "Fungi", "herps": "Amphibians \u0026 reptiles", "insects": "Insects", "mammals": "Mammals", "molluscs": "Molluscs", "other": "Other", "plants": "Plants"}, "flLast": "Last seen", "flNew": "New", "flNoMatch": "Nothing in the log matches that.", "flNotebook": "My notebook", "flOf": "of", "flOpenRecord": "Open the record", "flRecords": "Records", "flSearch": "Search the log", "flSortAz": "A\u2013Z", "flSortLabel": "Sort", "flSortMost": "Most records", "flSortNewest": "Newest first", "flSortNumber": "In the order found", "flSpecies": "Species", "flSynced": "Last synced", "flThisYear": "New this year", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Buying a culture", "Insects \u0026 terrariums", "Research or collaboration", "Something else"], "format": "Format", "inStock": "Available", "inhabitants": "Lives here", "loading": "Loading\u2026", "menu": "Menu", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "orderCulture": "Order this culture", "origin": "Origin", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "pathsLabel": "Where to start", "phone": "Phone", "photoFieldlog": "In the field log", "photoPost": "Read the post", "postPhotos": "Photos", "readMore": "Read more", "skip": "Skip to content", "soldOut": "Not available right now", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
 <script src="assets/markdown.js?v=d4f718c0"></script>
-<script src="assets/fieldlog.js?v=12606cc5" defer></script>
-<script src="assets/site.js?v=d57440c3" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
+<script src="assets/fieldlog.js?v=f0c8e38f" defer></script>
+<script src="assets/site.js?v=2da17a04" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
 </body>
 </html>

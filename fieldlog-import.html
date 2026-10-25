@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Clean an eBird file — Field log</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .imp{max-width:640px;margin:0 auto;padding:72px 24px 96px;}
+  .imp h1{font-size:clamp(2rem,5vw,2.8rem);margin-bottom:18px;}
+  .imp ol{margin:18px 0 28px 22px;color:var(--text-soft);}
+  .imp li{margin-bottom:8px;}
+  .imp p{color:var(--text-soft);margin-bottom:14px;}
+  .imp .drop{display:block;border:1px dashed var(--border);padding:36px 24px;text-align:center;cursor:pointer;background:var(--bg-2);}
+  .imp .drop:hover,.imp .drop.over{border-color:var(--accent-2);}
+  .imp input[type=file]{display:block;margin:12px auto 0;}
+  .imp .result{margin-top:28px;padding:20px 22px;border-left:2px solid var(--accent-2);background:var(--bg-2);}
+  .imp .result.error{border-color:#c0504d;}
+  .imp .result strong{color:var(--text);}
+  .imp .btn{margin-top:16px;}
+  .imp .da{margin-top:44px;padding-top:24px;border-top:1px solid var(--border);font-size:.92rem;}
+</style>
+</head>
+<body class="subpage">
+<main class="imp">
+  <div class="eyebrow"><span class="rune" aria-hidden="true">ᚠ</span>Field log · Merlin / eBird</div>
+  <h1>Clean your eBird file</h1>
+  <p>Merlin Bird ID saves your birds in eBird. eBird's “Download my data” file holds the exact coordinates of every sighting, and the files on this website are public. This page keeps only what the field log needs and drops the rest.</p>
+  <ol>
+    <li>On <a href="https://ebird.org/downloadMyData" target="_blank" rel="noopener">ebird.org → My eBird → Download my data</a>, request your data. It arrives by email as a .zip — unzip it.</li>
+    <li>Choose the <code>MyEBirdData.csv</code> file below. It is read here in your browser and never sent anywhere.</li>
+    <li>Save the cleaned file, then upload it in the CMS under <em>Field log → Merlin Bird ID → Cleaned eBird file</em> and publish.</li>
+  </ol>
+  <label class="drop" id="drop">Drop MyEBirdData.csv here, or choose it:
+    <input type="file" id="file" accept=".csv,text/csv">
+  </label>
+  <div class="result" id="result" hidden></div>
+  <p class="da"><strong>Dansk:</strong> Merlin gemmer dine fugle i eBird. Hent dine data på ebird.org (My eBird → Download my data), vælg filen <code>MyEBirdData.csv</code> her, og gem den rensede fil. Siden fjerner koordinater og alt andet end art, dato, kommune, tjekliste-id og foto-numre. Upload derefter den rensede fil i CMS'et under Field log.</p>
+</main>
+<script>
+(function () {
+  'use strict';
+  // Only these columns are kept. Coordinates, location names, comments etc. are dropped.
+  var KEEP = ['Submission ID', 'Common Name', 'Scientific Name', 'Date', 'County', 'State/Province', 'ML Catalog Numbers'];
+  // eBird has renamed columns over the years; match loosely.
+  var ALIASES = [['submissionid', 'checklistid', 'samplingeventidentifier'], ['commonname'], ['scientificname'],
+    ['date', 'observationdate'], ['county'], ['stateprovince', 'state'], ['mlcatalognumbers', 'mlcatalognumber', 'mediaids']];
+  function key(h) { return String(h).toLowerCase().replace(/[^a-z]/g, ''); }
+  var result = document.getElementById('result');
+
+  function parseCSV(text) {
+    var rows = [], row = [], field = '', q = false;
+    for (var i = 0; i < text.length; i++) {
+      var c = text[i];
+      if (q) {
+        if (c === '"') { if (text[i + 1] === '"') { field += '"'; i++; } else q = false; }
+        else field += c;
+      } else if (c === '"') q = true;
+      else if (c === ',') { row.push(field); field = ''; }
+      else if (c === '\n' || c === '\r') {
+        if (c === '\r' && text[i + 1] === '\n') i++;
+        row.push(field); field = '';
+        if (row.length > 1 || row[0] !== '') rows.push(row);
+        row = [];
+      } else field += c;
+    }
+    if (field !== '' || row.length) { row.push(field); rows.push(row); }
+    return rows;
+  }
+  function cell(v) { v = String(v == null ? '' : v); return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+  function show(html, isError) { result.innerHTML = html; result.className = 'result' + (isError ? ' error' : ''); result.hidden = false; }
+
+  function handle(file) {
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      var rows = parseCSV(String(reader.result).replace(/^﻿/, ''));
+      var head = rows.shift() || [];
+      var keys = head.map(key);
+      var idx = ALIASES.map(function (names) {
+        for (var a = 0; a < names.length; a++) { var j = keys.indexOf(names[a]); if (j >= 0) return j; }
+        return -1;
+      });
+      if (idx[0] < 0 || idx[2] < 0 || idx[3] < 0) {
+        show('This doesn’t look like eBird’s <code>MyEBirdData.csv</code> — the columns “Submission ID”, “Scientific Name” and “Date” are missing.', true);
+        return;
+      }
+      var out = [KEEP.join(',')], species = {}, n = 0;
+      rows.forEach(function (r) {
+        if (!r[idx[2]]) return;
+        out.push(idx.map(function (j) { return cell(j < 0 ? '' : r[j]); }).join(','));
+        species[r[idx[2]]] = 1; n++;
+      });
+      var blob = new Blob([out.join('\n') + '\n'], { type: 'text/csv' });
+      var url = URL.createObjectURL(blob);
+      show('<strong>' + n + ' sightings of ' + Object.keys(species).length + ' species</strong> kept; coordinates and other details removed.<br>' +
+        '<a class="btn btn-primary" href="' + url + '" download="ebird-clean.csv">Save ebird-clean.csv</a>');
+    };
+    reader.onerror = function () { show('The file could not be read.', true); };
+    reader.readAsText(file);
+  }
+  document.getElementById('file').addEventListener('change', function (e) { handle(e.target.files[0]); });
+  var drop = document.getElementById('drop');
+  drop.addEventListener('dragover', function (e) { e.preventDefault(); drop.classList.add('over'); });
+  drop.addEventListener('dragleave', function () { drop.classList.remove('over'); });
+  drop.addEventListener('drop', function (e) { e.preventDefault(); drop.classList.remove('over'); handle(e.dataTransfer.files[0]); });
+})();
+</script>
+</body>
+</html>
