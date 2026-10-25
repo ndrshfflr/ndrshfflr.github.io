@@ -38,14 +38,14 @@ jobs:
       - name: Commit if anything changed
         id: commit
         run: |
-          if git diff --quiet -- content/observations.json content/imports && ! git ls-files --others --exclude-standard -- content/observations.json | grep -q .; then
+          if git diff --quiet -- content/observations.json content/imports content/taxa.json && ! git ls-files --others --exclude-standard -- content/observations.json content/taxa.json | grep -q .; then
             echo "Nothing new."
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "field-log-sync"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/observations.json
+          git add content/observations.json content/taxa.json
           git add content/imports 2>/dev/null || true
           git commit -m "Field log: sync observations"
           git pull --rebase origin main

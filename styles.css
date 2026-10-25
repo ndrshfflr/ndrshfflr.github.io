@@ -822,6 +822,13 @@
   .fl-foot{display:flex;justify-content:space-between;gap:8px;margin-top:auto;padding-top:10px;font-size:.78rem;color:var(--text-soft);}
   .fl-name + .fl-foot,.fl-common + .fl-foot{margin-top:10px;border-top:1px solid var(--border);}
   .fl-count{color:var(--accent-2);font-weight:600;}
+  .fl-ref-tag{position:absolute;right:0;bottom:0;padding:3px 8px;font-size:.68rem;font-weight:600;letter-spacing:.02em;
+    color:#ece5d6;background:rgba(10,16,14,.72);}
+  .fl-card.is-ref .fl-photo img{filter:saturate(.75);opacity:.88;}
+  .fl-d-photos figure.is-ref{position:relative;}
+  .fl-d-photos figcaption.fl-ref-credit{display:block;position:absolute;left:0;right:0;bottom:0;padding:22px 14px 10px;font-size:.74rem;
+    color:#e8e2d4;background:linear-gradient(to top,rgba(0,0,0,.72),transparent);}
+  .fl-ref-credit a{color:#f0d2a8;text-decoration:underline;}
   .fl-sync{margin-top:40px;font-size:.8rem;color:var(--text-soft);text-align:center;}
   body.fl-open{overflow:hidden;}
   .fl-dialog{

@@ -40,6 +40,7 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parent.parent
 SETTINGS = ROOT / "content" / "fieldlog.json"
 OUT = ROOT / "content" / "observations.json"
+TAXA = ROOT / "content" / "taxa.json"   # cache of reference photos / Danish names
 UA = "ndrshfflr.github.io field-log sync (+https://ndrshfflr.github.io/fieldlog.html)"
 CPH = ZoneInfo("Europe/Copenhagen")
 
@@ -312,6 +313,83 @@ def ebird_rows(rows):
 
 
 # ---------------------------------------------------------------- main
+# ---------------------------------------------------------------- reference photos
+# Species without a photo of your own (e.g. Merlin saves) get a reference photo
+# from iNaturalist, plus a Danish name where one is missing. Only openly
+# licensed photos are used, always shown with their credit, and only until a
+# photo of your own exists. Results are cached in content/taxa.json.
+OPEN_LICENSES = ("cc0", "cc-by", "cc-by-sa")
+LOOKUPS_PER_RUN = 150      # the rest are done on the following nights
+RECHECK_DAYS = 30          # look again for species that had no usable photo
+
+
+def usable_photo(p):
+    if not p or (p.get("license_code") or "").lower() not in OPEN_LICENSES:
+        return None
+    url = p.get("medium_url") or (p.get("url") or "").replace("/square.", "/medium.")
+    if not url:
+        return None
+    return {"photo": url, "credit": p.get("attribution") or "", "license": p["license_code"].lower()}
+
+
+def lookup_taxon(name):
+    data = get_json("https://api.inaturalist.org/v1/taxa", {"q": name, "is_active": "true", "per_page": 10, "locale": "da"})
+    hit = next((t for t in data.get("results") or [] if (t.get("name") or "").lower() == name.lower()), None)
+    if not hit:
+        return {}
+    out = {"inat": hit["id"], "da": hit.get("preferred_common_name") or ""}
+    if out["da"].lower() == (hit.get("english_common_name") or "").lower():
+        out["da"] = ""          # no Danish name; iNaturalist fell back to English
+    pic = usable_photo(hit.get("default_photo"))
+    if not pic:                 # the default photo isn't openly licensed: try the others
+        time.sleep(1.1)
+        full = (get_json(f"https://api.inaturalist.org/v1/taxa/{hit['id']}").get("results") or [{}])[0]
+        for tp in full.get("taxon_photos") or []:
+            pic = usable_photo(tp.get("photo"))
+            if pic:
+                break
+    if pic:
+        out.update(pic)
+    return out
+
+
+def reference_taxa(items):
+    cache = json.loads(TAXA.read_text(encoding="utf-8")) if TAXA.exists() else {}
+    by = {}
+    for i in items:
+        by.setdefault(i["name"], []).append(i)
+    today = datetime.date.today()
+    todo = []
+    for name, recs in by.items():
+        if " sp." in name or "/" in name or " x " in name or len(name.split()) < 2:
+            continue
+        need = not any(r["photo"] for r in recs) or not any(r["common_da"] for r in recs)
+        if not need:
+            continue
+        c = cache.get(name)
+        if c and (c.get("photo") or (today - datetime.date.fromisoformat(c.get("checked", "2000-01-01"))).days < RECHECK_DAYS):
+            continue
+        todo.append(name)
+    for name in todo[:LOOKUPS_PER_RUN]:
+        try:
+            found = lookup_taxon(name)
+        except Exception as e:
+            print(f"! reference lookup {name}: {e}", file=sys.stderr)
+            break               # probably rate-limited; try again tomorrow
+        cache[name] = dict(found, checked=today.isoformat())
+        time.sleep(1.1)
+    if todo:
+        print(f"reference lookups: {min(len(todo), LOOKUPS_PER_RUN)} of {len(todo)} pending")
+    cache = {k: cache[k] for k in sorted(cache)}
+    TAXA.write_text(json.dumps(cache, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    ref = {}
+    for name in by:
+        c = cache.get(name) or {}
+        if c.get("photo") or c.get("da"):
+            ref[name] = {k: c[k] for k in ("da", "photo", "credit", "license", "inat") if c.get(k)}
+    return ref
+
+
 def label(i):
     common = i.get("common_da") or i.get("common_en")
     return f"{i['date']} · {i['name']}{' (' + common + ')' if common else ''} · {SOURCE_LABEL.get(i['source'], i['source'])}"
@@ -374,7 +452,9 @@ def main():
             species.setdefault(m["name"].strip(), m.get("commonDa") or m.get("common") or "")
     species_list = [{"name": n, "label": n + (f" ({c})" if c else "")} for n, c in sorted(species.items())]
 
-    if items == prev_items and status == previous.get("status"):
+    ref = reference_taxa(items)
+
+    if items == prev_items and status == previous.get("status") and ref == previous.get("reference"):
         print("no changes")
         return
     out = {
@@ -382,6 +462,7 @@ def main():
         "updated": datetime.datetime.now(CPH).isoformat(timespec="minutes"),
         "status": status,
         "species": species_list,
+        "reference": ref,
         "items": items,
     }
     OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")

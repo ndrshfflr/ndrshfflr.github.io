@@ -80,6 +80,8 @@
     });
     var sources = cfg.sources || {};
     var opts = cfg.options || {};
+    var refs = obs.reference || {};
+    var useRefPhotos = opts.referencePhotos !== false;
     var hidden = {}; arr(cfg.hide).forEach(function (id) { hidden[id] = 1; });
     var hiddenSp = {}; arr(cfg.hideSpecies).forEach(function (n) { hiddenSp[norm(n)] = 1; });
     var covers = {}; arr(cfg.covers).forEach(function (id) { covers[id] = 1; });
@@ -124,6 +126,12 @@
       var chosen = withPhoto.filter(function (r) { return covers[r.id] || r.manualCover; })[0];
       sp.gallery = galleryBy[k] || [];
       sp.cover = (chosen && chosen.photo) || (sp.gallery[0] && sp.gallery[0].image) || (withPhoto[withPhoto.length - 1] || {}).photo || '';
+      // No photo or Danish name of your own: fall back to the reference from
+      // iNaturalist (openly licensed, credited, and only until you have your own).
+      var ref = refs[sp.name] || {};
+      if (!sp.da && ref.da && ref.da.toLowerCase() !== (sp.en || '').toLowerCase()) sp.da = ref.da;
+      sp.ref = null;
+      if (!sp.cover && useRefPhotos && ref.photo) { sp.cover = ref.photo; sp.ref = ref; }
       sp.common = LANG === 'da' ? (sp.da || sp.en) : sp.en;
       sp.note = notes[k] || '';
       sp.isSpecies = isSpecies(sp.name);
@@ -199,12 +207,17 @@
   }
 
   function card(sp) {
-    var li = el('li', 'fl-card' + (sp.cover ? '' : ' no-photo'));
+    var li = el('li', 'fl-card' + (sp.cover ? '' : ' no-photo') + (sp.ref ? ' is-ref' : ''));
     var b = el('button', 'fl-card-btn');
     b.type = 'button';
     b.setAttribute('data-key', sp.key);
     var ph = el('span', 'fl-photo');
     if (sp.cover) ph.appendChild(img(sp.cover, '', 360));
+    if (sp.ref) {
+      var tag = el('span', 'fl-ref-tag', UI.flRefShort || 'Ref. photo');
+      tag.title = (UI.flRefPhoto || 'Reference photo') + ': ' + (sp.ref.credit || '') + ' · iNaturalist';
+      ph.appendChild(tag);
+    }
     else ph.appendChild(el('span', 'fl-photo-mark', sp.name.charAt(0)));
     b.appendChild(ph);
     var no = el('span', 'fl-no', 'Nº ' + pad(sp.no));
@@ -283,6 +296,19 @@
       f.appendChild(img(p.photo, p.caption || (i === 0 ? sp.name : ''), i === 0 ? 900 : 300));
       photos.appendChild(f);
     });
+    if (!ordered.length && sp.ref) {
+      var rf = el('figure', 'is-main is-ref');
+      rf.appendChild(img(sp.ref.photo, sp.name, 900));
+      var cap = el('figcaption', 'fl-ref-credit');
+      cap.appendChild(document.createTextNode((UI.flRefPhoto || 'Reference photo') + ' · ' + (sp.ref.credit || '') + ' · '));
+      var src = el('a', null, 'iNaturalist');
+      src.href = 'https://www.inaturalist.org/taxa/' + (sp.ref.inat || encodeURIComponent(sp.name));
+      src.target = '_blank'; src.rel = 'noopener';
+      cap.appendChild(src);
+      rf.appendChild(cap);
+      photos.appendChild(rf);
+      ordered = [sp.ref];
+    }
     photos.hidden = ordered.length === 0;
 
     // Blog posts that photos of this species are linked to.
