@@ -1,11 +1,27 @@
 {
   "sources": {
-    "inaturalist": { "enabled": true, "user": "" },
-    "svampeatlas": { "enabled": true, "userId": "", "anyObservation": "" },
-    "arter": { "enabled": true, "recordedBy": "" },
-    "dofbasen": { "enabled": true, "recordedBy": "" }
+    "inaturalist": {
+      "enabled": false,
+      "user": ""
+    },
+    "svampeatlas": {
+      "enabled": true,
+      "userId": "Shifl",
+      "anyObservation": ""
+    },
+    "arter": {
+      "enabled": true,
+      "recordedBy": "shfflr"
+    },
+    "dofbasen": {
+      "enabled": false,
+      "recordedBy": ""
+    }
   },
-  "options": { "researchGradeOnly": false, "showPlaces": true },
+  "options": {
+    "researchGradeOnly": false,
+    "showPlaces": true
+  },
   "hide": [],
   "hideSpecies": [],
   "covers": [],
