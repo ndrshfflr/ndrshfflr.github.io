@@ -49,7 +49,7 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=8b46d767">
+<link rel="stylesheet" href="styles.css?v=7a2e6fc1">
 <!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
      token below with your own from the Cloudflare dashboard (see setup guide). -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
@@ -76,7 +76,7 @@
         <a href="#projects" id="nav-label-projects">Projects</a>
         <a href="#mycology" id="nav-label-mycology">Mycology</a>
         <span id="nav-dynamic" class="nav-dynamic"></span>
-        <a href="blog.html" id="nav-label-blog" hidden>Blog</a>
+        <a href="blog.html" id="nav-label-blog">Blog</a>
         <a href="#contact" id="nav-label-contact">Contact</a>
       </div>
       <a class="lang-switch" href="da.html" hreflang="da" lang="da" data-lang-switch>DA</a>
@@ -376,6 +376,33 @@
   </div>
 </section>
 
+<section id="fieldlog-teaser" class="teaser-band log-teaser" data-rune="ᚠ">
+  <div class="wrap">
+    <a class="portal-door terra-door log-door" href="fieldlog.html" id="log-door">
+      <span class="portal-arch log-arch" aria-hidden="true">
+        <svg class="portal-hyphae" viewBox="0 0 200 260" preserveAspectRatio="xMidYMax slice">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M100 236C78 226 50 224 26 230V122C50 116 78 118 100 128C122 118 150 116 174 122V230C150 224 122 226 100 236Z"/>
+            <path d="M100 128V236"/>
+            <path d="M38 210c16-3 32-2 48 3M38 196c16-3 32-2 48 3M114 213c16-5 32-6 48-3M114 199c16-5 32-6 48-3"/>
+            <path d="M46 172c0-14 10-22 22-22s22 8 22 22c-6-3-14-4-22-4s-16 1-22 4Z"/><path d="M64 168v14M72 168v14"/>
+            <path d="M118 168c8-2 14-8 22-8 6 0 10 4 14 2l8-4-6 8c-2 8-10 14-22 14-6 0-12-4-16-12Z"/><path d="M146 164h.5"/>
+            <path d="M120 150l8-4M136 146l2-8M152 148l8-6"/>
+          </g>
+          <g fill="currentColor"><circle cx="58" cy="160" r="1.8"/><circle cx="76" cy="158" r="1.6"/><circle cx="68" cy="154" r="1.4"/></g>
+        </svg>
+        <span class="portal-rune">ᚠ</span>
+      </span>
+      <span class="portal-copy">
+        <span class="portal-eyebrow" id="log-door-eyebrow">Seen in the wild</span>
+        <span class="portal-heading" id="log-door-heading">Field log</span>
+        <span class="portal-text" id="log-door-text">Every fungus, bird and creature I have found and identified in the wild, numbered in the order I first met it.</span>
+        <span class="portal-cta"><span id="log-door-cta">Open the log</span> <span aria-hidden="true">&rarr;</span></span>
+      </span>
+    </a>
+  </div>
+</section>
+
 <section id="photography" data-rune="ᛞ">
   <div class="wrap">
     <div class="split-head">
@@ -392,7 +419,7 @@
   </div>
 </section>
 
-<section id="blog-latest" data-rune="ᚨ" hidden>
+<section id="blog-latest" data-rune="ᚨ">
   <div class="wrap">
     <div class="split-head">
       <div>
@@ -402,7 +429,18 @@
       <p><a class="tl-link" href="blog.html" id="blog-all-link">All posts &rarr;</a></p>
     </div>
     <div class="post-list post-list-latest" id="blog-latest-list">
-      
+      <article class="post-card" data-tags="bangin">
+  <a class="post-link" href="post.html?slug=2026-10-24-testing-this-stuff">
+    <span class="post-cover"><span class="post-cover-rune" aria-hidden="true">ᚨ</span></span>
+    <span class="post-text">
+      <span class="post-meta"><time datetime="2026-10-25">25 October 2026</time></span>
+      <span class="post-title">Testing this stuff</span>
+      <span class="post-summary">Bonhour hello monsieur</span>
+      <span class="post-tags"><span>bangin</span></span>
+      <span class="post-more">Read more <span aria-hidden="true">&rarr;</span></span>
+    </span>
+  </a>
+</article>
     </div>
   </div>
 </section>
@@ -500,9 +538,9 @@
   <p class="egg-fallback" id="egg-fallback" hidden>This needs WebGL, which your browser doesn&#39;t seem to support. The network is still out there.</p>
 </div>
 
-<script id="ui-strings" type="application/json">{"allPosts": "All posts", "area": "Service area", "askAvailability": "Ask about availability", "back": "Back to the main page", "book": "Book a spot", "buy": "Buy", "careGuide": "Care guide", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "duration": "Duration", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "faqMore": "Something else on your mind?", "faqMoreLink": "Ask me directly.", "filterTags": "Filter posts by topic", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Buying a culture", "Insects \u0026 terrariums", "Research or collaboration", "Something else"], "format": "Format", "inStock": "Available", "inhabitants": "Lives here", "loading": "Loading\u2026", "menu": "Menu", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "orderCulture": "Order this culture", "origin": "Origin", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "pathsLabel": "Where to start", "phone": "Phone", "readMore": "Read more", "skip": "Skip to content", "soldOut": "Not available right now", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
+<script id="ui-strings" type="application/json">{"allPosts": "All posts", "area": "Service area", "askAvailability": "Ask about availability", "back": "Back to the main page", "book": "Book a spot", "buy": "Buy", "careGuide": "Care guide", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "duration": "Duration", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "faqMore": "Something else on your mind?", "faqMoreLink": "Ask me directly.", "filterTags": "Filter posts by topic", "flAll": "All", "flFilter": "Show one group", "flFirst": "First found", "flGroups": {"arachnids": "Spiders \u0026 kin", "birds": "Birds", "fish": "Fish", "fungi": "Fungi", "herps": "Amphibians \u0026 reptiles", "insects": "Insects", "mammals": "Mammals", "molluscs": "Molluscs", "other": "Other", "plants": "Plants"}, "flLast": "Last seen", "flNew": "New", "flNoMatch": "Nothing in the log matches that.", "flNotebook": "My notebook", "flOf": "of", "flOpenRecord": "Open the record", "flRecords": "Records", "flSearch": "Search the log", "flSortAz": "A\u2013Z", "flSortLabel": "Sort", "flSortMost": "Most records", "flSortNewest": "Newest first", "flSortNumber": "In the order found", "flSpecies": "Species", "flSynced": "Last synced", "flThisYear": "New this year", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Buying a culture", "Insects \u0026 terrariums", "Research or collaboration", "Something else"], "format": "Format", "inStock": "Available", "inhabitants": "Lives here", "loading": "Loading\u2026", "menu": "Menu", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "orderCulture": "Order this culture", "origin": "Origin", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "pathsLabel": "Where to start", "phone": "Phone", "readMore": "Read more", "skip": "Skip to content", "soldOut": "Not available right now", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
 <script src="assets/markdown.js?v=d4f718c0"></script>
 
-<script src="assets/site.js?v=81a746e9" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
+<script src="assets/site.js?v=d57440c3" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
 </body>
 </html>

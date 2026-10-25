@@ -358,5 +358,15 @@
     "intro": "Fund fra skoven, det der gror på arbejdsbordet, livet i terrarierne, og det jeg læser og arbejder med.",
     "latestHeading": "Seneste feltnoter",
     "emptyText": "De første indlæg er på vej."
+  },
+  "fieldlog": {
+    "teaserEyebrow": "Set i naturen",
+    "teaserHeading": "Fundbogen",
+    "teaserText": "Hver svamp, fugl og hvert dyr jeg har fundet og bestemt i naturen, nummereret i den rækkefølge jeg mødte dem.",
+    "teaserCta": "Åbn fundbogen",
+    "eyebrow": "Set i naturen",
+    "heading": "Fundbogen",
+    "intro": "Alle de arter jeg har fundet og bestemt i naturen, nummereret efter hvornår jeg mødte dem første gang. Fundene kommer fra Svampeatlas, iNaturalist, Arter.dk og DOFbasen, og et par stykker fra mine egne notesbøger.",
+    "emptyText": "Fundbogen er ved at blive sat op. De første fund dukker op her snart."
   }
 }

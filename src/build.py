@@ -56,6 +56,13 @@ UI = {
         "buy": "Buy", "orderCulture": "Order this culture",
         "readMore": "Read more", "allPosts": "All posts", "filterTags": "Filter posts by topic",
         "inhabitants": "Lives here", "careGuide": "Care guide", "askAvailability": "Ask about availability",
+        "flSpecies": "Species", "flRecords": "Records", "flThisYear": "New this year", "flFilter": "Show one group",
+        "flAll": "All", "flSearch": "Search the log", "flSortLabel": "Sort", "flSortNumber": "In the order found",
+        "flSortNewest": "Newest first", "flSortAz": "A–Z", "flSortMost": "Most records", "flNoMatch": "Nothing in the log matches that.",
+        "flFirst": "First found", "flLast": "Last seen", "flNew": "New", "flNotebook": "My notebook", "flOpenRecord": "Open the record",
+        "flSynced": "Last synced", "flOf": "of",
+        "flGroups": {"fungi": "Fungi", "birds": "Birds", "insects": "Insects", "arachnids": "Spiders & kin", "mammals": "Mammals",
+                     "herps": "Amphibians & reptiles", "fish": "Fish", "molluscs": "Molluscs", "plants": "Plants", "other": "Other"},
     },
     "da": {
         "skip": "Gå til indhold",
@@ -92,6 +99,13 @@ UI = {
         "buy": "Køb", "orderCulture": "Bestil denne kultur",
         "readMore": "Læs mere", "allPosts": "Alle indlæg", "filterTags": "Filtrér indlæg efter emne",
         "inhabitants": "Beboere", "careGuide": "Plejeguide", "askAvailability": "Spørg om de kan fås",
+        "flSpecies": "Arter", "flRecords": "Fund", "flThisYear": "Nye i år", "flFilter": "Vis én gruppe",
+        "flAll": "Alle", "flSearch": "Søg i fundbogen", "flSortLabel": "Sortér", "flSortNumber": "I fundrækkefølge",
+        "flSortNewest": "Nyeste først", "flSortAz": "A–Å", "flSortMost": "Flest fund", "flNoMatch": "Intet i fundbogen matcher det.",
+        "flFirst": "Første fund", "flLast": "Senest set", "flNew": "Ny", "flNotebook": "Min notesbog", "flOpenRecord": "Åbn fundet",
+        "flSynced": "Senest synkroniseret", "flOf": "af",
+        "flGroups": {"fungi": "Svampe", "birds": "Fugle", "insects": "Insekter", "arachnids": "Edderkopper m.fl.", "mammals": "Pattedyr",
+                     "herps": "Padder & krybdyr", "fish": "Fisk", "molluscs": "Bløddyr", "plants": "Planter", "other": "Andet"},
     },
 }
 
@@ -129,6 +143,7 @@ RUNES = {
         "blog": ("ᚨ", "ansuz — speech, the word"),
         "tanks": ("ᛇ", "eihwaz — yew, endurance"),
         "species": ("ᚢ", "ūruz — wild beast"),
+        "fieldlog": ("ᚠ", "fehu — wealth, what is gathered"),
     },
     "da": {
         "about": ("ᛗ", "mannaz — menneske"),
@@ -148,6 +163,7 @@ RUNES = {
         "blog": ("ᚨ", "ansuz — tale, ordet"),
         "tanks": ("ᛇ", "eihwaz — taks, udholdenhed"),
         "species": ("ᚢ", "ūruz — vildt dyr"),
+        "fieldlog": ("ᚠ", "fehu — rigdom, det samlede"),
     },
 }
 
@@ -163,6 +179,8 @@ PAGES = {
     "terrarium.da.html": ("terrarium.html.j2", "da"),
     "blog.html": ("blog.html.j2", "en"),
     "blog.da.html": ("blog.html.j2", "da"),
+    "fieldlog.html": ("fieldlog.html.j2", "en"),
+    "fieldlog.da.html": ("fieldlog.html.j2", "da"),
     "post.html": ("post.html.j2", "en"),
     "page.html": ("page.html.j2", "en"),
 }
@@ -171,6 +189,7 @@ EXPLORATION = {"en": "exploration.html", "da": "exploration.da.html"}
 FUNGI = {"en": "fungi.html", "da": "fungi.da.html"}
 TERRARIUM = {"en": "terrarium.html", "da": "terrarium.da.html"}
 BLOG = {"en": "blog.html", "da": "blog.da.html"}
+FIELDLOG = {"en": "fieldlog.html", "da": "fieldlog.da.html"}
 
 
 def load(name):
@@ -255,7 +274,8 @@ def main():
     gallery = [g for g in load("gallery.json").get("images", []) if g.get("image")]
     year = datetime.date.today().year
     versions = {"css": asset_version("styles.css"), "js": asset_version("assets/site.js"),
-                "mycelium": asset_version("assets/mycelium.js"), "md": asset_version("assets/markdown.js")}
+                "mycelium": asset_version("assets/mycelium.js"), "md": asset_version("assets/markdown.js"),
+                "fieldlog": asset_version("assets/fieldlog.js")}
     posts = load_posts()
 
     for out, (tpl, lang) in PAGES.items():
@@ -266,6 +286,7 @@ def main():
         is_fungi = tpl == "fungi.html.j2"
         is_terra = tpl == "terrarium.html.j2"
         is_blog = tpl == "blog.html.j2"
+        is_log = tpl == "fieldlog.html.j2"
         if is_home:
             canonical = SITE_URL + ("" if lang == "en" else "da.html")
             alternates = [
@@ -320,6 +341,18 @@ def main():
             meta["title"] = d["blog"]["heading"] + " — Pieter Shiffler Carpentier"
             meta["description"] = d["blog"]["intro"][:155]
             meta["ogDescription"] = meta["description"]
+        elif is_log:
+            canonical = SITE_URL + FIELDLOG[lang]
+            alternates = [
+                {"hreflang": "en", "href": SITE_URL + FIELDLOG["en"]},
+                {"hreflang": "da", "href": SITE_URL + FIELDLOG["da"]},
+            ]
+            other_href = FIELDLOG[other]
+            meta = dict(META[lang])
+            fl = d["fieldlog"]
+            meta["title"] = fl["heading"] + " — Pieter Shiffler Carpentier"
+            meta["description"] = fl["intro"][:155].rsplit(" ", 1)[0] + ("…" if len(fl["intro"]) > 155 else "")
+            meta["ogDescription"] = meta["description"]
         else:  # page.html / post.html — generic CMS pages, English
             canonical = ""
             alternates = []
@@ -330,15 +363,15 @@ def main():
         html = env.get_template(tpl).render(
             d=d, lang=lang, ui=UI[lang], meta=dict(meta, canonical=canonical, alternates=alternates),
             site_url=SITE_URL, home_href=("" if is_home else HOME[lang]), other_lang_href=other_href,
-            exploration_href=EXPLORATION[lang], fungi_href=FUNGI[lang], terrarium_href=TERRARIUM[lang], blog_href=BLOG[lang], posts=posts, gallery=gallery, year=year,
-            jsonld=jsonld(d, lang), body_class=("home" if is_home else "subpage portal-page" if (is_fungi or is_terra) else "subpage"), v=versions,
+            exploration_href=EXPLORATION[lang], fungi_href=FUNGI[lang], terrarium_href=TERRARIUM[lang], blog_href=BLOG[lang], fieldlog_href=FIELDLOG[lang], posts=posts, gallery=gallery, year=year,
+            jsonld=jsonld(d, lang), body_class=("home" if is_home else "subpage portal-page" if (is_fungi or is_terra or is_log) else "subpage"), v=versions,
             runes={k: {"glyph": g, "title": t} for k, (g, t) in RUNES[lang].items()},
         )
         (ROOT / out).write_text(html, encoding="utf-8")
         print("wrote", out)
 
     # sitemap
-    urls = ["", "da.html", "fungi.html", "fungi.da.html", "terrarium.html", "terrarium.da.html", "blog.html", "blog.da.html", "exploration.html", "exploration.da.html", "page.html?slug=cv"]
+    urls = ["", "da.html", "fungi.html", "fungi.da.html", "terrarium.html", "terrarium.da.html", "blog.html", "blog.da.html", "fieldlog.html", "fieldlog.da.html", "exploration.html", "exploration.da.html", "page.html?slug=cv"]
     today = datetime.date.today().isoformat()
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']

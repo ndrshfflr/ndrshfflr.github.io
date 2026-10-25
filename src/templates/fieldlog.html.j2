@@ -1,0 +1,61 @@
+{% extends "base.html.j2" %}
+
+{% block main %}
+{% set t = d.fieldlog %}
+<header class="portal-header log-header" id="top">
+  <div class="wrap">
+    <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.fieldlog.title }}">{{ runes.fieldlog.glyph }}</span><span id="fl-eyebrow">{{ t.eyebrow }}</span></div>
+    <h1 id="fl-heading">{{ t.heading }}</h1>
+    <p class="lead" id="fl-intro">{{ t.intro }}</p>
+    <dl class="fl-stats" id="fl-stats" hidden>
+      <div><dt>{{ ui.flSpecies }}</dt><dd id="fl-stat-species">0</dd></div>
+      <div><dt>{{ ui.flRecords }}</dt><dd id="fl-stat-records">0</dd></div>
+      <div><dt id="fl-stat-year-label">{{ ui.flThisYear }}</dt><dd id="fl-stat-year">0</dd></div>
+    </dl>
+  </div>
+</header>
+
+<section id="log" class="log-section" data-rune="{{ runes.fieldlog.glyph }}">
+  <div class="wrap">
+    <div class="fl-goals" id="fl-goals" hidden></div>
+    <div class="fl-tools" id="fl-tools" hidden>
+      <div class="tag-filter fl-chips" id="fl-chips" role="group" aria-label="{{ ui.flFilter }}"></div>
+      <div class="fl-controls">
+        <label class="fl-search"><span class="visually-hidden">{{ ui.flSearch }}</span>
+          <input type="search" id="fl-search" placeholder="{{ ui.flSearch }}" autocomplete="off"></label>
+        <label class="fl-sort"><span class="visually-hidden">{{ ui.flSortLabel }}</span>
+          <select id="fl-sort">
+            <option value="number">{{ ui.flSortNumber }}</option>
+            <option value="newest">{{ ui.flSortNewest }}</option>
+            <option value="az">{{ ui.flSortAz }}</option>
+            <option value="most">{{ ui.flSortMost }}</option>
+          </select></label>
+      </div>
+    </div>
+    <p class="fl-empty" id="fl-empty">{{ ui.loading }}</p>
+    <p class="fl-empty" id="fl-nomatch" hidden>{{ ui.flNoMatch }}</p>
+    <ol class="fl-grid" id="fl-grid"></ol>
+    <p class="fl-sync" id="fl-sync" hidden></p>
+    <noscript><p class="fl-empty">{{ t.emptyText }}</p></noscript>
+  </div>
+</section>
+
+<dialog class="fl-dialog" id="fl-dialog" aria-labelledby="fl-d-name">
+  <div class="fl-d-inner">
+    <button class="fl-d-close" id="fl-d-close" type="button" aria-label="{{ ui.close }}">&times;</button>
+    <div class="fl-d-photos" id="fl-d-photos"></div>
+    <div class="fl-d-body">
+      <p class="fl-d-no" id="fl-d-no"></p>
+      <h2 class="fl-d-name" id="fl-d-name"></h2>
+      <p class="fl-d-common" id="fl-d-common"></p>
+      <p class="fl-d-group" id="fl-d-group"></p>
+      <div class="fl-d-notes" id="fl-d-notes"></div>
+      <h3 class="fl-d-recs-h">{{ ui.flRecords }}</h3>
+      <ul class="fl-d-recs" id="fl-d-recs"></ul>
+    </div>
+  </div>
+</dialog>
+<script id="fl-text" type="application/json">{{ t | tojson }}</script>
+{% endblock %}
+
+{% block scripts %}<script src="assets/fieldlog.js?v={{ v.fieldlog }}" defer></script>{% endblock %}

@@ -375,5 +375,15 @@
     "intro": "Finds from the forest, things growing on the bench, life in the terrariums, and what I'm reading and working on.",
     "latestHeading": "Latest field notes",
     "emptyText": "The first posts are on their way."
+  },
+  "fieldlog": {
+    "teaserEyebrow": "Seen in the wild",
+    "teaserHeading": "Field log",
+    "teaserText": "Every fungus, bird and creature I have found and identified in the wild, numbered in the order I first met it.",
+    "teaserCta": "Open the log",
+    "eyebrow": "Seen in the wild",
+    "heading": "The field log",
+    "intro": "Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Arter.dk and DOFbasen, plus a few from my own notebooks.",
+    "emptyText": "The log is being set up. The first finds will appear here soon."
   }
 }
