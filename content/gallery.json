@@ -1,5 +1,5 @@
 {
-  "look": "sky",
+  "look": "darkroom",
   "intro": {
     "en": "",
     "da": ""
@@ -8,7 +8,9 @@
     {
       "image": "/images/gallery/2026-10-29-photo-0882c5.jpg",
       "caption": "",
-      "weight": 4
+      "weight": 4,
+      "focus": "bottom",
+      "species": ""
     },
     {
       "image": "/images/gallery/2026-10-29-photo-c60657.jpg",
