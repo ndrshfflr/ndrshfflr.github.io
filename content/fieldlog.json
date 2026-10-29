@@ -23,11 +23,22 @@
   },
   "options": {
     "researchGradeOnly": false,
-    "showPlaces": true
+    "showPlaces": true,
+    "referencePhotos": true
   },
   "hide": [],
   "hideSpecies": [],
   "covers": [],
   "goals": [],
-  "manual": []
+  "manual": [
+    {
+      "name": "Alces alces",
+      "common": "Elk",
+      "commonDa": "Elg",
+      "group": "mammals",
+      "date": "2026-10-29",
+      "place": "Sweden",
+      "photo": "https://ndrshfflr.github.io/images/gallery/2026-10-29-photo-c60657.jpg"
+    }
+  ]
 }
