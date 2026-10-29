@@ -1,0 +1,20 @@
+{
+  "name": "Pieter Shiffler Carpentier",
+  "title": "Biolog · Mykolog · Animist",
+  "portals": [
+    { "key": "microbiology", "name": "Indendørs mikrobiologi", "rune": "ᚴ", "link": "classic.da.html#microbiology" },
+    { "key": "fungiculture", "name": "Svampedyrkning", "rune": "ᛅ", "link": "fungi.da.html" },
+    { "key": "foraging", "name": "Sankning", "rune": "ᚠ", "link": "fungi.da.html#tours" },
+    { "key": "conservation", "name": "Naturbevarelse", "rune": "ᛦ", "link": "" },
+    { "key": "smallworlds", "name": "Små verdener", "rune": "ᚦ", "link": "terrarium.da.html" },
+    { "key": "photography", "name": "Fotografi", "rune": "ᛋ", "link": "classic.da.html#photography" }
+  ],
+  "menu": [
+    { "name": "CV", "rune": "ᛘ", "link": "page.html?slug=cv" },
+    { "name": "Feltlog", "rune": "ᚱ", "link": "fieldlog.da.html" },
+    { "name": "Labdagbog", "rune": "ᚬ", "link": "blog.da.html" },
+    { "name": "Bioinformatik", "rune": "ᚼ", "link": "sporexplore.html" }
+  ],
+  "inscription": "ᛏᚢ᛬ᚦᛅ᛬ᛘᛅᛁᛏ᛬ᚦᛅᛏ᛬ᛁᛋ᛬ᛋᛏᛁᛚ᛬ᚦᛅ᛬ᛁᚢᚾᛁᚠᛁᚱᛋ᛬ᛋᛅᚱᛁᛏᛅᛋ",
+  "inscriptionMeaning": "To the mind that is still, the universe surrenders."
+}

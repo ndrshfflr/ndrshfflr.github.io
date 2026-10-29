@@ -1,11 +1,12 @@
   /* ==========================================================================
      Pieter Shiffler Carpentier — site styles
-     Type:  Fraunces (headings) · Inter (text) · Skurð (runes + carved initials)
+     Type:  Cinzel (headings) · EB Garamond (text) · Skurð (runes + carved initials)
      Colour: "fjord night" (dark) and "birch bark" (light)
      All fonts are self-hosted in assets/fonts/.
      ========================================================================== */
-  @font-face{font-family:'Fraunces';src:url('assets/fonts/fraunces.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap;}
-  @font-face{font-family:'Inter';src:url('assets/fonts/inter.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap;}
+  @font-face{font-family:'Cinzel';src:url('assets/fonts/cinzel.woff2') format('woff2');font-weight:400 600;font-style:normal;font-display:swap;}
+  @font-face{font-family:'EB Garamond';src:url('assets/fonts/ebgaramond.woff2') format('woff2');font-weight:400 600;font-style:normal;font-display:swap;}
+  @font-face{font-family:'EB Garamond';src:url('assets/fonts/ebgaramond-italic.woff2') format('woff2');font-weight:400 600;font-style:italic;font-display:swap;}
   @font-face{font-family:'Skurd';src:url('assets/fonts/skurd.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
 
   :root,
@@ -26,7 +27,7 @@
     --deep:#0c1814;        /* forest floor, used for the closing contact band */
     --brand:#3e5a44;       /* pine */
     --brand-strong:#2f4735;
-    --serif:'Fraunces',Georgia,serif;
+    --serif:'Cinzel',Georgia,serif;
     --max:1160px;
   }
   [data-theme="light"]{
@@ -46,11 +47,11 @@
     --deep:#1f3327;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;scroll-padding-top:72px;}
+  html{scroll-behavior:smooth;scroll-padding-top:72px;font-size:112.5%;}  /* EB Garamond runs small — lift every rem size by an eighth */
   body{
     background:var(--bg);color:var(--text);
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-    font-size:1rem;line-height:1.62;
+    font-family:'EB Garamond',Georgia,serif;
+    font-size:1rem;line-height:1.6;
     -webkit-font-smoothing:antialiased;
     transition:background-color .35s ease, color .35s ease;
   }
@@ -106,7 +107,7 @@
   .brand{font-family:var(--serif);font-size:1.08rem;font-weight:600;white-space:nowrap;font-variation-settings:'opsz' 36;}
   .brand-name{text-decoration:none;display:inline-block;}
   .mark{display:inline-flex;align-items:center;gap:9px;}
-  .mark svg{width:20px;height:14px;flex-shrink:0;display:block;}
+  .mark svg{width:24px;height:16px;flex-shrink:0;display:block;}
   .egg-trigger{background:none;border:0;padding:4px;margin:-4px;cursor:pointer;color:inherit;border-radius:50%;transition:transform .3s ease;}
   .egg-trigger:hover{transform:rotate(-12deg) scale(1.15);}
   .nav-right{display:flex;align-items:center;gap:18px;}
@@ -723,7 +724,7 @@
   .motion-btn{
     display:none;margin:0 auto 16px;padding:11px 22px;
     background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.35);
-    color:#fff;border-radius:999px;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:500;
+    color:#fff;border-radius:999px;font-family:'EB Garamond',Georgia,serif;font-size:.82rem;font-weight:500;
     backdrop-filter:blur(6px);cursor:pointer;
   }
   .motion-btn:hover{background:rgba(255,255,255,.16);}

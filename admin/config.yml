@@ -13,8 +13,50 @@ public_folder: "/images/uploads"
 publish_mode: editorial_workflow
 
 collections:
+  - name: "entry"
+    label: "Entry Page (portals)"
+    files:
+      - file: "content/entry.json"
+        label: "Entry Page — English"
+        name: "entry"
+        format: "json"
+        fields: &entryfields
+          - { label: "Name", name: "name", widget: "string", hint: "Shown in runes by default; hovering reveals it." }
+          - { label: "Title under the name", name: "title", widget: "string", hint: "Separate the parts with  ·  (a middle dot)." }
+          - label: "Portals"
+            name: "portals"
+            widget: "list"
+            allow_add: false
+            min: 6
+            max: 6
+            summary: "{{fields.rune}}  {{fields.name}}"
+            hint: "The six worlds around the circle, in order of weight — the first stands at the front."
+            fields:
+              - { label: "Key", name: "key", widget: "hidden" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Rune", name: "rune", widget: "string", hint: "One long-branch Younger Futhark rune: ᚠ ᚢ ᚦ ᚬ ᚱ ᚴ ᚼ ᚾ ᛁ ᛅ ᛋ ᛏ ᛒ ᛘ ᛚ ᛦ" }
+              - { label: "Link", name: "link", widget: "string", required: false, hint: "Where the portal leads, e.g. fungi.html. Leave empty to show \"This world is still being built\"." }
+          - label: "Small menu under the circle"
+            name: "menu"
+            widget: "list"
+            allow_add: false
+            min: 4
+            max: 4
+            summary: "{{fields.rune}}  {{fields.name}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Rune", name: "rune", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
+          - { label: "Inscription behind the circle (runes)", name: "inscription", widget: "string", hint: "Carved in long-branch Younger Futhark; separate words with ᛬. Latin letters are turned into runes automatically." }
+          - { label: "What the inscription says", name: "inscriptionMeaning", widget: "string", required: false }
+      - file: "content/entry.da.json"
+        label: "Entry Page — Danish"
+        name: "entry_da"
+        format: "json"
+        fields: *entryfields
+
   - name: "home"
-    label: "Main Page"
+    label: "Classic Page (classic.html)"
     files:
       - file: "content/home.json"
         label: "Main Page — English"

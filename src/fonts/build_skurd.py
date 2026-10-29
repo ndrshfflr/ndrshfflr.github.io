@@ -4,8 +4,9 @@
 Every letter is drawn from straight strokes only, the way runes were cut into
 wood and stone (curves are hard to carve across the grain). Capitals are full
 height; lowercase letters are rendered as small capitals with the same stroke
-weight. The Elder Futhark runes (U+16A0–U+16F0) are included so runic text
-looks identical on every device.
+weight. The Elder Futhark runes and the long-branch Younger Futhark used by the
+entry page and its rune language are included, so runic text looks identical
+on every device.
 
     pip install fonttools brotli shapely
     python3 src/fonts/build_skurd.py
@@ -132,13 +133,20 @@ G = {
     "ᛜ": [("R", [(180, 540), (360, 350), (180, 160), (0, 350)])],                                              # ᛜ ingwaz
     "ᛞ": [("L", [(0, 0), (0, 700)]), ("L", [(470, 0), (470, 700)]), ("L", [(0, 700), (470, 0)]), ("L", [(470, 700), (0, 0)])],  # ᛞ dagaz
     "ᛟ": [("L", [(0, 0), (410, 430), (205, 690), (0, 430), (410, 0)])],                                        # ᛟ ōþila
+    # Younger Futhark, long-branch (shapes checked against Noto Sans Runic)
+    "ᚬ": [("L", [(180, 0), (180, 700)]), ("L", [(30, 560), (330, 340)]), ("L", [(30, 400), (330, 180)])],       # ᚬ áss / óss
+    "ᚴ": [("L", [(0, 0), (0, 700)]), ("L", [(0, 320), (330, 700)])],                                           # ᚴ kaun
+    "ᚼ": [("L", [(200, 0), (200, 700)]), ("L", [(40, 170), (360, 530)]), ("L", [(40, 530), (360, 170)])],      # ᚼ hagall
+    "ᛅ": [("L", [(180, 0), (180, 700)]), ("L", [(30, 240), (330, 470)])],                                      # ᛅ ár
+    "ᛦ": [("L", [(230, 0), (230, 700)]), ("L", [(230, 260), (0, -10)]), ("L", [(230, 260), (460, -10)])],      # ᛦ ýr
+    "ᛋ": [("L", [(0, 700), (0, 270), (300, 480), (300, 0)])],                                                  # ᛋ sól (long-branch)
     "᛫": [DOT(60, 350)],                                                                                        # ᛫
     "᛬": [DOT(60, 210), DOT(60, 490)],                                                                          # ᛬
     "᛭": [("L", [(0, M), (320, M)]), ("L", [(160, 190), (160, 510)])],                                         # ᛭
 }
 
 # Runic letters that share a shape with an existing drawing.
-ALIASES = {"ᚡ": "ᚠ", "ᚻ": "ᚺ", "ᚿ": "ᚾ", "ᛋ": "ᛊ", "ᛓ": "ᛒ"}
+ALIASES = {"ᚡ": "ᚠ", "ᚻ": "ᚺ", "ᚿ": "ᚾ", "ᛓ": "ᛒ", "ᛘ": "ᛉ"}
 
 
 def ymap(y, height):

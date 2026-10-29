@@ -42,8 +42,8 @@
 {% block jsonld %}{% endblock %}
 
 <!-- Fonts are self-hosted (no requests to Google — simpler under GDPR) -->
-<link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css?v={{ v.css }}">
 <!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
@@ -57,13 +57,14 @@
   <div class="wrap">
     <div class="brand mark">
       <button class="egg-trigger" type="button" data-egg aria-label="{{ ui.eggTitle }}" title="…">
-        <svg viewBox="0 0 48 32" aria-hidden="true">
-          <path d="M4 20C4 10 14 4 24 4C34 4 44 10 44 20C44 20 34 16 24 16C14 16 4 20 4 20Z" fill="var(--accent-2)"/>
-          <rect x="20" y="16" width="8" height="14" rx="3" fill="var(--text)"/>
-          <ellipse cx="24" cy="30" rx="9" ry="2" fill="var(--text-soft)" opacity=".35"/>
+        <svg class="seeing-eye" viewBox="2 18 96 64" aria-hidden="true">
+          <path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="var(--text)" stroke-width="4.5" stroke-linejoin="round"/>
+          <circle cx="50" cy="50" r="18" fill="none" stroke="var(--text)" stroke-width="2" opacity=".55"/>
+          <circle cx="50" cy="50" r="10" fill="var(--accent-2)"/>
+          <circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/>
         </svg>
       </button>
-      <a href="{{ home_href }}#top" class="brand-name">Pieter Shiffler Carpentier</a>
+      <a href="{{ entry_href }}" class="brand-name">Pieter Shiffler Carpentier</a>
     </div>
     <div class="nav-right">
       <div class="navlinks" id="navlinks">
