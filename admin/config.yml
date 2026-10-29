@@ -635,7 +635,7 @@ collections:
             name: "images"
             widget: "list"
             summary: "{{caption}}"
-            hint: "Drag photos to change their order on the photography page. Photos about 2000 px on the long side and under ~600 KB load fastest."
+            hint: "Drag photos to change their order on the photography page. Photos sent from the iPhone Shortcut appear at the top (see PHOTO-UPLOAD-GUIDE.md). Location data is removed from every photo automatically, and very large ones are shrunk."
             fields:
               - { label: "Photo", name: "image", widget: "image", media_folder: "/images/gallery", public_folder: "/images/gallery" }
               - { label: "Caption (optional)", name: "caption", widget: "string", required: false }
