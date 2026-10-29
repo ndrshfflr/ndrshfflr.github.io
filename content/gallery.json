@@ -7,9 +7,10 @@
   "images": [
     {
       "image": "/images/gallery/2026-10-29-photo-c60657.jpg",
-      "caption": "",
+      "caption": "First sighting of this gentle giant",
       "weight": 2,
-      "focus": "center"
+      "focus": "center",
+      "post": "2026-10-24-testing-this-stuff"
     },
     {
       "image": "/images/gallery/2026-10-29-photo-311b4c.jpg",
