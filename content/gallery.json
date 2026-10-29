@@ -8,7 +8,8 @@
     {
       "image": "/images/gallery/2026-10-29-photo-c60657.jpg",
       "caption": "",
-      "weight": 2
+      "weight": 2,
+      "focus": "bottom"
     },
     {
       "image": "/images/gallery/2026-10-29-photo-311b4c.jpg",
