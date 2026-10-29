@@ -1,0 +1,81 @@
+/* ==========================================================================
+   Upload page (upload.html) — send photos from the phone to the Photo Gallery.
+   Fonts and the winter-night colours come from assets/world.css.
+   ========================================================================== */
+.up{min-height:100vh;min-height:100dvh;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);font-size:17px;line-height:1.45}
+.up-top{display:flex;align-items:center;gap:10px;max-width:760px;width:100%;margin:0 auto;padding:12px 16px 0}
+.up-h1{flex:1;margin:0;font-family:'Cinzel',Georgia,serif;font-weight:500;font-size:22px;letter-spacing:.01em}
+.up-rune{font-family:'Skurd',serif;font-weight:400;color:var(--acc);margin-right:4px}
+.up-main{max-width:760px;width:100%;margin:0 auto;padding:12px 16px 120px}
+.up-panel{margin-top:18px;padding:18px;border:1px solid color-mix(in srgb,var(--ink) 16%,transparent);border-radius:14px;background:color-mix(in srgb,var(--sky1) 70%,#000)}
+.up-panel h2{margin:0 0 6px;font-family:'Cinzel',Georgia,serif;font-weight:500;font-size:20px}
+.up-panel p{margin:0 0 14px;color:var(--ink2)}
+.up-small{font-size:15px;color:var(--ink2)}
+.up-note{color:var(--ink2)}
+.up code{font-size:.9em;color:#f4dcc2}
+
+/* buttons and fields */
+.up-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border:1px solid color-mix(in srgb,var(--ink) 28%,transparent);border-radius:999px;
+  background:transparent;color:var(--ink);font:inherit;font-weight:500;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.up-btn:hover{background:color-mix(in srgb,var(--ink) 8%,transparent)}
+.up-primary{border-color:transparent;background:var(--acc);color:#1a0f07}
+.up-primary:hover{background:color-mix(in srgb,var(--acc) 85%,#fff)}
+.up-btn:disabled{opacity:.5;cursor:default}
+.up-btn:focus-visible,.up-link:focus-visible,.up-input:focus-visible,.up-size input:focus-visible+span,.logo:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.up-link{min-height:44px;padding:0 6px;border:0;background:none;color:var(--ink2);font:inherit;font-size:15px;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.up-label{display:block;font-size:14px;font-weight:600;color:var(--ink2);margin:0 0 6px}
+.up-opt{font-weight:400}
+.up-input{display:block;width:100%;min-height:46px;margin-top:6px;padding:10px 12px;border:1px solid color-mix(in srgb,var(--ink) 22%,transparent);border-radius:10px;
+  background:rgba(0,0,0,.28);color:var(--ink);font:inherit;font-size:17px}
+select.up-input{appearance:none;-webkit-appearance:none;padding-right:34px;
+  background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);
+  background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+.up-details{margin-top:18px}
+.up-details summary{min-height:44px;display:flex;align-items:center;cursor:pointer;color:var(--ink2);text-decoration:underline;text-underline-offset:4px}
+.up-details[open] summary{margin-bottom:6px}
+.up-details .up-btn{margin-top:12px}
+
+/* choosing photos */
+.up-who{margin:14px 0 16px;font-size:15px;color:var(--ink2)}
+.up-pick{width:100%}
+.up-file{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.up-hint{margin:10px 2px 0}
+.up-list{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:14px}
+.up-card{display:grid;grid-template-columns:132px minmax(0,1fr);gap:16px;padding:14px;border:1px solid color-mix(in srgb,var(--ink) 14%,transparent);border-radius:14px;
+  background:color-mix(in srgb,var(--sky1) 70%,#000)}
+.up-card.sent{opacity:.55}
+.up-frame{align-self:start;display:flex;align-items:center;justify-content:center;width:132px;height:132px;border-radius:6px;background:rgba(0,0,0,.35)}
+.up-thumb{display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:3px;box-shadow:0 0 0 1px color-mix(in srgb,var(--line) 25%,transparent);transition:aspect-ratio .25s ease}
+.up-card[data-w="2"] .up-thumb{aspect-ratio:2/1}
+.up-card[data-w="4"] .up-thumb{aspect-ratio:3/2}
+.up-fields{min-width:0;display:flex;flex-direction:column;gap:14px}
+.up-sizes{margin:0;padding:0;border:0}
+.up-size-row{display:flex;flex-wrap:wrap;gap:6px}
+.up-size{position:relative}
+.up-size input{position:absolute;opacity:0;width:1px;height:1px}
+.up-size span{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:54px;min-height:56px;padding:7px 6px 5px;border:1px solid color-mix(in srgb,var(--ink) 20%,transparent);border-radius:10px;
+  font-size:12px;color:var(--ink2);cursor:pointer}
+.up-size svg{display:block;color:color-mix(in srgb,var(--ink) 55%,transparent)}
+.up-size input:checked+span{border-color:var(--acc);color:var(--ink);background:color-mix(in srgb,var(--acc) 14%,transparent)}
+.up-size input:checked+span svg{color:var(--acc)}
+.up-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.up-remove{align-self:flex-start;margin-top:-6px;padding:0}
+
+/* sending */
+.up-send{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;flex-direction:column;align-items:center;gap:6px;
+  padding:12px 16px calc(14px + env(safe-area-inset-bottom));background:linear-gradient(to top,rgba(4,7,11,.96) 60%,rgba(4,7,11,0))}
+.up-send[hidden]{display:none}
+.up-send .up-btn{width:100%;max-width:728px}
+.up-status{margin:0;min-height:1.4em;font-size:15px;color:var(--ink2);text-align:center}
+.up-status a{color:#f4dcc2}
+.up-status.ok{color:#cfe7c0}
+.up-status.err{color:#ffb4a6}
+
+@media (max-width:520px){
+  .up-card{grid-template-columns:1fr}
+  .up-frame{width:100%;height:auto;min-height:120px;padding:10px}
+  .up-thumb{max-height:52vh;width:auto;max-width:100%}
+  .up-card[data-w="1"] .up-thumb,.up-card[data-w="3"] .up-thumb,.up-card[data-w="5"] .up-thumb{width:min(100%,52vh)}
+  .up-card[data-w="2"] .up-thumb,.up-card[data-w="4"] .up-thumb{width:100%}
+  .up-pair{grid-template-columns:1fr}
+}
