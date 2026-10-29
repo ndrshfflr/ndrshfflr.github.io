@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- GENERATED FILE — built by src/build.py from src/templates/upload.html.j2.
+     The upload page: send photos from the phone to the Photo Gallery. It puts
+     them in images/inbox/, where .github/workflows/photo-inbox.yml files them. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' blob: data:; connect-src https://api.github.com 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Add photos — Pieter Shiffler Carpentier</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="assets/icons/upload-180.png">
+<link rel="manifest" href="upload.webmanifest">
+<meta name="theme-color" content="#0b1322">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Add photos">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/world.css?v=853d133c">
+<link rel="stylesheet" href="assets/upload.css?v=a0820331">
+</head>
+<body>
+<div class="world up" id="world">
+  <header class="up-top">
+    <a class="logo" href="photography.html" aria-label="Photography">
+      <svg viewBox="0 0 100 100" width="34" height="34" aria-hidden="true"><path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/><circle cx="50" cy="50" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><circle cx="50" cy="50" r="10" class="eye-pupil"/><circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/></svg>
+    </a>
+    <h1 class="up-h1"><span class="up-rune" aria-hidden="true">ᛋ</span> Add photos</h1>
+    <button class="up-link" id="sign-out" type="button" hidden>Sign out</button>
+  </header>
+
+  <main class="up-main" id="main">
+    <noscript><p class="up-note">This page needs JavaScript.</p></noscript>
+
+    <!-- signing in -->
+    <section class="up-panel" id="signin" hidden aria-labelledby="signin-h">
+      <h2 id="signin-h">Sign in</h2>
+      <p>Photos go straight into your website's repository on GitHub, so the page needs to know it's you.</p>
+      <button class="up-btn up-primary" id="gh-signin" type="button">Sign in with GitHub</button>
+      <p class="up-small" id="signin-msg" role="status"></p>
+      <details class="up-details" id="key-box">
+        <summary>Use a key instead</summary>
+        <p class="up-small">The same key as the iPhone Shortcut (it starts with <code>github_pat_</code>). Needed when this page is opened from the home screen, where GitHub sign-in can't come back to the page. The key is kept on this device only.</p>
+        <label class="up-label" for="key">GitHub key</label>
+        <input class="up-input" id="key" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="github_pat_…">
+        <button class="up-btn" id="key-save" type="button">Use this key</button>
+      </details>
+    </section>
+
+    <!-- choosing and describing photos -->
+    <section id="work" hidden>
+      <p class="up-who" id="who" role="status"></p>
+      <label class="up-btn up-primary up-pick" for="files">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        Choose photos
+      </label>
+      <input class="up-file" id="files" type="file" accept="image/*" multiple>
+      <p class="up-small up-hint" id="pick-hint">Each photo is shrunk to 2000 px and its location is removed on this phone before it's sent.</p>
+
+      <ol class="up-list" id="list" aria-label="Photos to send"></ol>
+
+      <div class="up-send" id="send-bar" hidden>
+        <button class="up-btn up-primary" id="send" type="button">Send</button>
+        <p class="up-status" id="status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <template id="card-tpl">
+    <li class="up-card">
+      <div class="up-frame"><img class="up-thumb" alt=""></div>
+      <div class="up-fields">
+        <label class="up-label">Caption <span class="up-opt">(optional)</span><input class="up-input up-caption" type="text" maxlength="160" enterkeyhint="done"></label>
+        <fieldset class="up-sizes">
+          <legend class="up-label">Size on the page</legend>
+          <div class="up-size-row"></div>
+        </fieldset>
+        <div class="up-pair">
+          <label class="up-label">Keep in frame
+            <select class="up-input up-focus">
+              <option value="center">Middle</option><option value="top">Top</option><option value="bottom">Bottom</option><option value="left">Left</option><option value="right">Right</option>
+            </select>
+          </label>
+          <label class="up-label">Leads to a blog post
+            <select class="up-input up-post"><option value="">No — opens full-screen</option></select>
+          </label>
+        </div>
+        <button class="up-link up-remove" type="button">Remove</button>
+      </div>
+    </li>
+  </template>
+</div>
+
+<script id="upload-data" type="application/json">{"authEndpoint": "auth", "branch": "main", "photography": "photography.html", "posts": [{"date": "2026-10-25", "slug": "2026-10-24-testing-this-stuff", "title": "Testing this stuff"}], "proxy": "https://decap-proxy.shhflr.workers.dev", "repo": "ndrshfflr/ndrshfflr.github.io"}</script>
+<script src="assets/upload.js?v=5580d722"></script>
+</body>
+</html>

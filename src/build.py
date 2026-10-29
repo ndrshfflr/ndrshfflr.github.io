@@ -396,6 +396,20 @@ def render_photography(env, entry, gallery_doc, posts, versions):
         )
 
 
+def render_upload(env, posts, versions):
+    """upload.html: send photos from the phone into images/inbox/ (not linked, not indexed)."""
+    cms = yaml.safe_load((ROOT / "admin" / "config.yml").read_text(encoding="utf-8"))["backend"]
+    data = {
+        "repo": cms["repo"], "branch": cms.get("branch", "main"),
+        "proxy": cms.get("base_url", ""), "authEndpoint": cms.get("auth_endpoint", "auth"),
+        "photography": PHOTOGRAPHY["en"],
+        "posts": [{"slug": p["slug"], "title": p["title"], "date": p["date_iso"]} for p in posts],
+    }
+    html = env.get_template("upload.html.j2").render(data=data, v=versions, photography_href=PHOTOGRAPHY["en"])
+    (ROOT / "upload.html").write_text(html, encoding="utf-8")
+    print("wrote upload.html")
+
+
 def render_entry(env, content, entry, versions):
     """index.html and da.html: the stone circle of portals."""
     count = len(entry["en"]["portals"])
@@ -435,11 +449,13 @@ def main():
                 "fieldlog": asset_version("assets/fieldlog.js"),
                 "worldcss": asset_version("assets/world.css"), "worldjs": asset_version("assets/world.js"),
                 "entrycss": asset_version("assets/entry.css"), "entryjs": asset_version("assets/entry.js"),
-                "photoscss": asset_version("assets/photos.css"), "photosjs": asset_version("assets/photos.js")}
+                "photoscss": asset_version("assets/photos.css"), "photosjs": asset_version("assets/photos.js"),
+                "uploadcss": asset_version("assets/upload.css"), "uploadjs": asset_version("assets/upload.js")}
     posts = load_posts()
     entry = {"en": load("entry.json"), "da": load("entry.da.json")}
     render_entry(env, content, entry, versions)
     render_photography(env, entry, load("gallery.json"), posts, versions)
+    render_upload(env, posts, versions)
 
     for out, (tpl, lang) in PAGES.items():
         d = content[lang]

@@ -35,60 +35,89 @@ If your phone is lost, delete the key on the same page and make a new one.
 
 ## 2. Build the Shortcut (once, about 10 minutes)
 
-Open the **Shortcuts** app, tap **+**, and name the shortcut **Add to website**.
-Add the actions below by typing their names in the search field at the bottom.
+Open the **Shortcuts** app (Danish: **Genveje**), tap **+**, and name the
+shortcut **Add to website**. Add the actions below by typing their names in the
+search field at the bottom.
+
+Each action is given as **English** · *Danish*. Danish names marked ✓ are taken
+from Apple's Danish Shortcuts guide. The others are my best translation; if one
+doesn't turn up, type the **search word** given instead.
+
 Words in *[brackets]* are variables: tap the field and pick them from the
-variable bar above the keyboard.
+variable bar above the keyboard. On a Danish iPhone they have Danish names too.
+Pick the one that comes from the step mentioned, for example the result of
+step 7 for *[Converted Image]*.
 
 **Setting up the input**
-1. Tap the **ⓘ** (Details) button and turn on **Show in Share Sheet**.
-2. In the box at the top, **Receive** should say *Images* (tap it and untick
-   everything else). Set **If there's no input** to **Ask For Photos**, so the
-   shortcut also works when you tap its icon.
+1. Tap the **ⓘ** (Details) button and turn on **Show in Share Sheet** · *Vis i
+   delingsark*.
+2. In the box at the top, **Receive** · *Modtag* should say *Images* · *Billeder*
+   (tap it and untick everything else). Set **If there's no input** · *Hvis der
+   ikke er noget input* to **Ask For** · *Spørg efter* **Photos** · *Fotos*, so
+   the shortcut also works when you tap its icon.
 
 **The key**
-3. **Text** — paste your key (`github_pat_…`).
-4. **Set Variable** — name it `Key`, set to *[Text]*.
+3. **Text** · *Tekst* ✓ — paste your key (`github_pat_…`).
+4. **Set Variable** · *Indstil variabel* ✓ — name it `Key`, set to *[Text]*.
 
 **For each photo**
-5. **Repeat with Each** — item in *[Shortcut Input]*.
-   Put actions 6–17 *inside* the repeat block.
-6. **Resize Image** — resize *[Repeat Item]* to width `2000`, height **Auto**.
-7. **Convert Image** — convert *[Resized Image]* to **JPEG**. Tap **Show More**:
-   set the quality to about 80 % and turn **Preserve Metadata** **off**.
-   (This step removes the photo's location.)
-8. **Ask for Input** — **Text**, prompt: `Caption (optional)`.
-9. **List** — five lines:
+5. **Repeat with Each** · *Gentag med hver* ✓ — item in *[Shortcut Input]*
+   (the shortcut's input, i.e. the photos).
+   Put actions 6–17 *inside* the repeat block, before *End Repeat* · *Slut
+   gentagelse* ✓. Inside it, *[Repeat Item]* · *Gentag emne* ✓ is the current
+   photo and *[Repeat Index]* · *Gentag indeks* ✓ its number.
+6. **Resize Image** · search word **størrelse** — resize *[Repeat Item]* to
+   width `2000`. Leave the height field **empty**: an empty height means
+   *Auto Height*, which keeps the proportions.
+7. **Convert Image** · *Konverter billede* (search **konverter**) — convert
+   *[Resized Image]* to **JPEG**. Tap **Show More** · *Vis mere* ✓: set
+   **Quality** · *Kvalitet* to about 80 %, and turn **Preserve Metadata** ·
+   *Bevar metadata* **off**. This step removes the photo's location.
+8. **Ask for Input** · *Spørg efter input* ✓ — type **Text** · *Tekst*, prompt:
+   `Caption (optional)`.
+9. **List** · *Liste* ✓ — five lines:
    `1 · small`, `2 · wide`, `3 · large`, `4 · larger`, `5 · largest`.
-10. **Choose from List** — choose from *[List]*, prompt: `How big on the website?`
-11. **Base64 Encode** — encode *[Converted Image]*. Tap **Show More**:
-    **Line Breaks: None**.
-12. **Format Date** — *[Current Date]*, **Custom** format `yyyyMMdd-HHmmss`.
-13. **Text** — exactly these three lines:
+10. **Choose from List** · *Vælg på liste* ✓ — choose from *[List]*, prompt:
+    `How big on the website?`
+11. **Base64 Encode** · search word **base64** — encode *[Converted Image]*. Tap
+    **Show More** · *Vis mere*: **Line Breaks** · *Linjeskift*: **None** · *Ingen*.
+12. **Format Date** · search word **dato** — *[Current Date]* · *Aktuel dato* ✓,
+    **Custom** · *Tilpasset* format `yyyyMMdd-HHmmss`.
+13. **Text** · *Tekst* ✓ — exactly these three lines (keep them in English: the
+    website reads the words `caption:` and `weight:`):
     ```
     Photo from iPhone
     caption: [Provided Input]
     weight: [Chosen Item]
     ```
-14. **Get Contents of URL**
+    *[Provided Input]* is the answer from step 8, and *[Chosen Item]* is the
+    choice from step 10.
+14. **Get Contents of URL** · *Hent indhold af URL-adresse* ✓ (search **URL**)
     - URL: `https://api.github.com/repos/ndrshfflr/ndrshfflr.github.io/contents/images/inbox/[Formatted Date]-[Repeat Index].jpg`
-    - Tap **Show More**:
-      - **Method:** `PUT`
-      - **Headers:** add `Authorization` with the value `Bearer [Key]`
-        (the word Bearer, a space, then the variable), and add `Accept` with the
+    - Tap **Show More** · *Vis mere* ✓:
+      - **Method** · *Metode*: `PUT`
+      - **Headers** (the header field; the Danish label may be *Headere* or
+        *Overskrifter*): add `Authorization` with the value `Bearer [Key]` (the
+        word Bearer, a space, then the variable). Then add `Accept` with the
         value `application/vnd.github+json`.
-      - **Request Body:** **JSON**, with two **Text** fields:
+      - **Request Body** · *Indhold af anmodning* ✓: **JSON**, with two
+        **Text** · *Tekst* fields:
         - `message`: *[Text]* (the three lines from step 13)
-        - `content`: *[Base64 Encoded]*
-15. **Get Dictionary Value** — get **Value** for `content` in *[Contents of URL]*.
-16. **If** *[Dictionary Value]* **does not have any value**:
-17. … **Show Result** — *[Contents of URL]*. (If something went wrong, this shows
-    GitHub's answer.) Leave **Otherwise** empty, and let the If block end there.
+        - `content`: *[Base64 Encoded]* (from step 11)
+15. **Get Dictionary Value** · *Hent værdi i ordbog* ✓ — get **Value** · *Værdi*
+    for `content` in *[Contents of URL]* (the result of step 14).
+16. **If** · *Hvis* ✓ *[Dictionary Value]* **does not have any value** (the
+    option meaning "has no value"):
+17. … **Show Result** · search word **resultat** — *[Contents of URL]*. If
+    something went wrong, this shows GitHub's answer. Leave **Otherwise** ·
+    *Ellers* empty, and let the If block end there.
 
 **After the repeat block**
-18. **Show Notification** — `Sent. On the website in a minute or two.`
+18. **Show Notification** · *Vis notifikation* ✓ — `Sent. On the website in a
+    minute or two.`
 
-Optionally, tap **Share → Add to Home Screen** to get an icon.
+Optionally, add it to the home screen to get an icon: in the shortcut's
+**ⓘ** menu, choose **Add to Home Screen** · *Føj til hjemmeskærm*.
 
 ---
 
@@ -128,15 +157,12 @@ If the photo arrived but doesn't appear on the site, open GitHub → **Actions**
 
 ---
 
-## Other ways to add photos (still available)
+## Other ways to add photos
 
 - **/admin → Photo Gallery** works from any browser, including on the phone.
   Photos uploaded there are also cleaned automatically: the location is removed,
   very large photos are shrunk, and HEIC photos are turned into JPEGs.
-- **An upload page on the site** (not built yet). The inbox already accepts a
-  photo together with a small `<same name>.json` file holding `caption`,
-  `weight`, `focus` and `post`. A page that signs in with GitHub could therefore
-  be added later without changing the workflow.
+- **The upload page** (see the next section).
 - **Commit message format**, if you ever send photos another way (for example
   with the GitHub app): add an image to `images/inbox/` with a commit message like
   ```
@@ -148,3 +174,34 @@ If the photo arrived but doesn't appear on the site, open GitHub → **Actions**
   ```
   Only `caption` and `weight` are commonly needed. `post` is a blog post's file
   name, without `.md`.
+
+---
+
+## The upload page: <https://ndrshfflr.github.io/upload.html>
+
+The upload page does the same job as the Shortcut, with more control and nothing
+to build. You can open it in Safari, or save it to the home screen as an app
+called "Add photos".
+
+1. **Sign in** with **Sign in with GitHub**, which uses the same sign-in as
+   /admin. If you're already signed in to /admin in this browser, the page
+   uses that.
+   - **From the home screen:** GitHub sign-in can't return to a home-screen
+     app, so choose **Use a key instead** and paste the same key as the
+     Shortcut. The key is kept on that phone only.
+2. **Choose photos.** Pick one or several from your library or the camera.
+3. **For each photo,** set:
+   - a caption;
+   - its **size**, 1–5. The preview shows how it will be cropped;
+   - **Keep in frame**, which part stays in view when it's cropped;
+   - optionally a **blog post** it leads to.
+4. **Tap Send.** Each photo is shrunk to 2000 px and its location is removed
+   *on the phone*, before anything leaves it. All photos go up together, and
+   the page tells you when the website has filed them, usually within a
+   minute or two.
+
+The page isn't linked from the site, and search engines are asked not to list it.
+Without a sign-in it can't do anything.
+
+To add it to the home screen: open the page in Safari → **Share** · *Del* →
+**Add to Home Screen** · *Føj til hjemmeskærm*.

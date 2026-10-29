@@ -27,6 +27,7 @@ import hashlib
 import json
 import os
 import re
+import shutil
 import subprocess
 import unicodedata
 from pathlib import Path
@@ -142,8 +143,9 @@ def file_inbox():
     photos = [p for p in INBOX.iterdir() if p.suffix.lower() in IMAGE_EXT]
     if not photos:
         return 0
-    # oldest first, so the newest ends up at the very top of the gallery
-    photos.sort(key=lambda p: (git("log", "--diff-filter=A", "-1", "--format=%ct", "--", str(p.relative_to(ROOT))) or "0", p.name))
+    # newest upload first; photos sent together keep the order they were chosen in
+    photos.sort(key=lambda p: (-int(git("log", "--diff-filter=A", "-1", "--format=%ct", "--", str(p.relative_to(ROOT))) or 0), p.name))
+    new = []
     doc = json.loads(GALLERY_JSON.read_text(encoding="utf-8")) if GALLERY_JSON.exists() else {}
     images = doc.setdefault("images", [])
     GALLERY_DIR.mkdir(parents=True, exist_ok=True)
@@ -155,7 +157,11 @@ def file_inbox():
                 icc = img.info.get("icc_profile")
                 h = hashlib.sha1(p.read_bytes()).hexdigest()[:6]
                 dest = GALLERY_DIR / f"{date}-{slug(entry['caption'])}-{h}.jpg"
-                save_clean(img, dest, icc)
+                # the upload page already sends small JPEGs with no metadata: keep them as they are
+                if img.format == "JPEG" and not img.info.get("exif") and max(img.size) <= LONG_SIDE:
+                    shutil.copyfile(p, dest)
+                else:
+                    save_clean(img, dest, icc)
         except Exception as e:  # leave it in the inbox and say why
             say(f"could not file {p.name}: {e}")
             continue
@@ -163,13 +169,14 @@ def file_inbox():
         for k in ("focus", "post", "species"):
             if entry.get(k):
                 item[k] = entry[k]
-        images.insert(0, item)
+        new.append(item)
         for side in (p, p.with_suffix(".json"), p.with_suffix(".txt")):
             if side.exists():
                 side.unlink()
         say(f"filed {p.name} → {dest.name} (weight {entry['weight']}{', “' + entry['caption'] + '”' if entry['caption'] else ''})")
         done += 1
     if done:
+        images[0:0] = new
         GALLERY_JSON.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return done
 
