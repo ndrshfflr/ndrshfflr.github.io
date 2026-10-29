@@ -29,7 +29,14 @@
   "hide": [],
   "hideSpecies": [],
   "covers": [],
-  "goals": [],
+  "goals": [
+    {
+      "group": "fungi",
+      "target": 1000,
+      "label": "Danish fungi",
+      "labelDa": "Danske svampe"
+    }
+  ],
   "manual": [
     {
       "name": "Alces alces",
