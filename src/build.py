@@ -114,32 +114,61 @@ UI = {
     },
 }
 
-# Wording for the entry page (the stone circle of portals, index.html / da.html).
-# Names, portals and the small menu live in content/entry.json + entry.da.json.
-ENTRY_UI = {
+# Wording shared by the stone circle and the worlds behind it (header, seasons,
+# rune language) — see src/templates/world.html.j2 and assets/world.js.
+WORLD_UI = {
     "en": {
         "language": "Language", "runesName": "Runes (long-branch Younger Futhark)",
-        "worlds": "Worlds", "prev": "Turn to the previous world", "next": "Turn to the next world",
-        "choosePortal": "Choose a world", "notesTools": "Notes and tools", "ofN": "{i} of {n}",
         "seasons": {"winter": "Winter", "spring": "Spring", "summer": "Summer", "autumn": "Autumn"},
         "tod": {"night": "night", "dawn": "dawn", "dusk": "dusk", "day": "day"},
         "todaySeason": "Today's season", "today": "today", "todayHint": "(today)",
         "seasonAria": "Season: {s}. Change season", "chooseSeason": "Choose a season",
-        "aa": "Show the text in Latin letters",
-        "comingSoon": "This world is still being built", "back": "Back to the circle",
+        "aa": "Show the text in Latin letters", "back": "Back to the circle",
     },
     "da": {
         "language": "Sprog", "runesName": "Runer (yngre futhark, langkvist)",
-        "worlds": "Verdener", "prev": "Drej til forrige verden", "next": "Drej til næste verden",
-        "choosePortal": "Vælg en verden", "notesTools": "Noter og værktøjer", "ofN": "{i} af {n}",
         "seasons": {"winter": "Vinter", "spring": "Forår", "summer": "Sommer", "autumn": "Efterår"},
         "tod": {"night": "nat", "dawn": "daggry", "dusk": "skumring", "day": "dag"},
         "todaySeason": "Dagens årstid", "today": "i dag", "todayHint": "(i dag)",
         "seasonAria": "Årstid: {s}. Skift årstid", "chooseSeason": "Vælg en årstid",
-        "aa": "Vis teksten med latinske bogstaver",
-        "comingSoon": "Denne verden er stadig under opbygning", "back": "Tilbage til cirklen",
+        "aa": "Vis teksten med latinske bogstaver", "back": "Tilbage til cirklen",
     },
 }
+
+# The entry page (the stone circle of portals, index.html / da.html).
+# Names, portals and the small menu live in content/entry.json + entry.da.json.
+ENTRY_UI = {
+    "en": {
+        "worlds": "Worlds", "prev": "Turn to the previous world", "next": "Turn to the next world",
+        "choosePortal": "Choose a world", "notesTools": "Notes and tools", "ofN": "{i} of {n}",
+        "comingSoon": "This world is still being built",
+    },
+    "da": {
+        "worlds": "Verdener", "prev": "Drej til forrige verden", "next": "Drej til næste verden",
+        "choosePortal": "Vælg en verden", "notesTools": "Noter og værktøjer", "ofN": "{i} af {n}",
+        "comingSoon": "Denne verden er stadig under opbygning",
+    },
+}
+
+# The photography world (photography.html / photography.da.html).
+# Photos, captions, weights and the page look live in content/gallery.json.
+PHOTO_UI = {
+    "en": {
+        "gridLabel": "Photographs", "empty": "No photos yet.", "photoN": "Photo {i}",
+        "readPost": "Read the post", "readPostTitle": "Read the post: {t}", "inFieldlog": "In the field log",
+        "close": "Close", "prevPhoto": "Previous photo", "nextPhoto": "Next photo", "count": "{i} of {n}",
+    },
+    "da": {
+        "gridLabel": "Fotografier", "empty": "Ingen fotos endnu.", "photoN": "Foto {i}",
+        "readPost": "Læs indlægget", "readPostTitle": "Læs indlægget: {t}", "inFieldlog": "I fundbogen",
+        "close": "Luk", "prevPhoto": "Forrige foto", "nextPhoto": "Næste foto", "count": "{i} af {n}",
+    },
+}
+PHOTO_META = {
+    "en": {"description": "Photographs by Pieter Shiffler Carpentier."},
+    "da": {"description": "Fotografier af Pieter Shiffler Carpentier."},
+}
+PHOTO_POS = {"center": "50% 50%", "top": "50% 18%", "bottom": "50% 82%", "left": "22% 50%", "right": "78% 50%"}
 
 ENTRY_META = {
     "en": {
@@ -233,6 +262,7 @@ PAGES = {
 }
 ENTRY = {"en": "index.html", "da": "da.html"}
 HOME = {"en": "classic.html", "da": "classic.da.html"}
+PHOTOGRAPHY = {"en": "photography.html", "da": "photography.da.html"}
 EXPLORATION = {"en": "exploration.html", "da": "exploration.da.html"}
 FUNGI = {"en": "fungi.html", "da": "fungi.da.html"}
 TERRARIUM = {"en": "terrarium.html", "da": "terrarium.da.html"}
@@ -311,6 +341,61 @@ def asset_version(rel):
     return hashlib.sha1((ROOT / rel).read_bytes()).hexdigest()[:8]
 
 
+def world_ui(page_ui):
+    return {lang: dict(WORLD_UI[lang], **page_ui[lang]) for lang in ("en", "da")}
+
+
+def render_world_page(env, tpl, files, lang, **ctx):
+    """One page built on src/templates/world.html.j2 (the circle's sky, header
+    and rune language). files = {"en": "x.html", "da": "x.da.html"}."""
+    html = env.get_template(tpl).render(
+        template_name=tpl, lang=lang, site_url=SITE_URL, entry_href=ENTRY[lang], lang_hrefs=files, **ctx)
+    (ROOT / files[lang]).write_text(html, encoding="utf-8")
+    print("wrote", files[lang])
+
+
+def render_photography(env, entry, gallery_doc, posts, versions):
+    """photography.html / photography.da.html: one mosaic of weighted photos."""
+    titles = {p["slug"]: p["title"] for p in posts}
+    photos = []
+    for p in gallery_doc.get("images", []):
+        if not p.get("image"):
+            continue
+        try:
+            weight = min(5, max(1, round(float(p.get("weight") or 1))))
+        except (TypeError, ValueError):
+            weight = 1
+        post = str(p.get("post") or "")
+        photos.append({  # same keys, same order as normalise() in assets/photos.js
+            "image": str(p["image"]), "caption": str(p.get("caption") or ""), "weight": weight,
+            "pos": PHOTO_POS.get(p.get("focus"), PHOTO_POS["center"]),
+            "post": post if re.match(r"^[A-Za-z0-9._-]+$", post) else "", "species": str(p.get("species") or ""),
+        })
+    look = "darkroom" if gallery_doc.get("look") == "darkroom" else "sky"
+    intro = gallery_doc.get("intro") or {}
+    portal = {lang: next((x for x in entry[lang]["portals"] if x.get("key") == "photography"), {}) for lang in ("en", "da")}
+    text = {lang: {"heading": portal[lang].get("name") or ("Photography" if lang == "en" else "Fotografi"),
+                   "intro": str(intro.get(lang) or "") if isinstance(intro, dict) else ""} for lang in ("en", "da")}
+    cover = max(photos, key=lambda p: p["weight"], default=None)  # the heaviest photo is the social preview
+    ui = world_ui(PHOTO_UI)
+    for lang in ("en", "da"):
+        alternates = [{"hreflang": l, "href": SITE_URL + PHOTOGRAPHY[l]} for l in ("en", "da")]
+        meta = {"title": text[lang]["heading"] + " — Pieter Shiffler Carpentier",
+                "description": text[lang]["intro"] or PHOTO_META[lang]["description"],
+                "canonical": SITE_URL + PHOTOGRAPHY[lang], "alternates": alternates,
+                "image": (SITE_URL + cover["image"].lstrip("/")) if cover else ""}
+        meta["ogDescription"] = meta["description"]
+        render_world_page(
+            env, "photography.html.j2", PHOTOGRAPHY, lang,
+            ui=ui[lang], meta=meta, jsonld=None, v=versions, world_class="scrolls" + (" look-darkroom" if look == "darkroom" else ""),
+            world_data={"page": lang, "ui": ui},
+            heading=text[lang]["heading"], intro=text[lang]["intro"], rune=portal[lang].get("rune") or "ᛋ",
+            photos=[dict(p, post_title=titles.get(p["post"], "")) for p in photos],
+            data={"photos": photos, "posts": titles,
+                  "text": text, "fieldlog": FIELDLOG},
+        )
+
+
 def render_entry(env, content, entry, versions):
     """index.html and da.html: the stone circle of portals."""
     count = len(entry["en"]["portals"])
@@ -327,13 +412,12 @@ def render_entry(env, content, entry, versions):
             {"hreflang": "x-default", "href": SITE_URL},
         ]
         meta = dict(ENTRY_META[lang], canonical=SITE_URL + ("" if lang == "en" else ENTRY["da"]), alternates=alternates)
-        data = {"page": lang, "content": entry, "ui": ENTRY_UI}
-        html = env.get_template("entry.html.j2").render(
-            lang=lang, e=entry[lang], ui=ENTRY_UI[lang], meta=meta, site_url=SITE_URL, entry_href=ENTRY[lang],
-            jsonld=jsonld(content[lang], lang), ring=ring, data=data, v=versions,
+        ui = world_ui(ENTRY_UI)
+        render_world_page(
+            env, "entry.html.j2", ENTRY, lang,
+            e=entry[lang], ui=ui[lang], meta=meta, jsonld=jsonld(content[lang], lang), ring=ring, v=versions,
+            world_data={"page": lang, "ui": ui}, data={"content": entry},
         )
-        (ROOT / ENTRY[lang]).write_text(html, encoding="utf-8")
-        print("wrote", ENTRY[lang])
 
 
 def main():
@@ -349,10 +433,13 @@ def main():
     versions = {"css": asset_version("styles.css"), "js": asset_version("assets/site.js"),
                 "mycelium": asset_version("assets/mycelium.js"), "md": asset_version("assets/markdown.js"),
                 "fieldlog": asset_version("assets/fieldlog.js"),
-                "entrycss": asset_version("assets/entry.css"), "entryjs": asset_version("assets/entry.js")}
+                "worldcss": asset_version("assets/world.css"), "worldjs": asset_version("assets/world.js"),
+                "entrycss": asset_version("assets/entry.css"), "entryjs": asset_version("assets/entry.js"),
+                "photoscss": asset_version("assets/photos.css"), "photosjs": asset_version("assets/photos.js")}
     posts = load_posts()
     entry = {"en": load("entry.json"), "da": load("entry.da.json")}
     render_entry(env, content, entry, versions)
+    render_photography(env, entry, load("gallery.json"), posts, versions)
 
     for out, (tpl, lang) in PAGES.items():
         d = content[lang]
@@ -448,7 +535,7 @@ def main():
         print("wrote", out)
 
     # sitemap
-    urls = ["", "da.html", "classic.html", "classic.da.html", "fungi.html", "fungi.da.html", "terrarium.html", "terrarium.da.html", "blog.html", "blog.da.html", "fieldlog.html", "fieldlog.da.html", "exploration.html", "exploration.da.html", "page.html?slug=cv"]
+    urls = ["", "da.html", "classic.html", "classic.da.html", "fungi.html", "fungi.da.html", "terrarium.html", "terrarium.da.html", "blog.html", "blog.da.html", "fieldlog.html", "fieldlog.da.html", "exploration.html", "exploration.da.html", "photography.html", "photography.da.html", "page.html?slug=cv"]
     today = datetime.date.today().isoformat()
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']

@@ -1,0 +1,102 @@
+/* ==========================================================================
+   Photography (photography.html / photography.da.html) — one mosaic of
+   photos. Sky, header and rune language come from assets/world.css.
+   A photo's weight sets its footprint in grid cells (columns × rows):
+     1 → 1×1 · 2 → 2×1 · 3 → 2×2 · 4 → 3×2 · 5 → 3×3
+   ========================================================================== */
+
+/* the darkroom look: near-black ground, the season only tints it */
+.world.look-darkroom{
+  background:
+    radial-gradient(ellipse 90% 60% at 50% -14%,color-mix(in srgb,var(--sky1) 75%,transparent),transparent 72%),
+    radial-gradient(ellipse 40% 30% at 88% 0%,var(--haze),transparent 70%),
+    #07080a;
+  background-attachment:fixed}
+.look-darkroom .stars,.look-darkroom .disc,.look-darkroom .fx{display:none}
+
+/* arriving through the portal */
+.photo-hero{padding-top:6px}
+@media (prefers-reduced-motion:no-preference){.photo-hero,.mosaic-wrap{animation:arrive .9s ease both}.mosaic-wrap{animation-delay:.08s}}
+.photo-rune{font-family:'Skurd',serif;font-size:52px;line-height:1;color:var(--acc);text-shadow:0 0 24px var(--glow);margin-bottom:8px}
+.photo-hero .title{max-width:640px}
+.photo-hero .title[hidden]{display:none}
+
+/* the mosaic */
+.mosaic-wrap{position:relative;z-index:1;container-type:inline-size;width:100%;max-width:1680px;margin:30px auto 0;padding:0 32px}
+.mosaic{--cols:8;--gap:6px;list-style:none;margin:0;padding:0;display:grid;gap:var(--gap);grid-auto-flow:dense;
+  grid-template-columns:repeat(var(--cols),minmax(0,1fr));
+  grid-auto-rows:170px;
+  grid-auto-rows:calc((100cqw - (var(--cols) - 1) * var(--gap)) / var(--cols))}
+.tile{--c:1;--r:1;position:relative;min-width:0;grid-column:span var(--c);grid-row:span var(--r)}
+.wt2{--c:2}
+.wt3{--c:2;--r:2}
+.wt4{--c:3;--r:2}
+.wt5{--c:3;--r:3}
+.tile-a{position:absolute;inset:0;display:block;overflow:hidden;border-radius:3px;color:#f3f1ea;text-decoration:none;
+  background:color-mix(in srgb,var(--sky3) 65%,#000);
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--line) 10%,transparent);transition:box-shadow .4s ease}
+.tile-a img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .7s ease}
+.js .tile-a img{opacity:0}
+.js .tile-a img.ld{opacity:1}
+.tile-a:hover,.tile-a:focus-visible{box-shadow:0 0 0 1px color-mix(in srgb,var(--line) 45%,transparent),0 0 28px color-mix(in srgb,var(--acc) 22%,transparent)}
+.tile-a:hover img,.tile-a:focus-visible img{transform:scale(1.045)}
+.tile-a:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.tile-cap{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:flex-end;gap:9px;padding:34px 12px 10px;font-size:15px;line-height:1.3;
+  background:linear-gradient(to top,rgba(4,6,9,.85),rgba(4,6,9,.35) 55%,transparent);opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease}
+.tile-a:hover .tile-cap,.tile-a:focus-visible .tile-cap{opacity:1;transform:none}
+.tile-rune{font-family:'Skurd',serif;font-size:17px;line-height:1.1;color:var(--acc)}
+.tile-cap .rv{min-width:0}
+.tile-cap .lt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mosaic-empty{margin:60px 0;text-align:center;font-size:18px;color:var(--ink2)}
+
+/* back to the circle */
+.photo-foot{position:relative;z-index:1;display:flex;justify-content:center;padding:44px 20px 52px}
+.back-link{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border:1px solid color-mix(in srgb,var(--ink) 25%,transparent);border-radius:999px;color:var(--ink);text-decoration:none;font-size:16px;font-weight:500}
+.back-link:hover{background:color-mix(in srgb,var(--ink) 8%,transparent)}
+.back-link:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
+
+/* full-screen viewer for photos that don't lead to a post */
+.viewer{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;overflow:hidden;
+  background:rgba(4,5,8,.95);color:#f1efe8;font-family:'EB Garamond',Georgia,serif}
+.viewer[open]{display:grid;grid-template-rows:minmax(0,1fr) auto;animation:v-in .35s ease both}
+.viewer::backdrop{background:rgba(0,0,0,.55)}
+.v-stage{min-height:0;display:flex;align-items:center;justify-content:center;padding:68px 84px 10px;touch-action:pan-y}
+.v-img{display:block;max-width:100%;max-height:100%;object-fit:contain;border-radius:2px;box-shadow:0 30px 90px rgba(0,0,0,.65)}
+.v-bar{padding:6px 24px 24px;text-align:center}
+.v-cap{margin:0;font-size:20px;line-height:1.35}
+.v-cap:empty{display:none}
+.v-links{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 22px;margin:6px 0 0;font-size:16px}
+.v-links:empty{display:none}
+.v-links a{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#f4dcc2;text-decoration:underline;text-decoration-color:rgba(244,220,194,.4);text-underline-offset:5px}
+.v-links .lr{font-family:'Skurd',serif;color:var(--acc);text-decoration:none}
+.v-count{position:absolute;top:22px;left:24px;margin:0;font-size:15px;color:rgba(241,239,232,.72);font-variant-numeric:tabular-nums}
+.v-btn{position:absolute;display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid rgba(241,239,232,.25);
+  background:rgba(10,12,16,.45);color:#f1efe8;cursor:pointer}
+.v-btn:hover{background:rgba(40,44,52,.65)}
+.v-btn:focus-visible,.v-links a:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.v-close{top:12px;right:12px}
+.v-prev,.v-next{top:50%;transform:translateY(-50%)}
+.v-prev{left:16px}
+.v-next{right:16px}
+.v-btn[hidden]{display:none}
+@keyframes v-in{from{opacity:0}to{opacity:1}}
+body.v-open{overflow:hidden}
+
+@media (max-width:1199px){.mosaic{--cols:6}}
+@media (max-width:899px){.mosaic{--cols:4}}
+@media (max-width:599px){
+  .mosaic-wrap{margin-top:22px;padding:0 10px}
+  .mosaic{--cols:3;--gap:4px}
+  .photo-rune{font-size:40px}
+  .tile-cap{font-size:13px;padding:24px 8px 7px}
+  .v-stage{padding:60px 8px 6px}
+  .v-prev,.v-next{top:auto;bottom:18px;transform:none}
+  .v-bar{padding:6px 72px 20px}
+  .v-cap{font-size:17px}
+}
+@media (hover:none){.tile-cap{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .tile-a img,.tile-cap,.tile-a{transition:none !important}
+  .tile-a:hover img,.tile-a:focus-visible img{transform:none}
+  .viewer[open]{animation:none}
+}

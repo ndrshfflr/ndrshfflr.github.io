@@ -1,0 +1,141 @@
+/* ==========================================================================
+   The world around the portals — shared by the stone circle (index.html /
+   da.html) and the worlds behind it (photography.html, …).
+   Type: Cinzel (headings) · EB Garamond (text) · Skurð (runes)
+   Colours are set by assets/world.js from the season and the time of day;
+   the values below are the winter-night fallback.
+   ========================================================================== */
+@font-face{font-family:'Cinzel';src:url('fonts/cinzel.woff2') format('woff2');font-weight:400 600;font-style:normal;font-display:swap;}
+@font-face{font-family:'EB Garamond';src:url('fonts/ebgaramond.woff2') format('woff2');font-weight:400 600;font-style:normal;font-display:swap;}
+@font-face{font-family:'EB Garamond';src:url('fonts/ebgaramond-italic.woff2') format('woff2');font-weight:400 600;font-style:italic;font-display:swap;}
+@font-face{font-family:'Skurd';src:url('fonts/skurd.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+
+@property --sky1{syntax:'<color>';inherits:true;initial-value:#0b1322}
+@property --sky2{syntax:'<color>';inherits:true;initial-value:#070c15}
+@property --sky3{syntax:'<color>';inherits:true;initial-value:#04070b}
+@property --haze{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --pool{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --tree{syntax:'<color>';inherits:true;initial-value:#b7c4d1}
+@property --line{syntax:'<color>';inherits:true;initial-value:#c4d6e8}
+@property --core{syntax:'<color>';inherits:true;initial-value:#a0b6ce}
+@property --hot{syntax:'<color>';inherits:true;initial-value:#e8eef5}
+@property --draw{syntax:'<color>';inherits:true;initial-value:#d6e1ea}
+@property --floor{syntax:'<color>';inherits:true;initial-value:#cedcea}
+@property --disc1{syntax:'<color>';inherits:true;initial-value:#f4f6f8}
+@property --disc2{syntax:'<color>';inherits:true;initial-value:#c5d0da}
+@property --dglow{syntax:'<color>';inherits:true;initial-value:#d6e2ee}
+@property --ink{syntax:'<color>';inherits:true;initial-value:#f3f6f9}
+@property --ink2{syntax:'<color>';inherits:true;initial-value:#9fb3c8}
+@property --muted{syntax:'<color>';inherits:true;initial-value:#c9d2db}
+@property --menu{syntax:'<color>';inherits:true;initial-value:#cbd5df}
+
+*{box-sizing:border-box}
+html,body{margin:0;background:#05070b}
+body{-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.world{
+  --acc:#e39a5c;--glow:#e39a5c8c;
+  --sky1:#0b1322;--sky2:#070c15;--sky3:#04070b;--haze:rgba(214,226,238,.1);--pool:rgba(2,4,8,.82);
+  position:relative;isolation:isolate;overflow:hidden;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;
+  font-family:'EB Garamond',Georgia,serif;color:var(--ink);
+  background:
+    radial-gradient(circle at 88% 7%,var(--haze),transparent 32%),
+    radial-gradient(ellipse 44% 30% at 50% 58%,color-mix(in srgb,var(--pool) 65%,transparent),transparent 72%),
+    linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 50%,var(--sky3) 100%);
+}
+/* pages that scroll keep the sky still behind them */
+.world.scrolls{background-attachment:fixed}
+.scrolls .stars,.scrolls .disc,.scrolls .fx{position:fixed}
+.world.ready{transition:--sky1 1.6s ease,--sky2 1.6s ease,--sky3 1.6s ease,--haze 1.6s ease,--pool 1.6s ease,--tree 1.6s ease,--line 1.6s ease,--core 1.6s ease,--hot 1.6s ease,--draw 1.6s ease,--floor 1.6s ease,--disc1 1.6s ease,--disc2 1.6s ease,--dglow 1.6s ease,--ink 1.6s ease,--ink2 1.6s ease,--muted 1.6s ease,--menu 1.6s ease}
+.chrome{transition:opacity .9s ease}
+.entering .chrome{opacity:0}
+
+/* sky */
+.stars{position:absolute;inset:0;pointer-events:none;transition:opacity 1.6s ease}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#dfe7ef}
+.disc{position:absolute;right:9%;top:64px;width:72px;height:72px;border-radius:50%;opacity:.92;pointer-events:none;
+  background:radial-gradient(circle at 38% 36%,var(--disc1) 0%,color-mix(in srgb,var(--disc1) 50%,var(--disc2)) 55%,var(--disc2) 100%);
+  box-shadow:0 0 40px 10px color-mix(in srgb,var(--dglow) 18%,transparent),0 0 140px 50px color-mix(in srgb,var(--dglow) 8%,transparent);
+  transition:width 1.6s ease,height 1.6s ease}
+.craters{position:absolute;inset:0;border-radius:50%;transition:opacity 1.6s ease;
+  background:radial-gradient(circle at 62% 58%,rgba(110,104,98,.42) 0 9%,transparent 10%),radial-gradient(circle at 34% 66%,rgba(110,104,98,.3) 0 6%,transparent 7%),radial-gradient(circle at 44% 30%,rgba(110,104,98,.24) 0 5%,transparent 6%)}
+
+/* seasonal life */
+.fx{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1;opacity:0;transition:opacity 1.6s ease}
+.spark{position:absolute;width:3px;height:3px;border-radius:50%;background:#f4f8fb;box-shadow:0 0 6px 1px rgba(220,234,248,.6);opacity:0;animation:twinkle 7s ease-in-out infinite}
+.spark::before,.spark::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.spark::before{width:15px;height:1px;background:linear-gradient(90deg,transparent,rgba(240,246,252,.9),transparent)}
+.spark::after{width:1px;height:15px;background:linear-gradient(180deg,transparent,rgba(240,246,252,.9),transparent)}
+.seed{position:absolute;top:-4%;width:7px;height:4px;border-radius:50%;background:radial-gradient(ellipse,rgba(246,242,222,.95) 0 35%,rgba(246,242,222,.35) 60%,transparent 72%);animation:seedfall linear infinite}
+.glow{position:absolute;width:4px;height:4px;border-radius:50%;background:#e6ff8a;box-shadow:0 0 8px 3px rgba(196,240,96,.55),0 0 18px 6px rgba(160,220,80,.2);
+  animation-name:glowpulse,wander;animation-timing-function:ease-in-out,ease-in-out;animation-iteration-count:infinite,infinite;animation-direction:normal,alternate}
+.leaf{position:absolute;top:-5%;border-radius:0 70% 0 70%;opacity:.92;animation:leaffall linear infinite}
+
+/* header */
+.top{position:relative;z-index:4;display:flex;justify-content:space-between;align-items:center;padding:16px 32px 0}
+.logo{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;color:var(--ink)}
+.eye-pupil{fill:var(--acc)}
+.top-right{display:flex;align-items:center;gap:8px}
+.langs{display:flex;align-items:center;gap:2px;font-size:16px;font-weight:500}
+.lang{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 4px;color:var(--ink2);text-decoration:none}
+.lang[aria-current="page"]{color:var(--ink)}
+.lang-runes{font-family:'Skurd',sans-serif;letter-spacing:.06em}
+.no-js .lang-runes,.no-js .lang-runes+.sep{display:none}
+.sep{color:var(--ink2);opacity:.6}
+.season-wrap{position:relative}
+.season-btn{display:flex;align-items:center;gap:8px;min-width:44px;height:44px;padding:0 14px 0 12px;border:1px solid color-mix(in srgb,var(--ink) 22%,transparent);border-radius:999px;background:transparent;color:var(--ink);cursor:pointer;font-size:15px;font-weight:500}
+.no-js .season-wrap{display:none}
+.si{display:none}
+.s-winter .si-winter,.s-spring .si-spring,.s-summer .si-summer,.s-autumn .si-autumn{display:inline}
+.season-menu{position:absolute;right:0;top:52px;z-index:10;min-width:230px;padding:6px;display:flex;flex-direction:column;gap:2px;border-radius:14px;
+  border:1px solid color-mix(in srgb,var(--ink) 16%,transparent);background:color-mix(in srgb,var(--sky1) 86%,#000);box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.season-menu[hidden]{display:none}
+.sopt{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 12px;border:0;border-radius:10px;background:transparent;color:var(--ink);font-size:15px;font-weight:500;text-align:left;cursor:pointer}
+.sopt:hover{background:color-mix(in srgb,var(--ink) 8%,transparent)}
+.sopt[aria-pressed="true"]{background:color-mix(in srgb,var(--ink) 12%,transparent)}
+.sname{flex:1}
+.snote{font-size:13px;color:var(--ink2)}
+
+/* name & title */
+.hero{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:4px 20px 0}
+.nm{margin:0;font-family:'Cinzel',Georgia,serif;font-weight:400;font-size:46px;line-height:1.04;letter-spacing:-.01em;color:var(--ink)}
+.title{margin:10px 0 0;font-size:18px;font-weight:500;color:var(--ink2)}
+.aa{display:none;align-items:center;justify-content:center;min-width:44px;height:44px;margin-top:10px;padding:0 14px;border:1px solid color-mix(in srgb,var(--ink) 22%,transparent);border-radius:999px;background:transparent;color:var(--ink);font-size:18px;cursor:pointer}
+.aa[aria-pressed="true"]{background:color-mix(in srgb,var(--ink) 12%,transparent)}
+@media (hover:none){.mode-runes .aa{display:inline-flex}}
+
+/* runes ↔ latin */
+.rv{display:inline-grid}
+.rv>span{grid-area:1/1;transition:opacity .35s ease}
+.rn{font-family:'Skurd',sans-serif;font-weight:400;letter-spacing:.05em}
+.mode-latin .rn{display:none}
+.mode-runes .lt{opacity:0}
+.mode-runes .rv:hover .rn,.mode-runes a:hover .rv .rn,.mode-runes a:focus-visible .rv .rn,.mode-runes button:hover .rv .rn,.mode-runes button:focus-visible .rv .rn,.mode-runes.reveal-all .rn{opacity:0}
+.mode-runes .rv:hover .lt,.mode-runes a:hover .rv .lt,.mode-runes a:focus-visible .rv .lt,.mode-runes button:hover .rv .lt,.mode-runes button:focus-visible .rv .lt,.mode-runes.reveal-all .lt{opacity:1}
+.lang:focus-visible,.season-btn:focus-visible,.sopt:focus-visible,.aa:focus-visible,.logo:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
+
+@keyframes twinkle{0%,40%,100%{opacity:0;transform:scale(.4) rotate(0deg)}52%{opacity:.95;transform:scale(1) rotate(45deg)}64%{opacity:0;transform:scale(.5) rotate(90deg)}}
+@keyframes seedfall{0%{transform:translate3d(0,0,0) rotate(0deg)}25%{transform:translate3d(28px,26vh,0) rotate(80deg)}50%{transform:translate3d(-12px,52vh,0) rotate(170deg)}75%{transform:translate3d(30px,78vh,0) rotate(260deg)}100%{transform:translate3d(4px,108vh,0) rotate(360deg)}}
+@keyframes glowpulse{0%,100%{opacity:.12}50%{opacity:1}}
+@keyframes wander{0%{transform:translate(0,0)}50%{transform:translate(18px,-10px)}100%{transform:translate(-12px,6px)}}
+@keyframes leaffall{0%{transform:translate3d(0,0,0) rotate(0deg) rotateY(0deg)}25%{transform:translate3d(-40px,27vh,0) rotate(90deg) rotateY(180deg)}50%{transform:translate3d(20px,54vh,0) rotate(200deg) rotateY(360deg)}75%{transform:translate3d(-30px,81vh,0) rotate(290deg) rotateY(540deg)}100%{transform:translate3d(10px,110vh,0) rotate(380deg) rotateY(720deg)}}
+@keyframes arrive{from{opacity:0;transform:scale(1.05)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .seed,.leaf,.glow{animation:none !important}
+  .spark{animation:none !important;opacity:.3}.glow{opacity:.6}.seed{top:40%}.leaf{top:60%}
+  .world.ready,.chrome,.fx,.disc,.stars{transition:none !important;animation:none !important}
+}
+@media (max-width:760px){
+  .top{padding:12px 12px 0}
+  .nm{font-size:32px}
+  .title{font-size:16px}
+  .slabel{display:none}
+  .season-btn{padding:0;justify-content:center;width:44px}
+  .langs{font-size:15px}
+  .lang{min-width:38px}
+  .disc{transform:scale(.62);transform-origin:100% 0;top:76px}
+}
+
