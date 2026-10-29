@@ -617,15 +617,32 @@ collections:
         name: "gallery"
         format: "json"
         fields:
+          - label: "Look of the photography page"
+            name: "look"
+            widget: "select"
+            required: false
+            default: "sky"
+            options: [{ label: "Seasonal sky (like the circle)", value: "sky" }, { label: "Darkroom (near-black, the season only tints it)", value: "darkroom" }]
+          - label: "Line under the heading on the photography page (optional)"
+            name: "intro"
+            widget: "object"
+            required: false
+            collapsed: true
+            fields:
+              - { label: "English", name: "en", widget: "string", required: false }
+              - { label: "Danish", name: "da", widget: "string", required: false }
           - label: "Photos"
             name: "images"
             widget: "list"
             summary: "{{caption}}"
+            hint: "Drag photos to change their order on the photography page. Photos about 2000 px on the long side and under ~600 KB load fastest."
             fields:
               - { label: "Photo", name: "image", widget: "image", media_folder: "/images/gallery", public_folder: "/images/gallery" }
               - { label: "Caption (optional)", name: "caption", widget: "string", required: false }
+              - { label: "Weight", name: "weight", widget: "number", value_type: "int", min: 1, max: 5, step: 1, default: 1, required: false, hint: "How big the photo is on the photography page: 1 small · 2 wide · 3 large · 4 larger · 5 largest. Favourites get more." }
+              - { label: "Keep in frame", name: "focus", widget: "select", required: false, default: "center", options: [{ label: "Middle", value: "center" }, { label: "Top", value: "top" }, { label: "Bottom", value: "bottom" }, { label: "Left", value: "left" }, { label: "Right", value: "right" }], hint: "Tiles are cropped to fit the mosaic; this part of the photo stays in view." }
               - { label: "Species in the field log (optional)", name: "species", widget: "relation", required: false, collection: "observations", file: "synced", value_field: "species.*.name", search_fields: ["species.*.label"], display_fields: ["species.*.label"], hint: "The photo then links to that species, and shows up when someone opens it in the field log. Finds you add by hand appear in this list after the next sync." }
-              - { label: "Blog post (optional)", name: "post", widget: "relation", required: false, collection: "posts", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], hint: "The photo then links to the post, and is shown at the end of it." }
+              - { label: "Blog post (optional)", name: "post", widget: "relation", required: false, collection: "posts", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], hint: "On the photography page the photo then leads to the post (it is also shown at the end of the post). Without a post, it opens full-screen." }
 
   - name: "posts"
     label: "Blog posts"

@@ -1,0 +1,51 @@
+{% extends "world.html.j2" %}
+{#- The photography world (photography.html / photography.da.html): one mosaic
+    of photos from content/gallery.json (Photo Gallery in /admin). A photo's
+    weight (1–5) sets its size; a photo linked to a blog post leads there,
+    the others open full-screen. assets/photos.js reloads the gallery live. -#}
+{% block styles %}<link rel="stylesheet" href="assets/photos.css?v={{ v.photoscss }}">{% endblock %}
+{% block content %}
+{%- macro tile(p, i) -%}
+{%- set href = ('post.html?slug=' ~ (p.post | urlencode)) if p.post else p.image -%}
+{%- set name = p.caption or ui.photoN | replace('{i}', (i + 1) | string) -%}
+<li class="tile wt{{ p.weight }}">
+      <a class="tile-a" href="{{ href }}" data-i="{{ i }}"{% if p.post %} data-post="{{ p.post }}"{% endif %} aria-label="{{ name }}{% if p.post %} — {{ (ui.readPostTitle | replace('{t}', p.post_title)) if p.post_title else ui.readPost }}{% endif %}">
+        <img src="{{ p.image }}" alt="{{ p.caption }}" loading="lazy" decoding="async" style="object-position:{{ p.pos }}">
+        <span class="tile-cap" aria-hidden="true"><span class="tile-rune">{{ 'ᚬ' if p.post else 'ᛋ' }}</span>{% if p.caption %}<span class="rv" data-k="cap-{{ i }}"><span class="rn"></span><span class="lt">{{ p.caption }}</span></span>{% endif %}</span>
+      </a>
+    </li>
+{%- endmacro %}
+  <div class="hero chrome photo-hero">
+    <span class="photo-rune" aria-hidden="true">{{ rune }}</span>
+    <h1 class="nm"><span class="rv" data-k="heading"><span class="rn" aria-hidden="true"></span><span class="lt">{{ heading }}</span></span></h1>
+    <p class="title"{% if not intro %} hidden{% endif %}><span class="rv" data-k="intro"><span class="rn" aria-hidden="true"></span><span class="lt">{{ intro }}</span></span></p>
+    <button class="aa" id="aa" type="button" aria-pressed="false" aria-label="{{ ui.aa }}">Aa</button>
+  </div>
+
+  <main class="mosaic-wrap" id="main">
+    <ul class="mosaic" id="mosaic" aria-label="{{ ui.gridLabel }}">
+    {% for p in photos %}{{ tile(p, loop.index0) }}
+    {% endfor %}</ul>
+    <p class="mosaic-empty" id="mosaic-empty"{% if photos %} hidden{% endif %}><span class="rv" data-k="empty"><span class="rn" aria-hidden="true"></span><span class="lt">{{ ui.empty }}</span></span></p>
+  </main>
+
+  <footer class="photo-foot chrome">
+    <a class="back-link" href="{{ entry_href }}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="rv" data-k="back"><span class="rn" aria-hidden="true"></span><span class="lt">{{ ui.back }}</span></span></a>
+  </footer>
+
+  <dialog class="viewer" id="viewer" aria-label="{{ heading }}">
+    <p class="v-count" id="v-count" aria-live="polite"></p>
+    <div class="v-stage" id="v-stage"><img class="v-img" id="v-img" alt=""></div>
+    <div class="v-bar">
+      <p class="v-cap" id="v-cap"></p>
+      <p class="v-links" id="v-links"></p>
+    </div>
+    <button class="v-btn v-prev" id="v-prev" type="button" aria-label="{{ ui.prevPhoto }}"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="v-btn v-next" id="v-next" type="button" aria-label="{{ ui.nextPhoto }}"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <button class="v-btn v-close" id="v-close" type="button" aria-label="{{ ui.close }}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </dialog>
+{% endblock %}
+{% block scripts %}
+<script id="photo-data" type="application/json">{{ data | tojson }}</script>
+<script src="assets/photos.js?v={{ v.photosjs }}"></script>
+{% endblock %}

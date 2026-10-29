@@ -7,7 +7,7 @@
     { "key": "foraging", "name": "Sankning", "rune": "ᚠ", "link": "fungi.da.html#tours" },
     { "key": "conservation", "name": "Naturbevarelse", "rune": "ᛦ", "link": "" },
     { "key": "smallworlds", "name": "Små verdener", "rune": "ᚦ", "link": "terrarium.da.html" },
-    { "key": "photography", "name": "Fotografi", "rune": "ᛋ", "link": "classic.da.html#photography" }
+    { "key": "photography", "name": "Fotografi", "rune": "ᛋ", "link": "photography.da.html" }
   ],
   "menu": [
     { "name": "CV", "rune": "ᛘ", "link": "page.html?slug=cv" },
