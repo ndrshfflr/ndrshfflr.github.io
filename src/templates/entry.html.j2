@@ -1,0 +1,179 @@
+{%- macro drawing(key) -%}
+{%- if key == 'microbiology' -%}
+<svg class="ph" viewBox="0 70 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round"><path d="M100 262C99 240 97 214 100 184"/><circle cx="100" cy="168" r="16"/><path d="M100 152v-12M111 157l14-15M89 157L75 142M116 168h20M84 168H64M111 179l13 12M89 179l-13 12"/><path d="M54 262C56 246 52 232 55 220"/><circle cx="55" cy="212" r="8"/><path d="M55 204v-9M61 207l7-7M49 207l-7-7"/><path d="M150 262C148 250 152 240 149 230"/><circle cx="149" cy="224" r="6"/><path d="M149 218v-7M154 220l6-6M144 220l-6-6"/></g><g fill="currentColor"><circle cx="128" cy="138" r="2.1"/><circle cx="72" cy="138" r="2.1"/><circle cx="141" cy="168" r="2.1"/><circle cx="59" cy="168" r="2.1"/><circle cx="127" cy="195" r="2"/><circle cx="73" cy="195" r="2"/><circle cx="55" cy="191" r="1.7"/><circle cx="149" cy="207" r="1.5"/></g></svg>
+{%- elif key == 'fungiculture' -%}
+<svg class="ph" viewBox="0 30 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round"><path d="M100 262C98 220 104 196 92 168C82 146 66 136 60 112C55 92 62 74 54 58"/><path d="M100 262C103 228 112 204 126 182C140 160 150 132 146 104C143 84 150 66 160 52"/><path d="M92 168C110 150 116 128 108 100C102 80 108 60 100 38"/><path d="M126 182C110 170 98 160 74 150C58 144 44 132 34 116"/><path d="M60 112C76 104 88 90 90 70"/><path d="M146 104C130 96 122 80 126 62"/><path d="M108 100C120 92 136 90 150 78"/><path d="M74 150C70 172 54 186 40 194"/><path d="M126 182C146 186 160 200 168 214"/></g><g fill="currentColor"><circle cx="54" cy="58" r="2.4"/><circle cx="160" cy="52" r="2.4"/><circle cx="100" cy="38" r="2.6"/><circle cx="34" cy="116" r="2"/><circle cx="168" cy="214" r="2"/><circle cx="90" cy="70" r="1.8"/><circle cx="126" cy="62" r="1.8"/><circle cx="150" cy="78" r="1.8"/><circle cx="40" cy="194" r="1.8"/></g></svg>
+{%- elif key == 'foraging' -%}
+<svg class="ph" viewBox="0 70 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M64 172c0-24 17-38 38-38s38 14 38 38c-12-4-25-6-38-6s-26 2-38 6z"/><path d="M90 168c-2 28-6 50-10 76h44c-4-26-8-48-10-76"/><path d="M94 192l18 7M92 208l22 8M90 224l26 9"/><path d="M36 262C34 226 42 196 56 168"/><path d="M37 244l-11-6M38 228l-12-8M41 212l-11-10M45 196l-10-11M50 181l-8-11M37 244l10-8M38 228l11-10M41 212l11-11M45 196l10-12"/><path d="M164 262c0-34 4-54 0-72-3-13-17-13-17-2 0 7 9 8 10 2"/></g><g fill="currentColor"><circle cx="74" cy="152" r="1.6"/><circle cx="96" cy="144" r="1.6"/><circle cx="122" cy="150" r="1.6"/></g></svg>
+{%- elif key == 'conservation' -%}
+<svg class="ph" viewBox="0 62 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M100 214V128"/><path d="M100 172C86 162 70 158 56 142M100 156c14-10 30-14 44-30M100 128c-5-16-5-32 0-48M100 140c10-14 22-22 36-26M100 146c-10-12-22-18-36-20M56 142c-6-10-8-20-6-30M144 126c4-10 4-20 2-28M136 114c8-6 18-8 26-6M64 126c-8-6-18-8-26-6"/><path d="M28 214h144"/><path d="M100 214c-4 16-16 28-34 36M100 214c4 16 16 28 34 36M100 214v40M66 250c-10 2-18 6-24 12M134 250c10 2 18 6 24 12"/></g><g fill="currentColor"><circle cx="100" cy="78" r="2.6"/><circle cx="50" cy="110" r="2.2"/><circle cx="146" cy="96" r="2.2"/><circle cx="162" cy="108" r="2"/><circle cx="38" cy="120" r="2"/><circle cx="56" cy="142" r="1.8"/><circle cx="144" cy="126" r="1.8"/></g></svg>
+{%- elif key == 'smallworlds' -%}
+<svg class="ph" viewBox="0 70 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 236C66 208 126 178 186 128"/><path d="M156 150c10-14 26-18 36-14-4 12-20 18-36 14zM56 218c-14-6-22-18-22-28 12 2 20 14 22 28z"/><path d="M54 186L148 134"/><path d="M148 134l20-26M148 134l26-10"/><path d="M74 175l-9-18-8-4M74 175l5 15 8 6M100 161l-5-20-8-6M100 161l8 13 10 4M124 147l-2-22 6-8M124 147l13 9h10"/><path d="M54 186l-9 3"/></g><g fill="currentColor"><ellipse cx="150" cy="133" rx="3" ry="2.2"/></g></svg>
+{%- else -%}
+<svg class="ph" viewBox="0 20 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="114" r="46"/><circle cx="100" cy="114" r="56" stroke-dasharray="2 6"/><path d="M126 114L113 136.5 87 136.5 74 114 87 91.5 113 91.5Z"/><path d="M126 114L137 87M113 136.5L142 133M87 136.5L105 160M74 114L63 141M87 91.5L58 95M113 91.5L95 68"/><path d="M8 236l38-30 24 18 38-46 32 34 22-14 30 24"/></g></svg>
+{%- endif -%}
+{%- endmacro -%}
+{%- macro season_icon(s) -%}
+{%- if s == 'winter' -%}<path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 3.5l3 2 3-2M9 20.5l3-2 3 2"/>
+{%- elif s == 'spring' -%}<path d="M12 21V11M12 11C12 7 9 5 5 5c0 4 3 6 7 6zM12 14c0-3 2.5-5 6-5 0 3-2.5 5-6 5z"/>
+{%- elif s == 'summer' -%}<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+{%- elif s == 'autumn' -%}<path d="M5 19C5 11 10 5 19 5c0 9-6 14-14 14zM5 19l8-8"/>
+{%- else -%}<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+{%- endif -%}
+{%- endmacro -%}
+<!DOCTYPE html>
+<!-- GENERATED FILE — built by src/build.py from src/templates/entry.html.j2.
+     Wording comes from content/entry.json and content/entry.da.json (edited
+     through /admin) and is also loaded live by assets/entry.js. -->
+<html lang="{{ lang }}" class="no-js">
+<head>
+<script>
+(function () {
+  var d = document.documentElement, mode = 'runes';
+  try { var m = localStorage.getItem('entryLang'); if (m === 'en' || m === 'da') mode = 'latin'; } catch (e) {}
+  d.className = 'js mode-' + mode;
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ meta.title }}</title>
+<meta name="description" content="{{ meta.description }}">
+<link rel="canonical" href="{{ meta.canonical }}">
+{% for alt in meta.alternates %}<link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ alt.href }}">
+{% endfor %}
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0b1322">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pieter Shiffler Carpentier">
+<meta property="og:title" content="{{ meta.title }}">
+<meta property="og:description" content="{{ meta.ogDescription }}">
+<meta property="og:url" content="{{ meta.canonical }}">
+<meta property="og:locale" content="{{ 'da_DK' if lang == 'da' else 'en_GB' }}">
+<meta property="og:image" content="{{ site_url }}og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ meta.title }}">
+<meta name="twitter:description" content="{{ meta.ogDescription }}">
+<meta name="twitter:image" content="{{ site_url }}og-image.png">
+<script type="application/ld+json">{{ jsonld | tojson }}</script>
+<!-- Fonts are self-hosted (no requests to Google — simpler under GDPR) -->
+<link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/entry.css?v={{ v.entrycss }}">
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
+</head>
+<body>
+<div class="world look-fabric" id="world">
+
+  <div class="stars" id="stars" aria-hidden="true">
+    <span class="star" style="left:13%;top:11%;opacity:.45"></span><span class="star" style="left:24%;top:23%;opacity:.35"></span><span class="star" style="left:7%;top:34%;opacity:.3"></span><span class="star" style="left:71%;top:19%;opacity:.35"></span><span class="star" style="left:80%;top:31%;opacity:.3"></span><span class="star" style="left:36%;top:6%;opacity:.4"></span>
+  </div>
+  <span class="disc" id="disc" aria-hidden="true"><span class="craters" id="craters"></span></span>
+  <div class="fx" id="fx-winter" aria-hidden="true"></div>
+  <div class="fx" id="fx-spring" aria-hidden="true"></div>
+  <div class="fx" id="fx-summer" aria-hidden="true"></div>
+  <div class="fx" id="fx-autumn" aria-hidden="true"></div>
+
+  <header class="top chrome" id="top">
+    <a class="logo" href="{{ entry_href }}" aria-label="Pieter Shiffler Carpentier">
+      <svg viewBox="0 0 100 100" width="38" height="38" aria-hidden="true"><path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/><circle cx="50" cy="50" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><circle cx="50" cy="50" r="10" class="eye-pupil"/><circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/></svg>
+    </a>
+    <div class="top-right">
+      <nav class="langs" aria-label="{{ ui.language }}">
+        <a class="lang lang-runes" href="#" data-mode="runes" lang="{{ lang }}-Runr" aria-label="{{ ui.runesName }}">ᚱᚢᚾᛅᛦ</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a class="lang" href="index.html" data-mode="en" lang="en" hreflang="en">EN</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a class="lang" href="da.html" data-mode="da" lang="da" hreflang="da">DA</a>
+      </nav>
+      <div class="season-wrap">
+        <button class="season-btn" id="season-btn" type="button" aria-label="{{ ui.chooseSeason }}" aria-haspopup="true" aria-expanded="false" aria-controls="season-menu">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{% for s in ['winter', 'spring', 'summer', 'autumn'] %}<g class="si si-{{ s }}">{{ season_icon(s) }}</g>{% endfor %}</svg>
+          <span class="slabel"><span class="rv" data-k="season"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+        </button>
+        <div class="season-menu" id="season-menu" role="group" aria-label="{{ ui.chooseSeason }}" hidden>
+          {% for s in ['winter', 'spring', 'summer', 'autumn', 'auto'] %}
+          <button class="sopt" type="button" data-season="{{ s }}" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{{ season_icon(s) }}</svg>
+            <span class="sname"><span class="rv" data-k="opt-{{ s }}"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-{{ s }}"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero chrome">
+    <h1 class="nm"><span class="rv" data-k="name"><span class="rn" aria-hidden="true"></span><span class="lt">{{ e.name }}</span></span></h1>
+    <p class="title"><span class="rv" data-k="title"><span class="rn" aria-hidden="true"></span><span class="lt">{{ e.title }}</span></span></p>
+    <button class="aa" id="aa" type="button" aria-pressed="false" aria-label="{{ ui.aa }}">Aa</button>
+  </div>
+
+  <main class="ring-wrap" id="main">
+    <nav class="ring-nav" id="ring-nav" aria-label="{{ ui.worlds }}">
+      <div class="stage cam" id="stage">
+        <svg class="treeline" id="inscription" viewBox="0 0 1877 250" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+          <defs><pattern id="bark-pat" width="54" height="68" patternUnits="userSpaceOnUse"><rect width="54" height="68" class="bark-base"/><g class="bark-marks"><rect x="9.4" y="6.8" width="10.1" height="1.6"/><rect x="2.7" y="26.5" width="16.9" height="2.7"/><rect x="30.6" y="14.6" width="12" height="1.8"/><rect x="6.9" y="7" width="7.8" height="2.9"/><rect x="33.2" y="53.2" width="15.4" height="1.7"/><rect x="12.4" y="41.4" width="14.5" height="2.8"/><rect x="35.2" y="5.7" width="12.9" height="2.5"/><rect x="20.2" y="11.7" width="11.2" height="1.5"/><rect x="37.4" y="57.1" width="12.1" height="1.9"/><rect x="36.4" y="37.8" width="16.5" height="2.8"/><rect x="20.3" y="27.3" width="12.8" height="2.1"/><rect x="0" y="48.6" width="8.5" height="2.2"/><rect x="24.5" y="62.2" width="9.8" height="2.4"/></g></pattern></defs>
+          {#- The carved inscription. _inscription.html holds the hand-tuned drawing of
+              ᛏᚢ᛬ᚦᛅ᛬ᛘᛅᛁᛏ᛬ᚦᛅᛏ᛬ᛁᛋ᛬ᛋᛏᛁᛚ᛬ᚦᛅ᛬ᛁᚢᚾᛁᚠᛁᚱᛋ᛬ᛋᛅᚱᛁᛏᛅᛋ; if the text in
+              content/entry.json is changed, assets/entry.js carves the new text instead. #}
+          <g id="inscription-runes" fill="none" stroke="url(#bark-pat)" stroke-linecap="butt" stroke-linejoin="miter" data-carved="ᛏᚢ᛬ᚦᛅ᛬ᛘᛅᛁᛏ᛬ᚦᛅᛏ᛬ᛁᛋ᛬ᛋᛏᛁᛚ᛬ᚦᛅ᛬ᛁᚢᚾᛁᚠᛁᚱᛋ᛬ᛋᛅᚱᛁᛏᛅᛋ">
+{% include '_inscription.html' %}</g>
+        </svg>
+        <span class="pool" aria-hidden="true"></span>
+        <div class="scene">
+          <div class="floor" id="floor" aria-hidden="true">
+            <span class="floor-ring1"></span><span class="floor-ring2"></span>
+            <span class="floor-fx" id="floor-winter"></span><span class="floor-fx" id="floor-summer"></span>
+          </div>
+          {% for p in e.portals %}{% set r = ring[loop.index0] %}
+          <div class="item" data-i="{{ loop.index0 }}" style="transform:{{ r.t }}">
+            <a class="pd{% if loop.first %} on{% endif %}" href="{{ p.link or '#' }}" data-i="{{ loop.index0 }}" aria-label="{{ p.name }}" style="opacity:{{ r.o }}">
+              <span class="pa">
+                <span class="core" aria-hidden="true"></span>
+                <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg>{{ drawing(p.key) }}</span>
+                <span class="wv w1" aria-hidden="true"></span><span class="wv w2" aria-hidden="true"></span><span class="wv w3" aria-hidden="true"></span>
+                <span class="pr" aria-hidden="true">{{ p.rune }}</span>
+              </span>
+              <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
+              <span class="pl" style="opacity:{{ r.lo }}"><span class="rv" data-k="portal-{{ loop.index0 }}"><span class="rn" aria-hidden="true"></span><span class="lt">{{ p.name }}</span></span></span>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="controls chrome">
+        <button class="ctl" id="prev" type="button" aria-label="{{ ui.prev }}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="dots" role="group" aria-label="{{ ui.choosePortal }}">
+          {% for p in e.portals %}<button class="dot{% if loop.first %} on{% endif %}" type="button" data-i="{{ loop.index0 }}" aria-label="{{ p.name }}" aria-current="{{ 'true' if loop.first else 'false' }}">{{ p.rune }}</button>{% endfor %}
+        </div>
+        <button class="ctl" id="next" type="button" aria-label="{{ ui.next }}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+      <p class="sr-only" id="live" aria-live="polite"></p>
+    </nav>
+  </main>
+
+  <nav class="small-menu chrome" aria-label="{{ ui.notesTools }}">
+    <svg class="chip" aria-hidden="true" width="100%" height="14"><defs><pattern id="chip" width="20" height="14" patternUnits="userSpaceOnUse"><path d="M0 13L10 1L20 13" fill="none" stroke="currentColor" stroke-width="1"/><path d="M6 13L10 8L14 13" fill="none" stroke="currentColor" stroke-width="1"/></pattern></defs><rect width="100%" height="14" fill="url(#chip)"/></svg>
+    <ul>
+      {% for m in e.menu %}{% if not loop.first %}<li class="dia" aria-hidden="true">◆</li>{% endif %}<li><a class="sm" href="{{ m.link }}" data-m="{{ loop.index0 }}" aria-label="{{ m.name }}"><span class="mr" aria-hidden="true">{{ m.rune }}</span><span class="rv" data-k="menu-{{ loop.index0 }}"><span class="rn" aria-hidden="true"></span><span class="lt">{{ m.name }}</span></span></a></li>{% endfor %}
+    </ul>
+  </nav>
+
+  <section class="dest" id="dest" hidden>
+    <span class="dest-rune" id="dest-rune" aria-hidden="true"></span>
+    <h2 class="dest-name"><span class="rv" data-k="dest-name"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></h2>
+    <p class="dest-note"><span class="rv" data-k="dest-note"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></p>
+    <button class="dest-back" id="dest-back" type="button"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="rv" data-k="dest-back"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></button>
+  </section>
+</div>
+
+<script id="entry-data" type="application/json">{{ data | tojson }}</script>
+<script src="assets/entry.js?v={{ v.entryjs }}"></script>
+</body>
+</html>

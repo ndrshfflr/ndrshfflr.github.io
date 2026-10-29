@@ -44,4 +44,4 @@ I am a Master's student in microbiology, focusing mainly on fungi. In my spare t
 - **2024** — Danish Mycological Society "Mushroom Grant" for personal microscope and microscopy supplies (7,000 DKK)
 - **2024** — UCPH Microbiology Cluster grant for interdisciplinary research projects (30,000 DKK)
 
-Questions about my background, or interested in working together? [Get in touch](index.html#contact).
+Questions about my background, or interested in working together? [Get in touch](classic.html#contact).

@@ -12,6 +12,7 @@ import datetime
 import re
 import hashlib
 import json
+import math
 from pathlib import Path
 
 import yaml
@@ -113,6 +114,46 @@ UI = {
     },
 }
 
+# Wording for the entry page (the stone circle of portals, index.html / da.html).
+# Names, portals and the small menu live in content/entry.json + entry.da.json.
+ENTRY_UI = {
+    "en": {
+        "language": "Language", "runesName": "Runes (long-branch Younger Futhark)",
+        "worlds": "Worlds", "prev": "Turn to the previous world", "next": "Turn to the next world",
+        "choosePortal": "Choose a world", "notesTools": "Notes and tools", "ofN": "{i} of {n}",
+        "seasons": {"winter": "Winter", "spring": "Spring", "summer": "Summer", "autumn": "Autumn"},
+        "tod": {"night": "night", "dawn": "dawn", "dusk": "dusk", "day": "day"},
+        "todaySeason": "Today's season", "today": "today", "todayHint": "(today)",
+        "seasonAria": "Season: {s}. Change season", "chooseSeason": "Choose a season",
+        "aa": "Show the text in Latin letters",
+        "comingSoon": "This world is still being built", "back": "Back to the circle",
+    },
+    "da": {
+        "language": "Sprog", "runesName": "Runer (yngre futhark, langkvist)",
+        "worlds": "Verdener", "prev": "Drej til forrige verden", "next": "Drej til næste verden",
+        "choosePortal": "Vælg en verden", "notesTools": "Noter og værktøjer", "ofN": "{i} af {n}",
+        "seasons": {"winter": "Vinter", "spring": "Forår", "summer": "Sommer", "autumn": "Efterår"},
+        "tod": {"night": "nat", "dawn": "daggry", "dusk": "skumring", "day": "dag"},
+        "todaySeason": "Dagens årstid", "today": "i dag", "todayHint": "(i dag)",
+        "seasonAria": "Årstid: {s}. Skift årstid", "chooseSeason": "Vælg en årstid",
+        "aa": "Vis teksten med latinske bogstaver",
+        "comingSoon": "Denne verden er stadig under opbygning", "back": "Tilbage til cirklen",
+    },
+}
+
+ENTRY_META = {
+    "en": {
+        "title": "Pieter Shiffler Carpentier — Biologist · Mycologist · Animist",
+        "description": "Pieter Shiffler Carpentier, MSc Biology — indoor microbiology, fungiculture, foraging, conservation, small worlds and nature photography.",
+        "ogDescription": "Biologist, mycologist and animist. Step through a portal: indoor microbiology, fungiculture, foraging, conservation, small worlds and photography.",
+    },
+    "da": {
+        "title": "Pieter Shiffler Carpentier — Biolog · Mykolog · Animist",
+        "description": "Pieter Shiffler Carpentier, MSc Biologi — indeklimamikrobiologi, svampedyrkning, sankning, naturbevarelse, små verdener og naturfotografi.",
+        "ogDescription": "Biolog, mykolog og animist. Træd gennem en portal: indeklimamikrobiologi, svampedyrkning, sankning, naturbevarelse, små verdener og fotografi.",
+    },
+}
+
 META = {
     "en": {
         "title": "Pieter Shiffler Carpentier — Mould, Indoor Microbiology & Mycology",
@@ -173,8 +214,10 @@ RUNES = {
 
 PAGES = {
     # out file: (template, lang, body class)
-    "index.html": ("index.html.j2", "en"),
-    "da.html": ("index.html.j2", "da"),
+    "index.html": ("entry.html.j2", "en"),      # the stone circle of portals
+    "da.html": ("entry.html.j2", "da"),
+    "classic.html": ("index.html.j2", "en"),    # the long one-page site, reached through the portals
+    "classic.da.html": ("index.html.j2", "da"),
     "exploration.html": ("exploration.html.j2", "en"),
     "exploration.da.html": ("exploration.html.j2", "da"),
     "fungi.html": ("fungi.html.j2", "en"),
@@ -188,7 +231,8 @@ PAGES = {
     "post.html": ("post.html.j2", "en"),
     "page.html": ("page.html.j2", "en"),
 }
-HOME = {"en": "index.html", "da": "da.html"}
+ENTRY = {"en": "index.html", "da": "da.html"}
+HOME = {"en": "classic.html", "da": "classic.da.html"}
 EXPLORATION = {"en": "exploration.html", "da": "exploration.da.html"}
 FUNGI = {"en": "fungi.html", "da": "fungi.da.html"}
 TERRARIUM = {"en": "terrarium.html", "da": "terrarium.da.html"}
@@ -249,7 +293,7 @@ def jsonld(d, lang):
         "name": "Pieter Shiffler Carpentier",
         "jobTitle": "Indoor Microbiology Specialist & Mycologist" if lang == "en" else "Specialist i indeklimamikrobiologi & mykolog",
         "description": META[lang]["ogDescription"],
-        "url": SITE_URL + ("" if lang == "en" else "da.html"),
+        "url": SITE_URL + ("" if lang == "en" else ENTRY["da"]),
         "email": "mailto:" + d["contact"]["email"],
         "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of Copenhagen"},
         "knowsAbout": ["Mycology", "Indoor microbiology", "Mould", "Building moisture damage", "Fungal identification", "Mushroom cultivation"],
@@ -267,6 +311,31 @@ def asset_version(rel):
     return hashlib.sha1((ROOT / rel).read_bytes()).hexdigest()[:8]
 
 
+def render_entry(env, content, entry, versions):
+    """index.html and da.html: the stone circle of portals."""
+    count = len(entry["en"]["portals"])
+    ring = []
+    for i in range(count):  # the ring as it stands before assets/entry.js takes over
+        phi = i * 360 / count
+        c = math.cos(math.radians(phi))
+        ring.append({"t": f"rotateY({phi:g}deg) translateZ(var(--r)) rotateY({-phi:g}deg)",
+                     "o": f"{0.3 + 0.7 * (c + 1) / 2:.3f}", "lo": f"{max(0.0, c):.3f}"})
+    for lang in ("en", "da"):
+        alternates = [
+            {"hreflang": "en", "href": SITE_URL},
+            {"hreflang": "da", "href": SITE_URL + ENTRY["da"]},
+            {"hreflang": "x-default", "href": SITE_URL},
+        ]
+        meta = dict(ENTRY_META[lang], canonical=SITE_URL + ("" if lang == "en" else ENTRY["da"]), alternates=alternates)
+        data = {"page": lang, "content": entry, "ui": ENTRY_UI}
+        html = env.get_template("entry.html.j2").render(
+            lang=lang, e=entry[lang], ui=ENTRY_UI[lang], meta=meta, site_url=SITE_URL, entry_href=ENTRY[lang],
+            jsonld=jsonld(content[lang], lang), ring=ring, data=data, v=versions,
+        )
+        (ROOT / ENTRY[lang]).write_text(html, encoding="utf-8")
+        print("wrote", ENTRY[lang])
+
+
 def main():
     env = Environment(loader=FileSystemLoader(ROOT / "src" / "templates"), autoescape=select_autoescape(["j2", "html"]),
                       trim_blocks=False, lstrip_blocks=False)
@@ -279,8 +348,11 @@ def main():
     year = datetime.date.today().year
     versions = {"css": asset_version("styles.css"), "js": asset_version("assets/site.js"),
                 "mycelium": asset_version("assets/mycelium.js"), "md": asset_version("assets/markdown.js"),
-                "fieldlog": asset_version("assets/fieldlog.js")}
+                "fieldlog": asset_version("assets/fieldlog.js"),
+                "entrycss": asset_version("assets/entry.css"), "entryjs": asset_version("assets/entry.js")}
     posts = load_posts()
+    entry = {"en": load("entry.json"), "da": load("entry.da.json")}
+    render_entry(env, content, entry, versions)
 
     for out, (tpl, lang) in PAGES.items():
         d = content[lang]
@@ -291,12 +363,13 @@ def main():
         is_terra = tpl == "terrarium.html.j2"
         is_blog = tpl == "blog.html.j2"
         is_log = tpl == "fieldlog.html.j2"
+        if tpl == "entry.html.j2":
+            continue  # rendered by render_entry()
         if is_home:
-            canonical = SITE_URL + ("" if lang == "en" else "da.html")
+            canonical = SITE_URL + HOME[lang]
             alternates = [
-                {"hreflang": "en", "href": SITE_URL},
-                {"hreflang": "da", "href": SITE_URL + "da.html"},
-                {"hreflang": "x-default", "href": SITE_URL},
+                {"hreflang": "en", "href": SITE_URL + HOME["en"]},
+                {"hreflang": "da", "href": SITE_URL + HOME["da"]},
             ]
             other_href = HOME[other]
             meta = dict(META[lang])
@@ -366,7 +439,7 @@ def main():
 
         html = env.get_template(tpl).render(
             d=d, lang=lang, ui=UI[lang], meta=dict(meta, canonical=canonical, alternates=alternates),
-            site_url=SITE_URL, home_href=("" if is_home else HOME[lang]), other_lang_href=other_href,
+            site_url=SITE_URL, home_href=("" if is_home else HOME[lang]), entry_href=ENTRY[lang], other_lang_href=other_href,
             exploration_href=EXPLORATION[lang], fungi_href=FUNGI[lang], terrarium_href=TERRARIUM[lang], blog_href=BLOG[lang], fieldlog_href=FIELDLOG[lang], posts=posts, gallery=gallery, year=year,
             jsonld=jsonld(d, lang), body_class=("home" if is_home else "subpage portal-page" if (is_fungi or is_terra or is_log) else "subpage"), v=versions,
             runes={k: {"glyph": g, "title": t} for k, (g, t) in RUNES[lang].items()},
@@ -375,7 +448,7 @@ def main():
         print("wrote", out)
 
     # sitemap
-    urls = ["", "da.html", "fungi.html", "fungi.da.html", "terrarium.html", "terrarium.da.html", "blog.html", "blog.da.html", "fieldlog.html", "fieldlog.da.html", "exploration.html", "exploration.da.html", "page.html?slug=cv"]
+    urls = ["", "da.html", "classic.html", "classic.da.html", "fungi.html", "fungi.da.html", "terrarium.html", "terrarium.da.html", "blog.html", "blog.da.html", "fieldlog.html", "fieldlog.da.html", "exploration.html", "exploration.da.html", "page.html?slug=cv"]
     today = datetime.date.today().isoformat()
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']

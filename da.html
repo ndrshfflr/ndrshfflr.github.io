@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<!-- GENERATED FILE — built by src/build.py from src/templates/. Text content is
-     also loaded live from content/*.json (edited through /admin), so most
-     wording changes never need a rebuild. -->
-<html lang="da" data-theme="dark">
+<!-- GENERATED FILE — built by src/build.py from src/templates/entry.html.j2.
+     Wording comes from content/entry.json and content/entry.da.json (edited
+     through /admin) and is also loaded live by assets/entry.js. -->
+<html lang="da" class="no-js">
 <head>
 <script>
 (function () {
-  try {
-    var stored = localStorage.getItem('theme');
-    var theme = (stored === 'light' || stored === 'dark') ? stored : 'dark';
-    document.documentElement.setAttribute('data-theme', theme);
-  } catch (e) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  }
+  var d = document.documentElement, mode = 'runes';
+  try { var m = localStorage.getItem('entryLang'); if (m === 'en' || m === 'da') mode = 'latin'; } catch (e) {}
+  d.className = 'js mode-' + mode;
 })();
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pieter Shiffler Carpentier — Skimmelsvamp, indeklima &amp; mykologi</title>
-<meta name="description" content="Pieter Shiffler Carpentier, MSc Biologi — specialist i indeklimamikrobiologi og mykolog. Prøvetagning og laboratorieanalyse af skimmel og fugt samt rådgivning om udbedring.">
+<title>Pieter Shiffler Carpentier — Biolog · Mykolog · Animist</title>
+<meta name="description" content="Pieter Shiffler Carpentier, MSc Biologi — indeklimamikrobiologi, svampedyrkning, sankning, naturbevarelse, små verdener og naturfotografi.">
 <link rel="canonical" href="https://ndrshfflr.github.io/da.html">
 <link rel="alternate" hreflang="en" href="https://ndrshfflr.github.io/">
 <link rel="alternate" hreflang="da" href="https://ndrshfflr.github.io/da.html">
@@ -27,520 +23,263 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
+<meta name="theme-color" content="#0b1322">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pieter Shiffler Carpentier">
-<meta property="og:title" content="Pieter Shiffler Carpentier — Skimmelsvamp, indeklima &amp; mykologi">
-<meta property="og:description" content="MSc Biologi — specialist i indeklimamikrobiologi, mykolog og guide til svampenes verden.">
+<meta property="og:title" content="Pieter Shiffler Carpentier — Biolog · Mykolog · Animist">
+<meta property="og:description" content="Biolog, mykolog og animist. Træd gennem en portal: indeklimamikrobiologi, svampedyrkning, sankning, naturbevarelse, små verdener og fotografi.">
 <meta property="og:url" content="https://ndrshfflr.github.io/da.html">
 <meta property="og:locale" content="da_DK">
 <meta property="og:image" content="https://ndrshfflr.github.io/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Pieter Shiffler Carpentier — Skimmelsvamp, indeklima &amp; mykologi">
-<meta name="twitter:description" content="MSc Biologi — specialist i indeklimamikrobiologi, mykolog og guide til svampenes verden.">
+<meta name="twitter:title" content="Pieter Shiffler Carpentier — Biolog · Mykolog · Animist">
+<meta name="twitter:description" content="Biolog, mykolog og animist. Træd gennem en portal: indeklimamikrobiologi, svampedyrkning, sankning, naturbevarelse, små verdener og fotografi.">
 <meta name="twitter:image" content="https://ndrshfflr.github.io/og-image.png">
-
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of Copenhagen"}, "description": "MSc Biologi \u2014 specialist i indeklimamikrobiologi, mykolog og guide til svampenes verden.", "email": "mailto:pietershiffler@proton.me", "jobTitle": "Specialist i indeklimamikrobiologi \u0026 mykolog", "knowsAbout": ["Mycology", "Indoor microbiology", "Mould", "Building moisture damage", "Fungal identification", "Mushroom cultivation"], "knowsLanguage": ["da", "en"], "name": "Pieter Shiffler Carpentier", "sameAs": ["https://instagram.com/shfflr"], "url": "https://ndrshfflr.github.io/da.html"}</script>
-
-
 <!-- Fonts are self-hosted (no requests to Google — simpler under GDPR) -->
-<link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=e33b14b3">
-<!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
-     token below with your own from the Cloudflare dashboard (see setup guide). -->
+<link rel="stylesheet" href="assets/entry.css?v=bc4d8cea">
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
 </head>
-<body class="home">
-<a class="skip-link" href="#main">Gå til indhold</a>
+<body>
+<div class="world look-fabric" id="world">
 
-<nav id="site-nav">
-  <div class="wrap">
-    <div class="brand mark">
-      <button class="egg-trigger" type="button" data-egg aria-label="Træd ind i myceliet" title="…">
-        <svg viewBox="0 0 48 32" aria-hidden="true">
-          <path d="M4 20C4 10 14 4 24 4C34 4 44 10 44 20C44 20 34 16 24 16C14 16 4 20 4 20Z" fill="var(--accent-2)"/>
-          <rect x="20" y="16" width="8" height="14" rx="3" fill="var(--text)"/>
-          <ellipse cx="24" cy="30" rx="9" ry="2" fill="var(--text-soft)" opacity=".35"/>
-        </svg>
-      </button>
-      <a href="#top" class="brand-name">Pieter Shiffler Carpentier</a>
-    </div>
-    <div class="nav-right">
-      <div class="navlinks" id="navlinks">
-        <a href="#about" id="nav-label-about">Om mig</a>
-        <a href="#microbiology" id="nav-label-microbiology">Skimmelsvamp</a>
-        <a href="#projects" id="nav-label-projects">Projekter</a>
-        <a href="#mycology" id="nav-label-mycology">Mykologi</a>
-        <span id="nav-dynamic" class="nav-dynamic"></span>
-        <a href="blog.da.html" id="nav-label-blog">Blog</a>
-        <a href="#contact" id="nav-label-contact">Kontakt</a>
-      </div>
-      <a class="lang-switch" href="index.html" hreflang="en" lang="en" data-lang-switch>EN</a>
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Skift mellem lyst og mørkt tema">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="4.2"/>
-          <path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
-        </svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/>
-        </svg>
-      </button>
-      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+  <div class="stars" id="stars" aria-hidden="true">
+    <span class="star" style="left:13%;top:11%;opacity:.45"></span><span class="star" style="left:24%;top:23%;opacity:.35"></span><span class="star" style="left:7%;top:34%;opacity:.3"></span><span class="star" style="left:71%;top:19%;opacity:.35"></span><span class="star" style="left:80%;top:31%;opacity:.3"></span><span class="star" style="left:36%;top:6%;opacity:.4"></span>
   </div>
-</nav>
+  <span class="disc" id="disc" aria-hidden="true"><span class="craters" id="craters"></span></span>
+  <div class="fx" id="fx-winter" aria-hidden="true"></div>
+  <div class="fx" id="fx-spring" aria-hidden="true"></div>
+  <div class="fx" id="fx-summer" aria-hidden="true"></div>
+  <div class="fx" id="fx-autumn" aria-hidden="true"></div>
 
-<main id="main">
-
-<header class="hero" id="top">
-  <div class="hero-media">
-    <img id="hero-image" src="/images/uploads/li-1558.jpg" alt="" fetchpriority="high">
-  </div>
-  <div class="hero-shade"></div>
-  <div class="wrap hero-inner">
-    <div class="hero-copy">
-      <div class="hero-eyebrow" id="hero-eyebrow">MSc Biologi · Mykolog · Specialist i indeklimamikrobiologi</div>
-      <h1 id="hero-headline">Jeg læser svampenes skjulte tegn — i dit hjem og i naturen.</h1>
-      <p class="lead" id="hero-lead">Jeg hjælper folk med at forstå og løse mikrobielle problemer i indeklimaet med grundig laboratorievidenskab, og resten af tiden bruger jeg i skoven, i laboratoriet og ved kanten af det, biologien kan forklare.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#contact" id="hero-cta-primary">Kontakt mig</a>
-        <a class="btn btn-ghost-light" href="#microbiology" id="hero-cta-secondary">Se mine ydelser</a>
-      </div>
-    </div>
-  </div>
-  <nav class="hero-paths wrap" id="hero-paths" aria-label="Hvor vil du starte?">
-    <a class="path" href="#microbiology">
-      <span class="path-rune" aria-hidden="true">ᛚ</span>
-      <span class="path-text"><strong>Skimmel eller fugt i hjemmet?</strong><span>Prøvetagning, laboratorieanalyse og en klar plan.</span></span>
+  <header class="top chrome" id="top">
+    <a class="logo" href="da.html" aria-label="Pieter Shiffler Carpentier">
+      <svg viewBox="0 0 100 100" width="38" height="38" aria-hidden="true"><path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/><circle cx="50" cy="50" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><circle cx="50" cy="50" r="10" class="eye-pupil"/><circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/></svg>
     </a>
-    <a class="path" href="#projects">
-      <span class="path-rune" aria-hidden="true">ᚲ</span>
-      <span class="path-text"><strong>Vil du ansætte eller samarbejde?</strong><span>Forskning, projekter og mit CV.</span></span>
-    </a>
-    <a class="path" href="#mycology">
-      <span class="path-rune" aria-hidden="true">ᛃ</span>
-      <span class="path-text"><strong>Interesseret i svampe?</strong><span>Dyrkning, sankning og ture under udvikling.</span></span>
-    </a>
-    
-  </nav>
-</header>
-
-<section id="about" data-rune="ᛗ">
-  <div class="wrap about-layout">
-    <aside class="about-side">
-      <img id="about-portrait" class="portrait" src="" alt="Pieter Shiffler Carpentier" hidden>
-      <dl class="credentials" id="about-credentials">
-        <div><dt>Uddannelse</dt><dd>MSc, Biologi</dd></div>
-        <div><dt>Speciale</dt><dd>Mykologi</dd></div>
-        <div><dt>Primært arbejdsfelt</dt><dd>Indeklimamikrobiologi (prøvetagning, laboratorieanalyse, udbedring)</dd></div>
-        <div><dt>Kendt for</dt><dd>Svampedyrkning &amp; svampesankning</dd></div>
-        
-      </dl>
-    </aside>
-    <div class="about-main">
-      <div class="eyebrow"><span class="rune" aria-hidden="true" title="mannaz — menneske">ᛗ</span><span id="about-eyebrow">Om mig</span></div>
-      <h2 id="about-heading">Videnskab først. Nysgerrighed altid.</h2>
-      <p class="about-intro" id="about-intro">Jeg har en MSc i biologi og er specialiseret i mykologi — læren om svampe. Mit arbejde ligger i krydsfeltet mellem omhyggelig laboratoriepraksis og en livslang fascination af de roller, svampe spiller over og under jorden.</p>
-      <p class="body-soft" id="about-body">Professionelt arbejder jeg som specialist i indeklimamikrobiologi: Jeg tager prøver i bygninger, analyserer dem i laboratoriet og hjælper folk med at forstå og udbedre det, der vokser, hvor det ikke burde. Uden for arbejdet er mykologi også der, hvor jeg bruger min fritid — jeg dyrker svampe, sanker og følger svampene ind i mere ukendt land: de guidede ture, workshops og det tværfaglige arbejde, jeg er ved at bygge op.</p>
-    </div>
-  </div>
-</section>
-
-<section id="microbiology" class="band" data-rune="ᛚ">
-  <div class="wrap">
-    <div class="split-head">
-      <div>
-        <div class="eyebrow"><span class="rune" aria-hidden="true" title="laguz — vand">ᛚ</span><span id="services-eyebrow">Ydelser</span></div>
-        <h2 id="services-heading">Skimmelsvamp &amp; indeklima</h2>
-      </div>
-      <p id="services-intro">Til boligejere, lejere, udlejere og virksomheder med skimmel, fugt eller uforklarlige problemer med luftkvaliteten. Jeg bringer laboratoriets grundighed til et problem, der ellers ofte diagnosticeres ved gætværk.</p>
-    </div>
-
-    <ol class="steps" id="services-cards">
-      <li class="step">
-        <span class="step-tag">01 · På stedet</span>
-        <h3>Prøvetagning</h3>
-        <p>Omhyggelig og metodisk indsamling af luft- og overfladeprøver for at finde ud af, hvad der faktisk er til stede — ikke kun det, man kan se.</p>
-      </li>
-      <li class="step">
-        <span class="step-tag">02 · Laboratorium</span>
-        <h3>Analyse &amp; fortolkning</h3>
-        <p>Mikroskopi og laboratorieanalyse af prøverne, oversat til en klar forklaring på almindeligt dansk af, hvad der vokser, og hvorfor.</p>
-      </li>
-      <li class="step">
-        <span class="step-tag">03 · Løsning</span>
-        <h3>Rådgivning om udbedring</h3>
-        <p>Praktiske, evidensbaserede anbefalinger til at løse det egentlige problem — ikke bare dække symptomerne til.</p>
-      </li>
-      
-    </ol>
-
-    <h3 class="sub-heading" id="offers-heading">Sådan kan vi samarbejde</h3>
-    <div class="offers" id="services-offers">
-      <article class="offer">
-        <div class="offer-head">
-          <h4>Gratis første samtale</h4>
-          <p class="offer-audience">I tvivl om, om der overhovedet er brug for en undersøgelse?</p>
-        </div>
-        
-        <ul class="offer-includes"><li>15 minutters telefon- eller videosamtale</li><li>Fortæl, hvad du ser, lugter eller har mistanke om</li><li>En ærlig vurdering af, om prøvetagning giver mening</li></ul>
-        <div class="offer-foot">
-          <div class="offer-meta">
-            <span class="offer-price">Gratis</span>
-            
-          </div>
-          <a class="offer-cta" href="#contact" data-offer="Gratis første samtale">Spørg om dette</a>
-        </div>
-      </article>
-      <article class="offer">
-        <div class="offer-head">
-          <h4>Besigtigelse &amp; prøvetagning</h4>
-          <p class="offer-audience">Boligejere, lejere og udlejere med synlig skimmel, fugt eller muggen lugt.</p>
-        </div>
-        
-        <ul class="offer-includes"><li>Besigtigelse af de berørte rum</li><li>Luft- og overfladeprøver, hvor det er relevant</li><li>Første fund forklaret på stedet</li></ul>
-        <div class="offer-foot">
-          <div class="offer-meta">
-            <span class="offer-price">Pris efter aftale</span>
-            
-          </div>
-          <a class="offer-cta" href="#contact" data-offer="Besigtigelse &amp; prøvetagning">Spørg om dette</a>
-        </div>
-      </article>
-      <article class="offer">
-        <div class="offer-head">
-          <h4>Fuld undersøgelse med laboratorierapport</h4>
-          <p class="offer-audience">Når du har brug for dokumentation — til udlejer, køber, forsikring eller din egen ro i maven.</p>
-        </div>
-        
-        <ul class="offer-includes"><li>Alt fra besigtigelsen</li><li>Mikroskopi og laboratorieanalyse af prøverne</li><li>Skriftlig rapport i et forståeligt sprog</li><li>Evidensbaserede anbefalinger til udbedring</li></ul>
-        <div class="offer-foot">
-          <div class="offer-meta">
-            <span class="offer-price">Pris efter aftale</span>
-            
-          </div>
-          <a class="offer-cta" href="#contact" data-offer="Fuld undersøgelse med laboratorierapport">Spørg om dette</a>
-        </div>
-      </article>
-      
-    </div>
-  </div>
-</section>
-
-<section id="trust" data-rune="ᛏ" hidden>
-  <div class="wrap">
-    <div class="split-head">
-      <div>
-        <div class="eyebrow"><span class="rune" aria-hidden="true" title="tīwaz — retfærdighed">ᛏ</span><span id="trust-eyebrow">Erfaring</span></div>
-        <h2 id="trust-heading">Sager &amp; referencer</h2>
-      </div>
-      <p id="trust-intro" hidden></p>
-    </div>
-    <div class="cases" id="trust-cases"></div>
-    <div class="testimonials" id="trust-testimonials"></div>
-    <a class="btn btn-ghost" id="trust-report" href="#" target="_blank" rel="noopener" hidden>Se et eksempel på en rapport (PDF)</a>
-  </div>
-</section>
-
-<section id="projects" data-rune="ᚲ">
-  <div class="wrap side-layout">
-    <div class="side-head">
-      <div class="eyebrow"><span class="rune" aria-hidden="true" title="kenaz — fakkel, viden">ᚲ</span><span id="projects-eyebrow">Forskning &amp; projekter</span></div>
-      <h2 id="projects-heading">Udvalgte projekter</h2>
-      <p id="projects-intro" hidden></p>
-      <div class="side-actions">
-        <a class="btn btn-primary" id="projects-cv" href="page.html?slug=cv">Læs mit fulde CV</a>
-        <a class="btn btn-ghost" id="projects-cvpdf" href="cv.pdf" download>Download CV (PDF)</a>
-      </div>
-    </div>
-    <ul class="timeline" id="projects-list">
-      <li>
-        <span class="tl-year">2026–nu</span>
-        <div>
-          <h3>Molekylær påvisning af skjult skimmel i bygninger</h3>
-          <p class="desc">Brug af molekylære metoder til at afsløre skjult skimmelvækst i bygninger.</p>
+    <div class="top-right">
+      <nav class="langs" aria-label="Sprog">
+        <a class="lang lang-runes" href="#" data-mode="runes" lang="da-Runr" aria-label="Runer (yngre futhark, langkvist)">ᚱᚢᚾᛅᛦ</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a class="lang" href="index.html" data-mode="en" lang="en" hreflang="en">EN</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a class="lang" href="da.html" data-mode="da" lang="da" hreflang="da">DA</a>
+      </nav>
+      <div class="season-wrap">
+        <button class="season-btn" id="season-btn" type="button" aria-label="Vælg en årstid" aria-haspopup="true" aria-expanded="false" aria-controls="season-menu">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="si si-winter"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 3.5l3 2 3-2M9 20.5l3-2 3 2"/></g><g class="si si-spring"><path d="M12 21V11M12 11C12 7 9 5 5 5c0 4 3 6 7 6zM12 14c0-3 2.5-5 6-5 0 3-2.5 5-6 5z"/></g><g class="si si-summer"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g><g class="si si-autumn"><path d="M5 19C5 11 10 5 19 5c0 9-6 14-14 14zM5 19l8-8"/></g></svg>
+          <span class="slabel"><span class="rv" data-k="season"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+        </button>
+        <div class="season-menu" id="season-menu" role="group" aria-label="Vælg en årstid" hidden>
+          
+          <button class="sopt" type="button" data-season="winter" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 3.5l3 2 3-2M9 20.5l3-2 3 2"/></svg>
+            <span class="sname"><span class="rv" data-k="opt-winter"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-winter"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
+          
+          <button class="sopt" type="button" data-season="spring" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11M12 11C12 7 9 5 5 5c0 4 3 6 7 6zM12 14c0-3 2.5-5 6-5 0 3-2.5 5-6 5z"/></svg>
+            <span class="sname"><span class="rv" data-k="opt-spring"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-spring"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
+          
+          <button class="sopt" type="button" data-season="summer" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            <span class="sname"><span class="rv" data-k="opt-summer"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-summer"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
+          
+          <button class="sopt" type="button" data-season="autumn" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19C5 11 10 5 19 5c0 9-6 14-14 14zM5 19l8-8"/></svg>
+            <span class="sname"><span class="rv" data-k="opt-autumn"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-autumn"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
+          
+          <button class="sopt" type="button" data-season="auto" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span class="sname"><span class="rv" data-k="opt-auto"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-auto"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
           
         </div>
-      </li>
-      <li>
-        <span class="tl-year">Værktøj</span>
-        <div>
-          <h3>Spore×plore</h3>
-          <p class="desc">Et interaktivt bestemmelsesværktøj til nordiske rørhatte (Boletales) baseret på sporekarakterer, med data fra Funga Nordica og GBIF-fund i realtid.</p>
-          <a class="tl-link" href="sporexplore.html">Åbn Spore×plore</a>
-        </div>
-      </li>
-      <li>
-        <span class="tl-year">2025</span>
-        <div>
-          <h3>Fra 2D-plader til 3D-strukturer</h3>
-          <p class="desc">Har termitdyrket Termitomyces brug for tre dimensioner for at vokse? Poster ved Dansk Mikrobiologisk Selskabs årsmøde.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero chrome">
+    <h1 class="nm"><span class="rv" data-k="name"><span class="rn" aria-hidden="true"></span><span class="lt">Pieter Shiffler Carpentier</span></span></h1>
+    <p class="title"><span class="rv" data-k="title"><span class="rn" aria-hidden="true"></span><span class="lt">Biolog · Mykolog · Animist</span></span></p>
+    <button class="aa" id="aa" type="button" aria-pressed="false" aria-label="Vis teksten med latinske bogstaver">Aa</button>
+  </div>
+
+  <main class="ring-wrap" id="main">
+    <nav class="ring-nav" id="ring-nav" aria-label="Verdener">
+      <div class="stage cam" id="stage">
+        <svg class="treeline" id="inscription" viewBox="0 0 1877 250" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+          <defs><pattern id="bark-pat" width="54" height="68" patternUnits="userSpaceOnUse"><rect width="54" height="68" class="bark-base"/><g class="bark-marks"><rect x="9.4" y="6.8" width="10.1" height="1.6"/><rect x="2.7" y="26.5" width="16.9" height="2.7"/><rect x="30.6" y="14.6" width="12" height="1.8"/><rect x="6.9" y="7" width="7.8" height="2.9"/><rect x="33.2" y="53.2" width="15.4" height="1.7"/><rect x="12.4" y="41.4" width="14.5" height="2.8"/><rect x="35.2" y="5.7" width="12.9" height="2.5"/><rect x="20.2" y="11.7" width="11.2" height="1.5"/><rect x="37.4" y="57.1" width="12.1" height="1.9"/><rect x="36.4" y="37.8" width="16.5" height="2.8"/><rect x="20.3" y="27.3" width="12.8" height="2.1"/><rect x="0" y="48.6" width="8.5" height="2.2"/><rect x="24.5" y="62.2" width="9.8" height="2.4"/></g></pattern></defs>
+          <g id="inscription-runes" fill="none" stroke="url(#bark-pat)" stroke-linecap="butt" stroke-linejoin="miter" data-carved="ᛏᚢ᛬ᚦᛅ᛬ᛘᛅᛁᛏ᛬ᚦᛅᛏ᛬ᛁᛋ᛬ᛋᛏᛁᛚ᛬ᚦᛅ᛬ᛁᚢᚾᛁᚠᛁᚱᛋ᛬ᛋᛅᚱᛁᛏᛅᛋ">
+<path d="M51.0 88.8 L51.0 250.0M30.0 133.9 L51.0 88.8 L71.9 133.9" stroke-width="3.7" opacity="0.33"/>
+<path d="M88.9 250.0 L88.9 67.4 L125.4 136.8 L125.4 250.0" stroke-width="2.9" opacity="0.36"/>
+<path d="M145.4 134.5v6M145.4 195.8v6" stroke-width="6" opacity="0.2"/>
+<path d="M165.4 45.1 L165.4 250.0M165.4 77.9 L200.3 147.5 L165.4 217.2" stroke-width="3.4" opacity="0.30"/>
+<path d="M235.5 83.9 L235.5 250.0M217.3 186.9 L253.8 143.7" stroke-width="2.6" opacity="0.27"/>
+<path d="M273.8 134.5v6M273.8 195.8v6" stroke-width="6" opacity="0.2"/>
+<path d="M320.4 60.2 L320.4 250.0M293.8 60.2 L320.4 122.8 L346.9 60.2" stroke-width="2.7" opacity="0.36"/>
+<path d="M382.2 84.2 L382.2 250.0M363.9 187.0 L400.4 143.9" stroke-width="3.0" opacity="0.21"/>
+<path d="M417.4 32.2 L417.4 250.0" stroke-width="3.8" opacity="0.38"/>
+<path d="M459.4 58.1 L459.4 250.0M434.4 111.8 L459.4 58.1 L484.3 111.8" stroke-width="2.7" opacity="0.27"/>
+<path d="M504.3 134.5v6M504.3 195.8v6" stroke-width="6" opacity="0.2"/>
+<path d="M524.3 66.2 L524.3 250.0M524.3 95.6 L555.6 158.1 L524.3 220.6" stroke-width="2.8" opacity="0.39"/>
+<path d="M591.8 74.9 L591.8 250.0M572.6 183.5 L611.1 138.0" stroke-width="2.8" opacity="0.36"/>
+<path d="M648.7 91.5 L648.7 250.0M628.1 135.9 L648.7 91.5 L669.3 135.9" stroke-width="4.1" opacity="0.29"/>
+<path d="M689.3 134.5v6M689.3 195.8v6" stroke-width="6" opacity="0.2"/>
+<path d="M709.3 62.5 L709.3 250.0" stroke-width="3.1" opacity="0.30"/>
+<path d="M726.3 87.3 L726.3 188.2 L758.8 141.0 L758.8 250.0" stroke-width="2.7" opacity="0.37"/>
+<path d="M778.8 134.5v6M778.8 195.8v6" stroke-width="6" opacity="0.2"/>
+<path d="M798.8 84.0 L798.8 186.9 L832.0 138.8 L832.0 250.0" stroke-width="3.8" opacity="0.24"/>
+<path d="M877.1 34.1 L877.1 250.0M849.0 94.6 L877.1 34.1 L905.1 94.6" stroke-width="4.0" opacity="0.35"/>
+<path d="M922.1 48.1 L922.1 250.0" stroke-width="3.5" opacity="0.35"/>
+<path d="M939.1 250.0 L939.1 91.7 L962.9 123.3" stroke-width="3.4" opacity="0.37"/>
+<path d="M982.9 134.5v6M982.9 195.8v6" stroke-width="6" opacity="0.2"/>
+<path d="M1002.9 86.3 L1002.9 250.0M1002.9 112.5 L1030.7 168.2 L1002.9 223.8" stroke-width="4.1" opacity="0.38"/>
+<path d="M1067.3 72.1 L1067.3 250.0M1047.7 182.4 L1086.8 136.2" stroke-width="3.2" opacity="0.29"/>
+<path d="M1106.8 134.5v6M1106.8 195.8v6" stroke-width="6" opacity="0.2"/>
+<path d="M1126.8 73.8 L1126.8 250.0" stroke-width="4.2" opacity="0.28"/>
+<path d="M1143.8 250.0 L1143.8 98.2 L1174.2 155.9 L1174.2 250.0" stroke-width="2.7" opacity="0.34"/>
+<path d="M1215.1 32.5 L1215.1 250.0M1191.2 110.8 L1239.1 167.3" stroke-width="3.4" opacity="0.30"/>
+<path d="M1256.1 62.6 L1256.1 250.0" stroke-width="3.8" opacity="0.24"/>
+<path d="M1273.1 58.6 L1273.1 250.0M1273.1 116.0 L1296.0 62.4M1273.1 163.9 L1315.2 70.1" stroke-width="3.5" opacity="0.32"/>
+<path d="M1332.2 87.7 L1332.2 250.0" stroke-width="2.9" opacity="0.27"/>
+<path d="M1349.2 250.0 L1349.2 37.0 L1387.5 83.8 L1364.1 137.1 L1391.8 250.0" stroke-width="3.2" opacity="0.32"/>
+<path d="M1408.8 79.2 L1408.8 185.1 L1443.0 135.5 L1443.0 250.0" stroke-width="2.8" opacity="0.21"/>
+<path d="M1463.0 134.5v6M1463.0 195.8v6" stroke-width="6" opacity="0.2"/>
+<path d="M1483.0 44.7 L1483.0 172.0 L1524.0 112.4 L1524.0 250.0" stroke-width="3.8" opacity="0.27"/>
+<path d="M1562.6 53.5 L1562.6 250.0M1541.0 175.3 L1584.2 124.3" stroke-width="3.7" opacity="0.38"/>
+<path d="M1601.2 250.0 L1601.2 34.8 L1640.0 82.2 L1616.3 136.0 L1644.3 250.0" stroke-width="3.3" opacity="0.40"/>
+<path d="M1661.3 34.6 L1661.3 250.0" stroke-width="3.5" opacity="0.38"/>
+<path d="M1702.1 66.6 L1702.1 250.0M1678.3 118.0 L1702.1 66.6 L1726.0 118.0" stroke-width="3.2" opacity="0.25"/>
+<path d="M1766.0 40.4 L1766.0 250.0M1743.0 170.4 L1789.1 115.9" stroke-width="2.9" opacity="0.21"/>
+<path d="M1806.1 45.2 L1806.1 172.2 L1847.0 112.8 L1847.0 250.0" stroke-width="3.8" opacity="0.30"/></g>
+        </svg>
+        <span class="pool" aria-hidden="true"></span>
+        <div class="scene">
+          <div class="floor" id="floor" aria-hidden="true">
+            <span class="floor-ring1"></span><span class="floor-ring2"></span>
+            <span class="floor-fx" id="floor-winter"></span><span class="floor-fx" id="floor-summer"></span>
+          </div>
+          
+          <div class="item" data-i="0" style="transform:rotateY(0deg) translateZ(var(--r)) rotateY(-0deg)">
+            <a class="pd on" href="classic.da.html#microbiology" data-i="0" aria-label="Indendørs mikrobiologi" style="opacity:1.000">
+              <span class="pa">
+                <span class="core" aria-hidden="true"></span>
+                <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 70 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round"><path d="M100 262C99 240 97 214 100 184"/><circle cx="100" cy="168" r="16"/><path d="M100 152v-12M111 157l14-15M89 157L75 142M116 168h20M84 168H64M111 179l13 12M89 179l-13 12"/><path d="M54 262C56 246 52 232 55 220"/><circle cx="55" cy="212" r="8"/><path d="M55 204v-9M61 207l7-7M49 207l-7-7"/><path d="M150 262C148 250 152 240 149 230"/><circle cx="149" cy="224" r="6"/><path d="M149 218v-7M154 220l6-6M144 220l-6-6"/></g><g fill="currentColor"><circle cx="128" cy="138" r="2.1"/><circle cx="72" cy="138" r="2.1"/><circle cx="141" cy="168" r="2.1"/><circle cx="59" cy="168" r="2.1"/><circle cx="127" cy="195" r="2"/><circle cx="73" cy="195" r="2"/><circle cx="55" cy="191" r="1.7"/><circle cx="149" cy="207" r="1.5"/></g></svg></span>
+                <span class="wv w1" aria-hidden="true"></span><span class="wv w2" aria-hidden="true"></span><span class="wv w3" aria-hidden="true"></span>
+                <span class="pr" aria-hidden="true">ᚴ</span>
+              </span>
+              <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
+              <span class="pl" style="opacity:1.000"><span class="rv" data-k="portal-0"><span class="rn" aria-hidden="true"></span><span class="lt">Indendørs mikrobiologi</span></span></span>
+            </a>
+          </div>
+          
+          <div class="item" data-i="1" style="transform:rotateY(60deg) translateZ(var(--r)) rotateY(-60deg)">
+            <a class="pd" href="fungi.da.html" data-i="1" aria-label="Svampedyrkning" style="opacity:0.825">
+              <span class="pa">
+                <span class="core" aria-hidden="true"></span>
+                <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 30 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round"><path d="M100 262C98 220 104 196 92 168C82 146 66 136 60 112C55 92 62 74 54 58"/><path d="M100 262C103 228 112 204 126 182C140 160 150 132 146 104C143 84 150 66 160 52"/><path d="M92 168C110 150 116 128 108 100C102 80 108 60 100 38"/><path d="M126 182C110 170 98 160 74 150C58 144 44 132 34 116"/><path d="M60 112C76 104 88 90 90 70"/><path d="M146 104C130 96 122 80 126 62"/><path d="M108 100C120 92 136 90 150 78"/><path d="M74 150C70 172 54 186 40 194"/><path d="M126 182C146 186 160 200 168 214"/></g><g fill="currentColor"><circle cx="54" cy="58" r="2.4"/><circle cx="160" cy="52" r="2.4"/><circle cx="100" cy="38" r="2.6"/><circle cx="34" cy="116" r="2"/><circle cx="168" cy="214" r="2"/><circle cx="90" cy="70" r="1.8"/><circle cx="126" cy="62" r="1.8"/><circle cx="150" cy="78" r="1.8"/><circle cx="40" cy="194" r="1.8"/></g></svg></span>
+                <span class="wv w1" aria-hidden="true"></span><span class="wv w2" aria-hidden="true"></span><span class="wv w3" aria-hidden="true"></span>
+                <span class="pr" aria-hidden="true">ᛅ</span>
+              </span>
+              <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
+              <span class="pl" style="opacity:0.500"><span class="rv" data-k="portal-1"><span class="rn" aria-hidden="true"></span><span class="lt">Svampedyrkning</span></span></span>
+            </a>
+          </div>
+          
+          <div class="item" data-i="2" style="transform:rotateY(120deg) translateZ(var(--r)) rotateY(-120deg)">
+            <a class="pd" href="fungi.da.html#tours" data-i="2" aria-label="Sankning" style="opacity:0.475">
+              <span class="pa">
+                <span class="core" aria-hidden="true"></span>
+                <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 70 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M64 172c0-24 17-38 38-38s38 14 38 38c-12-4-25-6-38-6s-26 2-38 6z"/><path d="M90 168c-2 28-6 50-10 76h44c-4-26-8-48-10-76"/><path d="M94 192l18 7M92 208l22 8M90 224l26 9"/><path d="M36 262C34 226 42 196 56 168"/><path d="M37 244l-11-6M38 228l-12-8M41 212l-11-10M45 196l-10-11M50 181l-8-11M37 244l10-8M38 228l11-10M41 212l11-11M45 196l10-12"/><path d="M164 262c0-34 4-54 0-72-3-13-17-13-17-2 0 7 9 8 10 2"/></g><g fill="currentColor"><circle cx="74" cy="152" r="1.6"/><circle cx="96" cy="144" r="1.6"/><circle cx="122" cy="150" r="1.6"/></g></svg></span>
+                <span class="wv w1" aria-hidden="true"></span><span class="wv w2" aria-hidden="true"></span><span class="wv w3" aria-hidden="true"></span>
+                <span class="pr" aria-hidden="true">ᚠ</span>
+              </span>
+              <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
+              <span class="pl" style="opacity:0.000"><span class="rv" data-k="portal-2"><span class="rn" aria-hidden="true"></span><span class="lt">Sankning</span></span></span>
+            </a>
+          </div>
+          
+          <div class="item" data-i="3" style="transform:rotateY(180deg) translateZ(var(--r)) rotateY(-180deg)">
+            <a class="pd" href="#" data-i="3" aria-label="Naturbevarelse" style="opacity:0.300">
+              <span class="pa">
+                <span class="core" aria-hidden="true"></span>
+                <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 62 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M100 214V128"/><path d="M100 172C86 162 70 158 56 142M100 156c14-10 30-14 44-30M100 128c-5-16-5-32 0-48M100 140c10-14 22-22 36-26M100 146c-10-12-22-18-36-20M56 142c-6-10-8-20-6-30M144 126c4-10 4-20 2-28M136 114c8-6 18-8 26-6M64 126c-8-6-18-8-26-6"/><path d="M28 214h144"/><path d="M100 214c-4 16-16 28-34 36M100 214c4 16 16 28 34 36M100 214v40M66 250c-10 2-18 6-24 12M134 250c10 2 18 6 24 12"/></g><g fill="currentColor"><circle cx="100" cy="78" r="2.6"/><circle cx="50" cy="110" r="2.2"/><circle cx="146" cy="96" r="2.2"/><circle cx="162" cy="108" r="2"/><circle cx="38" cy="120" r="2"/><circle cx="56" cy="142" r="1.8"/><circle cx="144" cy="126" r="1.8"/></g></svg></span>
+                <span class="wv w1" aria-hidden="true"></span><span class="wv w2" aria-hidden="true"></span><span class="wv w3" aria-hidden="true"></span>
+                <span class="pr" aria-hidden="true">ᛦ</span>
+              </span>
+              <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
+              <span class="pl" style="opacity:0.000"><span class="rv" data-k="portal-3"><span class="rn" aria-hidden="true"></span><span class="lt">Naturbevarelse</span></span></span>
+            </a>
+          </div>
+          
+          <div class="item" data-i="4" style="transform:rotateY(240deg) translateZ(var(--r)) rotateY(-240deg)">
+            <a class="pd" href="terrarium.da.html" data-i="4" aria-label="Små verdener" style="opacity:0.475">
+              <span class="pa">
+                <span class="core" aria-hidden="true"></span>
+                <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 70 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 236C66 208 126 178 186 128"/><path d="M156 150c10-14 26-18 36-14-4 12-20 18-36 14zM56 218c-14-6-22-18-22-28 12 2 20 14 22 28z"/><path d="M54 186L148 134"/><path d="M148 134l20-26M148 134l26-10"/><path d="M74 175l-9-18-8-4M74 175l5 15 8 6M100 161l-5-20-8-6M100 161l8 13 10 4M124 147l-2-22 6-8M124 147l13 9h10"/><path d="M54 186l-9 3"/></g><g fill="currentColor"><ellipse cx="150" cy="133" rx="3" ry="2.2"/></g></svg></span>
+                <span class="wv w1" aria-hidden="true"></span><span class="wv w2" aria-hidden="true"></span><span class="wv w3" aria-hidden="true"></span>
+                <span class="pr" aria-hidden="true">ᚦ</span>
+              </span>
+              <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
+              <span class="pl" style="opacity:0.000"><span class="rv" data-k="portal-4"><span class="rn" aria-hidden="true"></span><span class="lt">Små verdener</span></span></span>
+            </a>
+          </div>
+          
+          <div class="item" data-i="5" style="transform:rotateY(300deg) translateZ(var(--r)) rotateY(-300deg)">
+            <a class="pd" href="classic.da.html#photography" data-i="5" aria-label="Fotografi" style="opacity:0.825">
+              <span class="pa">
+                <span class="core" aria-hidden="true"></span>
+                <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 20 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="114" r="46"/><circle cx="100" cy="114" r="56" stroke-dasharray="2 6"/><path d="M126 114L113 136.5 87 136.5 74 114 87 91.5 113 91.5Z"/><path d="M126 114L137 87M113 136.5L142 133M87 136.5L105 160M74 114L63 141M87 91.5L58 95M113 91.5L95 68"/><path d="M8 236l38-30 24 18 38-46 32 34 22-14 30 24"/></g></svg></span>
+                <span class="wv w1" aria-hidden="true"></span><span class="wv w2" aria-hidden="true"></span><span class="wv w3" aria-hidden="true"></span>
+                <span class="pr" aria-hidden="true">ᛋ</span>
+              </span>
+              <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
+              <span class="pl" style="opacity:0.500"><span class="rv" data-k="portal-5"><span class="rn" aria-hidden="true"></span><span class="lt">Fotografi</span></span></span>
+            </a>
+          </div>
           
         </div>
-      </li>
-      <li>
-        <span class="tl-year">2026</span>
-        <div>
-          <h3>Forædling af svampe</h3>
-          <p class="desc">Innovationsprojekt med fokus på teknikker til svampeforædling.</p>
-          
+      </div>
+      <div class="controls chrome">
+        <button class="ctl" id="prev" type="button" aria-label="Drej til forrige verden"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="dots" role="group" aria-label="Vælg en verden">
+          <button class="dot on" type="button" data-i="0" aria-label="Indendørs mikrobiologi" aria-current="true">ᚴ</button><button class="dot" type="button" data-i="1" aria-label="Svampedyrkning" aria-current="false">ᛅ</button><button class="dot" type="button" data-i="2" aria-label="Sankning" aria-current="false">ᚠ</button><button class="dot" type="button" data-i="3" aria-label="Naturbevarelse" aria-current="false">ᛦ</button><button class="dot" type="button" data-i="4" aria-label="Små verdener" aria-current="false">ᚦ</button><button class="dot" type="button" data-i="5" aria-label="Fotografi" aria-current="false">ᛋ</button>
         </div>
-      </li>
-      
+        <button class="ctl" id="next" type="button" aria-label="Drej til næste verden"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+      <p class="sr-only" id="live" aria-live="polite"></p>
+    </nav>
+  </main>
+
+  <nav class="small-menu chrome" aria-label="Noter og værktøjer">
+    <svg class="chip" aria-hidden="true" width="100%" height="14"><defs><pattern id="chip" width="20" height="14" patternUnits="userSpaceOnUse"><path d="M0 13L10 1L20 13" fill="none" stroke="currentColor" stroke-width="1"/><path d="M6 13L10 8L14 13" fill="none" stroke="currentColor" stroke-width="1"/></pattern></defs><rect width="100%" height="14" fill="url(#chip)"/></svg>
+    <ul>
+      <li><a class="sm" href="page.html?slug=cv" data-m="0" aria-label="CV"><span class="mr" aria-hidden="true">ᛘ</span><span class="rv" data-k="menu-0"><span class="rn" aria-hidden="true"></span><span class="lt">CV</span></span></a></li><li class="dia" aria-hidden="true">◆</li><li><a class="sm" href="fieldlog.da.html" data-m="1" aria-label="Feltlog"><span class="mr" aria-hidden="true">ᚱ</span><span class="rv" data-k="menu-1"><span class="rn" aria-hidden="true"></span><span class="lt">Feltlog</span></span></a></li><li class="dia" aria-hidden="true">◆</li><li><a class="sm" href="blog.da.html" data-m="2" aria-label="Labdagbog"><span class="mr" aria-hidden="true">ᚬ</span><span class="rv" data-k="menu-2"><span class="rn" aria-hidden="true"></span><span class="lt">Labdagbog</span></span></a></li><li class="dia" aria-hidden="true">◆</li><li><a class="sm" href="sporexplore.html" data-m="3" aria-label="Bioinformatik"><span class="mr" aria-hidden="true">ᚼ</span><span class="rv" data-k="menu-3"><span class="rn" aria-hidden="true"></span><span class="lt">Bioinformatik</span></span></a></li>
     </ul>
-  </div>
-</section>
+  </nav>
 
-<section id="mycology" class="band" data-rune="ᛃ">
-  <div class="wrap">
-    <div class="split-head">
-      <div>
-        <div class="eyebrow"><span class="rune" aria-hidden="true" title="jēra — høst">ᛃ</span><span id="mycology-eyebrow">Praksis</span></div>
-        <h2 id="mycology-heading">Dyrkning &amp; sankning</h2>
-      </div>
-      <p id="mycology-intro">Ved siden af laboratoriearbejdet er det svampene, jeg bruger min egen tid på. Dyrkning og sankning holder mig tæt på de organismer, jeg studerer professionelt — og på de økosystemer, de hører til i.</p>
-    </div>
-    <div class="myco-layout">
-      <ul class="list-plain" id="mycology-list">
-        <li>
-          <span class="num">01</span>
-          <div><h3>Svampedyrkning</h3><span class="desc">Dyrkning af spiselige og medicinske arter, fra substrat til høst.</span></div>
-        </li>
-        <li>
-          <span class="num">02</span>
-          <div><h3>Svampesankning</h3><span class="desc">Bestemmelse og indsamling af vilde svampe med vægt på at gøre det sikkert og bæredygtigt.</span></div>
-        </li>
-        <li>
-          <span class="num">03</span>
-          <div><h3>Guidede naturture</h3><span class="desc">Under udvikling — ture for små grupper med fokus på svampe, skovens økologi, og hvordan man rent faktisk får øje på det, der er omkring en.</span></div>
-        </li>
-        
-      </ul>
-      <a class="portal-door" href="fungi.da.html" id="mycology-portal">
-        <span class="portal-arch" aria-hidden="true">
-          <svg class="portal-hyphae" viewBox="0 0 200 260" preserveAspectRatio="xMidYMax slice">
-            <g fill="none" stroke="currentColor" stroke-linecap="round">
-              <path d="M100 262C98 220 104 196 92 168C82 146 66 136 60 112C55 92 62 74 54 58"/>
-              <path d="M100 262C103 228 112 204 126 182C140 160 150 132 146 104C143 84 150 66 160 52"/>
-              <path d="M92 168C110 150 116 128 108 100C102 80 108 60 100 38"/>
-              <path d="M126 182C110 170 98 160 74 150C58 144 44 132 34 116"/>
-              <path d="M60 112C76 104 88 90 90 70"/><path d="M146 104C130 96 122 80 126 62"/>
-              <path d="M108 100C120 92 136 90 150 78"/><path d="M74 150C70 172 54 186 40 194"/>
-              <path d="M126 182C146 186 160 200 168 214"/><path d="M54 58C48 46 40 40 30 36"/>
-              <path d="M100 38C104 28 112 22 120 18"/><path d="M160 52C168 44 176 42 184 42"/>
-            </g>
-            <g fill="currentColor"><circle cx="54" cy="58" r="2.4"/><circle cx="160" cy="52" r="2.4"/><circle cx="100" cy="38" r="2.6"/><circle cx="34" cy="116" r="2"/><circle cx="168" cy="214" r="2"/><circle cx="90" cy="70" r="1.8"/><circle cx="126" cy="62" r="1.8"/><circle cx="150" cy="78" r="1.8"/><circle cx="40" cy="194" r="1.8"/><circle cx="30" cy="36" r="1.6"/><circle cx="120" cy="18" r="1.6"/><circle cx="184" cy="42" r="1.6"/></g>
-          </svg>
-          <span class="portal-rune">ᛜ</span>
-        </span>
-        <span class="portal-copy">
-          <span class="portal-eyebrow" id="mycology-portal-eyebrow">Lær med mig</span>
-          <span class="portal-heading" id="mycology-portal-heading">Svampeportalen</span>
-          <span class="portal-text" id="mycology-portal-text">Workshops i at dyrke dine egne svampe og guidede svampeture i skoven.</span>
-          <span class="portal-cta"><span id="mycology-portal-cta">Træd indenfor</span> <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section id="terrarium-teaser" class="teaser-band" data-rune="ᚹ">
-  <div class="wrap">
-    <a class="portal-door terra-door" href="terrarium.da.html" id="terra-door">
-      <span class="portal-arch terra-arch" aria-hidden="true">
-        <svg class="portal-hyphae" viewBox="0 0 200 260" preserveAspectRatio="xMidYMax slice">
-          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M100 262V170"/><path d="M100 214C84 206 70 192 64 172"/><path d="M100 196C118 190 132 176 138 156"/>
-            <path d="M100 170C96 150 100 132 108 116"/>
-            <path d="M64 172C54 168 44 168 36 172"/><path d="M138 156C150 150 162 150 170 154"/>
-            <path d="M108 116C120 112 132 104 136 92M108 116C100 104 88 98 76 98"/>
-            <path d="M52 248c10-6 22-6 32 0M118 252c10-6 24-6 34 0"/>
-          </g>
-          <g fill="currentColor"><ellipse cx="136" cy="88" rx="4" ry="2.4"/><ellipse cx="74" cy="96" rx="4" ry="2.4"/><ellipse cx="34" cy="172" rx="4" ry="2.2"/><ellipse cx="172" cy="154" rx="4" ry="2.2"/></g>
-        </svg>
-        <span class="portal-rune">ᚹ</span>
-      </span>
-      <span class="portal-copy">
-        <span class="portal-eyebrow" id="terra-door-eyebrow">Også i samlingen</span>
-        <span class="portal-heading" id="terra-door-heading">Insekter &amp; terrarier</span>
-        <span class="portal-text" id="terra-door-text">Vandrende pinde og blade, biller, kakerlakker og bænkebidere — og de små levende verdener, jeg bygger til dem.</span>
-        <span class="portal-cta"><span id="terra-door-cta">Kig indenfor</span> <span aria-hidden="true">&rarr;</span></span>
-      </span>
-    </a>
-  </div>
-</section>
-
-<section id="fieldlog-teaser" class="teaser-band log-teaser" data-rune="ᚠ">
-  <div class="wrap">
-    <a class="portal-door terra-door log-door" href="fieldlog.da.html" id="log-door">
-      <span class="portal-arch log-arch" aria-hidden="true">
-        <svg class="portal-hyphae" viewBox="0 0 200 260" preserveAspectRatio="xMidYMax slice">
-          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M100 236C78 226 50 224 26 230V122C50 116 78 118 100 128C122 118 150 116 174 122V230C150 224 122 226 100 236Z"/>
-            <path d="M100 128V236"/>
-            <path d="M38 210c16-3 32-2 48 3M38 196c16-3 32-2 48 3M114 213c16-5 32-6 48-3M114 199c16-5 32-6 48-3"/>
-            <path d="M46 172c0-14 10-22 22-22s22 8 22 22c-6-3-14-4-22-4s-16 1-22 4Z"/><path d="M64 168v14M72 168v14"/>
-            <path d="M118 168c8-2 14-8 22-8 6 0 10 4 14 2l8-4-6 8c-2 8-10 14-22 14-6 0-12-4-16-12Z"/><path d="M146 164h.5"/>
-            <path d="M120 150l8-4M136 146l2-8M152 148l8-6"/>
-          </g>
-          <g fill="currentColor"><circle cx="58" cy="160" r="1.8"/><circle cx="76" cy="158" r="1.6"/><circle cx="68" cy="154" r="1.4"/></g>
-        </svg>
-        <span class="portal-rune">ᚠ</span>
-      </span>
-      <span class="portal-copy">
-        <span class="portal-eyebrow" id="log-door-eyebrow">Set i naturen</span>
-        <span class="portal-heading" id="log-door-heading">Fundbogen</span>
-        <span class="portal-text" id="log-door-text">Hver svamp, fugl og hvert dyr jeg har fundet og bestemt i naturen, nummereret i den rækkefølge jeg mødte dem.</span>
-        <span class="portal-cta"><span id="log-door-cta">Åbn fundbogen</span> <span aria-hidden="true">&rarr;</span></span>
-      </span>
-    </a>
-  </div>
-</section>
-
-<section id="photography" data-rune="ᛞ">
-  <div class="wrap">
-    <div class="split-head">
-      <div>
-        <div class="eyebrow"><span class="rune" aria-hidden="true" title="dagaz — dag">ᛞ</span><span id="photography-eyebrow">Også undervejs</span></div>
-        <h2 id="photography-heading">Fotografi</h2>
-      </div>
-      <p id="photography-intro">Fotografi er en voksende passion, og jeg arbejder på at bringe det ind i min praksis — dokumentation af svampe, skove og feltarbejde, og på sigt som en del af mine ture og ydelser.</p>
-    </div>
-    <div class="photo-strip" id="photography-strip">
-      <figure class="photo-tile has-image"><img src="/images/gallery/226f3774-b44a-42ff-a6c3-5b8dae01e53e.jpg" alt="veryniiiiice" loading="lazy"><figcaption class="cap">veryniiiiice</figcaption></figure>
-      
-    </div>
-  </div>
-</section>
-
-<section id="blog-latest" data-rune="ᚨ">
-  <div class="wrap">
-    <div class="split-head">
-      <div>
-        <div class="eyebrow"><span class="rune" aria-hidden="true" title="ansuz — tale, ordet">ᚨ</span><span id="blog-eyebrow">Blog</span></div>
-        <h2 id="blog-latest-heading">Seneste feltnoter</h2>
-      </div>
-      <p><a class="tl-link" href="blog.da.html" id="blog-all-link">Alle indlæg &rarr;</a></p>
-    </div>
-    <div class="post-list post-list-latest" id="blog-latest-list">
-      <article class="post-card" data-tags="bangin">
-  <a class="post-link" href="post.html?slug=2026-10-24-testing-this-stuff" hreflang="en">
-    <span class="post-cover"><span class="post-cover-rune" aria-hidden="true">ᚨ</span></span>
-    <span class="post-text">
-      <span class="post-meta"><time datetime="2026-10-25">25. oktober 2026</time><span class="post-lang">EN</span></span>
-      <span class="post-title">Testing this stuff</span>
-      <span class="post-summary">Bonhour hello monsieur</span>
-      <span class="post-tags"><span>bangin</span></span>
-      <span class="post-more">Læs mere <span aria-hidden="true">&rarr;</span></span>
-    </span>
-  </a>
-</article>
-    </div>
-  </div>
-</section>
-
-<section id="faq" data-rune="ᚨ">
-  <div class="wrap side-layout">
-    <div class="side-head">
-      <div class="eyebrow"><span class="rune" aria-hidden="true" title="ansuz — tale, visdom">ᚨ</span><span id="faq-eyebrow">Spørgsmål</span></div>
-      <h2 id="faq-heading">Ofte stillede spørgsmål</h2>
-      <p class="side-note">Har du et andet spørgsmål? <a href="#contact">Spørg mig direkte.</a></p>
-    </div>
-    <div class="faq-list" id="faq-list">
-      <details>
-        <summary>Skal jeg have lavet en undersøgelse, eller skal jeg bare fjerne skimlen?</summary>
-        <p>Hvis væksten er lille og synlig, og årsagen er åbenlys — et utæt rør, kondens på en kold væg — kan det være nok at stoppe fugten og rengøre. En undersøgelse giver mening, når du kan lugte skimmel, men ikke se den, efter vandskade, når gener bliver ved, eller når du har brug for dokumentation til udlejer, køber eller forsikring.</p>
-      </details>
-      <details>
-        <summary>Er “sort skimmel” farlig?</summary>
-        <p>Farven fortæller ikke, hvilken art det er — mange almindelige skimmelsvampe er mørke. Det vigtige er, at fugt og skimmel indendørs hænger sammen med luftvejsgener og astma, så al vækst bør håndteres, uanset farven. At vide, hvad der vokser, hjælper med at afgøre, hvor forsigtigt det skal håndteres.</p>
-      </details>
-      <details>
-        <summary>Kan klorin løse problemet?</summary>
-        <p>Klorin kan fjerne den synlige farve fra hårde overflader, men det når ikke væksten inde i porøse materialer som puds, træ og tapet, og det gør intet ved fugten. Hvis kilden til fugten ikke bliver fjernet, kommer skimlen igen.</p>
-      </details>
-      <details>
-        <summary>Hvad sker der ved et besøg?</summary>
-        <p>Jeg besigtiger de berørte rum, tager prøver dér, hvor de rent faktisk kan besvare et spørgsmål, og analyserer dem i laboratoriet. Du får en forklaring i et almindeligt sprog af, hvad der vokser, hvorfor, og hvad du kan gøre ved det.</p>
-      </details>
-      
-    </div>
-  </div>
-</section>
-
-
-<section id="contact" class="deep" data-rune="ᛖ">
-  <div class="wrap contact-grid">
-    <div class="contact-details">
-      <div class="eyebrow"><span class="rune" aria-hidden="true" title="ehwaz — partnerskab">ᛖ</span><span id="contact-eyebrow">Kontakt</span></div>
-      <h2 id="contact-heading">Lad os tale sammen</h2>
-      <p class="contact-intro" id="contact-intro">Uanset om det er et skimmelproblem, du gerne vil have undersøgt, et spørgsmål om svampesankning eller -dyrkning, eller interesse i kommende ture og workshops — så skriv til mig.</p>
-      <a class="email" href="mailto:pietershiffler@proton.me" id="contact-email">pietershiffler@proton.me</a>
-      <dl class="contact-facts">
-        <div id="contact-phone-row" hidden><dt>Telefon</dt><dd><a id="contact-phone" href="tel:"></a></dd></div>
-        <div id="contact-area-row" hidden><dt>Område</dt><dd id="contact-area"></dd></div>
-      </dl>
-      <a class="btn btn-primary" id="contact-booking" href="#" target="_blank" rel="noopener" hidden>Book en gratis samtale (15 min)</a>
-      <div class="socials" id="contact-socials"><a href="https://instagram.com/shfflr" target="_blank" rel="noopener noreferrer">instagram</a></div>
-    </div>
-
-    <form class="contact-form" id="contact-form" data-endpoint="" data-email="pietershiffler@proton.me" novalidate>
-      <div class="field-row">
-        <label>Navn<input name="name" autocomplete="name" required></label>
-        <label>E-mail<input name="email" type="email" autocomplete="email" required></label>
-      </div>
-      <label>Hvad drejer det sig om?
-        <select name="topic" id="form-topic">
-          <option selected>Skimmel eller fugt i en bygning</option><option>Svampesankning eller dyrkning</option><option>Ture &amp; workshops</option><option>Køb af en kultur</option><option>Insekter &amp; terrarier</option><option>Forskning eller samarbejde</option><option>Noget andet</option>
-        </select>
-      </label>
-      <label>Besked<textarea name="message" rows="5" required></textarea></label>
-      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <div class="form-foot">
-        <button class="btn btn-primary" type="submit">Send besked</button>
-        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-      </div>
-    </form>
-  </div>
-</section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="wrap footer-row">
-    <div>© <span id="year">2026</span> Pieter Shiffler Carpentier<span id="footer-cvr" class="footer-cvr" hidden> · CVR <span id="footer-cvr-value"></span></span></div>
-    <div class="footer-links">
-      <a href="exploration.da.html" id="footer-exploration">Ud over laboratoriet</a>
-      <a href="index.html" hreflang="en" lang="en" data-lang-switch>English</a>
-    </div>
-    <div id="footer-tagline">MSc Biologi · Mykologi · Indeklimamikrobiologi</div>
-  </div>
-</footer>
-
-<div class="egg" id="egg" hidden role="dialog" aria-modal="true" aria-label="Træd ind i myceliet">
-  <div class="egg-stage" id="egg-stage"></div>
-  <div class="egg-veil"></div>
-  <div class="egg-copy">
-    <div class="eyebrow"><span class="rune" aria-hidden="true">ᛜ</span>Du fandt den</div>
-    <div class="egg-title">Træd ind i myceliet</div>
-  </div>
-  <div class="egg-bottom">
-    <button class="motion-btn" id="motion-btn" type="button">Slå bevægelse til</button>
-    <div id="egg-hint">bevæg eller vip for at udforske · esc for at lukke</div>
-  </div>
-  <button class="egg-close" id="egg-close" type="button" aria-label="Luk">&times;</button>
-  <p class="egg-fallback" id="egg-fallback" hidden>Det her kræver WebGL, som din browser vist ikke understøtter. Netværket er der stadig.</p>
+  <section class="dest" id="dest" hidden>
+    <span class="dest-rune" id="dest-rune" aria-hidden="true"></span>
+    <h2 class="dest-name"><span class="rv" data-k="dest-name"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></h2>
+    <p class="dest-note"><span class="rv" data-k="dest-note"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></p>
+    <button class="dest-back" id="dest-back" type="button"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="rv" data-k="dest-back"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></button>
+  </section>
 </div>
 
-<script id="ui-strings" type="application/json">{"allPosts": "Alle indl\u00e6g", "area": "Omr\u00e5de", "askAvailability": "Sp\u00f8rg om de kan f\u00e5s", "back": "Tilbage til forsiden", "book": "Book en plads", "buy": "K\u00f8b", "careGuide": "Plejeguide", "caseFinding": "Hvad jeg fandt", "caseOutcome": "Resultat", "caseProblem": "Problemet", "close": "Luk", "downloadPdf": "Download som PDF", "duration": "Varighed", "eggEyebrow": "Du fandt den", "eggFallback": "Det her kr\u00e6ver WebGL, som din browser vist ikke underst\u00f8tter. Netv\u00e6rket er der stadig.", "eggHint": "bev\u00e6g eller vip for at udforske \u00b7 esc for at lukke", "eggTitle": "Tr\u00e6d ind i myceliet", "enableMotion": "Sl\u00e5 bev\u00e6gelse til", "faqMore": "Har du et andet sp\u00f8rgsm\u00e5l?", "faqMoreLink": "Sp\u00f8rg mig direkte.", "filterTags": "Filtr\u00e9r indl\u00e6g efter emne", "flAll": "Alle", "flFilter": "Vis \u00e9n gruppe", "flFirst": "F\u00f8rste fund", "flFromBlog": "Fra bloggen", "flGroups": {"arachnids": "Edderkopper m.fl.", "birds": "Fugle", "fish": "Fisk", "fungi": "Svampe", "herps": "Padder \u0026 krybdyr", "insects": "Insekter", "mammals": "Pattedyr", "molluscs": "Bl\u00f8ddyr", "other": "Andet", "plants": "Planter"}, "flLast": "Senest set", "flNew": "Ny", "flNoMatch": "Intet i fundbogen matcher det.", "flNotebook": "Min notesbog", "flOf": "af", "flOpenRecord": "\u00c5bn fundet", "flRecords": "Fund", "flRefPhoto": "Referencefoto, ikke mit eget", "flRefShort": "Ref.-foto", "flSearch": "S\u00f8g i fundbogen", "flSortAz": "A\u2013\u00c5", "flSortLabel": "Sort\u00e9r", "flSortMost": "Flest fund", "flSortNewest": "Nyeste f\u00f8rst", "flSortNumber": "I fundr\u00e6kkef\u00f8lge", "flSpecies": "Arter", "flSynced": "Senest synkroniseret", "flThisYear": "Nye i \u00e5r", "formEmail": "E-mail", "formError": "Noget gik galt. Skriv venligst direkte til min e-mail i stedet.", "formInvalid": "Udfyld venligst navn, en gyldig e-mailadresse og en besked.", "formMailto": "Dit mailprogram burde \u00e5bne med beskeden udfyldt \u2014 tryk bare send.", "formMessage": "Besked", "formName": "Navn", "formSend": "Send besked", "formSending": "Sender\u2026", "formSent": "Tak \u2014 din besked er sendt. Jeg vender tilbage hurtigst muligt.", "formTopic": "Hvad drejer det sig om?", "formTopics": ["Skimmel eller fugt i en bygning", "Svampesankning eller dyrkning", "Ture \u0026 workshops", "K\u00f8b af en kultur", "Insekter \u0026 terrarier", "Forskning eller samarbejde", "Noget andet"], "format": "Format", "inStock": "P\u00e5 lager", "inhabitants": "Beboere", "loading": "Indl\u00e6ser\u2026", "menu": "Menu", "notFound": "Siden blev ikke fundet", "notFoundBody": "Beklager, siden kunne ikke findes.", "offerCta": "Sp\u00f8rg om dette", "offerPrefill": "Ang\u00e5ende: ", "orderCulture": "Bestil denne kultur", "origin": "Oprindelse", "otherLang": "en", "otherLangLabel": "EN", "otherLangName": "English", "pathsLabel": "Hvor vil du starte?", "phone": "Telefon", "photoFieldlog": "I fundbogen", "photoPost": "L\u00e6s indl\u00e6gget", "postPhotos": "Fotos", "readMore": "L\u00e6s mere", "skip": "G\u00e5 til indhold", "soldOut": "Ikke p\u00e5 lager lige nu", "themeToggle": "Skift mellem lyst og m\u00f8rkt tema", "turnaround": "Leveringstid"}</script>
-<script src="assets/markdown.js?v=d4f718c0"></script>
-
-<script src="assets/site.js?v=2da17a04" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
+<script id="entry-data" type="application/json">{"content": {"da": {"inscription": "\u16cf\u16a2\u16ec\u16a6\u16c5\u16ec\u16d8\u16c5\u16c1\u16cf\u16ec\u16a6\u16c5\u16cf\u16ec\u16c1\u16cb\u16ec\u16cb\u16cf\u16c1\u16da\u16ec\u16a6\u16c5\u16ec\u16c1\u16a2\u16be\u16c1\u16a0\u16c1\u16b1\u16cb\u16ec\u16cb\u16c5\u16b1\u16c1\u16cf\u16c5\u16cb", "inscriptionMeaning": "To the mind that is still, the universe surrenders.", "menu": [{"link": "page.html?slug=cv", "name": "CV", "rune": "\u16d8"}, {"link": "fieldlog.da.html", "name": "Feltlog", "rune": "\u16b1"}, {"link": "blog.da.html", "name": "Labdagbog", "rune": "\u16ac"}, {"link": "sporexplore.html", "name": "Bioinformatik", "rune": "\u16bc"}], "name": "Pieter Shiffler Carpentier", "portals": [{"key": "microbiology", "link": "classic.da.html#microbiology", "name": "Indend\u00f8rs mikrobiologi", "rune": "\u16b4"}, {"key": "fungiculture", "link": "fungi.da.html", "name": "Svampedyrkning", "rune": "\u16c5"}, {"key": "foraging", "link": "fungi.da.html#tours", "name": "Sankning", "rune": "\u16a0"}, {"key": "conservation", "link": "", "name": "Naturbevarelse", "rune": "\u16e6"}, {"key": "smallworlds", "link": "terrarium.da.html", "name": "Sm\u00e5 verdener", "rune": "\u16a6"}, {"key": "photography", "link": "classic.da.html#photography", "name": "Fotografi", "rune": "\u16cb"}], "title": "Biolog \u00b7 Mykolog \u00b7 Animist"}, "en": {"inscription": "\u16cf\u16a2\u16ec\u16a6\u16c5\u16ec\u16d8\u16c5\u16c1\u16cf\u16ec\u16a6\u16c5\u16cf\u16ec\u16c1\u16cb\u16ec\u16cb\u16cf\u16c1\u16da\u16ec\u16a6\u16c5\u16ec\u16c1\u16a2\u16be\u16c1\u16a0\u16c1\u16b1\u16cb\u16ec\u16cb\u16c5\u16b1\u16c1\u16cf\u16c5\u16cb", "inscriptionMeaning": "To the mind that is still, the universe surrenders.", "menu": [{"link": "page.html?slug=cv", "name": "CV", "rune": "\u16d8"}, {"link": "fieldlog.html", "name": "Field log", "rune": "\u16b1"}, {"link": "blog.html", "name": "Labdiary", "rune": "\u16ac"}, {"link": "sporexplore.html", "name": "Bioinformatics", "rune": "\u16bc"}], "name": "Pieter Shiffler Carpentier", "portals": [{"key": "microbiology", "link": "classic.html#microbiology", "name": "Indoor microbiology", "rune": "\u16b4"}, {"key": "fungiculture", "link": "fungi.html", "name": "Fungiculture", "rune": "\u16c5"}, {"key": "foraging", "link": "fungi.html#tours", "name": "Foraging", "rune": "\u16a0"}, {"key": "conservation", "link": "", "name": "Conservation", "rune": "\u16e6"}, {"key": "smallworlds", "link": "terrarium.html", "name": "Small worlds", "rune": "\u16a6"}, {"key": "photography", "link": "classic.html#photography", "name": "Photography", "rune": "\u16cb"}], "title": "Biologist \u00b7 Mycologist \u00b7 Animist"}}, "page": "da", "ui": {"da": {"aa": "Vis teksten med latinske bogstaver", "back": "Tilbage til cirklen", "choosePortal": "V\u00e6lg en verden", "chooseSeason": "V\u00e6lg en \u00e5rstid", "comingSoon": "Denne verden er stadig under opbygning", "language": "Sprog", "next": "Drej til n\u00e6ste verden", "notesTools": "Noter og v\u00e6rkt\u00f8jer", "ofN": "{i} af {n}", "prev": "Drej til forrige verden", "runesName": "Runer (yngre futhark, langkvist)", "seasonAria": "\u00c5rstid: {s}. Skift \u00e5rstid", "seasons": {"autumn": "Efter\u00e5r", "spring": "For\u00e5r", "summer": "Sommer", "winter": "Vinter"}, "tod": {"dawn": "daggry", "day": "dag", "dusk": "skumring", "night": "nat"}, "today": "i dag", "todayHint": "(i dag)", "todaySeason": "Dagens \u00e5rstid", "worlds": "Verdener"}, "en": {"aa": "Show the text in Latin letters", "back": "Back to the circle", "choosePortal": "Choose a world", "chooseSeason": "Choose a season", "comingSoon": "This world is still being built", "language": "Language", "next": "Turn to the next world", "notesTools": "Notes and tools", "ofN": "{i} of {n}", "prev": "Turn to the previous world", "runesName": "Runes (long-branch Younger Futhark)", "seasonAria": "Season: {s}. Change season", "seasons": {"autumn": "Autumn", "spring": "Spring", "summer": "Summer", "winter": "Winter"}, "tod": {"dawn": "dawn", "day": "day", "dusk": "dusk", "night": "night"}, "today": "today", "todayHint": "(today)", "todaySeason": "Today\u0027s season", "worlds": "Worlds"}}}</script>
+<script src="assets/entry.js?v=0a122c88"></script>
 </body>
 </html>

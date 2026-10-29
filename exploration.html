@@ -43,10 +43,10 @@
 
 
 <!-- Fonts are self-hosted (no requests to Google — simpler under GDPR) -->
-<link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=e33b14b3">
+<link rel="stylesheet" href="styles.css?v=563332d9">
 <!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
      token below with your own from the Cloudflare dashboard (see setup guide). -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
@@ -58,23 +58,24 @@
   <div class="wrap">
     <div class="brand mark">
       <button class="egg-trigger" type="button" data-egg aria-label="Enter the mycelium" title="…">
-        <svg viewBox="0 0 48 32" aria-hidden="true">
-          <path d="M4 20C4 10 14 4 24 4C34 4 44 10 44 20C44 20 34 16 24 16C14 16 4 20 4 20Z" fill="var(--accent-2)"/>
-          <rect x="20" y="16" width="8" height="14" rx="3" fill="var(--text)"/>
-          <ellipse cx="24" cy="30" rx="9" ry="2" fill="var(--text-soft)" opacity=".35"/>
+        <svg class="seeing-eye" viewBox="2 18 96 64" aria-hidden="true">
+          <path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="var(--text)" stroke-width="4.5" stroke-linejoin="round"/>
+          <circle cx="50" cy="50" r="18" fill="none" stroke="var(--text)" stroke-width="2" opacity=".55"/>
+          <circle cx="50" cy="50" r="10" fill="var(--accent-2)"/>
+          <circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/>
         </svg>
       </button>
-      <a href="index.html#top" class="brand-name">Pieter Shiffler Carpentier</a>
+      <a href="index.html" class="brand-name">Pieter Shiffler Carpentier</a>
     </div>
     <div class="nav-right">
       <div class="navlinks" id="navlinks">
-        <a href="index.html#about" id="nav-label-about">About</a>
-        <a href="index.html#microbiology" id="nav-label-microbiology">Indoor Microbiology</a>
-        <a href="index.html#projects" id="nav-label-projects">Projects</a>
-        <a href="index.html#mycology" id="nav-label-mycology">Mycology</a>
+        <a href="classic.html#about" id="nav-label-about">About</a>
+        <a href="classic.html#microbiology" id="nav-label-microbiology">Indoor Microbiology</a>
+        <a href="classic.html#projects" id="nav-label-projects">Projects</a>
+        <a href="classic.html#mycology" id="nav-label-mycology">Mycology</a>
         <span id="nav-dynamic" class="nav-dynamic"></span>
         <a href="blog.html" id="nav-label-blog">Blog</a>
-        <a href="index.html#contact" id="nav-label-contact">Contact</a>
+        <a href="classic.html#contact" id="nav-label-contact">Contact</a>
       </div>
       <a class="lang-switch" href="exploration.da.html" hreflang="da" lang="da" data-lang-switch>DA</a>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle day and night mode">
