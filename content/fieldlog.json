@@ -42,6 +42,10 @@
     {
       "species": "Ophiocordyceps humbertii",
       "favourite": true
+    },
+    {
+      "species": "Suillellus luridus",
+      "favourite": true
     }
   ],
   "hide": [],
