@@ -66,12 +66,17 @@ def get_json(url, params=None, tries=3):
     raise RuntimeError(f"{url}: {last}")
 
 
+NEAR = re.compile(r"^(?:NaN|\d+(?:[.,]\d+)?)\s*k?m\s+[NSEW]{1,3}\s+(.+?)(?:\s*\([^)]*\))?$", re.I)
+
+
 def coarse_place(text):
     """Keep a place name general: drop street addresses / house numbers and
     the country, keep at most the last two parts ("Dyrehaven, Lyngby")."""
     if not text:
         return ""
     parts = [re.sub(r"^(DK-?)?\d{4}\s+", "", p.strip()) for p in str(text).split(",") if p.strip()]  # "2800 Lyngby" → "Lyngby"
+    # Svampeatlas sometimes gives "NaN m N Järstad (populated place)" (a broken distance): keep the place, "Järstad"
+    parts = [NEAR.sub(r"\1", p) for p in parts]
     parts = [p for p in parts if p and not re.search(r"\d", p)
              and p.lower() not in {"denmark", "danmark", "dk", "kingdom of denmark"}]
     return ", ".join(parts[-2:])
