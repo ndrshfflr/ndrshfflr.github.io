@@ -132,9 +132,28 @@
         <div class="up-libbar">
           <div class="up-chips up-filters" id="lib-filters" role="group" aria-label="Show"></div>
           <input class="up-input up-search" id="lib-search" type="search" placeholder="Search captions, species, posts…" autocomplete="off">
+          <button class="up-btn up-select" id="lib-select" type="button" aria-pressed="false">Select</button>
         </div>
         <p class="up-small" id="lib-msg" role="status">Loading the pictures…</p>
         <ul class="up-grid" id="lib-grid" aria-label="Pictures on the site"></ul>
+        <div class="up-selbar" id="sel-bar" hidden>
+          <div class="up-confirm" id="lib-confirm" hidden role="alertdialog" aria-labelledby="lib-confirm-h">
+            <p class="up-confirm-h" id="lib-confirm-h">Delete for good?</p>
+            <p class="up-confirm-what"></p>
+            <ul class="up-confirm-uses"></ul>
+            <p class="up-small">This can't be undone from here.</p>
+            <div class="up-row">
+              <button class="up-btn up-danger" id="lib-confirm-yes" type="button">Delete for good</button>
+              <button class="up-btn" id="lib-confirm-no" type="button">Keep them</button>
+            </div>
+          </div>
+          <div class="up-selrow">
+            <span class="up-small" id="sel-count" role="status">Tap pictures to choose them</span>
+            <button class="up-link" id="sel-all" type="button">Choose all shown</button>
+            <button class="up-btn up-danger-line" id="sel-delete" type="button" disabled>Delete…</button>
+          </div>
+          <p class="up-status" id="sel-status" role="status" aria-live="polite"></p>
+        </div>
       </section>
     </div>
   </main>
@@ -216,7 +235,20 @@
       <button class="up-btn" id="pic-newpost" type="button">New post or find with this picture…</button>
 
       <div class="up-dlg-foot">
-        <button class="up-btn up-primary" id="pic-save" type="button">Save</button>
+        <div class="up-confirm" id="pic-confirm" hidden role="alertdialog" aria-labelledby="pic-confirm-h">
+          <p class="up-confirm-h" id="pic-confirm-h">Delete for good?</p>
+          <p class="up-confirm-what"></p>
+          <ul class="up-confirm-uses"></ul>
+          <p class="up-small">This can't be undone from here.</p>
+          <div class="up-row">
+            <button class="up-btn up-danger" id="pic-confirm-yes" type="button">Delete for good</button>
+            <button class="up-btn" id="pic-confirm-no" type="button">Keep it</button>
+          </div>
+        </div>
+        <div class="up-row">
+          <button class="up-btn up-primary up-grow" id="pic-save" type="button">Save</button>
+          <button class="up-btn up-danger-line" id="pic-delete" type="button">Delete…</button>
+        </div>
         <p class="up-status" id="pic-status" role="status" aria-live="polite"></p>
       </div>
     </div>
