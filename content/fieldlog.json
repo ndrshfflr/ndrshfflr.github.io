@@ -124,19 +124,6 @@
   ],
   "manual": [
     {
-      "photos": [
-        "/images/gallery/2026-10-29-photo-311b4c.jpg"
-      ],
-      "place": "Sweden",
-      "commonDa": "Elg",
-      "favourite": false,
-      "common": "Elk",
-      "name": "Alces alces",
-      "date": "2026-10-29",
-      "id": "m20261029-7a0a",
-      "group": "mammals"
-    },
-    {
       "id": "m20261010-297b",
       "name": "Pseudohydnum gelatinosum",
       "commonDa": "Bævretand",
