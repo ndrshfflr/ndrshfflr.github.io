@@ -77,6 +77,10 @@
     {
       "species": "Quercus robur",
       "favourite": true
+    },
+    {
+      "species": "Cebus unicolor",
+      "favourite": true
     }
   ],
   "hide": [],
