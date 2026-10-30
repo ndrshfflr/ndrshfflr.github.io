@@ -44,7 +44,7 @@
 <link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/world.css?v=a32c77ce">
-<link rel="stylesheet" href="assets/entry.css?v=4c537e1d">
+<link rel="stylesheet" href="assets/entry.css?v=6b66ab0a">
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
 </head>
 <body>
@@ -120,12 +120,9 @@
     <button class="aa" id="aa" type="button" aria-pressed="false" aria-label="Show the text in Latin letters">Aa</button>
   </div>
 
-  <main class="ring-wrap" id="main">
-    <nav class="ring-nav" id="ring-nav" aria-label="Worlds">
-      <div class="stage cam" id="stage">
-        <svg class="treeline" id="inscription" viewBox="0 0 1877 250" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
-          <defs><pattern id="bark-pat" width="54" height="68" patternUnits="userSpaceOnUse"><rect width="54" height="68" class="bark-base"/><g class="bark-marks"><rect x="9.4" y="6.8" width="10.1" height="1.6"/><rect x="2.7" y="26.5" width="16.9" height="2.7"/><rect x="30.6" y="14.6" width="12" height="1.8"/><rect x="6.9" y="7" width="7.8" height="2.9"/><rect x="33.2" y="53.2" width="15.4" height="1.7"/><rect x="12.4" y="41.4" width="14.5" height="2.8"/><rect x="35.2" y="5.7" width="12.9" height="2.5"/><rect x="20.2" y="11.7" width="11.2" height="1.5"/><rect x="37.4" y="57.1" width="12.1" height="1.9"/><rect x="36.4" y="37.8" width="16.5" height="2.8"/><rect x="20.3" y="27.3" width="12.8" height="2.1"/><rect x="0" y="48.6" width="8.5" height="2.2"/><rect x="24.5" y="62.2" width="9.8" height="2.4"/></g></pattern></defs>
-          <g id="inscription-runes" fill="none" stroke="url(#bark-pat)" stroke-linecap="butt" stroke-linejoin="miter" data-carved="ᛏᚢ᛬ᚦᛅ᛬ᛘᛅᛁᛏ᛬ᚦᛅᛏ᛬ᛁᛋ᛬ᛋᛏᛁᛚ᛬ᚦᛅ᛬ᛁᚢᚾᛁᚠᛁᚱᛋ᛬ᛋᛅᚱᛁᛏᛅᛋ">
+  <main class="ring-wrap" id="main"><svg class="treeline" id="inscription" viewBox="0 0 1877 250" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <defs><pattern id="bark-pat" width="54" height="68" patternUnits="userSpaceOnUse"><rect width="54" height="68" class="bark-base"/><g class="bark-marks"><rect x="9.4" y="6.8" width="10.1" height="1.6"/><rect x="2.7" y="26.5" width="16.9" height="2.7"/><rect x="30.6" y="14.6" width="12" height="1.8"/><rect x="6.9" y="7" width="7.8" height="2.9"/><rect x="33.2" y="53.2" width="15.4" height="1.7"/><rect x="12.4" y="41.4" width="14.5" height="2.8"/><rect x="35.2" y="5.7" width="12.9" height="2.5"/><rect x="20.2" y="11.7" width="11.2" height="1.5"/><rect x="37.4" y="57.1" width="12.1" height="1.9"/><rect x="36.4" y="37.8" width="16.5" height="2.8"/><rect x="20.3" y="27.3" width="12.8" height="2.1"/><rect x="0" y="48.6" width="8.5" height="2.2"/><rect x="24.5" y="62.2" width="9.8" height="2.4"/></g></pattern></defs>
+      <g id="inscription-runes" fill="none" stroke="url(#bark-pat)" stroke-linecap="butt" stroke-linejoin="miter" data-carved="ᛏᚢ᛬ᚦᛅ᛬ᛘᛅᛁᛏ᛬ᚦᛅᛏ᛬ᛁᛋ᛬ᛋᛏᛁᛚ᛬ᚦᛅ᛬ᛁᚢᚾᛁᚠᛁᚱᛋ᛬ᛋᛅᚱᛁᛏᛅᛋ">
 <path d="M51.0 88.8 L51.0 250.0M30.0 133.9 L51.0 88.8 L71.9 133.9" stroke-width="3.7" opacity="0.33"/>
 <path d="M88.9 250.0 L88.9 67.4 L125.4 136.8 L125.4 250.0" stroke-width="2.9" opacity="0.36"/>
 <path d="M145.4 134.5v6M145.4 195.8v6" stroke-width="6" opacity="0.2"/>
@@ -168,7 +165,9 @@
 <path d="M1702.1 66.6 L1702.1 250.0M1678.3 118.0 L1702.1 66.6 L1726.0 118.0" stroke-width="3.2" opacity="0.25"/>
 <path d="M1766.0 40.4 L1766.0 250.0M1743.0 170.4 L1789.1 115.9" stroke-width="2.9" opacity="0.21"/>
 <path d="M1806.1 45.2 L1806.1 172.2 L1847.0 112.8 L1847.0 250.0" stroke-width="3.8" opacity="0.30"/></g>
-        </svg>
+    </svg>
+    <nav class="ring-nav" id="ring-nav" aria-label="Worlds">
+      <div class="stage cam" id="stage">
         <span class="pool" aria-hidden="true"></span>
         <div class="scene">
           <div class="floor" id="floor" aria-hidden="true">
@@ -287,7 +286,7 @@
 <script src="assets/world.js?v=48570242"></script>
 
 <script id="entry-data" type="application/json">{"content": {"da": {"inscription": "\u16cf\u16a2\u16ec\u16a6\u16c5\u16ec\u16d8\u16c5\u16c1\u16cf\u16ec\u16a6\u16c5\u16cf\u16ec\u16c1\u16cb\u16ec\u16cb\u16cf\u16c1\u16da\u16ec\u16a6\u16c5\u16ec\u16c1\u16a2\u16be\u16c1\u16a0\u16c1\u16b1\u16cb\u16ec\u16cb\u16c5\u16b1\u16c1\u16cf\u16c5\u16cb", "inscriptionMeaning": "To the mind that is still, the universe surrenders.", "menu": [{"link": "page.html?slug=cv", "name": "CV", "rune": "\u16d8"}, {"link": "fieldlog.da.html", "name": "Feltlog", "rune": "\u16b1"}, {"link": "blog.da.html", "name": "Labdagbog", "rune": "\u16ac"}, {"link": "sporexplore.html", "name": "Bioinformatik", "rune": "\u16bc"}], "name": "Pieter Shiffler Carpentier", "portals": [{"key": "microbiology", "link": "classic.da.html#microbiology", "name": "Indend\u00f8rs mikrobiologi", "rune": "\u16b4"}, {"key": "fungiculture", "link": "fungi.da.html", "name": "Svampedyrkning", "rune": "\u16c5"}, {"key": "foraging", "link": "fungi.da.html#tours", "name": "Sankning", "rune": "\u16a0"}, {"key": "conservation", "link": "", "name": "Naturbevarelse", "rune": "\u16e6"}, {"key": "smallworlds", "link": "terrarium.da.html", "name": "Sm\u00e5 verdener", "rune": "\u16a6"}, {"key": "photography", "link": "photography.da.html", "name": "Fotografi", "rune": "\u16cb"}], "title": "Biolog \u00b7 Mykolog \u00b7 Animist"}, "en": {"inscription": "\u16cf\u16a2\u16ec\u16a6\u16c5\u16ec\u16d8\u16c5\u16c1\u16cf\u16ec\u16a6\u16c5\u16cf\u16ec\u16c1\u16cb\u16ec\u16cb\u16cf\u16c1\u16da\u16ec\u16a6\u16c5\u16ec\u16c1\u16a2\u16be\u16c1\u16a0\u16c1\u16b1\u16cb\u16ec\u16cb\u16c5\u16b1\u16c1\u16cf\u16c5\u16cb", "inscriptionMeaning": "To the mind that is still, the universe surrenders.", "menu": [{"link": "page.html?slug=cv", "name": "CV", "rune": "\u16d8"}, {"link": "fieldlog.html", "name": "Field log", "rune": "\u16b1"}, {"link": "blog.html", "name": "Labdiary", "rune": "\u16ac"}, {"link": "sporexplore.html", "name": "Bioinformatics", "rune": "\u16bc"}], "name": "Pieter Shiffler Carpentier", "portals": [{"key": "microbiology", "link": "classic.html#microbiology", "name": "Indoor microbiology", "rune": "\u16b4"}, {"key": "fungiculture", "link": "fungi.html", "name": "Fungiculture", "rune": "\u16c5"}, {"key": "foraging", "link": "fungi.html#tours", "name": "Foraging", "rune": "\u16a0"}, {"key": "conservation", "link": "", "name": "Conservation", "rune": "\u16e6"}, {"key": "smallworlds", "link": "terrarium.html", "name": "Small worlds", "rune": "\u16a6"}, {"key": "photography", "link": "photography.html", "name": "Photography", "rune": "\u16cb"}], "title": "Biologist \u00b7 Mycologist \u00b7 Animist"}}}</script>
-<script src="assets/entry.js?v=ffb35f46"></script>
+<script src="assets/entry.js?v=e5c34c2a"></script>
 
 </body>
 </html>

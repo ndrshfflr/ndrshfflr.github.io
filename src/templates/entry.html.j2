@@ -12,16 +12,17 @@
   </div>
 
   <main class="ring-wrap" id="main">
+    {#- the inscription stands behind the whole circle, about half the page tall -#}
+    <svg class="treeline" id="inscription" viewBox="0 0 1877 250" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <defs><pattern id="bark-pat" width="54" height="68" patternUnits="userSpaceOnUse"><rect width="54" height="68" class="bark-base"/><g class="bark-marks"><rect x="9.4" y="6.8" width="10.1" height="1.6"/><rect x="2.7" y="26.5" width="16.9" height="2.7"/><rect x="30.6" y="14.6" width="12" height="1.8"/><rect x="6.9" y="7" width="7.8" height="2.9"/><rect x="33.2" y="53.2" width="15.4" height="1.7"/><rect x="12.4" y="41.4" width="14.5" height="2.8"/><rect x="35.2" y="5.7" width="12.9" height="2.5"/><rect x="20.2" y="11.7" width="11.2" height="1.5"/><rect x="37.4" y="57.1" width="12.1" height="1.9"/><rect x="36.4" y="37.8" width="16.5" height="2.8"/><rect x="20.3" y="27.3" width="12.8" height="2.1"/><rect x="0" y="48.6" width="8.5" height="2.2"/><rect x="24.5" y="62.2" width="9.8" height="2.4"/></g></pattern></defs>
+      {#- The carved inscription. _inscription.html holds the hand-tuned drawing of
+          ᛏᚢ᛬ᚦᛅ᛬ᛘᛅᛁᛏ᛬ᚦᛅᛏ᛬ᛁᛋ᛬ᛋᛏᛁᛚ᛬ᚦᛅ᛬ᛁᚢᚾᛁᚠᛁᚱᛋ᛬ᛋᛅᚱᛁᛏᛅᛋ; if the text in
+          content/entry.json is changed, assets/entry.js carves the new text instead. #}
+      <g id="inscription-runes" fill="none" stroke="url(#bark-pat)" stroke-linecap="butt" stroke-linejoin="miter" data-carved="ᛏᚢ᛬ᚦᛅ᛬ᛘᛅᛁᛏ᛬ᚦᛅᛏ᛬ᛁᛋ᛬ᛋᛏᛁᛚ᛬ᚦᛅ᛬ᛁᚢᚾᛁᚠᛁᚱᛋ᛬ᛋᛅᚱᛁᛏᛅᛋ">
+{% include '_inscription.html' %}</g>
+    </svg>
     <nav class="ring-nav" id="ring-nav" aria-label="{{ ui.worlds }}">
       <div class="stage cam" id="stage">
-        <svg class="treeline" id="inscription" viewBox="0 0 1877 250" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
-          <defs><pattern id="bark-pat" width="54" height="68" patternUnits="userSpaceOnUse"><rect width="54" height="68" class="bark-base"/><g class="bark-marks"><rect x="9.4" y="6.8" width="10.1" height="1.6"/><rect x="2.7" y="26.5" width="16.9" height="2.7"/><rect x="30.6" y="14.6" width="12" height="1.8"/><rect x="6.9" y="7" width="7.8" height="2.9"/><rect x="33.2" y="53.2" width="15.4" height="1.7"/><rect x="12.4" y="41.4" width="14.5" height="2.8"/><rect x="35.2" y="5.7" width="12.9" height="2.5"/><rect x="20.2" y="11.7" width="11.2" height="1.5"/><rect x="37.4" y="57.1" width="12.1" height="1.9"/><rect x="36.4" y="37.8" width="16.5" height="2.8"/><rect x="20.3" y="27.3" width="12.8" height="2.1"/><rect x="0" y="48.6" width="8.5" height="2.2"/><rect x="24.5" y="62.2" width="9.8" height="2.4"/></g></pattern></defs>
-          {#- The carved inscription. _inscription.html holds the hand-tuned drawing of
-              ᛏᚢ᛬ᚦᛅ᛬ᛘᛅᛁᛏ᛬ᚦᛅᛏ᛬ᛁᛋ᛬ᛋᛏᛁᛚ᛬ᚦᛅ᛬ᛁᚢᚾᛁᚠᛁᚱᛋ᛬ᛋᛅᚱᛁᛏᛅᛋ; if the text in
-              content/entry.json is changed, assets/entry.js carves the new text instead. #}
-          <g id="inscription-runes" fill="none" stroke="url(#bark-pat)" stroke-linecap="butt" stroke-linejoin="miter" data-carved="ᛏᚢ᛬ᚦᛅ᛬ᛘᛅᛁᛏ᛬ᚦᛅᛏ᛬ᛁᛋ᛬ᛋᛏᛁᛚ᛬ᚦᛅ᛬ᛁᚢᚾᛁᚠᛁᚱᛋ᛬ᛋᛅᚱᛁᛏᛅᛋ">
-{% include '_inscription.html' %}</g>
-        </svg>
         <span class="pool" aria-hidden="true"></span>
         <div class="scene">
           <div class="floor" id="floor" aria-hidden="true">
