@@ -440,7 +440,7 @@ def render_fieldlog(env, content, posts, versions):
                 "canonical": SITE_URL + FIELDLOG[lang], "alternates": alternates}
         render_world_page(
             env, "fieldlog.html.j2", FIELDLOG, lang,
-            t=fl, ui=ui[lang], meta=meta, jsonld=None, v=versions, world_class="scrolls",
+            t=fl, ui=ui[lang], meta=meta, jsonld=None, v=versions, world_class="scrolls fl-world",
             world_data={"page": lang, "ui": ui}, rune="ᚱ",
             data={"text": text, "posts": {p["slug"]: p["title"] for p in posts}},
         )
