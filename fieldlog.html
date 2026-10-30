@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<!-- GENERATED FILE — built by src/build.py from src/templates/. Text content is
-     also loaded live from content/*.json (edited through /admin), so most
-     wording changes never need a rebuild. -->
-<html lang="en" data-theme="dark">
+<!-- GENERATED FILE — built by src/build.py from src/templates/fieldlog.html.j2
+     (on top of src/templates/world.html.j2). Edit the templates or the content
+     in /admin, not this file. -->
+<html lang="en" class="no-js">
 <head>
 <script>
 (function () {
-  try {
-    var stored = localStorage.getItem('theme');
-    var theme = (stored === 'light' || stored === 'dark') ? stored : 'dark';
-    document.documentElement.setAttribute('data-theme', theme);
-  } catch (e) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  }
+  var d = document.documentElement, mode = 'runes';
+  try { var m = localStorage.getItem('entryLang'); if (m === 'en' || m === 'da') mode = 'latin'; } catch (e) {}
+  d.className = 'js mode-' + mode;
 })();
 </script>
 <meta charset="UTF-8">
@@ -26,7 +22,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
+<meta name="theme-color" content="#0b1322">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pieter Shiffler Carpentier">
 <meta property="og:title" content="The field log — Pieter Shiffler Carpentier">
@@ -36,157 +32,157 @@
 <meta property="og:image" content="https://ndrshfflr.github.io/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The field log — Pieter Shiffler Carpentier">
 <meta name="twitter:description" content="Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Merlin,…">
 <meta name="twitter:image" content="https://ndrshfflr.github.io/og-image.png">
 
-
 <!-- Fonts are self-hosted (no requests to Google — simpler under GDPR) -->
 <link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=563332d9">
-<!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
-     token below with your own from the Cloudflare dashboard (see setup guide). -->
+<link rel="stylesheet" href="assets/world.css?v=a32c77ce">
+<link rel="stylesheet" href="assets/fieldlog.css?v=01c2c2bc">
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
 </head>
-<body class="subpage portal-page">
-<a class="skip-link" href="#main">Skip to content</a>
+<body>
+<div class="world look-fabric scrolls" id="world">
 
-<nav id="site-nav">
-  <div class="wrap">
-    <div class="brand mark">
-      <button class="egg-trigger" type="button" data-egg aria-label="Enter the mycelium" title="…">
-        <svg class="seeing-eye" viewBox="2 18 96 64" aria-hidden="true">
-          <path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="var(--text)" stroke-width="4.5" stroke-linejoin="round"/>
-          <circle cx="50" cy="50" r="18" fill="none" stroke="var(--text)" stroke-width="2" opacity=".55"/>
-          <circle cx="50" cy="50" r="10" fill="var(--accent-2)"/>
-          <circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/>
-        </svg>
-      </button>
-      <a href="index.html" class="brand-name">Pieter Shiffler Carpentier</a>
-    </div>
-    <div class="nav-right">
-      <div class="navlinks" id="navlinks">
-        <a href="classic.html#about" id="nav-label-about">About</a>
-        <a href="classic.html#microbiology" id="nav-label-microbiology">Indoor Microbiology</a>
-        <a href="classic.html#projects" id="nav-label-projects">Projects</a>
-        <a href="classic.html#mycology" id="nav-label-mycology">Mycology</a>
-        <span id="nav-dynamic" class="nav-dynamic"></span>
-        <a href="blog.html" id="nav-label-blog">Blog</a>
-        <a href="classic.html#contact" id="nav-label-contact">Contact</a>
-      </div>
-      <a class="lang-switch" href="fieldlog.da.html" hreflang="da" lang="da" data-lang-switch>DA</a>
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle day and night mode">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="4.2"/>
-          <path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
-        </svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/>
-        </svg>
-      </button>
-      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+  <div class="stars" id="stars" aria-hidden="true">
+    <span class="star" style="left:13%;top:11%;opacity:.45"></span><span class="star" style="left:24%;top:23%;opacity:.35"></span><span class="star" style="left:7%;top:34%;opacity:.3"></span><span class="star" style="left:71%;top:19%;opacity:.35"></span><span class="star" style="left:80%;top:31%;opacity:.3"></span><span class="star" style="left:36%;top:6%;opacity:.4"></span>
   </div>
-</nav>
+  <span class="disc" id="disc" aria-hidden="true"><span class="craters" id="craters"></span></span>
+  <div class="fx" id="fx-winter" aria-hidden="true"></div>
+  <div class="fx" id="fx-spring" aria-hidden="true"></div>
+  <div class="fx" id="fx-summer" aria-hidden="true"></div>
+  <div class="fx" id="fx-autumn" aria-hidden="true"></div>
 
-<main id="main">
+  <header class="top chrome" id="top">
+    <a class="logo" href="index.html" aria-label="Pieter Shiffler Carpentier">
+      <svg viewBox="0 0 100 100" width="38" height="38" aria-hidden="true"><path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/><circle cx="50" cy="50" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><circle cx="50" cy="50" r="10" class="eye-pupil"/><circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/></svg>
+    </a>
+    <div class="top-right">
+      <nav class="langs" aria-label="Language">
+        <a class="lang lang-runes" href="#" data-mode="runes" lang="en-Runr" aria-label="Runes (long-branch Younger Futhark)">ᚱᚢᚾᛅᛦ</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a class="lang" href="fieldlog.html" data-mode="en" lang="en" hreflang="en">EN</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a class="lang" href="fieldlog.da.html" data-mode="da" lang="da" hreflang="da">DA</a>
+      </nav>
+      <div class="season-wrap">
+        <button class="season-btn" id="season-btn" type="button" aria-label="Choose a season" aria-haspopup="true" aria-expanded="false" aria-controls="season-menu">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="si si-winter"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 3.5l3 2 3-2M9 20.5l3-2 3 2"/></g><g class="si si-spring"><path d="M12 21V11M12 11C12 7 9 5 5 5c0 4 3 6 7 6zM12 14c0-3 2.5-5 6-5 0 3-2.5 5-6 5z"/></g><g class="si si-summer"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g><g class="si si-autumn"><path d="M5 19C5 11 10 5 19 5c0 9-6 14-14 14zM5 19l8-8"/></g></svg>
+          <span class="slabel"><span class="rv" data-k="season"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+        </button>
+        <div class="season-menu" id="season-menu" role="group" aria-label="Choose a season" hidden>
+          
+          <button class="sopt" type="button" data-season="winter" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 3.5l3 2 3-2M9 20.5l3-2 3 2"/></svg>
+            <span class="sname"><span class="rv" data-k="opt-winter"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-winter"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
+          
+          <button class="sopt" type="button" data-season="spring" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11M12 11C12 7 9 5 5 5c0 4 3 6 7 6zM12 14c0-3 2.5-5 6-5 0 3-2.5 5-6 5z"/></svg>
+            <span class="sname"><span class="rv" data-k="opt-spring"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-spring"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
+          
+          <button class="sopt" type="button" data-season="summer" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            <span class="sname"><span class="rv" data-k="opt-summer"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-summer"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
+          
+          <button class="sopt" type="button" data-season="autumn" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19C5 11 10 5 19 5c0 9-6 14-14 14zM5 19l8-8"/></svg>
+            <span class="sname"><span class="rv" data-k="opt-autumn"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-autumn"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
+          
+          <button class="sopt" type="button" data-season="auto" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span class="sname"><span class="rv" data-k="opt-auto"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-auto"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
+          
+        </div>
+      </div>
+    </div>
+  </header>
 
-
-<header class="portal-header log-header" id="top">
-  <div class="wrap">
-    <div class="eyebrow"><span class="rune" aria-hidden="true" title="fehu — wealth, what is gathered">ᚠ</span><span id="fl-eyebrow">Seen in the wild</span></div>
-    <h1 id="fl-heading">The field log</h1>
-    <p class="lead" id="fl-intro">Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Merlin, Arter.dk and DOFbasen, plus a few from my own notebooks.</p>
+  
+  <div class="hero chrome log-hero">
+    <span class="log-rune" aria-hidden="true">ᚱ</span>
+    <p class="log-eyebrow"><span class="rv" data-k="eyebrow"><span class="rn" aria-hidden="true"></span><span class="lt">Seen in the wild</span></span></p>
+    <h1 class="nm"><span class="rv" data-k="heading"><span class="rn" aria-hidden="true"></span><span class="lt">The field log</span></span></h1>
+    <p class="title log-intro"><span class="rv" data-k="intro"><span class="rn" aria-hidden="true"></span><span class="lt">Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Merlin, Arter.dk and DOFbasen, plus a few from my own notebooks.</span></span></p>
+    <button class="aa" id="aa" type="button" aria-pressed="false" aria-label="Show the text in Latin letters">Aa</button>
     <dl class="fl-stats" id="fl-stats" hidden>
-      <div><dt>Species</dt><dd id="fl-stat-species">0</dd></div>
-      <div><dt>Records</dt><dd id="fl-stat-records">0</dd></div>
-      <div><dt id="fl-stat-year-label">New this year</dt><dd id="fl-stat-year">0</dd></div>
+      <div><dt><span class="rv" data-k="st-species"><span class="rn" aria-hidden="true"></span><span class="lt">Species</span></span></dt><dd id="fl-stat-species">0</dd></div>
+      <div><dt><span class="rv" data-k="st-records"><span class="rn" aria-hidden="true"></span><span class="lt">Records</span></span></dt><dd id="fl-stat-records">0</dd></div>
+      <div><dt><span class="rv" data-k="st-year"><span class="rn" aria-hidden="true"></span><span class="lt">New this year</span></span></dt><dd id="fl-stat-year">0</dd></div>
     </dl>
   </div>
-</header>
 
-<section id="log" class="log-section" data-rune="ᚠ">
-  <div class="wrap">
+  <main class="log-wrap" id="main">
     <div class="fl-goals" id="fl-goals" hidden></div>
     <div class="fl-tools" id="fl-tools" hidden>
-      <div class="tag-filter fl-chips" id="fl-chips" role="group" aria-label="Show one group"></div>
+      <div class="fl-chips" id="fl-chips" role="group" aria-label="Show one group"></div>
       <div class="fl-controls">
-        <label class="fl-search"><span class="visually-hidden">Search the log</span>
-          <input type="search" id="fl-search" placeholder="Search the log" autocomplete="off"></label>
-        <label class="fl-sort"><span class="visually-hidden">Sort</span>
+        <label class="fl-search"><span class="sr-only">Search the log</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+          <input type="search" id="fl-search" placeholder="Search the log" autocomplete="off" enterkeyhint="search"></label>
+        <label class="fl-sort"><span class="sr-only">Sort</span>
           <select id="fl-sort">
+            <option value="latest">Latest sightings first</option>
             <option value="number">In the order found</option>
-            <option value="newest">Newest first</option>
+            <option value="newest">Newest species first</option>
             <option value="az">A–Z</option>
             <option value="most">Most records</option>
           </select></label>
       </div>
     </div>
-    <p class="fl-empty" id="fl-empty">Loading…</p>
-    <p class="fl-empty" id="fl-nomatch" hidden>Nothing in the log matches that.</p>
+    <p class="fl-empty" id="fl-empty"><span class="rv" data-k="loading"><span class="rn" aria-hidden="true"></span><span class="lt">Loading…</span></span></p>
+    <p class="fl-empty" id="fl-nomatch" hidden><span class="rv" data-k="nomatch"><span class="rn" aria-hidden="true"></span><span class="lt">Nothing in the log matches that.</span></span></p>
     <ol class="fl-grid" id="fl-grid"></ol>
     <p class="fl-sync" id="fl-sync" hidden></p>
     <noscript><p class="fl-empty">The log is being set up. The first finds will appear here soon.</p></noscript>
-  </div>
-</section>
+  </main>
 
-<dialog class="fl-dialog" id="fl-dialog" aria-labelledby="fl-d-name">
-  <div class="fl-d-inner">
-    <button class="fl-d-close" id="fl-d-close" type="button" aria-label="Close">&times;</button>
-    <div class="fl-d-photos" id="fl-d-photos"></div>
-    <div class="fl-d-body">
-      <p class="fl-d-no" id="fl-d-no"></p>
-      <h2 class="fl-d-name" id="fl-d-name"></h2>
-      <p class="fl-d-common" id="fl-d-common"></p>
-      <p class="fl-d-group" id="fl-d-group"></p>
-      <div class="fl-d-notes" id="fl-d-notes"></div>
-      <div id="fl-d-blog" hidden>
-        <h3 class="fl-d-recs-h">From the blog</h3>
-        <ul class="fl-d-posts" id="fl-d-posts"></ul>
+  <footer class="world-foot chrome">
+    <a class="back-link" href="index.html"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="rv" data-k="back"><span class="rn" aria-hidden="true"></span><span class="lt">Back to the circle</span></span></a>
+  </footer>
+
+  <dialog class="fl-dialog" id="fl-dialog" aria-labelledby="fl-d-name">
+    <button class="fl-d-close" id="fl-d-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="fl-d-inner">
+      <div class="fl-d-photos" id="fl-d-photos"></div>
+      <div class="fl-d-body">
+        <p class="fl-d-no" id="fl-d-no"></p>
+        <h2 class="fl-d-name" id="fl-d-name"></h2>
+        <p class="fl-d-common" id="fl-d-common"></p>
+        <p class="fl-d-group" id="fl-d-group"></p>
+        <a class="fl-d-story" id="fl-d-story" href="#" hidden><span class="fl-d-story-rune" aria-hidden="true">ᚬ</span><span class="rv" data-k="readAbout"><span class="rn" aria-hidden="true"></span><span class="lt">Read about this find</span></span></a>
+        <div class="fl-d-notes" id="fl-d-notes"></div>
+        <div id="fl-d-blog" hidden>
+          <h3 class="fl-d-recs-h"><span class="rv" data-k="fromBlog"><span class="rn" aria-hidden="true"></span><span class="lt">From the blog</span></span></h3>
+          <ul class="fl-d-posts" id="fl-d-posts"></ul>
+        </div>
+        <h3 class="fl-d-recs-h"><span class="rv" data-k="records"><span class="rn" aria-hidden="true"></span><span class="lt">Records</span></span></h3>
+        <ul class="fl-d-recs" id="fl-d-recs"></ul>
       </div>
-      <h3 class="fl-d-recs-h">Records</h3>
-      <ul class="fl-d-recs" id="fl-d-recs"></ul>
     </div>
-  </div>
-</dialog>
-<script id="fl-text" type="application/json">{"emptyText": "The log is being set up. The first finds will appear here soon.", "eyebrow": "Seen in the wild", "heading": "The field log", "intro": "Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Merlin, Arter.dk and DOFbasen, plus a few from my own notebooks.", "teaserCta": "Open the log", "teaserEyebrow": "Seen in the wild", "teaserHeading": "Field log", "teaserText": "Every fungus, bird and creature I have found and identified in the wild, numbered in the order I first met it."}</script>
+  </dialog>
 
-</main>
-
-<footer class="site-footer">
-  <div class="wrap footer-row">
-    <div>© <span id="year">2026</span> Pieter Shiffler Carpentier<span id="footer-cvr" class="footer-cvr" hidden> · CVR <span id="footer-cvr-value"></span></span></div>
-    <div class="footer-links">
-      <a href="exploration.html" id="footer-exploration">Beyond the lab</a>
-      <a href="fieldlog.da.html" hreflang="da" lang="da" data-lang-switch>Dansk</a>
-    </div>
-    <div id="footer-tagline">MSc Biology · Mycology · Indoor Microbiology</div>
-  </div>
-</footer>
-
-<div class="egg" id="egg" hidden role="dialog" aria-modal="true" aria-label="Enter the mycelium">
-  <div class="egg-stage" id="egg-stage"></div>
-  <div class="egg-veil"></div>
-  <div class="egg-copy">
-    <div class="eyebrow"><span class="rune" aria-hidden="true">ᛜ</span>You found it</div>
-    <div class="egg-title">Enter the mycelium</div>
-  </div>
-  <div class="egg-bottom">
-    <button class="motion-btn" id="motion-btn" type="button">Enable motion</button>
-    <div id="egg-hint">move or tilt to explore · esc to close</div>
-  </div>
-  <button class="egg-close" id="egg-close" type="button" aria-label="Close">&times;</button>
-  <p class="egg-fallback" id="egg-fallback" hidden>This needs WebGL, which your browser doesn&#39;t seem to support. The network is still out there.</p>
 </div>
 
-<script id="ui-strings" type="application/json">{"allPosts": "All posts", "area": "Service area", "askAvailability": "Ask about availability", "back": "Back to the main page", "book": "Book a spot", "buy": "Buy", "careGuide": "Care guide", "caseFinding": "What I found", "caseOutcome": "Outcome", "caseProblem": "The problem", "close": "Close", "downloadPdf": "Download as PDF", "duration": "Duration", "eggEyebrow": "You found it", "eggFallback": "This needs WebGL, which your browser doesn\u0027t seem to support. The network is still out there.", "eggHint": "move or tilt to explore \u00b7 esc to close", "eggTitle": "Enter the mycelium", "enableMotion": "Enable motion", "faqMore": "Something else on your mind?", "faqMoreLink": "Ask me directly.", "filterTags": "Filter posts by topic", "flAll": "All", "flFilter": "Show one group", "flFirst": "First found", "flFromBlog": "From the blog", "flGroups": {"arachnids": "Spiders \u0026 kin", "birds": "Birds", "fish": "Fish", "fungi": "Fungi", "herps": "Amphibians \u0026 reptiles", "insects": "Insects", "mammals": "Mammals", "molluscs": "Molluscs", "other": "Other", "plants": "Plants"}, "flLast": "Last seen", "flNew": "New", "flNoMatch": "Nothing in the log matches that.", "flNotebook": "My notebook", "flOf": "of", "flOpenRecord": "Open the record", "flRecords": "Records", "flRefPhoto": "Reference photo, not mine", "flRefShort": "Ref. photo", "flSearch": "Search the log", "flSortAz": "A\u2013Z", "flSortLabel": "Sort", "flSortMost": "Most records", "flSortNewest": "Newest first", "flSortNumber": "In the order found", "flSpecies": "Species", "flSynced": "Last synced", "flThisYear": "New this year", "formEmail": "Email", "formError": "Something went wrong. Please email me directly instead.", "formInvalid": "Please fill in your name, a valid email address and a message.", "formMailto": "Your email app should open with the message filled in \u2014 just press send.", "formMessage": "Message", "formName": "Name", "formSend": "Send message", "formSending": "Sending\u2026", "formSent": "Thanks \u2014 your message is on its way. I\u0027ll get back to you soon.", "formTopic": "What\u0027s it about?", "formTopics": ["Mould or damp in a building", "Foraging or cultivation", "Tours \u0026 workshops", "Buying a culture", "Insects \u0026 terrariums", "Research or collaboration", "Something else"], "format": "Format", "inStock": "Available", "inhabitants": "Lives here", "loading": "Loading\u2026", "menu": "Menu", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "offerCta": "Ask about this", "offerPrefill": "About: ", "orderCulture": "Order this culture", "origin": "Origin", "otherLang": "da", "otherLangLabel": "DA", "otherLangName": "Dansk", "pathsLabel": "Where to start", "phone": "Phone", "photoFieldlog": "In the field log", "photoPost": "Read the post", "postPhotos": "Photos", "readMore": "Read more", "skip": "Skip to content", "soldOut": "Not available right now", "themeToggle": "Toggle day and night mode", "turnaround": "Turnaround"}</script>
-<script src="assets/markdown.js?v=d4f718c0"></script>
-<script src="assets/fieldlog.js?v=347ce02d" defer></script>
-<script src="assets/site.js?v=2da17a04" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
+<script id="world-data" type="application/json">{"page": "en", "ui": {"da": {"aa": "Vis teksten med latinske bogstaver", "back": "Tilbage til cirklen", "chooseSeason": "V\u00e6lg en \u00e5rstid", "close": "Luk", "flAll": "Alle", "flFavourite": "Favorit", "flFavourites": "Favoritter", "flFilter": "Vis \u00e9n gruppe", "flFirst": "F\u00f8rste fund", "flFromBlog": "Fra bloggen", "flGroups": {"arachnids": "Edderkopper m.fl.", "birds": "Fugle", "fish": "Fisk", "fungi": "Svampe", "herps": "Padder \u0026 krybdyr", "insects": "Insekter", "mammals": "Pattedyr", "molluscs": "Bl\u00f8ddyr", "other": "Andet", "plants": "Planter"}, "flHasStory": "Der er en historie om dette fund", "flLast": "Senest set", "flNew": "Ny", "flNoMatch": "Intet i fundbogen matcher det.", "flNotebook": "Min notesbog", "flOf": "af", "flOpenRecord": "\u00c5bn fundet", "flPhoto": "Foto", "flReadAbout": "L\u00e6s om dette fund", "flRecords": "Fund", "flRefPhoto": "Referencefoto, ikke mit eget", "flRefShort": "Ref.-foto", "flSearch": "S\u00f8g i fundbogen", "flSortAz": "A\u2013\u00c5", "flSortLabel": "Sort\u00e9r", "flSortLatest": "Senest set f\u00f8rst", "flSortMost": "Flest fund", "flSortNewest": "Nyeste arter f\u00f8rst", "flSortNumber": "I fundr\u00e6kkef\u00f8lge", "flSpecies": "Arter", "flSynced": "Senest synkroniseret", "flThisYear": "Nye i \u00e5r", "language": "Sprog", "loading": "Indl\u00e6ser\u2026", "runesName": "Runer (yngre futhark, langkvist)", "seasonAria": "\u00c5rstid: {s}. Skift \u00e5rstid", "seasons": {"autumn": "Efter\u00e5r", "spring": "For\u00e5r", "summer": "Sommer", "winter": "Vinter"}, "tod": {"dawn": "daggry", "day": "dag", "dusk": "skumring", "night": "nat"}, "today": "i dag", "todayHint": "(i dag)", "todaySeason": "Dagens \u00e5rstid"}, "en": {"aa": "Show the text in Latin letters", "back": "Back to the circle", "chooseSeason": "Choose a season", "close": "Close", "flAll": "All", "flFavourite": "Favourite", "flFavourites": "Favourites", "flFilter": "Show one group", "flFirst": "First found", "flFromBlog": "From the blog", "flGroups": {"arachnids": "Spiders \u0026 kin", "birds": "Birds", "fish": "Fish", "fungi": "Fungi", "herps": "Amphibians \u0026 reptiles", "insects": "Insects", "mammals": "Mammals", "molluscs": "Molluscs", "other": "Other", "plants": "Plants"}, "flHasStory": "There\u0027s a story about this find", "flLast": "Last seen", "flNew": "New", "flNoMatch": "Nothing in the log matches that.", "flNotebook": "My notebook", "flOf": "of", "flOpenRecord": "Open the record", "flPhoto": "Photo", "flReadAbout": "Read about this find", "flRecords": "Records", "flRefPhoto": "Reference photo, not mine", "flRefShort": "Ref. photo", "flSearch": "Search the log", "flSortAz": "A\u2013Z", "flSortLabel": "Sort", "flSortLatest": "Latest sightings first", "flSortMost": "Most records", "flSortNewest": "Newest species first", "flSortNumber": "In the order found", "flSpecies": "Species", "flSynced": "Last synced", "flThisYear": "New this year", "language": "Language", "loading": "Loading\u2026", "runesName": "Runes (long-branch Younger Futhark)", "seasonAria": "Season: {s}. Change season", "seasons": {"autumn": "Autumn", "spring": "Spring", "summer": "Summer", "winter": "Winter"}, "tod": {"dawn": "dawn", "day": "day", "dusk": "dusk", "night": "night"}, "today": "today", "todayHint": "(today)", "todaySeason": "Today\u0027s season"}}}</script>
+<script src="assets/world.js?v=48570242"></script>
+
+<script id="fl-data" type="application/json">{"posts": {"2026-10-24-testing-this-stuff": "Testing this stuff"}, "text": {"da": {"emptyText": "Fundbogen er ved at blive sat op. De f\u00f8rste fund dukker op her snart.", "eyebrow": "Set i naturen", "heading": "Fundbogen", "intro": "Alle de arter jeg har fundet og bestemt i naturen, nummereret efter hvorn\u00e5r jeg m\u00f8dte dem f\u00f8rste gang. Fundene kommer fra Svampeatlas, iNaturalist, Merlin, Arter.dk og DOFbasen, og et par stykker fra mine egne notesb\u00f8ger.", "teaserCta": "\u00c5bn fundbogen", "teaserEyebrow": "Set i naturen", "teaserHeading": "Fundbogen", "teaserText": "Hver svamp, fugl og hvert dyr jeg har fundet og bestemt i naturen, nummereret i den r\u00e6kkef\u00f8lge jeg m\u00f8dte dem."}, "en": {"emptyText": "The log is being set up. The first finds will appear here soon.", "eyebrow": "Seen in the wild", "heading": "The field log", "intro": "Every species I have found and identified in the wild, numbered in the order I first met it. The records come from Svampeatlas, iNaturalist, Merlin, Arter.dk and DOFbasen, plus a few from my own notebooks.", "teaserCta": "Open the log", "teaserEyebrow": "Seen in the wild", "teaserHeading": "Field log", "teaserText": "Every fungus, bird and creature I have found and identified in the wild, numbered in the order I first met it."}}}</script>
+<script src="assets/fieldlog.js?v=7416e2b8"></script>
+
 </body>
 </html>

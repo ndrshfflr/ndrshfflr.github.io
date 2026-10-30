@@ -164,6 +164,21 @@ PHOTO_UI = {
         "close": "Luk", "prevPhoto": "Forrige foto", "nextPhoto": "Næste foto", "count": "{i} af {n}",
     },
 }
+# The field log in the circle's world (fieldlog.html / fieldlog.da.html): the
+# fl* strings from UI above, plus these.
+FIELDLOG_UI = {
+    "en": {
+        "flSortLatest": "Latest sightings first", "flSortNewest": "Newest species first",
+        "flFavourites": "Favourites", "flFavourite": "Favourite", "flHasStory": "There's a story about this find",
+        "flReadAbout": "Read about this find", "flPhoto": "Photo",
+    },
+    "da": {
+        "flSortLatest": "Senest set først", "flSortNewest": "Nyeste arter først",
+        "flFavourites": "Favoritter", "flFavourite": "Favorit", "flHasStory": "Der er en historie om dette fund",
+        "flReadAbout": "Læs om dette fund", "flPhoto": "Foto",
+    },
+}
+
 PHOTO_META = {
     "en": {"description": "Photographs by Pieter Shiffler Carpentier."},
     "da": {"description": "Fotografier af Pieter Shiffler Carpentier."},
@@ -359,7 +374,7 @@ def render_photography(env, entry, gallery_doc, posts, versions):
     titles = {p["slug"]: p["title"] for p in posts}
     photos = []
     for p in gallery_doc.get("images", []):
-        if not p.get("image"):
+        if not p.get("image") or p.get("onPhotoPage") is False:  # field-log-only photos stay off this page
             continue
         try:
             weight = min(5, max(1, round(float(p.get("weight") or 1))))
@@ -369,7 +384,8 @@ def render_photography(env, entry, gallery_doc, posts, versions):
         photos.append({  # same keys, same order as normalise() in assets/photos.js
             "image": str(p["image"]), "caption": str(p.get("caption") or ""), "weight": weight,
             "pos": PHOTO_POS.get(p.get("focus"), PHOTO_POS["center"]),
-            "post": post if re.match(r"^[A-Za-z0-9._-]+$", post) else "", "species": str(p.get("species") or ""),
+            "post": post if re.match(r"^[A-Za-z0-9._-]+$", post) else "",
+            "species": [str(x) for x in (p.get("species") if isinstance(p.get("species"), list) else [p.get("species")]) if x],
         })
     look = "darkroom" if gallery_doc.get("look") == "darkroom" else "sky"
     intro = gallery_doc.get("intro") or {}
@@ -410,6 +426,26 @@ def render_upload(env, posts, versions):
     print("wrote upload.html")
 
 
+def render_fieldlog(env, content, posts, versions):
+    """fieldlog.html / fieldlog.da.html: the field log, standing in the circle's world."""
+    page_ui = {lang: dict({k: v for k, v in UI[lang].items() if k.startswith("fl")},
+                          loading=UI[lang]["loading"], close=UI[lang]["close"], **FIELDLOG_UI[lang]) for lang in ("en", "da")}
+    ui = world_ui(page_ui)
+    text = {lang: content[lang]["fieldlog"] for lang in ("en", "da")}
+    for lang in ("en", "da"):
+        fl = text[lang]
+        alternates = [{"hreflang": l, "href": SITE_URL + FIELDLOG[l]} for l in ("en", "da")]
+        description = fl["intro"][:155].rsplit(" ", 1)[0] + ("…" if len(fl["intro"]) > 155 else "")
+        meta = {"title": fl["heading"] + " — Pieter Shiffler Carpentier", "description": description, "ogDescription": description,
+                "canonical": SITE_URL + FIELDLOG[lang], "alternates": alternates}
+        render_world_page(
+            env, "fieldlog.html.j2", FIELDLOG, lang,
+            t=fl, ui=ui[lang], meta=meta, jsonld=None, v=versions, world_class="scrolls",
+            world_data={"page": lang, "ui": ui}, rune="ᚱ",
+            data={"text": text, "posts": {p["slug"]: p["title"] for p in posts}},
+        )
+
+
 def render_entry(env, content, entry, versions):
     """index.html and da.html: the stone circle of portals."""
     count = len(entry["en"]["portals"])
@@ -442,11 +478,11 @@ def main():
     for key, sub in (("image", "hero"), ("imageAlt", "hero"), ("portrait", "about")):
         if not content["da"][sub].get(key):
             content["da"][sub][key] = content["en"][sub].get(key, "")
-    gallery = [g for g in load("gallery.json").get("images", []) if g.get("image")]
+    gallery = [g for g in load("gallery.json").get("images", []) if g.get("image") and g.get("onPhotoPage") is not False]
     year = datetime.date.today().year
     versions = {"css": asset_version("styles.css"), "js": asset_version("assets/site.js"),
                 "mycelium": asset_version("assets/mycelium.js"), "md": asset_version("assets/markdown.js"),
-                "fieldlog": asset_version("assets/fieldlog.js"),
+                "fieldlog": asset_version("assets/fieldlog.js"), "fieldlogcss": asset_version("assets/fieldlog.css"),
                 "worldcss": asset_version("assets/world.css"), "worldjs": asset_version("assets/world.js"),
                 "entrycss": asset_version("assets/entry.css"), "entryjs": asset_version("assets/entry.js"),
                 "photoscss": asset_version("assets/photos.css"), "photosjs": asset_version("assets/photos.js"),
@@ -456,6 +492,7 @@ def main():
     render_entry(env, content, entry, versions)
     render_photography(env, entry, load("gallery.json"), posts, versions)
     render_upload(env, posts, versions)
+    render_fieldlog(env, content, posts, versions)
 
     for out, (tpl, lang) in PAGES.items():
         d = content[lang]
@@ -466,8 +503,8 @@ def main():
         is_terra = tpl == "terrarium.html.j2"
         is_blog = tpl == "blog.html.j2"
         is_log = tpl == "fieldlog.html.j2"
-        if tpl == "entry.html.j2":
-            continue  # rendered by render_entry()
+        if tpl in ("entry.html.j2", "fieldlog.html.j2"):
+            continue  # rendered by render_entry() / render_fieldlog()
         if is_home:
             canonical = SITE_URL + HOME[lang]
             alternates = [

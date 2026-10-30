@@ -32,12 +32,13 @@
 
   /* the same clean-up build.py does, for photos that arrive live */
   function normalise(list) {
-    return (Array.isArray(list) ? list : []).filter(function (p) { return p && p.image; }).map(function (p) {
+    return (Array.isArray(list) ? list : []).filter(function (p) { return p && p.image && p.onPhotoPage !== false; }).map(function (p) {
       var w = Math.round(Number(p.weight) || 1);
       return {
         image: String(p.image), caption: p.caption ? String(p.caption) : '',
         weight: Math.min(5, Math.max(1, w)), pos: POS[p.focus] || POS.center,
-        post: p.post && SLUG.test(p.post) ? String(p.post) : '', species: p.species ? String(p.species) : ''
+        post: p.post && SLUG.test(p.post) ? String(p.post) : '',
+        species: (Array.isArray(p.species) ? p.species : [p.species]).filter(Boolean).map(String)
       };
     });
   }
@@ -135,7 +136,9 @@
     if (p.caption) vCap.appendChild(W.rv(p.caption));
     while (vLinks.firstChild) vLinks.removeChild(vLinks.firstChild);
     if (p.post) vLinks.appendChild(link('ᚬ', postTitle(p.post) ? fmt(u.readPostTitle, { t: postTitle(p.post) }) : u.readPost, 'post.html?slug=' + encodeURIComponent(p.post)));
-    if (p.species) vLinks.appendChild(link('ᚱ', u.inFieldlog, DATA.fieldlog[W.latin()] + '#sp=' + encodeURIComponent(p.species)));
+    p.species.forEach(function (name) {
+      vLinks.appendChild(link('ᚱ', p.species.length > 1 ? name : u.inFieldlog, DATA.fieldlog[W.latin()] + '#sp=' + encodeURIComponent(name)));
+    });
     vCount.textContent = fmt(u.count, { i: i + 1, n: photos.length });
     var many = photos.length > 1;
     vPrev.hidden = vNext.hidden = !many;

@@ -1,0 +1,61 @@
+# Makes a blog post for every find marked "Write about this find" in
+# /admin → Field log, and links it from the find's card ("Read about this find").
+# See src/field_stories.py.
+#
+# Runs whenever the field-log settings are published, and on demand:
+# GitHub → Actions → "Field log stories" → "Run workflow".
+name: Field log stories
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["content/fieldlog.json", "src/field_stories.py"]
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: field-stories
+  cancel-in-progress: false
+
+jobs:
+  stories:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Write posts for finds marked "Write about this find"
+        run: python3 src/field_stories.py
+
+      - name: Commit if anything changed
+        id: commit
+        run: |
+          if git diff --quiet -- content/fieldlog.json content/posts && ! git ls-files --others --exclude-standard -- content/posts | grep -q .; then
+            echo "Nothing new."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "field-stories"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/fieldlog.json content/posts
+          git commit -m "Field log: write posts for marked finds"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            sleep 5
+          done
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # Commits made by this workflow don't always trigger a Pages rebuild on
+      # their own, so ask for one explicitly.
+      - name: Ask GitHub Pages to rebuild
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages rebuild request not accepted; the next commit will publish it."

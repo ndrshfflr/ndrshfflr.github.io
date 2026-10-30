@@ -60,6 +60,14 @@ select.up-input{appearance:none;-webkit-appearance:none;padding-right:34px;
 .up-size input:checked+span svg{color:var(--acc)}
 .up-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .up-remove{align-self:flex-start;margin-top:-6px;padding:0}
+.up-chips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0;padding:0}
+.up-chips:empty{display:none}
+.up-chip{display:inline-flex;align-items:center;gap:4px;min-height:36px;padding:0 4px 0 12px;border:1px solid color-mix(in srgb,var(--acc) 55%,transparent);border-radius:999px;
+  background:color-mix(in srgb,var(--acc) 14%,transparent);font-style:italic;font-size:15px}
+.up-chip button{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border:0;border-radius:50%;background:transparent;color:var(--ink);font:inherit;font-style:normal;font-size:18px;cursor:pointer}
+.up-chip button:focus-visible{outline:2px solid var(--acc)}
+.up-check{display:flex;align-items:center;gap:10px;min-height:44px;margin-top:6px;font-size:15px;color:var(--ink2);cursor:pointer}
+.up-check input{width:20px;height:20px;accent-color:var(--acc)}
 
 /* sending */
 .up-send{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;flex-direction:column;align-items:center;gap:6px;

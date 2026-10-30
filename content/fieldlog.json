@@ -26,6 +26,7 @@
     "showPlaces": true,
     "referencePhotos": true
   },
+  "finds": [],
   "hide": [],
   "hideSpecies": [],
   "covers": [],
@@ -45,7 +46,9 @@
       "group": "mammals",
       "date": "2026-10-29",
       "place": "Sweden",
-      "photo": "https://ndrshfflr.github.io/images/gallery/2026-10-29-photo-c60657.jpg"
+      "photos": [
+        "https://ndrshfflr.github.io/images/gallery/2026-10-29-photo-c60657.jpg"
+      ]
     }
   ]
 }

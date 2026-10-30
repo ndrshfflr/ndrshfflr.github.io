@@ -8,7 +8,7 @@ This script, run by .github/workflows/photo-inbox.yml, files each one:
          caption: Fly agaric after rain
          weight: 3
      (also understood: post: <blog post file name>, focus: top/bottom/left/right,
-      species: <field-log species>)
+      species: <field-log species, several separated by commas>)
   2. turns it upright, shrinks it to 2000 px on the long side, saves it as a JPEG
      with no EXIF data at all (so no GPS location), keeping its colour profile
   3. moves it to images/gallery/ and puts it at the top of content/gallery.json,
@@ -87,7 +87,9 @@ def details_for(path):
             if ext == ".json":
                 try:
                     data = json.loads(text)
-                    meta = {k: str(data[k]) for k in KEYS if data.get(k) not in (None, "")}
+                    meta = {k: data[k] if k == "species" else str(data[k]) for k in KEYS if data.get(k) not in (None, "", [])}
+                    if data.get("onPhotoPage") is False:
+                        meta["onPhotoPage"] = False
                 except ValueError:
                     meta = parse_lines(text)
             else:
@@ -107,8 +109,14 @@ def details_for(path):
     post = meta.get("post", "").strip()
     if re.match(r"^[A-Za-z0-9._-]+$", post):
         entry["post"] = re.sub(r"\.md$", "", post)
-    if meta.get("species", "").strip():
-        entry["species"] = meta["species"].strip()
+    # one or several species (a list, or names separated by commas or semicolons)
+    sp = meta.get("species") or []
+    names = sp if isinstance(sp, list) else re.split(r"[;,]", str(sp))
+    names = [str(n).strip() for n in names if str(n).strip()]
+    if names:
+        entry["species"] = names
+    if meta.get("onPhotoPage") is False:
+        entry["onPhotoPage"] = False
     return entry, date
 
 
@@ -169,6 +177,8 @@ def file_inbox():
         for k in ("focus", "post", "species"):
             if entry.get(k):
                 item[k] = entry[k]
+        if entry.get("onPhotoPage") is False:
+            item["onPhotoPage"] = False  # a field-log photo only
         new.append(item)
         for side in (p, p.with_suffix(".json"), p.with_suffix(".txt")):
             if side.exists():

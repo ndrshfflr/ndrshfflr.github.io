@@ -517,6 +517,25 @@ collections:
               - { label: "iNaturalist: only Research Grade finds", name: "researchGradeOnly", widget: "boolean", default: false }
               - { label: "Show place names", name: "showPlaces", widget: "boolean", default: true, hint: "Only a general place name is ever shown — never coordinates." }
               - { label: "Reference photos for species without a photo of my own", name: "referencePhotos", widget: "boolean", default: true, required: false, hint: "An openly licensed photo from iNaturalist, marked \"Ref. photo\" and credited. It disappears as soon as you have a photo of your own (from a find, the gallery or a hand-added find)." }
+          - label: "Favourites, photos and stories"
+            name: "finds"
+            widget: "list"
+            required: false
+            summary: "{{fields.species}}"
+            hint: "One entry per species (a card in the field log). Works for synced finds and for finds you add by hand — those appear in the species list a few minutes after you publish them."
+            fields:
+              - { label: "Species", name: "species", widget: "relation", collection: "observations", file: "synced", value_field: "species.*.name", search_fields: ["species.*.label"], display_fields: ["species.*.label"] }
+              - { label: "Favourite", name: "favourite", widget: "boolean", default: false, required: false, hint: "Shown with a ★ and listed under Favourites." }
+              - label: "Photos"
+                name: "photos"
+                widget: "list"
+                required: false
+                hint: "Pick any photo already on the site or upload new ones. The first one becomes the card's cover."
+                field: { label: "Photo", name: "src", widget: "image", media_folder: "/images/gallery", public_folder: "/images/gallery" }
+              - { label: "Write about this find", name: "story", widget: "boolean", default: false, required: false, hint: "Tick and publish: within a minute or two a blog post is made from this find (its photos, dates, places and your note) and linked from the card as \"Read about this find\". Add your own text to it under Blog posts afterwards." }
+              - { label: "Its blog post", name: "post", widget: "relation", collection: "posts", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], required: false, hint: "Filled in automatically when the post is made. You can also pick an existing post." }
+              - { label: "Note (English)", name: "text", widget: "text", required: false, hint: "Shown when someone opens the card." }
+              - { label: "Note (Danish)", name: "textDa", widget: "text", required: false }
           - label: "Hide these finds"
             name: "hide"
             widget: "list"
@@ -534,16 +553,6 @@ collections:
             required: false
             hint: "Pick the find whose photo should be shown on a species' card. Otherwise the newest photo is used."
             field: { label: "Find", name: "id", widget: "relation", collection: "observations", file: "synced", value_field: "items.*.id", search_fields: ["items.*.label"], display_fields: ["items.*.label"] }
-          - label: "Notes on a species"
-            name: "notes"
-            widget: "list"
-            required: false
-            summary: "{{species}}"
-            hint: "Shown when someone opens the species. Also works for finds you add by hand — type the Latin name exactly."
-            fields:
-              - { label: "Species (Latin name)", name: "species", widget: "string" }
-              - { label: "Note (English)", name: "text", widget: "text", required: false }
-              - { label: "Note (Danish)", name: "textDa", widget: "text", required: false }
           - label: "Goals (progress bars)"
             name: "goals"
             widget: "list"
@@ -568,7 +577,15 @@ collections:
               - { label: "Group", name: "group", widget: "select", options: [{ label: "Fungi", value: "fungi" }, { label: "Birds", value: "birds" }, { label: "Insects", value: "insects" }, { label: "Spiders & kin", value: "arachnids" }, { label: "Mammals", value: "mammals" }, { label: "Amphibians & reptiles", value: "herps" }, { label: "Fish", value: "fish" }, { label: "Molluscs", value: "molluscs" }, { label: "Plants", value: "plants" }, { label: "Other", value: "other" }] }
               - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
               - { label: "Place (optional)", name: "place", widget: "string", required: false, hint: "Keep it general, e.g. Rold Skov or Abisko, Sweden." }
-              - { label: "Photo (optional)", name: "photo", widget: "image", required: false, media_folder: "/images/uploads", public_folder: "/images/uploads", hint: "Square-ish works best. A photo added here becomes the card's cover." }
+              - label: "Photos (optional)"
+                name: "photos"
+                widget: "list"
+                required: false
+                hint: "Pick any photo already on the site or upload your own — as many as you like. The first one becomes the card's cover."
+                field: { label: "Photo", name: "src", widget: "image", media_folder: "/images/gallery", public_folder: "/images/gallery" }
+              - { label: "Favourite", name: "favourite", widget: "boolean", default: false, required: false }
+              - { label: "Write about this find", name: "story", widget: "boolean", default: false, required: false, hint: "Tick and publish: a blog post is made from this find and linked from its card." }
+              - { label: "Its blog post", name: "post", widget: "relation", collection: "posts", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], required: false, hint: "Filled in automatically when the post is made." }
               - { label: "Link (optional)", name: "link", widget: "string", required: false }
               - { label: "Note (optional)", name: "notes", widget: "text", required: false }
 
@@ -639,9 +656,10 @@ collections:
             fields:
               - { label: "Photo", name: "image", widget: "image", media_folder: "/images/gallery", public_folder: "/images/gallery" }
               - { label: "Caption (optional)", name: "caption", widget: "string", required: false }
+              - { label: "Show on the photography page", name: "onPhotoPage", widget: "boolean", default: true, required: false, hint: "Turn off for photos meant only for the field log (tag their species below)." }
               - { label: "Weight", name: "weight", widget: "number", value_type: "int", min: 1, max: 5, step: 1, default: 1, required: false, hint: "How big the photo is on the photography page: 1 small · 2 wide · 3 large · 4 larger · 5 largest. Favourites get more." }
               - { label: "Keep in frame", name: "focus", widget: "select", required: false, default: "center", options: [{ label: "Middle", value: "center" }, { label: "Top", value: "top" }, { label: "Bottom", value: "bottom" }, { label: "Left", value: "left" }, { label: "Right", value: "right" }], hint: "Tiles are cropped to fit the mosaic; this part of the photo stays in view." }
-              - { label: "Species in the field log (optional)", name: "species", widget: "relation", required: false, collection: "observations", file: "synced", value_field: "species.*.name", search_fields: ["species.*.label"], display_fields: ["species.*.label"], hint: "The photo then links to that species, and shows up when someone opens it in the field log. Finds you add by hand appear in this list after the next sync." }
+              - { label: "Species in the field log (optional)", name: "species", widget: "relation", multiple: true, required: false, collection: "observations", file: "synced", value_field: "species.*.name", search_fields: ["species.*.label"], display_fields: ["species.*.label"], hint: "Tag every species in the photo — one or several. The photo then links to them and shows up when someone opens them in the field log. Finds you add by hand appear in this list a minute or two after you publish them." }
               - { label: "Blog post (optional)", name: "post", widget: "relation", required: false, collection: "posts", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], hint: "On the photography page the photo then leads to the post (it is also shown at the end of the post). Without a post, it opens full-screen." }
 
   - name: "posts"

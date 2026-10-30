@@ -47,7 +47,9 @@ button{font:inherit}
     linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 50%,var(--sky3) 100%);
 }
 /* pages that scroll keep the sky still behind them */
-.world.scrolls{background-attachment:fixed}
+.world.scrolls{overflow:hidden;overflow:clip; /* clip, not hidden: sticky bars keep working */
+  background:radial-gradient(circle at 88% 7%,var(--haze),transparent 32%),linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 50%,var(--sky3) 100%);
+  background-attachment:fixed} /* no dark pool in the middle: that belongs under the stone circle */
 .scrolls .stars,.scrolls .disc,.scrolls .fx{position:fixed}
 .world.ready{transition:--sky1 1.6s ease,--sky2 1.6s ease,--sky3 1.6s ease,--haze 1.6s ease,--pool 1.6s ease,--tree 1.6s ease,--line 1.6s ease,--core 1.6s ease,--hot 1.6s ease,--draw 1.6s ease,--floor 1.6s ease,--disc1 1.6s ease,--disc2 1.6s ease,--dglow 1.6s ease,--ink 1.6s ease,--ink2 1.6s ease,--muted 1.6s ease,--menu 1.6s ease}
 .chrome{transition:opacity .9s ease}
@@ -116,6 +118,12 @@ button{font:inherit}
 .mode-runes .rv:hover .rn,.mode-runes a:hover .rv .rn,.mode-runes a:focus-visible .rv .rn,.mode-runes button:hover .rv .rn,.mode-runes button:focus-visible .rv .rn,.mode-runes.reveal-all .rn{opacity:0}
 .mode-runes .rv:hover .lt,.mode-runes a:hover .rv .lt,.mode-runes a:focus-visible .rv .lt,.mode-runes button:hover .rv .lt,.mode-runes button:focus-visible .rv .lt,.mode-runes.reveal-all .lt{opacity:1}
 .lang:focus-visible,.season-btn:focus-visible,.sopt:focus-visible,.aa:focus-visible,.logo:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
+
+/* the way back, at the foot of every world */
+.world-foot{position:relative;z-index:1;display:flex;justify-content:center;padding:44px 20px 52px}
+.back-link{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border:1px solid color-mix(in srgb,var(--ink) 25%,transparent);border-radius:999px;color:var(--ink);text-decoration:none;font-size:16px;font-weight:500}
+.back-link:hover{background:color-mix(in srgb,var(--ink) 8%,transparent)}
+.back-link:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
 
 @keyframes twinkle{0%,40%,100%{opacity:0;transform:scale(.4) rotate(0deg)}52%{opacity:.95;transform:scale(1) rotate(45deg)}64%{opacity:0;transform:scale(.5) rotate(90deg)}}
 @keyframes seedfall{0%{transform:translate3d(0,0,0) rotate(0deg)}25%{transform:translate3d(28px,26vh,0) rotate(80deg)}50%{transform:translate3d(-12px,52vh,0) rotate(170deg)}75%{transform:translate3d(30px,78vh,0) rotate(260deg)}100%{transform:translate3d(4px,108vh,0) rotate(360deg)}}
