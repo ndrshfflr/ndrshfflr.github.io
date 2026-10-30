@@ -133,12 +133,16 @@
     {
       "image": "/images/gallery/2026-08-29-photo-6a221d.jpg",
       "caption": "",
-      "weight": 1
+      "weight": 1,
+      "onPhotoPage": false,
+      "post": "2026-10-30-one-of-the-remaining-giants-of-the-north"
     },
     {
       "image": "/images/gallery/2026-08-29-photo-c362fe.jpg",
       "caption": "",
-      "weight": 1
+      "weight": 1,
+      "onPhotoPage": false,
+      "post": "2026-10-30-one-of-the-remaining-giants-of-the-north"
     },
     {
       "image": "/images/gallery/2026-02-14-photo-95c4e1.jpg",
@@ -253,7 +257,9 @@
     {
       "image": "/images/gallery/2026-08-29-photo-353e81.jpg",
       "caption": "",
-      "weight": 1
+      "weight": 1,
+      "onPhotoPage": false,
+      "post": "2026-10-30-one-of-the-remaining-giants-of-the-north"
     },
     {
       "image": "/images/gallery/2026-06-22-close-encounter-79c386.jpg",
@@ -281,7 +287,8 @@
       ],
       "sightings": [
         "manual:m20261029-7a0a"
-      ]
+      ],
+      "onPhotoPage": false
     },
     {
       "image": "/images/gallery/2026-10-10-pseudohydnum-gelatinosum-c68fc8.jpg",
