@@ -89,6 +89,10 @@
     {
       "species": "Podiceps cristatus",
       "favourite": true
+    },
+    {
+      "species": "Milvus milvus",
+      "favourite": true
     }
   ],
   "hide": [],
