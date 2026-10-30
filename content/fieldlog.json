@@ -92,17 +92,17 @@
   ],
   "manual": [
     {
-      "id": "m20261029-7a0a",
-      "name": "Alces alces",
-      "common": "Elk",
-      "commonDa": "Elg",
-      "group": "mammals",
-      "date": "2026-10-29",
-      "place": "Sweden",
       "photos": [
-        "https://ndrshfflr.github.io/images/gallery/2026-10-29-photo-c60657.jpg"
+        "/images/gallery/2026-10-29-photo-311b4c.jpg"
       ],
-      "favourite": true
+      "place": "Sweden",
+      "commonDa": "Elg",
+      "favourite": false,
+      "common": "Elk",
+      "name": "Alces alces",
+      "date": "2026-10-29",
+      "id": "m20261029-7a0a",
+      "group": "mammals"
     }
   ]
 }
