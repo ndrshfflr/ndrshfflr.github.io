@@ -6,6 +6,12 @@
   },
   "images": [
     {
+      "image": "/images/gallery/2026-06-22-close-encounter-79c386.jpg",
+      "caption": "Close encounter",
+      "weight": 1,
+      "post": "2026-10-30-close-encounter"
+    },
+    {
       "image": "/images/gallery/2026-08-08-endless-fields-0e08f4.jpg",
       "caption": "Endless fields",
       "weight": 1
