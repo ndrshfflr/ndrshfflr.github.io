@@ -21,7 +21,7 @@
 <link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/world.css?v=a32c77ce">
-<link rel="stylesheet" href="assets/upload.css?v=e77b187e">
+<link rel="stylesheet" href="assets/upload.css?v=97af0608">
 </head>
 <body>
 <div class="world up" id="world">
@@ -94,16 +94,45 @@
             <input class="up-input up-species" type="text" list="species-list" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" placeholder="Start typing a name…">
           </label>
           <ul class="up-chips" aria-label="Tagged species"></ul>
+          <div class="up-newfinds"></div>
           <label class="up-check"><input class="up-onpage" type="checkbox" checked> Also show it on the photography page</label>
         </div>
         <button class="up-link up-remove" type="button">Remove</button>
       </div>
     </li>
   </template>
+  <!-- a species that isn't in the field log yet: it's added as a find made by hand -->
+  <template id="newfind-tpl">
+    <fieldset class="up-newfind">
+      <legend class="up-nf-head"><span class="up-nf-tag">New find</span> <em class="up-nf-name"></em></legend>
+      <p class="up-small up-nf-hint">Not in the field log yet. Sending adds it, with this photo.</p>
+      <div class="up-pair">
+        <label class="up-label">Group
+          <select class="up-input up-nf-group">
+            <option value="fungi">Fungi</option><option value="birds">Birds</option><option value="insects">Insects</option><option value="arachnids">Spiders &amp; kin</option><option value="mammals">Mammals</option><option value="herps">Amphibians &amp; reptiles</option><option value="fish">Fish</option><option value="molluscs">Molluscs</option><option value="plants">Plants</option><option value="other">Other</option>
+          </select>
+        </label>
+        <label class="up-label">Date
+          <input class="up-input up-nf-date" type="date">
+        </label>
+      </div>
+      <label class="up-label">Place <span class="up-opt">(optional, keep it general)</span>
+        <input class="up-input up-nf-place" type="text" maxlength="120" autocomplete="off" enterkeyhint="next" placeholder="e.g. Rold Skov">
+      </label>
+      <div class="up-pair">
+        <label class="up-label">English name <span class="up-opt">(optional)</span>
+          <input class="up-input up-nf-common" type="text" maxlength="120" autocomplete="off" enterkeyhint="next">
+        </label>
+        <label class="up-label">Danish name <span class="up-opt">(optional)</span>
+          <input class="up-input up-nf-commonda" type="text" maxlength="120" autocomplete="off" lang="da" enterkeyhint="done">
+        </label>
+      </div>
+    </fieldset>
+  </template>
   <datalist id="species-list"></datalist>
 </div>
 
-<script id="upload-data" type="application/json">{"authEndpoint": "auth", "branch": "main", "photography": "photography.html", "posts": [{"date": "2026-10-25", "slug": "2026-10-24-testing-this-stuff", "title": "Testing this stuff"}], "proxy": "https://decap-proxy.shhflr.workers.dev", "repo": "ndrshfflr/ndrshfflr.github.io"}</script>
-<script src="assets/upload.js?v=593e3ade"></script>
+<script id="upload-data" type="application/json">{"authEndpoint": "auth", "branch": "main", "fieldlog": "fieldlog.html", "photography": "photography.html", "posts": [{"date": "2026-10-25", "slug": "2026-10-24-testing-this-stuff", "title": "Testing this stuff"}], "proxy": "https://decap-proxy.shhflr.workers.dev", "repo": "ndrshfflr/ndrshfflr.github.io"}</script>
+<script src="assets/upload.js?v=34736164"></script>
 </body>
 </html>
