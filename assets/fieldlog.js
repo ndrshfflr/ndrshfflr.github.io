@@ -8,7 +8,8 @@
  *                               photos, stories, notes, hidden finds and
  *                               species, cover photos, goals and finds you
  *                               add by hand
- *   content/gallery.json      – photos linked to a species (Photo Gallery)
+ *   content/gallery.json      – the photo library: photos linked to a sighting
+ *                               ("svampeatlas:123", "manual:<id>") or a species
  * so anything you change shows up as soon as it is published.
  *
  * Signed in (the same sign-in as /admin or the upload page, on this device)
@@ -151,9 +152,23 @@
       if (m.favourite) e.fav = true;
       if (m.post && SLUG.test(m.post) && !e.post) e.post = m.post;
       items.push({
-        id: 'manual:' + i, source: 'manual', url: m.link || '', date: String(m.date || '').slice(0, 10),
+        id: 'manual:' + (m.id || i), source: 'manual', url: m.link || '', date: String(m.date || '').slice(0, 10),
         name: m.name.trim(), common_en: m.common || '', common_da: m.commonDa || '', group: m.group || 'other',
         photo: photos[0] || '', photos: photos, place: m.place || '', note: m.notes || '', manualCover: photos.length > 0
+      });
+    });
+
+    // photos linked to one sighting: they join that sighting and its species
+    var byId = {};
+    items.forEach(function (o) { byId[o.id] = o; });
+    arr(gallery && gallery.images).forEach(function (g) {
+      if (!g || !g.image) return;
+      arr(g.sightings).forEach(function (sid) {
+        var o = byId[sid];
+        if (!o) return;
+        (o.linked = o.linked || []).push(g);
+        var k = norm(o.name), list = galleryBy[k] = galleryBy[k] || [];
+        if (list.indexOf(g) < 0) list.push(g);
       });
     });
 
@@ -494,6 +509,25 @@
         li.appendChild(el('span', 'fl-r-src', SOURCE(r.source)));
       }
       if (r.note) li.appendChild(el('span', 'fl-r-note', r.note));
+      var own = arr(r.linked).map(function (g) { return g.image; }).concat(r.source === 'manual' ? arr(r.photos) : []);
+      own = own.map(same).filter(function (x, i, all) { return x && all.indexOf(x) === i; }).slice(0, 6);
+      if (own.length) {
+        var row = el('span', 'fl-r-photos');
+        own.forEach(function (src) {
+          var t = el('button', 'fl-r-thumb');
+          t.type = 'button';
+          t.setAttribute('aria-label', (u.flPhoto || 'Photo') + ' · ' + fmtDate(r.date));
+          t.appendChild(img(src, '', 120));
+          t.addEventListener('click', function () {
+            var fig = pics.filter(function (p) { return same(p.photo) === same(src); })[0] || { photo: src };
+            fig.alt = sp.name; fig.sp = sp;
+            showMain(fig);
+            var box = $('fl-d-photos'); if (box && box.scrollIntoView) box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          });
+          row.appendChild(t);
+        });
+        li.appendChild(row);
+      }
       recs.appendChild(li);
     });
 

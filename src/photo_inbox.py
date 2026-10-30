@@ -159,8 +159,15 @@ def norm(s):
     return unicodedata.normalize("NFD", str(s or "").lower()).encode("ascii", "ignore").decode().strip()
 
 
+def sighting_id(find):
+    """A stable id for a sighting added by hand ("manual:<id>" links photos to it)."""
+    h = hashlib.sha1(f"{find['name']}|{find['date']}|{find.get('place', '')}".encode()).hexdigest()[:4]
+    return "m" + find["date"].replace("-", "") + "-" + h
+
+
 def add_finds(finds):
-    """Put new finds (each with its photo) into "Finds I add by hand"."""
+    """Put new finds into "Finds I add by hand" as sightings, and link each
+    photo (its gallery entry) to its sighting."""
     if not finds or not FIELDLOG_JSON.exists():
         return
     cfg = json.loads(FIELDLOG_JSON.read_text(encoding="utf-8"))
@@ -169,21 +176,24 @@ def add_finds(finds):
     synced = {norm(sp.get("name")) for sp in obs.get("species") or [] if isinstance(sp, dict)}
     synced |= {norm(o.get("name")) for o in obs.get("items") or [] if isinstance(o, dict)}
     changed = False
-    for find, photo in finds:
+    for find, item in finds:
         k = norm(find["name"])
-        mine = next((m for m in manual if m and norm(m.get("name")) == k), None)
+        # the same sighting sent with several photos (or earlier in this batch)
+        mine = next((m for m in manual if m and norm(m.get("name")) == k and str(m.get("date", ""))[:10] == find["date"]), None)
         if mine is None and k in synced:
-            say(f"{find['name']} is already in the field log: the photo is linked to it")
+            say(f"{find['name']} is already in the field log: the photo is linked to the species")
             continue
         if mine is None:
-            manual.append(dict(find, photos=[photo]))
+            mine = dict({"id": sighting_id(find)}, **find)
+            manual.append(mine)
             say(f"new find in the field log: {find['name']} ({find['date']})")
-        else:  # added by hand before (or earlier in this batch): just add the photo
-            photos = mine.setdefault("photos", [])
-            if photo not in photos:
-                photos.append(photo)
-            say(f"photo added to {mine['name']} in the field log")
-        changed = True
+            changed = True
+        elif not mine.get("id"):
+            mine["id"] = sighting_id(dict(find, place=mine.get("place", "")))
+            changed = True
+        link = "manual:" + mine["id"]
+        if link not in item.setdefault("sightings", []):
+            item["sightings"].append(link)
     if changed:
         FIELDLOG_JSON.write_text(json.dumps(cfg, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
@@ -248,16 +258,16 @@ def file_inbox():
         if entry.get("onPhotoPage") is False:
             item["onPhotoPage"] = False  # a field-log photo only
         new.append(item)
-        finds += [(f, item["image"]) for f in entry.get("newFinds", [])]
+        finds += [(f, item) for f in entry.get("newFinds", [])]
         for side in (p, p.with_suffix(".json"), p.with_suffix(".txt")):
             if side.exists():
                 side.unlink()
         say(f"filed {p.name} → {dest.name} (weight {entry['weight']}{', “' + entry['caption'] + '”' if entry['caption'] else ''})")
         done += 1
     if done:
+        add_finds(finds)  # before saving the gallery: it links the photos to their sightings
         images[0:0] = new
         GALLERY_JSON.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        add_finds(finds)
     return done
 
 

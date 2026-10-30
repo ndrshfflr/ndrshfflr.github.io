@@ -573,6 +573,7 @@ collections:
             summary: "{{date}} — {{name}}"
             hint: "For finds that are in none of the sites above — from a notebook, a trip abroad, before you used the apps…"
             fields:
+              - { label: "Id", name: "id", widget: "hidden", required: false }
               - { label: "Latin name", name: "name", widget: "string", hint: "Same spelling as elsewhere, so it joins the same species card." }
               - { label: "Common name (English, optional)", name: "common", widget: "string", required: false }
               - { label: "Common name (Danish, optional)", name: "commonDa", widget: "string", required: false }
@@ -663,6 +664,12 @@ collections:
               - { label: "Keep in frame", name: "focus", widget: "select", required: false, default: "center", options: [{ label: "Middle", value: "center" }, { label: "Top", value: "top" }, { label: "Bottom", value: "bottom" }, { label: "Left", value: "left" }, { label: "Right", value: "right" }], hint: "Tiles are cropped to fit the mosaic; this part of the photo stays in view." }
               - { label: "Species in the field log (optional)", name: "species", widget: "relation", multiple: true, required: false, collection: "observations", file: "synced", value_field: "species.*.name", search_fields: ["species.*.label"], display_fields: ["species.*.label"], hint: "Tag every species in the photo — one or several. The photo then links to them and shows up when someone opens them in the field log. Finds you add by hand appear in this list a minute or two after you publish them." }
               - { label: "Blog post (optional)", name: "post", widget: "relation", required: false, collection: "posts", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], hint: "On the photography page the photo then leads to the post (it is also shown at the end of the post). Without a post, it opens full-screen." }
+              - label: "Sightings in the field log"
+                name: "sightings"
+                widget: "list"
+                required: false
+                hint: "Which finds this photo shows. Easiest in the photo manager (upload.html → Library). Synced finds look like svampeatlas:123, finds added by hand like manual:m20261029-ab12."
+                field: { label: "Sighting", name: "id", widget: "string" }
 
   - name: "posts"
     label: "Blog posts"
