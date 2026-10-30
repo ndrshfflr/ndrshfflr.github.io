@@ -85,6 +85,10 @@
     {
       "species": "Laetiporus sulphureus",
       "favourite": true
+    },
+    {
+      "species": "Podiceps cristatus",
+      "favourite": true
     }
   ],
   "hide": [],
