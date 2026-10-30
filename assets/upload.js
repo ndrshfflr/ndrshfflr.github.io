@@ -159,21 +159,110 @@
       };
       ((r[1] && r[1].manual) || []).forEach(function (m) { if (m && m.name) add(m.name, m.name + (m.commonDa || m.common ? ' (' + (m.commonDa || m.common) + ')' : '')); });
       ((r[0] && r[0].species) || []).forEach(function (sp) { if (sp && sp.name) add(sp.name, sp.label); });
+      speciesLoaded = !!r[0]; // without the list, nothing can be told apart as new
+      // tags made before the list arrived: a known name isn't a new find after all
+      Array.prototype.forEach.call(doc.querySelectorAll('.up-chip'), function (c) { markNew(c.closest('.up-card'), c); });
     });
   }
+  var speciesLoaded = false;
+  function known(name) { return !!speciesNames[String(name).toLowerCase()]; }
   function addChip(li, name) {
-    name = String(name || '').trim().replace(/\s+/g, ' ');
+    name = String(name || '').trim().replace(/\s+/g, ' ').slice(0, 120);
     if (!name) return;
-    name = speciesNames[name.toLowerCase()] || name; // match the field log's spelling
+    // match the field log's spelling; a new Latin name starts with a capital
+    name = speciesNames[name.toLowerCase()] || (name.charAt(0).toUpperCase() + name.slice(1));
     var chips = li.querySelector('.up-chips');
     var have = Array.prototype.some.call(chips.children, function (c) { return c.getAttribute('data-name').toLowerCase() === name.toLowerCase(); });
     if (have) return;
     var c = doc.createElement('li'); c.className = 'up-chip'; c.setAttribute('data-name', name);
     c.appendChild(doc.createTextNode(name));
     var x = doc.createElement('button'); x.type = 'button'; x.textContent = '\u00d7'; x.setAttribute('aria-label', 'Remove ' + name);
-    x.addEventListener('click', function () { c.remove(); });
+    x.addEventListener('click', function () { if (c._form) c._form.remove(); c.remove(); });
     c.appendChild(x);
     chips.appendChild(c);
+    markNew(li, c);
+  }
+  /* A name the field log doesn't have yet becomes a new find: a few details,
+     and the website adds it to "Finds I add by hand" with this photo. */
+  function markNew(li, c) {
+    var name = c.getAttribute('data-name'), isNew = speciesLoaded && !known(name);
+    if (!isNew) {
+      if (known(name)) { // take the field log's spelling
+        var proper = speciesNames[name.toLowerCase()];
+        if (proper !== name) { c.setAttribute('data-name', proper); c.firstChild.nodeValue = proper; }
+      }
+      c.classList.remove('is-new');
+      if (c._form) { c._form.remove(); c._form = null; }
+      var tag = c.querySelector('.up-chip-new'); if (tag) tag.remove();
+      return;
+    }
+    if (c._form) return;
+    c.classList.add('is-new');
+    var t = doc.createElement('span'); t.className = 'up-chip-new'; t.textContent = 'new';
+    c.insertBefore(t, c.lastChild);
+    var f = $('newfind-tpl').content.firstElementChild.cloneNode(true);
+    f.querySelector('.up-nf-name').textContent = name;
+    f.querySelector('.up-nf-group').value = store.get('uploadGroup') || 'fungi';
+    f.querySelector('.up-nf-group').addEventListener('change', function () { store.set('uploadGroup', this.value); });
+    var date = f.querySelector('.up-nf-date');
+    date.max = isoDay(new Date());
+    date.value = li.getAttribute('data-taken') || isoDay(new Date());
+    var place = f.querySelector('.up-nf-place');
+    place.value = lastPlace();
+    c._form = f;
+    li.querySelector('.up-newfinds').appendChild(f);
+  }
+  function lastPlace() {
+    var all = doc.querySelectorAll('.up-card:not(.sent) .up-nf-place');
+    for (var i = all.length - 1; i >= 0; i--) if (all[i].value.trim()) return all[i].value.trim();
+    return '';
+  }
+  function isoDay(d) {
+    var p = function (n) { return (n < 10 ? '0' : '') + n; };
+    return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+  }
+
+  /* The day a photo was taken, from its EXIF data (read here, on the phone;
+     the photo sent to the website carries none). Falls back to the file date. */
+  function takenOn(file) {
+    var fallback = file.lastModified ? isoDay(new Date(file.lastModified)) : '';
+    if (!/jpe?g$/i.test(file.type || file.name)) return Promise.resolve(fallback);
+    return file.slice(0, 256 * 1024).arrayBuffer().then(function (buf) {
+      return exifDate(new DataView(buf)) || fallback;
+    }).catch(function () { return fallback; });
+  }
+  function exifDate(v) {
+    if (v.byteLength < 4 || v.getUint16(0) !== 0xFFD8) return '';
+    var o = 2;
+    while (o + 4 <= v.byteLength) {
+      var marker = v.getUint16(o), len = v.getUint16(o + 2);
+      if (marker === 0xFFE1 && o + 10 <= v.byteLength && v.getUint32(o + 4) === 0x45786966) { // "Exif"
+        var t = o + 10, le = v.getUint16(t) === 0x4949;
+        var u16 = function (a) { return v.getUint16(a, le); }, u32 = function (a) { return v.getUint32(a, le); };
+        var find = function (ifd, tag) {
+          if (ifd + 2 > v.byteLength) return null;
+          for (var i = 0, n = u16(ifd); i < n; i++) {
+            var e = ifd + 2 + i * 12;
+            if (e + 12 > v.byteLength) return null;
+            if (u16(e) === tag) return e;
+          }
+          return null;
+        };
+        var text = function (e) {
+          if (!e) return '';
+          var at = t + u32(e + 8), s = '';
+          for (var i = 0; i < 19 && at + i < v.byteLength; i++) s += String.fromCharCode(v.getUint8(at + i));
+          var m = /^(\d{4}):(\d{2}):(\d{2})/.exec(s);
+          return m && m[1] !== '0000' ? m[1] + '-' + m[2] + '-' + m[3] : '';
+        };
+        var ifd0 = t + u32(t + 4), ptr = find(ifd0, 0x8769);
+        var original = ptr ? text(find(t + u32(ptr + 8), 0x9003)) : '';
+        return original || text(find(ifd0, 0x0132));
+      }
+      if ((marker & 0xFF00) !== 0xFF00 || marker === 0xFFDA) break;
+      o += 2 + len;
+    }
+    return '';
   }
   function wireSpecies(li) {
     var input = li.querySelector('.up-species');
@@ -228,6 +317,12 @@
     focus.addEventListener('change', function () { img.style.objectPosition = POS[focus.value] || POS.center; });
     fillPostSelect(li.querySelector('.up-post'));
     wireSpecies(li);
+    takenOn(file).then(function (d) {
+      if (!d) return;
+      li.setAttribute('data-taken', d);
+      Array.prototype.forEach.call(li.querySelectorAll('.up-nf-date'), function (x) { if (!x.dataset.touched) x.value = d; });
+    });
+    li.addEventListener('change', function (e) { if (e.target.classList.contains('up-nf-date')) e.target.dataset.touched = '1'; });
     li.querySelector('.up-remove').addEventListener('click', function () {
       if (busy) return;
       URL.revokeObjectURL(it.url);
@@ -310,6 +405,15 @@
     var species = Array.prototype.map.call(li.querySelectorAll('.up-chip'), function (c) { return c.getAttribute('data-name'); });
     if (species.length) meta.species = species;
     if (!li.querySelector('.up-onpage').checked) meta.onPhotoPage = false;
+    var finds = Array.prototype.map.call(li.querySelectorAll('.up-chip.is-new'), function (c) {
+      var f = c._form, val = function (s) { return f.querySelector(s).value.trim(); };
+      var nf = { name: c.getAttribute('data-name'), group: val('.up-nf-group') || 'other', date: val('.up-nf-date') || li.getAttribute('data-taken') || isoDay(new Date()) };
+      if (val('.up-nf-place')) nf.place = val('.up-nf-place');
+      if (val('.up-nf-common')) nf.common = val('.up-nf-common');
+      if (val('.up-nf-commonda')) nf.commonDa = val('.up-nf-commonda');
+      return nf;
+    });
+    if (finds.length) meta.newFinds = finds;
     return meta;
   }
   function explain(e) {
@@ -339,7 +443,7 @@
       return attempt(1);
     });
   }
-  function watch(paths, no) {
+  function watch(paths, no, toLog) {
     /* wait until the "Photo inbox" workflow has moved the photos out of the inbox */
     var until = Date.now() + 6 * 60 * 1000;
     var tick = function () {
@@ -354,7 +458,9 @@
       }, function (e) { return e.status === 404 ? false : true; }).then(function (waiting) {
         if (no !== batchNo) return;
         if (waiting) { setTimeout(tick, 8000); return; }
-        status('Filed ✓ They’ll be on the website within a minute.', 'ok', { href: D.photography || 'photography.html', text: 'Open the photography page' });
+        status('Filed ✓ They’ll be on the website within a minute.', 'ok', toLog
+          ? { href: D.fieldlog || 'fieldlog.html', text: 'Open the field log' }
+          : { href: D.photography || 'photography.html', text: 'Open the photography page' });
       });
     };
     setTimeout(tick, 10000);
@@ -364,7 +470,7 @@
     if (!auth) { showSignin(); return; }
     busy = true; sendBtn.disabled = true;
     var no = ++batchNo;
-    var batch = items.slice(), files = [], s = stamp(new Date()), lines = [];
+    var batch = items.slice(), files = [], s = stamp(new Date()), lines = [], toLog = false;
     var prep = batch.reduce(function (p, it, i) {
       return p.then(function () {
         status('Preparing photo ' + (i + 1) + ' of ' + batch.length + '…');
@@ -373,7 +479,9 @@
           var meta = details(it);
           files.push({ path: name + '.jpg', content: b64, encoding: 'base64' });
           files.push({ path: name + '.json', content: JSON.stringify(meta, null, 2) + '\n', encoding: 'utf-8' });
-          lines.push('- ' + (meta.caption || '(no caption)') + ' · weight ' + meta.weight + (meta.species ? ' · ' + meta.species.join(', ') : ''));
+          lines.push('- ' + (meta.caption || '(no caption)') + ' · weight ' + meta.weight + (meta.species ? ' · ' + meta.species.join(', ') : '') +
+            (meta.newFinds ? ' · new in the field log: ' + meta.newFinds.map(function (n) { return n.name; }).join(', ') : ''));
+          if (meta.newFinds || meta.onPhotoPage === false) toLog = true;
         });
       });
     }, Promise.resolve());
@@ -385,7 +493,7 @@
       items = [];
       busy = false; sendBtn.disabled = false; refreshBar(); sendBar.hidden = false; sendBtn.hidden = true;
       status('Sent ✓ The website is filing them…', 'ok');
-      watch(files.filter(function (f) { return /\.jpg$/.test(f.path); }).map(function (f) { return f.path; }), no);
+      watch(files.filter(function (f) { return /\.jpg$/.test(f.path); }).map(function (f) { return f.path; }), no, toLog);
     }).catch(function (e) {
       busy = false; sendBtn.disabled = false;
       status(explain(e), 'err');

@@ -241,7 +241,7 @@
       <p id="photography-intro">{{ d.photography.intro }}</p>
     </div>
     <div class="photo-strip" id="photography-strip">
-      {% for item in gallery %}<figure class="photo-tile has-image"><img src="{{ item.image }}" alt="{{ item.caption or '' }}" loading="lazy">{% if item.caption or item.species or item.post %}<figcaption class="cap">{{ item.caption }}{% if item.species or item.post %}<span class="cap-links">{% if item.species %}<a href="{{ fieldlog_href }}#sp={{ item.species | urlencode }}">{{ ui.photoFieldlog }}</a>{% endif %}{% if item.post %}<a href="post.html?slug={{ item.post | urlencode }}">{{ ui.photoPost }}</a>{% endif %}</span>{% endif %}</figcaption>{% endif %}</figure>
+      {% for item in gallery %}<figure class="photo-tile has-image"><img src="{{ item.image }}" alt="{{ item.caption or '' }}" loading="lazy">{% if item.caption or item.species or item.post %}<figcaption class="cap">{{ item.caption }}{% if item.species or item.post %}<span class="cap-links">{% if item.species %}{% set sps = [item.species] if item.species is string else item.species %}{% for s in sps %}<a href="{{ fieldlog_href }}#sp={{ s | urlencode }}">{% if sps | length > 1 %}<em>{{ s }}</em>{% else %}{{ ui.photoFieldlog }}{% endif %}</a>{% endfor %}{% endif %}{% if item.post %}<a href="post.html?slug={{ item.post | urlencode }}">{{ ui.photoPost }}</a>{% endif %}</span>{% endif %}</figcaption>{% endif %}</figure>
       {% endfor %}
     </div>
   </div>

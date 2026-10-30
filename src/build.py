@@ -418,7 +418,7 @@ def render_upload(env, posts, versions):
     data = {
         "repo": cms["repo"], "branch": cms.get("branch", "main"),
         "proxy": cms.get("base_url", ""), "authEndpoint": cms.get("auth_endpoint", "auth"),
-        "photography": PHOTOGRAPHY["en"],
+        "photography": PHOTOGRAPHY["en"], "fieldlog": "fieldlog.html",
         "posts": [{"slug": p["slug"], "title": p["title"], "date": p["date_iso"]} for p in posts],
     }
     html = env.get_template("upload.html.j2").render(data=data, v=versions, photography_href=PHOTOGRAPHY["en"])

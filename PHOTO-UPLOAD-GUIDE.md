@@ -194,7 +194,13 @@ called "Add photos".
    - a caption;
    - its **size**, 1–5. The preview shows how it will be cropped;
    - **Keep in frame**, which part stays in view when it's cropped;
-   - optionally a **blog post** it leads to.
+   - optionally a **blog post** it leads to;
+   - optionally the **species** in it. Pick names the field log already has, or
+     type a new one and press comma or Enter. A new name gets a **New find** box
+     with group, date, place and common names. The date is read from the photo.
+     Sending adds the find to the field log, with the photo;
+   - whether it also shows on the **photography page**. Untick it for a photo
+     that belongs in the field log only.
 4. **Tap Send.** Each photo is shrunk to 2000 px and its location is removed
    *on the phone*, before anything leaves it. All photos go up together, and
    the page tells you when the website has filed them, usually within a
