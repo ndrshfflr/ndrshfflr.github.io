@@ -173,6 +173,14 @@
       "group": "mammals",
       "date": "2026-01-09",
       "place": "Iranduba"
+    },
+    {
+      "id": "m20260109-9374",
+      "name": "Cebus unicolor",
+      "group": "mammals",
+      "date": "2026-01-09",
+      "place": "Iranduba",
+      "notes": "Infant"
     }
   ]
 }
