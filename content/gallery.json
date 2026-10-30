@@ -168,32 +168,6 @@
       "weight": 1
     },
     {
-      "image": "/images/gallery/2026-08-29-photo-6a221d.jpg",
-      "caption": "",
-      "weight": 1,
-      "onPhotoPage": false,
-      "post": "2026-10-30-one-of-the-remaining-giants-of-the-north",
-      "sightings": [
-        "manual:m20260829-3859"
-      ],
-      "species": [
-        "Alces alces"
-      ]
-    },
-    {
-      "image": "/images/gallery/2026-08-29-photo-c362fe.jpg",
-      "caption": "",
-      "weight": 1,
-      "onPhotoPage": false,
-      "post": "2026-10-30-one-of-the-remaining-giants-of-the-north",
-      "sightings": [
-        "manual:m20260829-3859"
-      ],
-      "species": [
-        "Alces alces"
-      ]
-    },
-    {
       "image": "/images/gallery/2026-02-14-photo-95c4e1.jpg",
       "caption": "",
       "weight": 1
@@ -304,19 +278,6 @@
       "weight": 1
     },
     {
-      "image": "/images/gallery/2026-08-29-photo-353e81.jpg",
-      "caption": "",
-      "weight": 1,
-      "onPhotoPage": false,
-      "post": "2026-10-30-one-of-the-remaining-giants-of-the-north",
-      "sightings": [
-        "manual:m20260829-3859"
-      ],
-      "species": [
-        "Alces alces"
-      ]
-    },
-    {
       "image": "/images/gallery/2026-06-22-close-encounter-79c386.jpg",
       "caption": "Close encounter",
       "weight": 1,
@@ -331,20 +292,6 @@
       "image": "/images/gallery/2026-08-09-photo-f44994.jpg",
       "caption": "",
       "weight": 2
-    },
-    {
-      "image": "/images/gallery/2026-10-29-photo-311b4c.jpg",
-      "caption": "First sighting of this gentle giant",
-      "weight": 1,
-      "post": "2026-10-30-elk",
-      "species": [
-        "Alces alces"
-      ],
-      "sightings": [
-        "manual:m20261029-7a0a",
-        "manual:m20260829-3859"
-      ],
-      "onPhotoPage": false
     },
     {
       "image": "/images/gallery/2026-10-10-pseudohydnum-gelatinosum-c68fc8.jpg",
