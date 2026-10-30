@@ -54,6 +54,10 @@
     {
       "species": "Agaricus bohusii",
       "favourite": true
+    },
+    {
+      "species": "Fistulina hepatica",
+      "favourite": true
     }
   ],
   "hide": [],
