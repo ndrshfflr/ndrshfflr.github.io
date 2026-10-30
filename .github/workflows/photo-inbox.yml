@@ -4,6 +4,9 @@
 # - Photos land in images/inbox/; src/photo_inbox.py shrinks them, strips their
 #   EXIF (GPS location included), moves them to images/gallery/ and adds them to
 #   the top of content/gallery.json with the caption and weight you typed.
+# - A new find sent from the upload page is added to the field log
+#   (content/fieldlog.json), and the field-log sync is started so the species
+#   shows up in /admin's species lists right away.
 # - Photos uploaded through /admin (images/gallery, images/uploads, images/blog)
 #   get their GPS location removed too; very large ones are shrunk.
 #
@@ -20,6 +23,7 @@ on:
 permissions:
   contents: write
   pages: write
+  actions: write   # to start the field-log sync after a new find
 
 concurrency:
   group: photo-inbox
@@ -57,6 +61,7 @@ jobs:
           git config user.name "photo-inbox"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A images content
+          if git diff --cached --quiet -- content/fieldlog.json; then echo "finds=false" >> "$GITHUB_OUTPUT"; else echo "finds=true" >> "$GITHUB_OUTPUT"; fi
           { echo "Photos: file new photos, remove location data"; echo; cat /tmp/photo-inbox-summary.txt; } > /tmp/msg.txt
           git commit -F /tmp/msg.txt
           for attempt in 1 2 3; do
@@ -72,3 +77,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages rebuild request not accepted; the next commit will publish it."
+
+      # A push made by a workflow doesn't start other workflows, so start the
+      # field-log sync by hand: it puts the new species into /admin's lists.
+      - name: Start the field-log sync
+        if: steps.commit.outputs.finds == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run sync-observations.yml --ref main || echo "Couldn't start the sync; it runs tonight anyway."

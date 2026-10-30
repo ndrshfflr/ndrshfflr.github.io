@@ -13,6 +13,9 @@ This script, run by .github/workflows/photo-inbox.yml, files each one:
      with no EXIF data at all (so no GPS location), keeping its colour profile
   3. moves it to images/gallery/ and puts it at the top of content/gallery.json,
      so it shows on the photography page within a minute or two
+  4. a species sent from the upload page as a new find (one the field log doesn't
+     have yet) is added to "Finds I add by hand" in content/fieldlog.json, with
+     the photo
 
 It also sweeps the photo folders the CMS uploads to (images/gallery, images/uploads,
 images/blog): GPS location is removed from every JPEG (losslessly — the photo
@@ -45,6 +48,9 @@ ROOT = Path(__file__).resolve().parent.parent
 INBOX = ROOT / "images" / "inbox"
 GALLERY_DIR = ROOT / "images" / "gallery"
 GALLERY_JSON = ROOT / "content" / "gallery.json"
+FIELDLOG_JSON = ROOT / "content" / "fieldlog.json"
+OBS_JSON = ROOT / "content" / "observations.json"
+GROUPS = {"fungi", "birds", "insects", "arachnids", "mammals", "herps", "fish", "molluscs", "plants", "other"}
 SWEEP = [ROOT / "images" / d for d in ("gallery", "uploads", "blog")]
 IMAGE_EXT = {".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif"}
 LONG_SIDE = 2000          # px on the long side for photos on the site
@@ -90,6 +96,8 @@ def details_for(path):
                     meta = {k: data[k] if k == "species" else str(data[k]) for k in KEYS if data.get(k) not in (None, "", [])}
                     if data.get("onPhotoPage") is False:
                         meta["onPhotoPage"] = False
+                    if isinstance(data.get("newFinds"), list):
+                        meta["newFinds"] = data["newFinds"]
                 except ValueError:
                     meta = parse_lines(text)
             else:
@@ -117,7 +125,67 @@ def details_for(path):
         entry["species"] = names
     if meta.get("onPhotoPage") is False:
         entry["onPhotoPage"] = False
+    finds = [f for f in (clean_find(x, date) for x in meta.get("newFinds") or []) if f]
+    if finds:
+        entry["newFinds"] = finds
+        entry["species"] = entry.get("species", []) + [f["name"] for f in finds if f["name"] not in entry.get("species", [])]
     return entry, date
+
+
+def clean_find(x, sent):
+    """One new find from the upload page, checked: only the fields /admin knows."""
+    if not isinstance(x, dict):
+        return None
+    text = lambda k, n=120: re.sub(r"\s+", " ", str(x.get(k) or "")).strip()[:n]
+    name = text("name")
+    if not name:
+        return None
+    date = text("date", 10)
+    if not re.match(r"^\d{4}-\d{2}-\d{2}$", date):
+        date = sent
+    group = text("group").lower()
+    find = {"name": name[0].upper() + name[1:]}
+    for k in ("common", "commonDa"):
+        if text(k):
+            find[k] = text(k)
+    find["group"] = group if group in GROUPS else "other"
+    find["date"] = date
+    if text("place"):
+        find["place"] = text("place")
+    return find
+
+
+def norm(s):
+    return unicodedata.normalize("NFD", str(s or "").lower()).encode("ascii", "ignore").decode().strip()
+
+
+def add_finds(finds):
+    """Put new finds (each with its photo) into "Finds I add by hand"."""
+    if not finds or not FIELDLOG_JSON.exists():
+        return
+    cfg = json.loads(FIELDLOG_JSON.read_text(encoding="utf-8"))
+    manual = cfg.setdefault("manual", [])
+    obs = json.loads(OBS_JSON.read_text(encoding="utf-8")) if OBS_JSON.exists() else {}
+    synced = {norm(sp.get("name")) for sp in obs.get("species") or [] if isinstance(sp, dict)}
+    synced |= {norm(o.get("name")) for o in obs.get("items") or [] if isinstance(o, dict)}
+    changed = False
+    for find, photo in finds:
+        k = norm(find["name"])
+        mine = next((m for m in manual if m and norm(m.get("name")) == k), None)
+        if mine is None and k in synced:
+            say(f"{find['name']} is already in the field log: the photo is linked to it")
+            continue
+        if mine is None:
+            manual.append(dict(find, photos=[photo]))
+            say(f"new find in the field log: {find['name']} ({find['date']})")
+        else:  # added by hand before (or earlier in this batch): just add the photo
+            photos = mine.setdefault("photos", [])
+            if photo not in photos:
+                photos.append(photo)
+            say(f"photo added to {mine['name']} in the field log")
+        changed = True
+    if changed:
+        FIELDLOG_JSON.write_text(json.dumps(cfg, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def slug(text, fallback="photo"):
@@ -153,7 +221,7 @@ def file_inbox():
         return 0
     # newest upload first; photos sent together keep the order they were chosen in
     photos.sort(key=lambda p: (-int(git("log", "--diff-filter=A", "-1", "--format=%ct", "--", str(p.relative_to(ROOT))) or 0), p.name))
-    new = []
+    new, finds = [], []
     doc = json.loads(GALLERY_JSON.read_text(encoding="utf-8")) if GALLERY_JSON.exists() else {}
     images = doc.setdefault("images", [])
     GALLERY_DIR.mkdir(parents=True, exist_ok=True)
@@ -180,6 +248,7 @@ def file_inbox():
         if entry.get("onPhotoPage") is False:
             item["onPhotoPage"] = False  # a field-log photo only
         new.append(item)
+        finds += [(f, item["image"]) for f in entry.get("newFinds", [])]
         for side in (p, p.with_suffix(".json"), p.with_suffix(".txt")):
             if side.exists():
                 side.unlink()
@@ -188,6 +257,7 @@ def file_inbox():
     if done:
         images[0:0] = new
         GALLERY_JSON.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        add_finds(finds)
     return done
 
 
