@@ -29,13 +29,13 @@
   "finds": [
     {
       "favourite": true,
-      "story": true,
+      "story": false,
       "species": "Alces alces",
       "photos": [
         "/images/gallery/2026-10-29-photo-311b4c.jpg"
       ],
-      "post": "2026-10-30-elk",
-      "cover": "/images/gallery/2026-08-29-photo-353e81.jpg"
+      "post": "2026-10-30-one-of-the-remaining-giants-of-the-north",
+      "cover": ""
     },
     {
       "species": "Leccinum albostipitatum",
