@@ -1,8 +1,8 @@
 ---
-title: "A touching encounter with the Spix's white-fronted capuchin"
-date: 2026-10-30
+title: A touching encounter with the Spix's white-fronted capuchin
+date: 2026-01-09
 language: en
-cover: "/images/gallery/2026-01-09-photo-d12e91.jpg"
+cover: /images/gallery/2026-01-09-photo-d12e91.jpg
 tags:
   - Photography
 ---
