@@ -103,6 +103,14 @@
       "date": "2026-10-29",
       "id": "m20261029-7a0a",
       "group": "mammals"
+    },
+    {
+      "id": "m20261010-297b",
+      "name": "Pseudohydnum gelatinosum",
+      "commonDa": "Bævretand",
+      "group": "fungi",
+      "date": "2026-10-10",
+      "place": "Röstånga"
     }
   ]
 }
