@@ -20,8 +20,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/world.css?v=853d133c">
-<link rel="stylesheet" href="assets/upload.css?v=a0820331">
+<link rel="stylesheet" href="assets/world.css?v=a32c77ce">
+<link rel="stylesheet" href="assets/upload.css?v=e77b187e">
 </head>
 <body>
 <div class="world up" id="world">
@@ -89,13 +89,21 @@
             <select class="up-input up-post"><option value="">No — opens full-screen</option></select>
           </label>
         </div>
+        <div class="up-find">
+          <label class="up-label">Species in the field log <span class="up-opt">(optional, one or several)</span>
+            <input class="up-input up-species" type="text" list="species-list" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" placeholder="Start typing a name…">
+          </label>
+          <ul class="up-chips" aria-label="Tagged species"></ul>
+          <label class="up-check"><input class="up-onpage" type="checkbox" checked> Also show it on the photography page</label>
+        </div>
         <button class="up-link up-remove" type="button">Remove</button>
       </div>
     </li>
   </template>
+  <datalist id="species-list"></datalist>
 </div>
 
 <script id="upload-data" type="application/json">{"authEndpoint": "auth", "branch": "main", "photography": "photography.html", "posts": [{"date": "2026-10-25", "slug": "2026-10-24-testing-this-stuff", "title": "Testing this stuff"}], "proxy": "https://decap-proxy.shhflr.workers.dev", "repo": "ndrshfflr/ndrshfflr.github.io"}</script>
-<script src="assets/upload.js?v=5580d722"></script>
+<script src="assets/upload.js?v=593e3ade"></script>
 </body>
 </html>

@@ -199,11 +199,15 @@
         if (p.caption || p.species) {
           var cap = document.createElement('figcaption'); cap.className = 'cap';
           if (p.caption) cap.appendChild(document.createTextNode(p.caption));
-          if (p.species) {
+          var tagged = (Array.isArray(p.species) ? p.species : [p.species]).filter(Boolean);
+          if (tagged.length) {
             var links = document.createElement('span'); links.className = 'cap-links';
-            var a = document.createElement('a'); a.href = logHref + '#sp=' + encodeURIComponent(p.species);
-            a.textContent = ui.photoFieldlog || 'In the field log';
-            links.appendChild(a); cap.appendChild(links);
+            tagged.forEach(function (name) {
+              var a = document.createElement('a'); a.href = logHref + '#sp=' + encodeURIComponent(name);
+              a.textContent = tagged.length > 1 ? name : (ui.photoFieldlog || 'In the field log');
+              links.appendChild(a);
+            });
+            cap.appendChild(links);
           }
           fig.appendChild(cap);
         }
@@ -216,6 +220,6 @@
 })();
 </script>
 
-<script src="assets/site.js?v=2da17a04" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
+<script src="assets/site.js?v=ac6bc772" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
 </body>
 </html>

@@ -812,11 +812,13 @@
   function photoLinks(item) {
     if (!item.species && !item.post) return null;
     var box = el('span', 'cap-links');
-    if (item.species) {
-      var a = el('a', null, UI.photoFieldlog || 'In the field log');
-      a.href = (LANG === 'da' ? 'fieldlog.da.html' : 'fieldlog.html') + '#sp=' + encodeURIComponent(item.species);
+    // one photo can show several species (a list), or one (older entries: text)
+    var tagged = (Array.isArray(item.species) ? item.species : [item.species]).filter(Boolean);
+    tagged.forEach(function (name) {
+      var a = el('a', null, tagged.length > 1 ? name : (UI.photoFieldlog || 'In the field log'));
+      a.href = (LANG === 'da' ? 'fieldlog.da.html' : 'fieldlog.html') + '#sp=' + encodeURIComponent(name);
       box.appendChild(a);
-    }
+    });
     if (item.post && /^[A-Za-z0-9._-]+$/.test(item.post)) {
       var b = el('a', null, UI.photoPost || 'Read the post');
       b.href = 'post.html?slug=' + encodeURIComponent(item.post);
@@ -829,7 +831,8 @@
     var section = $('photography');
     var strip = $('photography-strip');
     if (!section || !strip) return;
-    var items = data && Array.isArray(data.images) ? data.images.filter(function (i) { return i && i.image; }) : [];
+    // photos meant for the field log only (onPhotoPage: false) stay out of the photography strip
+    var items = data && Array.isArray(data.images) ? data.images.filter(function (i) { return i && i.image && i.onPhotoPage !== false; }) : [];
     strip.innerHTML = '';
     items.forEach(function (item) {
       var fig = el('figure', 'photo-tile has-image');

@@ -89,10 +89,18 @@
             <select class="up-input up-post"><option value="">No — opens full-screen</option></select>
           </label>
         </div>
+        <div class="up-find">
+          <label class="up-label">Species in the field log <span class="up-opt">(optional, one or several)</span>
+            <input class="up-input up-species" type="text" list="species-list" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" placeholder="Start typing a name…">
+          </label>
+          <ul class="up-chips" aria-label="Tagged species"></ul>
+          <label class="up-check"><input class="up-onpage" type="checkbox" checked> Also show it on the photography page</label>
+        </div>
         <button class="up-link up-remove" type="button">Remove</button>
       </div>
     </li>
   </template>
+  <datalist id="species-list"></datalist>
 </div>
 
 <script id="upload-data" type="application/json">{{ data | tojson }}</script>

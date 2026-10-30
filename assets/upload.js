@@ -142,6 +142,55 @@
     }).catch(function () { /* the built-in list will do */ });
   }
 
+  /* ------------------------------------------------------------------ species in the field log */
+  /* Suggestions come from the field log itself: every species synced from the
+     apps plus every find added by hand in /admin. */
+  var speciesNames = {};
+  function loadSpecies() {
+    var get = function (u) { return fetch(u, { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }); };
+    Promise.all([get('content/observations.json'), get('content/fieldlog.json')]).then(function (r) {
+      var list = $('species-list'), seen = {};
+      var add = function (name, label) {
+        name = String(name || '').trim();
+        if (!name || seen[name.toLowerCase()]) return;
+        seen[name.toLowerCase()] = 1; speciesNames[name.toLowerCase()] = name;
+        var o = doc.createElement('option'); o.value = name; if (label && label !== name) o.label = label;
+        list.appendChild(o);
+      };
+      ((r[1] && r[1].manual) || []).forEach(function (m) { if (m && m.name) add(m.name, m.name + (m.commonDa || m.common ? ' (' + (m.commonDa || m.common) + ')' : '')); });
+      ((r[0] && r[0].species) || []).forEach(function (sp) { if (sp && sp.name) add(sp.name, sp.label); });
+    });
+  }
+  function addChip(li, name) {
+    name = String(name || '').trim().replace(/\s+/g, ' ');
+    if (!name) return;
+    name = speciesNames[name.toLowerCase()] || name; // match the field log's spelling
+    var chips = li.querySelector('.up-chips');
+    var have = Array.prototype.some.call(chips.children, function (c) { return c.getAttribute('data-name').toLowerCase() === name.toLowerCase(); });
+    if (have) return;
+    var c = doc.createElement('li'); c.className = 'up-chip'; c.setAttribute('data-name', name);
+    c.appendChild(doc.createTextNode(name));
+    var x = doc.createElement('button'); x.type = 'button'; x.textContent = '\u00d7'; x.setAttribute('aria-label', 'Remove ' + name);
+    x.addEventListener('click', function () { c.remove(); });
+    c.appendChild(x);
+    chips.appendChild(c);
+  }
+  function wireSpecies(li) {
+    var input = li.querySelector('.up-species');
+    var take = function () {
+      input.value.split(/[;,]/).forEach(function (n) { addChip(li, n); });
+      input.value = '';
+    };
+    /* picking a suggestion, a comma, or Enter turns the text into a tag
+       (typing alone never does: "Amanita" is a find too, but so is "Amanita muscaria") */
+    input.addEventListener('input', function (e) {
+      var picked = !e.inputType || e.inputType === 'insertReplacementText';
+      if (/[;,]/.test(input.value) || (picked && speciesNames[input.value.trim().toLowerCase()] === input.value.trim())) take();
+    });
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); take(); } });
+    input.addEventListener('blur', take);
+  }
+
   /* ------------------------------------------------------------------ the photo cards */
   function sizeIcon(c, r) {
     var ns = 'http://www.w3.org/2000/svg', svg = doc.createElementNS(ns, 'svg');
@@ -178,6 +227,7 @@
     var focus = li.querySelector('.up-focus');
     focus.addEventListener('change', function () { img.style.objectPosition = POS[focus.value] || POS.center; });
     fillPostSelect(li.querySelector('.up-post'));
+    wireSpecies(li);
     li.querySelector('.up-remove').addEventListener('click', function () {
       if (busy) return;
       URL.revokeObjectURL(it.url);
@@ -255,6 +305,11 @@
     var f = li.querySelector('.up-focus').value, p = li.querySelector('.up-post').value;
     if (f && f !== 'center') meta.focus = f;
     if (p) meta.post = p;
+    var pending = li.querySelector('.up-species').value;
+    if (pending.trim()) { pending.split(/[;,]/).forEach(function (n) { addChip(li, n); }); li.querySelector('.up-species').value = ''; }
+    var species = Array.prototype.map.call(li.querySelectorAll('.up-chip'), function (c) { return c.getAttribute('data-name'); });
+    if (species.length) meta.species = species;
+    if (!li.querySelector('.up-onpage').checked) meta.onPhotoPage = false;
     return meta;
   }
   function explain(e) {
@@ -318,7 +373,7 @@
           var meta = details(it);
           files.push({ path: name + '.jpg', content: b64, encoding: 'base64' });
           files.push({ path: name + '.json', content: JSON.stringify(meta, null, 2) + '\n', encoding: 'utf-8' });
-          lines.push('- ' + (meta.caption || '(no caption)') + ' · weight ' + meta.weight);
+          lines.push('- ' + (meta.caption || '(no caption)') + ' · weight ' + meta.weight + (meta.species ? ' · ' + meta.species.join(', ') : ''));
         });
       });
     }, Promise.resolve());
@@ -341,4 +396,5 @@
   window.addEventListener('beforeunload', function (e) { if (busy) { e.preventDefault(); e.returnValue = ''; } });
 
   start();
+  loadSpecies();
 })();

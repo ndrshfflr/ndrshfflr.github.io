@@ -49,11 +49,6 @@
 .tile-cap .lt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mosaic-empty{margin:60px 0;text-align:center;font-size:18px;color:var(--ink2)}
 
-/* back to the circle */
-.photo-foot{position:relative;z-index:1;display:flex;justify-content:center;padding:44px 20px 52px}
-.back-link{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border:1px solid color-mix(in srgb,var(--ink) 25%,transparent);border-radius:999px;color:var(--ink);text-decoration:none;font-size:16px;font-weight:500}
-.back-link:hover{background:color-mix(in srgb,var(--ink) 8%,transparent)}
-.back-link:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
 
 /* full-screen viewer for photos that don't lead to a post */
 .viewer{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;overflow:hidden;

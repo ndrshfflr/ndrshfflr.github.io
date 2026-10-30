@@ -454,7 +454,10 @@ def main():
 
     ref = reference_taxa(items)
 
-    if items == prev_items and status == previous.get("status") and ref == previous.get("reference"):
+    # (the species list counts too: a find added by hand only changes that list,
+    #  and it has to reach /admin so photos can be tagged with it)
+    if (items == prev_items and status == previous.get("status") and ref == previous.get("reference")
+            and species_list == previous.get("species")):
         print("no changes")
         return
     out = {
