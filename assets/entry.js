@@ -75,6 +75,7 @@
       if (labels[i]) labels[i].style.opacity = Math.max(0, c).toFixed(3);
     });
     if (floor) floor.style.transform = 'rotateX(90deg) rotateZ(' + (n * STEP) + 'deg)';
+    panInscription();
     dots.forEach(function (d, i) { d.classList.toggle('on', i === k); d.setAttribute('aria-current', i === k ? 'true' : 'false'); });
     if (announced && live) {
       var p = (C().portals || [])[k] || {};
@@ -235,18 +236,23 @@
     var w = Math.ceil(xe + 30), W = Math.max(1877, w); // a short text keeps the rune height of the original
     svg.setAttribute('viewBox', ((w - W) / 2).toFixed(1) + ' 0 ' + W + ' 250');
     g.setAttribute('data-carved', text);
+    panInscription();
   }
 
-  /* On narrow screens the inscription is cropped rather than shrunk, the way the
-     birch treeline was, so the runes stand as tall behind the portals as on a desktop. */
-  (function () {
+  /* The runes stand about half the page tall, so the line is wider than the
+     screen. It slides as the circle turns: the first portal shows the start of
+     the sentence, the last one its end. */
+  function panInscription() {
     var svg = $('inscription');
-    if (!svg || !window.matchMedia) return;
-    var mq = matchMedia('(max-width: 1100px)');
-    var fit = function () { svg.setAttribute('preserveAspectRatio', mq.matches ? 'xMidYMax slice' : 'xMidYMax meet'); };
-    fit();
-    if (mq.addEventListener) mq.addEventListener('change', fit); else if (mq.addListener) mq.addListener(fit);
-  })();
+    if (!svg) return;
+    var vb = svg.viewBox && svg.viewBox.baseVal, h = svg.getBoundingClientRect().height;
+    if (!vb || !vb.height || !h) return;
+    var w = h * vb.width / vb.height, view = doc.documentElement.clientWidth;
+    svg.style.width = Math.round(w) + 'px';
+    var extra = Math.max(0, w - view + 2 * Math.min(60, view * 0.05));
+    svg.style.setProperty('--pan', Math.round(extra * (0.5 - front() / Math.max(1, COUNT - 1))) + 'px');
+  }
+  window.addEventListener('resize', panInscription);
 
   /* ------------------------------------------------------------------ live wording from /admin */
   function refresh() {
