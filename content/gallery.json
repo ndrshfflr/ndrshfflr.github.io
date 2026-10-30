@@ -278,7 +278,8 @@
     {
       "image": "/images/gallery/2026-08-26-photo-9ed677.jpg",
       "caption": "",
-      "weight": 1
+      "weight": 1,
+      "onPhotoPage": false
     },
     {
       "image": "/images/gallery/2026-08-29-photo-395f7b.jpg",
