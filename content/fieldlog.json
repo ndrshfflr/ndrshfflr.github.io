@@ -189,6 +189,13 @@
       "date": "2026-01-09",
       "place": "Iranduba",
       "notes": "Young male"
+    },
+    {
+      "id": "m20260829-3859",
+      "name": "Alces alces",
+      "group": "mammals",
+      "date": "2026-08-29",
+      "place": "Smålandets Markaryds Älgsafari"
     }
   ]
 }
