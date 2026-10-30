@@ -134,6 +134,13 @@
       "group": "fungi",
       "date": "2026-09-17",
       "place": "Karens Minde"
+    },
+    {
+      "id": "m20260109-3e2d",
+      "name": "Cebus unicolor",
+      "group": "mammals",
+      "date": "2026-01-09",
+      "place": "Iranduba"
     }
   ]
 }
