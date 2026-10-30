@@ -50,6 +50,10 @@
     {
       "species": "Pseudoinonotus dryadeus",
       "favourite": true
+    },
+    {
+      "species": "Agaricus bohusii",
+      "favourite": true
     }
   ],
   "hide": [],
