@@ -6,6 +6,39 @@
   },
   "images": [
     {
+      "image": "/images/gallery/2026-10-30-alces-alces-b0bf3d.jpg",
+      "caption": "",
+      "weight": 1,
+      "sightings": [
+        "manual:m20260829-3859"
+      ],
+      "species": [
+        "Alces alces"
+      ]
+    },
+    {
+      "image": "/images/gallery/2026-10-30-alces-alces-4f1b00.jpg",
+      "caption": "",
+      "weight": 1,
+      "sightings": [
+        "manual:m20260829-3859"
+      ],
+      "species": [
+        "Alces alces"
+      ]
+    },
+    {
+      "image": "/images/gallery/2026-10-30-alces-alces-8e1c07.jpg",
+      "caption": "",
+      "weight": 1,
+      "sightings": [
+        "manual:m20260829-3859"
+      ],
+      "species": [
+        "Alces alces"
+      ]
+    },
+    {
       "image": "/images/gallery/2026-10-30-photo-b85a26.jpg",
       "caption": "",
       "weight": 1
