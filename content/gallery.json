@@ -135,7 +135,13 @@
       "caption": "",
       "weight": 1,
       "onPhotoPage": false,
-      "post": "2026-10-30-one-of-the-remaining-giants-of-the-north"
+      "post": "2026-10-30-one-of-the-remaining-giants-of-the-north",
+      "sightings": [
+        "manual:m20260829-3859"
+      ],
+      "species": [
+        "Alces alces"
+      ]
     },
     {
       "image": "/images/gallery/2026-08-29-photo-c362fe.jpg",
