@@ -57,7 +57,14 @@
       "image": "/images/gallery/2026-01-09-photo-be1323.jpg",
       "caption": "",
       "weight": 1,
-      "post": "2026-10-30-a-touching-encounter-with-the-spix-s-white-fronted"
+      "post": "2026-10-30-a-touching-encounter-with-the-spix-s-white-fronted",
+      "onPhotoPage": false,
+      "sightings": [
+        "manual:m20260109-2e69"
+      ],
+      "species": [
+        "Cebus unicolor"
+      ]
     },
     {
       "image": "/images/gallery/2026-01-10-photo-2f6d44.jpg",
