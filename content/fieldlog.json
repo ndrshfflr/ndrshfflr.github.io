@@ -105,6 +105,10 @@
     {
       "species": "Haliaeetus albicilla",
       "favourite": true
+    },
+    {
+      "species": "Apus apus",
+      "favourite": true
     }
   ],
   "hide": [],
