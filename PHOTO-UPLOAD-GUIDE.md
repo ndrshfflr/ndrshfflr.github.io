@@ -213,6 +213,12 @@ log, Blog, Pages, or Not used. Filter and search. Open one to:
 - link it to one or more sightings (or a new sighting), or unlink it;
 - choose its blog post, and put it in that post's text;
 - start something new with it (**New post or find with this picture…**).
+- **delete it**: **Delete…** shows where it's used, and **Delete for good**
+  removes the file from the website and takes it out of the portfolio, the field
+  log, blog posts (the picture and the cover) and page fields.
+
+To delete several: **Select**, tap the pictures (or **Choose all shown**, e.g.
+under *Not used*), then **Delete N pictures…**.
 
 The page isn't linked from the site, and search engines are asked not to list it.
 Without a sign-in it can't do anything.

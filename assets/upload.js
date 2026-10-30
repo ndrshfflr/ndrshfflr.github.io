@@ -132,10 +132,12 @@
           });
         }));
       }).then(function () {
-        if (!files.length) return 'nothing';
+        var gone = (plan.deletes || []).map(function (path) { return { path: path, mode: '100644', type: 'blob', sha: null }; }); // sha null: the file is removed
+        if (!files.length && !gone.length) return 'nothing';
         return Promise.all(files.map(function (f) {
           return blob(f).then(function (sha) { return { path: f.path, mode: '100644', type: 'blob', sha: sha }; });
         })).then(function (tree) {
+          tree = tree.concat(gone);
           return gh('GET', base + 'commits/' + head)
             .then(function (c) { return gh('POST', base + 'trees', { base_tree: c.tree.sha, tree: tree }); })
             .then(function (t) { return gh('POST', base + 'commits', { message: message, tree: t.sha, parents: [head] }); })
@@ -407,6 +409,36 @@
     li.appendChild(b);
     return li;
   }
+  var picked = {}; // pictures chosen in select mode, by path
+  function selecting() { return $('library').classList.contains('is-selecting'); }
+  function onTile(p, b) {
+    if (!selecting()) return openPic(p);
+    if (picked[p.path]) delete picked[p.path]; else picked[p.path] = true;
+    b.classList.toggle('is-on', !!picked[p.path]);
+    b.setAttribute('aria-pressed', picked[p.path] ? 'true' : 'false');
+    selectionChanged();
+  }
+  function selectionChanged() {
+    var n = Object.keys(picked).length;
+    $('sel-delete').disabled = !n || busy;
+    $('sel-delete').textContent = n ? 'Delete ' + (n === 1 ? '1 picture' : n + ' pictures') + '…' : 'Delete…';
+    $('sel-count').textContent = n ? n + ' chosen' : 'Tap pictures to choose them';
+  }
+  function setSelecting(on) {
+    $('library').classList.toggle('is-selecting', on);
+    $('lib-select').textContent = on ? 'Cancel' : 'Select';
+    $('lib-select').setAttribute('aria-pressed', on ? 'true' : 'false');
+    $('sel-bar').hidden = !on;
+    if (!on) picked = {};
+    hideConfirm('lib');
+    renderLibrary();
+    selectionChanged();
+  }
+  $('lib-select').addEventListener('click', function () { setSelecting(!selecting()); });
+  $('sel-all').addEventListener('click', function () {
+    S.pics.filter(picMatches).forEach(function (p) { picked[p.path] = true; });
+    renderLibrary(); selectionChanged();
+  });
   function renderLibrary() {
     var box = $('lib-filters');
     box.textContent = '';
@@ -421,7 +453,7 @@
     var grid = $('lib-grid');
     grid.textContent = '';
     var shown = S.pics.filter(picMatches);
-    shown.forEach(function (p) { grid.appendChild(tile(p, openPic)); });
+    shown.forEach(function (p) { grid.appendChild(tile(p, onTile, selecting() ? !!picked[p.path] : undefined)); });
     $('lib-msg').textContent = shown.length ? '' : (S.pics.length ? 'No pictures match.' : 'No pictures yet.');
   }
   $('lib-search').addEventListener('input', function () { libState.q = this.value.trim(); renderLibrary(); });
@@ -509,6 +541,7 @@
     $('ps-new').hidden = false;
     $('ps-date').value = isoDay(new Date());
     $('pic-status').textContent = ''; $('pic-status').className = 'up-status';
+    hideConfirm('pic');
     renderLinks();
     if (!dlg.open) { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', ''); }
   }
@@ -541,6 +574,120 @@
     $('pic-add').open = false; $('ps-species').value = ''; $('ps-place').value = '';
     renderLinks();
   });
+  /* ---------- deleting pictures: the file, and every place that shows it ---------- */
+  function esc(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  function pathPattern(path) { // the picture's path, written any of the ways the site writes it
+    return '(?:https?:\\/\\/ndrshfflr\\.github\\.io)?\\/?' + esc(path.replace(/^\//, ''));
+  }
+  function stripMarkdown(text, path) {
+    var P = pathPattern(path);
+    return text
+      .replace(new RegExp('^cover:\\s*["\']?' + P + '["\']?\\s*\\n', 'm'), '')             // the cover in the front matter
+      .replace(new RegExp('^[ \\t]*!\\[[^\\]]*\\]\\(' + P + '(?:\\s+"[^"]*")?\\)[ \\t]*\\n?', 'gm'), '') // a picture on its own line
+      .replace(new RegExp('!\\[[^\\]]*\\]\\(' + P + '(?:\\s+"[^"]*")?\\)', 'g'), '')    // a picture inside a paragraph
+      .replace(new RegExp('<img[^>]*' + P + '[^>]*>', 'g'), '')
+      .replace(/\n{3,}/g, '\n\n');
+  }
+  function stripJSON(value, gone) { // a page field that holds the picture is emptied
+    if (typeof value === 'string') return gone[same(value)] ? '' : value;
+    if (Array.isArray(value)) return value.filter(function (v) { return !(typeof v === 'string' && gone[same(v)]); }).map(function (v) { return stripJSON(v, gone); });
+    if (value && typeof value === 'object') { Object.keys(value).forEach(function (k) { value[k] = stripJSON(value[k], gone); }); }
+    return value;
+  }
+  function deletePlan(paths) {
+    var gone = {};
+    paths.forEach(function (p) { gone[p] = true; });
+    var photoGone = function (x) { return gone[same(typeof x === 'string' ? x : x && (x.src || x.image || x.photo))]; };
+    var edits = [];
+    edits.push({ path: 'content/gallery.json', fn: function (t) {
+      if (t === null) return null;
+      var d0 = JSON.parse(t), before = (d0.images || []).length;
+      d0.images = arr(d0.images).filter(function (g) { return !(g && gone[same(g.image)]); });
+      return d0.images.length === before ? t : jsonText(d0, /\n$/.test(t));
+    } });
+    edits.push({ path: 'content/fieldlog.json', fn: function (t) {
+      if (t === null) return null;
+      var c = JSON.parse(t), before = JSON.stringify(c);
+      arr(c.manual).forEach(function (m) {
+        if (!m) return;
+        if (m.photos) m.photos = arr(m.photos).filter(function (x) { return !photoGone(x); });
+        if (m.photo && photoGone(m.photo)) delete m.photo;
+      });
+      arr(c.finds).forEach(function (f) {
+        if (!f) return;
+        if (f.photos) f.photos = arr(f.photos).filter(function (x) { return !photoGone(x); });
+        if (f.cover && photoGone(f.cover)) delete f.cover;
+      });
+      return JSON.stringify(c) === before ? t : jsonText(c, /\n$/.test(t));
+    } });
+    var mentions = function (text) { return paths.some(function (p) { return String(text || '').indexOf(p.replace(/^\//, '')) >= 0; }); };
+    S.posts.forEach(function (post) {
+      if (!mentions(post.text)) return;
+      edits.push({ path: post.path, fn: function (t) {
+        if (t === null) return null;
+        paths.forEach(function (p) { t = stripMarkdown(t, p); });
+        return t;
+      } });
+    });
+    S.texts.forEach(function (doc0) {
+      if (!mentions(doc0.text)) return;
+      edits.push({ path: doc0.path, fn: function (t) {
+        if (t === null) return null;
+        if (/\.json$/.test(doc0.path)) { var j = JSON.parse(t), before = JSON.stringify(j); j = stripJSON(j, gone); return JSON.stringify(j) === before ? t : jsonText(j, /\n$/.test(t)); }
+        paths.forEach(function (p) { t = stripMarkdown(t, p); });
+        return t;
+      } });
+    });
+    return { deletes: paths.filter(function (p) { return S.images.indexOf(p) >= 0; }).map(function (p) { return p.replace(/^\//, ''); }), edits: edits };
+  }
+  /* the confirm step, shown in the picture's window ('pic') or under the library ('lib') */
+  function showConfirm(where, paths) {
+    var box = $(where + '-confirm'), uses = [];
+    paths.forEach(function (path) {
+      (S.byPath[path] || { uses: [] }).uses.forEach(function (u) { if (uses.indexOf(u.label) < 0) uses.push(u.label); });
+    });
+    var list = box.querySelector('.up-confirm-uses');
+    list.textContent = '';
+    uses.forEach(function (u) { list.appendChild(el('li', null, u)); });
+    box.querySelector('.up-confirm-what').textContent = (paths.length === 1 ? 'This picture is' : paths.length + ' pictures are') +
+      ' deleted from the website' + (uses.length ? ' and taken out of:' : '. ' + (paths.length === 1 ? 'It isn’t' : 'They aren’t') + ' used anywhere.');
+    list.hidden = !uses.length;
+    box.hidden = false;
+    box.querySelector('.up-danger').focus();
+  }
+  function hideConfirm(where) { var box = $(where + '-confirm'); if (box) box.hidden = true; }
+  function doDelete(paths, st, done) {
+    if (busy || !paths.length) return;
+    busy = true;
+    st.textContent = 'Deleting…'; st.className = 'up-status';
+    var plan = deletePlan(paths);
+    var name = paths.length === 1 ? paths[0].replace(/^.*\//, '') : paths.length + ' pictures';
+    commit('Photos: delete ' + name, plan).then(function () {
+      paths.forEach(function (p) { if (S.temp[p]) { URL.revokeObjectURL(S.temp[p]); delete S.temp[p]; } delete picked[p]; });
+      // pictures in the New form that were just deleted go too
+      items.filter(function (it) { return it.path && paths.indexOf(it.path) >= 0; }).forEach(function (it) { it.li.remove(); });
+      items = items.filter(function (it) { return !(it.path && paths.indexOf(it.path) >= 0); });
+      refreshNew();
+      return loadAll().then(function () {
+        done();
+        st.textContent = 'Deleted ✓ ' + (paths.length === 1 ? 'It’s' : 'They’re') + ' off the site in a minute or two.'; st.className = 'up-status ok';
+      });
+    }).catch(function (e) {
+      st.textContent = explain(e).replace('Nothing was saved', 'Nothing was deleted'); st.className = 'up-status err';
+    }).then(function () { busy = false; selectionChanged(); });
+  }
+  $('pic-delete').addEventListener('click', function () { if (cur) showConfirm('pic', [cur.p.path]); });
+  $('pic-confirm-no').addEventListener('click', function () { hideConfirm('pic'); $('pic-delete').focus(); });
+  $('pic-confirm-yes').addEventListener('click', function () {
+    var path = cur.p.path;
+    doDelete([path], $('pic-status'), function () { hideConfirm('pic'); if (dlg.open) dlg.close(); $('lib-msg').textContent = ''; });
+  });
+  $('sel-delete').addEventListener('click', function () { showConfirm('lib', Object.keys(picked)); });
+  $('lib-confirm-no').addEventListener('click', function () { hideConfirm('lib'); $('sel-delete').focus(); });
+  $('lib-confirm-yes').addEventListener('click', function () {
+    doDelete(Object.keys(picked), $('sel-status'), function () { hideConfirm('lib'); setSelecting(false); });
+  });
+
   $('pic-newpost').addEventListener('click', function () {
     var p = cur.p;
     dlg.close();
