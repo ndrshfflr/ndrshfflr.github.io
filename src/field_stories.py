@@ -177,12 +177,12 @@ def main():
         if not sp:
             print(f"skipped {name}: not in the field log (hidden, or spelt differently?)")
             continue
-        extra = {"photos": photo_list(e.get("photos")) if kind == "finds" else [],
+        extra = {"photos": photo_list(([e["cover"]] if e.get("cover") else []) + list(e.get("photos") or [])) if kind == "finds" else [],
                  "note": (e.get("text") if kind == "finds" else "") or ""}
         # a note written for the species in the other list counts too
         for f in cfg.get("finds") or []:
             if f and norm(f.get("species")) == k:
-                extra["photos"] = extra["photos"] or photo_list(f.get("photos"))
+                extra["photos"] = extra["photos"] or photo_list(([f["cover"]] if f.get("cover") else []) + list(f.get("photos") or []))
                 extra["note"] = extra["note"] or f.get("text") or ""
         e["post"] = have[k] = write_post(sp, extra, today)
         changed = True

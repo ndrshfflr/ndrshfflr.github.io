@@ -532,6 +532,7 @@ collections:
                 required: false
                 hint: "Pick any photo already on the site or upload new ones. The first one becomes the card's cover."
                 field: { label: "Photo", name: "src", widget: "image", media_folder: "/images/gallery", public_folder: "/images/gallery" }
+              - { label: "Cover photo", name: "cover", widget: "string", required: false, hint: "Set by tapping “Use as cover” on a picture in the field log (while signed in). Any picture the species has works. Empty: the first of your own photos, else the newest." }
               - { label: "Write about this find", name: "story", widget: "boolean", default: false, required: false, hint: "Tick and publish: within a minute or two a blog post is made from this find (its photos, dates, places and your note) and linked from the card as \"Read about this find\". Add your own text to it under Blog posts afterwards." }
               - { label: "Its blog post", name: "post", widget: "relation", collection: "posts", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], required: false, hint: "Filled in automatically when the post is made. You can also pick an existing post." }
               - { label: "Note (English)", name: "text", widget: "text", required: false, hint: "Shown when someone opens the card." }

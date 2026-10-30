@@ -171,11 +171,18 @@ FIELDLOG_UI = {
         "flSortLatest": "Latest sightings first", "flSortNewest": "Newest species first",
         "flFavourites": "Favourites", "flFavourite": "Favourite", "flHasStory": "There's a story about this find",
         "flReadAbout": "Read about this find", "flPhoto": "Photo",
+        # only shown to you, when you're signed in (same sign-in as /admin)
+        "flEditing": "Editing as", "flFavAdd": "Mark as favourite", "flFavRemove": "Remove from favourites",
+        "flUseCover": "Use as cover", "flIsCover": "Cover", "flCoverAuto": "Cover · tap to go back to automatic",
+        "flSaving": "Saving…", "flSaved": "Saved. On the site for everyone in a minute or two.", "flSaveFailed": "Couldn't save",
     },
     "da": {
         "flSortLatest": "Senest set først", "flSortNewest": "Nyeste arter først",
         "flFavourites": "Favoritter", "flFavourite": "Favorit", "flHasStory": "Der er en historie om dette fund",
         "flReadAbout": "Læs om dette fund", "flPhoto": "Foto",
+        "flEditing": "Redigerer som", "flFavAdd": "Markér som favorit", "flFavRemove": "Fjern fra favoritter",
+        "flUseCover": "Brug som forsidebillede", "flIsCover": "Forsidebillede", "flCoverAuto": "Forsidebillede · tryk for automatisk",
+        "flSaving": "Gemmer…", "flSaved": "Gemt. Synligt for alle om et minut eller to.", "flSaveFailed": "Kunne ikke gemme",
     },
 }
 
@@ -432,6 +439,7 @@ def render_fieldlog(env, content, posts, versions):
                           loading=UI[lang]["loading"], close=UI[lang]["close"], **FIELDLOG_UI[lang]) for lang in ("en", "da")}
     ui = world_ui(page_ui)
     text = {lang: content[lang]["fieldlog"] for lang in ("en", "da")}
+    cms = yaml.safe_load((ROOT / "admin" / "config.yml").read_text(encoding="utf-8"))["backend"]
     for lang in ("en", "da"):
         fl = text[lang]
         alternates = [{"hreflang": l, "href": SITE_URL + FIELDLOG[l]} for l in ("en", "da")]
@@ -442,7 +450,8 @@ def render_fieldlog(env, content, posts, versions):
             env, "fieldlog.html.j2", FIELDLOG, lang,
             t=fl, ui=ui[lang], meta=meta, jsonld=None, v=versions, world_class="scrolls fl-world",
             world_data={"page": lang, "ui": ui}, rune="ᚱ",
-            data={"text": text, "posts": {p["slug"]: p["title"] for p in posts}},
+            data={"text": text, "posts": {p["slug"]: p["title"] for p in posts},
+                  "repo": cms["repo"], "branch": cms.get("branch", "main")},
         )
 
 
