@@ -101,6 +101,10 @@
     {
       "species": "Russula claroflava",
       "favourite": true
+    },
+    {
+      "species": "Haliaeetus albicilla",
+      "favourite": true
     }
   ],
   "hide": [],
