@@ -97,6 +97,10 @@
     {
       "species": "Falco tinnunculus",
       "favourite": true
+    },
+    {
+      "species": "Russula claroflava",
+      "favourite": true
     }
   ],
   "hide": [],
