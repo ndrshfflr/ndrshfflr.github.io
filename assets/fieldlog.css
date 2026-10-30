@@ -3,6 +3,10 @@
    Sky, header and rune language come from assets/world.css + world.js.
    ========================================================================== */
 
+/* square corners on this page: also for the shared header, "Aa" and back buttons
+   (the moon and stars stay round) */
+.fl-world .season-btn,.fl-world .season-menu,.fl-world .sopt,.fl-world .aa,.fl-world .back-link,.fl-controls input,.fl-controls select{border-radius:0}
+
 /* the head of the page */
 .log-hero{padding-top:6px}
 @media (prefers-reduced-motion:no-preference){.log-hero,.log-wrap{animation:arrive .9s ease both}.log-wrap{animation-delay:.08s}}
@@ -23,8 +27,8 @@
 .fl-goal-head{display:flex;justify-content:space-between;gap:12px;font-size:15px;margin-bottom:7px}
 .fl-goal-name{font-weight:600}
 .fl-goal-count{color:var(--ink2);font-variant-numeric:tabular-nums}
-.fl-goal-bar{height:6px;border-radius:999px;background:color-mix(in srgb,var(--ink) 12%,transparent);overflow:hidden}
-.fl-goal-bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,color-mix(in srgb,var(--line) 70%,transparent),var(--acc));box-shadow:0 0 12px var(--glow);transition:width .8s ease}
+.fl-goal-bar{height:6px;background:color-mix(in srgb,var(--ink) 12%,transparent);overflow:hidden}
+.fl-goal-bar span{display:block;height:100%;background:linear-gradient(90deg,color-mix(in srgb,var(--line) 70%,transparent),var(--acc));box-shadow:0 0 12px var(--glow);transition:width .8s ease}
 
 /* filters: they stay at hand while scrolling */
 .fl-tools{position:sticky;top:0;z-index:4;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;
@@ -33,7 +37,7 @@
   -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid color-mix(in srgb,var(--line) 12%,transparent)}
 .fl-tools[hidden]{display:none}
 .fl-chips{display:flex;flex-wrap:wrap;gap:6px;flex:1 1 480px}
-.fl-chip{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 13px;border:1px solid color-mix(in srgb,var(--ink) 18%,transparent);border-radius:999px;
+.fl-chip{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 13px;border:1px solid color-mix(in srgb,var(--ink) 18%,transparent);
   background:color-mix(in srgb,var(--sky3) 35%,transparent);color:var(--ink);font:inherit;font-size:15px;font-weight:500;cursor:pointer}
 .fl-chip:hover{border-color:color-mix(in srgb,var(--ink) 38%,transparent)}
 .fl-chip.is-on{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 16%,transparent)}
@@ -44,9 +48,9 @@
 .fl-controls{display:flex;gap:8px;flex-wrap:wrap}
 .fl-search{position:relative;display:flex;align-items:center}
 .fl-search svg{position:absolute;left:12px;color:var(--ink2);pointer-events:none}
-.fl-controls input,.fl-controls select{min-height:40px;border:1px solid color-mix(in srgb,var(--ink) 20%,transparent);border-radius:999px;
+.fl-controls input,.fl-controls select{min-height:40px;border:1px solid color-mix(in srgb,var(--ink) 20%,transparent);
   background:color-mix(in srgb,var(--sky3) 45%,rgba(0,0,0,.2));color:var(--ink);font:inherit;font-size:15px}
-.fl-controls input{width:220px;max-width:100%;padding:0 14px 0 34px}
+.fl-controls input{-webkit-appearance:none;appearance:none;width:220px;max-width:100%;padding:0 14px 0 34px}
 .fl-controls input::placeholder{color:var(--ink2);opacity:.8}
 .fl-controls select{appearance:none;-webkit-appearance:none;padding:0 34px 0 14px;cursor:pointer;
   background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);
@@ -60,7 +64,7 @@
 .fl-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,188px),1fr));gap:16px}
 .fl-card{display:flex;min-width:0}
 .fl-card-btn{display:flex;flex-direction:column;width:100%;padding:0;text-align:left;font:inherit;color:var(--ink);cursor:pointer;
-  border:1px solid color-mix(in srgb,var(--line) 16%,transparent);border-radius:12px;overflow:hidden;
+  border:1px solid color-mix(in srgb,var(--line) 16%,transparent);overflow:hidden;
   background:color-mix(in srgb,var(--sky1) 55%,rgba(4,6,9,.55));
   box-shadow:0 8px 28px rgba(0,0,0,.18);transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
 .fl-card-btn:hover,.fl-card-btn:focus-visible{transform:translateY(-3px);border-color:color-mix(in srgb,var(--line) 45%,transparent);
@@ -73,13 +77,13 @@
 .fl-card-btn:hover .fl-photo img{transform:scale(1.05)}
 .fl-photo-mark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   font-family:'EB Garamond',Georgia,serif;font-style:italic;font-size:64px;color:color-mix(in srgb,var(--draw) 45%,transparent)}
-.fl-no{position:absolute;left:8px;top:8px;padding:3px 9px;border-radius:999px;font-family:'Cinzel',Georgia,serif;font-size:12.5px;letter-spacing:.02em;
+.fl-no{position:absolute;left:8px;top:8px;padding:3px 9px;font-family:'Cinzel',Georgia,serif;font-size:12.5px;letter-spacing:.02em;
   color:#f3efe6;background:rgba(6,8,12,.72)}
 .fl-marks{position:absolute;right:8px;top:8px;display:flex;gap:4px}
-.fl-mark{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:rgba(6,8,12,.72);color:var(--acc);font-size:14px;line-height:1}
+.fl-mark{display:flex;align-items:center;justify-content:center;width:26px;height:26px;background:rgba(6,8,12,.72);color:var(--acc);font-size:14px;line-height:1}
 .fl-mark-story{font-family:'Skurd',serif;font-size:15px}
-.fl-new{position:absolute;left:8px;bottom:8px;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.03em;color:#1a0f07;background:var(--acc)}
-.fl-ref-tag{position:absolute;right:8px;bottom:8px;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;color:#f1efe8;background:rgba(6,8,12,.62)}
+.fl-new{position:absolute;left:8px;bottom:8px;padding:2px 9px;font-size:12px;font-weight:600;letter-spacing:.03em;color:#1a0f07;background:var(--acc)}
+.fl-ref-tag{position:absolute;right:8px;bottom:8px;padding:2px 8px;font-size:11.5px;font-weight:600;color:#f1efe8;background:rgba(6,8,12,.62)}
 .fl-card.is-ref .fl-photo img{filter:saturate(.75);opacity:.88}
 .fl-card-body{display:flex;flex-direction:column;gap:2px;flex:1;padding:11px 14px 13px}
 .fl-group{font-size:12.5px;font-weight:600;letter-spacing:.02em;color:var(--ink2)}
@@ -95,12 +99,12 @@
 /* the pop-up for one species */
 body.fl-open{overflow:hidden}
 .fl-dialog{width:min(1080px,calc(100% - 32px));max-width:none;max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);margin:auto;padding:0;
-  border:1px solid color-mix(in srgb,var(--line) 22%,transparent);border-radius:16px;overflow:hidden;
+  border:1px solid color-mix(in srgb,var(--line) 22%,transparent);overflow:hidden;
   background:color-mix(in srgb,var(--sky3) 30%,#080b10);color:var(--ink);font-family:'EB Garamond',Georgia,serif;box-shadow:0 30px 100px rgba(0,0,0,.6);
   --ink:#f1efe8;--ink2:#aeb8c2;--line:#c9d4de} /* a dark case in every sky, so its text always reads */
 .fl-dialog[open]{display:block;animation:arrive .35s ease both}
 .fl-dialog::backdrop{background:rgba(3,5,8,.8)}
-.fl-d-close{position:absolute;right:12px;top:12px;z-index:3;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;
+.fl-d-close{position:absolute;right:12px;top:12px;z-index:3;display:flex;align-items:center;justify-content:center;width:44px;height:44px;
   border:1px solid rgba(243,239,230,.35);background:rgba(6,8,12,.78);color:#f3efe6;cursor:pointer}
 .fl-d-close:hover{background:rgba(6,8,12,.92)}
 .fl-d-close:focus-visible,.fl-d-thumb:focus-visible,.fl-d-story:focus-visible,.fl-d-recs a:focus-visible,.fl-d-posts a:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
@@ -114,7 +118,7 @@ body.fl-open{overflow:hidden}
 .fl-d-main.is-ref img{object-fit:cover}
 .fl-ref-credit a{color:#f4dcc2;text-decoration:underline}
 .fl-d-strip{display:flex;gap:6px;padding:8px;overflow-x:auto;scrollbar-width:thin}
-.fl-d-thumb{flex:0 0 auto;width:64px;height:64px;padding:0;border:2px solid transparent;border-radius:6px;overflow:hidden;background:none;cursor:pointer;opacity:.7}
+.fl-d-thumb{flex:0 0 auto;width:64px;height:64px;padding:0;border:2px solid transparent;overflow:hidden;background:none;cursor:pointer;opacity:.7}
 .fl-d-thumb img{display:block;width:100%;height:100%;object-fit:cover}
 .fl-d-thumb[aria-pressed="true"]{border-color:var(--acc);opacity:1}
 .fl-d-thumb:hover{opacity:1}
@@ -124,7 +128,7 @@ body.fl-open{overflow:hidden}
 .fl-d-common{margin:4px 0 0;font-size:18px;color:color-mix(in srgb,var(--ink) 80%,transparent)}
 .fl-d-common:empty{display:none}
 .fl-d-group{margin:12px 0 0;font-size:15px;color:var(--ink2)}
-.fl-d-story{display:inline-flex;align-items:center;gap:10px;min-height:46px;margin:18px 0 0;padding:0 20px;border-radius:999px;
+.fl-d-story{display:inline-flex;align-items:center;gap:10px;min-height:46px;margin:18px 0 0;padding:0 20px;
   background:var(--acc);color:#1a0f07;font-weight:600;text-decoration:none}
 .fl-d-story[hidden]{display:none}
 .fl-d-story:hover{background:color-mix(in srgb,var(--acc) 85%,#fff)}
@@ -156,7 +160,7 @@ a.fl-r-src{text-decoration:underline;text-decoration-color:color-mix(in srgb,var
   .fl-name{font-size:17px}
   .fl-common{font-size:14px}
   .fl-stats{gap:10px 26px}
-  .fl-dialog{width:100%;max-height:100dvh;height:100dvh;border-radius:0;border:0}
+  .fl-dialog{width:100%;max-height:100dvh;height:100dvh;border:0}
   .fl-d-inner{grid-template-columns:1fr;align-content:start;overflow-y:auto;height:100%;max-height:none}
   .fl-d-main{flex:none;min-height:0;height:min(100vw,58dvh);overflow:hidden}
   .fl-d-main img{height:100%;max-height:none}
