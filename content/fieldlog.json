@@ -93,6 +93,10 @@
     {
       "species": "Milvus milvus",
       "favourite": true
+    },
+    {
+      "species": "Falco tinnunculus",
+      "favourite": true
     }
   ],
   "hide": [],
