@@ -162,7 +162,7 @@ If the photo arrived but doesn't appear on the site, open GitHub → **Actions**
 - **/admin → Photo Gallery** works from any browser, including on the phone.
   Photos uploaded there are also cleaned automatically: the location is removed,
   very large photos are shrunk, and HEIC photos are turned into JPEGs.
-- **The upload page** (see the next section).
+- **The Photos page** (see the next section).
 - **Commit message format**, if you ever send photos another way (for example
   with the GitHub app): add an image to `images/inbox/` with a commit message like
   ```
@@ -177,34 +177,42 @@ If the photo arrived but doesn't appear on the site, open GitHub → **Actions**
 
 ---
 
-## The upload page: <https://ndrshfflr.github.io/upload.html>
+## The Photos page: <https://ndrshfflr.github.io/upload.html>
 
-The upload page does the same job as the Shortcut, with more control and nothing
-to build. You can open it in Safari, or save it to the home screen as an app
-called "Add photos".
+One place for every picture on the site, and for anything new: pictures, a find
+in the field log, a blog post, or any mix of them. Open it in Safari, or save it
+to the home screen as an app called "Photos".
 
-1. **Sign in** with **Sign in with GitHub**, which uses the same sign-in as
-   /admin. If you're already signed in to /admin in this browser, the page
-   uses that.
-   - **From the home screen:** GitHub sign-in can't return to a home-screen
-     app, so choose **Use a key instead** and paste the same key as the
-     Shortcut. The key is kept on that phone only.
-2. **Choose photos.** Pick one or several from your library or the camera.
-3. **For each photo,** set:
-   - a caption;
-   - its **size**, 1–5. The preview shows how it will be cropped;
-   - **Keep in frame**, which part stays in view when it's cropped;
-   - optionally a **blog post** it leads to;
-   - optionally the **species** in it. Pick names the field log already has, or
-     type a new one and press comma or Enter. A new name gets a **New find** box
-     with group, date, place and common names. The date is read from the photo.
-     Sending adds the find to the field log, with the photo;
-   - whether it also shows on the **photography page**. Untick it for a photo
-     that belongs in the field log only.
-4. **Tap Send.** Each photo is shrunk to 2000 px and its location is removed
-   *on the phone*, before anything leaves it. All photos go up together, and
-   the page tells you when the website has filed them, usually within a
-   minute or two.
+**Sign in** with **Sign in with GitHub**, which uses the same sign-in as /admin.
+If you're already signed in to /admin in this browser, the page uses that.
+- **From the home screen:** GitHub sign-in can't return to a home-screen app, so
+  choose **Use a key instead** and paste the same key as the Shortcut. The key is
+  kept on that phone only.
+
+### New
+1. **Pictures** (optional): **From this device**, or **From the library** for
+   pictures already on the site. For each one: a caption, **Portfolio** (on the
+   photography page, with its size 1–5 and what to keep in frame), and, when you
+   make a find or a post, whether it goes **in the find** and **in the post**.
+2. **Also make it** (optional, one or both):
+   - **A find in the field log.** Type the species. Pick one of its sightings,
+     or **A new sighting** (date, read from the first picture; place; for a new
+     species also group and names). The pictures are linked to that sighting.
+   - **A blog post.** Title and text start filled in from the find. Edit them
+     as you like. The pictures ticked "In the post" go below your text, and the
+     first one is the cover. With a find, its card in the field log gets "Read
+     about this find".
+3. **Publish.** Everything goes up in one go and is on the site in a minute or
+   two. New pictures are shrunk to 2000 px and their location is removed *on the
+   phone*, before anything leaves it.
+
+### Library
+Every picture in the site's image folders, with where it's used: Portfolio, Field
+log, Blog, Pages, or Not used. Filter and search. Open one to:
+- change its caption, put it in or out of the portfolio, and set its size and crop;
+- link it to one or more sightings (or a new sighting), or unlink it;
+- choose its blog post, and put it in that post's text;
+- start something new with it (**New post or find with this picture…**).
 
 The page isn't linked from the site, and search engines are asked not to list it.
 Without a sign-in it can't do anything.

@@ -19,6 +19,9 @@
       "onPhotoPage": true,
       "species": [
         "Alces alces"
+      ],
+      "sightings": [
+        "manual:m20261029-7a0a"
       ]
     }
   ]

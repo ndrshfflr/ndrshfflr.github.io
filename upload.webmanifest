@@ -1,7 +1,7 @@
 {
-  "name": "Add photos — Pieter Shiffler Carpentier",
-  "short_name": "Add photos",
-  "description": "Send photos to the photography page.",
+  "name": "Photos — Pieter Shiffler Carpentier",
+  "short_name": "Photos",
+  "description": "Every picture on the site, and new pictures, finds and posts.",
   "start_url": "upload.html",
   "scope": "upload.html",
   "display": "standalone",

@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <!-- GENERATED FILE — built by src/build.py from src/templates/upload.html.j2.
-     The upload page: send photos from the phone to the Photo Gallery. It puts
-     them in images/inbox/, where .github/workflows/photo-inbox.yml files them. -->
+     Photos: one place for every picture on the site, and one "New" form for
+     anything you add — pictures, a find in the field log, a blog post, or any
+     mix of them. Saves straight into the repository (one commit per publish). -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' blob: data:; connect-src https://api.github.com 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' blob: data: https:; connect-src https://api.github.com 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<title>Add photos — Pieter Shiffler Carpentier</title>
+<title>Photos — Pieter Shiffler Carpentier</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="assets/icons/upload-180.png">
 <link rel="manifest" href="upload.webmanifest">
 <meta name="theme-color" content="#0b1322">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Add photos">
+<meta name="apple-mobile-web-app-title" content="Photos">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/world.css?v=a32c77ce">
-<link rel="stylesheet" href="assets/upload.css?v=97af0608">
+<link rel="stylesheet" href="assets/upload.css?v=41347f59">
 </head>
 <body>
 <div class="world up" id="world">
@@ -29,7 +30,7 @@
     <a class="logo" href="photography.html" aria-label="Photography">
       <svg viewBox="0 0 100 100" width="34" height="34" aria-hidden="true"><path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/><circle cx="50" cy="50" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><circle cx="50" cy="50" r="10" class="eye-pupil"/><circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/></svg>
     </a>
-    <h1 class="up-h1"><span class="up-rune" aria-hidden="true">ᛋ</span> Add photos</h1>
+    <h1 class="up-h1"><span class="up-rune" aria-hidden="true">ᛋ</span> Photos</h1>
     <button class="up-link" id="sign-out" type="button" hidden>Sign out</button>
   </header>
 
@@ -39,7 +40,7 @@
     <!-- signing in -->
     <section class="up-panel" id="signin" hidden aria-labelledby="signin-h">
       <h2 id="signin-h">Sign in</h2>
-      <p>Photos go straight into your website's repository on GitHub, so the page needs to know it's you.</p>
+      <p>Everything you add goes straight into your website's repository on GitHub, so the page needs to know it's you.</p>
       <button class="up-btn up-primary" id="gh-signin" type="button">Sign in with GitHub</button>
       <p class="up-small" id="signin-msg" role="status"></p>
       <details class="up-details" id="key-box">
@@ -51,88 +52,191 @@
       </details>
     </section>
 
-    <!-- choosing and describing photos -->
-    <section id="work" hidden>
+    <div id="work" hidden>
       <p class="up-who" id="who" role="status"></p>
-      <label class="up-btn up-primary up-pick" for="files">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-        Choose photos
-      </label>
-      <input class="up-file" id="files" type="file" accept="image/*" multiple>
-      <p class="up-small up-hint" id="pick-hint">Each photo is shrunk to 2000 px and its location is removed on this phone before it's sent.</p>
-
-      <ol class="up-list" id="list" aria-label="Photos to send"></ol>
-
-      <div class="up-send" id="send-bar" hidden>
-        <button class="up-btn up-primary" id="send" type="button">Send</button>
-        <p class="up-status" id="status" role="status" aria-live="polite"></p>
+      <div class="up-tabs" role="tablist" aria-label="Photos">
+        <button class="up-tab" id="tab-new" type="button" role="tab" aria-selected="true" aria-controls="new">New</button>
+        <button class="up-tab" id="tab-lib" type="button" role="tab" aria-selected="false" aria-controls="library">Library <span class="up-tab-n" id="lib-count"></span></button>
       </div>
-    </section>
+
+      <!-- ============ NEW: pictures, a find, a post — any mix ============ -->
+      <section id="new" role="tabpanel" aria-labelledby="tab-new">
+        <h2 class="up-h2">Pictures</h2>
+        <div class="up-row">
+          <label class="up-btn up-primary up-pick" for="files">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            From this device
+          </label>
+          <button class="up-btn up-pick" id="from-lib" type="button">From the library</button>
+        </div>
+        <input class="up-file" id="files" type="file" accept="image/*" multiple>
+        <p class="up-small up-hint">Optional: a find or a post can do without. New pictures are shrunk to 2000 px and their location is removed on this device before they're sent.</p>
+        <ol class="up-list" id="list" aria-label="Pictures"></ol>
+
+        <h2 class="up-h2">Also make it</h2>
+        <div class="up-parts">
+          <label class="up-part"><input type="checkbox" id="want-find"> <span><b>A find in the field log</b><small>A sighting: an existing one, or a new one</small></span></label>
+          <label class="up-part"><input type="checkbox" id="want-post"> <span><b>A blog post</b><small>With these pictures; the text starts filled in</small></span></label>
+        </div>
+
+        <fieldset class="up-panel up-section" id="find" hidden>
+          <legend class="up-legend">Find</legend>
+          <label class="up-label">Species (Latin name)
+            <input class="up-input" id="f-species" type="text" list="species-list" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Start typing a name…">
+          </label>
+          <p class="up-small" id="f-known" role="status"></p>
+          <label class="up-label">Sighting
+            <select class="up-input" id="f-sighting"><option value="new">A new sighting</option></select>
+          </label>
+          <div id="f-new">
+            <div class="up-pair">
+              <label class="up-label">Date <input class="up-input" id="f-date" type="date"></label>
+              <label class="up-label">Place <span class="up-opt">(optional, keep it general)</span><input class="up-input" id="f-place" type="text" maxlength="120" autocomplete="off" placeholder="e.g. Rold Skov"></label>
+            </div>
+            <div id="f-newspecies">
+              <label class="up-label">Group
+                <select class="up-input" id="f-group">
+                  <option value="fungi">Fungi</option><option value="birds">Birds</option><option value="insects">Insects</option><option value="arachnids">Spiders &amp; kin</option><option value="mammals">Mammals</option><option value="herps">Amphibians &amp; reptiles</option><option value="fish">Fish</option><option value="molluscs">Molluscs</option><option value="plants">Plants</option><option value="other">Other</option>
+                </select>
+              </label>
+              <div class="up-pair">
+                <label class="up-label">English name <span class="up-opt">(optional)</span><input class="up-input" id="f-common" type="text" maxlength="120" autocomplete="off"></label>
+                <label class="up-label">Danish name <span class="up-opt">(optional)</span><input class="up-input" id="f-commonda" type="text" maxlength="120" autocomplete="off" lang="da"></label>
+              </div>
+            </div>
+            <label class="up-label">Note <span class="up-opt">(optional)</span><textarea class="up-input up-area" id="f-note" rows="2" maxlength="600"></textarea></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="up-panel up-section" id="post" hidden>
+          <legend class="up-legend">Blog post</legend>
+          <label class="up-label">Title <input class="up-input" id="p-title" type="text" maxlength="140" autocomplete="off"></label>
+          <div class="up-pair">
+            <label class="up-label">Language
+              <select class="up-input" id="p-lang"><option value="en">English</option><option value="da">Dansk</option></select>
+            </label>
+            <label class="up-label">Summary <span class="up-opt">(optional)</span><input class="up-input" id="p-summary" type="text" maxlength="240" autocomplete="off"></label>
+          </div>
+          <label class="up-label">Text <textarea class="up-input up-area" id="p-text" rows="8"></textarea></label>
+          <p class="up-small" id="p-note">The pictures ticked “In the post” go below your text; the first one is the cover.</p>
+        </fieldset>
+
+        <div class="up-send" id="send-bar">
+          <button class="up-btn up-primary" id="send" type="button" disabled>Publish</button>
+          <p class="up-status" id="status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <!-- ============ LIBRARY: every picture on the site ============ -->
+      <section id="library" role="tabpanel" aria-labelledby="tab-lib" hidden>
+        <div class="up-libbar">
+          <div class="up-chips up-filters" id="lib-filters" role="group" aria-label="Show"></div>
+          <input class="up-input up-search" id="lib-search" type="search" placeholder="Search captions, species, posts…" autocomplete="off">
+        </div>
+        <p class="up-small" id="lib-msg" role="status">Loading the pictures…</p>
+        <ul class="up-grid" id="lib-grid" aria-label="Pictures on the site"></ul>
+      </section>
+    </div>
   </main>
 
+  <!-- one picture in the New form -->
   <template id="card-tpl">
     <li class="up-card">
       <div class="up-frame"><img class="up-thumb" alt=""></div>
       <div class="up-fields">
+        <p class="up-from up-small"></p>
         <label class="up-label">Caption <span class="up-opt">(optional)</span><input class="up-input up-caption" type="text" maxlength="160" enterkeyhint="done"></label>
-        <fieldset class="up-sizes">
-          <legend class="up-label">Size on the page</legend>
-          <div class="up-size-row"></div>
-        </fieldset>
-        <div class="up-pair">
+        <div class="up-checks">
+          <label class="up-check"><input class="up-portfolio" type="checkbox"> Portfolio</label>
+          <label class="up-check up-only-find"><input class="up-in-find" type="checkbox" checked> In the find</label>
+          <label class="up-check up-only-post"><input class="up-in-post" type="checkbox" checked> In the post</label>
+        </div>
+        <div class="up-pf">
+          <fieldset class="up-sizes">
+            <legend class="up-label">Size on the photography page</legend>
+            <div class="up-size-row"></div>
+          </fieldset>
           <label class="up-label">Keep in frame
             <select class="up-input up-focus">
               <option value="center">Middle</option><option value="top">Top</option><option value="bottom">Bottom</option><option value="left">Left</option><option value="right">Right</option>
             </select>
           </label>
-          <label class="up-label">Leads to a blog post
-            <select class="up-input up-post"><option value="">No — opens full-screen</option></select>
-          </label>
-        </div>
-        <div class="up-find">
-          <label class="up-label">Species in the field log <span class="up-opt">(optional, one or several)</span>
-            <input class="up-input up-species" type="text" list="species-list" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" placeholder="Start typing a name…">
-          </label>
-          <ul class="up-chips" aria-label="Tagged species"></ul>
-          <div class="up-newfinds"></div>
-          <label class="up-check"><input class="up-onpage" type="checkbox" checked> Also show it on the photography page</label>
         </div>
         <button class="up-link up-remove" type="button">Remove</button>
       </div>
     </li>
   </template>
-  <!-- a species that isn't in the field log yet: it's added as a find made by hand -->
-  <template id="newfind-tpl">
-    <fieldset class="up-newfind">
-      <legend class="up-nf-head"><span class="up-nf-tag">New find</span> <em class="up-nf-name"></em></legend>
-      <p class="up-small up-nf-hint">Not in the field log yet. Sending adds it, with this photo.</p>
-      <div class="up-pair">
-        <label class="up-label">Group
-          <select class="up-input up-nf-group">
-            <option value="fungi">Fungi</option><option value="birds">Birds</option><option value="insects">Insects</option><option value="arachnids">Spiders &amp; kin</option><option value="mammals">Mammals</option><option value="herps">Amphibians &amp; reptiles</option><option value="fish">Fish</option><option value="molluscs">Molluscs</option><option value="plants">Plants</option><option value="other">Other</option>
-          </select>
-        </label>
-        <label class="up-label">Date
-          <input class="up-input up-nf-date" type="date">
+
+  <!-- one picture in the library, opened -->
+  <dialog class="up-dialog" id="pic" aria-labelledby="pic-h">
+    <div class="up-dlg-in">
+      <div class="up-dlg-head">
+        <h2 class="up-h2" id="pic-h">Picture</h2>
+        <button class="up-link" id="pic-close" type="button">Close</button>
+      </div>
+      <img class="up-dlg-img" id="pic-img" alt="">
+      <p class="up-small up-path" id="pic-path"></p>
+      <h3 class="up-h3">Used in</h3>
+      <ul class="up-used" id="pic-used"></ul>
+      <label class="up-label">Caption <input class="up-input" id="pic-caption" type="text" maxlength="160"></label>
+
+      <label class="up-check"><input type="checkbox" id="pic-portfolio"> On the photography page (portfolio)</label>
+      <div class="up-pf" id="pic-pf">
+        <fieldset class="up-sizes"><legend class="up-label">Size</legend><div class="up-size-row" id="pic-sizes"></div></fieldset>
+        <label class="up-label">Keep in frame
+          <select class="up-input" id="pic-focus"><option value="center">Middle</option><option value="top">Top</option><option value="bottom">Bottom</option><option value="left">Left</option><option value="right">Right</option></select>
         </label>
       </div>
-      <label class="up-label">Place <span class="up-opt">(optional, keep it general)</span>
-        <input class="up-input up-nf-place" type="text" maxlength="120" autocomplete="off" enterkeyhint="next" placeholder="e.g. Rold Skov">
+
+      <h3 class="up-h3">Field log</h3>
+      <ul class="up-chips" id="pic-sightings" aria-label="Sightings in this picture"></ul>
+      <details class="up-details up-link-sighting" id="pic-add">
+        <summary>Link a sighting</summary>
+        <label class="up-label">Species <input class="up-input" id="ps-species" type="text" list="species-list" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Start typing a name…"></label>
+        <label class="up-label">Sighting <select class="up-input" id="ps-sighting"><option value="new">A new sighting</option></select></label>
+        <div id="ps-new">
+          <div class="up-pair">
+            <label class="up-label">Date <input class="up-input" id="ps-date" type="date"></label>
+            <label class="up-label">Place <span class="up-opt">(optional)</span><input class="up-input" id="ps-place" type="text" maxlength="120" autocomplete="off"></label>
+          </div>
+          <label class="up-label" id="ps-group-l">Group
+            <select class="up-input" id="ps-group">
+              <option value="fungi">Fungi</option><option value="birds">Birds</option><option value="insects">Insects</option><option value="arachnids">Spiders &amp; kin</option><option value="mammals">Mammals</option><option value="herps">Amphibians &amp; reptiles</option><option value="fish">Fish</option><option value="molluscs">Molluscs</option><option value="plants">Plants</option><option value="other">Other</option>
+            </select>
+          </label>
+        </div>
+        <button class="up-btn" id="ps-add" type="button">Link it</button>
+      </details>
+
+      <h3 class="up-h3">Blog</h3>
+      <label class="up-label">Its blog post <span class="up-opt">(the portfolio picture leads there)</span>
+        <select class="up-input" id="pic-post"><option value="">None</option></select>
       </label>
-      <div class="up-pair">
-        <label class="up-label">English name <span class="up-opt">(optional)</span>
-          <input class="up-input up-nf-common" type="text" maxlength="120" autocomplete="off" enterkeyhint="next">
-        </label>
-        <label class="up-label">Danish name <span class="up-opt">(optional)</span>
-          <input class="up-input up-nf-commonda" type="text" maxlength="120" autocomplete="off" lang="da" enterkeyhint="done">
-        </label>
+      <label class="up-check" id="pic-inpost-l"><input type="checkbox" id="pic-inpost"> Also put the picture in that post's text</label>
+      <button class="up-btn" id="pic-newpost" type="button">New post or find with this picture…</button>
+
+      <div class="up-dlg-foot">
+        <button class="up-btn up-primary" id="pic-save" type="button">Save</button>
+        <p class="up-status" id="pic-status" role="status" aria-live="polite"></p>
       </div>
-    </fieldset>
-  </template>
+    </div>
+  </dialog>
+
+  <!-- choosing pictures from the library for the New form -->
+  <dialog class="up-dialog" id="picker" aria-labelledby="picker-h">
+    <div class="up-dlg-in">
+      <div class="up-dlg-head">
+        <h2 class="up-h2" id="picker-h">Choose from the library</h2>
+        <button class="up-link" id="picker-close" type="button">Done</button>
+      </div>
+      <ul class="up-grid" id="picker-grid"></ul>
+    </div>
+  </dialog>
+
   <datalist id="species-list"></datalist>
 </div>
 
 <script id="upload-data" type="application/json">{"authEndpoint": "auth", "branch": "main", "fieldlog": "fieldlog.html", "photography": "photography.html", "posts": [{"date": "2026-10-30", "slug": "2026-10-30-elk", "title": "Elk (Alces alces)"}, {"date": "2026-10-25", "slug": "2026-10-24-testing-this-stuff", "title": "Testing this stuff"}], "proxy": "https://decap-proxy.shhflr.workers.dev", "repo": "ndrshfflr/ndrshfflr.github.io"}</script>
-<script src="assets/upload.js?v=34736164"></script>
+<script src="assets/upload.js?v=27244d4d"></script>
 </body>
 </html>
