@@ -66,6 +66,10 @@
     {
       "species": "Amanita strobiliformis",
       "favourite": true
+    },
+    {
+      "species": "Natrix natrix",
+      "favourite": true
     }
   ],
   "hide": [],
