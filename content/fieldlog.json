@@ -46,6 +46,10 @@
     {
       "species": "Suillellus luridus",
       "favourite": true
+    },
+    {
+      "species": "Pseudoinonotus dryadeus",
+      "favourite": true
     }
   ],
   "hide": [],
