@@ -1,0 +1,73 @@
+# Builds the site's HTML (src/build.py) after every change you publish, so the
+# pages, the sitemap and what search engines and link previews see always match
+# /admin. No local build needed.
+#
+# Runs when content, templates, scripts or the /admin config change on main,
+# after the photo inbox, the story writer and the field-log sync have committed
+# (their own commits don't start other workflows), and on demand:
+# GitHub → Actions → "Build site" → "Run workflow".
+name: Build site
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["content/**", "src/**", "assets/**", "admin/config.yml"]
+  workflow_run:
+    workflows: ["Photo inbox", "Field log stories", "Sync field log"]
+    types: [completed]
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: build-site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main   # the newest version, including what the other workflows just committed
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install the build tools
+        run: pip install "jinja2>=3.1,<4" "pyyaml>=6,<7"
+
+      - name: Build the pages
+        run: python3 src/build.py
+
+      - name: Commit if a page changed
+        id: commit
+        run: |
+          # the sitemap's date changes every day; on its own that's not worth a commit
+          if git diff --quiet -- . ':!sitemap.xml' && ! git ls-files --others --exclude-standard | grep -q .; then
+            git checkout -- sitemap.xml
+            echo "Pages already up to date."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "build-site"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Build: update pages from published content"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            sleep 5
+          done
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # Commits made by a workflow don't always trigger a Pages rebuild on
+      # their own, so ask for one explicitly.
+      - name: Ask GitHub Pages to rebuild
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages rebuild request not accepted; the next commit will publish it."
