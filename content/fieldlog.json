@@ -70,6 +70,10 @@
     {
       "species": "Natrix natrix",
       "favourite": true
+    },
+    {
+      "species": "Quercus robur",
+      "favourite": true
     }
   ],
   "hide": [],
