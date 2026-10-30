@@ -11,6 +11,11 @@
  *   content/gallery.json      – photos linked to a species (Photo Gallery)
  * so anything you change shows up as soon as it is published.
  *
+ * Signed in (the same sign-in as /admin or the upload page, on this device)
+ * with a key that can change the website, you also get a ★ on every card and
+ * "Use as cover" on every picture. Those save straight into
+ * content/fieldlog.json ("Favourites, photos and stories" in /admin).
+ *
  * The page stands in the circle's world: sky, header and rune language come
  * from assets/world.js. Species names, dates and places stay in Latin letters.
  */
@@ -84,6 +89,17 @@
   function photoList(x) { // a photos list from /admin may hold strings or {src}
     return arr(x).map(function (p) { return typeof p === 'string' ? p : (p && (p.src || p.image || p.photo)) || ''; }).filter(Boolean);
   }
+  function same(url) { return String(url || '').replace(/^https?:\/\/ndrshfflr\.github\.io(?=\/)/, ''); }
+  /* every picture a species has: your own first (extra and hand-added), then
+     the gallery, then the synced ones (newest first) */
+  function pictures(sp) {
+    var pics = sp.extra.map(function (p) { return { photo: p }; })
+      .concat(sp.recs.filter(function (r) { return r.source === 'manual'; }).reduce(function (all, r) { return all.concat(arr(r.photos).map(function (p) { return { photo: p }; })); }, []))
+      .concat(sp.gallery.map(function (g) { return { photo: g.image, caption: g.caption || '' }; }))
+      .concat(sp.recs.filter(function (r) { return r.photo && r.source !== 'manual'; }).slice().reverse().map(function (r) { return { photo: r.photo }; }));
+    var seen = {};
+    return pics.filter(function (p) { var k = same(p.photo); if (!p.photo || seen[k]) return false; seen[k] = 1; return true; });
+  }
 
   // ---------- merge synced finds with your choices ----------
   function build(obs, cfg, gallery) {
@@ -107,7 +123,7 @@
 
     /* per species: favourite, extra photos, a story (blog post) and a note */
     var extra = {};
-    function ex(name) { var k = norm(name); return (extra[k] = extra[k] || { fav: false, photos: [], post: '', note: '', noteDa: '' }); }
+    function ex(name) { var k = norm(name); return (extra[k] = extra[k] || { fav: false, photos: [], post: '', note: '', noteDa: '', cover: '' }); }
     arr(cfg.notes).forEach(function (n) { // older notes list
       if (n && n.species) { var e = ex(n.species); e.note = e.note || n.text || ''; e.noteDa = e.noteDa || n.textDa || ''; }
     });
@@ -119,6 +135,7 @@
       if (f.post && SLUG.test(f.post)) e.post = f.post;
       if (f.text) e.note = f.text;
       if (f.textDa) e.noteDa = f.textDa;
+      if (f.cover) e.cover = photoList([f.cover])[0] || '';
     });
 
     var items = arr(obs.items).filter(function (o) {
@@ -154,7 +171,7 @@
     });
 
     var list = Object.keys(byName).map(function (k) {
-      var sp = byName[k], e = extra[k] || { fav: false, photos: [], post: '', note: '', noteDa: '' };
+      var sp = byName[k], e = extra[k] || { fav: false, photos: [], post: '', note: '', noteDa: '', cover: '' };
       sp.recs.sort(function (a, b) { return (a.date || '9999').localeCompare(b.date || '9999'); });
       sp.first = sp.recs[0].date || '';
       sp.last = sp.recs[sp.recs.length - 1].date || '';
@@ -165,6 +182,12 @@
       var chosen = withPhoto.filter(function (r) { return covers[r.id]; })[0] || withPhoto.filter(function (r) { return r.manualCover; })[0];
       sp.gallery = galleryBy[k] || [];
       sp.cover = (chosen && chosen.photo) || sp.extra[0] || (sp.gallery[0] && sp.gallery[0].image) || (withPhoto[withPhoto.length - 1] || {}).photo || '';
+      // a cover picked on the page ("Use as cover") wins, as long as the species still has that picture
+      sp.pinned = false;
+      if (e.cover) {
+        var hit = pictures(sp).filter(function (p) { return same(p.photo) === same(e.cover); })[0];
+        if (hit) { sp.cover = hit.photo; sp.pinned = true; }
+      }
       // No photo or Danish name of your own: fall back to the reference from
       // iNaturalist (openly licensed, credited, and only until you have your own).
       var ref = refs[sp.name] || {};
@@ -289,7 +312,7 @@
     }
     ph.appendChild(el('span', 'fl-no', 'Nº ' + pad(sp.no)));
     var marks = el('span', 'fl-marks');
-    if (sp.fav) { var st = el('span', 'fl-mark fl-mark-fav', '★'); st.title = u.flFavourite || 'Favourite'; marks.appendChild(st); }
+    if (sp.fav && !edit.on) { var st = el('span', 'fl-mark fl-mark-fav', '★'); st.title = u.flFavourite || 'Favourite'; marks.appendChild(st); }
     if (sp.post) { var sr = el('span', 'fl-mark fl-mark-story', 'ᚬ'); sr.title = u.flHasStory || 'Has a story'; marks.appendChild(sr); }
     if (marks.firstChild) ph.appendChild(marks);
     if (sp.first >= recentCut) ph.appendChild(el('span', 'fl-new', u.flNew || 'New'));
@@ -308,6 +331,7 @@
     body.appendChild(foot);
     b.appendChild(body);
     li.appendChild(b);
+    if (edit.on) li.appendChild(favButton(sp, 'fl-fav-btn'));
     return li;
   }
 
@@ -370,6 +394,7 @@
     main.textContent = '';
     main.appendChild(img(fig.photo, fig.alt, 1000));
     if (fig.caption) main.appendChild(el('figcaption', null, fig.caption));
+    if (edit.on && fig.sp) main.appendChild(coverButton(fig.sp, fig.photo));
   }
   function openSpecies(key, refresh) {
     var sp = data.list.filter(function (s) { return s.key === key; })[0];
@@ -387,20 +412,24 @@
     var story = $('fl-d-story');
     story.hidden = !sp.post;
     if (sp.post) story.href = 'post.html?slug=' + encodeURIComponent(sp.post);
+    var editRow = $('fl-d-edit');
+    if (editRow) editRow.remove();
+    if (edit.on) {
+      editRow = el('div', 'fl-d-edit');
+      editRow.id = 'fl-d-edit';
+      editRow.appendChild(favButton(sp, 'fl-d-fav'));
+      editRow.appendChild(el('span', 'fl-edit-status' + (edit.kind ? ' ' + edit.kind : ''), edit.msg));
+      $('fl-d-group').insertAdjacentElement('afterend', editRow);
+    }
     var notes = $('fl-d-notes');
     notes.textContent = '';
     if (note(sp)) note(sp).split(/\n+/).forEach(function (para) { if (para.trim()) notes.appendChild(el('p', null, para.trim())); });
 
-    // photos: your own first (extra and hand-added), then the gallery, then the synced ones
+    // photos: the cover first, then your own, the gallery, and the synced ones
     var photos = $('fl-d-photos');
     photos.textContent = '';
-    var pics = sp.extra.map(function (p) { return { photo: p }; })
-      .concat(sp.recs.filter(function (r) { return r.source === 'manual'; }).reduce(function (all, r) { return all.concat(arr(r.photos).map(function (p) { return { photo: p }; })); }, []))
-      .concat(sp.gallery.map(function (g) { return { photo: g.image, caption: g.caption || '' }; }))
-      .concat(sp.recs.filter(function (r) { return r.photo && r.source !== 'manual'; }).slice().reverse().map(function (r) { return { photo: r.photo }; }));
-    var seen = {};
-    pics = pics.filter(function (p) { if (!p.photo || seen[p.photo]) return false; seen[p.photo] = 1; return true; });
-    var cover = pics.filter(function (p) { return p.photo === sp.cover; })[0];
+    var pics = pictures(sp);
+    var cover = pics.filter(function (p) { return same(p.photo) === same(sp.cover); })[0];
     if (cover) pics = [cover].concat(pics.filter(function (p) { return p !== cover; }));
     pics = pics.slice(0, 12);
     if (pics.length) {
@@ -412,13 +441,13 @@
           t.type = 'button';
           t.setAttribute('aria-label', (u.flPhoto || 'Photo') + ' ' + (i + 1));
           t.appendChild(img(p.photo, '', 200));
-          p.thumb = t; p.alt = sp.name;
+          p.thumb = t; p.alt = sp.name; p.sp = sp;
           t.addEventListener('click', function () { showMain(p); });
           strip.appendChild(t);
         });
         photos.appendChild(strip);
       }
-      pics[0].alt = sp.name;
+      pics[0].alt = sp.name; pics[0].sp = sp;
       showMain(pics[0]);
     } else if (sp.ref) {
       var rf = el('figure', 'fl-d-main is-ref');
@@ -495,6 +524,170 @@
     if (b) openSpecies(b.getAttribute('data-key'));
   });
 
+  // ---------- editing, when you're signed in ----------
+  var raw = { obs: null, cfg: null, gallery: null };
+  var edit = { on: false, token: '', login: '', sha: '', nl: true, queue: Promise.resolve(), pending: 0, msg: '', kind: '' };
+  var API = 'https://api.github.com', FILE = 'content/fieldlog.json';
+  /* redraw after a change, keeping the focus on the button you just used */
+  function rebuild() {
+    var a = document.activeElement, keep = '';
+    ['fl-fav-btn', 'fl-d-fav', 'fl-d-cover', 'fl-card-btn'].forEach(function (c) { if (!keep && a && a.classList && a.classList.contains(c)) keep = c; });
+    var key = keep && a.getAttribute('data-key');
+    data = build(raw.obs, raw.cfg, raw.gallery);
+    renderAll();
+    if (keep) {
+      var n = document.querySelector('.' + keep + (key ? '[data-key="' + key.replace(/["\\]/g, '\\$&') + '"]' : ''));
+      if (n && n !== document.activeElement) n.focus({ preventScroll: true });
+    }
+  }
+  function storedToken() {
+    var get = function (k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } };
+    var own = get('uploadAuth'); // the upload page's sign-in
+    if (own && own.token) return own.token;
+    var keys = ['decap-cms-user', 'netlify-cms-user']; // /admin's sign-in
+    for (var i = 0; i < keys.length; i++) { var u = get(keys[i]); if (u && u.token) return u.token; }
+    return '';
+  }
+  function gh(method, path, body) {
+    var headers = { Authorization: 'Bearer ' + edit.token, Accept: 'application/vnd.github+json' };
+    if (body) headers['Content-Type'] = 'application/json';
+    return fetch(API + path, { method: method, headers: headers, body: body ? JSON.stringify(body) : undefined, cache: 'no-store' }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) {
+        if (!r.ok) { var err = new Error(j.message || ('HTTP ' + r.status)); err.status = r.status; throw err; }
+        return j;
+      });
+    });
+  }
+  function fromB64(s) {
+    var bin = atob(String(s).replace(/\s/g, '')), bytes = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new TextDecoder().decode(bytes);
+  }
+  function toB64(text) {
+    var bytes = new TextEncoder().encode(text), bin = '';
+    for (var i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(bin);
+  }
+  function filePath() { return '/repos/' + DATA.repo + '/contents/' + FILE; }
+  function readCfg() {
+    return gh('GET', filePath() + '?ref=' + encodeURIComponent(DATA.branch || 'main')).then(function (f) {
+      var text = fromB64(f.content);
+      edit.sha = f.sha; edit.nl = /\n$/.test(text);
+      return JSON.parse(text);
+    });
+  }
+  function writeCfg(cfg, message) {
+    var text = JSON.stringify(cfg, null, 2) + (edit.nl ? '\n' : '');
+    return gh('PUT', filePath(), { message: message, content: toB64(text), sha: edit.sha, branch: DATA.branch || 'main' })
+      .then(function (r) { edit.sha = r.content && r.content.sha; });
+  }
+  var sayTimer = null;
+  function say(msg, kind) {
+    clearTimeout(sayTimer);
+    if (kind === 'ok') sayTimer = setTimeout(function () { say(''); }, 6000); // a saved note fades; errors stay
+    edit.msg = msg || ''; edit.kind = kind || '';
+    Array.prototype.forEach.call(document.querySelectorAll('.fl-edit-status'), function (n) {
+      n.textContent = edit.msg; n.className = 'fl-edit-status' + (edit.kind ? ' ' + edit.kind : '');
+    });
+  }
+  /* Show the change at once, then save it on top of the newest version of the
+     file (so nothing done meanwhile in /admin is lost). */
+  function change(message, mutate) {
+    var u = U();
+    var mine = JSON.parse(JSON.stringify(raw.cfg || {}));
+    mutate(mine); raw.cfg = mine; rebuild();
+    edit.pending++;
+    say(u.flSaving || 'Saving…');
+    edit.queue = edit.queue.then(function () {
+      var attempt = function (n) {
+        return readCfg().then(function (cfg) { mutate(cfg); return writeCfg(cfg, message).then(function () { return cfg; }); })
+          .catch(function (e) { if ((e.status === 409 || e.status === 422) && n < 3) return attempt(n + 1); throw e; });
+      };
+      return attempt(1).then(function (cfg) {
+        edit.pending--;
+        if (!edit.pending) { raw.cfg = cfg; rebuild(); }
+        say(u.flSaved || 'Saved.', 'ok');
+      }, function (e) {
+        edit.pending--;
+        say((u.flSaveFailed || 'Couldn’t save') + ': ' + e.message, 'err');
+        return readCfg().then(function (cfg) { raw.cfg = cfg; rebuild(); }).catch(function () {});
+      });
+    });
+  }
+  function findEntry(cfg, sp, create) {
+    cfg.finds = arr(cfg.finds);
+    var f = cfg.finds.filter(function (x) { return x && norm(x.species) === sp.key; })[0];
+    if (!f && create) { f = { species: sp.name }; cfg.finds.push(f); }
+    return f;
+  }
+  function tidy(cfg) { // drop entries that no longer say anything
+    cfg.finds = arr(cfg.finds).filter(function (f) {
+      return f && f.species && (f.favourite || f.story || f.post || f.text || f.textDa || f.cover || photoList(f.photos).length);
+    });
+  }
+  function setFavourite(sp, on) {
+    change((on ? 'Field log: ★ ' : 'Field log: no longer a favourite: ') + sp.name, function (cfg) {
+      if (on) findEntry(cfg, sp, true).favourite = true;
+      else {
+        arr(cfg.finds).forEach(function (f) { if (f && norm(f.species) === sp.key) f.favourite = false; });
+        arr(cfg.manual).forEach(function (m) { if (m && norm(m.name) === sp.key && m.favourite) m.favourite = false; });
+      }
+      tidy(cfg);
+    });
+  }
+  function setCover(sp, photo) {
+    change((photo ? 'Field log: new cover for ' : 'Field log: automatic cover for ') + sp.name, function (cfg) {
+      var f = findEntry(cfg, sp, !!photo);
+      if (f) { if (photo) f.cover = same(photo); else delete f.cover; }
+      tidy(cfg);
+    });
+  }
+  function favButton(sp, cls) {
+    var u = U();
+    var b = el('button', cls + (sp.fav ? ' is-on' : ''));
+    b.type = 'button';
+    b.setAttribute('data-key', sp.key);
+    b.setAttribute('aria-pressed', sp.fav ? 'true' : 'false');
+    var label = sp.fav ? (u.flFavRemove || 'Remove from favourites') : (u.flFavAdd || 'Mark as favourite');
+    if (cls === 'fl-fav-btn') { b.textContent = sp.fav ? '★' : '☆'; b.setAttribute('aria-label', label + ': ' + sp.name); b.title = label; }
+    else b.textContent = (sp.fav ? '★ ' : '☆ ') + label;
+    b.addEventListener('click', function (e) {
+      e.stopPropagation();
+      b.focus(); // Safari doesn't focus buttons on click; the redraw puts the focus back here
+      setFavourite(sp, !sp.fav);
+    });
+    return b;
+  }
+  function coverButton(sp, photo) {
+    var u = U(), isCover = same(photo) === same(sp.cover);
+    if (isCover && !sp.pinned) return el('span', 'fl-d-cover is-on', '★ ' + (u.flIsCover || 'Cover'));
+    var b = el('button', 'fl-d-cover' + (isCover ? ' is-on' : ''), isCover ? '★ ' + (u.flCoverAuto || 'Cover · back to automatic') : (u.flUseCover || 'Use as cover'));
+    b.type = 'button';
+    b.setAttribute('aria-pressed', isCover ? 'true' : 'false');
+    b.addEventListener('click', function () { b.focus(); setCover(sp, isCover ? '' : photo); });
+    return b;
+  }
+  function startEditing() {
+    edit.token = storedToken();
+    if (!edit.token || !DATA.repo || !window.TextDecoder) return;
+    Promise.all([gh('GET', '/user'), gh('GET', '/repos/' + DATA.repo)]).then(function (r) {
+      if (!r[1] || !r[1].permissions || !r[1].permissions.push) return null; // a sign-in that can't change the site
+      edit.login = r[0].login || '';
+      return readCfg().then(function (cfg) {
+        raw.cfg = cfg; edit.on = true;
+        document.body.classList.add('fl-editing');
+        var bar = el('div', 'fl-edit');
+        bar.id = 'fl-edit';
+        bar.appendChild(el('span', 'fl-edit-who', (U().flEditing || 'Editing as') + ' @' + edit.login));
+        var st = el('span', 'fl-edit-status');
+        st.setAttribute('role', 'status');
+        bar.appendChild(st);
+        document.body.appendChild(bar);
+        rebuild();
+      });
+    }).catch(function () { /* not signed in here, expired or offline: the page stays as it is */ });
+  }
+
   // ---------- controls ----------
   var search = $('fl-search');
   var sort = $('fl-sort');
@@ -509,6 +702,7 @@
   // ---------- go ----------
   W.onRender(renderAll);
   Promise.all([getJSON('content/observations.json'), getJSON('content/fieldlog.json'), getJSON('content/gallery.json')]).then(function (res) {
+    raw = { obs: res[0], cfg: res[1], gallery: res[2] };
     data = build(res[0], res[1], res[2]);
     var empty = $('fl-empty');
     if (!data.list.length) {
@@ -525,6 +719,7 @@
     var sp = m ? data.list.filter(function (s) { return s.no === +m[1]; })[0]
       : bySp ? data.list.filter(function (s) { return s.key === norm(decodeURIComponent(bySp[1])); })[0] : null;
     if (sp) openSpecies(sp.key);
+    startEditing();
   });
   // wording edited in /admin (Main page → Field log) shows up without a rebuild
   Promise.all([getJSON('content/home.json'), getJSON('content/home.da.json')]).then(function (r) {
