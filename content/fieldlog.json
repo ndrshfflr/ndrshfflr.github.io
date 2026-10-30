@@ -26,7 +26,16 @@
     "showPlaces": true,
     "referencePhotos": true
   },
-  "finds": [],
+  "finds": [
+    {
+      "favourite": true,
+      "story": false,
+      "species": "Alces alces",
+      "photos": [
+        "/images/gallery/2026-10-29-photo-311b4c.jpg"
+      ]
+    }
+  ],
   "hide": [],
   "hideSpecies": [],
   "covers": [],
@@ -48,7 +57,8 @@
       "place": "Sweden",
       "photos": [
         "https://ndrshfflr.github.io/images/gallery/2026-10-29-photo-c60657.jpg"
-      ]
+      ],
+      "favourite": true
     }
   ]
 }
