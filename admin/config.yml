@@ -10,7 +10,8 @@ backend:
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
-publish_mode: editorial_workflow
+# No drafts: "Publish" saves straight to the site (one commit, live in a minute or two).
+# To get drafts back, add:  publish_mode: editorial_workflow
 
 collections:
   - name: "entry"
