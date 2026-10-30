@@ -81,6 +81,10 @@
     {
       "species": "Cebus unicolor",
       "favourite": true
+    },
+    {
+      "species": "Laetiporus sulphureus",
+      "favourite": true
     }
   ],
   "hide": [],
