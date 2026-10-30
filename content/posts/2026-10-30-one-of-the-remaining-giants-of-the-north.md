@@ -14,6 +14,8 @@ At first glance the elk seemed unbothered by our presence − even when we got a
 
 1. <https://www.researchgate.net/publication/264039426_SPACE_USE_AND_MOVEMENTS_OF_MOOSE_IN_MASSACHUSETTS_IMPLICATIONS_FOR_CONSERVATION_OF_LARGE_MAMMALS_IN_A_FRAGMENTED_ENVIRONMENT>
 
+
+
 ![One of the remaining giants of the North](/images/gallery/2026-10-30-alces-alces-8e1c07.jpg)
 
 ![One of the remaining giants of the North](/images/gallery/2026-10-30-alces-alces-b0bf3d.jpg)
