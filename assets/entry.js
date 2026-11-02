@@ -2,7 +2,8 @@
    Entry page — the stone circle of portals (index.html / da.html).
    - turns the ring (scroll, swipe, arrow keys, ‹ › buttons, rune row)
    - zooms through the front portal into its world
-   - carves the inscription behind the circle
+   - carves the inscription behind the circle, with a soft veil behind each portal
+   - replays the front portal's drawing when it is hovered
    - reloads wording from content/entry.json + entry.da.json so edits made in
      /admin show up without a rebuild
    The sky, seasons, header and rune language come from assets/world.js.
@@ -72,9 +73,11 @@
       it.style.transform = 'rotateY(' + phi + 'deg) translateZ(var(--r)) rotateY(' + (-phi) + 'deg)';
       pds[i].style.opacity = (0.3 + 0.7 * (c + 1) / 2).toFixed(3);
       pds[i].classList.toggle('on', i === k);
+      pds[i].classList.remove('rp0', 'rp1');
       if (labels[i]) labels[i].style.opacity = Math.max(0, c).toFixed(3);
     });
     if (floor) floor.style.transform = 'rotateX(90deg) rotateZ(' + (n * STEP) + 'deg)';
+    followVeil();
     dots.forEach(function (d, i) { d.classList.toggle('on', i === k); d.setAttribute('aria-current', i === k ? 'true' : 'false'); });
     if (announced && live) {
       var p = (C().portals || [])[k] || {};
@@ -131,6 +134,12 @@
       if (isFront && link && (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button)) return; // new tab / window
       e.preventDefault();
       if (isFront) enter(i); else goTo(i);
+    });
+    pd.addEventListener('mouseenter', function () { // the front portal draws its symbol again
+      if (i !== front() || busy) return;
+      var again = pd.classList.contains('rp0');
+      pd.classList.toggle('rp0', !again);
+      pd.classList.toggle('rp1', again);
     });
     pd.addEventListener('focus', function () {
       if (Date.now() - lastPointer < 600) return; // a click is on its way — let it decide
@@ -247,6 +256,40 @@
     fit();
     if (mq.addEventListener) mq.addEventListener('change', fit); else if (mq.addListener) mq.addListener(fit);
   })();
+
+  /* The veil: a soft hole in the inscription's mask behind each portal, so the runes
+     fade where a portal stands (more behind the front ones). It follows the portals
+     while the ring turns. */
+  var veilSvg = $('inscription'), veilUntil = 0, veilFrame = 0;
+  var FADE = 'linear-gradient(to bottom,transparent 0%,#000 30%,#000 68%,transparent 100%)';
+  function drawVeil() {
+    if (!veilSvg || !stage) return;
+    var box = veilSvg.getBoundingClientRect(), w = stage.offsetWidth;
+    if (!box.width || !w) return;
+    var k = box.width / w; // the stage's own zoom (while entering a world)
+    var holes = $$('.pa').map(function (pa, i) {
+      var r = pa.getBoundingClientRect();
+      var x = (r.left + r.width / 2 - box.left) / k, y = (r.top + r.height / 2 - box.top) / k;
+      var op = parseFloat(getComputedStyle(pds[i]).opacity);
+      var a = (1 - 0.6 * (isNaN(op) ? 1 : op)).toFixed(2);
+      return 'radial-gradient(circle ' + (r.width / k * 0.7).toFixed(0) + 'px at ' + x.toFixed(0) + 'px ' + y.toFixed(0) + 'px,' +
+        'rgba(0,0,0,' + a + ') 0%,rgba(0,0,0,' + a + ') 45%,#000 100%)';
+    });
+    var m = holes.concat(FADE).join(',');
+    veilSvg.style.webkitMaskImage = m;
+    veilSvg.style.maskImage = m;
+  }
+  function followVeil() {
+    veilUntil = Date.now() + 1000; // the turn takes .9s
+    if (veilFrame) return;
+    var tick = function () {
+      drawVeil();
+      veilFrame = Date.now() < veilUntil ? requestAnimationFrame(tick) : 0;
+    };
+    veilFrame = requestAnimationFrame(tick);
+  }
+  var veilResize = 0;
+  window.addEventListener('resize', function () { clearTimeout(veilResize); veilResize = setTimeout(drawVeil, 120); });
 
   /* ------------------------------------------------------------------ live wording from /admin */
   function refresh() {

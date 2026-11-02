@@ -475,7 +475,7 @@ def render_entry(env, content, entry, versions):
         render_world_page(
             env, "entry.html.j2", ENTRY, lang,
             e=entry[lang], ui=ui[lang], meta=meta, jsonld=jsonld(content[lang], lang), ring=ring, v=versions,
-            world_data={"page": lang, "ui": ui}, data={"content": entry},
+            world_data={"page": lang, "ui": ui}, data={"content": entry}, world_class="circle",
         )
 
 

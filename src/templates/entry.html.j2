@@ -22,19 +22,19 @@
           <g id="inscription-runes" fill="none" stroke="url(#bark-pat)" stroke-linecap="butt" stroke-linejoin="miter" data-carved="ᛏᚢ᛬ᚦᛅ᛬ᛘᛅᛁᛏ᛬ᚦᛅᛏ᛬ᛁᛋ᛬ᛋᛏᛁᛚ᛬ᚦᛅ᛬ᛁᚢᚾᛁᚠᛁᚱᛋ᛬ᛋᛅᚱᛁᛏᛅᛋ">
 {% include '_inscription.html' %}</g>
         </svg>
-        <span class="pool" aria-hidden="true"></span>
         <div class="scene">
           <div class="floor" id="floor" aria-hidden="true">
             <span class="floor-ring1"></span><span class="floor-ring2"></span>
             <span class="floor-fx" id="floor-winter"></span><span class="floor-fx" id="floor-summer"></span>
           </div>
           {% for p in e.portals %}{% set r = ring[loop.index0] %}
-          <div class="item" data-i="{{ loop.index0 }}" style="transform:{{ r.t }}">
+          <div class="item it{{ loop.index }}" data-i="{{ loop.index0 }}" style="transform:{{ r.t }}">
             <a class="pd{% if loop.first %} on{% endif %}" href="{{ p.link or '#' }}" data-i="{{ loop.index0 }}" aria-label="{{ p.name }}" style="opacity:{{ r.o }}">
               <span class="pa">
                 <span class="core" aria-hidden="true"></span>
                 <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg>{{ drawing(p.key) }}</span>
                 <span class="wv w1" aria-hidden="true"></span><span class="wv w2" aria-hidden="true"></span><span class="wv w3" aria-hidden="true"></span>
+                <span class="mote m1" aria-hidden="true"></span><span class="mote m2" aria-hidden="true"></span><span class="mote m3" aria-hidden="true"></span><span class="mote m4" aria-hidden="true"></span>
                 <span class="pr" aria-hidden="true">{{ p.rune }}</span>
               </span>
               <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>

@@ -246,6 +246,7 @@
     var hintBg = lerpV(lerpV(P.sky2, P.sky3, 0.45), P.pool, P.pool[3] * 0.45);
     var st = world.style;
     COLOR_KEYS.forEach(function (k) { st.setProperty('--' + k, css(P[k])); });
+    st.setProperty('--dl', s.dl.toFixed(3)); // daylight: 0 at night → 1 by day
     st.setProperty('--ink', darkTop ? '#0d1318' : '#f3f6f9');
     st.setProperty('--ink2', darkTop ? '#26333e' : css(P.title));
     st.setProperty('--muted', !darkroom && lum(hintBg) > 0.19 ? '#1c252e' : '#c9d2db');
