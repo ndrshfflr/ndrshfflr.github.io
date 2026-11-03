@@ -1,0 +1,26 @@
+{
+  "intro": {
+    "en": "",
+    "da": ""
+  },
+  "tools": [
+    {
+      "name": "Spore×plore",
+      "status": "live",
+      "link": "sporexplore.html",
+      "description": {
+        "en": "An interactive identifier for Nordic Boletales based on spore characteristics, drawing on Funga Nordica and live GBIF occurrence records.",
+        "da": "Et interaktivt bestemmelsesværktøj til nordiske rørhatte (Boletales) baseret på sporekarakterer, med data fra Funga Nordica og GBIF-fund i realtid."
+      }
+    },
+    {
+      "name": "Mouldbuster",
+      "status": "live",
+      "link": "mouldbuster.html",
+      "description": {
+        "en": "Microscopy-assisted identification for indoor Penicillium & Aspergillus — the moulds most often implicated in water-damaged buildings.",
+        "da": "Mikroskopi-assisteret bestemmelse af indendørs Penicillium og Aspergillus — de skimmelsvampe der oftest optræder i fugtskadede bygninger."
+      }
+    }
+  ]
+}

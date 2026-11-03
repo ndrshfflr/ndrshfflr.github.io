@@ -1,0 +1,31 @@
+{% extends "world.html.j2" %}
+{#- The Bioinformatics world (bioinformatics.html / .da.html): the tools, from
+    content/tools.json (/admin → Bioinformatics tools). -#}
+{% block styles %}<link rel="stylesheet" href="assets/pages.css?v={{ v.pagescss }}">{% endblock %}
+{% block content %}
+  <div class="hero chrome pg-hero">
+    <span class="pg-rune" aria-hidden="true">{{ rune }}</span>
+    <h1 class="nm"><span class="rv" data-k="heading"><span class="rn" aria-hidden="true"></span><span class="lt">{{ heading }}</span></span></h1>
+    {% if intro %}<p class="title"><span class="rv" data-k="intro"><span class="rn" aria-hidden="true"></span><span class="lt">{{ intro }}</span></span></p>{% endif %}
+    <button class="aa" id="aa" type="button" aria-pressed="false" aria-label="{{ ui.aa }}">Aa</button>
+  </div>
+
+  <main class="pg-wrap" id="main" data-page="tools">
+    <ul class="pg-tools" aria-label="{{ ui.toolsLabel }}">
+      {% for t in tools %}<li class="pg-tool{% if t.status == 'coming' %} is-coming{% endif %}">
+        <div class="pg-tool-head">
+          <h2 class="pg-tool-name">{{ t.name }}</h2>
+          {% if t.status == 'coming' %}<span class="pg-status">{{ ui.coming }}</span>{% endif %}
+        </div>
+        {% if t.text %}<p class="pg-tool-text">{{ t.text }}</p>{% endif %}
+        {% if t.status != 'coming' %}<a class="pg-btn" href="{{ t.link }}">{{ ui.openTool }} {{ t.name }} <span aria-hidden="true">&rarr;</span></a>{% endif %}
+      </li>{% endfor %}
+    </ul>
+    {% if not tools %}<p class="pg-empty">{{ ui.noTools }}</p>{% endif %}
+  </main>
+
+  <footer class="world-foot chrome">
+    <a class="back-link" href="{{ entry_href }}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="rv" data-k="back"><span class="rn" aria-hidden="true"></span><span class="lt">{{ ui.back }}</span></span></a>
+  </footer>
+{% endblock %}
+{% block scripts %}<script src="assets/pages.js?v={{ v.pagesjs }}"></script>{% endblock %}

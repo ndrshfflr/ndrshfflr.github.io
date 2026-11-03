@@ -71,6 +71,7 @@
 .it4 .grid .flow circle:nth-child(1),.it4 .grid .flow circle:nth-child(5),.it4 .grid .flow circle:nth-child(6),.it4 .grid .flow circle:nth-child(8),.it4 .grid .flow circle:nth-child(9),.it4 .grid .flow circle:nth-child(10){animation-direction:reverse}
 .it5 .grid .flow circle:nth-child(2),.it5 .grid .flow circle:nth-child(3),.it5 .grid .flow circle:nth-child(4),.it5 .grid .flow circle:nth-child(6),.it5 .grid .flow circle:nth-child(7),.it5 .grid .flow circle:nth-child(8){animation-direction:reverse}
 .it6 .grid .flow circle:nth-child(1),.it6 .grid .flow circle:nth-child(2),.it6 .grid .flow circle:nth-child(4),.it6 .grid .flow circle:nth-child(5),.it6 .grid .flow circle:nth-child(6),.it6 .grid .flow circle:nth-child(8),.it6 .grid .flow circle:nth-child(10){animation-direction:reverse}
+.it7 .grid .flow circle:nth-child(2),.it7 .grid .flow circle:nth-child(3),.it7 .grid .flow circle:nth-child(5),.it7 .grid .flow circle:nth-child(7),.it7 .grid .flow circle:nth-child(9){animation-direction:reverse}
 /* the ripples move slowly outwards */
 .wv{position:absolute;inset:0;border-radius:50%;border:1px solid color-mix(in srgb,var(--pline) 26%,transparent);pointer-events:none;animation:ripple 12s linear infinite}
 .w2{animation-delay:-4s}.w3{animation-delay:-8s}
@@ -158,7 +159,10 @@
   .dia{display:none}
   .dest-name{font-size:32px}
 }
-@media (max-width:380px){
+@media (max-width:760px){
   .dot{width:40px}
+}
+@media (max-width:380px){
+  .dot{width:36px}
 }
 

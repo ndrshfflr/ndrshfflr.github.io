@@ -28,10 +28,10 @@ collections:
             name: "portals"
             widget: "list"
             allow_add: false
-            min: 6
-            max: 6
+            min: 7
+            max: 7
             summary: "{{fields.rune}}  {{fields.name}}"
-            hint: "The six worlds around the circle, in order of weight — the first stands at the front."
+            hint: "The seven worlds around the circle, in order of weight — the first stands at the front."
             fields:
               - { label: "Key", name: "key", widget: "hidden" }
               - { label: "Name", name: "name", widget: "string" }
@@ -41,8 +41,8 @@ collections:
             name: "menu"
             widget: "list"
             allow_add: false
-            min: 4
-            max: 4
+            min: 3
+            max: 3
             summary: "{{fields.rune}}  {{fields.name}}"
             fields:
               - { label: "Name", name: "name", widget: "string" }
@@ -670,6 +670,38 @@ collections:
                 required: false
                 hint: "Which finds this photo shows. Easiest in the photo manager (upload.html → Library). Synced finds look like svampeatlas:123, finds added by hand like manual:m20261029-ab12."
                 field: { label: "Sighting", name: "id", widget: "string" }
+
+  - name: "tools"
+    label: "Bioinformatics tools"
+    files:
+      - file: "content/tools.json"
+        label: "Tools (bioinformatics.html)"
+        name: "tools"
+        format: "json"
+        fields:
+          - label: "Line under the heading (optional)"
+            name: "intro"
+            widget: "object"
+            required: false
+            collapsed: true
+            fields:
+              - { label: "English", name: "en", widget: "string", required: false }
+              - { label: "Danish", name: "da", widget: "string", required: false }
+          - label: "Tools"
+            name: "tools"
+            widget: "list"
+            summary: "{{fields.name}} · {{fields.status}}"
+            hint: "Drag to change the order. Tools you're still building show as \"Coming\"."
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Status", name: "status", widget: "select", default: "live", options: [{ label: "Live — can be opened", value: "live" }, { label: "Coming — still being built", value: "coming" }] }
+              - { label: "Link", name: "link", widget: "string", required: false, hint: "e.g. sporexplore.html or a full https:// link. Leave empty for a tool that's coming." }
+              - label: "What it does"
+                name: "description"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "text", required: false }
+                  - { label: "Danish", name: "da", widget: "text", required: false, hint: "Leave empty to show the English text." }
 
   - name: "posts"
     label: "Blog posts"

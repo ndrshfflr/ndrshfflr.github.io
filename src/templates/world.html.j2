@@ -23,7 +23,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ meta.title }}</title>
 <meta name="description" content="{{ meta.description }}">
-<link rel="canonical" href="{{ meta.canonical }}">
+{% if meta.canonical %}<link rel="canonical" href="{{ meta.canonical }}">{% endif %}
 {% for alt in meta.alternates %}<link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ alt.href }}">
 {% endfor %}
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -34,7 +34,7 @@
 <meta property="og:site_name" content="Pieter Shiffler Carpentier">
 <meta property="og:title" content="{{ meta.title }}">
 <meta property="og:description" content="{{ meta.ogDescription }}">
-<meta property="og:url" content="{{ meta.canonical }}">
+{% if meta.canonical %}<meta property="og:url" content="{{ meta.canonical }}">{% endif %}
 <meta property="og:locale" content="{{ 'da_DK' if lang == 'da' else 'en_GB' }}">
 {% if meta.image %}<meta property="og:image" content="{{ meta.image }}">
 {% else %}<meta property="og:image" content="{{ site_url }}og-image.png">

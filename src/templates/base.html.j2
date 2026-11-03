@@ -19,7 +19,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ meta.title }}</title>
 <meta name="description" content="{{ meta.description }}">
-{% if meta.canonical %}<link rel="canonical" href="{{ meta.canonical }}">{% endif %}
+{% if noindex %}<meta name="robots" content="noindex">
+{% endif %}{% if meta.canonical %}<link rel="canonical" href="{{ meta.canonical }}">{% endif %}
 {% for alt in meta.alternates %}<link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ alt.href }}">
 {% endfor %}
 <link rel="icon" type="image/svg+xml" href="favicon.svg">

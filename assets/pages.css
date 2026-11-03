@@ -1,0 +1,120 @@
+/* ==========================================================================
+   The world's reading pages: Labdiary (blog.html), a post (post.html), the CV
+   and other extra pages (page.html), Bioinformatics (bioinformatics.html).
+   Sky, header and rune language come from assets/world.css + world.js.
+   Text sits on dark "paper" so it reads the same in every sky.
+   ========================================================================== */
+
+/* square corners, like the field log (the moon and stars stay round) */
+.pg-world .season-btn,.pg-world .season-menu,.pg-world .sopt,.pg-world .aa,.pg-world .back-link{border-radius:0}
+
+.pg-world{--paper:rgba(6,9,14,.8);--paper-line:rgba(214,226,238,.13);--txt:#e6ebf0;--txt2:#a9b7c4;--link:#f0b27f}
+
+/* the head of the page */
+.pg-hero{padding-top:6px}
+@media (prefers-reduced-motion:no-preference){.pg-hero,.pg-wrap{animation:arrive .9s ease both}.pg-wrap{animation-delay:.08s}}
+.pg-rune{font-family:'Skurd',serif;font-size:52px;line-height:1;color:var(--acc);text-shadow:0 0 24px var(--glow);margin-bottom:8px}
+.pg-hero .title{max-width:680px;line-height:1.5}
+.pg-hero .title[hidden]{display:none}
+.pg-eyebrow{display:flex;gap:10px;justify-content:center;margin:0 0 6px;font-size:16px;font-weight:500;color:var(--ink2)}
+.pg-title{max-width:900px}
+.pg-lang{padding:1px 6px;border:1px solid currentColor;font-size:12px;letter-spacing:.06em}
+.pg-lang[hidden]{display:none}
+.pg-actions{margin:16px 0 0}
+.pg-actions[hidden]{display:none}
+
+.pg-wrap{position:relative;z-index:1;width:100%;max-width:820px;margin:34px auto 0;padding:0 32px}
+.pg-wide{max-width:1200px}
+
+/* buttons and links */
+.pg-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:1px solid color-mix(in srgb,var(--acc) 70%,transparent);
+  background:color-mix(in srgb,var(--acc) 14%,rgba(6,9,14,.5));color:#f6efe6;text-decoration:none;font-size:16px;font-weight:500}
+.pg-btn:hover{background:color-mix(in srgb,var(--acc) 26%,rgba(6,9,14,.5))}
+.pg-link{color:var(--ink);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--ink) 40%,transparent);text-underline-offset:5px}
+.pg-btn:focus-visible,.pg-link:focus-visible,.pg-card-a:focus-visible,.pg-tag:focus-visible,.pg-body a:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.pg-under{margin:22px 0 0;text-align:center;font-size:16px}
+
+/* Labdiary: topic buttons and post cards */
+.pg-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:0 0 22px}
+.pg-tag{min-height:38px;padding:0 13px;border:1px solid color-mix(in srgb,var(--ink) 18%,transparent);background:transparent;color:var(--ink);font-size:15px;cursor:pointer}
+.pg-tag:hover{border-color:color-mix(in srgb,var(--ink) 38%,transparent)}
+.pg-tag[aria-pressed="true"]{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 16%,transparent)}
+.pg-posts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:18px}
+.pg-card[hidden]{display:none}
+.pg-card-a{display:flex;flex-direction:column;height:100%;background:var(--paper);border:1px solid var(--paper-line);color:var(--txt);text-decoration:none;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:border-color .3s ease}
+.pg-card-a:hover{border-color:color-mix(in srgb,var(--acc) 55%,transparent)}
+.pg-cover{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:16/10;overflow:hidden;background:rgba(2,4,8,.6)}
+.pg-cover img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.pg-card-a:hover .pg-cover img{transform:scale(1.03)}
+.pg-cover-rune{font-family:'Skurd',serif;font-size:64px;color:var(--acc);opacity:.55;text-shadow:0 0 24px var(--glow)}
+.pg-card-text{display:flex;flex-direction:column;gap:8px;padding:18px 20px 20px}
+.pg-meta{display:flex;gap:10px;align-items:center;font-size:14px;color:var(--txt2)}
+.pg-card-title{font-family:'Cinzel',Georgia,serif;font-size:21px;line-height:1.25}
+.pg-summary{font-size:16px;line-height:1.5;color:var(--txt2)}
+.pg-card-tags{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 0;font-size:13px}
+.pg-card-tags span{padding:2px 8px;border:1px solid var(--paper-line);color:var(--txt2)}
+.pg-card-tags:empty{display:none}
+.pg-empty{text-align:center;color:var(--ink2);font-size:17px}
+.pg-empty[hidden]{display:none}
+
+/* a post or page: the text on dark paper */
+.pg-paper{background:var(--paper);border:1px solid var(--paper-line);color:var(--txt);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.pg-hero-img{margin:0}
+.pg-hero-img[hidden]{display:none}
+.pg-hero-img img{display:block;width:100%;max-height:560px;object-fit:cover}
+.pg-body{padding:34px 44px 36px;font-size:19px;line-height:1.65}
+.pg-post-tags{padding:0 44px 32px;margin:-8px 0 0}
+.pg-loading{color:var(--txt2)}
+.pg-body>:first-child{margin-top:0}
+.pg-body h1,.pg-body h2,.pg-body h3{font-family:'Cinzel',Georgia,serif;font-weight:500;line-height:1.25;color:#f3f6f9;margin:1.6em 0 .5em}
+.pg-body h1{font-size:28px}.pg-body h2{font-size:24px}.pg-body h3{font-size:20px}
+.pg-body p{margin:0 0 1em}
+.pg-body a{color:var(--link);text-underline-offset:3px}
+.pg-body img{display:block;max-width:100%;height:auto;margin:1.2em auto}
+.pg-body blockquote{margin:1.2em 0;padding:4px 0 4px 20px;border-left:2px solid var(--acc);color:var(--txt2);font-style:italic}
+.pg-body ul,.pg-body ol{margin:0 0 1em;padding-left:1.3em}
+.pg-body li{margin:0 0 .4em}
+.pg-body li::marker{color:var(--acc)}
+.pg-body strong{color:#f3f6f9}
+.pg-body hr{border:0;height:1px;background:var(--paper-line);margin:2em 0}
+.pg-photos{margin:2em 0 0}
+.pg-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+.pg-strip figure{margin:0}
+.pg-strip img{display:block;width:100%;aspect-ratio:1;object-fit:cover;margin:0}
+.pg-strip figcaption{display:flex;flex-direction:column;gap:2px;padding:6px 0 0;font-size:14px;line-height:1.35;color:var(--txt2)}
+
+/* Bioinformatics: the tools */
+.pg-tools{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.pg-tool{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:24px 28px;background:var(--paper);border:1px solid var(--paper-line);color:var(--txt);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.pg-tool-head{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.pg-tool-name{margin:0;font-family:'Cinzel',Georgia,serif;font-weight:500;font-size:24px;line-height:1.2;color:#f3f6f9}
+.pg-tool-text{margin:0;font-size:18px;line-height:1.55;color:var(--txt2)}
+.pg-status{padding:2px 9px;border:1px dashed color-mix(in srgb,var(--acc) 70%,transparent);color:var(--acc);font-size:13px;letter-spacing:.04em}
+.is-coming{border-style:dashed}
+.is-coming .pg-tool-name{color:var(--txt2)}
+
+@media (max-width:760px){
+  .pg-wrap{padding:0 14px;margin-top:24px}
+  .pg-body{padding:24px 20px 26px;font-size:18px}
+  .pg-post-tags{padding:0 20px 24px}
+  .pg-tool{padding:20px}
+  .pg-tool-name{font-size:21px}
+}
+
+/* print (the CV): plain black on white */
+@media print{
+  .pg-world{background:#fff !important;color:#000}
+  .pg-world .stars,.pg-world .disc,.pg-world .fx,.pg-world .top,.pg-world .aa,.pg-world .pg-rune,.pg-world .pg-actions,.pg-world .world-foot{display:none !important}
+  .pg-world .nm,.pg-world .rv .lt{color:#000;opacity:1 !important}
+  .pg-world .rv .rn{display:none}
+  .pg-paper{background:none;border:0;color:#000;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .pg-body{padding:0;font-size:12pt;color:#000}
+  .pg-body h1,.pg-body h2,.pg-body h3,.pg-body strong{color:#000}
+  .pg-body a{color:#000}
+}
+
+/* the way back stays readable at the dark foot of a daytime sky */
+.pg-world .back-link{background:var(--paper);border-color:var(--paper-line);color:var(--txt)}
+.pg-world .back-link:hover{background:rgba(6,9,14,.92)}
