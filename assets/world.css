@@ -152,14 +152,19 @@ button{font:inherit}
 @view-transition{navigation:auto}
 @media (prefers-reduced-motion:reduce){@view-transition{navigation:none}}
 ::view-transition-group(root){animation-duration:.85s}
+/* the browser blends the two pages by adding their light together, which washes the picture
+   out while one page covers the other: here they lie on top of each other instead */
+:active-view-transition-type(into-world,to-circle)::view-transition-old(root),
+:active-view-transition-type(into-world,to-circle)::view-transition-new(root){mix-blend-mode:normal}
+:active-view-transition-type(into-world)::view-transition-new(root){z-index:2}
 /* into a world: the circle has zoomed into the portal; the world opens out of a ripple */
 :active-view-transition-type(into-world)::view-transition-old(root){animation:vt-fade .6s ease both}
 :active-view-transition-type(into-world)::view-transition-new(root){animation:vt-open .9s cubic-bezier(.2,.7,.2,1) both}
-/* back to the circle: the world shrinks into its portal while the circle pulls back out under it */
-:active-view-transition-type(to-circle)::view-transition-old(root){z-index:2;animation:vt-close .8s cubic-bezier(.55,0,.75,.35) both}
+/* back to the circle: the world has folded shut into its portal (assets/world.js); the circle,
+   already pulling back out, takes over without a blank moment */
+:active-view-transition-type(to-circle)::view-transition-old(root){z-index:2;animation:vt-fade .3s ease both}
 :active-view-transition-type(to-circle)::view-transition-new(root){z-index:1;animation:none}
 @keyframes vt-open{from{clip-path:circle(0 at 50% 42%)}to{clip-path:circle(150vmax at 50% 42%)}}
-@keyframes vt-close{from{clip-path:circle(150vmax at 50% 42%)}to{clip-path:circle(0 at 50% 42%)}}
 @keyframes vt-fade{to{opacity:0}}
 
 /* leaving a world for the circle: it folds shut into a ripple (assets/world.js) */
