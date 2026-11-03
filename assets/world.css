@@ -86,10 +86,17 @@ button{font:inherit}
 .eye{overflow:visible}
 .eye-look{transition:transform .14s ease-out}
 .eye-pupil{transform-box:fill-box;transform-origin:center;transition:transform .45s ease}
-.world:has(.pd:hover) .eye-pupil{transform:scale(1.28)}
+.world:has(a:hover,button:hover) .eye-pupil{transform:scale(1.32)}
+/* …and glows and flickers like a portal's drawing */
+.eye{transition:filter .5s ease}
+.world:has(a:hover,button:hover) .logo .eye{filter:drop-shadow(0 0 3px rgba(255,255,255,.85)) drop-shadow(0 0 10px color-mix(in srgb,var(--acc) 70%,transparent))}
+@keyframes eyeflicker{0%{opacity:1}7%{opacity:.62}9%{opacity:1}20%{opacity:.85}22%{opacity:1}43%{opacity:.7}45%{opacity:.98}65%{opacity:.6}67%{opacity:1}86%{opacity:.82}100%{opacity:1}}
 .eye-lid{transform-box:view-box;transform-origin:50px 50px}
 @keyframes blink{0%,44%,48%,90%,92.5%,95%,97.5%,100%{transform:scaleY(1)}46%,91.2%,96.2%{transform:scaleY(.06)}}
-@media (prefers-reduced-motion:no-preference){.eye-lid{animation:blink 11s ease-in-out infinite}}
+@media (prefers-reduced-motion:no-preference){
+  .eye-lid{animation:blink 11s ease-in-out infinite}
+  .world:has(a:hover,button:hover) .logo .eye{animation:eyeflicker 2.6s steps(1,end) infinite}
+}
 .top-right{display:flex;align-items:center;gap:8px}
 .langs{display:flex;align-items:center;gap:2px;font-size:16px;font-weight:500}
 .lang{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 4px;color:var(--ink2);text-decoration:none}

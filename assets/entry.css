@@ -2,23 +2,6 @@
    Entry page — the stone circle of portals (index.html / da.html).
    The sky, header and rune language come from assets/world.css.
    ========================================================================== */
-/* C1 · the beech forest on the horizon, behind the runes: canopies in spring, summer and
-   autumn (tinted in autumn), bare trees in winter. The colours follow the sky. */
-.land{position:absolute;left:0;right:0;top:calc(var(--b) * .3);height:var(--b);pointer-events:none;
-  -webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent);mask-image:linear-gradient(to bottom,#000 78%,transparent)}
-.land svg{position:absolute;inset:0;width:100%;height:100%}
-.land .lf{fill:color-mix(in srgb,var(--sky3) 70%,var(--sky2))}
-.land .far{fill:color-mix(in srgb,var(--sky2) calc(52% + var(--dayk) * 22%),var(--sky3))}
-.land .mid{fill:color-mix(in srgb,var(--sky2) calc(22% + var(--dayk) * 30%),var(--sky3))}
-.land .near{fill:color-mix(in srgb,var(--sky3) 82%,#000)}
-.land .bare path{fill:none;stroke-linecap:round}
-.land .far-s path{stroke:color-mix(in srgb,var(--sky2) 62%,var(--sky3));stroke-width:1.5px}
-.land .mid-s path{stroke:color-mix(in srgb,var(--sky2) 36%,var(--sky3));stroke-width:2.4px}
-.s-winter .land .leafy{display:none}
-.world:not(.s-winter) .land .bare{display:none}
-.s-autumn .land .leafy.far{fill:color-mix(in srgb,#8a5a2a 26%,color-mix(in srgb,var(--sky2) calc(52% + var(--dayk) * 22%),var(--sky3)))}
-.s-autumn .land .leafy.mid{fill:color-mix(in srgb,#6a3a18 26%,color-mix(in srgb,var(--sky2) calc(22% + var(--dayk) * 30%),var(--sky3)))}
-
 /* I5 · the circle remembers: portals you've been through burn a little brighter */
 .seen .core{opacity:calc(.85 - .35 * var(--dayk))}
 .seen .pa::after{content:'';position:absolute;inset:4%;border-radius:50%;pointer-events:none;
@@ -36,7 +19,7 @@
   .ritual .item .pa{animation:kindle 1.3s ease both;animation-delay:calc(.5s + var(--ri) * .42s)}
   .ritual .item .beam,.ritual .item .foot,.ritual .item .pl{animation:wakefade .8s ease both;animation-delay:calc(1s + var(--ri) * .42s)}
   .ritual .grid .flow,.ritual .grid .flow circle,.ritual .grid .spokes,.ritual .wv{animation-play-state:paused}
-  .ritual .treeline,.ritual .land{animation:wakefade 1.6s ease 3.4s both}
+  .ritual .treeline{animation:wakefade 1.6s ease 3.4s both}
   .ritual .floor{animation:wakefade 1.4s ease 3.1s both}
   .ritual .chrome{animation:wakefade 1.2s ease 3.8s both}
 }
@@ -45,8 +28,8 @@
 
 /* E4 · rack focus: hovering a portal softly blurs what lies behind it */
 @media (hover:hover) and (prefers-reduced-motion:no-preference){
-  .treeline,.land,.floor,.pd,.disc,.stars{transition:filter .5s ease,opacity .9s ease}
-  .stage:has(.pd:hover) .treeline,.stage:has(.pd:hover) .land{filter:blur(3px)}
+  .treeline,.floor,.pd,.disc,.stars{transition:filter .5s ease,opacity .9s ease}
+  .stage:has(.pd:hover) .treeline{filter:blur(3px)}
   .stage:has(.pd:hover) .floor{filter:blur(2px)}
   .stage:has(.pd:hover) .pd:not(:hover){filter:blur(2.5px)}
   .world:has(.stage .pd:hover) .disc,.world:has(.stage .pd:hover) .stars{filter:blur(2px)}
