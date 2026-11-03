@@ -345,6 +345,60 @@
   }
   if (aa) aa.addEventListener('click', function () { reveal(!root.classList.contains('reveal-all')); });
 
+  /* ------------------------------------------------------------------ the seeing eye */
+  /* The eye in the corner follows the pointer (mouse and pen; on touch screens it just blinks). */
+  (function () {
+    var look = $('eye-look'), eye = doc.querySelector('.logo .eye');
+    if (!look || !eye || !window.matchMedia || !matchMedia('(hover: hover)').matches) return;
+    var frame = 0, px = 0, py = 0;
+    doc.addEventListener('pointermove', function (e) {
+      px = e.clientX; py = e.clientY;
+      if (frame) return;
+      frame = requestAnimationFrame(function () {
+        frame = 0;
+        var r = eye.getBoundingClientRect();
+        var dx = px - (r.left + r.width / 2), dy = py - (r.top + r.height / 2);
+        var d = Math.sqrt(dx * dx + dy * dy) || 1, m = Math.min(1, d / 260);
+        look.setAttribute('transform', 'translate(' + (dx / d * m * 8).toFixed(2) + ' ' + (dy / d * m * 4.5).toFixed(2) + ')');
+      });
+    }, { passive: true });
+    doc.documentElement.addEventListener('mouseleave', function () { look.removeAttribute('transform'); });
+  })();
+
+  /* ------------------------------------------------------------------ back to the circle */
+  /* A link to the circle (the eye, "Back to the circle") folds this world shut into a
+     ripple, then leaves a note so the circle opens out of this world's portal. */
+  if (!world.classList.contains('circle')) {
+    var page = location.pathname.split('/').pop() || '';
+    var toCircle = function (a) {
+      if (!a || !a.href || a.target) return false;
+      try {
+        var u = new URL(a.href, location.href);
+        var f = u.pathname.split('/').pop();
+        return u.origin === location.origin && (f === '' || f === 'index.html' || f === 'da.html') && !a.hasAttribute('data-mode');
+      } catch (e) { return false; }
+    };
+    doc.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a');
+      if (!toCircle(a) || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      session.set('circleReturn', page);
+      if (reduced) return;
+      e.preventDefault();
+      var ring = doc.createElement('span');
+      ring.className = 'close-ring';
+      ring.setAttribute('aria-hidden', 'true');
+      doc.body.appendChild(ring);
+      world.style.setProperty('--close-y', Math.round(window.scrollY + innerHeight * 0.42 - world.getBoundingClientRect().top - window.scrollY) + 'px');
+      world.classList.add('leaving');
+      setTimeout(function () { location.href = a.href; }, 560);
+    });
+    window.addEventListener('pageshow', function (e) {
+      if (!e.persisted) return; // back here with the browser's back button: open the world again
+      world.classList.remove('leaving');
+      $$('.close-ring').forEach(function (r) { r.parentNode.removeChild(r); });
+    });
+  }
+
   /* ------------------------------------------------------------------ start */
   window.World = {
     page: PAGE, reduced: reduced, params: params, local: local, session: session,

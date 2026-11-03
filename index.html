@@ -9,12 +9,31 @@
   var d = document.documentElement, mode = 'runes';
   try { var m = localStorage.getItem('entryLang'); if (m === 'en' || m === 'da') mode = 'latin'; } catch (e) {}
   d.className = 'js mode-' + mode;
+  /* coming back from a world (its link to the circle left a note, or it's the page we came
+     from): the circle opens zoomed into that world's portal and pulls back out (assets/entry.js) */
+  try {
+    var from = sessionStorage.getItem('circleReturn');
+    sessionStorage.removeItem('circleReturn');
+    var nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+    if (!from && document.referrer && !(nav && nav.type === 'reload')) {
+      var u = new URL(document.referrer);
+      var f = u.pathname.split('/').pop();
+      if (u.origin === location.origin && f && f !== 'index.html' && f !== 'da.html') from = f;
+    }
+    var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (from && !still) {
+      d.className += ' returning';
+      d.setAttribute('data-return', from);
+    }
+    /* the first visit: the portals light one by one before the circle wakes (assets/entry.js) */
+    if (!from && !still && !localStorage.getItem('circleVisited')) d.className += ' ritual';
+  } catch (e) {}
 })();
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pieter Shiffler Carpentier — Biologist · Mycologist · Animist</title>
-<meta name="description" content="Pieter Shiffler Carpentier, MSc Biology — indoor microbiology, fungiculture, foraging, conservation, small worlds and nature photography.">
+<meta name="description" content="Pieter Shiffler Carpentier, MSc Biology — indoor microbiology, fungiculture, foraging, conservation, small worlds, nature photography and bioinformatics.">
 <link rel="canonical" href="https://ndrshfflr.github.io/">
 <link rel="alternate" hreflang="en" href="https://ndrshfflr.github.io/">
 <link rel="alternate" hreflang="da" href="https://ndrshfflr.github.io/da.html">
@@ -27,7 +46,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pieter Shiffler Carpentier">
 <meta property="og:title" content="Pieter Shiffler Carpentier — Biologist · Mycologist · Animist">
-<meta property="og:description" content="Biologist, mycologist and animist. Step through a portal: indoor microbiology, fungiculture, foraging, conservation, small worlds and photography.">
+<meta property="og:description" content="Biologist, mycologist and animist. Step through a portal: indoor microbiology, fungiculture, foraging, conservation, small worlds, photography and bioinformatics.">
 <meta property="og:url" content="https://ndrshfflr.github.io/">
 <meta property="og:locale" content="en_GB">
 <meta property="og:image" content="https://ndrshfflr.github.io/og-image.png">
@@ -36,15 +55,15 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Pieter Shiffler Carpentier — Biologist · Mycologist · Animist">
-<meta name="twitter:description" content="Biologist, mycologist and animist. Step through a portal: indoor microbiology, fungiculture, foraging, conservation, small worlds and photography.">
+<meta name="twitter:description" content="Biologist, mycologist and animist. Step through a portal: indoor microbiology, fungiculture, foraging, conservation, small worlds, photography and bioinformatics.">
 <meta name="twitter:image" content="https://ndrshfflr.github.io/og-image.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of Copenhagen"}, "description": "MSc Biology \u2014 indoor microbiology specialist, mycologist, and guide to the world of fungi.", "email": "mailto:pietershiffler@proton.me", "jobTitle": "Indoor Microbiology Specialist \u0026 Mycologist", "knowsAbout": ["Mycology", "Indoor microbiology", "Mould", "Building moisture damage", "Fungal identification", "Mushroom cultivation"], "knowsLanguage": ["da", "en"], "name": "Pieter Shiffler Carpentier", "sameAs": ["https://instagram.com/shfflr"], "url": "https://ndrshfflr.github.io/"}</script>
 <!-- Fonts are self-hosted (no requests to Google — simpler under GDPR) -->
 <link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/world.css?v=6be4beb9">
-<link rel="stylesheet" href="assets/entry.css?v=f3bfdc39">
+<link rel="stylesheet" href="assets/world.css?v=c2d56bcb">
+<link rel="stylesheet" href="assets/entry.css?v=38b58834">
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
 </head>
 <body>
@@ -61,7 +80,7 @@
 
   <header class="top chrome" id="top">
     <a class="logo" href="index.html" aria-label="Pieter Shiffler Carpentier">
-      <svg viewBox="0 0 100 100" width="38" height="38" aria-hidden="true"><path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/><circle cx="50" cy="50" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><circle cx="50" cy="50" r="10" class="eye-pupil"/><circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/></svg>
+      <svg class="eye" viewBox="0 0 100 100" width="38" height="38" aria-hidden="true"><defs><clipPath id="eye-clip"><path d="M6 50Q50 6 94 50Q50 94 6 50Z"/></clipPath></defs><g class="eye-lid"><g clip-path="url(#eye-clip)"><g class="eye-look" id="eye-look"><circle cx="50" cy="50" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><circle cx="50" cy="50" r="10" class="eye-pupil"/><circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/></g></g><path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/></g></svg>
     </a>
     <div class="top-right">
       <nav class="langs" aria-label="Language">
@@ -114,6 +133,7 @@
   </header>
 
   
+  <span class="ritual-dark" aria-hidden="true"></span>
   <div class="hero chrome">
     <h1 class="nm"><span class="rv" data-k="name"><span class="rn" aria-hidden="true"></span><span class="lt">Pieter Shiffler Carpentier</span></span></h1>
     <p class="title"><span class="rv" data-k="title"><span class="rn" aria-hidden="true"></span><span class="lt">Biologist · Mycologist · Animist</span></span></p>
@@ -175,8 +195,8 @@
             <span class="floor-fx" id="floor-winter"></span><span class="floor-fx" id="floor-summer"></span>
           </div>
           
-          <div class="item it1" data-i="0" style="transform:rotateY(0deg) translateZ(var(--r)) rotateY(-0deg)">
-            <a class="pd on" href="classic.html#microbiology" data-i="0" aria-label="Indoor microbiology" style="opacity:1.000">
+          <div class="item it1" data-i="0" style="transform:rotateY(0deg) translateZ(var(--r)) rotateY(-0deg);--ri:0">
+            <a class="pd on" href="#" data-i="0" data-key="microbiology" aria-label="Indoor microbiology" style="opacity:1.000">
               <span class="pa">
                 <span class="core" aria-hidden="true"></span>
                 <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 70 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round"><path d="M100 262C99 240 97 214 100 184"/><circle cx="100" cy="168" r="16"/><path d="M100 152v-12M111 157l14-15M89 157L75 142M116 168h20M84 168H64M111 179l13 12M89 179l-13 12"/><path d="M54 262C56 246 52 232 55 220"/><circle cx="55" cy="212" r="8"/><path d="M55 204v-9M61 207l7-7M49 207l-7-7"/><path d="M150 262C148 250 152 240 149 230"/><circle cx="149" cy="224" r="6"/><path d="M149 218v-7M154 220l6-6M144 220l-6-6"/></g><g fill="currentColor"><circle cx="128" cy="138" r="2.1"/><circle cx="72" cy="138" r="2.1"/><circle cx="141" cy="168" r="2.1"/><circle cx="59" cy="168" r="2.1"/><circle cx="127" cy="195" r="2"/><circle cx="73" cy="195" r="2"/><circle cx="55" cy="191" r="1.7"/><circle cx="149" cy="207" r="1.5"/></g></svg></span>
@@ -189,8 +209,8 @@
             </a>
           </div>
           
-          <div class="item it2" data-i="1" style="transform:rotateY(60deg) translateZ(var(--r)) rotateY(-60deg)">
-            <a class="pd" href="fungi.html" data-i="1" aria-label="Fungiculture" style="opacity:0.825">
+          <div class="item it2" data-i="1" style="transform:rotateY(51.4286deg) translateZ(var(--r)) rotateY(-51.4286deg);--ri:1">
+            <a class="pd" href="#" data-i="1" data-key="fungiculture" aria-label="Fungiculture" style="opacity:0.868">
               <span class="pa">
                 <span class="core" aria-hidden="true"></span>
                 <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 30 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round"><path d="M100 262C98 220 104 196 92 168C82 146 66 136 60 112C55 92 62 74 54 58"/><path d="M100 262C103 228 112 204 126 182C140 160 150 132 146 104C143 84 150 66 160 52"/><path d="M92 168C110 150 116 128 108 100C102 80 108 60 100 38"/><path d="M126 182C110 170 98 160 74 150C58 144 44 132 34 116"/><path d="M60 112C76 104 88 90 90 70"/><path d="M146 104C130 96 122 80 126 62"/><path d="M108 100C120 92 136 90 150 78"/><path d="M74 150C70 172 54 186 40 194"/><path d="M126 182C146 186 160 200 168 214"/></g><g fill="currentColor"><circle cx="54" cy="58" r="2.4"/><circle cx="160" cy="52" r="2.4"/><circle cx="100" cy="38" r="2.6"/><circle cx="34" cy="116" r="2"/><circle cx="168" cy="214" r="2"/><circle cx="90" cy="70" r="1.8"/><circle cx="126" cy="62" r="1.8"/><circle cx="150" cy="78" r="1.8"/><circle cx="40" cy="194" r="1.8"/></g></svg></span>
@@ -199,12 +219,12 @@
                 <span class="pr" aria-hidden="true">ᛅ</span>
               </span>
               <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
-              <span class="pl" style="opacity:0.500"><span class="rv" data-k="portal-1"><span class="rn" aria-hidden="true"></span><span class="lt">Fungiculture</span></span></span>
+              <span class="pl" style="opacity:0.623"><span class="rv" data-k="portal-1"><span class="rn" aria-hidden="true"></span><span class="lt">Fungiculture</span></span></span>
             </a>
           </div>
           
-          <div class="item it3" data-i="2" style="transform:rotateY(120deg) translateZ(var(--r)) rotateY(-120deg)">
-            <a class="pd" href="fungi.html#tours" data-i="2" aria-label="Foraging" style="opacity:0.475">
+          <div class="item it3" data-i="2" style="transform:rotateY(102.857deg) translateZ(var(--r)) rotateY(-102.857deg);--ri:3">
+            <a class="pd" href="#" data-i="2" data-key="foraging" aria-label="Foraging" style="opacity:0.572">
               <span class="pa">
                 <span class="core" aria-hidden="true"></span>
                 <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 70 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M64 172c0-24 17-38 38-38s38 14 38 38c-12-4-25-6-38-6s-26 2-38 6z"/><path d="M90 168c-2 28-6 50-10 76h44c-4-26-8-48-10-76"/><path d="M94 192l18 7M92 208l22 8M90 224l26 9"/><path d="M36 262C34 226 42 196 56 168"/><path d="M37 244l-11-6M38 228l-12-8M41 212l-11-10M45 196l-10-11M50 181l-8-11M37 244l10-8M38 228l11-10M41 212l11-11M45 196l10-12"/><path d="M164 262c0-34 4-54 0-72-3-13-17-13-17-2 0 7 9 8 10 2"/></g><g fill="currentColor"><circle cx="74" cy="152" r="1.6"/><circle cx="96" cy="144" r="1.6"/><circle cx="122" cy="150" r="1.6"/></g></svg></span>
@@ -217,8 +237,8 @@
             </a>
           </div>
           
-          <div class="item it4" data-i="3" style="transform:rotateY(180deg) translateZ(var(--r)) rotateY(-180deg)">
-            <a class="pd" href="#" data-i="3" aria-label="Conservation" style="opacity:0.300">
+          <div class="item it4" data-i="3" style="transform:rotateY(154.286deg) translateZ(var(--r)) rotateY(-154.286deg);--ri:5">
+            <a class="pd" href="#" data-i="3" data-key="conservation" aria-label="Conservation" style="opacity:0.335">
               <span class="pa">
                 <span class="core" aria-hidden="true"></span>
                 <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 62 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M100 214V128"/><path d="M100 172C86 162 70 158 56 142M100 156c14-10 30-14 44-30M100 128c-5-16-5-32 0-48M100 140c10-14 22-22 36-26M100 146c-10-12-22-18-36-20M56 142c-6-10-8-20-6-30M144 126c4-10 4-20 2-28M136 114c8-6 18-8 26-6M64 126c-8-6-18-8-26-6"/><path d="M28 214h144"/><path d="M100 214c-4 16-16 28-34 36M100 214c4 16 16 28 34 36M100 214v40M66 250c-10 2-18 6-24 12M134 250c10 2 18 6 24 12"/></g><g fill="currentColor"><circle cx="100" cy="78" r="2.6"/><circle cx="50" cy="110" r="2.2"/><circle cx="146" cy="96" r="2.2"/><circle cx="162" cy="108" r="2"/><circle cx="38" cy="120" r="2"/><circle cx="56" cy="142" r="1.8"/><circle cx="144" cy="126" r="1.8"/></g></svg></span>
@@ -231,8 +251,8 @@
             </a>
           </div>
           
-          <div class="item it5" data-i="4" style="transform:rotateY(240deg) translateZ(var(--r)) rotateY(-240deg)">
-            <a class="pd" href="terrarium.html" data-i="4" aria-label="Small worlds" style="opacity:0.475">
+          <div class="item it5" data-i="4" style="transform:rotateY(205.714deg) translateZ(var(--r)) rotateY(-205.714deg);--ri:6">
+            <a class="pd" href="#" data-i="4" data-key="smallworlds" aria-label="Small worlds" style="opacity:0.335">
               <span class="pa">
                 <span class="core" aria-hidden="true"></span>
                 <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path pathLength="240" d="M100 60a10 10 0 1 1 0 20a10 10 0 1 1 0-20zM100 84c8 0 10 8 10 14s-2 12-10 12-10-6-10-12 2-14 10-14zM100 114c12 0 16 12 16 22s-6 20-16 20-16-10-16-20 4-22 16-22z"/><path pathLength="240" d="M92 92l-20-12-10 6M92 100h-26l-8 10M94 108l-18 18-4 12M108 92l20-12 10 6M108 100h26l8 10M106 108l18 18 4 12M94 62l-8-16M106 62l8-16"/></g></svg></span>
@@ -245,8 +265,8 @@
             </a>
           </div>
           
-          <div class="item it6" data-i="5" style="transform:rotateY(300deg) translateZ(var(--r)) rotateY(-300deg)">
-            <a class="pd" href="photography.html" data-i="5" aria-label="Photography" style="opacity:0.825">
+          <div class="item it6" data-i="5" style="transform:rotateY(257.143deg) translateZ(var(--r)) rotateY(-257.143deg);--ri:4">
+            <a class="pd" href="photography.html" data-i="5" data-key="photography" aria-label="Photography" style="opacity:0.572">
               <span class="pa">
                 <span class="core" aria-hidden="true"></span>
                 <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 20 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="114" r="46"/><circle cx="100" cy="114" r="56" stroke-dasharray="2 6"/><path d="M126 114L113 136.5 87 136.5 74 114 87 91.5 113 91.5Z"/><path d="M126 114L137 87M113 136.5L142 133M87 136.5L105 160M74 114L63 141M87 91.5L58 95M113 91.5L95 68"/><path d="M8 236l38-30 24 18 38-46 32 34 22-14 30 24"/></g></svg></span>
@@ -255,7 +275,21 @@
                 <span class="pr" aria-hidden="true">ᛋ</span>
               </span>
               <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
-              <span class="pl" style="opacity:0.500"><span class="rv" data-k="portal-5"><span class="rn" aria-hidden="true"></span><span class="lt">Photography</span></span></span>
+              <span class="pl" style="opacity:0.000"><span class="rv" data-k="portal-5"><span class="rn" aria-hidden="true"></span><span class="lt">Photography</span></span></span>
+            </a>
+          </div>
+          
+          <div class="item it7" data-i="6" style="transform:rotateY(308.571deg) translateZ(var(--r)) rotateY(-308.571deg);--ri:2">
+            <a class="pd" href="bioinformatics.html" data-i="6" data-key="bioinformatics" aria-label="Bioinformatics" style="opacity:0.868">
+              <span class="pa">
+                <span class="core" aria-hidden="true"></span>
+                <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path pathLength="240" d="M100 176V148M58 148H142M58 148V118M36 118H80M36 118V82M80 118V96M142 148V108M122 108H162M122 108V74M162 108V90"/><path pathLength="240" d="M36 76a6 6 0 1 1 0-0.1M80 90a6 6 0 1 1 0-0.1M122 68a6 6 0 1 1 0-0.1M162 84a6 6 0 1 1 0-0.1"/><path pathLength="240" d="M24 54h7M35 54h4M43 54h9M68 66h5M77 66h8M89 66h4M110 46h9M123 46h4M131 46h6M150 60h4M158 60h9M171 60h5"/></g></svg></span>
+                <span class="wv w1" aria-hidden="true"></span><span class="wv w2" aria-hidden="true"></span><span class="wv w3" aria-hidden="true"></span>
+                <span class="mote m1" aria-hidden="true"></span><span class="mote m2" aria-hidden="true"></span><span class="mote m3" aria-hidden="true"></span><span class="mote m4" aria-hidden="true"></span>
+                <span class="pr" aria-hidden="true">ᚼ</span>
+              </span>
+              <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
+              <span class="pl" style="opacity:0.623"><span class="rv" data-k="portal-6"><span class="rn" aria-hidden="true"></span><span class="lt">Bioinformatics</span></span></span>
             </a>
           </div>
           
@@ -264,7 +298,7 @@
       <div class="controls chrome">
         <button class="ctl" id="prev" type="button" aria-label="Turn to the previous world"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
         <div class="dots" role="group" aria-label="Choose a world">
-          <button class="dot on" type="button" data-i="0" aria-label="Indoor microbiology" aria-current="true">ᚴ</button><button class="dot" type="button" data-i="1" aria-label="Fungiculture" aria-current="false">ᛅ</button><button class="dot" type="button" data-i="2" aria-label="Foraging" aria-current="false">ᚠ</button><button class="dot" type="button" data-i="3" aria-label="Conservation" aria-current="false">ᛦ</button><button class="dot" type="button" data-i="4" aria-label="Small worlds" aria-current="false">ᚦ</button><button class="dot" type="button" data-i="5" aria-label="Photography" aria-current="false">ᛋ</button>
+          <button class="dot" type="button" data-i="4" aria-label="Small worlds" aria-current="false">ᚦ</button><button class="dot" type="button" data-i="5" aria-label="Photography" aria-current="false">ᛋ</button><button class="dot" type="button" data-i="6" aria-label="Bioinformatics" aria-current="false">ᚼ</button><button class="dot on" type="button" data-i="0" aria-label="Indoor microbiology" aria-current="true">ᚴ</button><button class="dot" type="button" data-i="1" aria-label="Fungiculture" aria-current="false">ᛅ</button><button class="dot" type="button" data-i="2" aria-label="Foraging" aria-current="false">ᚠ</button><button class="dot" type="button" data-i="3" aria-label="Conservation" aria-current="false">ᛦ</button>
         </div>
         <button class="ctl" id="next" type="button" aria-label="Turn to the next world"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
@@ -275,7 +309,7 @@
   <nav class="small-menu chrome" aria-label="Notes and tools">
     <svg class="chip" aria-hidden="true" width="100%" height="14"><defs><pattern id="chip" width="20" height="14" patternUnits="userSpaceOnUse"><path d="M0 13L10 1L20 13" fill="none" stroke="currentColor" stroke-width="1"/><path d="M6 13L10 8L14 13" fill="none" stroke="currentColor" stroke-width="1"/></pattern></defs><rect width="100%" height="14" fill="url(#chip)"/></svg>
     <ul>
-      <li><a class="sm" href="page.html?slug=cv" data-m="0" aria-label="CV"><span class="mr" aria-hidden="true">ᛘ</span><span class="rv" data-k="menu-0"><span class="rn" aria-hidden="true"></span><span class="lt">CV</span></span></a></li><li class="dia" aria-hidden="true">◆</li><li><a class="sm" href="fieldlog.html" data-m="1" aria-label="Field log"><span class="mr" aria-hidden="true">ᚱ</span><span class="rv" data-k="menu-1"><span class="rn" aria-hidden="true"></span><span class="lt">Field log</span></span></a></li><li class="dia" aria-hidden="true">◆</li><li><a class="sm" href="blog.html" data-m="2" aria-label="Labdiary"><span class="mr" aria-hidden="true">ᚬ</span><span class="rv" data-k="menu-2"><span class="rn" aria-hidden="true"></span><span class="lt">Labdiary</span></span></a></li><li class="dia" aria-hidden="true">◆</li><li><a class="sm" href="sporexplore.html" data-m="3" aria-label="Bioinformatics"><span class="mr" aria-hidden="true">ᚼ</span><span class="rv" data-k="menu-3"><span class="rn" aria-hidden="true"></span><span class="lt">Bioinformatics</span></span></a></li>
+      <li><a class="sm" href="page.html?slug=cv" data-m="0" aria-label="CV"><span class="mr" aria-hidden="true">ᛘ</span><span class="rv" data-k="menu-0"><span class="rn" aria-hidden="true"></span><span class="lt">CV</span></span></a></li><li class="dia" aria-hidden="true">◆</li><li><a class="sm" href="fieldlog.html" data-m="1" aria-label="Field log"><span class="mr" aria-hidden="true">ᚱ</span><span class="rv" data-k="menu-1"><span class="rn" aria-hidden="true"></span><span class="lt">Field log</span></span></a></li><li class="dia" aria-hidden="true">◆</li><li><a class="sm" href="blog.html" data-m="2" aria-label="Labdiary"><span class="mr" aria-hidden="true">ᚬ</span><span class="rv" data-k="menu-2"><span class="rn" aria-hidden="true"></span><span class="lt">Labdiary</span></span></a></li>
     </ul>
   </nav>
 
@@ -289,10 +323,10 @@
 </div>
 
 <script id="world-data" type="application/json">{"page": "en", "ui": {"da": {"aa": "Vis teksten med latinske bogstaver", "back": "Tilbage til cirklen", "choosePortal": "V\u00e6lg en verden", "chooseSeason": "V\u00e6lg en \u00e5rstid", "comingSoon": "Denne verden er stadig under opbygning", "language": "Sprog", "next": "Drej til n\u00e6ste verden", "notesTools": "Noter og v\u00e6rkt\u00f8jer", "ofN": "{i} af {n}", "prev": "Drej til forrige verden", "runesName": "Runer (yngre futhark, langkvist)", "seasonAria": "\u00c5rstid: {s}. Skift \u00e5rstid", "seasons": {"autumn": "Efter\u00e5r", "spring": "For\u00e5r", "summer": "Sommer", "winter": "Vinter"}, "tod": {"dawn": "daggry", "day": "dag", "dusk": "skumring", "night": "nat"}, "today": "i dag", "todayHint": "(i dag)", "todaySeason": "Dagens \u00e5rstid", "worlds": "Verdener"}, "en": {"aa": "Show the text in Latin letters", "back": "Back to the circle", "choosePortal": "Choose a world", "chooseSeason": "Choose a season", "comingSoon": "This world is still being built", "language": "Language", "next": "Turn to the next world", "notesTools": "Notes and tools", "ofN": "{i} of {n}", "prev": "Turn to the previous world", "runesName": "Runes (long-branch Younger Futhark)", "seasonAria": "Season: {s}. Change season", "seasons": {"autumn": "Autumn", "spring": "Spring", "summer": "Summer", "winter": "Winter"}, "tod": {"dawn": "dawn", "day": "day", "dusk": "dusk", "night": "night"}, "today": "today", "todayHint": "(today)", "todaySeason": "Today\u0027s season", "worlds": "Worlds"}}}</script>
-<script src="assets/world.js?v=da2ae67f"></script>
+<script src="assets/world.js?v=69d337cf"></script>
 
-<script id="entry-data" type="application/json">{"content": {"da": {"inscription": "\u16cf\u16a2\u16ec\u16a6\u16c5\u16ec\u16d8\u16c5\u16c1\u16cf\u16ec\u16a6\u16c5\u16cf\u16ec\u16c1\u16cb\u16ec\u16cb\u16cf\u16c1\u16da\u16ec\u16a6\u16c5\u16ec\u16c1\u16a2\u16be\u16c1\u16a0\u16c1\u16b1\u16cb\u16ec\u16cb\u16c5\u16b1\u16c1\u16cf\u16c5\u16cb", "inscriptionMeaning": "To the mind that is still, the universe surrenders.", "menu": [{"link": "page.html?slug=cv", "name": "CV", "rune": "\u16d8"}, {"link": "fieldlog.da.html", "name": "Feltlog", "rune": "\u16b1"}, {"link": "blog.da.html", "name": "Labdagbog", "rune": "\u16ac"}, {"link": "sporexplore.html", "name": "Bioinformatik", "rune": "\u16bc"}], "name": "Pieter Shiffler Carpentier", "portals": [{"key": "microbiology", "link": "classic.da.html#microbiology", "name": "Indend\u00f8rs mikrobiologi", "rune": "\u16b4"}, {"key": "fungiculture", "link": "fungi.da.html", "name": "Svampedyrkning", "rune": "\u16c5"}, {"key": "foraging", "link": "fungi.da.html#tours", "name": "Sankning", "rune": "\u16a0"}, {"key": "conservation", "link": "", "name": "Naturbevarelse", "rune": "\u16e6"}, {"key": "smallworlds", "link": "terrarium.da.html", "name": "Sm\u00e5 verdener", "rune": "\u16a6"}, {"key": "photography", "link": "photography.da.html", "name": "Fotografi", "rune": "\u16cb"}], "title": "Biolog \u00b7 Mykolog \u00b7 Animist"}, "en": {"inscription": "\u16cf\u16a2\u16ec\u16a6\u16c5\u16ec\u16d8\u16c5\u16c1\u16cf\u16ec\u16a6\u16c5\u16cf\u16ec\u16c1\u16cb\u16ec\u16cb\u16cf\u16c1\u16da\u16ec\u16a6\u16c5\u16ec\u16c1\u16a2\u16be\u16c1\u16a0\u16c1\u16b1\u16cb\u16ec\u16cb\u16c5\u16b1\u16c1\u16cf\u16c5\u16cb", "inscriptionMeaning": "To the mind that is still, the universe surrenders.", "menu": [{"link": "page.html?slug=cv", "name": "CV", "rune": "\u16d8"}, {"link": "fieldlog.html", "name": "Field log", "rune": "\u16b1"}, {"link": "blog.html", "name": "Labdiary", "rune": "\u16ac"}, {"link": "sporexplore.html", "name": "Bioinformatics", "rune": "\u16bc"}], "name": "Pieter Shiffler Carpentier", "portals": [{"key": "microbiology", "link": "classic.html#microbiology", "name": "Indoor microbiology", "rune": "\u16b4"}, {"key": "fungiculture", "link": "fungi.html", "name": "Fungiculture", "rune": "\u16c5"}, {"key": "foraging", "link": "fungi.html#tours", "name": "Foraging", "rune": "\u16a0"}, {"key": "conservation", "link": "", "name": "Conservation", "rune": "\u16e6"}, {"key": "smallworlds", "link": "terrarium.html", "name": "Small worlds", "rune": "\u16a6"}, {"key": "photography", "link": "photography.html", "name": "Photography", "rune": "\u16cb"}], "title": "Biologist \u00b7 Mycologist \u00b7 Animist"}}}</script>
-<script src="assets/entry.js?v=84055eb0"></script>
+<script id="entry-data" type="application/json">{"content": {"da": {"inscription": "\u16cf\u16a2\u16ec\u16a6\u16c5\u16ec\u16d8\u16c5\u16c1\u16cf\u16ec\u16a6\u16c5\u16cf\u16ec\u16c1\u16cb\u16ec\u16cb\u16cf\u16c1\u16da\u16ec\u16a6\u16c5\u16ec\u16c1\u16a2\u16be\u16c1\u16a0\u16c1\u16b1\u16cb\u16ec\u16cb\u16c5\u16b1\u16c1\u16cf\u16c5\u16cb", "inscriptionMeaning": "To the mind that is still, the universe surrenders.", "menu": [{"link": "page.da.html?slug=cv", "name": "CV", "rune": "\u16d8"}, {"link": "fieldlog.da.html", "name": "Feltlog", "rune": "\u16b1"}, {"link": "blog.da.html", "name": "Labdagbog", "rune": "\u16ac"}], "name": "Pieter Shiffler Carpentier", "portals": [{"key": "microbiology", "link": "", "name": "Indend\u00f8rs mikrobiologi", "rune": "\u16b4"}, {"key": "fungiculture", "link": "", "name": "Svampedyrkning", "rune": "\u16c5"}, {"key": "foraging", "link": "", "name": "Sankning", "rune": "\u16a0"}, {"key": "conservation", "link": "", "name": "Naturbevarelse", "rune": "\u16e6"}, {"key": "smallworlds", "link": "", "name": "Sm\u00e5 verdener", "rune": "\u16a6"}, {"key": "photography", "link": "photography.da.html", "name": "Fotografi", "rune": "\u16cb"}, {"key": "bioinformatics", "link": "bioinformatics.da.html", "name": "Bioinformatik", "rune": "\u16bc"}], "title": "Biolog \u00b7 Mykolog \u00b7 Animist"}, "en": {"inscription": "\u16cf\u16a2\u16ec\u16a6\u16c5\u16ec\u16d8\u16c5\u16c1\u16cf\u16ec\u16a6\u16c5\u16cf\u16ec\u16c1\u16cb\u16ec\u16cb\u16cf\u16c1\u16da\u16ec\u16a6\u16c5\u16ec\u16c1\u16a2\u16be\u16c1\u16a0\u16c1\u16b1\u16cb\u16ec\u16cb\u16c5\u16b1\u16c1\u16cf\u16c5\u16cb", "inscriptionMeaning": "To the mind that is still, the universe surrenders.", "menu": [{"link": "page.html?slug=cv", "name": "CV", "rune": "\u16d8"}, {"link": "fieldlog.html", "name": "Field log", "rune": "\u16b1"}, {"link": "blog.html", "name": "Labdiary", "rune": "\u16ac"}], "name": "Pieter Shiffler Carpentier", "portals": [{"key": "microbiology", "link": "", "name": "Indoor microbiology", "rune": "\u16b4"}, {"key": "fungiculture", "link": "", "name": "Fungiculture", "rune": "\u16c5"}, {"key": "foraging", "link": "", "name": "Foraging", "rune": "\u16a0"}, {"key": "conservation", "link": "", "name": "Conservation", "rune": "\u16e6"}, {"key": "smallworlds", "link": "", "name": "Small worlds", "rune": "\u16a6"}, {"key": "photography", "link": "photography.html", "name": "Photography", "rune": "\u16cb"}, {"key": "bioinformatics", "link": "bioinformatics.html", "name": "Bioinformatics", "rune": "\u16bc"}], "title": "Biologist \u00b7 Mycologist \u00b7 Animist"}}}</script>
+<script src="assets/entry.js?v=b98f902f"></script>
 
 </body>
 </html>

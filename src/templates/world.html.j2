@@ -17,13 +17,34 @@
   var d = document.documentElement, mode = 'runes';
   try { var m = localStorage.getItem('entryLang'); if (m === 'en' || m === 'da') mode = 'latin'; } catch (e) {}
   d.className = 'js mode-' + mode;
+{%- if template_name == 'entry.html.j2' %}
+  /* coming back from a world (its link to the circle left a note, or it's the page we came
+     from): the circle opens zoomed into that world's portal and pulls back out (assets/entry.js) */
+  try {
+    var from = sessionStorage.getItem('circleReturn');
+    sessionStorage.removeItem('circleReturn');
+    var nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+    if (!from && document.referrer && !(nav && nav.type === 'reload')) {
+      var u = new URL(document.referrer);
+      var f = u.pathname.split('/').pop();
+      if (u.origin === location.origin && f && f !== 'index.html' && f !== 'da.html') from = f;
+    }
+    var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (from && !still) {
+      d.className += ' returning';
+      d.setAttribute('data-return', from);
+    }
+    /* the first visit: the portals light one by one before the circle wakes (assets/entry.js) */
+    if (!from && !still && !localStorage.getItem('circleVisited')) d.className += ' ritual';
+  } catch (e) {}
+{%- endif %}
 })();
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ meta.title }}</title>
 <meta name="description" content="{{ meta.description }}">
-<link rel="canonical" href="{{ meta.canonical }}">
+{% if meta.canonical %}<link rel="canonical" href="{{ meta.canonical }}">{% endif %}
 {% for alt in meta.alternates %}<link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ alt.href }}">
 {% endfor %}
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -34,7 +55,7 @@
 <meta property="og:site_name" content="Pieter Shiffler Carpentier">
 <meta property="og:title" content="{{ meta.title }}">
 <meta property="og:description" content="{{ meta.ogDescription }}">
-<meta property="og:url" content="{{ meta.canonical }}">
+{% if meta.canonical %}<meta property="og:url" content="{{ meta.canonical }}">{% endif %}
 <meta property="og:locale" content="{{ 'da_DK' if lang == 'da' else 'en_GB' }}">
 {% if meta.image %}<meta property="og:image" content="{{ meta.image }}">
 {% else %}<meta property="og:image" content="{{ site_url }}og-image.png">
@@ -68,7 +89,7 @@
 
   <header class="top chrome" id="top">
     <a class="logo" href="{{ entry_href }}" aria-label="Pieter Shiffler Carpentier">
-      <svg viewBox="0 0 100 100" width="38" height="38" aria-hidden="true"><path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/><circle cx="50" cy="50" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><circle cx="50" cy="50" r="10" class="eye-pupil"/><circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/></svg>
+      <svg class="eye" viewBox="0 0 100 100" width="38" height="38" aria-hidden="true"><defs><clipPath id="eye-clip"><path d="M6 50Q50 6 94 50Q50 94 6 50Z"/></clipPath></defs><g class="eye-lid"><g clip-path="url(#eye-clip)"><g class="eye-look" id="eye-look"><circle cx="50" cy="50" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><circle cx="50" cy="50" r="10" class="eye-pupil"/><circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/></g></g><path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/></g></svg>
     </a>
     <div class="top-right">
       <nav class="langs" aria-label="{{ ui.language }}">

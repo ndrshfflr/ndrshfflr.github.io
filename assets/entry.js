@@ -24,6 +24,8 @@
 
   /* ------------------------------------------------------------------ elements */
   var items = $$('.item'), pds = $$('.pd'), dots = $$('.dot');
+  var dotFor = []; // the rune row is laid out like the circle, so look each one up by its portal
+  dots.forEach(function (d) { dotFor[+d.getAttribute('data-i')] = d; });
   var labels = items.map(function (it) { return it.querySelector('.pl'); });
   var COUNT = items.length || 1, STEP = 360 / COUNT;
   var floor = $('floor'), stage = $('stage'), ringNav = $('ring-nav'), live = $('live');
@@ -41,7 +43,7 @@
       pds[i].setAttribute('href', p.link || '#');
       var pr = pds[i].querySelector('.pr');
       if (pr && p.rune && pr.textContent !== p.rune) pr.textContent = p.rune;
-      if (dots[i]) { dots[i].setAttribute('aria-label', p.name || ''); if (p.rune) dots[i].textContent = p.rune; }
+      if (dotFor[i]) { dotFor[i].setAttribute('aria-label', p.name || ''); if (p.rune) dotFor[i].textContent = p.rune; }
     });
     var sms = $$('.sm');
     (c.menu || []).forEach(function (m, i) {
@@ -78,12 +80,40 @@
     });
     if (floor) floor.style.transform = 'rotateX(90deg) rotateZ(' + (n * STEP) + 'deg)';
     followVeil();
-    dots.forEach(function (d, i) { d.classList.toggle('on', i === k); d.setAttribute('aria-current', i === k ? 'true' : 'false'); });
+    dotFor.forEach(function (d, i) { if (!d) return; d.classList.toggle('on', i === k); d.setAttribute('aria-current', i === k ? 'true' : 'false'); });
+    turnRow(k);
     if (announced && live) {
       var p = (C().portals || [])[k] || {};
       live.textContent = (p.name || '') + ', ' + fmt(U().ofN, { i: k + 1, n: COUNT });
     }
     announced = true;
+  }
+  /* The rune row turns with the circle: the portal at the front is always in the middle, its
+     neighbours either side, the ones at the back on the ends. The runes slide to their new
+     places (measured before and after the move, then eased in between). */
+  var dotRow = doc.querySelector('.dots');
+  function turnRow(k) {
+    if (!dotRow || !dots.length) return;
+    var order = [];
+    for (var off = -Math.floor((COUNT - 1) / 2); off <= Math.floor(COUNT / 2); off++) order.push(dotFor[((k + off) % COUNT + COUNT) % COUNT]);
+    var same = order.every(function (d, i) { return dotRow.children[i] === d; });
+    if (same) return;
+    var before = dots.map(function (d) { return d.getBoundingClientRect().left; });
+    var hadFocus = doc.activeElement && doc.activeElement.classList.contains('dot');
+    order.forEach(function (d) { if (d) dotRow.appendChild(d); });
+    if (hadFocus && dotFor[k]) dotFor[k].focus({ preventScroll: true });
+    if (reduced || (stage && stage.classList.contains('no-anim'))) return;
+    dots.forEach(function (d, i) {
+      var dx = before[i] - d.getBoundingClientRect().left;
+      if (!dx) return;
+      d.style.transition = 'none';
+      d.style.transform = 'translateX(' + dx + 'px)';
+    });
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        dots.forEach(function (d) { d.style.transition = 'transform .9s cubic-bezier(.65,0,.25,1)'; d.style.transform = ''; });
+      });
+    });
   }
   function step(d) { if (busy) return; n += d; layout(); }
   function goTo(i) {
@@ -98,6 +128,8 @@
     if (busy) return;
     var p = (C().portals || [])[i] || {};
     busy = true;
+    W.session.set('circleFront', String(i)); // so coming back from a menu page faces the same portal
+    remember(i);
     W.closeMenu(false);
     world.classList.add('entering');
     clearTimeout(enterTimer);
@@ -125,7 +157,7 @@
   if (destBack) destBack.addEventListener('click', function () { leave(true); });
   window.addEventListener('pageshow', function (e) { if (e.persisted || busy) leave(false); });
 
-  var lastPointer = 0;
+  var lastPointer = 0, turnThenEnter = null;
   if (stage) stage.addEventListener('pointerdown', function () { lastPointer = Date.now(); }, true);
   pds.forEach(function (pd, i) {
     pd.addEventListener('click', function (e) {
@@ -133,7 +165,11 @@
       var link = ((C().portals || [])[i] || {}).link;
       if (isFront && link && (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button)) return; // new tab / window
       e.preventDefault();
-      if (isFront) enter(i); else goTo(i);
+      if (isFront) { enter(i); return; }
+      // a portal at the side: turn it to the front, then go through it
+      goTo(i);
+      clearTimeout(turnThenEnter);
+      turnThenEnter = setTimeout(function () { if (front() === i) enter(i); }, reduced ? 0 : 950);
     });
     pd.addEventListener('mouseenter', function () { // the front portal draws its symbol again
       if (i !== front() || busy) return;
@@ -146,7 +182,7 @@
       if (i !== front()) goTo(i);
     });
   });
-  dots.forEach(function (d, i) { d.addEventListener('click', function () { goTo(i); }); });
+  dots.forEach(function (d) { d.addEventListener('click', function () { goTo(+d.getAttribute('data-i')); }); });
   if ($('prev')) $('prev').addEventListener('click', function () { step(-1); });
   if ($('next')) $('next').addEventListener('click', function () { step(1); });
   if (ringNav) ringNav.addEventListener('keydown', function (e) {
@@ -156,7 +192,7 @@
     step(d);
     var a = doc.activeElement;
     if (a && a.classList.contains('pd')) pds[front()].focus({ preventScroll: true });
-    else if (a && a.classList.contains('dot')) dots[front()].focus({ preventScroll: true });
+    else if (a && a.classList.contains('dot') && dotFor[front()]) dotFor[front()].focus({ preventScroll: true });
   });
   doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && dest && !dest.hidden) leave(true); });
 
@@ -303,9 +339,61 @@
     });
   }
 
+  /* ------------------------------------------------------------------ the circle remembers */
+  /* Portals you have been through burn a little brighter next time (kept in this browser). */
+  var KEY_SEEN = 'circleSeen';
+  function seenKeys() { try { return JSON.parse(W.local.get(KEY_SEEN) || '[]') || []; } catch (e) { return []; } }
+  function keyOf(i) { var it = items[i]; var pa = pds[i]; return (pa && pa.getAttribute('data-key')) || String(i); }
+  function remember(i) {
+    var seen = seenKeys(), k = keyOf(i);
+    if (seen.indexOf(k) < 0) { seen.push(k); W.local.set(KEY_SEEN, JSON.stringify(seen)); }
+    markSeen();
+  }
+  function markSeen() {
+    var seen = seenKeys();
+    pds.forEach(function (pd, i) { pd.classList.toggle('seen', seen.indexOf(keyOf(i)) >= 0); });
+  }
+  markSeen();
+
+  /* ------------------------------------------------------------------ the first visit */
+  /* world.html.j2 marks a first visit "ritual": the sky starts dark, the portals light one by
+     one, then the circle wakes. Afterwards this browser counts as having visited. */
+  (function () {
+    var r = doc.documentElement;
+    if (!r.classList.contains('ritual')) return;
+    W.local.set('circleVisited', '1');
+    setTimeout(function () { r.classList.remove('ritual'); }, 5600);
+  })();
+
+  /* ------------------------------------------------------------------ coming back */
+  /* The page's head marked it "returning" (see world.html.j2): turn the ring so the world we
+     came from stands at the front, then pull back out of its portal. */
+  var root = doc.documentElement, returning = root.classList.contains('returning');
+  if (returning) {
+    var from = (root.getAttribute('data-return') || '').split(/[?#]/)[0], at = -1;
+    ['en', 'da'].forEach(function (l) {
+      ((CONTENT[l] || {}).portals || []).forEach(function (p, i) {
+        if (at < 0 && from && String(p.link || '').split(/[?#]/)[0] === from) at = i;
+      });
+    });
+    if (at < 0) at = parseInt(W.session.get('circleFront'), 10);
+    if (at >= 0 && at < COUNT) n = at;
+    if (stage) stage.classList.add('no-anim');
+  }
+
   /* ------------------------------------------------------------------ start */
   W.onRender(renderText);
   layout();
+  if (returning) {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        if (stage) stage.classList.remove('no-anim');
+        root.classList.add('returned');
+        root.classList.remove('returning');
+        setTimeout(function () { root.classList.remove('returned'); }, 1600);
+      });
+    });
+  }
   carve(C().inscription);
   refresh();
 })();

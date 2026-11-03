@@ -1,51 +1,27 @@
-{% extends "base.html.j2" %}
-{% block main %}
-<header class="page-header">
-  <div class="wrap">
-    <div class="print-only print-id">Pieter Shiffler Carpentier · {{ d.contact.email }} · ndrshfflr.github.io</div>
-    <h1 id="page-title">&nbsp;</h1>
-    <div class="page-actions" id="page-actions" hidden>
-      <a class="btn btn-ghost" id="page-pdf" href="cv.pdf" download>{{ ui.downloadPdf }}</a>
-    </div>
+{% extends "world.html.j2" %}
+{#- The CV and other extra pages (page.html?slug=cv / page.da.html?slug=cv): the
+    markdown in content/pages/<slug>.md (/admin → Extra Pages), read in the
+    browser. The CV gets a "Download as PDF" button (cv.pdf). -#}
+{% block styles %}<link rel="stylesheet" href="assets/pages.css?v={{ v.pagescss }}">{% endblock %}
+{% block content %}
+  <div class="hero chrome pg-hero">
+    <span class="pg-rune" aria-hidden="true">{{ rune }}</span>
+    <h1 class="nm pg-title"><span class="rv" data-k="page-title"><span class="rn" aria-hidden="true"></span><span class="lt">{{ ui.loading }}</span></span></h1>
+    <p class="pg-actions" id="pg-actions" hidden><a class="pg-btn" href="cv.pdf" download>{{ ui.downloadPdf }}</a></p>
+    <button class="aa" id="aa" type="button" aria-pressed="false" aria-label="{{ ui.aa }}">Aa</button>
   </div>
-</header>
-<div class="carve" aria-hidden="true"></div>
-<div class="wrap">
-  <div class="page-body" id="page-body">
-    <p class="page-loading">{{ ui.loading }}</p>
-  </div>
-  <a class="page-back" href="{{ entry_href }}">&larr; {{ ui.back }}</a>
-</div>
+
+  <main class="pg-wrap" id="main" data-page="page">
+    <article class="pg-paper">
+      <div class="pg-body" id="pg-body"><p class="pg-loading">{{ ui.loading }}</p></div>
+    </article>
+  </main>
+
+  <footer class="world-foot chrome">
+    <a class="back-link" href="{{ entry_href }}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="rv" data-k="back"><span class="rn" aria-hidden="true"></span><span class="lt">{{ ui.back }}</span></span></a>
+  </footer>
 {% endblock %}
-
 {% block scripts %}
-<script>
-(function () {
-  const ui = JSON.parse(document.getElementById('ui-strings').textContent);
-  const params = new URLSearchParams(window.location.search);
-  const slug = params.get('slug');
-  const titleEl = document.getElementById('page-title');
-  const bodyEl = document.getElementById('page-body');
-
-  if (slug === 'cv') document.getElementById('page-actions').hidden = false;
-
-  function notFound() {
-    titleEl.textContent = ui.notFound;
-    bodyEl.innerHTML = '<p>' + ui.notFoundBody + '</p>';
-  }
-  if (!slug || !/^[A-Za-z0-9._-]+$/.test(slug)) {
-    notFound();
-  } else {
-    fetch(`content/pages/${slug}.md`)
-      .then(res => { if (!res.ok) throw new Error('not found'); return res.text(); })
-      .then(text => {
-        const { meta, body } = window.SiteMD.parseFrontmatter(text);
-        document.title = (meta.title || slug) + ' — Pieter Shiffler Carpentier';
-        titleEl.textContent = meta.title || slug;
-        bodyEl.innerHTML = window.SiteMD.render(body);
-      })
-      .catch(notFound);
-  }
-})();
-</script>
+<script src="assets/markdown.js?v={{ v.md }}"></script>
+<script src="assets/pages.js?v={{ v.pagesjs }}"></script>
 {% endblock %}

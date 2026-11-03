@@ -1,25 +1,39 @@
-{% extends "base.html.j2" %}
-{% block main %}
-{% set b = d.blog %}
-<header class="page-header blog-header" id="top">
-  <div class="wrap">
-    <div class="eyebrow"><span class="rune" aria-hidden="true" title="{{ runes.blog.title }}">{{ runes.blog.glyph }}</span><span id="blog-eyebrow">{{ b.eyebrow }}</span></div>
-    <h1 id="blog-heading">{{ b.heading }}</h1>
-    <p class="lead blog-intro" id="blog-intro">{{ b.intro }}</p>
+{% extends "world.html.j2" %}
+{#- The Labdiary (blog.html / blog.da.html), in the circle's world. Posts are
+    content/posts/*.md, written in /admin → Blog posts; the line under the
+    heading is the Blog intro in /admin → Classic Page. -#}
+{% block styles %}<link rel="stylesheet" href="assets/pages.css?v={{ v.pagescss }}">{% endblock %}
+{% block content %}
+  <div class="hero chrome pg-hero">
+    <span class="pg-rune" aria-hidden="true">{{ rune }}</span>
+    <h1 class="nm"><span class="rv" data-k="heading"><span class="rn" aria-hidden="true"></span><span class="lt">{{ heading }}</span></span></h1>
+    {% if b.intro %}<p class="title"><span class="rv" data-k="intro"><span class="rn" aria-hidden="true"></span><span class="lt">{{ b.intro }}</span></span></p>{% endif %}
+    <button class="aa" id="aa" type="button" aria-pressed="false" aria-label="{{ ui.aa }}">Aa</button>
   </div>
-</header>
-<div class="carve" aria-hidden="true"></div>
-<section class="blog-section" id="blog">
-  <div class="wrap">
-    {% set all_tags = [] %}{% for p in posts %}{% for t in p.tags %}{% if t not in all_tags %}{% set _ = all_tags.append(t) %}{% endif %}{% endfor %}{% endfor %}
-    <div class="tag-filter" id="blog-tags" role="group" aria-label="{{ ui.filterTags }}"{% if all_tags | length < 2 %} hidden{% endif %}>
-      <button type="button" class="tag-chip is-on" data-tag="">{{ ui.allPosts }}</button>
-      {% for t in all_tags %}<button type="button" class="tag-chip" data-tag="{{ t }}">{{ t }}</button>{% endfor %}
-    </div>
-    <div class="post-list" id="blog-list">
-      {% for p in posts %}{% include '_postcard.html.j2' %}{% endfor %}
-    </div>
-    <p class="blog-empty" id="blog-empty"{% if posts %} hidden{% endif %}>{{ b.emptyText }}</p>
-  </div>
-</section>
+
+  <main class="pg-wrap pg-wide" id="main" data-page="labdiary">
+    {% if tags | length > 1 %}<div class="pg-tags" id="pg-tags" role="group" aria-label="{{ ui.filterTags }}">
+      <button type="button" class="pg-tag" data-tag="" aria-pressed="true">{{ ui.allPosts }}</button>
+      {% for t in tags %}<button type="button" class="pg-tag" data-tag="{{ t }}" aria-pressed="false">{{ t }}</button>{% endfor %}
+    </div>{% endif %}
+    <ul class="pg-posts" id="pg-posts">
+      {% for p in posts %}<li class="pg-card"{% if p.tags %} data-tags="{{ p.tags | join('|') }}"{% endif %}>
+        <a class="pg-card-a" href="{{ post_href }}?slug={{ p.slug }}"{% if p.language and p.language != lang %} hreflang="{{ p.language }}"{% endif %}>
+          <span class="pg-cover">{% if p.cover %}<img src="{{ p.cover }}" alt="" loading="lazy" decoding="async">{% else %}<span class="pg-cover-rune" aria-hidden="true">{{ rune }}</span>{% endif %}</span>
+          <span class="pg-card-text">
+            <span class="pg-meta"><time datetime="{{ p.date_iso }}">{{ p.date_label[lang] }}</time>{% if p.language and p.language != lang %}<span class="pg-lang">{{ p.language | upper }}</span>{% endif %}</span>
+            <span class="pg-card-title">{{ p.title }}</span>
+            {% if p.summary %}<span class="pg-summary">{{ p.summary }}</span>{% endif %}
+            {% if p.tags %}<span class="pg-card-tags">{% for t in p.tags %}<span>{{ t }}</span>{% endfor %}</span>{% endif %}
+          </span>
+        </a>
+      </li>{% endfor %}
+    </ul>
+    <p class="pg-empty"{% if posts %} hidden{% endif %}>{{ b.emptyText }}</p>
+  </main>
+
+  <footer class="world-foot chrome">
+    <a class="back-link" href="{{ entry_href }}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="rv" data-k="back"><span class="rn" aria-hidden="true"></span><span class="lt">{{ ui.back }}</span></span></a>
+  </footer>
 {% endblock %}
+{% block scripts %}<script src="assets/pages.js?v={{ v.pagesjs }}"></script>{% endblock %}

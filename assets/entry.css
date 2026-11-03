@@ -2,6 +2,39 @@
    Entry page — the stone circle of portals (index.html / da.html).
    The sky, header and rune language come from assets/world.css.
    ========================================================================== */
+/* I5 · the circle remembers: portals you've been through burn a little brighter */
+.seen .core{opacity:calc(.85 - .35 * var(--dayk))}
+.seen .pa::after{content:'';position:absolute;inset:4%;border-radius:50%;pointer-events:none;
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--acc) 45%,transparent),0 0 26px 2px color-mix(in srgb,var(--acc) 22%,transparent)}
+.seen .pr{text-shadow:0 0 26px var(--glow),0 0 8px var(--glow)}
+
+/* I4 · the first visit: the sky starts dark, the portals light one by one (the front one
+   first, then its neighbours either side), then the runes, the floor and the words wake */
+.ritual-dark{position:fixed;inset:0;z-index:3;pointer-events:none;background:#020306;opacity:0}
+@keyframes kindle{0%{opacity:0;transform:scale(.6);filter:brightness(.4)}45%{opacity:1;transform:scale(1.07);filter:brightness(2.1)}100%{opacity:1;transform:scale(1);filter:none}}
+@keyframes wakefade{from{opacity:0}to{opacity:1}}
+@keyframes dark-lift{0%{opacity:.94}55%{opacity:.82}100%{opacity:0}}
+@media (prefers-reduced-motion:no-preference){
+  .ritual .ritual-dark{animation:dark-lift 4.6s ease both}
+  .ritual .item .pa{animation:kindle 1.3s ease both;animation-delay:calc(.5s + var(--ri) * .42s)}
+  .ritual .item .beam,.ritual .item .foot,.ritual .item .pl{animation:wakefade .8s ease both;animation-delay:calc(1s + var(--ri) * .42s)}
+  .ritual .grid .flow,.ritual .grid .flow circle,.ritual .grid .spokes,.ritual .wv{animation-play-state:paused}
+  .ritual .treeline{animation:wakefade 1.6s ease 3.4s both}
+  .ritual .floor{animation:wakefade 1.4s ease 3.1s both}
+  .ritual .chrome{animation:wakefade 1.2s ease 3.8s both}
+}
+.ritual .item,.ritual .stage{z-index:4}
+.ritual .ring-nav{position:relative;z-index:4}
+
+/* E4 · rack focus: hovering a portal softly blurs what lies behind it */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .treeline,.floor,.pd,.disc,.stars{transition:filter .5s ease,opacity .9s ease}
+  .stage:has(.pd:hover) .treeline{filter:blur(3px)}
+  .stage:has(.pd:hover) .floor{filter:blur(2px)}
+  .stage:has(.pd:hover) .pd:not(:hover){filter:blur(2.5px)}
+  .world:has(.stage .pd:hover) .disc,.world:has(.stage .pd:hover) .stars{filter:blur(2px)}
+}
+
 /* the ring */
 .ring-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0}
 .ring-nav{display:flex;flex-direction:column;align-items:center}
@@ -12,6 +45,12 @@
   perspective:1900px;perspective-origin:50% 0;transform-origin:50% var(--fy)}
 .cam{transition:transform .9s cubic-bezier(.6,0,.9,.4),opacity .35s ease .5s}
 .entering .cam{transform:scale(4.2);opacity:0}
+/* coming back from a world: the circle opens zoomed into that world's portal and pulls back out */
+.returning .cam{transform:scale(4.2);opacity:0;transition:none}
+.returning .chrome{opacity:0;transition:none}
+.returned .cam{transition:transform 1.1s cubic-bezier(.2,.7,.2,1),opacity .5s ease}
+.returned .chrome{transition:opacity 1.1s ease .35s}
+.no-anim .item,.no-anim .floor,.no-anim .pd,.no-anim .pl{transition:none !important}
 /* The carved runes stand behind the portals. assets/entry.js adds a soft hole to the
    mask behind each portal (the veil), so the runes fade where a portal stands. */
 .treeline{position:absolute;left:0;right:0;top:calc(var(--b) * .02);width:100%;height:calc(var(--b) * .92);pointer-events:none;
@@ -71,6 +110,7 @@
 .it4 .grid .flow circle:nth-child(1),.it4 .grid .flow circle:nth-child(5),.it4 .grid .flow circle:nth-child(6),.it4 .grid .flow circle:nth-child(8),.it4 .grid .flow circle:nth-child(9),.it4 .grid .flow circle:nth-child(10){animation-direction:reverse}
 .it5 .grid .flow circle:nth-child(2),.it5 .grid .flow circle:nth-child(3),.it5 .grid .flow circle:nth-child(4),.it5 .grid .flow circle:nth-child(6),.it5 .grid .flow circle:nth-child(7),.it5 .grid .flow circle:nth-child(8){animation-direction:reverse}
 .it6 .grid .flow circle:nth-child(1),.it6 .grid .flow circle:nth-child(2),.it6 .grid .flow circle:nth-child(4),.it6 .grid .flow circle:nth-child(5),.it6 .grid .flow circle:nth-child(6),.it6 .grid .flow circle:nth-child(8),.it6 .grid .flow circle:nth-child(10){animation-direction:reverse}
+.it7 .grid .flow circle:nth-child(2),.it7 .grid .flow circle:nth-child(3),.it7 .grid .flow circle:nth-child(5),.it7 .grid .flow circle:nth-child(7),.it7 .grid .flow circle:nth-child(9){animation-direction:reverse}
 /* the ripples move slowly outwards */
 .wv{position:absolute;inset:0;border-radius:50%;border:1px solid color-mix(in srgb,var(--pline) 26%,transparent);pointer-events:none;animation:ripple 12s linear infinite}
 .w2{animation-delay:-4s}.w3{animation-delay:-8s}
@@ -158,7 +198,10 @@
   .dia{display:none}
   .dest-name{font-size:32px}
 }
-@media (max-width:380px){
+@media (max-width:760px){
   .dot{width:40px}
+}
+@media (max-width:380px){
+  .dot{width:36px}
 }
 

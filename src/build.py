@@ -186,6 +186,26 @@ FIELDLOG_UI = {
     },
 }
 
+# Labdiary (blog), its posts, the CV and other extra pages, and the Bioinformatics
+# world — all standing in the circle's world. Wording of the Labdiary comes from
+# the "Blog" texts in content/home*.json; the tools from content/tools.json.
+PAGES_UI = {
+    "en": {
+        "allPosts": "All posts", "readMore": "Read more", "loading": "Loading…", "filterTags": "Filter posts by topic",
+        "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn't be found.",
+        "postPhotos": "Photos", "photoFieldlog": "In the field log", "downloadPdf": "Download as PDF",
+        "toLabdiary": "Back to the labdiary", "openTool": "Open", "coming": "Coming", "toolsLabel": "Tools",
+        "noTools": "No tools yet.",
+    },
+    "da": {
+        "allPosts": "Alle indlæg", "readMore": "Læs mere", "loading": "Indlæser…", "filterTags": "Filtrér indlæg efter emne",
+        "notFound": "Siden blev ikke fundet", "notFoundBody": "Beklager, siden kunne ikke findes.",
+        "postPhotos": "Fotos", "photoFieldlog": "I fundbogen", "downloadPdf": "Download som PDF",
+        "toLabdiary": "Tilbage til labdagbogen", "openTool": "Åbn", "coming": "På vej", "toolsLabel": "Værktøjer",
+        "noTools": "Ingen værktøjer endnu.",
+    },
+}
+
 PHOTO_META = {
     "en": {"description": "Photographs by Pieter Shiffler Carpentier."},
     "da": {"description": "Fotografier af Pieter Shiffler Carpentier."},
@@ -195,13 +215,13 @@ PHOTO_POS = {"center": "50% 50%", "top": "50% 18%", "bottom": "50% 82%", "left":
 ENTRY_META = {
     "en": {
         "title": "Pieter Shiffler Carpentier — Biologist · Mycologist · Animist",
-        "description": "Pieter Shiffler Carpentier, MSc Biology — indoor microbiology, fungiculture, foraging, conservation, small worlds and nature photography.",
-        "ogDescription": "Biologist, mycologist and animist. Step through a portal: indoor microbiology, fungiculture, foraging, conservation, small worlds and photography.",
+        "description": "Pieter Shiffler Carpentier, MSc Biology — indoor microbiology, fungiculture, foraging, conservation, small worlds, nature photography and bioinformatics.",
+        "ogDescription": "Biologist, mycologist and animist. Step through a portal: indoor microbiology, fungiculture, foraging, conservation, small worlds, photography and bioinformatics.",
     },
     "da": {
         "title": "Pieter Shiffler Carpentier — Biolog · Mykolog · Animist",
-        "description": "Pieter Shiffler Carpentier, MSc Biologi — indeklimamikrobiologi, svampedyrkning, sankning, naturbevarelse, små verdener og naturfotografi.",
-        "ogDescription": "Biolog, mykolog og animist. Træd gennem en portal: indeklimamikrobiologi, svampedyrkning, sankning, naturbevarelse, små verdener og fotografi.",
+        "description": "Pieter Shiffler Carpentier, MSc Biologi — indeklimamikrobiologi, svampedyrkning, sankning, naturbevarelse, små verdener, naturfotografi og bioinformatik.",
+        "ogDescription": "Biolog, mykolog og animist. Træd gennem en portal: indeklimamikrobiologi, svampedyrkning, sankning, naturbevarelse, små verdener, fotografi og bioinformatik.",
     },
 }
 
@@ -275,13 +295,13 @@ PAGES = {
     "fungi.da.html": ("fungi.html.j2", "da"),
     "terrarium.html": ("terrarium.html.j2", "en"),
     "terrarium.da.html": ("terrarium.html.j2", "da"),
-    "blog.html": ("blog.html.j2", "en"),
-    "blog.da.html": ("blog.html.j2", "da"),
     "fieldlog.html": ("fieldlog.html.j2", "en"),
     "fieldlog.da.html": ("fieldlog.html.j2", "da"),
-    "post.html": ("post.html.j2", "en"),
-    "page.html": ("page.html.j2", "en"),
 }
+# The pages above that the circle no longer leads to (since the worlds were emptied
+# for a rebuild). They stay online for old links but ask search engines to drop them.
+UNLISTED = {"classic.html", "classic.da.html", "exploration.html", "exploration.da.html",
+            "fungi.html", "fungi.da.html", "terrarium.html", "terrarium.da.html"}
 ENTRY = {"en": "index.html", "da": "da.html"}
 HOME = {"en": "classic.html", "da": "classic.da.html"}
 PHOTOGRAPHY = {"en": "photography.html", "da": "photography.da.html"}
@@ -290,6 +310,9 @@ FUNGI = {"en": "fungi.html", "da": "fungi.da.html"}
 TERRARIUM = {"en": "terrarium.html", "da": "terrarium.da.html"}
 BLOG = {"en": "blog.html", "da": "blog.da.html"}
 FIELDLOG = {"en": "fieldlog.html", "da": "fieldlog.da.html"}
+POST = {"en": "post.html", "da": "post.da.html"}
+PAGE = {"en": "page.html", "da": "page.da.html"}
+BIOINFO = {"en": "bioinformatics.html", "da": "bioinformatics.da.html"}
 
 
 def load(name):
@@ -455,6 +478,64 @@ def render_fieldlog(env, content, posts, versions):
         )
 
 
+def menu_item(entry, lang, link_start, fallback):
+    """The name and rune of a small-menu item (or portal), found by its link."""
+    for m in entry[lang].get("menu", []) + entry[lang].get("portals", []):
+        if str(m.get("link") or "").startswith(link_start):
+            return {"name": m.get("name") or fallback, "rune": m.get("rune") or ""}
+    return {"name": fallback, "rune": ""}
+
+
+def render_pages(env, content, entry, posts, versions):
+    """The Labdiary (blog.html), posts (post.html), the CV and other extra pages
+    (page.html?slug=…) and the Bioinformatics world, in the circle's world."""
+    ui = world_ui(PAGES_UI)
+    tools_doc = load("tools.json")
+    for lang in ("en", "da"):
+        other = "da" if lang == "en" else "en"
+        b = content[lang]["blog"]
+        lab = menu_item(entry, lang, "blog", "Labdiary" if lang == "en" else "Labdagbog")
+        tags = []
+        for p in posts:
+            for t in p["tags"]:
+                if t not in tags:
+                    tags.append(t)
+        common = dict(ui=ui[lang], jsonld=None, v=versions, world_class="scrolls pg-world",
+                      world_data={"page": lang, "ui": ui}, labdiary_href=BLOG[lang], post_href=POST[lang])
+        description = b["intro"][:155]
+        render_world_page(
+            env, "blog.html.j2", BLOG, lang,
+            meta={"title": lab["name"] + " — Pieter Shiffler Carpentier", "description": description, "ogDescription": description,
+                  "canonical": SITE_URL + BLOG[lang], "alternates": [{"hreflang": l, "href": SITE_URL + BLOG[l]} for l in ("en", "da")]},
+            heading=lab["name"], rune=lab["rune"] or "ᚬ", b=b, posts=posts, tags=tags, **common)
+        render_world_page(
+            env, "post.html.j2", POST, lang,
+            meta={"title": lab["name"] + " — Pieter Shiffler Carpentier", "description": description, "ogDescription": description,
+                  "canonical": "", "alternates": []},
+            rune=lab["rune"] or "ᚬ", **common)
+        cv = menu_item(entry, lang, "page.html", "CV")
+        render_world_page(
+            env, "page.html.j2", PAGE, lang,
+            meta={"title": "Pieter Shiffler Carpentier", "description": META[lang]["description"], "ogDescription": META[lang]["ogDescription"],
+                  "canonical": "", "alternates": []},
+            rune=cv["rune"] or "ᛘ", **common)
+        bio = next((p for p in entry[lang]["portals"] if p.get("key") == "bioinformatics"), {})
+        heading = bio.get("name") or ("Bioinformatics" if lang == "en" else "Bioinformatik")
+        intro = (tools_doc.get("intro") or {}).get(lang) or ""
+        tools = []
+        for t in tools_doc.get("tools", []):
+            desc = t.get("description") or {}
+            tools.append({"name": str(t.get("name") or ""), "link": str(t.get("link") or ""),
+                          "status": "coming" if t.get("status") == "coming" or not t.get("link") else "live",
+                          "text": str(desc.get(lang) or desc.get(other) or "")})
+        bdesc = intro or ", ".join(t["name"] for t in tools)
+        render_world_page(
+            env, "bioinformatics.html.j2", BIOINFO, lang,
+            meta={"title": heading + " — Pieter Shiffler Carpentier", "description": bdesc, "ogDescription": bdesc,
+                  "canonical": SITE_URL + BIOINFO[lang], "alternates": [{"hreflang": l, "href": SITE_URL + BIOINFO[l]} for l in ("en", "da")]},
+            heading=heading, rune=bio.get("rune") or "ᚼ", intro=intro, tools=tools, **common)
+
+
 def render_entry(env, content, entry, versions):
     """index.html and da.html: the stone circle of portals."""
     count = len(entry["en"]["portals"])
@@ -464,6 +545,9 @@ def render_entry(env, content, entry, versions):
         c = math.cos(math.radians(phi))
         ring.append({"t": f"rotateY({phi:g}deg) translateZ(var(--r)) rotateY({-phi:g}deg)",
                      "o": f"{0.3 + 0.7 * (c + 1) / 2:.3f}", "lo": f"{max(0.0, c):.3f}"})
+    # the row of runes under the circle, laid out as the circle looks at the start: the front
+    # portal in the middle, its neighbours either side, the ones at the back on the ends
+    dot_order = [off % count for off in range(-((count - 1) // 2), count // 2 + 1)]
     for lang in ("en", "da"):
         alternates = [
             {"hreflang": "en", "href": SITE_URL},
@@ -474,7 +558,7 @@ def render_entry(env, content, entry, versions):
         ui = world_ui(ENTRY_UI)
         render_world_page(
             env, "entry.html.j2", ENTRY, lang,
-            e=entry[lang], ui=ui[lang], meta=meta, jsonld=jsonld(content[lang], lang), ring=ring, v=versions,
+            e=entry[lang], ui=ui[lang], meta=meta, jsonld=jsonld(content[lang], lang), ring=ring, dot_order=dot_order, v=versions,
             world_data={"page": lang, "ui": ui}, data={"content": entry}, world_class="circle",
         )
 
@@ -495,13 +579,15 @@ def main():
                 "worldcss": asset_version("assets/world.css"), "worldjs": asset_version("assets/world.js"),
                 "entrycss": asset_version("assets/entry.css"), "entryjs": asset_version("assets/entry.js"),
                 "photoscss": asset_version("assets/photos.css"), "photosjs": asset_version("assets/photos.js"),
-                "uploadcss": asset_version("assets/upload.css"), "uploadjs": asset_version("assets/upload.js")}
+                "uploadcss": asset_version("assets/upload.css"), "uploadjs": asset_version("assets/upload.js"),
+                "pagescss": asset_version("assets/pages.css"), "pagesjs": asset_version("assets/pages.js")}
     posts = load_posts()
     entry = {"en": load("entry.json"), "da": load("entry.da.json")}
     render_entry(env, content, entry, versions)
     render_photography(env, entry, load("gallery.json"), posts, versions)
     render_upload(env, posts, versions)
     render_fieldlog(env, content, posts, versions)
+    render_pages(env, content, entry, posts, versions)
 
     for out, (tpl, lang) in PAGES.items():
         d = content[lang]
@@ -592,12 +678,14 @@ def main():
             exploration_href=EXPLORATION[lang], fungi_href=FUNGI[lang], terrarium_href=TERRARIUM[lang], blog_href=BLOG[lang], fieldlog_href=FIELDLOG[lang], posts=posts, gallery=gallery, year=year,
             jsonld=jsonld(d, lang), body_class=("home" if is_home else "subpage portal-page" if (is_fungi or is_terra or is_log) else "subpage"), v=versions,
             runes={k: {"glyph": g, "title": t} for k, (g, t) in RUNES[lang].items()},
+            noindex=out in UNLISTED,
         )
         (ROOT / out).write_text(html, encoding="utf-8")
         print("wrote", out)
 
     # sitemap
-    urls = ["", "da.html", "classic.html", "classic.da.html", "fungi.html", "fungi.da.html", "terrarium.html", "terrarium.da.html", "blog.html", "blog.da.html", "fieldlog.html", "fieldlog.da.html", "exploration.html", "exploration.da.html", "photography.html", "photography.da.html", "page.html?slug=cv"]
+    urls = ["", "da.html", "photography.html", "photography.da.html", "bioinformatics.html", "bioinformatics.da.html",
+            "blog.html", "blog.da.html", "fieldlog.html", "fieldlog.da.html", "page.html?slug=cv"]
     today = datetime.date.today().isoformat()
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']

@@ -1,23 +1,19 @@
 <!DOCTYPE html>
-<!-- GENERATED FILE — built by src/build.py from src/templates/. Text content is
-     also loaded live from content/*.json (edited through /admin), so most
-     wording changes never need a rebuild. -->
-<html lang="da" data-theme="dark">
+<!-- GENERATED FILE — built by src/build.py from src/templates/blog.html.j2
+     (on top of src/templates/world.html.j2). Edit the templates or the content
+     in /admin, not this file. -->
+<html lang="da" class="no-js">
 <head>
 <script>
 (function () {
-  try {
-    var stored = localStorage.getItem('theme');
-    var theme = (stored === 'light' || stored === 'dark') ? stored : 'dark';
-    document.documentElement.setAttribute('data-theme', theme);
-  } catch (e) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  }
+  var d = document.documentElement, mode = 'runes';
+  try { var m = localStorage.getItem('entryLang'); if (m === 'en' || m === 'da') mode = 'latin'; } catch (e) {}
+  d.className = 'js mode-' + mode;
 })();
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Feltnoter — Pieter Shiffler Carpentier</title>
+<title>Labdagbog — Pieter Shiffler Carpentier</title>
 <meta name="description" content="Fund fra skoven, det der gror på arbejdsbordet, livet i terrarierne, og det jeg læser og arbejder med.">
 <link rel="canonical" href="https://ndrshfflr.github.io/blog.da.html">
 <link rel="alternate" hreflang="en" href="https://ndrshfflr.github.io/blog.html">
@@ -26,163 +22,150 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
+<meta name="theme-color" content="#0b1322">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pieter Shiffler Carpentier">
-<meta property="og:title" content="Feltnoter — Pieter Shiffler Carpentier">
+<meta property="og:title" content="Labdagbog — Pieter Shiffler Carpentier">
 <meta property="og:description" content="Fund fra skoven, det der gror på arbejdsbordet, livet i terrarierne, og det jeg læser og arbejder med.">
 <meta property="og:url" content="https://ndrshfflr.github.io/blog.da.html">
 <meta property="og:locale" content="da_DK">
 <meta property="og:image" content="https://ndrshfflr.github.io/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Feltnoter — Pieter Shiffler Carpentier">
+<meta name="twitter:title" content="Labdagbog — Pieter Shiffler Carpentier">
 <meta name="twitter:description" content="Fund fra skoven, det der gror på arbejdsbordet, livet i terrarierne, og det jeg læser og arbejder med.">
 <meta name="twitter:image" content="https://ndrshfflr.github.io/og-image.png">
-
 
 <!-- Fonts are self-hosted (no requests to Google — simpler under GDPR) -->
 <link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=563332d9">
-<!-- Cloudflare Web Analytics — free, cookie-free visitor counts. Replace the
-     token below with your own from the Cloudflare dashboard (see setup guide). -->
+<link rel="stylesheet" href="assets/world.css?v=c2d56bcb">
+<link rel="stylesheet" href="assets/pages.css?v=af52e1c5">
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
 </head>
-<body class="subpage">
-<a class="skip-link" href="#main">Gå til indhold</a>
+<body>
+<div class="world look-fabric scrolls pg-world" id="world">
 
-<nav id="site-nav">
-  <div class="wrap">
-    <div class="brand mark">
-      <button class="egg-trigger" type="button" data-egg aria-label="Træd ind i myceliet" title="…">
-        <svg class="seeing-eye" viewBox="2 18 96 64" aria-hidden="true">
-          <path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="var(--text)" stroke-width="4.5" stroke-linejoin="round"/>
-          <circle cx="50" cy="50" r="18" fill="none" stroke="var(--text)" stroke-width="2" opacity=".55"/>
-          <circle cx="50" cy="50" r="10" fill="var(--accent-2)"/>
-          <circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/>
-        </svg>
-      </button>
-      <a href="da.html" class="brand-name">Pieter Shiffler Carpentier</a>
-    </div>
-    <div class="nav-right">
-      <div class="navlinks" id="navlinks">
-        <a href="classic.da.html#about" id="nav-label-about">Om mig</a>
-        <a href="classic.da.html#microbiology" id="nav-label-microbiology">Skimmelsvamp</a>
-        <a href="classic.da.html#projects" id="nav-label-projects">Projekter</a>
-        <a href="classic.da.html#mycology" id="nav-label-mycology">Mykologi</a>
-        <span id="nav-dynamic" class="nav-dynamic"></span>
-        <a href="blog.da.html" id="nav-label-blog">Blog</a>
-        <a href="classic.da.html#contact" id="nav-label-contact">Kontakt</a>
+  <div class="stars" id="stars" aria-hidden="true">
+    <span class="star" style="left:13%;top:11%;opacity:.45"></span><span class="star" style="left:24%;top:23%;opacity:.35"></span><span class="star" style="left:7%;top:34%;opacity:.3"></span><span class="star" style="left:71%;top:19%;opacity:.35"></span><span class="star" style="left:80%;top:31%;opacity:.3"></span><span class="star" style="left:36%;top:6%;opacity:.4"></span>
+  </div>
+  <span class="disc" id="disc" aria-hidden="true"><span class="craters" id="craters"></span></span>
+  <div class="fx" id="fx-winter" aria-hidden="true"></div>
+  <div class="fx" id="fx-spring" aria-hidden="true"></div>
+  <div class="fx" id="fx-summer" aria-hidden="true"></div>
+  <div class="fx" id="fx-autumn" aria-hidden="true"></div>
+
+  <header class="top chrome" id="top">
+    <a class="logo" href="da.html" aria-label="Pieter Shiffler Carpentier">
+      <svg class="eye" viewBox="0 0 100 100" width="38" height="38" aria-hidden="true"><defs><clipPath id="eye-clip"><path d="M6 50Q50 6 94 50Q50 94 6 50Z"/></clipPath></defs><g class="eye-lid"><g clip-path="url(#eye-clip)"><g class="eye-look" id="eye-look"><circle cx="50" cy="50" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><circle cx="50" cy="50" r="10" class="eye-pupil"/><circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/></g></g><path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/></g></svg>
+    </a>
+    <div class="top-right">
+      <nav class="langs" aria-label="Sprog">
+        <a class="lang lang-runes" href="#" data-mode="runes" lang="da-Runr" aria-label="Runer (yngre futhark, langkvist)">ᚱᚢᚾᛅᛦ</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a class="lang" href="blog.html" data-mode="en" lang="en" hreflang="en">EN</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a class="lang" href="blog.da.html" data-mode="da" lang="da" hreflang="da">DA</a>
+      </nav>
+      <div class="season-wrap">
+        <button class="season-btn" id="season-btn" type="button" aria-label="Vælg en årstid" aria-haspopup="true" aria-expanded="false" aria-controls="season-menu">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="si si-winter"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 3.5l3 2 3-2M9 20.5l3-2 3 2"/></g><g class="si si-spring"><path d="M12 21V11M12 11C12 7 9 5 5 5c0 4 3 6 7 6zM12 14c0-3 2.5-5 6-5 0 3-2.5 5-6 5z"/></g><g class="si si-summer"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g><g class="si si-autumn"><path d="M5 19C5 11 10 5 19 5c0 9-6 14-14 14zM5 19l8-8"/></g></svg>
+          <span class="slabel"><span class="rv" data-k="season"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+        </button>
+        <div class="season-menu" id="season-menu" role="group" aria-label="Vælg en årstid" hidden>
+          
+          <button class="sopt" type="button" data-season="winter" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 3.5l3 2 3-2M9 20.5l3-2 3 2"/></svg>
+            <span class="sname"><span class="rv" data-k="opt-winter"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-winter"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
+          
+          <button class="sopt" type="button" data-season="spring" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11M12 11C12 7 9 5 5 5c0 4 3 6 7 6zM12 14c0-3 2.5-5 6-5 0 3-2.5 5-6 5z"/></svg>
+            <span class="sname"><span class="rv" data-k="opt-spring"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-spring"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
+          
+          <button class="sopt" type="button" data-season="summer" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            <span class="sname"><span class="rv" data-k="opt-summer"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-summer"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
+          
+          <button class="sopt" type="button" data-season="autumn" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19C5 11 10 5 19 5c0 9-6 14-14 14zM5 19l8-8"/></svg>
+            <span class="sname"><span class="rv" data-k="opt-autumn"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-autumn"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
+          
+          <button class="sopt" type="button" data-season="auto" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span class="sname"><span class="rv" data-k="opt-auto"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+            <span class="snote"><span class="rv" data-k="note-auto"><span class="rn" aria-hidden="true"></span><span class="lt"></span></span></span>
+          </button>
+          
+        </div>
       </div>
-      <a class="lang-switch" href="blog.html" hreflang="en" lang="en" data-lang-switch>EN</a>
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Skift mellem lyst og mørkt tema">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="4.2"/>
-          <path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
-        </svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/>
-        </svg>
-      </button>
-      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">
-        <span></span><span></span><span></span>
-      </button>
     </div>
+  </header>
+
+  
+  <div class="hero chrome pg-hero">
+    <span class="pg-rune" aria-hidden="true">ᚬ</span>
+    <h1 class="nm"><span class="rv" data-k="heading"><span class="rn" aria-hidden="true"></span><span class="lt">Labdagbog</span></span></h1>
+    <p class="title"><span class="rv" data-k="intro"><span class="rn" aria-hidden="true"></span><span class="lt">Fund fra skoven, det der gror på arbejdsbordet, livet i terrarierne, og det jeg læser og arbejder med.</span></span></p>
+    <button class="aa" id="aa" type="button" aria-pressed="false" aria-label="Vis teksten med latinske bogstaver">Aa</button>
   </div>
-</nav>
 
-<main id="main">
-
-
-<header class="page-header blog-header" id="top">
-  <div class="wrap">
-    <div class="eyebrow"><span class="rune" aria-hidden="true" title="ansuz — tale, ordet">ᚨ</span><span id="blog-eyebrow">Blog</span></div>
-    <h1 id="blog-heading">Feltnoter</h1>
-    <p class="lead blog-intro" id="blog-intro">Fund fra skoven, det der gror på arbejdsbordet, livet i terrarierne, og det jeg læser og arbejder med.</p>
-  </div>
-</header>
-<div class="carve" aria-hidden="true"></div>
-<section class="blog-section" id="blog">
-  <div class="wrap">
+  <main class="pg-wrap pg-wide" id="main" data-page="labdiary">
     
-    <div class="tag-filter" id="blog-tags" role="group" aria-label="Filtrér indlæg efter emne" hidden>
-      <button type="button" class="tag-chip is-on" data-tag="">Alle indlæg</button>
-      <button type="button" class="tag-chip" data-tag="Photography">Photography</button>
-    </div>
-    <div class="post-list" id="blog-list">
-      <article class="post-card">
-  <a class="post-link" href="post.html?slug=2026-10-30-one-of-the-remaining-giants-of-the-north" hreflang="en">
-    <span class="post-cover has-image"><img src="https://ndrshfflr.github.io/images/gallery/2026-10-30-alces-alces-4f1b00.jpg" alt="" loading="lazy"></span>
-    <span class="post-text">
-      <span class="post-meta"><time datetime="2026-10-30">30. oktober 2026</time><span class="post-lang">EN</span></span>
-      <span class="post-title">One of the last (wild) giants of the North</span>
-      
-      
-      <span class="post-more">Læs mere <span aria-hidden="true">&rarr;</span></span>
-    </span>
-  </a>
-</article><article class="post-card" data-tags="Photography">
-  <a class="post-link" href="post.html?slug=2026-10-30-close-encounter" hreflang="en">
-    <span class="post-cover has-image"><img src="/images/gallery/2026-06-22-close-encounter-79c386.jpg" alt="" loading="lazy"></span>
-    <span class="post-text">
-      <span class="post-meta"><time datetime="2026-10-30">30. oktober 2026</time><span class="post-lang">EN</span></span>
-      <span class="post-title">Close encounter</span>
-      
-      <span class="post-tags"><span>Photography</span></span>
-      <span class="post-more">Læs mere <span aria-hidden="true">&rarr;</span></span>
-    </span>
-  </a>
-</article><article class="post-card" data-tags="Photography">
-  <a class="post-link" href="post.html?slug=2026-10-30-a-touching-encounter-with-the-spix-s-white-fronted" hreflang="en">
-    <span class="post-cover has-image"><img src="/images/gallery/2026-01-09-photo-d12e91.jpg" alt="" loading="lazy"></span>
-    <span class="post-text">
-      <span class="post-meta"><time datetime="2026-01-09">9. januar 2026</time><span class="post-lang">EN</span></span>
-      <span class="post-title">A touching encounter with the Spix&#39;s white-fronted capuchin</span>
-      
-      <span class="post-tags"><span>Photography</span></span>
-      <span class="post-more">Læs mere <span aria-hidden="true">&rarr;</span></span>
-    </span>
-  </a>
-</article>
-    </div>
-    <p class="blog-empty" id="blog-empty" hidden>De første indlæg er på vej.</p>
-  </div>
-</section>
+    <ul class="pg-posts" id="pg-posts">
+      <li class="pg-card">
+        <a class="pg-card-a" href="post.da.html?slug=2026-10-30-one-of-the-remaining-giants-of-the-north" hreflang="en">
+          <span class="pg-cover"><img src="https://ndrshfflr.github.io/images/gallery/2026-10-30-alces-alces-4f1b00.jpg" alt="" loading="lazy" decoding="async"></span>
+          <span class="pg-card-text">
+            <span class="pg-meta"><time datetime="2026-10-30">30. oktober 2026</time><span class="pg-lang">EN</span></span>
+            <span class="pg-card-title">One of the last (wild) giants of the North</span>
+            
+            
+          </span>
+        </a>
+      </li><li class="pg-card" data-tags="Photography">
+        <a class="pg-card-a" href="post.da.html?slug=2026-10-30-close-encounter" hreflang="en">
+          <span class="pg-cover"><img src="/images/gallery/2026-06-22-close-encounter-79c386.jpg" alt="" loading="lazy" decoding="async"></span>
+          <span class="pg-card-text">
+            <span class="pg-meta"><time datetime="2026-10-30">30. oktober 2026</time><span class="pg-lang">EN</span></span>
+            <span class="pg-card-title">Close encounter</span>
+            
+            <span class="pg-card-tags"><span>Photography</span></span>
+          </span>
+        </a>
+      </li><li class="pg-card" data-tags="Photography">
+        <a class="pg-card-a" href="post.da.html?slug=2026-10-30-a-touching-encounter-with-the-spix-s-white-fronted" hreflang="en">
+          <span class="pg-cover"><img src="/images/gallery/2026-01-09-photo-d12e91.jpg" alt="" loading="lazy" decoding="async"></span>
+          <span class="pg-card-text">
+            <span class="pg-meta"><time datetime="2026-01-09">9. januar 2026</time><span class="pg-lang">EN</span></span>
+            <span class="pg-card-title">A touching encounter with the Spix&#39;s white-fronted capuchin</span>
+            
+            <span class="pg-card-tags"><span>Photography</span></span>
+          </span>
+        </a>
+      </li>
+    </ul>
+    <p class="pg-empty" hidden>De første indlæg er på vej.</p>
+  </main>
 
-</main>
+  <footer class="world-foot chrome">
+    <a class="back-link" href="da.html"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="rv" data-k="back"><span class="rn" aria-hidden="true"></span><span class="lt">Tilbage til cirklen</span></span></a>
+  </footer>
 
-<footer class="site-footer">
-  <div class="wrap footer-row">
-    <div>© <span id="year">2026</span> Pieter Shiffler Carpentier<span id="footer-cvr" class="footer-cvr" hidden> · CVR <span id="footer-cvr-value"></span></span></div>
-    <div class="footer-links">
-      <a href="exploration.da.html" id="footer-exploration">Ud over laboratoriet</a>
-      <a href="blog.html" hreflang="en" lang="en" data-lang-switch>English</a>
-    </div>
-    <div id="footer-tagline">MSc Biologi · Mykologi · Indeklimamikrobiologi</div>
-  </div>
-</footer>
-
-<div class="egg" id="egg" hidden role="dialog" aria-modal="true" aria-label="Træd ind i myceliet">
-  <div class="egg-stage" id="egg-stage"></div>
-  <div class="egg-veil"></div>
-  <div class="egg-copy">
-    <div class="eyebrow"><span class="rune" aria-hidden="true">ᛜ</span>Du fandt den</div>
-    <div class="egg-title">Træd ind i myceliet</div>
-  </div>
-  <div class="egg-bottom">
-    <button class="motion-btn" id="motion-btn" type="button">Slå bevægelse til</button>
-    <div id="egg-hint">bevæg eller vip for at udforske · esc for at lukke</div>
-  </div>
-  <button class="egg-close" id="egg-close" type="button" aria-label="Luk">&times;</button>
-  <p class="egg-fallback" id="egg-fallback" hidden>Det her kræver WebGL, som din browser vist ikke understøtter. Netværket er der stadig.</p>
 </div>
 
-<script id="ui-strings" type="application/json">{"allPosts": "Alle indl\u00e6g", "area": "Omr\u00e5de", "askAvailability": "Sp\u00f8rg om de kan f\u00e5s", "back": "Tilbage til forsiden", "book": "Book en plads", "buy": "K\u00f8b", "careGuide": "Plejeguide", "caseFinding": "Hvad jeg fandt", "caseOutcome": "Resultat", "caseProblem": "Problemet", "close": "Luk", "downloadPdf": "Download som PDF", "duration": "Varighed", "eggEyebrow": "Du fandt den", "eggFallback": "Det her kr\u00e6ver WebGL, som din browser vist ikke underst\u00f8tter. Netv\u00e6rket er der stadig.", "eggHint": "bev\u00e6g eller vip for at udforske \u00b7 esc for at lukke", "eggTitle": "Tr\u00e6d ind i myceliet", "enableMotion": "Sl\u00e5 bev\u00e6gelse til", "faqMore": "Har du et andet sp\u00f8rgsm\u00e5l?", "faqMoreLink": "Sp\u00f8rg mig direkte.", "filterTags": "Filtr\u00e9r indl\u00e6g efter emne", "flAll": "Alle", "flFilter": "Vis \u00e9n gruppe", "flFirst": "F\u00f8rste fund", "flFromBlog": "Fra bloggen", "flGroups": {"arachnids": "Edderkopper m.fl.", "birds": "Fugle", "fish": "Fisk", "fungi": "Svampe", "herps": "Padder \u0026 krybdyr", "insects": "Insekter", "mammals": "Pattedyr", "molluscs": "Bl\u00f8ddyr", "other": "Andet", "plants": "Planter"}, "flLast": "Senest set", "flNew": "Ny", "flNoMatch": "Intet i fundbogen matcher det.", "flNotebook": "Min notesbog", "flOf": "af", "flOpenRecord": "\u00c5bn fundet", "flRecords": "Fund", "flRefPhoto": "Referencefoto, ikke mit eget", "flRefShort": "Ref.-foto", "flSearch": "S\u00f8g i fundbogen", "flSortAz": "A\u2013\u00c5", "flSortLabel": "Sort\u00e9r", "flSortMost": "Flest fund", "flSortNewest": "Nyeste f\u00f8rst", "flSortNumber": "I fundr\u00e6kkef\u00f8lge", "flSpecies": "Arter", "flSynced": "Senest synkroniseret", "flThisYear": "Nye i \u00e5r", "formEmail": "E-mail", "formError": "Noget gik galt. Skriv venligst direkte til min e-mail i stedet.", "formInvalid": "Udfyld venligst navn, en gyldig e-mailadresse og en besked.", "formMailto": "Dit mailprogram burde \u00e5bne med beskeden udfyldt \u2014 tryk bare send.", "formMessage": "Besked", "formName": "Navn", "formSend": "Send besked", "formSending": "Sender\u2026", "formSent": "Tak \u2014 din besked er sendt. Jeg vender tilbage hurtigst muligt.", "formTopic": "Hvad drejer det sig om?", "formTopics": ["Skimmel eller fugt i en bygning", "Svampesankning eller dyrkning", "Ture \u0026 workshops", "K\u00f8b af en kultur", "Insekter \u0026 terrarier", "Forskning eller samarbejde", "Noget andet"], "format": "Format", "inStock": "P\u00e5 lager", "inhabitants": "Beboere", "loading": "Indl\u00e6ser\u2026", "menu": "Menu", "notFound": "Siden blev ikke fundet", "notFoundBody": "Beklager, siden kunne ikke findes.", "offerCta": "Sp\u00f8rg om dette", "offerPrefill": "Ang\u00e5ende: ", "orderCulture": "Bestil denne kultur", "origin": "Oprindelse", "otherLang": "en", "otherLangLabel": "EN", "otherLangName": "English", "pathsLabel": "Hvor vil du starte?", "phone": "Telefon", "photoFieldlog": "I fundbogen", "photoPost": "L\u00e6s indl\u00e6gget", "postPhotos": "Fotos", "readMore": "L\u00e6s mere", "skip": "G\u00e5 til indhold", "soldOut": "Ikke p\u00e5 lager lige nu", "themeToggle": "Skift mellem lyst og m\u00f8rkt tema", "turnaround": "Leveringstid"}</script>
-<script src="assets/markdown.js?v=d4f718c0"></script>
-
-<script src="assets/site.js?v=ac6bc772" data-mycelium="assets/mycelium.js?v=22800169" defer></script>
+<script id="world-data" type="application/json">{"page": "da", "ui": {"da": {"aa": "Vis teksten med latinske bogstaver", "allPosts": "Alle indl\u00e6g", "back": "Tilbage til cirklen", "chooseSeason": "V\u00e6lg en \u00e5rstid", "coming": "P\u00e5 vej", "downloadPdf": "Download som PDF", "filterTags": "Filtr\u00e9r indl\u00e6g efter emne", "language": "Sprog", "loading": "Indl\u00e6ser\u2026", "noTools": "Ingen v\u00e6rkt\u00f8jer endnu.", "notFound": "Siden blev ikke fundet", "notFoundBody": "Beklager, siden kunne ikke findes.", "openTool": "\u00c5bn", "photoFieldlog": "I fundbogen", "postPhotos": "Fotos", "readMore": "L\u00e6s mere", "runesName": "Runer (yngre futhark, langkvist)", "seasonAria": "\u00c5rstid: {s}. Skift \u00e5rstid", "seasons": {"autumn": "Efter\u00e5r", "spring": "For\u00e5r", "summer": "Sommer", "winter": "Vinter"}, "toLabdiary": "Tilbage til labdagbogen", "tod": {"dawn": "daggry", "day": "dag", "dusk": "skumring", "night": "nat"}, "today": "i dag", "todayHint": "(i dag)", "todaySeason": "Dagens \u00e5rstid", "toolsLabel": "V\u00e6rkt\u00f8jer"}, "en": {"aa": "Show the text in Latin letters", "allPosts": "All posts", "back": "Back to the circle", "chooseSeason": "Choose a season", "coming": "Coming", "downloadPdf": "Download as PDF", "filterTags": "Filter posts by topic", "language": "Language", "loading": "Loading\u2026", "noTools": "No tools yet.", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "openTool": "Open", "photoFieldlog": "In the field log", "postPhotos": "Photos", "readMore": "Read more", "runesName": "Runes (long-branch Younger Futhark)", "seasonAria": "Season: {s}. Change season", "seasons": {"autumn": "Autumn", "spring": "Spring", "summer": "Summer", "winter": "Winter"}, "toLabdiary": "Back to the labdiary", "tod": {"dawn": "dawn", "day": "day", "dusk": "dusk", "night": "night"}, "today": "today", "todayHint": "(today)", "todaySeason": "Today\u0027s season", "toolsLabel": "Tools"}}}</script>
+<script src="assets/world.js?v=69d337cf"></script>
+<script src="assets/pages.js?v=6ad311c4"></script>
 </body>
 </html>
