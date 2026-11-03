@@ -385,11 +385,14 @@
       if (reduced) return;
       session.set('vtKind', 'to-circle'); // browsers that blend pages carry the fold straight into the circle
       e.preventDefault();
+      // a portal's world folds into the middle (its portal); a menu page down into its rune
+      var at = /^(blog|post|page|fieldlog)\b/.test(page) ? 0.93 : 0.42;
       var ring = doc.createElement('span');
       ring.className = 'close-ring';
       ring.setAttribute('aria-hidden', 'true');
+      ring.style.top = (at * 100) + '%';
       doc.body.appendChild(ring);
-      world.style.setProperty('--close-y', Math.round(window.scrollY + innerHeight * 0.42 - world.getBoundingClientRect().top - window.scrollY) + 'px');
+      world.style.setProperty('--close-y', Math.round(innerHeight * at - world.getBoundingClientRect().top) + 'px');
       world.classList.add('leaving');
       setTimeout(function () { location.href = a.href; }, 560);
     });

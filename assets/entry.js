@@ -365,6 +365,32 @@
     setTimeout(function () { r.classList.remove('ritual'); }, 5600);
   })();
 
+  /* ------------------------------------------------------------------ the small menu */
+  /* Going to a menu page keeps the circle as it stands, and browsers that blend pages open
+     the page up out of the menu rune. Coming back, the circle is there as you left it and
+     that rune glows (world.html.j2 marks the return "from-menu"). */
+  $$('.sm').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      W.session.set('circleFront', String(front()));
+      W.session.set('vtKind', 'from-menu');
+    });
+  });
+  (function () {
+    var r = doc.documentElement;
+    if (!r.classList.contains('from-menu')) return;
+    var from = (r.getAttribute('data-return') || '').split(/[?#]/)[0];
+    var key = (from.match(/^(blog|post|page|fieldlog)/) || [])[1];
+    if (key === 'post') key = 'blog';
+    var at = parseInt(W.session.get('circleFront'), 10);
+    if (at >= 0 && at < COUNT) n = at;
+    if (stage) stage.classList.add('no-anim');
+    var sm = key && $$('.sm').filter(function (a) { return (a.getAttribute('href') || '').indexOf(key) === 0; })[0];
+    if (sm) sm.classList.add('glow-back');
+    requestAnimationFrame(function () { requestAnimationFrame(function () { if (stage) stage.classList.remove('no-anim'); }); });
+    setTimeout(function () { r.classList.remove('from-menu'); if (sm) sm.classList.remove('glow-back'); }, 2400);
+  })();
+
   /* ------------------------------------------------------------------ coming back */
   /* The page's head marked it "returning" (see world.html.j2): turn the ring so the world we
      came from stands at the front, then pull back out of its portal. */
