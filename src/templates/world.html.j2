@@ -29,10 +29,13 @@
       var f = u.pathname.split('/').pop();
       if (u.origin === location.origin && f && f !== 'index.html' && f !== 'da.html') from = f;
     }
-    if (from && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+    var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (from && !still) {
       d.className += ' returning';
       d.setAttribute('data-return', from);
     }
+    /* the first visit: the portals light one by one before the circle wakes (assets/entry.js) */
+    if (!from && !still && !localStorage.getItem('circleVisited')) d.className += ' ritual';
   } catch (e) {}
 {%- endif %}
 })();
@@ -86,7 +89,7 @@
 
   <header class="top chrome" id="top">
     <a class="logo" href="{{ entry_href }}" aria-label="Pieter Shiffler Carpentier">
-      <svg viewBox="0 0 100 100" width="38" height="38" aria-hidden="true"><path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/><circle cx="50" cy="50" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><circle cx="50" cy="50" r="10" class="eye-pupil"/><circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/></svg>
+      <svg class="eye" viewBox="0 0 100 100" width="38" height="38" aria-hidden="true"><defs><clipPath id="eye-clip"><path d="M6 50Q50 6 94 50Q50 94 6 50Z"/></clipPath></defs><g class="eye-lid"><g clip-path="url(#eye-clip)"><g class="eye-look" id="eye-look"><circle cx="50" cy="50" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><circle cx="50" cy="50" r="10" class="eye-pupil"/><circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/></g></g><path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/></g></svg>
     </a>
     <div class="top-right">
       <nav class="langs" aria-label="{{ ui.language }}">

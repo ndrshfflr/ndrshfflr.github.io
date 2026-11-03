@@ -129,6 +129,7 @@
     var p = (C().portals || [])[i] || {};
     busy = true;
     W.session.set('circleFront', String(i)); // so coming back from a menu page faces the same portal
+    remember(i);
     W.closeMenu(false);
     world.classList.add('entering');
     clearTimeout(enterTimer);
@@ -333,6 +334,32 @@
       if (changed && !busy) { renderText(); carve(C().inscription); layout(); }
     });
   }
+
+  /* ------------------------------------------------------------------ the circle remembers */
+  /* Portals you have been through burn a little brighter next time (kept in this browser). */
+  var KEY_SEEN = 'circleSeen';
+  function seenKeys() { try { return JSON.parse(W.local.get(KEY_SEEN) || '[]') || []; } catch (e) { return []; } }
+  function keyOf(i) { var it = items[i]; var pa = pds[i]; return (pa && pa.getAttribute('data-key')) || String(i); }
+  function remember(i) {
+    var seen = seenKeys(), k = keyOf(i);
+    if (seen.indexOf(k) < 0) { seen.push(k); W.local.set(KEY_SEEN, JSON.stringify(seen)); }
+    markSeen();
+  }
+  function markSeen() {
+    var seen = seenKeys();
+    pds.forEach(function (pd, i) { pd.classList.toggle('seen', seen.indexOf(keyOf(i)) >= 0); });
+  }
+  markSeen();
+
+  /* ------------------------------------------------------------------ the first visit */
+  /* world.html.j2 marks a first visit "ritual": the sky starts dark, the portals light one by
+     one, then the circle wakes. Afterwards this browser counts as having visited. */
+  (function () {
+    var r = doc.documentElement;
+    if (!r.classList.contains('ritual')) return;
+    W.local.set('circleVisited', '1');
+    setTimeout(function () { r.classList.remove('ritual'); }, 5600);
+  })();
 
   /* ------------------------------------------------------------------ coming back */
   /* The page's head marked it "returning" (see world.html.j2): turn the ring so the world we

@@ -345,6 +345,26 @@
   }
   if (aa) aa.addEventListener('click', function () { reveal(!root.classList.contains('reveal-all')); });
 
+  /* ------------------------------------------------------------------ the seeing eye */
+  /* The eye in the corner follows the pointer (mouse and pen; on touch screens it just blinks). */
+  (function () {
+    var look = $('eye-look'), eye = doc.querySelector('.logo .eye');
+    if (!look || !eye || !window.matchMedia || !matchMedia('(hover: hover)').matches) return;
+    var frame = 0, px = 0, py = 0;
+    doc.addEventListener('pointermove', function (e) {
+      px = e.clientX; py = e.clientY;
+      if (frame) return;
+      frame = requestAnimationFrame(function () {
+        frame = 0;
+        var r = eye.getBoundingClientRect();
+        var dx = px - (r.left + r.width / 2), dy = py - (r.top + r.height / 2);
+        var d = Math.sqrt(dx * dx + dy * dy) || 1, m = Math.min(1, d / 260);
+        look.setAttribute('transform', 'translate(' + (dx / d * m * 8).toFixed(2) + ' ' + (dy / d * m * 4.5).toFixed(2) + ')');
+      });
+    }, { passive: true });
+    doc.documentElement.addEventListener('mouseleave', function () { look.removeAttribute('transform'); });
+  })();
+
   /* ------------------------------------------------------------------ back to the circle */
   /* A link to the circle (the eye, "Back to the circle") folds this world shut into a
      ripple, then leaves a note so the circle opens out of this world's portal. */

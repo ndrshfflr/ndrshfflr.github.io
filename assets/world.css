@@ -81,6 +81,15 @@ button{font:inherit}
 .top{position:relative;z-index:4;display:flex;justify-content:space-between;align-items:center;padding:16px 32px 0}
 .logo{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;color:var(--ink)}
 .eye-pupil{fill:var(--acc)}
+/* the seeing eye looks back: it follows the pointer, blinks now and then, and widens when a
+   portal is hovered (assets/world.js) */
+.eye{overflow:visible}
+.eye-look{transition:transform .14s ease-out}
+.eye-pupil{transform-box:fill-box;transform-origin:center;transition:transform .45s ease}
+.world:has(.pd:hover) .eye-pupil{transform:scale(1.28)}
+.eye-lid{transform-box:view-box;transform-origin:50px 50px}
+@keyframes blink{0%,44%,48%,90%,92.5%,95%,97.5%,100%{transform:scaleY(1)}46%,91.2%,96.2%{transform:scaleY(.06)}}
+@media (prefers-reduced-motion:no-preference){.eye-lid{animation:blink 11s ease-in-out infinite}}
 .top-right{display:flex;align-items:center;gap:8px}
 .langs{display:flex;align-items:center;gap:2px;font-size:16px;font-weight:500}
 .lang{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 4px;color:var(--ink2);text-decoration:none}
