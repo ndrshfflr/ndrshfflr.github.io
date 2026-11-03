@@ -157,7 +157,7 @@
   if (destBack) destBack.addEventListener('click', function () { leave(true); });
   window.addEventListener('pageshow', function (e) { if (e.persisted || busy) leave(false); });
 
-  var lastPointer = 0;
+  var lastPointer = 0, turnThenEnter = null;
   if (stage) stage.addEventListener('pointerdown', function () { lastPointer = Date.now(); }, true);
   pds.forEach(function (pd, i) {
     pd.addEventListener('click', function (e) {
@@ -165,7 +165,11 @@
       var link = ((C().portals || [])[i] || {}).link;
       if (isFront && link && (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button)) return; // new tab / window
       e.preventDefault();
-      if (isFront) enter(i); else goTo(i);
+      if (isFront) { enter(i); return; }
+      // a portal at the side: turn it to the front, then go through it
+      goTo(i);
+      clearTimeout(turnThenEnter);
+      turnThenEnter = setTimeout(function () { if (front() === i) enter(i); }, reduced ? 0 : 950);
     });
     pd.addEventListener('mouseenter', function () { // the front portal draws its symbol again
       if (i !== front() || busy) return;
