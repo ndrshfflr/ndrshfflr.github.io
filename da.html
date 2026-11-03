@@ -43,12 +43,12 @@
 <link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/world.css?v=a32c77ce">
-<link rel="stylesheet" href="assets/entry.css?v=6b66ab0a">
+<link rel="stylesheet" href="assets/world.css?v=6be4beb9">
+<link rel="stylesheet" href="assets/entry.css?v=f3bfdc39">
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
 </head>
 <body>
-<div class="world look-fabric" id="world">
+<div class="world look-fabric circle" id="world">
 
   <div class="stars" id="stars" aria-hidden="true">
     <span class="star" style="left:13%;top:11%;opacity:.45"></span><span class="star" style="left:24%;top:23%;opacity:.35"></span><span class="star" style="left:7%;top:34%;opacity:.3"></span><span class="star" style="left:71%;top:19%;opacity:.35"></span><span class="star" style="left:80%;top:31%;opacity:.3"></span><span class="star" style="left:36%;top:6%;opacity:.4"></span>
@@ -120,9 +120,12 @@
     <button class="aa" id="aa" type="button" aria-pressed="false" aria-label="Vis teksten med latinske bogstaver">Aa</button>
   </div>
 
-  <main class="ring-wrap" id="main"><svg class="treeline" id="inscription" viewBox="0 0 1877 250" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-      <defs><pattern id="bark-pat" width="54" height="68" patternUnits="userSpaceOnUse"><rect width="54" height="68" class="bark-base"/><g class="bark-marks"><rect x="9.4" y="6.8" width="10.1" height="1.6"/><rect x="2.7" y="26.5" width="16.9" height="2.7"/><rect x="30.6" y="14.6" width="12" height="1.8"/><rect x="6.9" y="7" width="7.8" height="2.9"/><rect x="33.2" y="53.2" width="15.4" height="1.7"/><rect x="12.4" y="41.4" width="14.5" height="2.8"/><rect x="35.2" y="5.7" width="12.9" height="2.5"/><rect x="20.2" y="11.7" width="11.2" height="1.5"/><rect x="37.4" y="57.1" width="12.1" height="1.9"/><rect x="36.4" y="37.8" width="16.5" height="2.8"/><rect x="20.3" y="27.3" width="12.8" height="2.1"/><rect x="0" y="48.6" width="8.5" height="2.2"/><rect x="24.5" y="62.2" width="9.8" height="2.4"/></g></pattern></defs>
-      <g id="inscription-runes" fill="none" stroke="url(#bark-pat)" stroke-linecap="butt" stroke-linejoin="miter" data-carved="ᛏᚢ᛬ᚦᛅ᛬ᛘᛅᛁᛏ᛬ᚦᛅᛏ᛬ᛁᛋ᛬ᛋᛏᛁᛚ᛬ᚦᛅ᛬ᛁᚢᚾᛁᚠᛁᚱᛋ᛬ᛋᛅᚱᛁᛏᛅᛋ">
+  <main class="ring-wrap" id="main">
+    <nav class="ring-nav" id="ring-nav" aria-label="Verdener">
+      <div class="stage cam" id="stage">
+        <svg class="treeline" id="inscription" viewBox="0 0 1877 250" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+          <defs><pattern id="bark-pat" width="54" height="68" patternUnits="userSpaceOnUse"><rect width="54" height="68" class="bark-base"/><g class="bark-marks"><rect x="9.4" y="6.8" width="10.1" height="1.6"/><rect x="2.7" y="26.5" width="16.9" height="2.7"/><rect x="30.6" y="14.6" width="12" height="1.8"/><rect x="6.9" y="7" width="7.8" height="2.9"/><rect x="33.2" y="53.2" width="15.4" height="1.7"/><rect x="12.4" y="41.4" width="14.5" height="2.8"/><rect x="35.2" y="5.7" width="12.9" height="2.5"/><rect x="20.2" y="11.7" width="11.2" height="1.5"/><rect x="37.4" y="57.1" width="12.1" height="1.9"/><rect x="36.4" y="37.8" width="16.5" height="2.8"/><rect x="20.3" y="27.3" width="12.8" height="2.1"/><rect x="0" y="48.6" width="8.5" height="2.2"/><rect x="24.5" y="62.2" width="9.8" height="2.4"/></g></pattern></defs>
+          <g id="inscription-runes" fill="none" stroke="url(#bark-pat)" stroke-linecap="butt" stroke-linejoin="miter" data-carved="ᛏᚢ᛬ᚦᛅ᛬ᛘᛅᛁᛏ᛬ᚦᛅᛏ᛬ᛁᛋ᛬ᛋᛏᛁᛚ᛬ᚦᛅ᛬ᛁᚢᚾᛁᚠᛁᚱᛋ᛬ᛋᛅᚱᛁᛏᛅᛋ">
 <path d="M51.0 88.8 L51.0 250.0M30.0 133.9 L51.0 88.8 L71.9 133.9" stroke-width="3.7" opacity="0.33"/>
 <path d="M88.9 250.0 L88.9 67.4 L125.4 136.8 L125.4 250.0" stroke-width="2.9" opacity="0.36"/>
 <path d="M145.4 134.5v6M145.4 195.8v6" stroke-width="6" opacity="0.2"/>
@@ -165,22 +168,20 @@
 <path d="M1702.1 66.6 L1702.1 250.0M1678.3 118.0 L1702.1 66.6 L1726.0 118.0" stroke-width="3.2" opacity="0.25"/>
 <path d="M1766.0 40.4 L1766.0 250.0M1743.0 170.4 L1789.1 115.9" stroke-width="2.9" opacity="0.21"/>
 <path d="M1806.1 45.2 L1806.1 172.2 L1847.0 112.8 L1847.0 250.0" stroke-width="3.8" opacity="0.30"/></g>
-    </svg>
-    <nav class="ring-nav" id="ring-nav" aria-label="Verdener">
-      <div class="stage cam" id="stage">
-        <span class="pool" aria-hidden="true"></span>
+        </svg>
         <div class="scene">
           <div class="floor" id="floor" aria-hidden="true">
             <span class="floor-ring1"></span><span class="floor-ring2"></span>
             <span class="floor-fx" id="floor-winter"></span><span class="floor-fx" id="floor-summer"></span>
           </div>
           
-          <div class="item" data-i="0" style="transform:rotateY(0deg) translateZ(var(--r)) rotateY(-0deg)">
+          <div class="item it1" data-i="0" style="transform:rotateY(0deg) translateZ(var(--r)) rotateY(-0deg)">
             <a class="pd on" href="classic.da.html#microbiology" data-i="0" aria-label="Indendørs mikrobiologi" style="opacity:1.000">
               <span class="pa">
                 <span class="core" aria-hidden="true"></span>
                 <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 70 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round"><path d="M100 262C99 240 97 214 100 184"/><circle cx="100" cy="168" r="16"/><path d="M100 152v-12M111 157l14-15M89 157L75 142M116 168h20M84 168H64M111 179l13 12M89 179l-13 12"/><path d="M54 262C56 246 52 232 55 220"/><circle cx="55" cy="212" r="8"/><path d="M55 204v-9M61 207l7-7M49 207l-7-7"/><path d="M150 262C148 250 152 240 149 230"/><circle cx="149" cy="224" r="6"/><path d="M149 218v-7M154 220l6-6M144 220l-6-6"/></g><g fill="currentColor"><circle cx="128" cy="138" r="2.1"/><circle cx="72" cy="138" r="2.1"/><circle cx="141" cy="168" r="2.1"/><circle cx="59" cy="168" r="2.1"/><circle cx="127" cy="195" r="2"/><circle cx="73" cy="195" r="2"/><circle cx="55" cy="191" r="1.7"/><circle cx="149" cy="207" r="1.5"/></g></svg></span>
                 <span class="wv w1" aria-hidden="true"></span><span class="wv w2" aria-hidden="true"></span><span class="wv w3" aria-hidden="true"></span>
+                <span class="mote m1" aria-hidden="true"></span><span class="mote m2" aria-hidden="true"></span><span class="mote m3" aria-hidden="true"></span><span class="mote m4" aria-hidden="true"></span>
                 <span class="pr" aria-hidden="true">ᚴ</span>
               </span>
               <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
@@ -188,12 +189,13 @@
             </a>
           </div>
           
-          <div class="item" data-i="1" style="transform:rotateY(60deg) translateZ(var(--r)) rotateY(-60deg)">
+          <div class="item it2" data-i="1" style="transform:rotateY(60deg) translateZ(var(--r)) rotateY(-60deg)">
             <a class="pd" href="fungi.da.html" data-i="1" aria-label="Svampedyrkning" style="opacity:0.825">
               <span class="pa">
                 <span class="core" aria-hidden="true"></span>
                 <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 30 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round"><path d="M100 262C98 220 104 196 92 168C82 146 66 136 60 112C55 92 62 74 54 58"/><path d="M100 262C103 228 112 204 126 182C140 160 150 132 146 104C143 84 150 66 160 52"/><path d="M92 168C110 150 116 128 108 100C102 80 108 60 100 38"/><path d="M126 182C110 170 98 160 74 150C58 144 44 132 34 116"/><path d="M60 112C76 104 88 90 90 70"/><path d="M146 104C130 96 122 80 126 62"/><path d="M108 100C120 92 136 90 150 78"/><path d="M74 150C70 172 54 186 40 194"/><path d="M126 182C146 186 160 200 168 214"/></g><g fill="currentColor"><circle cx="54" cy="58" r="2.4"/><circle cx="160" cy="52" r="2.4"/><circle cx="100" cy="38" r="2.6"/><circle cx="34" cy="116" r="2"/><circle cx="168" cy="214" r="2"/><circle cx="90" cy="70" r="1.8"/><circle cx="126" cy="62" r="1.8"/><circle cx="150" cy="78" r="1.8"/><circle cx="40" cy="194" r="1.8"/></g></svg></span>
                 <span class="wv w1" aria-hidden="true"></span><span class="wv w2" aria-hidden="true"></span><span class="wv w3" aria-hidden="true"></span>
+                <span class="mote m1" aria-hidden="true"></span><span class="mote m2" aria-hidden="true"></span><span class="mote m3" aria-hidden="true"></span><span class="mote m4" aria-hidden="true"></span>
                 <span class="pr" aria-hidden="true">ᛅ</span>
               </span>
               <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
@@ -201,12 +203,13 @@
             </a>
           </div>
           
-          <div class="item" data-i="2" style="transform:rotateY(120deg) translateZ(var(--r)) rotateY(-120deg)">
+          <div class="item it3" data-i="2" style="transform:rotateY(120deg) translateZ(var(--r)) rotateY(-120deg)">
             <a class="pd" href="fungi.da.html#tours" data-i="2" aria-label="Sankning" style="opacity:0.475">
               <span class="pa">
                 <span class="core" aria-hidden="true"></span>
                 <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 70 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M64 172c0-24 17-38 38-38s38 14 38 38c-12-4-25-6-38-6s-26 2-38 6z"/><path d="M90 168c-2 28-6 50-10 76h44c-4-26-8-48-10-76"/><path d="M94 192l18 7M92 208l22 8M90 224l26 9"/><path d="M36 262C34 226 42 196 56 168"/><path d="M37 244l-11-6M38 228l-12-8M41 212l-11-10M45 196l-10-11M50 181l-8-11M37 244l10-8M38 228l11-10M41 212l11-11M45 196l10-12"/><path d="M164 262c0-34 4-54 0-72-3-13-17-13-17-2 0 7 9 8 10 2"/></g><g fill="currentColor"><circle cx="74" cy="152" r="1.6"/><circle cx="96" cy="144" r="1.6"/><circle cx="122" cy="150" r="1.6"/></g></svg></span>
                 <span class="wv w1" aria-hidden="true"></span><span class="wv w2" aria-hidden="true"></span><span class="wv w3" aria-hidden="true"></span>
+                <span class="mote m1" aria-hidden="true"></span><span class="mote m2" aria-hidden="true"></span><span class="mote m3" aria-hidden="true"></span><span class="mote m4" aria-hidden="true"></span>
                 <span class="pr" aria-hidden="true">ᚠ</span>
               </span>
               <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
@@ -214,12 +217,13 @@
             </a>
           </div>
           
-          <div class="item" data-i="3" style="transform:rotateY(180deg) translateZ(var(--r)) rotateY(-180deg)">
+          <div class="item it4" data-i="3" style="transform:rotateY(180deg) translateZ(var(--r)) rotateY(-180deg)">
             <a class="pd" href="#" data-i="3" aria-label="Naturbevarelse" style="opacity:0.300">
               <span class="pa">
                 <span class="core" aria-hidden="true"></span>
                 <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 62 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M100 214V128"/><path d="M100 172C86 162 70 158 56 142M100 156c14-10 30-14 44-30M100 128c-5-16-5-32 0-48M100 140c10-14 22-22 36-26M100 146c-10-12-22-18-36-20M56 142c-6-10-8-20-6-30M144 126c4-10 4-20 2-28M136 114c8-6 18-8 26-6M64 126c-8-6-18-8-26-6"/><path d="M28 214h144"/><path d="M100 214c-4 16-16 28-34 36M100 214c4 16 16 28 34 36M100 214v40M66 250c-10 2-18 6-24 12M134 250c10 2 18 6 24 12"/></g><g fill="currentColor"><circle cx="100" cy="78" r="2.6"/><circle cx="50" cy="110" r="2.2"/><circle cx="146" cy="96" r="2.2"/><circle cx="162" cy="108" r="2"/><circle cx="38" cy="120" r="2"/><circle cx="56" cy="142" r="1.8"/><circle cx="144" cy="126" r="1.8"/></g></svg></span>
                 <span class="wv w1" aria-hidden="true"></span><span class="wv w2" aria-hidden="true"></span><span class="wv w3" aria-hidden="true"></span>
+                <span class="mote m1" aria-hidden="true"></span><span class="mote m2" aria-hidden="true"></span><span class="mote m3" aria-hidden="true"></span><span class="mote m4" aria-hidden="true"></span>
                 <span class="pr" aria-hidden="true">ᛦ</span>
               </span>
               <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
@@ -227,12 +231,13 @@
             </a>
           </div>
           
-          <div class="item" data-i="4" style="transform:rotateY(240deg) translateZ(var(--r)) rotateY(-240deg)">
+          <div class="item it5" data-i="4" style="transform:rotateY(240deg) translateZ(var(--r)) rotateY(-240deg)">
             <a class="pd" href="terrarium.da.html" data-i="4" aria-label="Små verdener" style="opacity:0.475">
               <span class="pa">
                 <span class="core" aria-hidden="true"></span>
-                <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 70 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 236C66 208 126 178 186 128"/><path d="M156 150c10-14 26-18 36-14-4 12-20 18-36 14zM56 218c-14-6-22-18-22-28 12 2 20 14 22 28z"/><path d="M54 186L148 134"/><path d="M148 134l20-26M148 134l26-10"/><path d="M74 175l-9-18-8-4M74 175l5 15 8 6M100 161l-5-20-8-6M100 161l8 13 10 4M124 147l-2-22 6-8M124 147l13 9h10"/><path d="M54 186l-9 3"/></g><g fill="currentColor"><ellipse cx="150" cy="133" rx="3" ry="2.2"/></g></svg></span>
+                <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path pathLength="240" d="M100 60a10 10 0 1 1 0 20a10 10 0 1 1 0-20zM100 84c8 0 10 8 10 14s-2 12-10 12-10-6-10-12 2-14 10-14zM100 114c12 0 16 12 16 22s-6 20-16 20-16-10-16-20 4-22 16-22z"/><path pathLength="240" d="M92 92l-20-12-10 6M92 100h-26l-8 10M94 108l-18 18-4 12M108 92l20-12 10 6M108 100h26l8 10M106 108l18 18 4 12M94 62l-8-16M106 62l8-16"/></g></svg></span>
                 <span class="wv w1" aria-hidden="true"></span><span class="wv w2" aria-hidden="true"></span><span class="wv w3" aria-hidden="true"></span>
+                <span class="mote m1" aria-hidden="true"></span><span class="mote m2" aria-hidden="true"></span><span class="mote m3" aria-hidden="true"></span><span class="mote m4" aria-hidden="true"></span>
                 <span class="pr" aria-hidden="true">ᚦ</span>
               </span>
               <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
@@ -240,12 +245,13 @@
             </a>
           </div>
           
-          <div class="item" data-i="5" style="transform:rotateY(300deg) translateZ(var(--r)) rotateY(-300deg)">
+          <div class="item it6" data-i="5" style="transform:rotateY(300deg) translateZ(var(--r)) rotateY(-300deg)">
             <a class="pd" href="photography.da.html" data-i="5" aria-label="Fotografi" style="opacity:0.825">
               <span class="pa">
                 <span class="core" aria-hidden="true"></span>
                 <span class="lens" aria-hidden="true"><svg class="grid" viewBox="-100 -100 200 200"><g class="flow"><circle r="126"/><circle r="92"/><circle r="67"/><circle r="49"/><circle r="36"/><circle r="26"/><circle r="19"/><circle r="14"/><circle r="10"/><circle r="7.4"/></g><g class="spokes"><path d="M0-100V100M-100 0H100M-71-71L71 71M71-71L-71 71M-38-92L38 92M38-92L-38 92M-92-38L92 38M92-38L-92 38"/></g></svg><svg class="ph" viewBox="0 20 200 200" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="114" r="46"/><circle cx="100" cy="114" r="56" stroke-dasharray="2 6"/><path d="M126 114L113 136.5 87 136.5 74 114 87 91.5 113 91.5Z"/><path d="M126 114L137 87M113 136.5L142 133M87 136.5L105 160M74 114L63 141M87 91.5L58 95M113 91.5L95 68"/><path d="M8 236l38-30 24 18 38-46 32 34 22-14 30 24"/></g></svg></span>
                 <span class="wv w1" aria-hidden="true"></span><span class="wv w2" aria-hidden="true"></span><span class="wv w3" aria-hidden="true"></span>
+                <span class="mote m1" aria-hidden="true"></span><span class="mote m2" aria-hidden="true"></span><span class="mote m3" aria-hidden="true"></span><span class="mote m4" aria-hidden="true"></span>
                 <span class="pr" aria-hidden="true">ᛋ</span>
               </span>
               <span class="beam" aria-hidden="true"></span><span class="foot" aria-hidden="true"></span>
@@ -283,10 +289,10 @@
 </div>
 
 <script id="world-data" type="application/json">{"page": "da", "ui": {"da": {"aa": "Vis teksten med latinske bogstaver", "back": "Tilbage til cirklen", "choosePortal": "V\u00e6lg en verden", "chooseSeason": "V\u00e6lg en \u00e5rstid", "comingSoon": "Denne verden er stadig under opbygning", "language": "Sprog", "next": "Drej til n\u00e6ste verden", "notesTools": "Noter og v\u00e6rkt\u00f8jer", "ofN": "{i} af {n}", "prev": "Drej til forrige verden", "runesName": "Runer (yngre futhark, langkvist)", "seasonAria": "\u00c5rstid: {s}. Skift \u00e5rstid", "seasons": {"autumn": "Efter\u00e5r", "spring": "For\u00e5r", "summer": "Sommer", "winter": "Vinter"}, "tod": {"dawn": "daggry", "day": "dag", "dusk": "skumring", "night": "nat"}, "today": "i dag", "todayHint": "(i dag)", "todaySeason": "Dagens \u00e5rstid", "worlds": "Verdener"}, "en": {"aa": "Show the text in Latin letters", "back": "Back to the circle", "choosePortal": "Choose a world", "chooseSeason": "Choose a season", "comingSoon": "This world is still being built", "language": "Language", "next": "Turn to the next world", "notesTools": "Notes and tools", "ofN": "{i} of {n}", "prev": "Turn to the previous world", "runesName": "Runes (long-branch Younger Futhark)", "seasonAria": "Season: {s}. Change season", "seasons": {"autumn": "Autumn", "spring": "Spring", "summer": "Summer", "winter": "Winter"}, "tod": {"dawn": "dawn", "day": "day", "dusk": "dusk", "night": "night"}, "today": "today", "todayHint": "(today)", "todaySeason": "Today\u0027s season", "worlds": "Worlds"}}}</script>
-<script src="assets/world.js?v=48570242"></script>
+<script src="assets/world.js?v=da2ae67f"></script>
 
 <script id="entry-data" type="application/json">{"content": {"da": {"inscription": "\u16cf\u16a2\u16ec\u16a6\u16c5\u16ec\u16d8\u16c5\u16c1\u16cf\u16ec\u16a6\u16c5\u16cf\u16ec\u16c1\u16cb\u16ec\u16cb\u16cf\u16c1\u16da\u16ec\u16a6\u16c5\u16ec\u16c1\u16a2\u16be\u16c1\u16a0\u16c1\u16b1\u16cb\u16ec\u16cb\u16c5\u16b1\u16c1\u16cf\u16c5\u16cb", "inscriptionMeaning": "To the mind that is still, the universe surrenders.", "menu": [{"link": "page.html?slug=cv", "name": "CV", "rune": "\u16d8"}, {"link": "fieldlog.da.html", "name": "Feltlog", "rune": "\u16b1"}, {"link": "blog.da.html", "name": "Labdagbog", "rune": "\u16ac"}, {"link": "sporexplore.html", "name": "Bioinformatik", "rune": "\u16bc"}], "name": "Pieter Shiffler Carpentier", "portals": [{"key": "microbiology", "link": "classic.da.html#microbiology", "name": "Indend\u00f8rs mikrobiologi", "rune": "\u16b4"}, {"key": "fungiculture", "link": "fungi.da.html", "name": "Svampedyrkning", "rune": "\u16c5"}, {"key": "foraging", "link": "fungi.da.html#tours", "name": "Sankning", "rune": "\u16a0"}, {"key": "conservation", "link": "", "name": "Naturbevarelse", "rune": "\u16e6"}, {"key": "smallworlds", "link": "terrarium.da.html", "name": "Sm\u00e5 verdener", "rune": "\u16a6"}, {"key": "photography", "link": "photography.da.html", "name": "Fotografi", "rune": "\u16cb"}], "title": "Biolog \u00b7 Mykolog \u00b7 Animist"}, "en": {"inscription": "\u16cf\u16a2\u16ec\u16a6\u16c5\u16ec\u16d8\u16c5\u16c1\u16cf\u16ec\u16a6\u16c5\u16cf\u16ec\u16c1\u16cb\u16ec\u16cb\u16cf\u16c1\u16da\u16ec\u16a6\u16c5\u16ec\u16c1\u16a2\u16be\u16c1\u16a0\u16c1\u16b1\u16cb\u16ec\u16cb\u16c5\u16b1\u16c1\u16cf\u16c5\u16cb", "inscriptionMeaning": "To the mind that is still, the universe surrenders.", "menu": [{"link": "page.html?slug=cv", "name": "CV", "rune": "\u16d8"}, {"link": "fieldlog.html", "name": "Field log", "rune": "\u16b1"}, {"link": "blog.html", "name": "Labdiary", "rune": "\u16ac"}, {"link": "sporexplore.html", "name": "Bioinformatics", "rune": "\u16bc"}], "name": "Pieter Shiffler Carpentier", "portals": [{"key": "microbiology", "link": "classic.html#microbiology", "name": "Indoor microbiology", "rune": "\u16b4"}, {"key": "fungiculture", "link": "fungi.html", "name": "Fungiculture", "rune": "\u16c5"}, {"key": "foraging", "link": "fungi.html#tours", "name": "Foraging", "rune": "\u16a0"}, {"key": "conservation", "link": "", "name": "Conservation", "rune": "\u16e6"}, {"key": "smallworlds", "link": "terrarium.html", "name": "Small worlds", "rune": "\u16a6"}, {"key": "photography", "link": "photography.html", "name": "Photography", "rune": "\u16cb"}], "title": "Biologist \u00b7 Mycologist \u00b7 Animist"}}}</script>
-<script src="assets/entry.js?v=e5c34c2a"></script>
+<script src="assets/entry.js?v=84055eb0"></script>
 
 </body>
 </html>
