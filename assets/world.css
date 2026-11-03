@@ -157,6 +157,10 @@ button{font:inherit}
 :active-view-transition-type(into-world,to-circle)::view-transition-old(root),
 :active-view-transition-type(into-world,to-circle)::view-transition-new(root){mix-blend-mode:normal}
 :active-view-transition-type(into-world)::view-transition-new(root){z-index:2}
+/* into a menu page: it opens up out of its rune at the foot of the circle */
+:active-view-transition-type(from-menu)::view-transition-old(root){mix-blend-mode:normal;animation:vt-fade .6s ease both}
+:active-view-transition-type(from-menu)::view-transition-new(root){mix-blend-mode:normal;z-index:2;animation:vt-open-menu .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes vt-open-menu{from{clip-path:circle(0 at 50% 93%)}to{clip-path:circle(170vmax at 50% 93%)}}
 /* into a world: the circle has zoomed into the portal; the world opens out of a ripple */
 :active-view-transition-type(into-world)::view-transition-old(root){animation:vt-fade .6s ease both}
 :active-view-transition-type(into-world)::view-transition-new(root){animation:vt-open .9s cubic-bezier(.2,.7,.2,1) both}

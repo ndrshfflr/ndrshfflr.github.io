@@ -45,6 +45,13 @@
   perspective:1900px;perspective-origin:50% 0;transform-origin:50% var(--fy)}
 .cam{transition:transform .9s cubic-bezier(.6,0,.9,.4),opacity .35s ease .5s}
 .entering .cam{transform:scale(4.2);opacity:0}
+/* coming back from a menu page: its rune glows and the circle wakes softly around it */
+@keyframes rune-back{0%{text-shadow:0 0 18px var(--acc),0 0 6px var(--acc);transform:scale(1.35)}100%{text-shadow:none;transform:none}}
+@keyframes menu-back{0%{opacity:.55}100%{opacity:1}}
+@media (prefers-reduced-motion:no-preference){
+  .glow-back .mr{display:inline-block;animation:rune-back 2.2s ease-out both}
+  .from-menu .stage,.from-menu .hero{animation:menu-back 1.2s ease both}
+}
 /* coming back from a world: the circle opens zoomed into that world's portal and pulls back out */
 .returning .cam{transform:scale(4.2);opacity:0;transition:none}
 .returning .chrome{opacity:0;transition:none}
