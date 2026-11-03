@@ -345,6 +345,40 @@
   }
   if (aa) aa.addEventListener('click', function () { reveal(!root.classList.contains('reveal-all')); });
 
+  /* ------------------------------------------------------------------ back to the circle */
+  /* A link to the circle (the eye, "Back to the circle") folds this world shut into a
+     ripple, then leaves a note so the circle opens out of this world's portal. */
+  if (!world.classList.contains('circle')) {
+    var page = location.pathname.split('/').pop() || '';
+    var toCircle = function (a) {
+      if (!a || !a.href || a.target) return false;
+      try {
+        var u = new URL(a.href, location.href);
+        var f = u.pathname.split('/').pop();
+        return u.origin === location.origin && (f === '' || f === 'index.html' || f === 'da.html') && !a.hasAttribute('data-mode');
+      } catch (e) { return false; }
+    };
+    doc.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a');
+      if (!toCircle(a) || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      session.set('circleReturn', page);
+      if (reduced) return;
+      e.preventDefault();
+      var ring = doc.createElement('span');
+      ring.className = 'close-ring';
+      ring.setAttribute('aria-hidden', 'true');
+      doc.body.appendChild(ring);
+      world.style.setProperty('--close-y', Math.round(window.scrollY + innerHeight * 0.42 - world.getBoundingClientRect().top - window.scrollY) + 'px');
+      world.classList.add('leaving');
+      setTimeout(function () { location.href = a.href; }, 560);
+    });
+    window.addEventListener('pageshow', function (e) {
+      if (!e.persisted) return; // back here with the browser's back button: open the world again
+      world.classList.remove('leaving');
+      $$('.close-ring').forEach(function (r) { r.parentNode.removeChild(r); });
+    });
+  }
+
   /* ------------------------------------------------------------------ start */
   window.World = {
     page: PAGE, reduced: reduced, params: params, local: local, session: session,

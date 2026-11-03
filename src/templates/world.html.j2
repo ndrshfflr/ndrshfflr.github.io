@@ -17,6 +17,24 @@
   var d = document.documentElement, mode = 'runes';
   try { var m = localStorage.getItem('entryLang'); if (m === 'en' || m === 'da') mode = 'latin'; } catch (e) {}
   d.className = 'js mode-' + mode;
+{%- if template_name == 'entry.html.j2' %}
+  /* coming back from a world (its link to the circle left a note, or it's the page we came
+     from): the circle opens zoomed into that world's portal and pulls back out (assets/entry.js) */
+  try {
+    var from = sessionStorage.getItem('circleReturn');
+    sessionStorage.removeItem('circleReturn');
+    var nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+    if (!from && document.referrer && !(nav && nav.type === 'reload')) {
+      var u = new URL(document.referrer);
+      var f = u.pathname.split('/').pop();
+      if (u.origin === location.origin && f && f !== 'index.html' && f !== 'da.html') from = f;
+    }
+    if (from && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      d.className += ' returning';
+      d.setAttribute('data-return', from);
+    }
+  } catch (e) {}
+{%- endif %}
 })();
 </script>
 <meta charset="UTF-8">

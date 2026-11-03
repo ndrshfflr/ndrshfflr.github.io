@@ -545,6 +545,9 @@ def render_entry(env, content, entry, versions):
         c = math.cos(math.radians(phi))
         ring.append({"t": f"rotateY({phi:g}deg) translateZ(var(--r)) rotateY({-phi:g}deg)",
                      "o": f"{0.3 + 0.7 * (c + 1) / 2:.3f}", "lo": f"{max(0.0, c):.3f}"})
+    # the row of runes under the circle, laid out as the circle looks at the start: the front
+    # portal in the middle, its neighbours either side, the ones at the back on the ends
+    dot_order = [off % count for off in range(-((count - 1) // 2), count // 2 + 1)]
     for lang in ("en", "da"):
         alternates = [
             {"hreflang": "en", "href": SITE_URL},
@@ -555,7 +558,7 @@ def render_entry(env, content, entry, versions):
         ui = world_ui(ENTRY_UI)
         render_world_page(
             env, "entry.html.j2", ENTRY, lang,
-            e=entry[lang], ui=ui[lang], meta=meta, jsonld=jsonld(content[lang], lang), ring=ring, v=versions,
+            e=entry[lang], ui=ui[lang], meta=meta, jsonld=jsonld(content[lang], lang), ring=ring, dot_order=dot_order, v=versions,
             world_data={"page": lang, "ui": ui}, data={"content": entry}, world_class="circle",
         )
 

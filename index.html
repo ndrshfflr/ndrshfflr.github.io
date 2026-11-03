@@ -9,6 +9,22 @@
   var d = document.documentElement, mode = 'runes';
   try { var m = localStorage.getItem('entryLang'); if (m === 'en' || m === 'da') mode = 'latin'; } catch (e) {}
   d.className = 'js mode-' + mode;
+  /* coming back from a world (its link to the circle left a note, or it's the page we came
+     from): the circle opens zoomed into that world's portal and pulls back out (assets/entry.js) */
+  try {
+    var from = sessionStorage.getItem('circleReturn');
+    sessionStorage.removeItem('circleReturn');
+    var nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+    if (!from && document.referrer && !(nav && nav.type === 'reload')) {
+      var u = new URL(document.referrer);
+      var f = u.pathname.split('/').pop();
+      if (u.origin === location.origin && f && f !== 'index.html' && f !== 'da.html') from = f;
+    }
+    if (from && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      d.className += ' returning';
+      d.setAttribute('data-return', from);
+    }
+  } catch (e) {}
 })();
 </script>
 <meta charset="UTF-8">
@@ -43,8 +59,8 @@
 <link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/world.css?v=6be4beb9">
-<link rel="stylesheet" href="assets/entry.css?v=6b608059">
+<link rel="stylesheet" href="assets/world.css?v=a0829a39">
+<link rel="stylesheet" href="assets/entry.css?v=f6dab883">
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
 </head>
 <body>
@@ -278,7 +294,7 @@
       <div class="controls chrome">
         <button class="ctl" id="prev" type="button" aria-label="Turn to the previous world"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
         <div class="dots" role="group" aria-label="Choose a world">
-          <button class="dot on" type="button" data-i="0" aria-label="Indoor microbiology" aria-current="true">ᚴ</button><button class="dot" type="button" data-i="1" aria-label="Fungiculture" aria-current="false">ᛅ</button><button class="dot" type="button" data-i="2" aria-label="Foraging" aria-current="false">ᚠ</button><button class="dot" type="button" data-i="3" aria-label="Conservation" aria-current="false">ᛦ</button><button class="dot" type="button" data-i="4" aria-label="Small worlds" aria-current="false">ᚦ</button><button class="dot" type="button" data-i="5" aria-label="Photography" aria-current="false">ᛋ</button><button class="dot" type="button" data-i="6" aria-label="Bioinformatics" aria-current="false">ᚼ</button>
+          <button class="dot" type="button" data-i="4" aria-label="Small worlds" aria-current="false">ᚦ</button><button class="dot" type="button" data-i="5" aria-label="Photography" aria-current="false">ᛋ</button><button class="dot" type="button" data-i="6" aria-label="Bioinformatics" aria-current="false">ᚼ</button><button class="dot on" type="button" data-i="0" aria-label="Indoor microbiology" aria-current="true">ᚴ</button><button class="dot" type="button" data-i="1" aria-label="Fungiculture" aria-current="false">ᛅ</button><button class="dot" type="button" data-i="2" aria-label="Foraging" aria-current="false">ᚠ</button><button class="dot" type="button" data-i="3" aria-label="Conservation" aria-current="false">ᛦ</button>
         </div>
         <button class="ctl" id="next" type="button" aria-label="Turn to the next world"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
@@ -303,10 +319,10 @@
 </div>
 
 <script id="world-data" type="application/json">{"page": "en", "ui": {"da": {"aa": "Vis teksten med latinske bogstaver", "back": "Tilbage til cirklen", "choosePortal": "V\u00e6lg en verden", "chooseSeason": "V\u00e6lg en \u00e5rstid", "comingSoon": "Denne verden er stadig under opbygning", "language": "Sprog", "next": "Drej til n\u00e6ste verden", "notesTools": "Noter og v\u00e6rkt\u00f8jer", "ofN": "{i} af {n}", "prev": "Drej til forrige verden", "runesName": "Runer (yngre futhark, langkvist)", "seasonAria": "\u00c5rstid: {s}. Skift \u00e5rstid", "seasons": {"autumn": "Efter\u00e5r", "spring": "For\u00e5r", "summer": "Sommer", "winter": "Vinter"}, "tod": {"dawn": "daggry", "day": "dag", "dusk": "skumring", "night": "nat"}, "today": "i dag", "todayHint": "(i dag)", "todaySeason": "Dagens \u00e5rstid", "worlds": "Verdener"}, "en": {"aa": "Show the text in Latin letters", "back": "Back to the circle", "choosePortal": "Choose a world", "chooseSeason": "Choose a season", "comingSoon": "This world is still being built", "language": "Language", "next": "Turn to the next world", "notesTools": "Notes and tools", "ofN": "{i} of {n}", "prev": "Turn to the previous world", "runesName": "Runes (long-branch Younger Futhark)", "seasonAria": "Season: {s}. Change season", "seasons": {"autumn": "Autumn", "spring": "Spring", "summer": "Summer", "winter": "Winter"}, "tod": {"dawn": "dawn", "day": "day", "dusk": "dusk", "night": "night"}, "today": "today", "todayHint": "(today)", "todaySeason": "Today\u0027s season", "worlds": "Worlds"}}}</script>
-<script src="assets/world.js?v=da2ae67f"></script>
+<script src="assets/world.js?v=9d30698b"></script>
 
 <script id="entry-data" type="application/json">{"content": {"da": {"inscription": "\u16cf\u16a2\u16ec\u16a6\u16c5\u16ec\u16d8\u16c5\u16c1\u16cf\u16ec\u16a6\u16c5\u16cf\u16ec\u16c1\u16cb\u16ec\u16cb\u16cf\u16c1\u16da\u16ec\u16a6\u16c5\u16ec\u16c1\u16a2\u16be\u16c1\u16a0\u16c1\u16b1\u16cb\u16ec\u16cb\u16c5\u16b1\u16c1\u16cf\u16c5\u16cb", "inscriptionMeaning": "To the mind that is still, the universe surrenders.", "menu": [{"link": "page.da.html?slug=cv", "name": "CV", "rune": "\u16d8"}, {"link": "fieldlog.da.html", "name": "Feltlog", "rune": "\u16b1"}, {"link": "blog.da.html", "name": "Labdagbog", "rune": "\u16ac"}], "name": "Pieter Shiffler Carpentier", "portals": [{"key": "microbiology", "link": "", "name": "Indend\u00f8rs mikrobiologi", "rune": "\u16b4"}, {"key": "fungiculture", "link": "", "name": "Svampedyrkning", "rune": "\u16c5"}, {"key": "foraging", "link": "", "name": "Sankning", "rune": "\u16a0"}, {"key": "conservation", "link": "", "name": "Naturbevarelse", "rune": "\u16e6"}, {"key": "smallworlds", "link": "", "name": "Sm\u00e5 verdener", "rune": "\u16a6"}, {"key": "photography", "link": "photography.da.html", "name": "Fotografi", "rune": "\u16cb"}, {"key": "bioinformatics", "link": "bioinformatics.da.html", "name": "Bioinformatik", "rune": "\u16bc"}], "title": "Biolog \u00b7 Mykolog \u00b7 Animist"}, "en": {"inscription": "\u16cf\u16a2\u16ec\u16a6\u16c5\u16ec\u16d8\u16c5\u16c1\u16cf\u16ec\u16a6\u16c5\u16cf\u16ec\u16c1\u16cb\u16ec\u16cb\u16cf\u16c1\u16da\u16ec\u16a6\u16c5\u16ec\u16c1\u16a2\u16be\u16c1\u16a0\u16c1\u16b1\u16cb\u16ec\u16cb\u16c5\u16b1\u16c1\u16cf\u16c5\u16cb", "inscriptionMeaning": "To the mind that is still, the universe surrenders.", "menu": [{"link": "page.html?slug=cv", "name": "CV", "rune": "\u16d8"}, {"link": "fieldlog.html", "name": "Field log", "rune": "\u16b1"}, {"link": "blog.html", "name": "Labdiary", "rune": "\u16ac"}], "name": "Pieter Shiffler Carpentier", "portals": [{"key": "microbiology", "link": "", "name": "Indoor microbiology", "rune": "\u16b4"}, {"key": "fungiculture", "link": "", "name": "Fungiculture", "rune": "\u16c5"}, {"key": "foraging", "link": "", "name": "Foraging", "rune": "\u16a0"}, {"key": "conservation", "link": "", "name": "Conservation", "rune": "\u16e6"}, {"key": "smallworlds", "link": "", "name": "Small worlds", "rune": "\u16a6"}, {"key": "photography", "link": "photography.html", "name": "Photography", "rune": "\u16cb"}, {"key": "bioinformatics", "link": "bioinformatics.html", "name": "Bioinformatics", "rune": "\u16bc"}], "title": "Biologist \u00b7 Mycologist \u00b7 Animist"}}}</script>
-<script src="assets/entry.js?v=84055eb0"></script>
+<script src="assets/entry.js?v=76aa2d27"></script>
 
 </body>
 </html>

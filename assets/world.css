@@ -131,6 +131,12 @@ button{font:inherit}
 @keyframes glowpulse{0%,100%{opacity:.12}50%{opacity:1}}
 @keyframes wander{0%{transform:translate(0,0)}50%{transform:translate(18px,-10px)}100%{transform:translate(-12px,6px)}}
 @keyframes leaffall{0%{transform:translate3d(0,0,0) rotate(0deg) rotateY(0deg)}25%{transform:translate3d(-40px,27vh,0) rotate(90deg) rotateY(180deg)}50%{transform:translate3d(20px,54vh,0) rotate(200deg) rotateY(360deg)}75%{transform:translate3d(-30px,81vh,0) rotate(290deg) rotateY(540deg)}100%{transform:translate3d(10px,110vh,0) rotate(380deg) rotateY(720deg)}}
+/* leaving a world for the circle: it folds shut into a ripple (assets/world.js) */
+.world.leaving{animation:world-close .6s cubic-bezier(.55,0,.75,.35) forwards}
+.close-ring{position:fixed;left:50%;top:42%;z-index:50;width:150vmax;height:150vmax;margin:-75vmax 0 0 -75vmax;border-radius:50%;pointer-events:none;
+  border:2px solid color-mix(in srgb,var(--acc) 65%,transparent);box-shadow:0 0 30px color-mix(in srgb,var(--acc) 35%,transparent);animation:ring-close .6s cubic-bezier(.55,0,.75,.35) forwards}
+@keyframes world-close{from{clip-path:circle(110vmax at 50% var(--close-y,42%))}to{clip-path:circle(0 at 50% var(--close-y,42%))}}
+@keyframes ring-close{from{transform:scale(1);opacity:.15}to{transform:scale(0);opacity:.95}}
 @keyframes arrive{from{opacity:0;transform:scale(1.05)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){
   .seed,.leaf,.glow{animation:none !important}
