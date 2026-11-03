@@ -134,7 +134,7 @@
     world.classList.add('entering');
     clearTimeout(enterTimer);
     enterTimer = setTimeout(function () {
-      if (p.link) { location.href = p.link; return; }
+      if (p.link) { W.session.set('vtKind', 'into-world'); location.href = p.link; return; } // browsers that blend pages open the world out of a ripple
       showDest(i, p);
     }, reduced ? 0 : 820);
   }

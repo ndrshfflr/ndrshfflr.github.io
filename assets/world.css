@@ -147,6 +147,21 @@ button{font:inherit}
 @keyframes glowpulse{0%,100%{opacity:.12}50%{opacity:1}}
 @keyframes wander{0%{transform:translate(0,0)}50%{transform:translate(18px,-10px)}100%{transform:translate(-12px,6px)}}
 @keyframes leaffall{0%{transform:translate3d(0,0,0) rotate(0deg) rotateY(0deg)}25%{transform:translate3d(-40px,27vh,0) rotate(90deg) rotateY(180deg)}50%{transform:translate3d(20px,54vh,0) rotate(200deg) rotateY(360deg)}75%{transform:translate3d(-30px,81vh,0) rotate(290deg) rotateY(540deg)}100%{transform:translate3d(10px,110vh,0) rotate(380deg) rotateY(720deg)}}
+/* one continuous move between world pages (browsers that can blend pages: Chrome, Edge,
+   Safari; the kind of move is named in world.html.j2). Elsewhere the moves below still play. */
+@view-transition{navigation:auto}
+@media (prefers-reduced-motion:reduce){@view-transition{navigation:none}}
+::view-transition-group(root){animation-duration:.85s}
+/* into a world: the circle has zoomed into the portal; the world opens out of a ripple */
+:active-view-transition-type(into-world)::view-transition-old(root){animation:vt-fade .6s ease both}
+:active-view-transition-type(into-world)::view-transition-new(root){animation:vt-open .9s cubic-bezier(.2,.7,.2,1) both}
+/* back to the circle: the world shrinks into its portal while the circle pulls back out under it */
+:active-view-transition-type(to-circle)::view-transition-old(root){z-index:2;animation:vt-close .8s cubic-bezier(.55,0,.75,.35) both}
+:active-view-transition-type(to-circle)::view-transition-new(root){z-index:1;animation:none}
+@keyframes vt-open{from{clip-path:circle(0 at 50% 42%)}to{clip-path:circle(150vmax at 50% 42%)}}
+@keyframes vt-close{from{clip-path:circle(150vmax at 50% 42%)}to{clip-path:circle(0 at 50% 42%)}}
+@keyframes vt-fade{to{opacity:0}}
+
 /* leaving a world for the circle: it folds shut into a ripple (assets/world.js) */
 .world.leaving{animation:world-close .6s cubic-bezier(.55,0,.75,.35) forwards}
 .close-ring{position:fixed;left:50%;top:42%;z-index:50;width:150vmax;height:150vmax;margin:-75vmax 0 0 -75vmax;border-radius:50%;pointer-events:none;

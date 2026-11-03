@@ -13,6 +13,25 @@
 <html lang="{{ lang }}" class="no-js">
 <head>
 <script>
+/* Moving between world pages, browsers that can (Chrome, Edge, Safari) blend the two pages
+   instead of showing a blank moment (@view-transition in assets/world.css). Into a world, it
+   opens out of a ripple; back to the circle, it shrinks into its portal while the circle pulls
+   back out around it. The kind of move is noted by the page you leave (assets/world.js and
+   assets/entry.js), or worked out from where you came from (the browser's back button). */
+window.addEventListener('pagereveal', function (e) {
+  if (!e.viewTransition) return;
+  var kind = null, here = location.pathname.split('/').pop();
+  var isCircle = function (f) { return f === '' || f === 'index.html' || f === 'da.html'; };
+  try { kind = sessionStorage.getItem('vtKind'); sessionStorage.removeItem('vtKind'); } catch (err) {}
+  if (!kind) {
+    try {
+      var from = navigation.activation.from.url, f = new URL(from).pathname.split('/').pop();
+      if (isCircle(here) && !isCircle(f)) kind = 'to-circle';
+      else if (!isCircle(here) && isCircle(f)) kind = 'into-world';
+    } catch (err) {}
+  }
+  if (kind && e.viewTransition.types) e.viewTransition.types.add(kind);
+});
 (function () {
   var d = document.documentElement, mode = 'runes';
   try { var m = localStorage.getItem('entryLang'); if (m === 'en' || m === 'da') mode = 'latin'; } catch (e) {}

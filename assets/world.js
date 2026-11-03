@@ -383,6 +383,10 @@
       if (!toCircle(a) || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       session.set('circleReturn', page);
       if (reduced) return;
+      if ('onpagereveal' in window && CSS.supports && CSS.supports('selector(:active-view-transition-type(a))')) {
+        session.set('vtKind', 'to-circle'); // the browser blends the pages: let it fold the world in
+        return;
+      }
       e.preventDefault();
       var ring = doc.createElement('span');
       ring.className = 'close-ring';
