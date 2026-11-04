@@ -307,7 +307,7 @@
         "researcher"
       ],
       "imageAlt": "",
-      "title": "Growth experiments with uncultivated *Termitomyces* by replication of a 3D growth chamber",
+      "title": "Growth experiments with *Termitomyces sp.* by replication of a 3D growth chamber",
       "image": "",
       "year": "2025",
       "builtOn": []
@@ -346,7 +346,7 @@
       "section": "presentations",
       "year": "2025",
       "title": "From 2D plates to 3D structures: Does termite-farmed Termitomyces need three dimensions to grow?",
-      "detail": "Carpentier, P.S., Kristian, B., Zhu, D., Schmidt, S., Rosendahl, S., Hipsley, C., and Poulsen, M. · Status report at the UCPH Microbiology Day",
+      "detail": "Carpentier, P.S., Bonde, K., Zhu, D., Schmidt, S., Rosendahl, S., Hipsley, C., and Poulsen, M. · Status report at the UCPH Microbiology Day",
       "lenses": [
         "researcher"
       ],
@@ -374,7 +374,7 @@
     {
       "section": "presentations",
       "year": "2024",
-      "title": "Fungus-farming and entomopathogenic termite stand at Fungi Festival and Culture Night",
+      "title": "Fungus-farming termite and entomopathogenic fungi stand at Fungi Festival and Culture Night",
       "lenses": [
         "guide"
       ],
@@ -383,7 +383,8 @@
         "sse",
         "ku"
       ],
-      "post": ""
+      "post": "",
+      "detail": "Community outreach · science communication"
     }
   ],
   "strengths": [
