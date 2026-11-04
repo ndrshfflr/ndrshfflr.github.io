@@ -1,7 +1,7 @@
 ---
 title: CV
 ---
-![](/images/uploads/dscf2145.jpeg)
+![]()
 
 **Creative and driven biologist & nature enthusiast**
 
@@ -15,8 +15,7 @@ I am a Master's student in microbiology, focusing mainly on fungi. In my spare t
 
 # Work Experience & Volunteering
 
-* **2026–now** — Volunteer at Green Peace Denmark
-* **2026** — Photographer for the Biodiversity Symposium in Copenhagen
+* **2026–now** — Board Member and cofounder at Havfællesskabet
 * **2025–now** — Student Assistant at the Indoor Climate Lab at Rambøll Danmark A/S, working with analysis of mould, tree-degrading fungi, and fungal toxicity
 * **2025** — Student assistant for the MSc course "Field Mycology and Identification of Fungi" with leading experts Jacob Heilmann-Clausen and Thomas Læssøe
 * **2024–now** — Guided mushroom tours for FLOR (Danmarks Naturfredningsforening); mycology tutoring, photography, and fungal breeding
@@ -40,10 +39,9 @@ I am a Master's student in microbiology, focusing mainly on fungi. In my spare t
 
 # Grants & Funding
 
+* **2026** — Danish Mycological Society "Mushroom Grant" (7,125 DKK)
 * **2026** — Rambøll Danmark A/S internal accelerator platform (50,000 DKK)
 * **2025** — Rambøll Danmark A/S master's thesis pitch for building physics department head (50,000 DKK)
-* **2025** — Danish Mycological Society "Mushroom Grant" — travel grant for Tropical Field Mycology Course (8,000 DKK)
+* **2025** — Danish Mycological Society "Mushroom Grant", travel grant for Tropical Field Mycology Course (8,000 DKK)
 * **2024** — Danish Mycological Society "Mushroom Grant" for personal microscope and microscopy supplies (7,000 DKK)
 * **2024** — UCPH Microbiology Cluster grant for interdisciplinary research projects (30,000 DKK)
-
-Questions about my background, or interested in working together? [Get in touch](classic.html#contact).
