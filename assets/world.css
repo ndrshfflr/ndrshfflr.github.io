@@ -59,10 +59,23 @@ button{font:inherit}
 /* sky */
 .stars{position:absolute;inset:0;pointer-events:none;transition:opacity 1.6s ease}
 .star{position:absolute;width:2px;height:2px;border-radius:50%;background:#dfe7ef}
-.disc{position:absolute;right:9%;top:64px;width:72px;height:72px;border-radius:50%;opacity:.92;pointer-events:none;
+.disc{position:absolute;right:9%;top:64px;z-index:2;width:72px;height:72px;border-radius:50%;opacity:.92;cursor:pointer;
+  transform:scale(var(--disc-s,1));transform-origin:100% 0;
   background:radial-gradient(circle at 38% 36%,var(--disc1) 0%,color-mix(in srgb,var(--disc1) 50%,var(--disc2)) 55%,var(--disc2) 100%);
   box-shadow:0 0 40px 10px color-mix(in srgb,var(--dglow) calc(18% * var(--lit,1)),transparent),0 0 140px 50px color-mix(in srgb,var(--dglow) calc(8% * var(--lit,1)),transparent);
-  transition:width 1.6s ease,height 1.6s ease}
+  transition:width 1.6s ease,height 1.6s ease,filter .4s ease,opacity .4s ease}
+/* the moon is a way to the moon (assets/world.js zooms in and lands there) */
+.disc:hover{filter:brightness(1.12) drop-shadow(0 0 14px color-mix(in srgb,var(--dglow) 55%,transparent));opacity:1}
+.disc:focus-visible{outline:2px solid var(--dglow);outline-offset:6px}
+.moon-zoom{position:fixed !important;right:auto !important;z-index:60;margin:0;transform-origin:50% 50% !important;pointer-events:none;
+  transition:transform 1s cubic-bezier(.55,.05,.7,.4),filter 1s ease,opacity .3s ease !important}
+.moon-zoom .shade,.moon-zoom .craters{transition:opacity .7s ease .1s !important}
+.world.to-moon>:not(.moon-zoom){opacity:0 !important;transition:opacity .55s ease !important}
+/* back from the moon: the circle is there again and the moon sinks back into its place */
+.from-moon .disc{animation:moon-back 1.4s cubic-bezier(.2,.7,.2,1) both}
+.from-moon .chrome,.from-moon .stage,.from-moon .floor,.from-moon .treeline{animation:moon-fade 1.4s ease both}
+@keyframes moon-back{from{transform:scale(calc(var(--disc-s,1)*7));opacity:0}35%{opacity:.95}to{transform:scale(var(--disc-s,1))}}
+@keyframes moon-fade{from{opacity:0}}
 /* the moon's real phase: the unlit part, faint as earthshine (gone by day, when the disc is the sun) */
 .shade{position:absolute;inset:-1px;width:calc(100% + 2px);height:calc(100% + 2px);overflow:visible;transition:opacity 1.6s ease}
 .shade path{fill:color-mix(in srgb,var(--sky1) 55%,#000);fill-opacity:.9}
@@ -171,6 +184,10 @@ button{font:inherit}
    already pulling back out, takes over without a blank moment */
 :active-view-transition-type(to-circle)::view-transition-old(root){z-index:2;animation:vt-fade .3s ease both}
 :active-view-transition-type(to-circle)::view-transition-new(root){z-index:1;animation:none}
+/* landing on the moon: the moon filling the screen gives way to its surface (assets/moon.css) */
+:active-view-transition-type(to-moon)::view-transition-old(root){mix-blend-mode:normal;z-index:1;animation:none}
+:active-view-transition-type(to-moon)::view-transition-new(root){mix-blend-mode:normal;z-index:2;animation:vt-in .35s ease both}
+@keyframes vt-in{from{opacity:0}}
 @keyframes vt-open{from{clip-path:circle(0 at 50% 42%)}to{clip-path:circle(150vmax at 50% 42%)}}
 @keyframes vt-fade{to{opacity:0}}
 
@@ -178,13 +195,14 @@ button{font:inherit}
 .world.leaving{animation:world-close .6s cubic-bezier(.55,0,.75,.35) forwards}
 .close-ring{position:fixed;left:50%;top:42%;z-index:50;width:150vmax;height:150vmax;margin:-75vmax 0 0 -75vmax;border-radius:50%;pointer-events:none;
   border:2px solid color-mix(in srgb,var(--acc) 65%,transparent);box-shadow:0 0 30px color-mix(in srgb,var(--acc) 35%,transparent);animation:ring-close .6s cubic-bezier(.55,0,.75,.35) forwards}
-@keyframes world-close{from{clip-path:circle(110vmax at 50% var(--close-y,42%))}to{clip-path:circle(0 at 50% var(--close-y,42%))}}
+@keyframes world-close{from{clip-path:circle(150vmax at var(--close-x,50%) var(--close-y,42%))}to{clip-path:circle(0 at var(--close-x,50%) var(--close-y,42%))}}
 @keyframes ring-close{from{transform:scale(1);opacity:.15}to{transform:scale(0);opacity:.95}}
 @keyframes arrive{from{opacity:0;transform:scale(1.05)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){
   .seed,.leaf,.glow{animation:none !important}
   .spark{animation:none !important;opacity:.3}.glow{opacity:.6}.seed{top:40%}.leaf{top:60%}
   .world.ready,.chrome,.fx,.disc,.stars{transition:none !important;animation:none !important}
+  .from-moon .chrome,.from-moon .stage,.from-moon .floor,.from-moon .treeline{animation:none !important}
 }
 @media (max-width:760px){
   .top{padding:12px 12px 0}
@@ -194,6 +212,6 @@ button{font:inherit}
   .season-btn{padding:0;justify-content:center;width:44px}
   .langs{font-size:15px}
   .lang{min-width:38px}
-  .disc{transform:scale(.62);transform-origin:100% 0;top:76px}
+  .disc{--disc-s:.62;top:76px}
 }
 
