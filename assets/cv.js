@@ -52,9 +52,10 @@
   window.addEventListener('hashchange', function () { setLens((location.hash || '').slice(1), false); });
 
   /* ------------------------------------------------------------------ the road */
-  /* The road is drawn by src/cv_page.py scenery(): 636px below the top of the page,
-     a 1440 × 5000 drawing stretched over the rest of the page. Keep in step. */
-  var ROAD_TOP = 636, VB_W = 1440, VB_H = 5000, MIN_TEXT = 280, GUTTER = 84;
+  /* The road is drawn by src/cv_page.py scenery(): a 1440 × 5000 drawing stretched from
+     the foot of the mountain to the bottom of the page. Keep the curve in step. */
+  var VB_W = 1440, VB_H = 5000, MIN_TEXT = 280, GUTTER = 84;
+  var road = doc.querySelector('.cv-road');
   function roadX(yv) {
     var t = Math.max(0, Math.min(1, yv / VB_H));
     var amp = 40 + 260 * t;
@@ -68,6 +69,8 @@
     if (narrow.matches) { rows.forEach(function (r) { r.style.removeProperty('--x'); }); return; }
     var wb = world.getBoundingClientRect();
     var Wd = wb.width, H = wb.height;
+    /* the road starts at the foot of the mountain, which grows with the window (assets/cv.css) */
+    var ROAD_TOP = road ? road.getBoundingClientRect().top - wb.top : 636;
     if (!Wd || H <= ROAD_TOP) return;
     var moved = false;
     rows.forEach(function (r) {
