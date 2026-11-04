@@ -17,7 +17,7 @@
     {
       "label": "cultures in my library",
       "labelDa": "kulturer i mit bibliotek",
-      "value": "30 strains - 8 species",
+      "value": "30",
       "note": "",
       "noteDa": ""
     },
@@ -537,31 +537,31 @@
       "key": "ramboll",
       "name": "Rambøll",
       "abbr": "R",
-      "logo": ""
+      "logo": "/images/logos/ramboll_logo.png"
     },
     {
       "key": "flor",
       "name": "FLOR",
       "abbr": "FLOR",
-      "logo": ""
+      "logo": "/images/logos/flor-logo.svg"
     },
     {
       "key": "dn",
       "name": "Danmarks Naturfredningsforening",
       "abbr": "DN",
-      "logo": ""
+      "logo": "/images/logos/dn-logo.png"
     },
     {
       "key": "sse",
       "name": "Social and Symbiotic Evolution Group",
       "abbr": "SSE",
-      "logo": ""
+      "logo": "/images/logos/sseg.png"
     },
     {
       "key": "ga",
       "name": "Grøn Agenda Sydhavn",
       "abbr": "GA",
-      "logo": ""
+      "logo": "/images/logos/syd-tip.png"
     },
     {
       "key": "hav",
@@ -573,43 +573,43 @@
       "key": "fest",
       "name": "Fungi Festival",
       "abbr": "FEST",
-      "logo": ""
+      "logo": "/images/logos/myc_dk.png"
     },
     {
       "key": "dms",
       "name": "Danish Microbiological Society",
       "abbr": "DMS",
-      "logo": ""
+      "logo": "/images/logos/dms-logo-2022.png"
     },
     {
       "key": "dmf",
       "name": "Danish Mycological Society",
       "abbr": "DMF",
-      "logo": ""
+      "logo": "/images/logos/dmf.png"
     },
     {
       "key": "bric",
       "name": "Biotech Research & Innovation Centre",
       "abbr": "BRIC",
-      "logo": ""
+      "logo": "/images/logos/bric.png"
     },
     {
       "key": "bi",
       "name": "Bioinformatics Institute",
       "abbr": "BI",
-      "logo": ""
+      "logo": "/images/logos/mini-logo.png"
     },
     {
       "key": "funga",
       "name": "Funga Farm",
       "abbr": "FF",
-      "logo": ""
+      "logo": "/images/logos/cv-logo-funga.png"
     },
     {
       "key": "kul",
       "name": "KU Lighthouse",
       "abbr": "KUL",
-      "logo": ""
+      "logo": "/images/logos/mini-logo.png"
     }
   ],
   "portrait": "/images/uploads/li-1194.jpg"
