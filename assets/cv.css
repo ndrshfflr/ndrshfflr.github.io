@@ -39,7 +39,7 @@
 .cv-btn-main:hover{background:color-mix(in srgb,var(--acc) 85%,#fff)}
 .cv-btn:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
 
-.cv-figs{display:flex;flex-wrap:wrap;gap:1px;width:100%;max-width:1240px;margin-top:40px;text-align:left;
+.cv-figs{display:flex;flex-wrap:wrap;gap:1px;width:100%;max-width:1054px;margin-top:40px;text-align:left;
   background:color-mix(in srgb,var(--line) 14%,transparent);border:1px solid color-mix(in srgb,var(--line) 14%,transparent)}
 .cv-figs>div{flex:1 1 170px;background:color-mix(in srgb,var(--sky3) 50%,transparent);padding:18px 20px}
 .cv-now{flex-basis:100% !important;display:flex;flex-wrap:wrap;align-items:center;gap:12px 32px}
@@ -55,7 +55,7 @@
 
 /* ---------------------------------------------------------------- the page column */
 /* wide in a browser so the entries either side of the road have room; one column on phones (below) */
-.cv-wrap{position:relative;z-index:1;width:100%;max-width:1560px;margin:0 auto;padding:40px 48px 24px}
+.cv-wrap{position:relative;z-index:1;width:100%;max-width:1326px;margin:0 auto;padding:40px 48px 24px}
 
 /* View as — stays at the top while scrolling (like the field log's filter bar) */
 .cv-lensbar{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:0 -48px;padding:12px 48px;
