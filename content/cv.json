@@ -99,7 +99,7 @@
     {
       "section": "work",
       "year": "2025",
-      "title": "Student assistant, MSc course “Field Mycology and Identification of Fungi”",
+      "title": "Student Assistant, MSc course “Field Mycology and Identification of Fungi”",
       "detail": "with leading experts Jacob Heilmann-Clausen and Thomas Læssøe",
       "lenses": [
         "researcher",
@@ -113,15 +113,14 @@
     {
       "section": "work",
       "year": "2024–now",
-      "title": "Guided mushroom tours for FLOR",
-      "detail": "Danmarks Naturfredningsforening · mycology tutoring, photography, and fungal breeding",
+      "title": "Guided mushroom tours",
+      "detail": "Private mushroom foraging tours for groups, such as FLOR",
       "current": true,
       "lenses": [
         "guide"
       ],
       "logos": [
-        "flor",
-        "dn"
+        "flor"
       ],
       "post": ""
     },
