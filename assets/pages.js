@@ -73,7 +73,8 @@
   }
 
   if (kind === 'page') {
-    if (slug === 'cv') $('pg-actions').hidden = false;
+    /* the CV moved to its own page (cv.html); old links land there */
+    if (slug === 'cv') { location.replace((W.page === 'da' ? 'cv.da.html' : 'cv.html') + location.hash); return; }
     load('content/pages/' + slug + '.md', function (parsed) {
       setTitle(parsed.meta.title || slug);
       $('pg-body').innerHTML = window.SiteMD.render(parsed.body);
