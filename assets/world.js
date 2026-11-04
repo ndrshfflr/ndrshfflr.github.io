@@ -238,7 +238,9 @@
 
   var theme = doc.querySelector('meta[name="theme-color"]');
   var disc = $('disc'), craters = $('craters'), stars = $('stars'), shade = $('shade'), shadePath = $('shade-path');
-  var onMoon = world.classList.contains('moon-world');
+  /* on the moon or the sun page, the disc is the Earth (the way back) */
+  var onSky = world.classList.contains('sky-world'), onSun = world.classList.contains('sun-world');
+  var discIsSun = false; // elsewhere: the disc is the sun by day, the moon at dusk and night
 
   /* the moon's phase today: 0 new, .25 first quarter, .5 full, .75 last quarter
      (?moon=0.3 previews another phase) */
@@ -276,17 +278,25 @@
     st.setProperty('--menu', !darkroom && lum(P.sky3) > 0.19 ? '#1c2630' : '#cbd5df');
     if (theme) theme.setAttribute('content', darkroom ? '#07080a' : 'rgb(' + P.sky1.slice(0, 3).map(Math.round).join(',') + ')');
     if (disc) { disc.style.width = disc.style.height = Math.round(P.dsize) + 'px'; }
+    /* the disc leads to the sun by day, to the moon at dusk and night */
+    if (disc && !onSky && disc.hasAttribute('data-sun')) {
+      discIsSun = s.dl >= 0.5;
+      var w = discIsSun ? 'sun' : 'moon';
+      disc.setAttribute('href', disc.getAttribute('data-' + w));
+      disc.setAttribute('aria-label', disc.getAttribute('data-' + w + '-label'));
+    }
     if (craters) craters.style.opacity = (P.crater * (1 - s.dl)).toFixed(3);
     if (shadePath) {
-      /* on the moon the disc is the Earth: its phase is the moon's turned around, and the sky stays black */
-      var ph = moonPhase(Date.now()), dl = onMoon ? 0 : s.dl;
-      if (onMoon) ph = (ph + 0.5) % 1;
+      /* on the moon the disc is the Earth: its phase is the moon's turned around, and the sky stays black;
+         from the sun the Earth is always full */
+      var ph = moonPhase(Date.now()), dl = onSky ? 0 : s.dl;
+      if (onSky) ph = onSun ? 0.5 : (ph + 0.5) % 1;
       var lit = (1 - Math.cos(2 * Math.PI * ph)) / 2;
       shadePath.setAttribute('d', shadeD(ph));
       shade.style.opacity = (1 - dl).toFixed(3);
       st.setProperty('--lit', (dl + (1 - dl) * (0.2 + 0.8 * lit)).toFixed(3));
     }
-    if (stars) stars.style.opacity = onMoon ? '1' : ((1 - s.dl) * (1 - s.tw * 0.7)).toFixed(3);
+    if (stars) stars.style.opacity = onSky ? (onSun ? '0' : '1') : ((1 - s.dl) * (1 - s.tw * 0.7)).toFixed(3);
     ORDER.forEach(function (k) { world.classList.toggle('s-' + k, k === s.season); });
 
     var summerLife = s.W.summer * (1 - s.dl * 0.9);
@@ -419,7 +429,7 @@
       e.preventDefault();
       // a portal's world folds into the middle (its portal); a menu page down into its rune
       var at = /^(blog|post|page|fieldlog|cv)\b/.test(page) ? 0.93 : 0.42, x = innerWidth / 2;
-      if (onMoon && disc) { var dr = disc.getBoundingClientRect(); x = dr.left + dr.width / 2; at = (dr.top + dr.height / 2) / innerHeight; }
+      if (onSky && disc) { var dr = disc.getBoundingClientRect(); x = dr.left + dr.width / 2; at = (dr.top + dr.height / 2) / innerHeight; }
       var ring = doc.createElement('span');
       ring.className = 'close-ring';
       ring.setAttribute('aria-hidden', 'true');
@@ -439,30 +449,30 @@
     });
   }
 
-  /* landed on the moon: the veil starts in the colour of the moon you flew into */
-  if (onMoon) {
-    var tint = (session.get('moonTint') || '').split('|'), veil = doc.querySelector('.moon-veil');
-    session.set('moonTint', '');
+  /* landed on the moon or the sun: the veil starts in the colour of the disc you flew into */
+  if (onSky) {
+    var tint = (session.get('skyTint') || '').split('|'), veil = doc.querySelector('.sky-veil');
+    session.set('skyTint', '');
     if (veil && tint[1]) veil.style.background = 'radial-gradient(circle at 50% 50%,' + tint[0] + ' 0%,' + tint[1] + ' 100%)';
   }
 
-  /* ------------------------------------------------------------------ to the moon */
-  /* Clicking the moon flies into it: it grows to fill the sky while the rest fades, lighting
-     up fully as you near it, then the moon page lands on its surface (assets/moon.css). */
-  if (disc && !onMoon) {
+  /* ------------------------------------------------------------------ to the moon or the sun */
+  /* Clicking the disc flies into it: it grows to fill the sky while the rest fades (the moon
+     lighting up fully as you near it), then its page lands on its surface (assets/sky.css). */
+  if (disc && !onSky) {
     disc.addEventListener('click', function (e) {
       if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       if (reduced) return;
       e.preventDefault();
-      session.set('vtKind', 'to-moon');
-      var cs = getComputedStyle(world); // the moon page lands out of this moon's own colour
-      session.set('moonTint', cs.getPropertyValue('--disc1').trim() + '|' + cs.getPropertyValue('--disc2').trim());
-      var r = disc.getBoundingClientRect(), href = disc.href;
+      session.set('vtKind', 'to-sky');
+      var cs = getComputedStyle(world); // the page lands out of this disc's own colour
+      session.set('skyTint', cs.getPropertyValue('--disc1').trim() + '|' + cs.getPropertyValue('--disc2').trim());
+      var r = disc.getBoundingClientRect(), href = disc.href, sun = discIsSun;
       var z = disc.cloneNode(true);
       z.removeAttribute('id');
       z.removeAttribute('href');
       z.setAttribute('aria-hidden', 'true');
-      z.classList.add('moon-zoom');
+      z.classList.add('sky-zoom');
       $$('[id]', z).forEach(function (el) { el.removeAttribute('id'); });
       z.style.cssText = 'left:' + r.left + 'px;top:' + r.top + 'px;width:' + r.width + 'px;height:' + r.height + 'px;transform:none';
       world.appendChild(z);
@@ -471,19 +481,19 @@
       var scale = Math.hypot(innerWidth, innerHeight) * 1.25 / r.width;
       z.getBoundingClientRect(); // start from where it stands
       requestAnimationFrame(function () {
-        world.classList.add('to-moon');
+        world.classList.add('to-sky');
         z.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(' + scale.toFixed(2) + ')';
-        z.style.filter = 'brightness(1.06)';
+        z.style.filter = sun ? 'brightness(1.15) saturate(1.2)' : 'brightness(1.06)';
         $$('.shade', z).forEach(function (el) { el.style.opacity = '0'; });
-        $$('.craters', z).forEach(function (el) { el.style.opacity = '.9'; });
+        $$('.craters', z).forEach(function (el) { el.style.opacity = sun ? '0' : '.9'; });
       });
       setTimeout(function () { location.href = href; }, 950);
     });
     window.addEventListener('pageshow', function (e) {
-      if (!e.persisted) return; // back here with the browser's back button: the moon is in its place again
-      world.classList.remove('to-moon');
+      if (!e.persisted) return; // back here with the browser's back button: the disc is in its place again
+      world.classList.remove('to-sky');
       disc.style.visibility = '';
-      $$('.moon-zoom').forEach(function (z) { z.parentNode.removeChild(z); });
+      $$('.sky-zoom').forEach(function (z) { z.parentNode.removeChild(z); });
     });
   }
 

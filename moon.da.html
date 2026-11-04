@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- GENERATED FILE — built by src/build.py from src/templates/moon.html.j2
+<!-- GENERATED FILE — built by src/build.py from src/templates/sky.html.j2
      (on top of src/templates/world.html.j2). Edit the templates or the content
      in /admin, not this file. -->
 <html lang="da" class="no-js">
@@ -19,7 +19,7 @@ window.addEventListener('pagereveal', function (e) {
   if (!kind) {
     try {
       var from = navigation.activation.from.url, f = new URL(from).pathname.split('/').pop();
-      if (/^moon\b/.test(here)) kind = 'to-moon';
+      if (/^(moon|sun)\b/.test(here)) kind = 'to-sky';
       else if (isCircle(here) && !isCircle(f)) kind = 'to-circle';
       else if (!isCircle(here) && isCircle(f)) kind = MENU_PAGE.test(here) ? 'from-menu' : 'into-world';
     } catch (err) {}
@@ -63,13 +63,13 @@ window.addEventListener('pagereveal', function (e) {
 <link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/skurd.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/world.css?v=daf2e75c">
+<link rel="stylesheet" href="assets/world.css?v=fafc5cc9">
 <link rel="stylesheet" href="assets/pages.css?v=af52e1c5">
-<link rel="stylesheet" href="assets/moon.css?v=5bc990c5">
+<link rel="stylesheet" href="assets/sky.css?v=0719e45e">
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
 </head>
 <body>
-<div class="world look-fabric moon-world" id="world">
+<div class="world look-fabric sky-world moon-world" id="world">
 
   <div class="stars" id="stars" aria-hidden="true">
     <span class="star" style="left:13%;top:11%;opacity:.45"></span><span class="star" style="left:24%;top:23%;opacity:.35"></span><span class="star" style="left:7%;top:34%;opacity:.3"></span><span class="star" style="left:71%;top:19%;opacity:.35"></span><span class="star" style="left:80%;top:31%;opacity:.3"></span><span class="star" style="left:36%;top:6%;opacity:.4"></span>
@@ -135,7 +135,8 @@ window.addEventListener('pagereveal', function (e) {
   </header>
 
   
-  <div class="moon-ground" aria-hidden="true">
+  
+  <div class="sky-ground moon-ground" aria-hidden="true">
     <svg viewBox="0 0 1600 420" preserveAspectRatio="xMidYMax slice" focusable="false">
       <defs>
         <radialGradient id="mg-surf" cx="50%" cy="0%" r="90%"><stop offset="0" stop-color="#b9bcc0"/><stop offset=".45" stop-color="#7d8288"/><stop offset="1" stop-color="#2c3036"/></radialGradient>
@@ -150,15 +151,16 @@ window.addEventListener('pagereveal', function (e) {
       </g>
     </svg>
   </div>
-  <div class="moon-veil" aria-hidden="true"></div>
+  
+  <div class="sky-veil" aria-hidden="true"></div>
 
-  <div class="hero chrome pg-hero moon-hero">
+  <div class="hero chrome pg-hero sky-hero">
     <h1 class="nm"><span class="rv" data-k="heading"><span class="rn" aria-hidden="true"></span><span class="lt">Månen</span></span></h1>
     <p class="title"><span class="rv" data-k="soon"><span class="rn" aria-hidden="true"></span><span class="lt">Denne verden er stadig under opbygning</span></span></p>
     <button class="aa" id="aa" type="button" aria-pressed="false" aria-label="Vis teksten med latinske bogstaver">Aa</button>
   </div>
 
-  <main class="pg-wrap moon-main" id="main" data-page="moon"></main>
+  <main class="pg-wrap sky-main" id="main" data-page="moon"></main>
 
   <footer class="world-foot chrome">
     <a class="back-link" href="da.html"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="rv" data-k="back"><span class="rn" aria-hidden="true"></span><span class="lt">Tilbage til cirklen</span></span></a>
@@ -166,8 +168,8 @@ window.addEventListener('pagereveal', function (e) {
 
 </div>
 
-<script id="world-data" type="application/json">{"page": "da", "ui": {"da": {"aa": "Vis teksten med latinske bogstaver", "back": "Tilbage til cirklen", "chooseSeason": "V\u00e6lg en \u00e5rstid", "comingSoon": "Denne verden er stadig under opbygning", "heading": "M\u00e5nen", "language": "Sprog", "runesName": "Runer (yngre futhark, langkvist)", "seasonAria": "\u00c5rstid: {s}. Skift \u00e5rstid", "seasons": {"autumn": "Efter\u00e5r", "spring": "For\u00e5r", "summer": "Sommer", "winter": "Vinter"}, "toEarth": "Flyv tilbage til cirklen", "toMoon": "Flyv til m\u00e5nen", "tod": {"dawn": "daggry", "day": "dag", "dusk": "skumring", "night": "nat"}, "today": "i dag", "todayHint": "(i dag)", "todaySeason": "Dagens \u00e5rstid"}, "en": {"aa": "Show the text in Latin letters", "back": "Back to the circle", "chooseSeason": "Choose a season", "comingSoon": "This world is still being built", "heading": "The Moon", "language": "Language", "runesName": "Runes (long-branch Younger Futhark)", "seasonAria": "Season: {s}. Change season", "seasons": {"autumn": "Autumn", "spring": "Spring", "summer": "Summer", "winter": "Winter"}, "toEarth": "Fly back to the circle", "toMoon": "Fly to the moon", "tod": {"dawn": "dawn", "day": "day", "dusk": "dusk", "night": "night"}, "today": "today", "todayHint": "(today)", "todaySeason": "Today\u0027s season"}}}</script>
-<script src="assets/world.js?v=6485c297"></script>
+<script id="world-data" type="application/json">{"page": "da", "ui": {"da": {"aa": "Vis teksten med latinske bogstaver", "back": "Tilbage til cirklen", "chooseSeason": "V\u00e6lg en \u00e5rstid", "comingSoon": "Denne verden er stadig under opbygning", "heading": "M\u00e5nen", "language": "Sprog", "runesName": "Runer (yngre futhark, langkvist)", "seasonAria": "\u00c5rstid: {s}. Skift \u00e5rstid", "seasons": {"autumn": "Efter\u00e5r", "spring": "For\u00e5r", "summer": "Sommer", "winter": "Vinter"}, "toEarth": "Flyv tilbage til cirklen", "toMoon": "Flyv til m\u00e5nen", "toSun": "Flyv til solen", "tod": {"dawn": "daggry", "day": "dag", "dusk": "skumring", "night": "nat"}, "today": "i dag", "todayHint": "(i dag)", "todaySeason": "Dagens \u00e5rstid"}, "en": {"aa": "Show the text in Latin letters", "back": "Back to the circle", "chooseSeason": "Choose a season", "comingSoon": "This world is still being built", "heading": "The Moon", "language": "Language", "runesName": "Runes (long-branch Younger Futhark)", "seasonAria": "Season: {s}. Change season", "seasons": {"autumn": "Autumn", "spring": "Spring", "summer": "Summer", "winter": "Winter"}, "toEarth": "Fly back to the circle", "toMoon": "Fly to the moon", "toSun": "Fly to the sun", "tod": {"dawn": "dawn", "day": "day", "dusk": "dusk", "night": "night"}, "today": "today", "todayHint": "(today)", "todaySeason": "Today\u0027s season"}}}</script>
+<script src="assets/world.js?v=164c6a15"></script>
 <script src="assets/pages.js?v=447ae1e6"></script>
 </body>
 </html>

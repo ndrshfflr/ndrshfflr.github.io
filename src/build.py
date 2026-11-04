@@ -126,7 +126,7 @@ WORLD_UI = {
         "todaySeason": "Today's season", "today": "today", "todayHint": "(today)",
         "seasonAria": "Season: {s}. Change season", "chooseSeason": "Choose a season",
         "aa": "Show the text in Latin letters", "back": "Back to the circle",
-        "toMoon": "Fly to the moon", "toEarth": "Fly back to the circle",
+        "toMoon": "Fly to the moon", "toSun": "Fly to the sun", "toEarth": "Fly back to the circle",
     },
     "da": {
         "language": "Sprog", "runesName": "Runer (yngre futhark, langkvist)",
@@ -135,7 +135,7 @@ WORLD_UI = {
         "todaySeason": "Dagens årstid", "today": "i dag", "todayHint": "(i dag)",
         "seasonAria": "Årstid: {s}. Skift årstid", "chooseSeason": "Vælg en årstid",
         "aa": "Vis teksten med latinske bogstaver", "back": "Tilbage til cirklen",
-        "toMoon": "Flyv til månen", "toEarth": "Flyv tilbage til cirklen",
+        "toMoon": "Flyv til månen", "toSun": "Flyv til solen", "toEarth": "Flyv tilbage til cirklen",
     },
 }
 
@@ -318,11 +318,15 @@ POST = {"en": "post.html", "da": "post.da.html"}
 PAGE = {"en": "page.html", "da": "page.da.html"}
 BIOINFO = {"en": "bioinformatics.html", "da": "bioinformatics.da.html"}
 MOON = {"en": "moon.html", "da": "moon.da.html"}
+SUN = {"en": "sun.html", "da": "sun.da.html"}
 
-# The moon (moon.html / .da.html): the sky's moon is a link that lands you there.
-MOON_UI = {
-    "en": {"heading": "The Moon", "comingSoon": "This world is still being built"},
-    "da": {"heading": "Månen", "comingSoon": "Denne verden er stadig under opbygning"},
+# The moon and the sun (moon.html, sun.html + .da.html): the disc in the sky is a link that
+# lands you there — the moon at dusk and night, the sun by day.
+SKY_UI = {
+    "moon": {"en": {"heading": "The Moon", "comingSoon": "This world is still being built"},
+             "da": {"heading": "Månen", "comingSoon": "Denne verden er stadig under opbygning"}},
+    "sun": {"en": {"heading": "The Sun", "comingSoon": "This world is still being built"},
+            "da": {"heading": "Solen", "comingSoon": "Denne verden er stadig under opbygning"}},
 }
 CV = {"en": "cv.html", "da": "cv.da.html"}
 
@@ -548,17 +552,18 @@ def render_pages(env, content, entry, posts, versions):
             heading=heading, rune=bio.get("rune") or "ᚼ", intro=intro, tools=tools, **common)
 
 
-def render_moon(env, versions):
-    """moon.html / moon.da.html: the moon, landed on. A placeholder for now."""
-    ui = world_ui(MOON_UI)
-    for lang in ("en", "da"):
-        h = MOON_UI[lang]["heading"]
-        render_world_page(
-            env, "moon.html.j2", MOON, lang,
-            meta={"title": h + " — Pieter Shiffler Carpentier", "description": MOON_UI[lang]["comingSoon"],
-                  "ogDescription": MOON_UI[lang]["comingSoon"], "canonical": SITE_URL + MOON[lang],
-                  "alternates": [{"hreflang": l, "href": SITE_URL + MOON[l]} for l in ("en", "da")]},
-            ui=ui[lang], jsonld=None, v=versions, world_class="moon-world", world_data={"page": lang, "ui": ui})
+def render_sky(env, versions):
+    """moon.html and sun.html (+ .da.html): the moon or the sun, landed on. Placeholders for now."""
+    for body, files in (("moon", MOON), ("sun", SUN)):
+        ui = world_ui(SKY_UI[body])
+        for lang in ("en", "da"):
+            t = SKY_UI[body][lang]
+            render_world_page(
+                env, "sky.html.j2", files, lang, body=body,
+                meta={"title": t["heading"] + " — Pieter Shiffler Carpentier", "description": t["comingSoon"],
+                      "ogDescription": t["comingSoon"], "canonical": SITE_URL + files[lang],
+                      "alternates": [{"hreflang": l, "href": SITE_URL + files[l]} for l in ("en", "da")]},
+                ui=ui[lang], jsonld=None, v=versions, world_class="sky-world " + body + "-world", world_data={"page": lang, "ui": ui})
 
 
 def render_cv(env, content, entry, posts, versions):
@@ -632,7 +637,7 @@ def main():
                 "photoscss": asset_version("assets/photos.css"), "photosjs": asset_version("assets/photos.js"),
                 "uploadcss": asset_version("assets/upload.css"), "uploadjs": asset_version("assets/upload.js"),
                 "pagescss": asset_version("assets/pages.css"), "pagesjs": asset_version("assets/pages.js"),
-                "mooncss": asset_version("assets/moon.css"),
+                "skycss": asset_version("assets/sky.css"),
                 "cvcss": asset_version("assets/cv.css"), "cvjs": asset_version("assets/cv.js")}
     posts = load_posts()
     entry = {"en": load("entry.json"), "da": load("entry.da.json")}
@@ -641,7 +646,7 @@ def main():
     render_upload(env, posts, versions)
     render_fieldlog(env, content, posts, versions)
     render_pages(env, content, entry, posts, versions)
-    render_moon(env, versions)
+    render_sky(env, versions)
     render_cv(env, content, entry, posts, versions)
 
     for out, (tpl, lang) in PAGES.items():

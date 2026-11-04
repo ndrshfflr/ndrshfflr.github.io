@@ -27,7 +27,7 @@ window.addEventListener('pagereveal', function (e) {
   if (!kind) {
     try {
       var from = navigation.activation.from.url, f = new URL(from).pathname.split('/').pop();
-      if (/^moon\b/.test(here)) kind = 'to-moon';
+      if (/^(moon|sun)\b/.test(here)) kind = 'to-sky';
       else if (isCircle(here) && !isCircle(f)) kind = 'to-circle';
       else if (!isCircle(here) && isCircle(f)) kind = MENU_PAGE.test(here) ? 'from-menu' : 'into-world';
     } catch (err) {}
@@ -54,7 +54,7 @@ window.addEventListener('pagereveal', function (e) {
     if (from && !still) {
       /* from a portal's world: pull back out of that portal; from a menu page: the circle is
          simply there again, as you left it, and that menu rune glows */
-      d.className += /^moon\b/.test(from) ? ' from-moon' : /^(blog|post|page|fieldlog|cv)\b/.test(from) ? ' from-menu' : ' returning';
+      d.className += /^(moon|sun)\b/.test(from) ? ' from-sky' : /^(blog|post|page|fieldlog|cv)\b/.test(from) ? ' from-menu' : ' returning';
       d.setAttribute('data-return', from);
     }
     /* the first visit: the portals light one by one before the circle wakes (assets/entry.js) */
@@ -104,9 +104,11 @@ window.addEventListener('pagereveal', function (e) {
   <div class="stars" id="stars" aria-hidden="true">
     <span class="star" style="left:13%;top:11%;opacity:.45"></span><span class="star" style="left:24%;top:23%;opacity:.35"></span><span class="star" style="left:7%;top:34%;opacity:.3"></span><span class="star" style="left:71%;top:19%;opacity:.35"></span><span class="star" style="left:80%;top:31%;opacity:.3"></span><span class="star" style="left:36%;top:6%;opacity:.4"></span>
   </div>
-  {#- the moon (by day the sun) is a way to the moon; on the moon it's the Earth, the way back -#}
-  {%- set on_moon = template_name == 'moon.html.j2' %}
-  <a class="disc" id="disc" href="{{ entry_href if on_moon else ('moon.da.html' if lang == 'da' else 'moon.html') }}" aria-label="{{ ui.toEarth if on_moon else ui.toMoon }}"><span class="craters" id="craters"></span><svg class="shade" id="shade" viewBox="0 0 100 100" focusable="false" aria-hidden="true"><path id="shade-path" d=""/></svg></a>
+  {#- the moon is a way to the moon, and by day the sun to the sun (assets/world.js switches
+      the link with the light); on the moon or the sun the disc is the Earth, the way back -#}
+  {%- set on_sky = template_name == 'sky.html.j2' %}
+  {%- set dl = '.da' if lang == 'da' else '' %}
+  <a class="disc" id="disc" href="{{ entry_href if on_sky else 'moon' ~ dl ~ '.html' }}" aria-label="{{ ui.toEarth if on_sky else ui.toMoon }}"{% if not on_sky %} data-moon="moon{{ dl }}.html" data-sun="sun{{ dl }}.html" data-moon-label="{{ ui.toMoon }}" data-sun-label="{{ ui.toSun }}"{% endif %}><span class="craters" id="craters"></span><svg class="shade" id="shade" viewBox="0 0 100 100" focusable="false" aria-hidden="true"><path id="shade-path" d=""/></svg></a>
   <div class="fx" id="fx-winter" aria-hidden="true"></div>
   <div class="fx" id="fx-spring" aria-hidden="true"></div>
   <div class="fx" id="fx-summer" aria-hidden="true"></div>
