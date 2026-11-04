@@ -508,7 +508,7 @@
       "story": ""
     }
   ],
-  "pdf": "cv.pdf",
+  "pdf": "",
   "now": [
     {
       "title": "Student Assistant, Indoor Climate Lab",
@@ -531,7 +531,7 @@
       "key": "ku",
       "name": "University of Copenhagen",
       "abbr": "KU",
-      "logo": ""
+      "logo": "/images/logos/mini-logo.png"
     },
     {
       "key": "ramboll",
