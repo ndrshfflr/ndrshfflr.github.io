@@ -5,7 +5,7 @@
     src/cv_page.py. Hover cards (courses, blog posts) work with CSS alone. -#}
 {%- macro rv(key, text) -%}<span class="rv" data-k="{{ key }}"><span class="rn" aria-hidden="true"></span><span class="lt">{{ text }}</span></span>{%- endmacro -%}
 {%- macro logo(t) -%}
-<span class="cv-logo n{{ t.n }}" role="img" aria-label="{{ t.label }}" title="{{ t.label }}">{% for s in t.segs %}<span class="sg sg{{ loop.index }}">{% if s.logo %}<img src="{{ s.logo }}" alt="" loading="lazy">{% else %}<b>{{ s.abbr }}</b>{% endif %}</span>{% endfor %}</span>
+<span class="cv-logo n{{ t.n }}" role="img" aria-label="{{ t.label }}" title="{{ t.label }}">{% for s in t.segs %}<span class="sg sg{{ loop.index }}">{% if s.logo %}<i class="lg" style="--logo:url('{{ s.logo }}')"></i>{% else %}<b>{{ s.abbr }}</b>{% endif %}</span>{% endfor %}{% if t.n == 2 %}<svg class="lg-div" viewBox="0 0 48 48" aria-hidden="true"><path d="M44 4L4 44"/></svg>{% elif t.n == 3 %}<svg class="lg-div" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 24V3M24 24L4 36M24 24L44 36"/></svg>{% endif %}</span>
 {%- endmacro -%}
 {%- macro stars(c) -%}<span class="cv-stars" role="img" aria-label="{{ c.ratingLabel }}">{% for on in c.stars %}<svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"{% if on %} class="on"{% endif %}><path d="M12 1.5L14.3 9.7 22.5 12 14.3 14.3 12 22.5 9.7 14.3 1.5 12 9.7 9.7Z"/></svg>{% endfor %}</span>{%- endmacro -%}
 {%- macro course_pop(c) -%}

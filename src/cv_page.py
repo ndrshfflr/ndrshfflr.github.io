@@ -81,6 +81,15 @@ def _fmt_sum(n, lang):
 
 
 # ---------------------------------------------------------------- logo tiles
+def _abs(path):
+    """Logos are drawn through a CSS mask (url() in a custom property), which resolves
+    relative paths against assets/cv.css — so make them root-relative."""
+    path = str(path or "").strip()
+    if not path or re.match(r"^(https?:)?/", path):
+        return path
+    return "/" + path.lstrip("./")
+
+
 def logo_tile(keys, orgs, ui):
     found = [orgs[k] for k in (keys or []) if k in orgs][:3]
     if not found:
@@ -88,7 +97,7 @@ def logo_tile(keys, orgs, ui):
     return {
         "n": len(found),
         "label": ui["logos"].format(names=", ".join(o["name"] for o in found)),
-        "segs": [{"abbr": o.get("abbr") or o["name"][:3].upper(), "logo": o.get("logo") or "", "name": o["name"]} for o in found],
+        "segs": [{"abbr": o.get("abbr") or o["name"][:3].upper(), "logo": _abs(o.get("logo") or ""), "name": o["name"]} for o in found],
     }
 
 
