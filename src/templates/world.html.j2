@@ -22,7 +22,7 @@ window.addEventListener('pagereveal', function (e) {
   if (!e.viewTransition) return;
   var kind = null, here = location.pathname.split('/').pop();
   var isCircle = function (f) { return f === '' || f === 'index.html' || f === 'da.html'; };
-  var MENU_PAGE = /^(blog|post|page|fieldlog)\b/; // pages of the small menu under the circle (Labdiary, CV, field log)
+  var MENU_PAGE = /^(blog|post|page|fieldlog|cv)\b/; // pages of the small menu under the circle (Labdiary, CV, field log)
   try { kind = sessionStorage.getItem('vtKind'); sessionStorage.removeItem('vtKind'); } catch (err) {}
   if (!kind) {
     try {
@@ -54,7 +54,7 @@ window.addEventListener('pagereveal', function (e) {
     if (from && !still) {
       /* from a portal's world: pull back out of that portal; from a menu page: the circle is
          simply there again, as you left it, and that menu rune glows */
-      d.className += /^moon\b/.test(from) ? ' from-moon' : /^(blog|post|page|fieldlog)\b/.test(from) ? ' from-menu' : ' returning';
+      d.className += /^moon\b/.test(from) ? ' from-moon' : /^(blog|post|page|fieldlog|cv)\b/.test(from) ? ' from-menu' : ' returning';
       d.setAttribute('data-return', from);
     }
     /* the first visit: the portals light one by one before the circle wakes (assets/entry.js) */

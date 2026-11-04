@@ -1,0 +1,616 @@
+{
+  "tagline": "Creative and driven biologist & nature enthusiast",
+  "intro": "I am a Master's student in microbiology, focusing mainly on fungi. In my spare time, I explore their potential in creating more sustainable food systems, whereas my research is focused on using molecular methods to discover hidden mould in buildings. Apart from that, I love taking pictures and getting lost in deep thought on the nature of reality.",
+  "portrait": "",
+  "pdf": "cv.pdf",
+  "now": [
+    {
+      "title": "Student Assistant, Indoor Climate Lab",
+      "place": "Rambøll Danmark A/S · since 2025",
+      "logos": [
+        "ramboll"
+      ]
+    },
+    {
+      "title": "MSc in Ecology",
+      "place": "Copenhagen University · 2025–2026",
+      "logos": [
+        "ku"
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "label": "grants won",
+      "labelDa": "bevillinger",
+      "auto": "grants"
+    },
+    {
+      "label": "species recorded",
+      "labelDa": "arter registreret",
+      "auto": "species",
+      "note": "live from the field log",
+      "noteDa": "fra fundbogen"
+    },
+    {
+      "label": "cultures in my library",
+      "labelDa": "kulturer i mit bibliotek",
+      "value": "",
+      "note": "",
+      "noteDa": ""
+    },
+    {
+      "label": "years with fungi",
+      "labelDa": "år med svampe",
+      "value": "",
+      "note": "",
+      "noteDa": ""
+    },
+    {
+      "label": "tours guided",
+      "labelDa": "ture guidet",
+      "value": "",
+      "note": "",
+      "noteDa": ""
+    }
+  ],
+  "strengths": [
+    {
+      "label": "Experimenter",
+      "labelDa": "Eksperimentator",
+      "long": "Hands-on experimenter",
+      "longDa": "Praktisk eksperimentator",
+      "score": 5,
+      "dip": false,
+      "lenses": [
+        "researcher",
+        "consultant",
+        "guide"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Creative",
+      "labelDa": "Kreativ",
+      "long": "Creative problem-solver",
+      "longDa": "Kreativ problemløser",
+      "score": 5,
+      "dip": false,
+      "lenses": [
+        "researcher",
+        "consultant",
+        "guide"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Routine",
+      "labelDa": "Rutine",
+      "long": "Routine work",
+      "longDa": "Rutinearbejde",
+      "score": 2,
+      "dip": true,
+      "lenses": [
+        "guide"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Teacher",
+      "labelDa": "Underviser",
+      "long": "Teacher & explainer",
+      "longDa": "Underviser & formidler",
+      "score": 4,
+      "dip": false,
+      "lenses": [
+        "consultant",
+        "guide"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Community",
+      "labelDa": "Fællesskab",
+      "long": "Community builder",
+      "longDa": "Fællesskabsbygger",
+      "score": 3,
+      "dip": false,
+      "lenses": [
+        "guide"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Solo work",
+      "labelDa": "Alenearbejde",
+      "long": "Long solo stretches",
+      "longDa": "Lange perioder alene",
+      "score": 2,
+      "dip": true,
+      "lenses": [
+        "consultant"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Fundraising",
+      "labelDa": "Fondsansøgning",
+      "long": "Gets ideas funded",
+      "longDa": "Får idéer finansieret",
+      "score": 4,
+      "dip": false,
+      "lenses": [
+        "researcher"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Toolmaker",
+      "labelDa": "Værktøjsmager",
+      "long": "Builds his own tools",
+      "longDa": "Bygger sine egne værktøjer",
+      "score": 4,
+      "dip": false,
+      "lenses": [
+        "researcher",
+        "consultant"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Self-promotion",
+      "labelDa": "Selvpromovering",
+      "long": "Self-promotion",
+      "longDa": "Selvpromovering",
+      "score": 2,
+      "dip": true,
+      "lenses": [
+        "researcher"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Naturalist",
+      "labelDa": "Naturkender",
+      "long": "Sharp-eyed naturalist",
+      "longDa": "Skarpøjet naturkender",
+      "score": 4,
+      "dip": false,
+      "lenses": [
+        "researcher",
+        "consultant",
+        "guide"
+      ],
+      "story": ""
+    }
+  ],
+  "organisations": [
+    {
+      "key": "ku",
+      "name": "University of Copenhagen",
+      "abbr": "KU",
+      "logo": ""
+    },
+    {
+      "key": "ramboll",
+      "name": "Rambøll",
+      "abbr": "R",
+      "logo": ""
+    },
+    {
+      "key": "flor",
+      "name": "FLOR",
+      "abbr": "FLOR",
+      "logo": ""
+    },
+    {
+      "key": "dn",
+      "name": "Danmarks Naturfredningsforening",
+      "abbr": "DN",
+      "logo": ""
+    },
+    {
+      "key": "sse",
+      "name": "Social and Symbiotic Evolution Group",
+      "abbr": "SSE",
+      "logo": ""
+    },
+    {
+      "key": "ga",
+      "name": "Grøn Agenda Sydhavn",
+      "abbr": "GA",
+      "logo": ""
+    },
+    {
+      "key": "hav",
+      "name": "Havfællesskabet",
+      "abbr": "HAV",
+      "logo": ""
+    },
+    {
+      "key": "fest",
+      "name": "Fungi Festival",
+      "abbr": "FEST",
+      "logo": ""
+    },
+    {
+      "key": "dms",
+      "name": "Danish Microbiological Society",
+      "abbr": "DMS",
+      "logo": ""
+    },
+    {
+      "key": "dmf",
+      "name": "Danish Mycological Society",
+      "abbr": "DMF",
+      "logo": ""
+    },
+    {
+      "key": "bric",
+      "name": "Biotech Research & Innovation Centre",
+      "abbr": "BRIC",
+      "logo": ""
+    },
+    {
+      "key": "bi",
+      "name": "Bioinformatics Institute",
+      "abbr": "BI",
+      "logo": ""
+    },
+    {
+      "key": "funga",
+      "name": "Funga Farm",
+      "abbr": "FF",
+      "logo": ""
+    },
+    {
+      "key": "kul",
+      "name": "KU Lighthouse",
+      "abbr": "KUL",
+      "logo": ""
+    }
+  ],
+  "courses": [],
+  "entries": [
+    {
+      "section": "education",
+      "year": "2025–2026",
+      "title": "Master of Science in Ecology (GPA: 3.8)",
+      "detail": "Department of Biology, Copenhagen University, Denmark",
+      "current": true,
+      "lenses": [
+        "researcher",
+        "consultant"
+      ],
+      "logos": [
+        "ku"
+      ],
+      "keyCourses": []
+    },
+    {
+      "section": "education",
+      "year": "2025",
+      "title": "PhD Course in Geometric Morphometrics in R",
+      "detail": "PhD School of Science, Copenhagen University, Denmark",
+      "lenses": [
+        "researcher"
+      ],
+      "logos": [
+        "ku"
+      ],
+      "course": ""
+    },
+    {
+      "section": "education",
+      "year": "2021–2025",
+      "title": "Bachelor of Science in Biology (GPA: 3.1)",
+      "detail": "Department of Biology, Copenhagen University, Denmark",
+      "lenses": [
+        "researcher",
+        "consultant",
+        "guide"
+      ],
+      "logos": [
+        "ku"
+      ],
+      "keyCourses": []
+    },
+    {
+      "section": "work",
+      "year": "2025–now",
+      "title": "Student Assistant, Indoor Climate Lab",
+      "detail": "Rambøll Danmark A/S · working with analysis of mould, tree-degrading fungi, and fungal toxicity",
+      "current": true,
+      "lenses": [
+        "consultant",
+        "researcher"
+      ],
+      "logos": [
+        "ramboll"
+      ],
+      "builtOn": [],
+      "post": ""
+    },
+    {
+      "section": "work",
+      "year": "2025",
+      "title": "Student assistant, MSc course “Field Mycology and Identification of Fungi”",
+      "detail": "with leading experts Jacob Heilmann-Clausen and Thomas Læssøe",
+      "lenses": [
+        "researcher",
+        "guide"
+      ],
+      "logos": [
+        "ku"
+      ],
+      "post": ""
+    },
+    {
+      "section": "work",
+      "year": "2024–now",
+      "title": "Guided mushroom tours for FLOR",
+      "detail": "Danmarks Naturfredningsforening · mycology tutoring, photography, and fungal breeding",
+      "current": true,
+      "lenses": [
+        "guide"
+      ],
+      "logos": [
+        "flor",
+        "dn"
+      ],
+      "post": ""
+    },
+    {
+      "section": "work",
+      "year": "Earlier",
+      "title": "Several non-biology positions",
+      "detail": "Prior to a career shift, I worked as a full-time boarding school teacher, part-time freelance acrobatics teacher, and a circus arts school board member. My main work was establishing inclusive movement-based communities.",
+      "lenses": [
+        "guide"
+      ],
+      "logos": [],
+      "post": ""
+    },
+    {
+      "section": "volunteering",
+      "year": "2026–now",
+      "title": "Board Member and cofounder",
+      "detail": "Havfællesskabet",
+      "current": true,
+      "lenses": [
+        "guide"
+      ],
+      "logos": [
+        "hav"
+      ],
+      "post": ""
+    },
+    {
+      "section": "volunteering",
+      "year": "2024–now",
+      "title": "Member of the Social and Symbiotic Evolution Group",
+      "detail": "",
+      "current": true,
+      "lenses": [
+        "researcher"
+      ],
+      "logos": [
+        "sse"
+      ],
+      "post": ""
+    },
+    {
+      "section": "volunteering",
+      "year": "2021–2023",
+      "title": "Volunteer at Grøn Agenda Sydhavn",
+      "detail": "which manages 18,200 m² on Sydhavnstippen in Copenhagen with the aim of increasing biodiversity",
+      "lenses": [
+        "guide"
+      ],
+      "logos": [
+        "ga"
+      ],
+      "post": ""
+    },
+    {
+      "section": "grants",
+      "year": "2026",
+      "title": "Danish Mycological Society “Mushroom Grant”",
+      "amount": "7,125 DKK",
+      "lenses": [
+        "researcher",
+        "guide"
+      ],
+      "logos": [
+        "dmf"
+      ],
+      "post": ""
+    },
+    {
+      "section": "grants",
+      "year": "2026",
+      "title": "Rambøll Danmark A/S internal accelerator platform",
+      "amount": "50,000 DKK",
+      "lenses": [
+        "consultant"
+      ],
+      "logos": [
+        "ramboll"
+      ],
+      "post": ""
+    },
+    {
+      "section": "grants",
+      "year": "2025",
+      "title": "Rambøll Danmark A/S master's thesis pitch for building physics department head",
+      "amount": "50,000 DKK",
+      "lenses": [
+        "consultant",
+        "researcher"
+      ],
+      "logos": [
+        "ramboll"
+      ],
+      "post": ""
+    },
+    {
+      "section": "grants",
+      "year": "2025",
+      "title": "Danish Mycological Society “Mushroom Grant”, travel grant for Tropical Field Mycology Course",
+      "amount": "8,000 DKK",
+      "lenses": [
+        "researcher",
+        "guide"
+      ],
+      "logos": [
+        "dmf"
+      ],
+      "post": ""
+    },
+    {
+      "section": "grants",
+      "year": "2024",
+      "title": "Danish Mycological Society “Mushroom Grant” for personal microscope and microscopy supplies",
+      "amount": "7,000 DKK",
+      "lenses": [
+        "researcher",
+        "guide"
+      ],
+      "logos": [
+        "dmf"
+      ],
+      "post": ""
+    },
+    {
+      "section": "grants",
+      "year": "2024",
+      "title": "UCPH Microbiology Cluster grant for interdisciplinary research projects",
+      "amount": "30,000 DKK",
+      "lenses": [
+        "researcher"
+      ],
+      "logos": [
+        "ku"
+      ],
+      "post": ""
+    },
+    {
+      "section": "research",
+      "year": "2026–now",
+      "title": "Using molecular methods to reveal hidden mould growth in buildings",
+      "current": true,
+      "lenses": [
+        "researcher",
+        "consultant"
+      ],
+      "logos": [
+        "ramboll",
+        "ku"
+      ],
+      "post": ""
+    },
+    {
+      "section": "research",
+      "year": "2026",
+      "title": "Innovation project focused on fungal breeding techniques",
+      "lenses": [
+        "researcher"
+      ],
+      "logos": [
+        "kul",
+        "ku",
+        "sse"
+      ],
+      "post": ""
+    },
+    {
+      "section": "research",
+      "year": "2025",
+      "title": "Growth experiments with uncultivated *Termitomyces* by replication of a 3D growth chamber",
+      "lenses": [
+        "researcher"
+      ],
+      "logos": [
+        "sse",
+        "ku"
+      ],
+      "image": "",
+      "imageAlt": "",
+      "builtOn": [],
+      "post": ""
+    },
+    {
+      "section": "research",
+      "year": "2024",
+      "title": "Project in practice at Funga Farm, researching a fungal pathogen affecting yields of *Pleurotus ostreatus*",
+      "lenses": [
+        "researcher",
+        "consultant"
+      ],
+      "logos": [
+        "funga",
+        "sse",
+        "ku"
+      ],
+      "post": ""
+    },
+    {
+      "section": "presentations",
+      "year": "2026",
+      "title": "Pitch-training session at the joint Biotech Research & Innovation Centre and Bioinformatics Institute seminar on fungal breeding techniques",
+      "lenses": [
+        "researcher",
+        "consultant"
+      ],
+      "logos": [
+        "bric",
+        "bi",
+        "ku"
+      ],
+      "post": ""
+    },
+    {
+      "section": "presentations",
+      "year": "2025",
+      "title": "From 2D plates to 3D structures: Does termite-farmed Termitomyces need three dimensions to grow?",
+      "detail": "Carpentier, P.S., Kristian, B., Zhu, D., Schmidt, S., Rosendahl, S., Hipsley, C., and Poulsen, M. · Status report at the UCPH Microbiology Day",
+      "lenses": [
+        "researcher"
+      ],
+      "logos": [
+        "sse",
+        "ku"
+      ],
+      "post": ""
+    },
+    {
+      "section": "presentations",
+      "year": "2025",
+      "title": "From 2D plates to 3D structures: Does termite-farmed Termitomyces need three dimensions to grow?",
+      "detail": "Carpentier, P.S., Zhu, D., Schmidt, S., Rosendahl, S., Hipsley, C., and Poulsen, M. · Poster presentation at the Danish Microbiological Society yearly convention",
+      "lenses": [
+        "researcher"
+      ],
+      "logos": [
+        "dms",
+        "sse",
+        "ku"
+      ],
+      "post": ""
+    },
+    {
+      "section": "presentations",
+      "year": "2024",
+      "title": "Fungus-farming and entomopathogenic termite stand at Fungi Festival and Culture Night",
+      "lenses": [
+        "guide"
+      ],
+      "logos": [
+        "fest",
+        "sse",
+        "ku"
+      ],
+      "post": ""
+    }
+  ]
+}
