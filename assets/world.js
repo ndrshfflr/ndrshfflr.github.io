@@ -237,7 +237,29 @@
   if (lookParam === 'darkroom' || lookParam === 'sky') world.classList.toggle('look-darkroom', lookParam === 'darkroom');
 
   var theme = doc.querySelector('meta[name="theme-color"]');
-  var disc = $('disc'), craters = $('craters'), stars = $('stars');
+  var disc = $('disc'), craters = $('craters'), stars = $('stars'), shade = $('shade'), shadePath = $('shade-path');
+
+  /* the moon's phase today: 0 new, .25 first quarter, .5 full, .75 last quarter
+     (?moon=0.3 previews another phase) */
+  function moonPhase(now) {
+    var forced = parseFloat(params.get('moon'));
+    if (!isNaN(forced)) return ((forced % 1) + 1) % 1;
+    /* how far the moon stands from the sun along the sky (low-precision almanac terms, within an hour or so) */
+    var r = Math.PI / 180, d = now / 864e5 - 10957.5; // days since 1 Jan 2000, noon UT
+    var g = (357.528 + 0.9856003 * d) * r;            // the sun's mean anomaly
+    var sun = 280.460 + 0.9856474 * d + 1.915 * Math.sin(g) + 0.020 * Math.sin(2 * g);
+    var M = (134.963 + 13.064993 * d) * r, D = (297.850 + 12.190749 * d) * r, F = (93.272 + 13.229350 * d) * r;
+    var moon = 218.316 + 13.176396 * d + 6.289 * Math.sin(M) + 1.274 * Math.sin(2 * D - M) + 0.658 * Math.sin(2 * D)
+      + 0.214 * Math.sin(2 * M) - 0.186 * Math.sin(g) - 0.114 * Math.sin(2 * F);
+    return ((((moon - sun) % 360) + 360) % 360) / 360;
+  }
+  /* the unlit part of the disc as a path (lit on the right while waxing, as seen from the north) */
+  function shadeD(p) {
+    var c = Math.cos(2 * Math.PI * p), rx = Math.abs(c) * 50;
+    var outer = p < 0.5 ? 0 : 1, inner = c > 0 ? outer : 1 - outer;
+    return 'M50,0A50,50 0 0 ' + outer + ' 50,100A' + rx.toFixed(2) + ',50 0 0 ' + inner + ' 50,0Z';
+  }
+
   function applySky() {
     var s = sky(new Date()), P = s.P, u = U();
     /* the darkroom look keeps a near-black ground; the season only tints it */
@@ -254,6 +276,12 @@
     if (theme) theme.setAttribute('content', darkroom ? '#07080a' : 'rgb(' + P.sky1.slice(0, 3).map(Math.round).join(',') + ')');
     if (disc) { disc.style.width = disc.style.height = Math.round(P.dsize) + 'px'; }
     if (craters) craters.style.opacity = (P.crater * (1 - s.dl)).toFixed(3);
+    if (shadePath) {
+      var ph = moonPhase(Date.now()), lit = (1 - Math.cos(2 * Math.PI * ph)) / 2;
+      shadePath.setAttribute('d', shadeD(ph));
+      shade.style.opacity = (1 - s.dl).toFixed(3);
+      st.setProperty('--lit', (s.dl + (1 - s.dl) * (0.2 + 0.8 * lit)).toFixed(3));
+    }
     if (stars) stars.style.opacity = ((1 - s.dl) * (1 - s.tw * 0.7)).toFixed(3);
     ORDER.forEach(function (k) { world.classList.toggle('s-' + k, k === s.season); });
 

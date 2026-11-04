@@ -61,8 +61,11 @@ button{font:inherit}
 .star{position:absolute;width:2px;height:2px;border-radius:50%;background:#dfe7ef}
 .disc{position:absolute;right:9%;top:64px;width:72px;height:72px;border-radius:50%;opacity:.92;pointer-events:none;
   background:radial-gradient(circle at 38% 36%,var(--disc1) 0%,color-mix(in srgb,var(--disc1) 50%,var(--disc2)) 55%,var(--disc2) 100%);
-  box-shadow:0 0 40px 10px color-mix(in srgb,var(--dglow) 18%,transparent),0 0 140px 50px color-mix(in srgb,var(--dglow) 8%,transparent);
+  box-shadow:0 0 40px 10px color-mix(in srgb,var(--dglow) calc(18% * var(--lit,1)),transparent),0 0 140px 50px color-mix(in srgb,var(--dglow) calc(8% * var(--lit,1)),transparent);
   transition:width 1.6s ease,height 1.6s ease}
+/* the moon's real phase: the unlit part, faint as earthshine (gone by day, when the disc is the sun) */
+.shade{position:absolute;inset:-1px;width:calc(100% + 2px);height:calc(100% + 2px);overflow:visible;transition:opacity 1.6s ease}
+.shade path{fill:color-mix(in srgb,var(--sky1) 55%,#000);fill-opacity:.9}
 .craters{position:absolute;inset:0;border-radius:50%;transition:opacity 1.6s ease;
   background:radial-gradient(circle at 62% 58%,rgba(110,104,98,.42) 0 9%,transparent 10%),radial-gradient(circle at 34% 66%,rgba(110,104,98,.3) 0 6%,transparent 7%),radial-gradient(circle at 44% 30%,rgba(110,104,98,.24) 0 5%,transparent 6%)}
 
