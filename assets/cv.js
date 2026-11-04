@@ -54,11 +54,11 @@
   /* ------------------------------------------------------------------ the road */
   /* The road is drawn by src/cv_page.py scenery(): a 1440 × 5000 drawing stretched from
      the foot of the mountain to the bottom of the page. Keep the curve in step. */
-  var VB_W = 1440, VB_H = 5000, MIN_TEXT = 280, GUTTER = 84;
+  var VB_W = 1440, VB_H = 5000, MIN_TEXT = 360, GUTTER = 84;
   var road = doc.querySelector('.cv-road');
   function roadX(yv) {
     var t = Math.max(0, Math.min(1, yv / VB_H));
-    var amp = 40 + 260 * t;
+    var amp = 40 + 170 * t;
     return 720 + amp * Math.sin(t * 9.5 + 0.4) * (0.4 + 0.6 * t);
   }
   var rows = W.$$('.cv-row');
@@ -77,7 +77,7 @@
       var b = r.getBoundingClientRect();
       var yc = b.top + b.height / 2 - wb.top;
       var x = roadX((yc - ROAD_TOP) * VB_H / (H - ROAD_TOP)) * Wd / VB_W - (b.left - wb.left);
-      var room = GUTTER + MIN_TEXT;
+      var room = Math.min(GUTTER + MIN_TEXT, b.width / 2 - 24); // on narrower windows the text gives way first
       x = r.classList.contains('left') ? Math.max(room, x) : Math.min(b.width - room, x);
       x = Math.round(x);
       var cur = parseInt(r.style.getPropertyValue('--x'), 10);

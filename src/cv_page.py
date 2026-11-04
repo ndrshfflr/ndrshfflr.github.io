@@ -190,7 +190,7 @@ def scenery():
     pts = []
     for i in range(101):
         t = i / 100
-        amp = 40 + 260 * t
+        amp = 40 + 170 * t  # keep in step with roadX() in assets/cv.js
         x = 720 + amp * math.sin(t * 9.5 + 0.4) * (0.4 + 0.6 * t)
         w = 70 + 560 * t ** 1.1
         pts.append((x, t * H, w))
