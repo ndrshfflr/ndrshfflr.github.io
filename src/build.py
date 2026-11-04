@@ -126,7 +126,7 @@ WORLD_UI = {
         "todaySeason": "Today's season", "today": "today", "todayHint": "(today)",
         "seasonAria": "Season: {s}. Change season", "chooseSeason": "Choose a season",
         "aa": "Show the text in Latin letters", "back": "Back to the circle",
-        "toMoon": "Fly to the moon", "toSun": "Fly to the sun", "toEarth": "Fly back to the circle",
+        "toMoon": "Fly to the moon", "toSun": "Fly to the sun", "toEarth": "Fly back to the circle", "flyBack": "Fly back",
     },
     "da": {
         "language": "Sprog", "runesName": "Runer (yngre futhark, langkvist)",
@@ -135,7 +135,7 @@ WORLD_UI = {
         "todaySeason": "Dagens årstid", "today": "i dag", "todayHint": "(i dag)",
         "seasonAria": "Årstid: {s}. Skift årstid", "chooseSeason": "Vælg en årstid",
         "aa": "Vis teksten med latinske bogstaver", "back": "Tilbage til cirklen",
-        "toMoon": "Flyv til månen", "toSun": "Flyv til solen", "toEarth": "Flyv tilbage til cirklen",
+        "toMoon": "Flyv til månen", "toSun": "Flyv til solen", "toEarth": "Flyv tilbage til cirklen", "flyBack": "Flyv tilbage",
     },
 }
 

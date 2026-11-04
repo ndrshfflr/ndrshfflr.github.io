@@ -422,8 +422,10 @@
     };
     doc.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a');
-      if (!toCircle(a) || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-      session.set('circleReturn', page);
+      var home = toCircle(a), skyBack = !home && onSky && a && a.hasAttribute('data-sky-back');
+      if (!(home || skyBack) || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (home) session.set('circleReturn', page);
+      else session.set('skyBack', '1'); // the page you flew from: its disc sinks back into place
       if (reduced) return;
       session.set('vtKind', 'to-circle'); // browsers that blend pages carry the fold straight into the circle
       e.preventDefault();
@@ -449,6 +451,40 @@
     });
   }
 
+  /* landed on the moon or the sun: the way back (the Earth, "Back") leads to the page you flew
+     from, in this page's language, unless that was the circle */
+  if (onSky) {
+    var from = session.get('skyFrom') || '';
+    var fromFile = from.split(/[?#]/)[0];
+    if (from && !/^(moon|sun)\b/.test(fromFile) && fromFile !== 'index.html' && fromFile !== 'da.html') {
+      var rest = from.slice(fromFile.length), stem = fromFile.replace(/(\.da)?\.html$/, '');
+      var back = stem + (PAGE === 'da' ? '.da' : '') + '.html' + rest;
+      [disc, doc.querySelector('.back-link')].forEach(function (a) {
+        if (!a) return;
+        a.setAttribute('href', back);
+        a.setAttribute('data-sky-back', '');
+      });
+      var lt = doc.querySelector('.back-link .lt');
+      var flyBack = function () { // in the language the page is read in (it follows the language switch)
+        if (disc) disc.setAttribute('aria-label', U().flyBack || '');
+        if (lt) lt.textContent = U().flyBack || lt.textContent;
+      };
+      flyBack();
+      renderers.push(flyBack); // before the page's own renderers, which carve the runes from this text
+    }
+  }
+
+  /* back from the moon or the sun: the page is as you left it */
+  if (!onSky && root.classList.contains('from-sky')) {
+    var y = parseFloat(session.get('skyScroll'));
+    if (y > 0) {
+      var restore = function () { window.scrollTo(0, y); };
+      restore();
+      window.addEventListener('load', function () { setTimeout(restore, 60); });
+    }
+    if (!world.classList.contains('circle')) setTimeout(function () { root.classList.remove('from-sky'); }, 1600);
+  }
+
   /* landed on the moon or the sun: the veil starts in the colour of the disc you flew into */
   if (onSky) {
     var tint = (session.get('skyTint') || '').split('|'), veil = doc.querySelector('.sky-veil');
@@ -462,6 +498,8 @@
   if (disc && !onSky) {
     disc.addEventListener('click', function (e) {
       if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      session.set('skyFrom', (location.pathname.split('/').pop() || 'index.html') + location.search + location.hash);
+      session.set('skyScroll', String(Math.round(window.scrollY || 0)));
       if (reduced) return;
       e.preventDefault();
       session.set('vtKind', 'to-sky');

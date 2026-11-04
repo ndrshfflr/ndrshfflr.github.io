@@ -60,6 +60,12 @@ window.addEventListener('pagereveal', function (e) {
     /* the first visit: the portals light one by one before the circle wakes (assets/entry.js) */
     if (!from && !still && !localStorage.getItem('circleVisited')) d.className += ' ritual';
   } catch (e) {}
+{%- else %}
+  /* back from the moon or the sun to the page you flew from: the disc sinks back into its place */
+  try {
+    if (sessionStorage.getItem('skyBack') && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) d.className += ' from-sky';
+    sessionStorage.removeItem('skyBack');
+  } catch (e) {}
 {%- endif %}
 })();
 </script>
