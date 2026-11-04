@@ -391,17 +391,17 @@
     setTimeout(function () { r.classList.remove('from-menu'); if (sm) sm.classList.remove('glow-back'); }, 2400);
   })();
 
-  /* the moon: flying there keeps the circle as it stands, and coming back it's there again */
+  /* the moon and the sun: flying there keeps the circle as it stands, and coming back it's there again */
   var moonLink = $('disc');
   if (moonLink) moonLink.addEventListener('click', function () { W.session.set('circleFront', String(front())); });
   (function () {
     var r = doc.documentElement;
-    if (!r.classList.contains('from-moon')) return;
+    if (!r.classList.contains('from-sky')) return;
     var at = parseInt(W.session.get('circleFront'), 10);
     if (at >= 0 && at < COUNT) n = at;
     if (stage) stage.classList.add('no-anim');
     requestAnimationFrame(function () { requestAnimationFrame(function () { if (stage) stage.classList.remove('no-anim'); }); });
-    setTimeout(function () { r.classList.remove('from-moon'); }, 1600);
+    setTimeout(function () { r.classList.remove('from-sky'); }, 1600);
   })();
 
   /* ------------------------------------------------------------------ coming back */
