@@ -414,7 +414,7 @@
       session.set('vtKind', 'to-circle'); // browsers that blend pages carry the fold straight into the circle
       e.preventDefault();
       // a portal's world folds into the middle (its portal); a menu page down into its rune
-      var at = /^(blog|post|page|fieldlog)\b/.test(page) ? 0.93 : 0.42;
+      var at = /^(blog|post|page|fieldlog|cv)\b/.test(page) ? 0.93 : 0.42;
       var ring = doc.createElement('span');
       ring.className = 'close-ring';
       ring.setAttribute('aria-hidden', 'true');

@@ -18,6 +18,8 @@ from pathlib import Path
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+import cv_page
+
 ROOT = Path(__file__).resolve().parent.parent
 SITE_URL = "https://ndrshfflr.github.io/"
 
@@ -313,6 +315,7 @@ FIELDLOG = {"en": "fieldlog.html", "da": "fieldlog.da.html"}
 POST = {"en": "post.html", "da": "post.da.html"}
 PAGE = {"en": "page.html", "da": "page.da.html"}
 BIOINFO = {"en": "bioinformatics.html", "da": "bioinformatics.da.html"}
+CV = {"en": "cv.html", "da": "cv.da.html"}
 
 
 def load(name):
@@ -536,6 +539,32 @@ def render_pages(env, content, entry, posts, versions):
             heading=heading, rune=bio.get("rune") or "ᚼ", intro=intro, tools=tools, **common)
 
 
+def render_cv(env, content, entry, posts, versions):
+    """cv.html / cv.da.html: the CV on the road down from the mountain (content/cv.json,
+    prepared by src/cv_page.py). The English text is shown on both pages; the page's
+    own words (headings, buttons, labels) follow the language."""
+    doc = load("cv.json")
+    try:
+        observations = load("observations.json")
+    except (OSError, ValueError):
+        observations = {}
+    ui = world_ui({l: {} for l in ("en", "da")})
+    for lang in ("en", "da"):
+        cvm = menu_item(entry, lang, "cv", "CV")
+        lab = menu_item(entry, lang, "blog", "Labdiary" if lang == "en" else "Labdagbog")
+        cv = cv_page.build(doc, posts, observations, lang, POST[lang], lab["name"])
+        description = (doc.get("tagline") or "") + (" — " + doc["intro"][:120].rsplit(" ", 1)[0] + "…" if doc.get("intro") else "")
+        meta = {"title": "CV — Pieter Shiffler Carpentier", "description": description, "ogDescription": description,
+                "canonical": SITE_URL + CV[lang], "alternates": [{"hreflang": l, "href": SITE_URL + CV[l]} for l in ("en", "da")]}
+        render_world_page(
+            env, "cv.html.j2", CV, lang,
+            ui=ui[lang], meta=meta, jsonld=None, v=versions, world_class="scrolls cv-world",
+            world_data={"page": lang, "ui": ui}, rune=cvm["rune"] or "ᛘ", cv=cv,
+            email=(content[lang].get("contact") or {}).get("email") or "", post_href=POST[lang],
+            data={"ui": {"countAll": cv["ui"]["countAll"], "countSome": cv["ui"]["countSome"]}, "counts": cv["counts"]},
+        )
+
+
 def render_entry(env, content, entry, versions):
     """index.html and da.html: the stone circle of portals."""
     count = len(entry["en"]["portals"])
@@ -580,7 +609,8 @@ def main():
                 "entrycss": asset_version("assets/entry.css"), "entryjs": asset_version("assets/entry.js"),
                 "photoscss": asset_version("assets/photos.css"), "photosjs": asset_version("assets/photos.js"),
                 "uploadcss": asset_version("assets/upload.css"), "uploadjs": asset_version("assets/upload.js"),
-                "pagescss": asset_version("assets/pages.css"), "pagesjs": asset_version("assets/pages.js")}
+                "pagescss": asset_version("assets/pages.css"), "pagesjs": asset_version("assets/pages.js"),
+                "cvcss": asset_version("assets/cv.css"), "cvjs": asset_version("assets/cv.js")}
     posts = load_posts()
     entry = {"en": load("entry.json"), "da": load("entry.da.json")}
     render_entry(env, content, entry, versions)
@@ -588,6 +618,7 @@ def main():
     render_upload(env, posts, versions)
     render_fieldlog(env, content, posts, versions)
     render_pages(env, content, entry, posts, versions)
+    render_cv(env, content, entry, posts, versions)
 
     for out, (tpl, lang) in PAGES.items():
         d = content[lang]
@@ -685,7 +716,7 @@ def main():
 
     # sitemap
     urls = ["", "da.html", "photography.html", "photography.da.html", "bioinformatics.html", "bioinformatics.da.html",
-            "blog.html", "blog.da.html", "fieldlog.html", "fieldlog.da.html", "page.html?slug=cv"]
+            "blog.html", "blog.da.html", "fieldlog.html", "fieldlog.da.html", "cv.html", "cv.da.html"]
     today = datetime.date.today().isoformat()
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']

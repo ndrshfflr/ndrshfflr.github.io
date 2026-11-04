@@ -11,7 +11,7 @@
     { "key": "bioinformatics", "name": "Bioinformatik", "rune": "ᚼ", "link": "bioinformatics.da.html" }
   ],
   "menu": [
-    { "name": "CV", "rune": "ᛘ", "link": "page.da.html?slug=cv" },
+    { "name": "CV", "rune": "ᛘ", "link": "cv.da.html" },
     { "name": "Feltlog", "rune": "ᚱ", "link": "fieldlog.da.html" },
     { "name": "Labdagbog", "rune": "ᚬ", "link": "blog.da.html" }
   ],

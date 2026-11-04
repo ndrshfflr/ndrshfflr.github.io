@@ -380,7 +380,7 @@
     var r = doc.documentElement;
     if (!r.classList.contains('from-menu')) return;
     var from = (r.getAttribute('data-return') || '').split(/[?#]/)[0];
-    var key = (from.match(/^(blog|post|page|fieldlog)/) || [])[1];
+    var key = (from.match(/^(blog|post|page|fieldlog|cv)/) || [])[1];
     if (key === 'post') key = 'blog';
     var at = parseInt(W.session.get('circleFront'), 10);
     if (at >= 0 && at < COUNT) n = at;
