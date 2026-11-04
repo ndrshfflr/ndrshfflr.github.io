@@ -11,27 +11,27 @@
       "label": "species recorded",
       "labelDa": "arter registreret",
       "auto": "species",
-      "note": "live from the field log",
-      "noteDa": "fra fundbogen"
+      "note": "",
+      "noteDa": ""
     },
     {
       "label": "cultures in my library",
       "labelDa": "kulturer i mit bibliotek",
-      "value": "",
+      "value": "30 strains - 8 species",
       "note": "",
       "noteDa": ""
     },
     {
       "label": "years with fungi",
       "labelDa": "år med svampe",
-      "value": "",
+      "value": "6",
       "note": "",
       "noteDa": ""
     },
     {
       "label": "tours guided",
       "labelDa": "ture guidet",
-      "value": "",
+      "value": "30+",
       "note": "",
       "noteDa": ""
     }
