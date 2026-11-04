@@ -1,24 +1,6 @@
 {
-  "tagline": "Creative and driven biologist & nature enthusiast",
   "intro": "I am a Master's student in microbiology, focusing mainly on fungi. In my spare time, I explore their potential in creating more sustainable food systems, whereas my research is focused on using molecular methods to discover hidden mould in buildings. Apart from that, I love taking pictures and getting lost in deep thought on the nature of reality.",
-  "portrait": "",
-  "pdf": "cv.pdf",
-  "now": [
-    {
-      "title": "Student Assistant, Indoor Climate Lab",
-      "place": "Rambøll Danmark A/S · since 2025",
-      "logos": [
-        "ramboll"
-      ]
-    },
-    {
-      "title": "MSc in Ecology",
-      "place": "Copenhagen University · 2025–2026",
-      "logos": [
-        "ku"
-      ]
-    }
-  ],
+  "tagline": "Creative and driven biologist & nature enthusiast",
   "figures": [
     {
       "label": "grants won",
@@ -54,223 +36,6 @@
       "noteDa": ""
     }
   ],
-  "strengths": [
-    {
-      "label": "Experimenter",
-      "labelDa": "Eksperimentator",
-      "long": "Hands-on experimenter",
-      "longDa": "Praktisk eksperimentator",
-      "score": 5,
-      "dip": false,
-      "lenses": [
-        "researcher",
-        "consultant",
-        "guide"
-      ],
-      "story": ""
-    },
-    {
-      "label": "Creative",
-      "labelDa": "Kreativ",
-      "long": "Creative problem-solver",
-      "longDa": "Kreativ problemløser",
-      "score": 5,
-      "dip": false,
-      "lenses": [
-        "researcher",
-        "consultant",
-        "guide"
-      ],
-      "story": ""
-    },
-    {
-      "label": "Routine",
-      "labelDa": "Rutine",
-      "long": "Routine work",
-      "longDa": "Rutinearbejde",
-      "score": 2,
-      "dip": true,
-      "lenses": [
-        "guide"
-      ],
-      "story": ""
-    },
-    {
-      "label": "Teacher",
-      "labelDa": "Underviser",
-      "long": "Teacher & explainer",
-      "longDa": "Underviser & formidler",
-      "score": 4,
-      "dip": false,
-      "lenses": [
-        "consultant",
-        "guide"
-      ],
-      "story": ""
-    },
-    {
-      "label": "Community",
-      "labelDa": "Fællesskab",
-      "long": "Community builder",
-      "longDa": "Fællesskabsbygger",
-      "score": 3,
-      "dip": false,
-      "lenses": [
-        "guide"
-      ],
-      "story": ""
-    },
-    {
-      "label": "Solo work",
-      "labelDa": "Alenearbejde",
-      "long": "Long solo stretches",
-      "longDa": "Lange perioder alene",
-      "score": 2,
-      "dip": true,
-      "lenses": [
-        "consultant"
-      ],
-      "story": ""
-    },
-    {
-      "label": "Fundraising",
-      "labelDa": "Fondsansøgning",
-      "long": "Gets ideas funded",
-      "longDa": "Får idéer finansieret",
-      "score": 4,
-      "dip": false,
-      "lenses": [
-        "researcher"
-      ],
-      "story": ""
-    },
-    {
-      "label": "Toolmaker",
-      "labelDa": "Værktøjsmager",
-      "long": "Builds his own tools",
-      "longDa": "Bygger sine egne værktøjer",
-      "score": 4,
-      "dip": false,
-      "lenses": [
-        "researcher",
-        "consultant"
-      ],
-      "story": ""
-    },
-    {
-      "label": "Self-promotion",
-      "labelDa": "Selvpromovering",
-      "long": "Self-promotion",
-      "longDa": "Selvpromovering",
-      "score": 2,
-      "dip": true,
-      "lenses": [
-        "researcher"
-      ],
-      "story": ""
-    },
-    {
-      "label": "Naturalist",
-      "labelDa": "Naturkender",
-      "long": "Sharp-eyed naturalist",
-      "longDa": "Skarpøjet naturkender",
-      "score": 4,
-      "dip": false,
-      "lenses": [
-        "researcher",
-        "consultant",
-        "guide"
-      ],
-      "story": ""
-    }
-  ],
-  "organisations": [
-    {
-      "key": "ku",
-      "name": "University of Copenhagen",
-      "abbr": "KU",
-      "logo": ""
-    },
-    {
-      "key": "ramboll",
-      "name": "Rambøll",
-      "abbr": "R",
-      "logo": ""
-    },
-    {
-      "key": "flor",
-      "name": "FLOR",
-      "abbr": "FLOR",
-      "logo": ""
-    },
-    {
-      "key": "dn",
-      "name": "Danmarks Naturfredningsforening",
-      "abbr": "DN",
-      "logo": ""
-    },
-    {
-      "key": "sse",
-      "name": "Social and Symbiotic Evolution Group",
-      "abbr": "SSE",
-      "logo": ""
-    },
-    {
-      "key": "ga",
-      "name": "Grøn Agenda Sydhavn",
-      "abbr": "GA",
-      "logo": ""
-    },
-    {
-      "key": "hav",
-      "name": "Havfællesskabet",
-      "abbr": "HAV",
-      "logo": ""
-    },
-    {
-      "key": "fest",
-      "name": "Fungi Festival",
-      "abbr": "FEST",
-      "logo": ""
-    },
-    {
-      "key": "dms",
-      "name": "Danish Microbiological Society",
-      "abbr": "DMS",
-      "logo": ""
-    },
-    {
-      "key": "dmf",
-      "name": "Danish Mycological Society",
-      "abbr": "DMF",
-      "logo": ""
-    },
-    {
-      "key": "bric",
-      "name": "Biotech Research & Innovation Centre",
-      "abbr": "BRIC",
-      "logo": ""
-    },
-    {
-      "key": "bi",
-      "name": "Bioinformatics Institute",
-      "abbr": "BI",
-      "logo": ""
-    },
-    {
-      "key": "funga",
-      "name": "Funga Farm",
-      "abbr": "FF",
-      "logo": ""
-    },
-    {
-      "key": "kul",
-      "name": "KU Lighthouse",
-      "abbr": "KUL",
-      "logo": ""
-    }
-  ],
-  "courses": [],
   "entries": [
     {
       "section": "education",
@@ -316,20 +81,20 @@
       "keyCourses": []
     },
     {
+      "post": "",
       "section": "work",
-      "year": "2025–now",
-      "title": "Student Assistant, Indoor Climate Lab",
-      "detail": "Rambøll Danmark A/S · working with analysis of mould, tree-degrading fungi, and fungal toxicity",
-      "current": true,
+      "logos": [
+        "ramboll"
+      ],
       "lenses": [
         "consultant",
         "researcher"
       ],
-      "logos": [
-        "ramboll"
-      ],
-      "builtOn": [],
-      "post": ""
+      "detail": "Rambøll Danmark A/S · working with analysis of mould, tree-degrading fungi, and fungal toxicity",
+      "title": "Student Assistant, Indoor Climate Lab",
+      "current": true,
+      "year": "2025–now",
+      "builtOn": []
     },
     {
       "section": "work",
@@ -524,20 +289,20 @@
       "post": ""
     },
     {
+      "post": "",
       "section": "research",
-      "year": "2025",
-      "title": "Growth experiments with uncultivated *Termitomyces* by replication of a 3D growth chamber",
-      "lenses": [
-        "researcher"
-      ],
       "logos": [
         "sse",
         "ku"
       ],
-      "image": "",
+      "lenses": [
+        "researcher"
+      ],
       "imageAlt": "",
-      "builtOn": [],
-      "post": ""
+      "title": "Growth experiments with uncultivated *Termitomyces* by replication of a 3D growth chamber",
+      "image": "",
+      "year": "2025",
+      "builtOn": []
     },
     {
       "section": "research",
@@ -612,5 +377,240 @@
       ],
       "post": ""
     }
-  ]
+  ],
+  "strengths": [
+    {
+      "label": "Experimenter",
+      "labelDa": "Eksperimentator",
+      "long": "Hands-on experimenter",
+      "longDa": "Praktisk eksperimentator",
+      "score": 5,
+      "dip": false,
+      "lenses": [
+        "researcher",
+        "consultant",
+        "guide"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Creative",
+      "labelDa": "Kreativ",
+      "long": "Creative problem-solver",
+      "longDa": "Kreativ problemløser",
+      "score": 5,
+      "dip": false,
+      "lenses": [
+        "researcher",
+        "consultant",
+        "guide"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Routine",
+      "labelDa": "Rutine",
+      "long": "Routine work",
+      "longDa": "Rutinearbejde",
+      "score": 2,
+      "dip": true,
+      "lenses": [
+        "guide"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Teacher",
+      "labelDa": "Underviser",
+      "long": "Teacher & explainer",
+      "longDa": "Underviser & formidler",
+      "score": 4,
+      "dip": false,
+      "lenses": [
+        "consultant",
+        "guide"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Community",
+      "labelDa": "Fællesskab",
+      "long": "Community builder",
+      "longDa": "Fællesskabsbygger",
+      "score": 3,
+      "dip": false,
+      "lenses": [
+        "guide"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Solo work",
+      "labelDa": "Alenearbejde",
+      "long": "Long solo stretches",
+      "longDa": "Lange perioder alene",
+      "score": 2,
+      "dip": true,
+      "lenses": [
+        "consultant"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Fundraising",
+      "labelDa": "Fondsansøgning",
+      "long": "Gets ideas funded",
+      "longDa": "Får idéer finansieret",
+      "score": 4,
+      "dip": false,
+      "lenses": [
+        "researcher"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Toolmaker",
+      "labelDa": "Værktøjsmager",
+      "long": "Builds his own tools",
+      "longDa": "Bygger sine egne værktøjer",
+      "score": 4,
+      "dip": false,
+      "lenses": [
+        "researcher",
+        "consultant"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Self-promotion",
+      "labelDa": "Selvpromovering",
+      "long": "Self-promotion",
+      "longDa": "Selvpromovering",
+      "score": 2,
+      "dip": true,
+      "lenses": [
+        "researcher"
+      ],
+      "story": ""
+    },
+    {
+      "label": "Naturalist",
+      "labelDa": "Naturkender",
+      "long": "Sharp-eyed naturalist",
+      "longDa": "Skarpøjet naturkender",
+      "score": 4,
+      "dip": false,
+      "lenses": [
+        "researcher",
+        "consultant",
+        "guide"
+      ],
+      "story": ""
+    }
+  ],
+  "pdf": "cv.pdf",
+  "now": [
+    {
+      "title": "Student Assistant, Indoor Climate Lab",
+      "place": "Rambøll Danmark A/S · since 2025",
+      "logos": [
+        "ramboll"
+      ]
+    },
+    {
+      "title": "MSc in Ecology",
+      "place": "Copenhagen University · 2025–2026",
+      "logos": [
+        "ku"
+      ]
+    }
+  ],
+  "courses": [],
+  "organisations": [
+    {
+      "key": "ku",
+      "name": "University of Copenhagen",
+      "abbr": "KU",
+      "logo": ""
+    },
+    {
+      "key": "ramboll",
+      "name": "Rambøll",
+      "abbr": "R",
+      "logo": ""
+    },
+    {
+      "key": "flor",
+      "name": "FLOR",
+      "abbr": "FLOR",
+      "logo": ""
+    },
+    {
+      "key": "dn",
+      "name": "Danmarks Naturfredningsforening",
+      "abbr": "DN",
+      "logo": ""
+    },
+    {
+      "key": "sse",
+      "name": "Social and Symbiotic Evolution Group",
+      "abbr": "SSE",
+      "logo": ""
+    },
+    {
+      "key": "ga",
+      "name": "Grøn Agenda Sydhavn",
+      "abbr": "GA",
+      "logo": ""
+    },
+    {
+      "key": "hav",
+      "name": "Havfællesskabet",
+      "abbr": "HAV",
+      "logo": ""
+    },
+    {
+      "key": "fest",
+      "name": "Fungi Festival",
+      "abbr": "FEST",
+      "logo": ""
+    },
+    {
+      "key": "dms",
+      "name": "Danish Microbiological Society",
+      "abbr": "DMS",
+      "logo": ""
+    },
+    {
+      "key": "dmf",
+      "name": "Danish Mycological Society",
+      "abbr": "DMF",
+      "logo": ""
+    },
+    {
+      "key": "bric",
+      "name": "Biotech Research & Innovation Centre",
+      "abbr": "BRIC",
+      "logo": ""
+    },
+    {
+      "key": "bi",
+      "name": "Bioinformatics Institute",
+      "abbr": "BI",
+      "logo": ""
+    },
+    {
+      "key": "funga",
+      "name": "Funga Farm",
+      "abbr": "FF",
+      "logo": ""
+    },
+    {
+      "key": "kul",
+      "name": "KU Lighthouse",
+      "abbr": "KUL",
+      "logo": ""
+    }
+  ],
+  "portrait": "/images/uploads/li-1194.jpg"
 }
