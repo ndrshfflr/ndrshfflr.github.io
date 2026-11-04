@@ -238,6 +238,7 @@
 
   var theme = doc.querySelector('meta[name="theme-color"]');
   var disc = $('disc'), craters = $('craters'), stars = $('stars'), shade = $('shade'), shadePath = $('shade-path');
+  var onMoon = world.classList.contains('moon-world');
 
   /* the moon's phase today: 0 new, .25 first quarter, .5 full, .75 last quarter
      (?moon=0.3 previews another phase) */
@@ -277,12 +278,15 @@
     if (disc) { disc.style.width = disc.style.height = Math.round(P.dsize) + 'px'; }
     if (craters) craters.style.opacity = (P.crater * (1 - s.dl)).toFixed(3);
     if (shadePath) {
-      var ph = moonPhase(Date.now()), lit = (1 - Math.cos(2 * Math.PI * ph)) / 2;
+      /* on the moon the disc is the Earth: its phase is the moon's turned around, and the sky stays black */
+      var ph = moonPhase(Date.now()), dl = onMoon ? 0 : s.dl;
+      if (onMoon) ph = (ph + 0.5) % 1;
+      var lit = (1 - Math.cos(2 * Math.PI * ph)) / 2;
       shadePath.setAttribute('d', shadeD(ph));
-      shade.style.opacity = (1 - s.dl).toFixed(3);
-      st.setProperty('--lit', (s.dl + (1 - s.dl) * (0.2 + 0.8 * lit)).toFixed(3));
+      shade.style.opacity = (1 - dl).toFixed(3);
+      st.setProperty('--lit', (dl + (1 - dl) * (0.2 + 0.8 * lit)).toFixed(3));
     }
-    if (stars) stars.style.opacity = ((1 - s.dl) * (1 - s.tw * 0.7)).toFixed(3);
+    if (stars) stars.style.opacity = onMoon ? '1' : ((1 - s.dl) * (1 - s.tw * 0.7)).toFixed(3);
     ORDER.forEach(function (k) { world.classList.toggle('s-' + k, k === s.season); });
 
     var summerLife = s.W.summer * (1 - s.dl * 0.9);
@@ -414,13 +418,17 @@
       session.set('vtKind', 'to-circle'); // browsers that blend pages carry the fold straight into the circle
       e.preventDefault();
       // a portal's world folds into the middle (its portal); a menu page down into its rune
-      var at = /^(blog|post|page|fieldlog)\b/.test(page) ? 0.93 : 0.42;
+      var at = /^(blog|post|page|fieldlog)\b/.test(page) ? 0.93 : 0.42, x = innerWidth / 2;
+      if (onMoon && disc) { var dr = disc.getBoundingClientRect(); x = dr.left + dr.width / 2; at = (dr.top + dr.height / 2) / innerHeight; }
       var ring = doc.createElement('span');
       ring.className = 'close-ring';
       ring.setAttribute('aria-hidden', 'true');
       ring.style.top = (at * 100) + '%';
+      ring.style.left = x + 'px';
       doc.body.appendChild(ring);
-      world.style.setProperty('--close-y', Math.round(innerHeight * at - world.getBoundingClientRect().top) + 'px');
+      var wr = world.getBoundingClientRect();
+      world.style.setProperty('--close-x', Math.round(x - wr.left) + 'px');
+      world.style.setProperty('--close-y', Math.round(innerHeight * at - wr.top) + 'px');
       world.classList.add('leaving');
       setTimeout(function () { location.href = a.href; }, 560);
     });
@@ -428,6 +436,54 @@
       if (!e.persisted) return; // back here with the browser's back button: open the world again
       world.classList.remove('leaving');
       $$('.close-ring').forEach(function (r) { r.parentNode.removeChild(r); });
+    });
+  }
+
+  /* landed on the moon: the veil starts in the colour of the moon you flew into */
+  if (onMoon) {
+    var tint = (session.get('moonTint') || '').split('|'), veil = doc.querySelector('.moon-veil');
+    session.set('moonTint', '');
+    if (veil && tint[1]) veil.style.background = 'radial-gradient(circle at 50% 50%,' + tint[0] + ' 0%,' + tint[1] + ' 100%)';
+  }
+
+  /* ------------------------------------------------------------------ to the moon */
+  /* Clicking the moon flies into it: it grows to fill the sky while the rest fades, lighting
+     up fully as you near it, then the moon page lands on its surface (assets/moon.css). */
+  if (disc && !onMoon) {
+    disc.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (reduced) return;
+      e.preventDefault();
+      session.set('vtKind', 'to-moon');
+      var cs = getComputedStyle(world); // the moon page lands out of this moon's own colour
+      session.set('moonTint', cs.getPropertyValue('--disc1').trim() + '|' + cs.getPropertyValue('--disc2').trim());
+      var r = disc.getBoundingClientRect(), href = disc.href;
+      var z = disc.cloneNode(true);
+      z.removeAttribute('id');
+      z.removeAttribute('href');
+      z.setAttribute('aria-hidden', 'true');
+      z.classList.add('moon-zoom');
+      $$('[id]', z).forEach(function (el) { el.removeAttribute('id'); });
+      z.style.cssText = 'left:' + r.left + 'px;top:' + r.top + 'px;width:' + r.width + 'px;height:' + r.height + 'px;transform:none';
+      world.appendChild(z);
+      disc.style.visibility = 'hidden';
+      var dx = innerWidth / 2 - (r.left + r.width / 2), dy = innerHeight / 2 - (r.top + r.height / 2);
+      var scale = Math.hypot(innerWidth, innerHeight) * 1.25 / r.width;
+      z.getBoundingClientRect(); // start from where it stands
+      requestAnimationFrame(function () {
+        world.classList.add('to-moon');
+        z.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(' + scale.toFixed(2) + ')';
+        z.style.filter = 'brightness(1.06)';
+        $$('.shade', z).forEach(function (el) { el.style.opacity = '0'; });
+        $$('.craters', z).forEach(function (el) { el.style.opacity = '.9'; });
+      });
+      setTimeout(function () { location.href = href; }, 950);
+    });
+    window.addEventListener('pageshow', function (e) {
+      if (!e.persisted) return; // back here with the browser's back button: the moon is in its place again
+      world.classList.remove('to-moon');
+      disc.style.visibility = '';
+      $$('.moon-zoom').forEach(function (z) { z.parentNode.removeChild(z); });
     });
   }
 

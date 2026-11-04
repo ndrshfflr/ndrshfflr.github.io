@@ -1,0 +1,37 @@
+{% extends "world.html.j2" %}
+{#- The moon (moon.html / .da.html): you land here by clicking the moon in the sky.
+    A placeholder for now — the moon's own content comes later. On the moon the
+    sky's disc is the Earth, and clicking it flies back to the circle. -#}
+{% block styles %}<link rel="stylesheet" href="assets/pages.css?v={{ v.pagescss }}">
+<link rel="stylesheet" href="assets/moon.css?v={{ v.mooncss }}">{% endblock %}
+{% block content %}
+  <div class="moon-ground" aria-hidden="true">
+    <svg viewBox="0 0 1600 420" preserveAspectRatio="xMidYMax slice" focusable="false">
+      <defs>
+        <radialGradient id="mg-surf" cx="50%" cy="0%" r="90%"><stop offset="0" stop-color="#b9bcc0"/><stop offset=".45" stop-color="#7d8288"/><stop offset="1" stop-color="#2c3036"/></radialGradient>
+        <radialGradient id="mg-pit" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#4c5157"/><stop offset=".7" stop-color="#6e7379"/><stop offset="1" stop-color="#9a9ea3" stop-opacity="0"/></radialGradient>
+      </defs>
+      <path d="M-200 420V150Q800 30 1800 150V420Z" fill="url(#mg-surf)"/>
+      <g fill="url(#mg-pit)">
+        <ellipse cx="300" cy="190" rx="120" ry="22"/><ellipse cx="1180" cy="160" rx="90" ry="15"/>
+        <ellipse cx="760" cy="280" rx="210" ry="40"/><ellipse cx="1420" cy="300" rx="150" ry="30"/>
+        <ellipse cx="120" cy="340" rx="170" ry="34"/><ellipse cx="980" cy="120" rx="48" ry="8"/>
+        <ellipse cx="520" cy="130" rx="40" ry="7"/>
+      </g>
+    </svg>
+  </div>
+  <div class="moon-veil" aria-hidden="true"></div>
+
+  <div class="hero chrome pg-hero moon-hero">
+    <h1 class="nm"><span class="rv" data-k="heading"><span class="rn" aria-hidden="true"></span><span class="lt">{{ ui.heading }}</span></span></h1>
+    <p class="title"><span class="rv" data-k="soon"><span class="rn" aria-hidden="true"></span><span class="lt">{{ ui.comingSoon }}</span></span></p>
+    <button class="aa" id="aa" type="button" aria-pressed="false" aria-label="{{ ui.aa }}">Aa</button>
+  </div>
+
+  <main class="pg-wrap moon-main" id="main" data-page="moon"></main>
+
+  <footer class="world-foot chrome">
+    <a class="back-link" href="{{ entry_href }}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="rv" data-k="back"><span class="rn" aria-hidden="true"></span><span class="lt">{{ ui.back }}</span></span></a>
+  </footer>
+{% endblock %}
+{% block scripts %}<script src="assets/pages.js?v={{ v.pagesjs }}"></script>{% endblock %}
