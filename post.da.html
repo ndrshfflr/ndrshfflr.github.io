@@ -14,7 +14,7 @@ window.addEventListener('pagereveal', function (e) {
   if (!e.viewTransition) return;
   var kind = null, here = location.pathname.split('/').pop();
   var isCircle = function (f) { return f === '' || f === 'index.html' || f === 'da.html'; };
-  var MENU_PAGE = /^(blog|post|page|fieldlog)\b/; // pages of the small menu under the circle (Labdiary, CV, field log)
+  var MENU_PAGE = /^(blog|post|page|fieldlog|cv)\b/; // pages of the small menu under the circle (Labdiary, CV, field log)
   try { kind = sessionStorage.getItem('vtKind'); sessionStorage.removeItem('vtKind'); } catch (err) {}
   if (!kind) {
     try {
@@ -156,11 +156,11 @@ window.addEventListener('pagereveal', function (e) {
 </div>
 
 <script id="world-data" type="application/json">{"page": "da", "ui": {"da": {"aa": "Vis teksten med latinske bogstaver", "allPosts": "Alle indl\u00e6g", "back": "Tilbage til cirklen", "chooseSeason": "V\u00e6lg en \u00e5rstid", "coming": "P\u00e5 vej", "downloadPdf": "Download som PDF", "filterTags": "Filtr\u00e9r indl\u00e6g efter emne", "language": "Sprog", "loading": "Indl\u00e6ser\u2026", "noTools": "Ingen v\u00e6rkt\u00f8jer endnu.", "notFound": "Siden blev ikke fundet", "notFoundBody": "Beklager, siden kunne ikke findes.", "openTool": "\u00c5bn", "photoFieldlog": "I fundbogen", "postPhotos": "Fotos", "readMore": "L\u00e6s mere", "runesName": "Runer (yngre futhark, langkvist)", "seasonAria": "\u00c5rstid: {s}. Skift \u00e5rstid", "seasons": {"autumn": "Efter\u00e5r", "spring": "For\u00e5r", "summer": "Sommer", "winter": "Vinter"}, "toEarth": "Flyv tilbage til cirklen", "toLabdiary": "Tilbage til labdagbogen", "toMoon": "Flyv til m\u00e5nen", "toSun": "Flyv til solen", "tod": {"dawn": "daggry", "day": "dag", "dusk": "skumring", "night": "nat"}, "today": "i dag", "todayHint": "(i dag)", "todaySeason": "Dagens \u00e5rstid", "toolsLabel": "V\u00e6rkt\u00f8jer"}, "en": {"aa": "Show the text in Latin letters", "allPosts": "All posts", "back": "Back to the circle", "chooseSeason": "Choose a season", "coming": "Coming", "downloadPdf": "Download as PDF", "filterTags": "Filter posts by topic", "language": "Language", "loading": "Loading\u2026", "noTools": "No tools yet.", "notFound": "Page not found", "notFoundBody": "Sorry, this page couldn\u0027t be found.", "openTool": "Open", "photoFieldlog": "In the field log", "postPhotos": "Photos", "readMore": "Read more", "runesName": "Runes (long-branch Younger Futhark)", "seasonAria": "Season: {s}. Change season", "seasons": {"autumn": "Autumn", "spring": "Spring", "summer": "Summer", "winter": "Winter"}, "toEarth": "Fly back to the circle", "toLabdiary": "Back to the labdiary", "toMoon": "Fly to the moon", "toSun": "Fly to the sun", "tod": {"dawn": "dawn", "day": "day", "dusk": "dusk", "night": "night"}, "today": "today", "todayHint": "(today)", "todaySeason": "Today\u0027s season", "toolsLabel": "Tools"}}}</script>
-<script src="assets/world.js?v=87be1b04"></script>
+<script src="assets/world.js?v=164c6a15"></script>
 
 <script id="pg-data" type="application/json">{"fieldlog": "fieldlog.da.html"}</script>
 <script src="assets/markdown.js?v=d4f718c0"></script>
-<script src="assets/pages.js?v=6ad311c4"></script>
+<script src="assets/pages.js?v=447ae1e6"></script>
 
 </body>
 </html>

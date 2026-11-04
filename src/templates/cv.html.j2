@@ -1,0 +1,135 @@
+{% extends "world.html.j2" %}
+{#- The CV (cv.html / cv.da.html), standing in the circle's world: a moonlit
+    mountain at the top and a road winding down the page, with every entry on
+    the road (assets/cv.js). Content: content/cv.json (/admin → CV), prepared by
+    src/cv_page.py. Hover cards (courses, blog posts) work with CSS alone. -#}
+{%- macro rv(key, text) -%}<span class="rv" data-k="{{ key }}"><span class="rn" aria-hidden="true"></span><span class="lt">{{ text }}</span></span>{%- endmacro -%}
+{%- macro logo(t) -%}
+<span class="cv-logo n{{ t.n }}" role="img" aria-label="{{ t.label }}" title="{{ t.label }}">{% for s in t.segs %}<span class="sg sg{{ loop.index }}">{% if s.logo %}<img src="{{ s.logo }}" alt="" loading="lazy">{% else %}<b>{{ s.abbr }}</b>{% endif %}</span>{% endfor %}</span>
+{%- endmacro -%}
+{%- macro stars(c) -%}<span class="cv-stars" role="img" aria-label="{{ c.ratingLabel }}">{% for on in c.stars %}<svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"{% if on %} class="on"{% endif %}><path d="M12 1.5L14.3 9.7 22.5 12 14.3 14.3 12 22.5 9.7 14.3 1.5 12 9.7 9.7Z"/></svg>{% endfor %}</span>{%- endmacro -%}
+{%- macro course_pop(c) -%}
+<span class="cv-pop" role="tooltip"><span class="cv-case">
+<span class="cp-name">{{ c.name }}</span>
+{% if c.meta %}<span class="cp-meta">{{ c.meta }}</span>{% endif %}
+{% if c.rating %}{{ stars(c) }}{% endif %}
+{% if c.summary %}<span class="cp-text">{{ c.summary }}</span>{% endif %}
+{% if c.usedIn %}<span class="cp-used"><small>{{ cv.ui.usedIn }}</small> {{ c.usedIn }}</span>{% endif %}
+</span></span>
+{%- endmacro -%}
+{% block styles %}<link rel="stylesheet" href="assets/cv.css?v={{ v.cvcss }}">{% endblock %}
+{% block content %}
+  {{ cv.mountain }}
+  {{ cv.road }}
+
+  <div class="hero chrome cv-hero">
+    <span class="cv-rune" aria-hidden="true">{{ rune }}</span>
+    <h1 class="nm">{{ rv('cv-heading', cv.ui.heading) }}</h1>
+    {% if cv.tagline %}<p class="title">{{ rv('cv-tagline', cv.tagline) }}</p>{% endif %}
+    <button class="aa" id="aa" type="button" aria-pressed="false" aria-label="{{ ui.aa }}">Aa</button>
+    <div class="cv-introrow">
+      {% if cv.portrait %}<img class="cv-portrait" src="{{ cv.portrait }}" alt="" width="136" height="136">{% endif %}
+      {% if cv.intro %}<p class="cv-intro">{{ cv.intro }}</p>{% endif %}
+    </div>
+    <p class="cv-actions">
+      {% if cv.pdf %}<a class="cv-btn cv-btn-main" href="{{ cv.pdf }}" download><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>{{ rv('cv-pdf', cv.ui.downloadPdf) }}</a>{% endif %}
+      {% if email %}<a class="cv-btn" href="mailto:{{ email }}"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="M3 7l9 6 9-6"/></svg>{{ rv('cv-contact', cv.ui.contact) }}</a>{% endif %}
+    </p>
+
+    <div class="cv-figs">
+      {% if cv.now %}
+      <div class="cv-now">
+        <p class="cv-figlabel">{{ rv('cv-now', cv.ui.now) }}</p>
+        <ul>
+          {% for n in cv.now %}<li>{% if n.logo %}{{ logo(n.logo) }}{% endif %}<span><strong>{{ n.title }}</strong>{% if n.place %}<span>{{ n.place }}</span>{% endif %}</span></li>{% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      {% for f in cv.figures %}
+      <div class="cv-fig"><p class="cv-figlabel">{{ rv('cv-fig-' ~ loop.index, f.label) }}</p><p class="cv-figval">{{ f.value }}</p>{% if f.note %}<p class="cv-fignote">{{ f.note }}</p>{% endif %}</div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <main class="cv-wrap" id="main" data-lens="all">
+    <div class="cv-lensbar chrome" id="cv-lensbar">
+      <p class="cv-viewas">{{ rv('cv-viewas', cv.ui.viewAs) }}</p>
+      <div class="cv-lenses" role="group" aria-label="{{ cv.ui.viewAsLabel }}">
+        {% for l in cv.lenses %}<button type="button" class="cv-lens" data-lens="{{ l }}" aria-pressed="{{ 'true' if l == 'all' else 'false' }}"><span class="cv-lr" aria-hidden="true">{{ cv.ui.lensRunes[l] }}</span>{{ rv('cv-lens-' ~ l, cv.ui.lenses[l]) }}</button>{% endfor %}
+      </div>
+      <p class="cv-count" id="cv-count" aria-live="polite">{{ cv.ui.countAll | replace('{n}', cv.counts.all) }}</p>
+    </div>
+
+    {% if cv.radars %}
+    <section class="cv-radar" aria-labelledby="cv-coworker-h">
+      {% for r in cv.radars %}
+      <div class="cv-rd" data-lens="{{ r.lens }}"{% if r.lens != 'all' %} hidden{% endif %}>
+        <div class="cv-rd-chart">
+          <svg role="img" aria-label="{{ r.aria }}" viewBox="-110 -10 520 320">
+            <g class="rd-grid">{% for ring in r.rings %}<polygon points="{{ ring }}"/>{% endfor %}{% for a in r.axes %}<line x1="150" y1="150" x2="{{ a.x }}" y2="{{ a.y }}"/>{% endfor %}</g>
+            <polygon class="rd-shape" points="{{ r.shape }}"/>
+            {% for a in r.axes %}<path class="rd-pt{% if a.dip %} dip{% endif %}" d="{{ a.star }}"/>{% endfor %}
+          </svg>
+          {% for a in r.axes %}<span class="rd-label{% if a.dip %} dip{% endif %}" style="{{ a.pos }}" title="{{ a.long }}" aria-hidden="true">{% if a.story %}<a href="{{ post_href }}?slug={{ a.story }}" tabindex="-1">{{ a.label }}</a>{% else %}{{ a.label }}{% endif %} <b>{{ a.score }}</b></span>{% endfor %}
+        </div>
+        <div class="cv-rd-side">
+          <p class="cv-figlabel" id="{{ 'cv-coworker-h' if loop.first else '' }}"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 1.5L14.3 9.7 22.5 12 14.3 14.3 12 22.5 9.7 14.3 1.5 12 9.7 9.7Z"/></svg>{{ rv('cv-coworker', cv.ui.coworker) }}</p>
+          <p class="cv-rd-cap">{{ rv('cv-cap-' ~ r.lens, r.caption) }}</p>
+          <p class="cv-rd-key"><span><svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M12 1.5L14.3 9.7 22.5 12 14.3 14.3 12 22.5 9.7 14.3 1.5 12 9.7 9.7Z"/></svg>{{ rv('cv-k1', cv.ui.strength) }}</span><span class="dip"><svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M12 1.5L14.3 9.7 22.5 12 14.3 14.3 12 22.5 9.7 14.3 1.5 12 9.7 9.7Z"/></svg><em>{{ rv('cv-k2', cv.ui.lessMine) }}</em></span></p>
+        </div>
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% for s in cv.sections %}
+    <section class="cv-sec" id="cv-{{ s.key }}" aria-labelledby="cv-h-{{ s.key }}">
+      <header class="cv-sech">
+        <span class="cv-secrune" aria-hidden="true" data-road>{{ s.rune }}</span>
+        <h2 id="cv-h-{{ s.key }}">{{ rv('cv-sec-' ~ s.key, s.heading) }}</h2>
+      </header>
+      {% for g in s.groups %}
+      {% if g.label %}<h3 class="cv-grp">{{ rv('cv-grp-' ~ g.key, g.label) }}</h3>{% endif %}
+      <ol class="cv-line">
+        {% for it in g.rows %}
+        <li class="cv-row {{ it.side }}" data-row="{{ it.id }}" data-lenses="{{ it.lenses }}">
+          <span class="cv-mark{% if it.current %} now{% endif %}" aria-hidden="true"></span>
+          {% if it.logo %}<span class="cv-logocell">{{ logo(it.logo) }}</span>{% endif %}
+          <div class="cv-card">
+            <p class="cv-year">{{ it.year }}</p>
+            {% if it.post %}
+            <h4 class="cv-title"><span class="cv-hov"><a href="{{ it.post.href }}">{{ it.title }}</a>
+              <span class="cv-pop"><span class="cv-case">
+                {% if it.post.cover %}<img class="pp-cover" src="{{ it.post.cover }}" alt="" loading="lazy">{% endif %}
+                <span class="pp-where"><span aria-hidden="true">ᚬ</span>{{ it.post.where }} · {{ it.post.date }}</span>
+                <span class="cp-name">{{ it.post.title }}</span>
+                {% if it.post.summary %}<span class="cp-text">{{ it.post.summary }}</span>{% endif %}
+                <a class="pp-read" href="{{ it.post.href }}" tabindex="-1">{{ cv.ui.readPost }}<span aria-hidden="true">→</span></a>
+              </span></span></span></h4>
+            {% elif it.course %}
+            <h4 class="cv-title"><span class="cv-hov"><button type="button" class="cv-tbtn">{{ it.title }}</button>{{ course_pop(it.course) }}</span></h4>
+            {% else %}
+            <h4 class="cv-title">{{ it.title }}</h4>
+            {% endif %}
+            {% if it.detail %}<p class="cv-detail">{{ it.detail }}</p>{% endif %}
+            {% if it.image %}<img class="cv-img" src="{{ it.image }}" alt="{{ it.imageAlt }}" loading="lazy">{% endif %}
+            {% if it.amount %}<p class="cv-amount">{{ it.amount }}</p>{% endif %}
+            {% if it.keyCourses %}<p class="cv-keys"><small>{{ cv.ui.keyCourses }}</small>{% for c in it.keyCourses %} · <span class="cv-hov"><button type="button" class="cv-kbtn">{{ c.name }}</button>{{ course_pop(c) }}</span>{% endfor %}</p>{% endif %}
+            {% if it.builtOn %}<p class="cv-chips">{% for c in it.builtOn %}<span class="cv-hov"><button type="button" class="cv-chip"><small>{{ cv.ui.builtOn }}</small> {{ c.name }}</button>{{ course_pop(c) }}</span>{% endfor %}</p>{% endif %}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+      {% endfor %}
+    </section>
+    {% endfor %}
+  </main>
+
+  <footer class="world-foot chrome">
+    <a class="back-link" href="{{ entry_href }}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>{{ rv('back', ui.back) }}</a>
+  </footer>
+{% endblock %}
+{% block scripts %}
+<script id="cv-data" type="application/json">{{ data | tojson }}</script>
+<script src="assets/cv.js?v={{ v.cvjs }}"></script>
+{% endblock %}

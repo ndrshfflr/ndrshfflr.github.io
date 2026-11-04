@@ -256,7 +256,7 @@
       }
     ],
     "cvLabel": "Read my full CV",
-    "cvLink": "page.html?slug=cv",
+    "cvLink": "cv.html",
     "cvPdfLabel": "Download CV (PDF)",
     "cvPdf": "cv.pdf"
   },

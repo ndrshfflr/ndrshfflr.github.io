@@ -703,6 +703,96 @@ collections:
                   - { label: "English", name: "en", widget: "text", required: false }
                   - { label: "Danish", name: "da", widget: "text", required: false, hint: "Leave empty to show the English text." }
 
+  - name: "cv"
+    label: "CV"
+    description: "The CV page (cv.html): the mountain, the road and every entry on it. The page's own words (headings, buttons) follow EN/DA by themselves; the entries are shown as written here on both pages."
+    files:
+      - file: "content/cv.json"
+        label: "CV"
+        name: "cv"
+        fields:
+          - { label: "Line under the heading", name: "tagline", widget: "string" }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - { label: "Portrait (optional)", name: "portrait", widget: "image", required: false, media_folder: "/images/uploads", public_folder: "/images/uploads", hint: "Shown round, next to the introduction." }
+          - { label: "CV PDF file", name: "pdf", widget: "string", required: false, hint: "Normally cv.pdf. Leave empty to hide the Download button." }
+          - label: "Current main occupation"
+            name: "now"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Place · since", name: "place", widget: "string", required: false }
+              - { label: "Logos", name: "logos", widget: "list", required: false, hint: "Keys from Organisations below, comma-separated, e.g. ku or ramboll, ku (up to three)." }
+          - label: "Figures at the top"
+            name: "figures"
+            widget: "list"
+            summary: "{{fields.label}} — {{fields.value}}"
+            hint: "A figure without a value is hidden. 'Grants won' and 'species recorded' count themselves."
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Label (Danish)", name: "labelDa", widget: "string", required: false }
+              - { label: "Value", name: "value", widget: "string", required: false }
+              - { label: "Small line under it", name: "note", widget: "string", required: false }
+              - { label: "Small line (Danish)", name: "noteDa", widget: "string", required: false }
+              - { label: "Counts itself", name: "auto", widget: "select", required: false, options: [{ label: "No", value: "" }, { label: "Grants (from the Grants entries)", value: "grants" }, { label: "Species (from the field log)", value: "species" }] }
+          - label: "Strengths (the radar)"
+            name: "strengths"
+            widget: "list"
+            summary: "{{fields.label}} — {{fields.score}}"
+            hint: "Each point on the radar. 'Everything' shows all of them; tick the lenses a point also shows in. A dip is drawn hollow, in italics."
+            fields:
+              - { label: "Label (one or two words)", name: "label", widget: "string" }
+              - { label: "Label (Danish)", name: "labelDa", widget: "string", required: false }
+              - { label: "Full name (on hover)", name: "long", widget: "string", required: false }
+              - { label: "Full name (Danish)", name: "longDa", widget: "string", required: false }
+              - { label: "Score (1–5)", name: "score", widget: "number", value_type: "int", min: 1, max: 5 }
+              - { label: "Dip (less my thing)", name: "dip", widget: "boolean", default: false }
+              - { label: "Also in these lenses", name: "lenses", widget: "select", multiple: true, required: false, options: [{ label: "Researcher", value: "researcher" }, { label: "Consultant", value: "consultant" }, { label: "Guide", value: "guide" }] }
+              - { label: "Story behind it (blog post)", name: "story", widget: "relation", collection: "posts", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], required: false }
+          - label: "Organisations (logos)"
+            name: "organisations"
+            widget: "list"
+            summary: "{{fields.key}} — {{fields.name}}"
+            fields:
+              - { label: "Key (short, used in entries)", name: "key", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Letters shown until a logo is added", name: "abbr", widget: "string", required: false }
+              - { label: "Logo (optional)", name: "logo", widget: "image", required: false, media_folder: "/images/logos", public_folder: "/images/logos", hint: "Square-ish PNG or SVG on a transparent or white background. Check the organisation's rules for using its logo." }
+          - label: "Courses"
+            name: "courses"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.rating}}"
+            hint: "Courses shown as hover cards: under a degree (Key courses), as 'Built on' tags on an entry, or as an entry's own title."
+            fields:
+              - { label: "Key (short, used in entries)", name: "key", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "ECTS", name: "ects", widget: "string", required: false }
+              - { label: "Year", name: "year", widget: "string", required: false }
+              - { label: "Degree", name: "degree", widget: "string", required: false, hint: "e.g. MSc Ecology" }
+              - { label: "Proficiency (1–5)", name: "rating", widget: "number", value_type: "int", min: 1, max: 5, required: false }
+              - { label: "What I learned or made", name: "summary", widget: "text", required: false }
+              - { label: "Used in", name: "usedIn", widget: "string", required: false, hint: "e.g. Student Assistant, Indoor Climate Lab" }
+          - label: "Entries"
+            name: "entries"
+            widget: "list"
+            summary: "{{fields.section}} · {{fields.year}} · {{fields.title}}"
+            hint: "In the order they appear. Within each section they alternate left and right of the road."
+            fields:
+              - { label: "Section", name: "section", widget: "select", options: [{ label: "Education", value: "education" }, { label: "Work", value: "work" }, { label: "Volunteering", value: "volunteering" }, { label: "Grants & Funding", value: "grants" }, { label: "Research", value: "research" }, { label: "Presentations & Outreach", value: "presentations" }] }
+              - { label: "Year(s)", name: "year", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string", hint: "Put species names between *stars* for italics." }
+              - { label: "Detail line", name: "detail", widget: "text", required: false }
+              - { label: "Amount (grants)", name: "amount", widget: "string", required: false, hint: "e.g. 7,125 DKK — counted in 'grants won'." }
+              - { label: "Current (filled marker)", name: "current", widget: "boolean", default: false, required: false }
+              - { label: "Shown strongly for", name: "lenses", widget: "select", multiple: true, required: false, options: [{ label: "Researcher", value: "researcher" }, { label: "Consultant", value: "consultant" }, { label: "Guide", value: "guide" }], hint: "The 'View as' buttons dim entries that aren't ticked for that reader." }
+              - { label: "Logos", name: "logos", widget: "list", required: false, hint: "Keys from Organisations, comma-separated, up to three, e.g. funga, sse, ku" }
+              - { label: "Blog post (hover preview)", name: "post", widget: "relation", collection: "posts", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], required: false, hint: "Not used for Education." }
+              - { label: "Course card on the title", name: "course", widget: "string", required: false, hint: "A course key, e.g. for a single course like the PhD course." }
+              - { label: "Key courses (under a degree)", name: "keyCourses", widget: "list", required: false, hint: "Course keys, comma-separated." }
+              - { label: "Built on (course tags)", name: "builtOn", widget: "list", required: false, hint: "Course keys, comma-separated." }
+              - { label: "Small image (optional)", name: "image", widget: "image", required: false, media_folder: "/images/uploads", public_folder: "/images/uploads" }
+              - { label: "Image description", name: "imageAlt", widget: "string", required: false }
+
   - name: "posts"
     label: "Blog posts"
     label_singular: "Blog post"
@@ -728,6 +818,7 @@ collections:
 
   - name: "pages"
     label: "Extra Pages"
+    description: "Other pages, shown at page.html?slug=…  The CV has its own entry above (CV)."
     folder: "content/pages"
     create: true
     slug: "{{slug}}"
