@@ -148,23 +148,22 @@
 .pp-read{display:flex !important;align-items:center;justify-content:space-between;min-height:44px;margin-top:10px;border-top:1px solid rgba(201,212,222,.16);color:#f4dcc2;text-decoration:none;font-size:16px}
 .pp-read span{color:var(--acc)}
 
-/* ---------------------------------------------------------------- logo tiles (1 logo · 2 split diagonally · 3 split from the centre) */
-.cv-logo{position:relative;display:block;width:48px;height:48px;flex:0 0 auto;overflow:hidden;background:#0b1322}
-.cv-logo .sg{position:absolute;inset:0;display:block;background:#f3f6f9}
-.cv-logo .sg2{background:#d5dee6}.cv-logo .sg3{background:#b9c7d4}
-.cv-logo.n2 .sg1{clip-path:polygon(0 0,100% 0,0 100%)}
-.cv-logo.n2 .sg2{clip-path:polygon(100% 0,100% 100%,0 100%)}
-.cv-logo.n3 .sg1{clip-path:polygon(50% 50%,50% 0,0 0,0 79%)}
-.cv-logo.n3 .sg2{clip-path:polygon(50% 50%,50% 0,100% 0,100% 79%)}
-.cv-logo.n3 .sg3{clip-path:polygon(50% 50%,0 79%,0 100%,100% 100%,100% 79%)}
-.cv-logo b{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:'Cinzel',Georgia,serif;font-weight:600;font-size:13px;line-height:1;color:#0b1322;letter-spacing:.02em}
-.cv-logo img{position:absolute;left:12%;top:12%;width:76%;height:76%;object-fit:contain}
+/* ---------------------------------------------------------------- logos (no box: they stand on the sky)
+   1 logo · 2 split diagonally · 3 split from the centre, with a faint line between them.
+   A logo is used as a shape (mask) and painted in the page's ink colour, so it is light
+   at night and dark by day, whatever colour the file is. */
+.cv-logo{position:relative;display:block;width:48px;height:48px;flex:0 0 auto}
+.cv-logo .sg{position:absolute;inset:0;display:block}
+.cv-logo b{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:'Cinzel',Georgia,serif;font-weight:600;font-size:13px;line-height:1;color:color-mix(in srgb,var(--ink) 80%,transparent);letter-spacing:.02em;white-space:nowrap}
+.cv-logo .lg{position:absolute;left:4%;top:4%;width:92%;height:92%;background:var(--ink);
+  -webkit-mask:var(--logo) center/contain no-repeat;mask:var(--logo) center/contain no-repeat}
+.cv-logo .lg-div{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:color-mix(in srgb,var(--line) 35%,transparent);stroke-width:1;stroke-linecap:round}
 .cv-logo.n2 b{font-size:9px}
 .cv-logo.n2 .sg1 b{left:30%;top:30%}.cv-logo.n2 .sg2 b{left:70%;top:70%}
-.cv-logo.n2 .sg1 img{left:5%;top:5%;width:46%;height:46%}.cv-logo.n2 .sg2 img{left:49%;top:49%;width:46%;height:46%}
+.cv-logo.n2 .sg1 .lg{left:2%;top:2%;width:50%;height:50%}.cv-logo.n2 .sg2 .lg{left:48%;top:48%;width:50%;height:50%}
 .cv-logo.n3 b{font-size:8.5px}
 .cv-logo.n3 .sg1 b{left:25%;top:30%}.cv-logo.n3 .sg2 b{left:75%;top:30%}.cv-logo.n3 .sg3 b{left:50%;top:82%}
-.cv-logo.n3 .sg1 img{left:5%;top:8%;width:38%;height:40%}.cv-logo.n3 .sg2 img{left:57%;top:8%;width:38%;height:40%}.cv-logo.n3 .sg3 img{left:30%;top:63%;width:40%;height:33%}
+.cv-logo.n3 .sg1 .lg{left:3%;top:8%;width:42%;height:42%}.cv-logo.n3 .sg2 .lg{left:55%;top:8%;width:42%;height:42%}.cv-logo.n3 .sg3 .lg{left:29%;top:64%;width:42%;height:34%}
 
 /* ---------------------------------------------------------------- phones and small tablets: one column, the road rests */
 @media (max-width:760px){
@@ -211,7 +210,7 @@
   .cv-row .cv-card{grid-column:2 !important;text-align:left !important}
   .cv-card::before{display:none}
   .cv-row .cv-logocell{grid-column:1 !important;justify-content:flex-start}
-  .cv-logo{width:36px;height:36px;border:1px solid #ccc}
+  .cv-logo{width:36px;height:36px}
   .cv-title{font-size:15px}.cv-detail,.cv-keys{font-size:13px}.cv-year{font-size:11px}
   .cv-title a,.cv-tbtn{text-decoration:none;color:#111}
   .cv-chips{display:none}
