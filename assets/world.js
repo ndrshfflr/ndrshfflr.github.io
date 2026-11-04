@@ -492,6 +492,13 @@
     if (veil && tint[1]) veil.style.background = 'radial-gradient(circle at 50% 50%,' + tint[0] + ' 0%,' + tint[1] + ' 100%)';
   }
 
+  /* on pages that scroll, the text passes in front of the disc once you scroll away from the top */
+  if (world.classList.contains('scrolls')) {
+    var markScroll = function () { world.classList.toggle('scrolled', (window.scrollY || 0) > 24); };
+    window.addEventListener('scroll', markScroll, { passive: true });
+    markScroll();
+  }
+
   /* ------------------------------------------------------------------ to the moon or the sun */
   /* Clicking the disc flies into it: it grows to fill the sky while the rest fades (the moon
      lighting up fully as you near it), then its page lands on its surface (assets/sky.css). */
