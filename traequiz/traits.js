@@ -2,9 +2,10 @@
    arr: bladstilling (modsat | spredt | naale), habit: traa | busk (busk eller lille træ),
    fruit: noed | vinget | kogle | baer | kernefrugt | kapsel,
    habitat: skov | bryn (skovbryn, krat og hegn) | vaad (fugtig bund) | toer (tør, sandet bund og hede),
-   fl/fr: måneder (1-12) med blomster / frugter på træet. Månederne er omtrentlige for Danmark. */
+   fl/fr: måneder (1-12) med blomster / frugter på træet. Månederne er omtrentlige for Danmark.
+   Levesteder er tjekket mod 'Skovens vigtigste træ- og buskarter' i Naturen i Danmark (lex.dk), nov. 2026. */
 const TRAITS = {
-  fagus:          { arr: 'spredt', habit: 'traa', fruit: 'noed',       family: 'Fagaceae',      habitat: ['skov'],                 fl: [5],          fr: [9, 10] },
+  fagus:          { arr: 'spredt', habit: 'traa', fruit: 'noed',       family: 'Fagaceae',      habitat: ['skov'],                 fl: [5],          fr: [10] },
   robur:          { arr: 'spredt', habit: 'traa', fruit: 'noed',       family: 'Fagaceae',      habitat: ['skov', 'bryn'],         fl: [5],          fr: [9, 10] },
   pendula:        { arr: 'spredt', habit: 'traa', fruit: 'vinget',     family: 'Betulaceae',    habitat: ['skov', 'toer'],         fl: [4, 5],       fr: [7, 8, 9] },
   alnus:          { arr: 'spredt', habit: 'traa', fruit: 'kogle',      family: 'Betulaceae',    habitat: ['vaad'],                 fl: [2, 3, 4],    fr: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] },
@@ -14,11 +15,11 @@ const TRAITS = {
   avium:          { arr: 'spredt', habit: 'traa', fruit: 'baer',       family: 'Rosaceae',      habitat: ['skov', 'bryn'],         fl: [4, 5],       fr: [6, 7] },
   sorbus:         { arr: 'spredt', habit: 'traa', fruit: 'baer',       family: 'Rosaceae',      habitat: ['skov', 'bryn', 'toer'], fl: [5, 6],       fr: [8, 9, 10] },
   platanoides:    { arr: 'modsat', habit: 'traa', fruit: 'vinget',     family: 'Sapindaceae',   habitat: ['skov'],                 fl: [4],          fr: [9, 10] },
-  petraea:        { arr: 'spredt', habit: 'traa', fruit: 'noed',       family: 'Fagaceae',      habitat: ['toer', 'bryn'],         fl: [5],          fr: [9, 10] },
-  pubescens:      { arr: 'spredt', habit: 'traa', fruit: 'vinget',     family: 'Betulaceae',    habitat: ['vaad', 'toer'],         fl: [4, 5],       fr: [7, 8, 9] },
+  petraea:        { arr: 'spredt', habit: 'traa', fruit: 'noed',       family: 'Fagaceae',      habitat: ['skov', 'toer'],         fl: [5],          fr: [9, 10] },
+  pubescens:      { arr: 'spredt', habit: 'traa', fruit: 'vinget',     family: 'Betulaceae',    habitat: ['vaad'],         fl: [4, 5],       fr: [7, 8, 9] },
   carpinus:       { arr: 'spredt', habit: 'traa', fruit: 'noed',       family: 'Betulaceae',    habitat: ['skov', 'bryn'],         fl: [5],          fr: [9, 10] },
-  populus:        { arr: 'spredt', habit: 'traa', fruit: 'kapsel',     family: 'Salicaceae',    habitat: ['skov', 'bryn'],         fl: [3, 4],       fr: [5, 6] },
-  salix:          { arr: 'spredt', habit: 'busk', fruit: 'kapsel',     family: 'Salicaceae',    habitat: ['bryn', 'vaad'],         fl: [3, 4],       fr: [5, 6] },
+  populus:        { arr: 'spredt', habit: 'traa', fruit: 'kapsel',     family: 'Salicaceae',    habitat: ['bryn', 'toer'],         fl: [3, 4],       fr: [5, 6] },
+  salix:          { arr: 'spredt', habit: 'busk', fruit: 'kapsel',     family: 'Salicaceae',    habitat: ['bryn', 'skov'],         fl: [3, 4],       fr: [5, 6] },
   malus:          { arr: 'spredt', habit: 'busk', fruit: 'kernefrugt', family: 'Rosaceae',      habitat: ['bryn'],                 fl: [5],          fr: [9, 10] },
   crataegus:      { arr: 'spredt', habit: 'busk', fruit: 'baer',       family: 'Rosaceae',      habitat: ['bryn'],                 fl: [5, 6],       fr: [9, 10, 11] },
   spinosa:        { arr: 'spredt', habit: 'busk', fruit: 'baer',       family: 'Rosaceae',      habitat: ['bryn'],                 fl: [4, 5],       fr: [9, 10, 11] },
@@ -34,8 +35,8 @@ const TRAITS = {
   ulmusglabra:    { arr: 'spredt', habit: 'traa', fruit: 'vinget',     family: 'Ulmaceae',      habitat: ['skov'],                 fl: [3, 4],       fr: [5, 6] },
   pyrus:          { arr: 'spredt', habit: 'traa', fruit: 'kernefrugt', family: 'Rosaceae',      habitat: ['bryn'],                 fl: [4, 5],       fr: [9, 10] },
   frangula:       { arr: 'spredt', habit: 'busk', fruit: 'baer',       family: 'Rhamnaceae',    habitat: ['vaad', 'toer'],         fl: [5, 6, 7, 8], fr: [7, 8, 9, 10] },
-  rhamnus:        { arr: 'modsat', habit: 'busk', fruit: 'baer',       family: 'Rhamnaceae',    habitat: ['bryn'],                 fl: [5, 6],       fr: [8, 9, 10] },
+  rhamnus:        { arr: 'modsat', habit: 'busk', fruit: 'baer',       family: 'Rhamnaceae',    habitat: ['bryn'],                 fl: [6],       fr: [9, 10] },
   euonymus:       { arr: 'modsat', habit: 'busk', fruit: 'kapsel',     family: 'Celastraceae',  habitat: ['bryn'],                 fl: [5, 6],       fr: [9, 10] },
-  ulmusminor:     { arr: 'spredt', habit: 'traa', fruit: 'vinget',     family: 'Ulmaceae',      habitat: ['skov', 'bryn'],         fl: [3, 4],       fr: [5, 6] },
+  ulmusminor:     { arr: 'spredt', habit: 'traa', fruit: 'vinget',     family: 'Ulmaceae',      habitat: ['bryn'],         fl: [3, 4],       fr: [5, 6] },
 };
 SPECIES.forEach(sp => Object.assign(sp, TRAITS[sp.id] || {}));
