@@ -106,7 +106,7 @@
   <!-- QUIZ -->
   <section id="screen-quiz" class="screen" hidden>
     <div class="quiz-top">
-      <div class="quiz-progress" aria-live="polite"><span id="qLabel" data-i18n="qLabel">Spørgsmål</span> <span id="qNum">1</span>/10</div>
+      <div class="quiz-progress" aria-live="polite"><span id="qLabel" data-i18n="qLabel">Spørgsmål</span> <span id="qNum">1</span>/<span id="qTotal">10</span></div>
       <div class="quiz-meta">
         <span class="score-pill"><span id="pointsLabel" data-i18n="pointsLabel">Points</span> <strong id="score">0</strong></span>
         <span class="streak-pill" id="streakPill" hidden>🔥 <strong id="streak">0</strong> <span id="streakTxt" data-i18n="streakTxt">i træk</span></span>
@@ -176,10 +176,13 @@
           <button class="sort-btn" data-sort="hyppighed" data-i18n="sortHyppighed">Almindelighed</button>
           <button class="sort-btn" data-sort="status" data-i18n="sortStatus">Rødlistestatus</button>
           <button class="sort-btn" data-sort="bladform" data-i18n="sortBladform">Bladform</button>
+          <button class="sort-btn" data-sort="lookalike" data-i18n="sortLookalike">Forvekslinger</button>
+          <button class="sort-btn" data-sort="mine" data-i18n="sortMine">Svære for mig</button>
         </div>
       </div>
+      <div class="list-controls" id="listControls"></div>
     </div>
-    <div class="species-grid" id="speciesGrid"></div>
+    <div class="species-groups" id="speciesGrid"></div>
   </section>
 
 </main>

@@ -909,15 +909,65 @@ main { flex: 1; width: 100%; }
   .lookalike-grid { grid-template-columns: 1fr; }
 }
 
-/* Gruppeoverskrifter i artslisten */
-.species-group-head {
-  grid-column: 1 / -1;
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 600;
-  margin: 1.25rem 0 0;
-  padding-bottom: .35rem;
-  border-bottom: 1px solid currentColor;
-  opacity: .9;
+/* Artsliste: søgning, filtre, grupper, kompakt visning */
+.species-groups {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 2rem) 3rem;
 }
-.species-group-head:first-child { margin-top: 0; }
+.species-groups .species-grid { max-width: none; margin: 0; padding: 0; }
+.species-group + .species-group { margin-top: 1.4rem; }
+.species-group-head {
+  display: flex; align-items: center; justify-content: space-between; gap: .6rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .35rem; margin-bottom: .85rem;
+}
+.group-toggle {
+  display: inline-flex; align-items: baseline; gap: .45rem;
+  background: none; border: 0; padding: .2rem 0; cursor: pointer; text-align: left;
+  font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; color: var(--green-deep);
+}
+.group-caret { font-size: .95rem; color: var(--muted); width: 1em; }
+.species-group.collapsed .species-grid { display: none; }
+.species-group.collapsed .species-group-head { margin-bottom: 0; }
+.group-quiz {
+  flex-shrink: 0; font: inherit; font-size: .8rem; font-weight: 600;
+  padding: .3rem .85rem; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--green); background: var(--green-tint); color: var(--green-deep);
+}
+.list-controls { margin-top: 1rem; display: flex; flex-direction: column; gap: .7rem; }
+.list-search {
+  width: 100%; font: inherit; font-size: 1rem; padding: .6rem .9rem;
+  border-radius: var(--radius-md); border: 1px solid var(--border); background: var(--surface); color: var(--ink);
+}
+.list-search:focus { outline: 2px solid var(--green); outline-offset: 1px; }
+.list-filters summary { cursor: pointer; font-weight: 600; font-size: .9rem; color: var(--green-deep); padding: .2rem 0; }
+.filter-dims { display: flex; flex-direction: column; gap: .7rem; margin-top: .6rem; }
+.filter-dim-label { display: block; font-size: .78rem; color: var(--muted); font-weight: 500; margin-bottom: .3rem; }
+.filter-chips { display: flex; flex-wrap: wrap; gap: .35rem; }
+.filter-chip {
+  font: inherit; font-size: .8rem; padding: .28rem .8rem; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--border); background: var(--surface); color: var(--ink-soft);
+}
+.filter-chip.on { background: var(--green); border-color: var(--green); color: #fff; }
+.list-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; }
+.list-count { font-size: .85rem; color: var(--muted); }
+.toolbar-spacer { flex: 1; }
+.quiz-shown { border-color: var(--green); color: var(--green-deep); font-weight: 600; }
+.quiz-shown:disabled { opacity: .45; cursor: default; }
+.list-note { font-size: .8rem; color: var(--muted); margin: 0; }
+.list-empty { text-align: center; color: var(--muted); padding: 2rem 0; }
+
+.species-grid.compact { grid-template-columns: 1fr; gap: .5rem; }
+.species-row {
+  display: flex; align-items: center; gap: .8rem; width: 100%;
+  font: inherit; text-align: left; cursor: pointer;
+  padding: .45rem .7rem .45rem .45rem; border-radius: var(--radius-md);
+  border: 1px solid var(--border); background: var(--surface);
+}
+.species-row img { width: 56px; height: 56px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0; background: var(--surface-2); }
+.row-text { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.row-chips { display: flex; flex-wrap: wrap; gap: .3rem; justify-content: flex-end; }
+@media (max-width: 480px) { .row-chips .chip:last-child { display: none; } }
+.species-card.expanded { max-width: 560px; }
+.card-less { align-self: flex-start; margin-top: .5rem; }

@@ -39,6 +39,17 @@ const I18N = {
     listSub: 'Arter, der er indvandret til Danmark af sig selv efter sidste istid — uden menneskers hjælp. Swipe billederne på kortene for at se blade, bark, blomster og frugter.',
     sortAria: 'Sortér artslisten', sortLabel: 'Sortér efter:',
     sortDefault: 'Standard', sortHyppighed: 'Almindelighed', sortStatus: 'Rødlistestatus', sortBladform: 'Bladform',
+    sortMine: 'Svære for mig', sortLookalike: 'Forvekslinger',
+    searchPh: 'Søg efter art (også latin)',
+    filtersLabel: n => n ? `Filtre (${n})` : 'Filtre',
+    filterBladform: 'Bladform', filterHyppighed: 'Almindelighed', filterStatus: 'Rødlistestatus', filterLevel: 'Sværhedsgrad',
+    clearFilters: 'Nulstil', listEmpty: 'Ingen arter passer til din søgning.',
+    listCount: (n, t) => n === t ? `${t} arter` : `${n} af ${t} arter`,
+    viewCompact: 'Kompakt liste', viewCards: 'Store kort', showLess: 'Vis mindre',
+    quizShown: 'Quiz de viste arter', quizThese: 'Quiz disse',
+    mineGroups: { often: 'Ofte forkert', some: 'Af og til forkert', good: 'Har styr på', new: 'Ikke øvet endnu' },
+    mineNote: 'Grupperne bygger på dine svar i quizzen på denne enhed.',
+    correctOf: n => `rigtige af ${n}`,
     footer: 'Billeder: <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · Arterne følger Skov- og Naturstyrelsens liste over hjemmehørende træer og buske · Rødlistestatus: <a href="https://www.naturbasen.dk/" target="_blank" rel="noopener">Danmarks Rødliste 2019</a> via Naturbasen.',
     kind: { blade: 'Blad', bark: 'Bark', blomst: 'Blomst', frugt: 'Frugt' },
     kindPlural: { blade: 'blade', bark: 'bark', blomst: 'blomster', frugt: 'frugter' },
@@ -97,6 +108,17 @@ const I18N = {
     listSub: 'Species that arrived in Denmark on their own after the last ice age — without human help. Swipe the images on each card to see leaves, bark, flowers and fruits.',
     sortAria: 'Sort the species list', sortLabel: 'Sort by:',
     sortDefault: 'Default', sortHyppighed: 'Abundance', sortStatus: 'Red List status', sortBladform: 'Leaf shape',
+    sortMine: 'Hard for me', sortLookalike: 'Look-alikes',
+    searchPh: 'Search species (Latin too)',
+    filtersLabel: n => n ? `Filters (${n})` : 'Filters',
+    filterBladform: 'Leaf shape', filterHyppighed: 'Abundance', filterStatus: 'Red List status', filterLevel: 'Difficulty',
+    clearFilters: 'Clear', listEmpty: 'No species match your search.',
+    listCount: (n, t) => n === t ? `${t} species` : `${n} of ${t} species`,
+    viewCompact: 'Compact list', viewCards: 'Large cards', showLess: 'Show less',
+    quizShown: 'Quiz the species shown', quizThese: 'Quiz these',
+    mineGroups: { often: 'Often wrong', some: 'Sometimes wrong', good: 'Got it', new: 'Not practised yet' },
+    mineNote: 'Groups are based on your quiz answers on this device.',
+    correctOf: n => `correct out of ${n}`,
     footer: 'Images: <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · The species follow the Danish Forest and Nature Agency list of native trees and shrubs · Red List status: <a href="https://www.naturbasen.dk/" target="_blank" rel="noopener">Danish Red List 2019</a> via Naturbasen.',
     kind: { blade: 'Leaf', bark: 'Bark', blomst: 'Flower', frugt: 'Fruit' },
     kindPlural: { blade: 'leaves', bark: 'bark', blomst: 'flowers', frugt: 'fruits' },
@@ -136,6 +158,7 @@ const S = {
   screen: 'start',
   mode: 'blade',          // blade | bark | blomst | frugt | blandet
   level: 'alle',          // alle | nem | mellem | svær
+  customPool: null,       // arts-id'er når quizzen startes fra artslisten
   questions: [],
   qIndex: 0,
   score: 0,
@@ -291,6 +314,7 @@ document.querySelectorAll('[data-choice-level]').forEach(btn =>
 
 $('startBtn').addEventListener('click', () => {
   ensureAudio(); sfx.click();
+  S.customPool = null;
   startQuiz();
 });
 
@@ -319,15 +343,24 @@ function pickDistractors(target, pool) {
 }
 
 function startQuiz() {
-  let pool = S.level === 'alle' ? SPECIES : SPECIES.filter(s => s.level === S.level);
+  let pool = S.customPool
+    ? SPECIES.filter(s => S.customPool.includes(s.id))
+    : (S.level === 'alle' ? SPECIES : SPECIES.filter(s => s.level === S.level));
   // i en bestemt billedtype skal kun arter med billeder af den type med
-  if (S.mode !== 'blandet') pool = pool.filter(s => (s.imgs[S.mode] || []).length);
+  let mode = S.mode;
+  if (mode !== 'blandet') {
+    const withImgs = pool.filter(s => (s.imgs[mode] || []).length);
+    if (withImgs.length >= 2 || !S.customPool) pool = withImgs;
+    else mode = 'blandet';
+  }
   const n = Math.min(10, pool.length);
   if (!n) { show('start'); return; }
+  // små udvalg fra artslisten får svarmuligheder fra alle arter
+  const distractorPool = pool.length >= 4 ? pool : SPECIES;
   const picked = shuffle(pool).slice(0, n);
   S.questions = picked.map(sp => {
-    let kind = S.mode;
-    if (S.mode === 'blandet') {
+    let kind = mode;
+    if (mode === 'blandet') {
       const kinds = KINDS.filter(k => (sp.imgs[k] || []).length);
       kind = kinds[Math.floor(Math.random() * kinds.length)] || 'blade';
     }
@@ -335,7 +368,7 @@ function startQuiz() {
       species: sp,
       kind,
       imgIdx: Math.floor(Math.random() * sp.imgs[kind].length),
-      options: shuffle([sp, ...pickDistractors(sp, pool)]),
+      options: shuffle([sp, ...pickDistractors(sp, distractorPool)]),
     };
   });
   S.qIndex = 0;
@@ -353,6 +386,7 @@ function renderQuestion() {
   S.chosenIdx = -1;
   const q = S.questions[S.qIndex];
   $('qNum').textContent = S.qIndex + 1;
+  $('qTotal').textContent = S.questions.length;
   $('progressFill').style.width = ((S.qIndex) / S.questions.length * 100) + '%';
   $('score').textContent = S.score;
   $('streakPill').hidden = S.streak < 2;
@@ -411,16 +445,17 @@ function loadImage(q, attempt) {
   const img = $('quizImg');
   const urls = q.species.imgs[q.kind] || [];
   if (attempt >= urls.length) {
-    // alle billeder fejlede — prøv en ny art med samme billedtype
-    let pool = S.level === 'alle' ? SPECIES : SPECIES.filter(s => s.level === S.level);
-    if (S.mode !== 'blandet') pool = pool.filter(s => (s.imgs[S.mode] || []).length);
+    // alle billeder fejlede — prøv en ny art med samme billedtype (men aldrig efter der er svaret)
+    let pool = S.customPool
+      ? SPECIES.filter(s => S.customPool.includes(s.id))
+      : (S.level === 'alle' ? SPECIES : SPECIES.filter(s => s.level === S.level));
     const used = S.questions.map(x => x.species.id);
-    const fresh = pool.filter(s => !used.includes(s.id) && (s.imgs[q.kind] || []).length);
+    const fresh = S.answered ? [] : pool.filter(s => !used.includes(s.id) && (s.imgs[q.kind] || []).length);
     if (fresh.length) {
       const sp = fresh[Math.floor(Math.random() * fresh.length)];
       q.species = sp;
       q.imgIdx = Math.floor(Math.random() * sp.imgs[q.kind].length);
-      q.options = shuffle([sp, ...pickDistractors(sp, pool)]);
+      q.options = shuffle([sp, ...pickDistractors(sp, pool.length >= 4 ? pool : SPECIES)]);
       renderQuestion();
     } else {
       $('imgLoading').hidden = false;
@@ -446,6 +481,7 @@ function answer(i) {
   const q = S.questions[S.qIndex];
   const chosen = q.options[i];
   const correct = chosen.id === q.species.id;
+  recordAnswer(q.species.id, correct);
   const buttons = [...document.querySelectorAll('.answer')];
   buttons.forEach((b, j) => {
     b.disabled = true;
@@ -495,6 +531,7 @@ $('nextBtn').addEventListener('click', () => {
 function showResult(quiet) {
   $('finalScore').textContent = S.score;
   $('statCorrect').textContent = S.correctCount;
+  $('statCorrect').nextElementSibling.textContent = T('correctOf')(S.questions.length);
   $('statStreak').textContent = S.bestStreak;
 
   let sub, kicker;
@@ -533,113 +570,346 @@ function showResult(quiet) {
 
 $('againBtn').addEventListener('click', () => { ensureAudio(); sfx.click(); startQuiz(); });
 
-/* ------------------- artsliste: sortering + karrusel ------------------- */
+/* ------------------- artsliste: søgning, filtre, grupper og visninger ------------------- */
 
 const HYPPIGHED_ORDER = ['Meget almindelig', 'Almindelig', 'Hist og her', 'Sjælden'];
 const STATUS_ORDER = ['EN', 'CR', 'VU', 'NT', 'NE', 'LC'];
 const BLADFORM_ORDER = ['Nåle', 'Finnet', 'Helrandet', 'Lappet', 'Savtakket'];
+const LEVEL_ORDER = ['nem', 'mellem', 'svær'];
+const MINE_ORDER = ['often', 'some', 'good', 'new'];
 let currentSort = 'default';
 
-const SORT_FNS = {
-  default: null,
-  hyppighed: (a, b) => HYPPIGHED_ORDER.indexOf(a.hyppighed) - HYPPIGHED_ORDER.indexOf(b.hyppighed)
-    || sortName(a).localeCompare(sortName(b), LANG === 'da' ? 'da' : 'en'),
-  status: (a, b) => STATUS_ORDER.indexOf(a.status) - STATUS_ORDER.indexOf(b.status)
-    || sortName(a).localeCompare(sortName(b), LANG === 'da' ? 'da' : 'en'),
-  bladform: (a, b) => BLADFORM_ORDER.indexOf(a.bladform) - BLADFORM_ORDER.indexOf(b.bladform)
-    || sortName(a).localeCompare(sortName(b), LANG === 'da' ? 'da' : 'en'),
+const LIST = {
+  q: '',
+  filters: { bladform: new Set(), hyppighed: new Set(), status: new Set(), level: new Set() },
+  compact: false,
+  collapsed: new Set(),
+  expanded: new Set(),
+  ctrlLang: null,
 };
+try { LIST.compact = localStorage.getItem('tq-compact') === '1'; } catch (e) { /* ingen lager */ }
 
-const isScanUrl = u => /herbarium|illustration|handbook/i.test(u);
+/* personlig statistik — gemmes kun i denne browser */
+const STATS_KEY = 'tq-stats';
+function loadStats() {
+  try { return JSON.parse(localStorage.getItem(STATS_KEY)) || {}; } catch (e) { return {}; }
+}
+function recordAnswer(id, correct) {
+  const st = loadStats();
+  const r = st[id] || { seen: 0, wrong: 0 };
+  r.seen += 1;
+  if (!correct) r.wrong += 1;
+  st[id] = r;
+  try { localStorage.setItem(STATS_KEY, JSON.stringify(st)); } catch (e) { /* ignorer */ }
+}
+function mastery(sp, st) {
+  const r = st[sp.id];
+  if (!r || !r.seen) return 'new';
+  const rate = r.wrong / r.seen;
+  if (rate >= 0.34) return 'often';
+  if (rate > 0) return 'some';
+  return 'good';
+}
+
+const cmpName = (a, b) => sortName(a).localeCompare(sortName(b), LANG === 'da' ? 'da' : 'en');
+const FILTER_DIMS = [
+  { key: 'bladform', order: BLADFORM_ORDER, label: () => T('filterBladform'), val: v => T('bladformChip')[v] || v },
+  { key: 'hyppighed', order: HYPPIGHED_ORDER, label: () => T('filterHyppighed'), val: v => T('hyppighed')[v] || v },
+  { key: 'status', order: STATUS_ORDER, label: () => T('filterStatus'), val: v => `${T('status')[v] || v} · ${v}` },
+  { key: 'level', order: LEVEL_ORDER, label: () => T('filterLevel'), val: v => T('levelName')[v] || v },
+];
+
+function matches(sp) {
+  const q = LIST.q.trim().toLowerCase();
+  if (q && ![sp.dk, sp.en, sp.latin].some(n => (n || '').toLowerCase().includes(q))) return false;
+  return FILTER_DIMS.every(d => !LIST.filters[d.key].size || LIST.filters[d.key].has(sp[d.key]));
+}
+const activeFilterCount = () => FILTER_DIMS.reduce((n, d) => n + LIST.filters[d.key].size, 0);
+
+function buildGroups(list) {
+  if (currentSort === 'default') return [{ key: 'all', label: null, items: list }];
+
+  if (currentSort === 'lookalike') {
+    const ids = new Set(list.map(s => s.id));
+    const seen = new Set();
+    const groups = [];
+    list.forEach(a => (a.lookalikes || []).forEach(bid => {
+      if (!ids.has(bid)) return;
+      const key = [a.id, bid].sort().join('|');
+      if (seen.has(key)) return;
+      seen.add(key);
+      const b = SPECIES.find(s => s.id === bid);
+      const pair = [a, b].sort(cmpName);
+      groups.push({ key, label: `${spName(pair[0])} ↔ ${spName(pair[1])}`, items: pair, showCount: false });
+    }));
+    return groups.sort((x, y) => x.label.localeCompare(y.label, LANG === 'da' ? 'da' : 'en'));
+  }
+
+  if (currentSort === 'mine') {
+    const st = loadStats();
+    const rate = sp => { const r = st[sp.id]; return r && r.seen ? r.wrong / r.seen : 0; };
+    return MINE_ORDER.map(k => ({
+      key: k,
+      label: T('mineGroups')[k],
+      items: list.filter(sp => mastery(sp, st) === k).sort((a, b) => rate(b) - rate(a) || cmpName(a, b)),
+    })).filter(g => g.items.length);
+  }
+
+  const dim = FILTER_DIMS.find(d => d.key === currentSort);
+  return dim.order.map(v => ({
+    key: v,
+    label: dim.val(v),
+    items: list.filter(sp => sp[dim.key] === v).sort(cmpName),
+  })).filter(g => g.items.length);
+}
+
+function ensureListControls(force) {
+  if (!force && LIST.ctrlLang === LANG) return;
+  LIST.ctrlLang = LANG;
+  const box = $('listControls');
+  box.innerHTML = `
+    <input type="search" class="list-search" id="listSearch" autocomplete="off">
+    <details class="list-filters" id="listFilters">
+      <summary id="filtersSummary"></summary>
+      <div class="filter-dims"></div>
+    </details>
+    <div class="list-toolbar">
+      <span class="list-count" id="listCount"></span>
+      <button class="linklike" id="clearFilters"></button>
+      <span class="toolbar-spacer"></span>
+      <button class="sort-btn" id="viewToggle"></button>
+      <button class="sort-btn quiz-shown" id="quizShownBtn"></button>
+    </div>
+    <p class="list-note" id="mineNote" hidden></p>`;
+
+  const search = $('listSearch');
+  search.placeholder = T('searchPh');
+  search.setAttribute('aria-label', T('searchPh'));
+  search.value = LIST.q;
+  search.addEventListener('input', () => { LIST.q = search.value; renderGroups(); });
+
+  const dims = box.querySelector('.filter-dims');
+  FILTER_DIMS.forEach(d => {
+    const present = d.order.filter(v => SPECIES.some(sp => sp[d.key] === v));
+    const row = document.createElement('div');
+    row.className = 'filter-dim';
+    row.innerHTML = `<span class="filter-dim-label">${d.label()}</span><div class="filter-chips"></div>`;
+    const chips = row.querySelector('.filter-chips');
+    present.forEach(v => {
+      const b = document.createElement('button');
+      b.className = 'filter-chip';
+      b.textContent = d.val(v);
+      const sync = () => {
+        const on = LIST.filters[d.key].has(v);
+        b.classList.toggle('on', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      };
+      sync();
+      b.addEventListener('click', () => {
+        const set = LIST.filters[d.key];
+        set.has(v) ? set.delete(v) : set.add(v);
+        sync(); sfx.click(); renderGroups();
+      });
+      chips.appendChild(b);
+    });
+    dims.appendChild(row);
+  });
+
+  $('clearFilters').textContent = T('clearFilters');
+  $('clearFilters').addEventListener('click', () => {
+    LIST.q = ''; search.value = '';
+    FILTER_DIMS.forEach(d => LIST.filters[d.key].clear());
+    sfx.click(); ensureListControls(true); renderGroups();
+  });
+  $('viewToggle').addEventListener('click', () => {
+    LIST.compact = !LIST.compact;
+    LIST.expanded.clear();
+    try { localStorage.setItem('tq-compact', LIST.compact ? '1' : '0'); } catch (e) { /* ignorer */ }
+    sfx.click(); renderGroups();
+  });
+  $('quizShownBtn').textContent = T('quizShown');
+  $('quizShownBtn').addEventListener('click', () => quizFromList(SPECIES.filter(matches)));
+}
+
+function quizFromList(items) {
+  if (items.length < 2) return;
+  ensureAudio(); sfx.click();
+  S.customPool = items.map(s => s.id);
+  startQuiz();
+}
 
 function renderList() {
-  const grid = $('speciesGrid');
-  grid.innerHTML = '';
-
-  document.querySelectorAll('.sort-btn').forEach(btn => {
+  document.querySelectorAll('.sort-btn[data-sort]').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.sort === currentSort);
     btn.onclick = () => { currentSort = btn.dataset.sort; sfx.click(); renderList(); };
   });
+  ensureListControls();
+  renderGroups();
+}
 
-  let list = [...SPECIES];
-  const fn = SORT_FNS[currentSort];
-  if (fn) list.sort(fn);
+function renderGroups() {
+  const wrap = $('speciesGrid');
+  wrap.innerHTML = '';
+  const list = SPECIES.filter(matches);
+  const nf = activeFilterCount();
 
+  $('filtersSummary').textContent = T('filtersLabel')(nf);
+  $('listCount').textContent = T('listCount')(list.length, SPECIES.length);
+  $('clearFilters').hidden = !nf && !LIST.q;
+  $('viewToggle').textContent = LIST.compact ? T('viewCards') : T('viewCompact');
+  $('quizShownBtn').disabled = list.length < 2;
+  $('mineNote').hidden = currentSort !== 'mine';
+  $('mineNote').textContent = T('mineNote');
+
+  if (!list.length) {
+    wrap.innerHTML = `<p class="list-empty">${T('listEmpty')}</p>`;
+    return;
+  }
+
+  const groups = buildGroups(list);
+  if (!groups.length) {
+    wrap.innerHTML = `<p class="list-empty">${T('listEmpty')}</p>`;
+    return;
+  }
+
+  groups.forEach(g => {
+    const sec = document.createElement('section');
+    sec.className = 'species-group';
+    const gid = currentSort + ':' + g.key;
+
+    if (g.label) {
+      const head = document.createElement('div');
+      head.className = 'species-group-head';
+      const toggle = document.createElement('button');
+      toggle.className = 'group-toggle';
+      const title = g.showCount === false ? g.label : `${g.label} (${g.items.length})`;
+      const setState = () => {
+        const c = LIST.collapsed.has(gid);
+        sec.classList.toggle('collapsed', c);
+        toggle.setAttribute('aria-expanded', c ? 'false' : 'true');
+        toggle.innerHTML = `<span class="group-caret" aria-hidden="true">${c ? '▸' : '▾'}</span>`;
+        const t = document.createElement('span');
+        t.textContent = title;
+        toggle.appendChild(t);
+      };
+      toggle.addEventListener('click', () => {
+        LIST.collapsed.has(gid) ? LIST.collapsed.delete(gid) : LIST.collapsed.add(gid);
+        sfx.click(); setState();
+      });
+      head.appendChild(toggle);
+      if (g.items.length >= 2) {
+        const qb = document.createElement('button');
+        qb.className = 'group-quiz';
+        qb.textContent = T('quizThese');
+        qb.addEventListener('click', () => quizFromList(g.items));
+        head.appendChild(qb);
+      }
+      sec.appendChild(head);
+      setState();
+    }
+
+    const grid = document.createElement('div');
+    grid.className = 'species-grid' + (LIST.compact ? ' compact' : '');
+    g.items.forEach(sp => {
+      grid.appendChild(LIST.compact && !LIST.expanded.has(sp.id) ? makeRow(sp) : makeCard(sp));
+    });
+    sec.appendChild(grid);
+    wrap.appendChild(sec);
+  });
+}
+
+function makeRow(sp) {
+  const row = document.createElement('button');
+  row.className = 'species-row';
+  const thumb = (sp.imgs.blade || [])[0] || '';
+  row.innerHTML = `
+    <img src="${thumb}" alt="" loading="lazy">
+    <span class="row-text">
+      <span class="species-name">${spName(sp)}</span>
+      <span class="species-latin">${sp.latin}</span>
+    </span>
+    <span class="row-chips">
+      <span class="chip chip-status-${sp.status}">${sp.status}</span>
+      <span class="chip">${T('bladformChip')[sp.bladform] || sp.bladform}</span>
+    </span>`;
+  row.addEventListener('click', () => {
+    LIST.expanded.add(sp.id);
+    sfx.click();
+    row.replaceWith(makeCard(sp));
+  });
+  return row;
+}
+
+const isScanUrl = u => /herbarium|illustration|handbook/i.test(u);
+
+function makeCard(sp) {
+  const card = document.createElement('article');
+  card.className = 'species-card';
   const kindLabel = T('kind');
 
-  // Gruppering: ved sortering vises en overskrift pr. gruppe med antal arter
-  const GROUP_LABEL = {
-    hyppighed: v => T('hyppighed')[v] || v,
-    status: v => `${T('status')[v] || v} · ${v}`,
-    bladform: v => T('bladformChip')[v] || v,
-  };
-  const groupKey = currentSort === 'default' ? null : currentSort;
-  let lastGroup = null;
-
-  list.forEach(sp => {
-    if (groupKey && sp[groupKey] !== lastGroup) {
-      lastGroup = sp[groupKey];
-      const n = list.filter(x => x[groupKey] === lastGroup).length;
-      const h = document.createElement('h3');
-      h.className = 'species-group-head';
-      h.textContent = `${GROUP_LABEL[groupKey](lastGroup)} (${n})`;
-      grid.appendChild(h);
-    }
-    const card = document.createElement('article');
-    card.className = 'species-card';
-
-    const slides = [];
-    KINDS.forEach(k => {
-      (sp.imgs[k] || []).forEach(u => slides.push({ url: u, kind: k }));
-    });
-    const statusTxt = `${sp.status} · ${T('status')[sp.status] || ''}`;
-
-    card.innerHTML = `
-      <div class="carousel">
-        <div class="carousel-track">
-          ${slides.map((s, i) => `
-            <figure class="slide${isScanUrl(s.url) ? ' contain' : ''}">
-              <img src="${s.url}" alt="${T('slideAlt')(kindLabel[s.kind], spName(sp))}" ${i ? 'loading="lazy"' : ''}>
-              <span class="slide-tag">${kindLabel[s.kind]}</span>
-            </figure>`).join('')}
-        </div>
-        ${slides.length > 1 ? `
-          <button class="car-btn car-prev" aria-label="${T('carPrev')}">&#8249;</button>
-          <button class="car-btn car-next" aria-label="${T('carNext')}">&#8250;</button>` : ''}
-        <span class="car-count">1/${slides.length}</span>
-      </div>
-      <div class="species-body">
-        <div class="species-title-row">
-          <span class="species-name">${spName(sp)}</span>
-          <span class="level-badge level-${sp.level}">${T('levelName')[sp.level] || sp.level}</span>
-        </div>
-        <span class="species-latin">${sp.latin}</span>
-        <div class="prop-chips">
-          <span class="chip chip-status-${sp.status}" title="${T('chipTitleStatus')}">${statusTxt}</span>
-          <span class="chip" title="${T('chipTitleHyp')}">${T('hyppighed')[sp.hyppighed] || sp.hyppighed}</span>
-          <span class="chip" title="${T('chipTitleBladform')}">${T('bladformChip')[sp.bladform] || sp.bladform}</span>
-        </div>
-        <p class="species-fact">${spText(sp, 'blade')}</p>
-        <p class="species-fact">${spText(sp, 'bark')}</p>
-        ${(sp.imgs.blomst || []).length ? `<p class="species-fact"><strong>${kindLabel.blomst}:</strong> ${spText(sp, 'blomst')}</p>` : ''}
-        ${(sp.imgs.frugt || []).length ? `<p class="species-fact"><strong>${kindLabel.frugt}:</strong> ${spText(sp, 'frugt')}</p>` : ''}
-        <p class="species-fact"><strong>${T('factTag')}:</strong> ${spText(sp, 'fakta')}</p>
-      </div>`;
-
-    const track = card.querySelector('.carousel-track');
-    const count = card.querySelector('.car-count');
-    const updateCount = () => {
-      const idx = Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
-      count.textContent = `${Math.min(idx + 1, slides.length)}/${slides.length}`;
-    };
-    track.addEventListener('scroll', updateCount, { passive: true });
-    const prev = card.querySelector('.car-prev');
-    const next = card.querySelector('.car-next');
-    if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' }));
-    if (next) next.addEventListener('click', () => track.scrollBy({ left: track.clientWidth, behavior: 'smooth' }));
-
-    grid.appendChild(card);
+  const slides = [];
+  KINDS.forEach(k => {
+    (sp.imgs[k] || []).forEach(u => slides.push({ url: u, kind: k }));
   });
+  const statusTxt = `${sp.status} · ${T('status')[sp.status] || ''}`;
+
+  card.innerHTML = `
+    <div class="carousel">
+      <div class="carousel-track">
+        ${slides.map((s, i) => `
+          <figure class="slide${isScanUrl(s.url) ? ' contain' : ''}">
+            <img src="${s.url}" alt="${T('slideAlt')(kindLabel[s.kind], spName(sp))}" ${i ? 'loading="lazy"' : ''}>
+            <span class="slide-tag">${kindLabel[s.kind]}</span>
+          </figure>`).join('')}
+      </div>
+      ${slides.length > 1 ? `
+        <button class="car-btn car-prev" aria-label="${T('carPrev')}">&#8249;</button>
+        <button class="car-btn car-next" aria-label="${T('carNext')}">&#8250;</button>` : ''}
+      <span class="car-count">1/${slides.length}</span>
+    </div>
+    <div class="species-body">
+      <div class="species-title-row">
+        <span class="species-name">${spName(sp)}</span>
+        <span class="level-badge level-${sp.level}">${T('levelName')[sp.level] || sp.level}</span>
+      </div>
+      <span class="species-latin">${sp.latin}</span>
+      <div class="prop-chips">
+        <span class="chip chip-status-${sp.status}" title="${T('chipTitleStatus')}">${statusTxt}</span>
+        <span class="chip" title="${T('chipTitleHyp')}">${T('hyppighed')[sp.hyppighed] || sp.hyppighed}</span>
+        <span class="chip" title="${T('chipTitleBladform')}">${T('bladformChip')[sp.bladform] || sp.bladform}</span>
+      </div>
+      <p class="species-fact">${spText(sp, 'blade')}</p>
+      <p class="species-fact">${spText(sp, 'bark')}</p>
+      ${(sp.imgs.blomst || []).length ? `<p class="species-fact"><strong>${kindLabel.blomst}:</strong> ${spText(sp, 'blomst')}</p>` : ''}
+      ${(sp.imgs.frugt || []).length ? `<p class="species-fact"><strong>${kindLabel.frugt}:</strong> ${spText(sp, 'frugt')}</p>` : ''}
+      <p class="species-fact"><strong>${T('factTag')}:</strong> ${spText(sp, 'fakta')}</p>
+    </div>`;
+
+  const track = card.querySelector('.carousel-track');
+  const count = card.querySelector('.car-count');
+  const updateCount = () => {
+    const idx = Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
+    count.textContent = `${Math.min(idx + 1, slides.length)}/${slides.length}`;
+  };
+  track.addEventListener('scroll', updateCount, { passive: true });
+  const prev = card.querySelector('.car-prev');
+  const next = card.querySelector('.car-next');
+  if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' }));
+  if (next) next.addEventListener('click', () => track.scrollBy({ left: track.clientWidth, behavior: 'smooth' }));
+
+  if (LIST.compact) {
+    card.classList.add('expanded');
+    const less = document.createElement('button');
+    less.className = 'linklike card-less';
+    less.textContent = T('showLess');
+    less.addEventListener('click', () => {
+      LIST.expanded.delete(sp.id);
+      sfx.click();
+      card.replaceWith(makeRow(sp));
+    });
+    card.querySelector('.species-body').appendChild(less);
+  }
+  return card;
 }
 
 /* ------------------- guide: lær at kende træerne ------------------- */
