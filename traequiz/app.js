@@ -40,6 +40,12 @@ const I18N = {
     sortAria: 'Gruppér artslisten', sortLabel: 'Gruppér efter:',
     sortDefault: 'Standard', sortHyppighed: 'Almindelighed', sortStatus: 'Rødlistestatus', sortBladform: 'Bladform',
     sortMine: 'Svære for mig', sortLookalike: 'Forvekslinger',
+    cardMore: 'Se alt om arten', openSpecies: n => `Åbn ${n}`,
+    sheetClose: 'Luk', sheetPrev: 'Forrige art', sheetNext: 'Næste art',
+    secWinter: 'Om vinteren', secDist: 'Udbredelse i Danmark', secNative: 'Status som hjemmehørende',
+    secLook: 'Kan forveksles med', secStats: 'Dine svar', secSources: 'Læs mere',
+    statsLine: (r, n) => `Du har svaret rigtigt ${r} af ${n} gange.`, statsNone: 'Du har ikke øvet denne art endnu.',
+    quizSpecies: 'Quiz denne art og dens forvekslinger',
     sortArr: 'Bladstilling', sortHabit: 'Vækstform', sortFruit: 'Frugttype', sortFamily: 'Familie', sortHabitat: 'Levested', sortNow: 'Lige nu: blomster og frugter',
     filterArr: 'Bladstilling', filterHabit: 'Vækstform', filterFruit: 'Frugttype', filterFamily: 'Familie', filterHabitat: 'Levested',
     arrVals: { modsat: 'Modsatte blade', spredt: 'Spredte blade', naale: 'Nåletræer' },
@@ -122,6 +128,12 @@ const I18N = {
     sortAria: 'Group the species list', sortLabel: 'Group by:',
     sortDefault: 'Default', sortHyppighed: 'Abundance', sortStatus: 'Red List status', sortBladform: 'Leaf shape',
     sortMine: 'Hard for me', sortLookalike: 'Look-alikes',
+    cardMore: 'See everything about it', openSpecies: n => `Open ${n}`,
+    sheetClose: 'Close', sheetPrev: 'Previous species', sheetNext: 'Next species',
+    secWinter: 'In winter', secDist: 'Distribution in Denmark', secNative: 'Native status',
+    secLook: 'Can be confused with', secStats: 'Your answers', secSources: 'Read more',
+    statsLine: (r, n) => `You have answered correctly ${r} of ${n} times.`, statsNone: 'You have not practised this species yet.',
+    quizSpecies: 'Quiz this species and its look-alikes',
     sortArr: 'Leaf arrangement', sortHabit: 'Growth form', sortFruit: 'Fruit type', sortFamily: 'Family', sortHabitat: 'Habitat', sortNow: 'Right now: flowers and fruits',
     filterArr: 'Leaf arrangement', filterHabit: 'Growth form', filterFruit: 'Fruit type', filterFamily: 'Family', filterHabitat: 'Habitat',
     arrVals: { modsat: 'Opposite leaves', spredt: 'Alternate leaves', naale: 'Conifers' },
@@ -812,6 +824,7 @@ function renderList() {
   sel.onchange = () => { currentSort = sel.value; sfx.click(); renderGroups(); };
   ensureListControls();
   renderGroups();
+  if (SHEET.open) renderSheet();
 }
 
 function renderGroups() {
@@ -878,14 +891,14 @@ function renderGroups() {
     const grid = document.createElement('div');
     grid.className = 'species-grid' + (LIST.compact ? ' compact' : '');
     g.items.forEach(sp => {
-      grid.appendChild(LIST.compact && !LIST.expanded.has(sp.id) ? makeRow(sp) : makeCard(sp));
+      grid.appendChild(LIST.compact ? makeRow(sp, g.items) : makeCard(sp, g.items));
     });
     sec.appendChild(grid);
     wrap.appendChild(sec);
   });
 }
 
-function makeRow(sp) {
+function makeRow(sp, seq) {
   const row = document.createElement('button');
   row.className = 'species-row';
   const thumb = (sp.imgs.blade || [])[0] || '';
@@ -899,41 +912,22 @@ function makeRow(sp) {
       <span class="chip chip-status-${sp.status}">${sp.status}</span>
       <span class="chip">${T('bladformChip')[sp.bladform] || sp.bladform}</span>
     </span>`;
-  row.addEventListener('click', () => {
-    LIST.expanded.add(sp.id);
-    sfx.click();
-    row.replaceWith(makeCard(sp));
-  });
+  row.addEventListener('click', () => openSheet(sp, seq));
   return row;
 }
 
 const isScanUrl = u => /herbarium|illustration|handbook/i.test(u);
 
-function makeCard(sp) {
+/* kort i gitteret: et overblik — hele arten åbnes i et ark */
+function makeCard(sp, seq) {
   const card = document.createElement('article');
-  card.className = 'species-card';
-  const kindLabel = T('kind');
-
-  const slides = [];
-  KINDS.forEach(k => {
-    (sp.imgs[k] || []).forEach(u => slides.push({ url: u, kind: k }));
-  });
-  const statusTxt = `${sp.status} · ${T('status')[sp.status] || ''}`;
-
+  card.className = 'species-card preview';
+  card.tabIndex = 0;
+  card.setAttribute('role', 'button');
+  card.setAttribute('aria-label', T('openSpecies')(spName(sp)));
+  const img = (sp.imgs.blade || [])[0] || KINDS.map(k => (sp.imgs[k] || [])[0]).find(Boolean) || '';
   card.innerHTML = `
-    <div class="carousel">
-      <div class="carousel-track">
-        ${slides.map((s, i) => `
-          <figure class="slide${isScanUrl(s.url) ? ' contain' : ''}">
-            <img src="${s.url}" alt="${T('slideAlt')(kindLabel[s.kind], spName(sp))}" ${i ? 'loading="lazy"' : ''}>
-            <span class="slide-tag">${kindLabel[s.kind]}</span>
-          </figure>`).join('')}
-      </div>
-      ${slides.length > 1 ? `
-        <button class="car-btn car-prev" aria-label="${T('carPrev')}">&#8249;</button>
-        <button class="car-btn car-next" aria-label="${T('carNext')}">&#8250;</button>` : ''}
-      <span class="car-count">1/${slides.length}</span>
-    </div>
+    <div class="card-photo${isScanUrl(img) ? ' contain' : ''}"><img src="${img}" alt="" loading="lazy"></div>
     <div class="species-body">
       <div class="species-title-row">
         <span class="species-name">${spName(sp)}</span>
@@ -941,46 +935,247 @@ function makeCard(sp) {
       </div>
       <span class="species-latin">${sp.latin}</span>
       <div class="prop-chips">
-        <span class="chip chip-status-${sp.status}" title="${T('chipTitleStatus')}">${statusTxt}</span>
-        <span class="chip" title="${T('chipTitleHyp')}">${T('hyppighed')[sp.hyppighed] || sp.hyppighed}</span>
-        <span class="chip" title="${T('chipTitleBladform')}">${T('bladformChip')[sp.bladform] || sp.bladform}</span>
+        <span class="chip chip-status-${sp.status}">${sp.status} · ${T('status')[sp.status] || ''}</span>
+        <span class="chip">${T('hyppighed')[sp.hyppighed] || sp.hyppighed}</span>
+        <span class="chip">${T('bladformChip')[sp.bladform] || sp.bladform}</span>
       </div>
-      <p class="species-traits">${[T('arrVals')[sp.arr], T('habitVals')[sp.habit], T('familyVals')[sp.family]].filter(Boolean).join(' · ')}</p>
-      <p class="species-traits">${T('cardFlowers')}: ${formatMonths(sp.fl)} · ${T('cardFruits')}: ${formatMonths(sp.fr)}</p>
-      <p class="species-traits">${T('cardHabitat')}: ${(sp.habitat || []).map(h => T('habitatVals')[h]).join(', ')}</p>
-      <p class="species-fact">${spText(sp, 'blade')}</p>
-      <p class="species-fact">${spText(sp, 'bark')}</p>
-      ${(sp.imgs.blomst || []).length ? `<p class="species-fact"><strong>${kindLabel.blomst}:</strong> ${spText(sp, 'blomst')}</p>` : ''}
-      ${(sp.imgs.frugt || []).length ? `<p class="species-fact"><strong>${kindLabel.frugt}:</strong> ${spText(sp, 'frugt')}</p>` : ''}
-      <p class="species-fact"><strong>${T('factTag')}:</strong> ${spText(sp, 'fakta')}</p>
+      <p class="species-fact clamp">${spText(sp, 'blade')}</p>
+      <span class="card-more">${T('cardMore')} →</span>
     </div>`;
-
-  const track = card.querySelector('.carousel-track');
-  const count = card.querySelector('.car-count');
-  const updateCount = () => {
-    const idx = Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
-    count.textContent = `${Math.min(idx + 1, slides.length)}/${slides.length}`;
-  };
-  track.addEventListener('scroll', updateCount, { passive: true });
-  const prev = card.querySelector('.car-prev');
-  const next = card.querySelector('.car-next');
-  if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' }));
-  if (next) next.addEventListener('click', () => track.scrollBy({ left: track.clientWidth, behavior: 'smooth' }));
-
-  if (LIST.compact) {
-    card.classList.add('expanded');
-    const less = document.createElement('button');
-    less.className = 'linklike card-less';
-    less.textContent = T('showLess');
-    less.addEventListener('click', () => {
-      LIST.expanded.delete(sp.id);
-      sfx.click();
-      card.replaceWith(makeRow(sp));
-    });
-    card.querySelector('.species-body').appendChild(less);
-  }
+  const open = () => openSheet(sp, seq);
+  card.addEventListener('click', open);
+  card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
   return card;
 }
+
+/* ------------------- artsark: hele arten på én skærm ------------------- */
+
+const SHEET = { seq: [], idx: 0, kind: 'blade', imgIdx: 0, open: false };
+
+function openSheet(sp, seq) {
+  ensureAudio(); sfx.click();
+  SHEET.seq = seq && seq.length ? seq : [sp];
+  SHEET.idx = Math.max(0, SHEET.seq.indexOf(sp));
+  SHEET.kind = KINDS.find(k => (sp.imgs[k] || []).length) || 'blade';
+  SHEET.imgIdx = 0;
+  SHEET.open = true;
+  $('sheet').hidden = false;
+  document.body.classList.add('sheet-open');
+  renderSheet();
+  $('sheet').querySelector('.sheet-close').focus();
+}
+
+function closeSheet() {
+  SHEET.open = false;
+  $('sheet').hidden = true;
+  document.body.classList.remove('sheet-open');
+}
+
+function sheetGo(delta) {
+  const n = SHEET.seq.length;
+  if (n < 2) return;
+  SHEET.idx = (SHEET.idx + delta + n) % n;
+  const sp = SHEET.seq[SHEET.idx];
+  SHEET.kind = KINDS.find(k => (sp.imgs[k] || []).length) || 'blade';
+  SHEET.imgIdx = 0;
+  sfx.click();
+  renderSheet();
+  $('sheet').querySelector('.sheet-scroll').scrollTop = 0;
+}
+
+function photoGo(delta) {
+  const sp = SHEET.seq[SHEET.idx];
+  const n = (sp.imgs[SHEET.kind] || []).length;
+  if (n < 2) return;
+  SHEET.imgIdx = (SHEET.imgIdx + delta + n) % n;
+  renderSheetPhoto();
+}
+
+function renderSheetPhoto() {
+  const sp = SHEET.seq[SHEET.idx];
+  const urls = sp.imgs[SHEET.kind] || [];
+  const url = urls[SHEET.imgIdx] || '';
+  const box = $('sheet').querySelector('.sheet-photo');
+  box.classList.toggle('contain', isScanUrl(url));
+  const img = box.querySelector('img');
+  img.src = url;
+  img.alt = T('slideAlt')(T('kind')[SHEET.kind], spName(sp));
+  box.querySelector('.car-count').textContent = `${SHEET.imgIdx + 1}/${urls.length}`;
+  box.querySelectorAll('.ph-btn').forEach(b => { b.hidden = urls.length < 2; });
+  $('sheet').querySelectorAll('.photo-tab').forEach(t => {
+    const on = t.dataset.kind === SHEET.kind;
+    t.classList.toggle('on', on);
+    t.setAttribute('aria-selected', on ? 'true' : 'false');
+  });
+}
+
+function seasonStrip(sp) {
+  const names = T('months');
+  const cells = names.map((m, i) => {
+    const fl = (sp.fl || []).includes(i + 1);
+    const fr = (sp.fr || []).includes(i + 1);
+    const now = new Date().getMonth() === i;
+    return `<span class="season-cell${fl ? ' fl' : ''}${fr ? ' fr' : ''}${now ? ' now' : ''}" title="${T('monthsLong')[i]}">
+      <span class="season-bar"></span><span class="season-m">${m.charAt(0).toUpperCase()}</span></span>`;
+  }).join('');
+  return `<div class="season" role="img" aria-label="${T('cardFlowers')}: ${formatMonths(sp.fl)}. ${T('cardFruits')}: ${formatMonths(sp.fr)}.">
+      <div class="season-row">${cells}</div>
+      <div class="season-legend">
+        <span><i class="sw sw-fl"></i>${T('cardFlowers')}: ${formatMonths(sp.fl)}</span>
+        <span><i class="sw sw-fr"></i>${T('cardFruits')}: ${formatMonths(sp.fr)}</span>
+      </div>
+    </div>`;
+}
+
+function renderSheet() {
+  if (!SHEET.open) return;
+  const sp = SHEET.seq[SHEET.idx];
+  const D = DETAILS[sp.id] || {};
+  const li = LANG === 'en' ? 1 : 0;
+  const kindLabel = T('kind');
+  const kinds = KINDS.filter(k => (sp.imgs[k] || []).length);
+  const st = loadStats()[sp.id];
+
+  const facts = [
+    [T('filterFamily'), `${T('familyVals')[sp.family] || sp.family} <i>${sp.family}</i>`],
+    [T('filterArr'), T('arrVals')[sp.arr]],
+    [T('filterHabit'), T('habitVals')[sp.habit]],
+    [T('filterBladform'), T('bladformChip')[sp.bladform] || sp.bladform],
+    [T('filterFruit'), T('fruitVals')[sp.fruit]],
+    [T('filterHyppighed'), T('hyppighed')[sp.hyppighed] || sp.hyppighed],
+    [T('filterStatus'), `<span class="chip chip-status-${sp.status}">${sp.status} · ${T('status')[sp.status] || ''}</span>`],
+    [T('filterHabitat'), (sp.habitat || []).map(h => T('habitatVals')[h]).join(', ')],
+  ].filter(f => f[1]);
+
+  const sections = [
+    [kindLabel.blade, spText(sp, 'blade')],
+    [kindLabel.bark, spText(sp, 'bark')],
+    [kindLabel.blomst, (sp.imgs.blomst || []).length || sp.blomst ? spText(sp, 'blomst') : ''],
+    [kindLabel.frugt, (sp.imgs.frugt || []).length || sp.frugt ? spText(sp, 'frugt') : ''],
+    [T('secWinter'), D.winter ? D.winter[li] : ''],
+    [T('secDist'), D.dist ? D.dist[li] : ''],
+    [T('factTag'), spText(sp, 'fakta')],
+  ].filter(s => s[1]);
+
+  const looks = (sp.lookalikes || []).map(id => SPECIES.find(s => s.id === id)).filter(Boolean);
+  const pairText = other => {
+    const d = PAIR_DIFF[[sp.id, other.id].sort().join('|')];
+    return d ? d[li] : spText(other, 'blade');
+  };
+
+  const nbUrl = D.nb ? `https://www.naturbasen.dk/${D.nb}` : `https://www.naturbasen.dk/artsoegning?id=${encodeURIComponent(sp.latin)}&at=start`;
+  const wikiUrl = `https://da.wikipedia.org/w/index.php?search=${encodeURIComponent(sp.latin)}`;
+
+  const panel = $('sheet').querySelector('.sheet-panel');
+  panel.innerHTML = `
+    <div class="sheet-top">
+      <button class="sheet-nav" data-go="-1" aria-label="${T('sheetPrev')}" ${SHEET.seq.length < 2 ? 'hidden' : ''}>‹</button>
+      <span class="sheet-pos">${SHEET.seq.length > 1 ? `${SHEET.idx + 1} / ${SHEET.seq.length}` : ''}</span>
+      <button class="sheet-nav" data-go="1" aria-label="${T('sheetNext')}" ${SHEET.seq.length < 2 ? 'hidden' : ''}>›</button>
+      <span class="toolbar-spacer"></span>
+      <button class="sheet-close" aria-label="${T('sheetClose')}">✕</button>
+    </div>
+    <div class="sheet-scroll">
+      <header class="sheet-head">
+        <div class="species-title-row">
+          <h2 class="sheet-name">${spName(sp)}</h2>
+          <span class="level-badge level-${sp.level}">${T('levelName')[sp.level] || sp.level}</span>
+        </div>
+        <span class="species-latin">${sp.latin}</span>
+      </header>
+
+      <div class="sheet-photo">
+        <img alt="">
+        <button class="ph-btn ph-prev" aria-label="${T('carPrev')}">‹</button>
+        <button class="ph-btn ph-next" aria-label="${T('carNext')}">›</button>
+        <span class="car-count"></span>
+      </div>
+      <div class="photo-tabs" role="tablist">
+        ${kinds.map(k => `<button class="photo-tab" role="tab" data-kind="${k}">${kindLabel[k]} <span class="tab-n">${sp.imgs[k].length}</span></button>`).join('')}
+      </div>
+
+      <dl class="facts">${facts.map(f => `<div class="fact"><dt>${f[0]}</dt><dd>${f[1]}</dd></div>`).join('')}</dl>
+
+      ${seasonStrip(sp)}
+
+      ${D.native ? `<div class="native-note"><strong>${T('secNative')}:</strong> ${D.native[li]}</div>` : ''}
+
+      ${sections.map(s => `<section class="sheet-sec"><h3>${s[0]}</h3><p>${s[1]}</p></section>`).join('')}
+
+      ${looks.length ? `<section class="sheet-sec">
+        <h3>${T('secLook')}</h3>
+        <div class="look-list">
+          ${looks.map(o => `<button class="look-item" data-id="${o.id}">
+              <img src="${(o.imgs.blade || [])[0] || ''}" alt="" loading="lazy">
+              <span><strong>${spName(o)}</strong><span class="look-diff">${pairText(o)}</span></span>
+            </button>`).join('')}
+        </div>
+      </section>` : ''}
+
+      <section class="sheet-sec sheet-stats">
+        <h3>${T('secStats')}</h3>
+        <p>${st && st.seen ? T('statsLine')(st.seen - st.wrong, st.seen) : T('statsNone')}</p>
+        <button class="btn-primary sheet-quiz">${T('quizSpecies')}</button>
+      </section>
+
+      <section class="sheet-sec sheet-sources">
+        <h3>${T('secSources')}</h3>
+        <p><a href="${nbUrl}" target="_blank" rel="noopener">Naturbasen</a> · <a href="${wikiUrl}" target="_blank" rel="noopener">Wikipedia (dansk)</a></p>
+      </section>
+    </div>`;
+
+  panel.querySelector('.sheet-close').addEventListener('click', () => { sfx.click(); closeSheet(); });
+  panel.querySelectorAll('.sheet-nav').forEach(b => b.addEventListener('click', () => sheetGo(+b.dataset.go)));
+  panel.querySelector('.ph-prev').addEventListener('click', () => photoGo(-1));
+  panel.querySelector('.ph-next').addEventListener('click', () => photoGo(1));
+  panel.querySelectorAll('.photo-tab').forEach(t => t.addEventListener('click', () => {
+    SHEET.kind = t.dataset.kind; SHEET.imgIdx = 0; sfx.click(); renderSheetPhoto();
+  }));
+  panel.querySelectorAll('.look-item').forEach(b => b.addEventListener('click', () => {
+    const o = SPECIES.find(s => s.id === b.dataset.id);
+    const inSeq = SHEET.seq.indexOf(o);
+    if (inSeq >= 0) { SHEET.idx = inSeq; } else { SHEET.seq = [o]; SHEET.idx = 0; }
+    SHEET.kind = KINDS.find(k => (o.imgs[k] || []).length) || 'blade';
+    SHEET.imgIdx = 0;
+    sfx.click(); renderSheet();
+    $('sheet').querySelector('.sheet-scroll').scrollTop = 0;
+  }));
+  panel.querySelector('.sheet-quiz').addEventListener('click', () => {
+    let pool = [sp, ...looks];
+    if (pool.length < 4) {
+      const extra = shuffle(SPECIES.filter(s => !pool.includes(s) && s.level === sp.level)).slice(0, 4 - pool.length);
+      pool = pool.concat(extra);
+    }
+    closeSheet();
+    quizFromList(pool);
+  });
+
+  // swipe: på billedet skifter det billede, ellers art
+  const scroller = panel.querySelector('.sheet-scroll');
+  let sx = 0, sy = 0, onPhoto = false;
+  scroller.addEventListener('touchstart', e => {
+    const t = e.touches[0]; sx = t.clientX; sy = t.clientY;
+    onPhoto = !!e.target.closest('.sheet-photo');
+  }, { passive: true });
+  scroller.addEventListener('touchend', e => {
+    const t = e.changedTouches[0];
+    const dx = t.clientX - sx, dy = t.clientY - sy;
+    if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+    if (onPhoto) photoGo(dx < 0 ? 1 : -1);
+    else sheetGo(dx < 0 ? 1 : -1);
+  }, { passive: true });
+
+  renderSheetPhoto();
+}
+
+document.addEventListener('keydown', e => {
+  if (!SHEET.open) return;
+  if (e.key === 'Escape') closeSheet();
+  else if (e.key === 'ArrowRight') sheetGo(1);
+  else if (e.key === 'ArrowLeft') sheetGo(-1);
+});
+$('sheet').addEventListener('click', e => { if (e.target.id === 'sheet') closeSheet(); });
+
 
 /* ------------------- guide: lær at kende træerne ------------------- */
 

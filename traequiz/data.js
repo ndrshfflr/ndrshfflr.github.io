@@ -270,7 +270,7 @@ const SPECIES = [
    ]
   },
   "status": "LC",
-  "hyppighed": "Almindelig",
+  "hyppighed": "Hist og her",
   "bladform": "Savtakket",
   "en": "Small-leaved lime",
   "blade_en": "Heart-shaped leaf with a serrated margin. The yellowish flowers sit together with a pale green, winged bract.",
@@ -501,7 +501,7 @@ const SPECIES = [
    ]
   },
   "status": "LC",
-  "hyppighed": "Almindelig",
+  "hyppighed": "Hist og her",
   "bladform": "Lappet",
   "en": "Sessile oak",
   "blade_en": "Like the English oak — but the leaf sits on a distinct stalk, while the acorns barely have one. The opposite of the English oak.",
