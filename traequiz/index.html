@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TræQuiz — hjemmehørende danske træer</title>
+<meta name="description" content="Øv dig i at kende Danmarks hjemmehørende træer på blade, bark, blomster og frugter. Quiz med 33 vilde arter.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z' fill='%232e5b34'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="brand" data-nav="start" aria-label="Tilbage til forsiden" data-i18n-aria="brandAria">
+    <svg class="brand-leaf" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg>
+    <span class="brand-name">TræQuiz</span>
+  </button>
+  <nav class="topbar-nav">
+    <button class="navlink" data-nav="start" data-i18n="navQuiz">Quiz</button>
+    <button class="navlink" data-nav="learn" data-i18n="navGuide">Guide</button>
+    <button class="navlink" data-nav="list" data-i18n="navList">Artsliste</button>
+    <button class="navlink icon" id="langBtn" aria-label="Switch to English" data-i18n-aria="langAria" title="Dansk / English" data-i18n-title="langTitle">EN</button>
+    <button class="navlink icon" id="muteBtn" aria-label="Slå lyd til eller fra" title="Lyd til/fra" data-i18n-aria="muteAria" data-i18n-title="muteTitle">
+      <svg id="soundOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+      <svg id="soundOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="app">
+
+  <!-- START -->
+  <section id="screen-start" class="screen">
+    <div class="hero-wrap">
+      <img class="hero-img" src="assets/hero.jpg" alt="Botanisk illustration af eg, bøg, birk, løn og lind" width="1600" height="800">
+      <div class="hero-overlay">
+        <p class="hero-kicker" data-i18n="heroKicker">33 vilde, danske arter</p>
+        <h1 class="hero-title" data-i18n-html="heroTitle">Kender du<br>træerne?</h1>
+        <p class="hero-sub" data-i18n="heroSub">Alle træer i quizzen er hjemmehørende i Danmark — altså arter, der er indvandret af sig selv efter sidste istid. Ingen importerede park- og skovtræer.</p>
+      </div>
+    </div>
+
+    <div class="setup">
+      <div class="setup-card">
+        <h2 class="setup-heading" data-i18n="setupWhat">Hvad vil du øve dig på?</h2>
+        <div class="choice-group" role="radiogroup" aria-label="Spørgsmålstype" data-i18n-group-aria="modeAria">
+          <button class="choice is-selected" data-choice-mode="blade" role="radio" aria-checked="true">
+            <span class="choice-emoji" aria-hidden="true">🍂</span>
+            <span class="choice-label" data-i18n="modeBlade">Blade</span>
+            <span class="choice-desc" data-i18n="modeBladeDesc">Kend træet på løvet</span>
+          </button>
+          <button class="choice" data-choice-mode="bark" role="radio" aria-checked="false">
+            <span class="choice-emoji" aria-hidden="true">🌳</span>
+            <span class="choice-label" data-i18n="modeBark">Bark</span>
+            <span class="choice-desc" data-i18n="modeBarkDesc">Kend stammen på afstand</span>
+          </button>
+          <button class="choice" data-choice-mode="blomst" role="radio" aria-checked="false">
+            <span class="choice-emoji" aria-hidden="true">🌸</span>
+            <span class="choice-label" data-i18n="modeBlomst">Blomster</span>
+            <span class="choice-desc" data-i18n="modeBlomstDesc">Blomster og rakler</span>
+          </button>
+          <button class="choice" data-choice-mode="frugt" role="radio" aria-checked="false">
+            <span class="choice-emoji" aria-hidden="true">🍒</span>
+            <span class="choice-label" data-i18n="modeFrugt">Frugter</span>
+            <span class="choice-desc" data-i18n="modeFrugtDesc">Bær, nødder og kogler</span>
+          </button>
+          <button class="choice" data-choice-mode="blandet" role="radio" aria-checked="false">
+            <span class="choice-emoji" aria-hidden="true">🎲</span>
+            <span class="choice-label" data-i18n="modeBlandet">Blandet</span>
+            <span class="choice-desc" data-i18n="modeBlandetDesc">Lidt af hvert</span>
+          </button>
+        </div>
+
+        <h2 class="setup-heading" data-i18n="setupLevel">Sværhedsgrad</h2>
+        <div class="choice-group" role="radiogroup" aria-label="Sværhedsgrad" data-i18n-group-aria="levelAria">
+          <button class="choice is-selected" data-choice-level="alle" role="radio" aria-checked="true">
+            <span class="choice-label" id="lvlAlle">Alle 33</span>
+            <span class="choice-desc" data-i18n="levelAlleDesc">Blanding af alt</span>
+          </button>
+          <button class="choice" data-choice-level="nem" role="radio" aria-checked="false">
+            <span class="choice-label" id="lvlNem">Nem</span>
+            <span class="choice-desc" id="lvlNemDesc">10 almindelige arter</span>
+          </button>
+          <button class="choice" data-choice-level="mellem" role="radio" aria-checked="false">
+            <span class="choice-label" id="lvlMellem">Mellem</span>
+            <span class="choice-desc" id="lvlMellemDesc">15 lidt sværere</span>
+          </button>
+          <button class="choice" data-choice-level="svær" role="radio" aria-checked="false">
+            <span class="choice-label" id="lvlSvaer">Svær</span>
+            <span class="choice-desc" id="lvlSvaerDesc">8 kendere</span>
+          </button>
+        </div>
+
+        <button class="btn-primary" id="startBtn" data-i18n="startBtn">Start quizzen · 10 spørgsmål</button>
+        <p class="setup-tip" data-i18n="tip">Tip: Brug tastaturgenveje 1-4 for at svare og Enter for at gå videre.</p>
+        <p class="setup-tip"><button class="linklike" data-nav="learn" data-i18n="guideLink">Ny til træer? Læs den korte guide til at kende træer →</button></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="screen-quiz" class="screen" hidden>
+    <div class="quiz-top">
+      <div class="quiz-progress" aria-live="polite"><span id="qLabel" data-i18n="qLabel">Spørgsmål</span> <span id="qNum">1</span>/10</div>
+      <div class="quiz-meta">
+        <span class="score-pill"><span id="pointsLabel" data-i18n="pointsLabel">Points</span> <strong id="score">0</strong></span>
+        <span class="streak-pill" id="streakPill" hidden>🔥 <strong id="streak">0</strong> <span id="streakTxt" data-i18n="streakTxt">i træk</span></span>
+      </div>
+    </div>
+    <div class="quiz-progressbar"><div class="quiz-progressbar-fill" id="progressFill"></div></div>
+
+    <figure class="quiz-figure">
+      <div class="img-frame" id="imgFrame">
+        <img id="quizImg" alt="Hvilken træart er dette?" width="800" height="600" data-i18n-alt="imgAlt">
+        <div class="img-badge" id="imgBadge">Blad</div>
+        <div class="img-loading" id="imgLoading" hidden></div>
+      </div>
+    </figure>
+
+    <div class="answers" id="answers"></div>
+
+    <div class="feedback" id="feedback" hidden>
+      <p class="feedback-head" id="feedbackHead"></p>
+      <p class="feedback-hint" id="feedbackHint"></p>
+      <p class="feedback-fact"><span class="fact-tag" data-i18n="factTag">Vidste du</span> <span id="feedbackFact"></span></p>
+      <button class="btn-primary" id="nextBtn">Næste</button>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="screen-result" class="screen" hidden>
+    <div class="result-card">
+      <p class="result-kicker" id="resultKicker" data-i18n="resultKicker">Runden er slut</p>
+      <h2 class="result-score"><span id="finalScore">0</span> <span id="pointsWord" data-i18n="pointsWord">points</span></h2>
+      <p class="result-sub" id="resultSub"></p>
+      <div class="result-stats">
+        <div class="stat"><span class="stat-num" id="statCorrect">0</span><span class="stat-label" data-i18n="statCorrectLabel">rigtige af 10</span></div>
+        <div class="stat"><span class="stat-num" id="statStreak">0</span><span class="stat-label" data-i18n="statStreakLabel">bedste streak</span></div>
+      </div>
+      <div class="result-missed" id="resultMissed"></div>
+      <div class="result-actions">
+        <button class="btn-primary" id="againBtn" data-i18n="again">Prøv igen</button>
+        <button class="btn-ghost" data-nav="start" data-i18n="changeSettings">Skift indstillinger</button>
+        <button class="btn-ghost" data-nav="list" data-i18n="seeList">Se artslisten</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDE -->
+  <section id="screen-learn" class="screen" hidden>
+    <div class="learn-wrap">
+      <div class="learn-head">
+        <h2 class="learn-title" id="learnTitle"></h2>
+        <p class="learn-intro" id="learnIntro"></p>
+      </div>
+      <div class="learn-steps" id="learnSteps"></div>
+      <div class="learn-body" id="learnBody"></div>
+      <div class="learn-cta" id="learnCta"></div>
+    </div>
+  </section>
+
+  <!-- ARTSLISTE -->
+  <section id="screen-list" class="screen" hidden>
+    <div class="list-head">
+      <h2 class="list-title" data-i18n="listTitle">De 33 hjemmehørende træer</h2>
+      <p class="list-sub" data-i18n="listSub">Arter, der er indvandret til Danmark af sig selv efter sidste istid — uden menneskers hjælp. Swipe billederne på kortene for at se blade, bark, blomster og frugter.</p>
+      <div class="sort-row">
+        <span class="sort-label" data-i18n="sortLabel">Sortér efter:</span>
+        <div class="sort-buttons" role="group" aria-label="Sortér artslisten" data-i18n-group-aria="sortAria">
+          <button class="sort-btn active" data-sort="default" data-i18n="sortDefault">Standard</button>
+          <button class="sort-btn" data-sort="hyppighed" data-i18n="sortHyppighed">Almindelighed</button>
+          <button class="sort-btn" data-sort="status" data-i18n="sortStatus">Rødlistestatus</button>
+          <button class="sort-btn" data-sort="bladform" data-i18n="sortBladform">Bladform</button>
+        </div>
+      </div>
+    </div>
+    <div class="species-grid" id="speciesGrid"></div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p data-i18n-html="footer">Billeder: <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · Arterne følger Skov- og Naturstyrelsens liste over hjemmehørende træer og buske · Rødlistestatus: <a href="https://www.naturbasen.dk/" target="_blank" rel="noopener">Danmarks Rødliste 2019</a> via Naturbasen.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="learn.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
