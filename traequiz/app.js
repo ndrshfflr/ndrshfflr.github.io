@@ -567,7 +567,24 @@ function renderList() {
 
   const kindLabel = T('kind');
 
+  // Gruppering: ved sortering vises en overskrift pr. gruppe med antal arter
+  const GROUP_LABEL = {
+    hyppighed: v => T('hyppighed')[v] || v,
+    status: v => `${T('status')[v] || v} · ${v}`,
+    bladform: v => T('bladformChip')[v] || v,
+  };
+  const groupKey = currentSort === 'default' ? null : currentSort;
+  let lastGroup = null;
+
   list.forEach(sp => {
+    if (groupKey && sp[groupKey] !== lastGroup) {
+      lastGroup = sp[groupKey];
+      const n = list.filter(x => x[groupKey] === lastGroup).length;
+      const h = document.createElement('h3');
+      h.className = 'species-group-head';
+      h.textContent = `${GROUP_LABEL[groupKey](lastGroup)} (${n})`;
+      grid.appendChild(h);
+    }
     const card = document.createElement('article');
     card.className = 'species-card';
 
