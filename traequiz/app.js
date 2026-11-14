@@ -37,9 +37,22 @@ const I18N = {
     missedLabel: 'Til næste gang:',
     listTitle: 'De 33 hjemmehørende træer',
     listSub: 'Arter, der er indvandret til Danmark af sig selv efter sidste istid — uden menneskers hjælp. Swipe billederne på kortene for at se blade, bark, blomster og frugter.',
-    sortAria: 'Sortér artslisten', sortLabel: 'Sortér efter:',
+    sortAria: 'Gruppér artslisten', sortLabel: 'Gruppér efter:',
     sortDefault: 'Standard', sortHyppighed: 'Almindelighed', sortStatus: 'Rødlistestatus', sortBladform: 'Bladform',
     sortMine: 'Svære for mig', sortLookalike: 'Forvekslinger',
+    sortArr: 'Bladstilling', sortHabit: 'Vækstform', sortFruit: 'Frugttype', sortFamily: 'Familie', sortHabitat: 'Levested', sortNow: 'Lige nu: blomster og frugter',
+    filterArr: 'Bladstilling', filterHabit: 'Vækstform', filterFruit: 'Frugttype', filterFamily: 'Familie', filterHabitat: 'Levested',
+    arrVals: { modsat: 'Modsatte blade', spredt: 'Spredte blade', naale: 'Nåletræer' },
+    habitVals: { traa: 'Træ', busk: 'Busk eller lille træ' },
+    fruitVals: { noed: 'Nødder og agern', vinget: 'Vingede frø', kogle: 'Kogler', baer: 'Bær og stenfrugter', kernefrugt: 'Æbler og pærer', kapsel: 'Kapsler med frø' },
+    familyVals: { Fagaceae: 'Bøgefamilien', Betulaceae: 'Birkefamilien', Oleaceae: 'Olivenfamilien', Malvaceae: 'Katostfamilien', Pinaceae: 'Fyrrefamilien', Rosaceae: 'Rosenfamilien', Sapindaceae: 'Sæbebærfamilien', Salicaceae: 'Pilefamilien', Cupressaceae: 'Cypresfamilien', Taxaceae: 'Taksfamilien', Viburnaceae: 'Desmerurtfamilien', Aquifoliaceae: 'Kristtornfamilien', Ulmaceae: 'Elmefamilien', Rhamnaceae: 'Vrietornfamilien', Celastraceae: 'Benvedfamilien' },
+    habitatVals: { skov: 'Skov', bryn: 'Skovbryn, krat og hegn', vaad: 'Fugtig bund', toer: 'Tør, sandet bund og hede' },
+    months: ['jan.', 'feb.', 'mar.', 'apr.', 'maj', 'jun.', 'jul.', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'],
+    monthsLong: ['januar', 'februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december'],
+    allYear: 'hele året',
+    nowGroups: { flower: m => `Blomstrer i ${m}`, fruit: m => `Har frugter i ${m}`, none: m => `Hverken blomster eller frugter i ${m}` },
+    nowNote: 'Månederne er omtrentlige for Danmark og kan flytte sig et par uger med vejret.',
+    cardFlowers: 'Blomstrer', cardFruits: 'Frugter', cardHabitat: 'Levested',
     searchPh: 'Søg efter art (også latin)',
     filtersLabel: n => n ? `Filtre (${n})` : 'Filtre',
     filterBladform: 'Bladform', filterHyppighed: 'Almindelighed', filterStatus: 'Rødlistestatus', filterLevel: 'Sværhedsgrad',
@@ -106,9 +119,22 @@ const I18N = {
     missedLabel: 'For next time:',
     listTitle: 'The 33 native trees',
     listSub: 'Species that arrived in Denmark on their own after the last ice age — without human help. Swipe the images on each card to see leaves, bark, flowers and fruits.',
-    sortAria: 'Sort the species list', sortLabel: 'Sort by:',
+    sortAria: 'Group the species list', sortLabel: 'Group by:',
     sortDefault: 'Default', sortHyppighed: 'Abundance', sortStatus: 'Red List status', sortBladform: 'Leaf shape',
     sortMine: 'Hard for me', sortLookalike: 'Look-alikes',
+    sortArr: 'Leaf arrangement', sortHabit: 'Growth form', sortFruit: 'Fruit type', sortFamily: 'Family', sortHabitat: 'Habitat', sortNow: 'Right now: flowers and fruits',
+    filterArr: 'Leaf arrangement', filterHabit: 'Growth form', filterFruit: 'Fruit type', filterFamily: 'Family', filterHabitat: 'Habitat',
+    arrVals: { modsat: 'Opposite leaves', spredt: 'Alternate leaves', naale: 'Conifers' },
+    habitVals: { traa: 'Tree', busk: 'Shrub or small tree' },
+    fruitVals: { noed: 'Nuts and acorns', vinget: 'Winged seeds', kogle: 'Cones', baer: 'Berries and drupes', kernefrugt: 'Apples and pears', kapsel: 'Seed capsules' },
+    familyVals: { Fagaceae: 'Beech family', Betulaceae: 'Birch family', Oleaceae: 'Olive family', Malvaceae: 'Mallow family', Pinaceae: 'Pine family', Rosaceae: 'Rose family', Sapindaceae: 'Soapberry family', Salicaceae: 'Willow family', Cupressaceae: 'Cypress family', Taxaceae: 'Yew family', Viburnaceae: 'Viburnum family', Aquifoliaceae: 'Holly family', Ulmaceae: 'Elm family', Rhamnaceae: 'Buckthorn family', Celastraceae: 'Spindle family' },
+    habitatVals: { skov: 'Woodland', bryn: 'Woodland edges, scrub and hedges', vaad: 'Damp ground', toer: 'Dry, sandy ground and heath' },
+    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    monthsLong: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    allYear: 'all year',
+    nowGroups: { flower: m => `Flowering in ${m}`, fruit: m => `With fruits in ${m}`, none: m => `Neither flowers nor fruits in ${m}` },
+    nowNote: 'Months are approximate for Denmark and can shift by a couple of weeks with the weather.',
+    cardFlowers: 'Flowers', cardFruits: 'Fruits', cardHabitat: 'Habitat',
     searchPh: 'Search species (Latin too)',
     filtersLabel: n => n ? `Filters (${n})` : 'Filters',
     filterBladform: 'Leaf shape', filterHyppighed: 'Abundance', filterStatus: 'Red List status', filterLevel: 'Difficulty',
@@ -581,7 +607,7 @@ let currentSort = 'default';
 
 const LIST = {
   q: '',
-  filters: { bladform: new Set(), hyppighed: new Set(), status: new Set(), level: new Set() },
+  filters: { bladform: new Set(), hyppighed: new Set(), status: new Set(), level: new Set(), arr: new Set(), habit: new Set(), fruit: new Set(), habitat: new Set(), family: new Set() },
   compact: false,
   collapsed: new Set(),
   expanded: new Set(),
@@ -617,12 +643,41 @@ const FILTER_DIMS = [
   { key: 'hyppighed', order: HYPPIGHED_ORDER, label: () => T('filterHyppighed'), val: v => T('hyppighed')[v] || v },
   { key: 'status', order: STATUS_ORDER, label: () => T('filterStatus'), val: v => `${T('status')[v] || v} · ${v}` },
   { key: 'level', order: LEVEL_ORDER, label: () => T('filterLevel'), val: v => T('levelName')[v] || v },
+  { key: 'arr', order: ['modsat', 'spredt', 'naale'], label: () => T('filterArr'), val: v => T('arrVals')[v] || v },
+  { key: 'habit', order: ['traa', 'busk'], label: () => T('filterHabit'), val: v => T('habitVals')[v] || v },
+  { key: 'fruit', order: ['noed', 'vinget', 'kogle', 'baer', 'kernefrugt', 'kapsel'], label: () => T('filterFruit'), val: v => T('fruitVals')[v] || v },
+  { key: 'habitat', order: ['skov', 'bryn', 'vaad', 'toer'], label: () => T('filterHabitat'), val: v => T('habitatVals')[v] || v },
+  { key: 'family', label: () => T('filterFamily'), val: v => `${T('familyVals')[v] || v} · ${v}`,
+    order: () => [...new Set(SPECIES.map(s => s.family))].sort((a, b) => (T('familyVals')[a] || a).localeCompare(T('familyVals')[b] || b, LANG === 'da' ? 'da' : 'en')) },
 ];
+const dimOrder = d => (typeof d.order === 'function' ? d.order() : d.order);
+const hasVal = (sp, key, v) => [].concat(sp[key]).includes(v);
+
+const SORTS = ['default', 'hyppighed', 'status', 'bladform', 'arr', 'habit', 'fruit', 'family', 'habitat', 'lookalike', 'mine', 'now'];
+const SORT_LABEL_KEY = { default: 'sortDefault', hyppighed: 'sortHyppighed', status: 'sortStatus', bladform: 'sortBladform', arr: 'sortArr', habit: 'sortHabit', fruit: 'sortFruit', family: 'sortFamily', habitat: 'sortHabitat', lookalike: 'sortLookalike', mine: 'sortMine', now: 'sortNow' };
+
+/* måneder som korte intervaller, fx "sep.–okt." eller "okt.–mar." */
+function formatMonths(ms) {
+  if (!ms || !ms.length) return '';
+  if (ms.length >= 12) return T('allYear');
+  const on = m => ms.includes(((m - 1 + 12) % 12) + 1);
+  const names = T('months');
+  const runs = [];
+  for (let m = 1; m <= 12; m++) {
+    if (on(m) && !on(m - 1)) {
+      let e = m;
+      while (on(e + 1)) e++;
+      const end = ((e - 1) % 12) + 1;
+      runs.push(end === m ? names[m - 1] : `${names[m - 1]}–${names[end - 1]}`);
+    }
+  }
+  return runs.join(', ');
+}
 
 function matches(sp) {
   const q = LIST.q.trim().toLowerCase();
   if (q && ![sp.dk, sp.en, sp.latin].some(n => (n || '').toLowerCase().includes(q))) return false;
-  return FILTER_DIMS.every(d => !LIST.filters[d.key].size || LIST.filters[d.key].has(sp[d.key]));
+  return FILTER_DIMS.every(d => !LIST.filters[d.key].size || [].concat(sp[d.key]).some(v => LIST.filters[d.key].has(v)));
 }
 const activeFilterCount = () => FILTER_DIMS.reduce((n, d) => n + LIST.filters[d.key].size, 0);
 
@@ -655,11 +710,24 @@ function buildGroups(list) {
     })).filter(g => g.items.length);
   }
 
+  if (currentSort === 'now') {
+    const m = new Date().getMonth() + 1;
+    const mName = T('monthsLong')[m - 1];
+    const fl = list.filter(sp => (sp.fl || []).includes(m)).sort(cmpName);
+    const fr = list.filter(sp => (sp.fr || []).includes(m)).sort(cmpName);
+    const none = list.filter(sp => !fl.includes(sp) && !fr.includes(sp)).sort(cmpName);
+    return [
+      { key: 'flower', label: T('nowGroups').flower(mName), items: fl },
+      { key: 'fruit', label: T('nowGroups').fruit(mName), items: fr },
+      { key: 'none', label: T('nowGroups').none(mName), items: none },
+    ].filter(g => g.items.length);
+  }
+
   const dim = FILTER_DIMS.find(d => d.key === currentSort);
-  return dim.order.map(v => ({
+  return dimOrder(dim).map(v => ({
     key: v,
     label: dim.val(v),
-    items: list.filter(sp => sp[dim.key] === v).sort(cmpName),
+    items: list.filter(sp => hasVal(sp, dim.key, v)).sort(cmpName),
   })).filter(g => g.items.length);
 }
 
@@ -690,7 +758,7 @@ function ensureListControls(force) {
 
   const dims = box.querySelector('.filter-dims');
   FILTER_DIMS.forEach(d => {
-    const present = d.order.filter(v => SPECIES.some(sp => sp[d.key] === v));
+    const present = dimOrder(d).filter(v => SPECIES.some(sp => hasVal(sp, d.key, v)));
     const row = document.createElement('div');
     row.className = 'filter-dim';
     row.innerHTML = `<span class="filter-dim-label">${d.label()}</span><div class="filter-chips"></div>`;
@@ -739,10 +807,9 @@ function quizFromList(items) {
 }
 
 function renderList() {
-  document.querySelectorAll('.sort-btn[data-sort]').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.sort === currentSort);
-    btn.onclick = () => { currentSort = btn.dataset.sort; sfx.click(); renderList(); };
-  });
+  const sel = $('sortSelect');
+  sel.innerHTML = SORTS.map(k => `<option value="${k}"${k === currentSort ? ' selected' : ''}>${T(SORT_LABEL_KEY[k])}</option>`).join('');
+  sel.onchange = () => { currentSort = sel.value; sfx.click(); renderGroups(); };
   ensureListControls();
   renderGroups();
 }
@@ -758,8 +825,8 @@ function renderGroups() {
   $('clearFilters').hidden = !nf && !LIST.q;
   $('viewToggle').textContent = LIST.compact ? T('viewCards') : T('viewCompact');
   $('quizShownBtn').disabled = list.length < 2;
-  $('mineNote').hidden = currentSort !== 'mine';
-  $('mineNote').textContent = T('mineNote');
+  $('mineNote').hidden = currentSort !== 'mine' && currentSort !== 'now';
+  $('mineNote').textContent = currentSort === 'now' ? T('nowNote') : T('mineNote');
 
   if (!list.length) {
     wrap.innerHTML = `<p class="list-empty">${T('listEmpty')}</p>`;
@@ -878,6 +945,9 @@ function makeCard(sp) {
         <span class="chip" title="${T('chipTitleHyp')}">${T('hyppighed')[sp.hyppighed] || sp.hyppighed}</span>
         <span class="chip" title="${T('chipTitleBladform')}">${T('bladformChip')[sp.bladform] || sp.bladform}</span>
       </div>
+      <p class="species-traits">${[T('arrVals')[sp.arr], T('habitVals')[sp.habit], T('familyVals')[sp.family]].filter(Boolean).join(' · ')}</p>
+      <p class="species-traits">${T('cardFlowers')}: ${formatMonths(sp.fl)} · ${T('cardFruits')}: ${formatMonths(sp.fr)}</p>
+      <p class="species-traits">${T('cardHabitat')}: ${(sp.habitat || []).map(h => T('habitatVals')[h]).join(', ')}</p>
       <p class="species-fact">${spText(sp, 'blade')}</p>
       <p class="species-fact">${spText(sp, 'bark')}</p>
       ${(sp.imgs.blomst || []).length ? `<p class="species-fact"><strong>${kindLabel.blomst}:</strong> ${spText(sp, 'blomst')}</p>` : ''}

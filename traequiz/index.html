@@ -170,15 +170,8 @@
       <h2 class="list-title" data-i18n="listTitle">De 33 hjemmehørende træer</h2>
       <p class="list-sub" data-i18n="listSub">Arter, der er indvandret til Danmark af sig selv efter sidste istid — uden menneskers hjælp. Swipe billederne på kortene for at se blade, bark, blomster og frugter.</p>
       <div class="sort-row">
-        <span class="sort-label" data-i18n="sortLabel">Sortér efter:</span>
-        <div class="sort-buttons" role="group" aria-label="Sortér artslisten" data-i18n-group-aria="sortAria">
-          <button class="sort-btn active" data-sort="default" data-i18n="sortDefault">Standard</button>
-          <button class="sort-btn" data-sort="hyppighed" data-i18n="sortHyppighed">Almindelighed</button>
-          <button class="sort-btn" data-sort="status" data-i18n="sortStatus">Rødlistestatus</button>
-          <button class="sort-btn" data-sort="bladform" data-i18n="sortBladform">Bladform</button>
-          <button class="sort-btn" data-sort="lookalike" data-i18n="sortLookalike">Forvekslinger</button>
-          <button class="sort-btn" data-sort="mine" data-i18n="sortMine">Svære for mig</button>
-        </div>
+        <span class="sort-label" data-i18n="sortLabel">Gruppér efter:</span>
+        <select id="sortSelect" class="sort-select" aria-label="Gruppér artslisten"></select>
       </div>
       <div class="list-controls" id="listControls"></div>
     </div>
@@ -192,6 +185,7 @@
 </footer>
 
 <script src="data.js"></script>
+<script src="traits.js"></script>
 <script src="learn.js"></script>
 <script src="app.js"></script>
 </body>

@@ -971,3 +971,9 @@ main { flex: 1; width: 100%; }
 @media (max-width: 480px) { .row-chips .chip:last-child { display: none; } }
 .species-card.expanded { max-width: 560px; }
 .card-less { align-self: flex-start; margin-top: .5rem; }
+.sort-select {
+  font: inherit; font-size: .95rem; padding: .45rem 2rem .45rem .8rem; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--ink); max-width: 100%;
+}
+.species-traits { font-size: .78rem; color: var(--ink-soft); margin: 0; }
+.species-traits + .species-fact { margin-top: .35rem; }
