@@ -4,21 +4,21 @@ const LEARN = {
   da: {
     navLabel: 'Guide',
     title: 'Sådan kender du et træ',
-    intro: 'Man behøver ikke være botaniker for at bestemme et træ. Det handler om at stille de rigtige spørgsmål i den rigtige rækkefølge — og vide, hvor man skal kigge. Her er metoden, som quizzen er bygget oven på.',
+    intro: 'Man behøver ikke være botaniker for at bestemme et træ. Det handler om at stille de rigtige spørgsmål i den rigtige rækkefølge — og vide, hvor man skal kigge. Her er metoden, som quizzen er bygget på.',
     stepsTitle: 'Fem spørgsmål der fører dig til svaret',
     steps: [
       { head: 'Nåle eller blade?', text: 'Er det et nåletræ eller et løvtræ? Danmark har kun tre hjemmehørende nåletræer — skovfyr, ene og taks — så det første spørgsmål er hurtigt besvaret.' },
-      { head: 'Hvordan sidder bladene?', text: 'Sidor bladene parvis over for hinanden på skuddet (modsatte blade), sidder de skiftende hele vejen rundt (spredte blade)? Modsatte blade har ask, løn, benved og kvalkved — næsten alle andre danske træer har spredte blade. Bladstillingen er blandt de sikreste kendetegn overhovedet.' },
-      { head: 'Hvad er bladformen?', text: 'Er bladet helrandet (bøg, tørst), savtakket (birk, elm, kirsebær), lappet (eg, løn, tjørn) eller finnet sammensat (ask, røn)? Bladformgruppen indsnævrer listen til få arter på ét blik.' },
+      { head: 'Hvordan sidder bladene?', text: 'Sidder bladene parvis over for hinanden på skuddet (modsatte blade), eller sidder de enkeltvis og skiftevis (spredte blade)? Ask, løn, benved og kvalkved har modsatte blade — næsten alle andre danske træer har spredte blade. Bladstillingen er blandt de sikreste kendetegn overhovedet.' },
+      { head: 'Hvad er bladformen?', text: 'Er bladet helrandet (bøg, tørst), savtakket (birk, elm, kirsebær), lappet (eg, løn, tjørn) eller finnet sammensat (ask, røn)? Bladformen indsnævrer med ét blik listen til få arter.' },
       { head: 'Kig på detaljerne', text: 'Bladrandens takker, bladets basis, stilkens længde og små kirtler. Elmen har skæv, asymmetrisk bladbasis; stilkegens blade sidder næsten uden stilk, mens nøglerne har lang stilk; fuglekirsebær har små røde kirtler ved bladstilkens basis; dunbirk er dunet på unge skud.' },
-      { head: 'Bark, blomster og frugter', text: 'Hvis bladene ikke slår det fast, giver barken svar hele året — og om foråret og efteråret afslører blomster og frugter ofte arten med ét blik: rakler, nøgler, vingede frø, bær og kogler.' },
+      { head: 'Bark, blomster og frugter', text: 'Hvis bladene ikke afgør det, giver barken svar hele året — og om foråret og efteråret afslører blomster og frugter ofte arten med ét blik: rakler, nøgler, vingede frø, bær og kogler.' },
     ],
     sections: [
       {
         title: 'Bladet — dit vigtigste spor',
         paras: [
-          'Fra maj til oktober fortæller bladet det meste. Kig på tre ting: formen, randen og hvordan bladene sidder på grenen. Træn øjet på de fire bladformgrupper herunder — de dækker alle 33 arter i denne quiz.',
-          'Vær opmærksom på, at unge skud og skyggeblade kan se anderledes ud end normale solblade. Tag altid et blad fra midten af kronen, hvis du kan.',
+          'Fra maj til oktober fortæller bladet det meste. Kig på tre ting: formen, randen og hvordan bladene sidder på grenen. Træn øjet på de fire bladformgrupper herunder — de dækker alle løvtræerne i quizzen.',
+          'Vær opmærksom på, at unge skud og skyggeblade kan se anderledes ud end normale solblade. Tag så vidt muligt et blad fra den solbeskinnede del af kronen.',
         ],
         imgs: [
           { sp: 'fagus', kind: 'blade', caption: 'Helrandet · bøg' },
@@ -31,7 +31,7 @@ const LEARN = {
         title: 'Barken — kendetegnet der virker hele året',
         paras: [
           'Barken er det eneste kendetegn, du kan bruge i alle årstider — også om vinteren og på unge træer uden frugter. Kig på farve, struktur og om barken skaller af.',
-          'Husk at barken ændrer sig med alderen: en ung bøg er glat og grå, en gammel bøg får tyk, furet bark. Sammenlign derfor med træer af nogenlunde samme størrelse.',
+          'Husk at barken ændrer sig med alderen: en ung eg har glat bark, mens en gammel eg får tyk, furet bark. Sammenlign derfor med træer af nogenlunde samme størrelse.',
         ],
         imgs: [
           { sp: 'pendula', kind: 'bark', caption: 'Hvid og skallende · vortebirk' },
@@ -42,11 +42,11 @@ const LEARN = {
       {
         title: 'Blomster og frugter — årets højdepunkter',
         paras: [
-          'Om foråret afslører blomstringen mange arter med ét blik: kirsebær og slåen stikker hvidt af mod den nøgne skov, birk og hassel hænger med gule rakler, og seljepilens sølvgrå kattepoter er blandt de første forårstegn.',
-          'Om efteråret giver frugterne svaret: egens nøgler, lønnens og elmens vingede frø, rønnens bærklaser, hasselens nødder og fyrrens kogler. Frugterne er ofte mere artstypiske end bladene — en nøgle med lang stilk er stilkeg, uden stilk er det vintereg.',
+          'Om foråret afslører blomstringen mange arter med ét blik: kirsebær og slåen lyser hvidt i den nøgne skov, birk og hassel har hængende gule rakler, og seljepilens sølvgrå kattepoter er blandt de første forårstegn.',
+          'Om efteråret giver frugterne svaret: egens nøgler, lønnens og elmens vingede frø, rønnens bærklaser, hasselens nødder og fyrrens kogler. Frugterne er ofte mere artstypiske end bladene — et agern med lang stilk er stilkeg, et uden stilk er vintereg.',
         ],
         imgs: [
-          { sp: 'corylus', kind: 'blomst', caption: 'Han-rakler · hassel' },
+          { sp: 'corylus', kind: 'blomst', caption: 'Hanrakler · hassel' },
           { sp: 'tilia', kind: 'blomst', caption: 'Vinget højblad · småbladet lind' },
           { sp: 'robur', kind: 'frugt', caption: 'Nøgler med stilk · stilkeg' },
           { sp: 'pinus', kind: 'frugt', caption: 'Kogler · skovfyr' },
@@ -55,22 +55,22 @@ const LEARN = {
       {
         title: 'Om vinteren: knopper, silhuet og stedsegrønt',
         paras: [
-          'Uden blade kigger du på knopper, bark og træets silhuet. Askens sorte, ru knopper er unikke; bøgens knopper er lange og cigarformede; lønnens er modsatte hinanden parvis.',
-          'De visne, lysebrune blade hænger ofte på bøgen hele vinteren — et sikkert vintertegn. Og to af arterne her er stedsegrønne: taks og kristtorn grønner hele vinteren.',
+          'Uden blade kigger du på knopper, bark og træets silhuet. Askens sorte, ru knopper er unikke; bøgens knopper er lange og cigarformede; lønnens sidder parvis over for hinanden.',
+          'De visne, lysebrune blade hænger ofte på bøgen hele vinteren — et godt kendetegn om vinteren. Kristtorn er det eneste stedsegrønne løvtræ her, og de tre nåletræer — skovfyr, ene og taks — er også grønne hele vinteren.',
         ],
       },
     ],
     lookalikesTitle: 'Klassiske forvekslinger',
-    lookalikesIntro: 'Fem par, som selv erfarne skovgængere blander sammen. Kend forskellen — og brug den som snydetjek i quizzen.',
+    lookalikesIntro: 'Fem par, som selv erfarne skovgængere blander sammen. Lær forskellen — og brug den, når du er i tvivl i quizzen.',
     lookalikes: [
       { a: 'Stilkeg', b: 'Vintereg', text: 'Nøglerne har lang stilk hos stilkegen, men næsten ingen stilk hos vinteregen — mens det er omvendt med bladstilkene.' },
       { a: 'Vortebirk', b: 'Dunbirk', text: 'Vortebirk har spids bladspids og sorte striber i den hvide bark; dunbirk har afrundet spids, dunede skud og mere glat, grålig bark.' },
       { a: 'Engriflet hvidtjørn', b: 'Almindelig hvidtjørn', text: 'Engriflet hvidtjørn har dybe, spidse bladlapper — næsten helt ind til midten — og én sten i bærret. Almindelig hvidtjørn har grunde, runde lapper med svage takker og 2-3 sten.' },
       { a: 'Skovelm', b: 'Småbladet elm', text: 'Skovelm har store, ru blade med frøet midt i vingen. Småbladet elm har mindre, mere symmetriske blade med frøet øverst i vingen.' },
-      { a: 'Spidsløn', b: 'Ær', text: 'Spidsløn har spidse lapper og røde knopper om vinteren. Ær har rundere lapper, grønne knopper og bark der skaller i plader.' },
+      { a: 'Spidsløn', b: 'Ær', text: 'Spidsløn har spidse lapper og røde knopper om vinteren. Ær har rundere lapper, grønne knopper og bark, der skaller af i plader.' },
     ],
     ctaTitle: 'Nu er du klar',
-    ctaText: 'Læs kunsten ved at gøre: Start med de nemme arter på blade, og arbejd dig op. Kunststykket er at kende kendetegnene — det lærer du bedst i quizzen.',
+    ctaText: 'Man lærer det bedst ved at gøre det: Start med de nemme arter og bladene, og arbejd dig op. Kunsten er at kende kendetegnene — og dem lærer du bedst i quizzen.',
     ctaBtn: 'Start quizzen',
     ctaList: 'Se alle 33 arter',
   },
@@ -90,8 +90,8 @@ const LEARN = {
       {
         title: 'The leaf — your most important clue',
         paras: [
-          'From May to October, the leaf tells you most of the story. Look at three things: the shape, the margin and how the leaves sit on the branch. Train your eye on the four leaf-shape groups below — they cover all 33 species in this quiz.',
-          'Note that young shoots and shade leaves can look different from normal sun leaves. Always take a leaf from the middle of the crown if you can.',
+          'From May to October, the leaf tells you most of the story. Look at three things: the shape, the margin and how the leaves sit on the branch. Train your eye on the four leaf-shape groups below — they cover all the broadleaf trees in the quiz.',
+          'Note that young shoots and shade leaves can look different from normal sun leaves. If you can, take a leaf from the sunlit part of the crown.',
         ],
         imgs: [
           { sp: 'fagus', kind: 'blade', caption: 'Entire margin · beech' },
@@ -104,7 +104,7 @@ const LEARN = {
         title: 'The bark — the clue that works all year',
         paras: [
           'Bark is the only feature you can use in every season — also in winter and on young trees without fruit. Look at colour, structure and whether the bark peels.',
-          'Remember that bark changes with age: a young beech is smooth and grey, an old beech develops thick, furrowed bark. So compare with trees of roughly the same size.',
+          'Remember that bark changes with age: a young oak has smooth bark, while an old oak develops thick, furrowed bark. So compare with trees of roughly the same size.',
         ],
         imgs: [
           { sp: 'pendula', kind: 'bark', caption: 'White and peeling · silver birch' },
@@ -129,7 +129,7 @@ const LEARN = {
         title: 'In winter: buds, silhouette and evergreens',
         paras: [
           'Without leaves, look at buds, bark and the tree\u2019s silhouette. The ash\u2019s black, rough buds are unique; the beech\u2019s buds are long and cigar-shaped; the maple\u2019s sit in opposite pairs.',
-          'The withered, light brown leaves often stay on the beech all winter — a certain winter sign. And two of the species here are evergreen: yew and holly stay green all winter.',
+          'The withered, light brown leaves often stay on the beech all winter — a good winter clue. Holly is the only evergreen broadleaf here, and the three conifers — Scots pine, juniper and yew — also stay green all winter.',
         ],
       },
     ],
