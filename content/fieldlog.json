@@ -111,6 +111,10 @@
     {
       "species": "Buteo buteo",
       "favourite": true
+    },
+    {
+      "species": "Buteo lagopus",
+      "favourite": true
     }
   ],
   "hide": [],
