@@ -10,6 +10,7 @@ re-running this just bakes those edits into the HTML for search engines.
 """
 import datetime
 import re
+import unicodedata
 import hashlib
 import json
 import math
@@ -446,6 +447,51 @@ def photo_cells(p, weight):
     return WEIGHT_CELLS.get(weight, (1, 1))
 
 
+def album_id(name, taken=()):
+    base = re.sub(r"[^a-z0-9]+", "-", unicodedata.normalize("NFKD", str(name).lower().replace("æ", "ae").replace("ø", "oe").replace("å", "aa"))
+                  .encode("ascii", "ignore").decode()).strip("-") or "album"
+    i, out = 2, base
+    while out in taken:
+        out, i = f"{base}-{i}", i + 1
+    return out
+
+
+def photo_albums(gallery_doc):
+    """The albums of the photography page, in their order (content/gallery.json → albums:
+    id, name, Danish name, cover, photos in their order). Only photos on the photography
+    page count. Album names still written on a photo (the old way) are added on."""
+    on_page = {str(p["image"]) for p in gallery_doc.get("images") or [] if p and p.get("image") and p.get("onPhotoPage") is not False}
+    albums, by_name = [], {}
+    for a in gallery_doc.get("albums") or []:
+        name = str((a or {}).get("name") or "").strip()
+        if not name:
+            continue
+        aid = str(a.get("id") or "").strip()
+        aid = aid if re.match(r"^[a-z0-9-]+$", aid) and aid not in {x["slug"] for x in albums} else album_id(name, {x["slug"] for x in albums})
+        photos = []
+        for x in a.get("photos") or []:
+            x = str(x or "")
+            if x in on_page and x not in photos:
+                photos.append(x)
+        cover = str(a.get("cover") or "")
+        albums.append({"slug": aid, "name": name, "nameDa": str(a.get("nameDa") or "").strip(),
+                       "cover": cover if cover in photos else "", "images": photos})
+        by_name[name.lower()] = albums[-1]
+    for p in gallery_doc.get("images") or []:  # the old way: album names on the photo
+        if not p or str(p.get("image") or "") not in on_page:
+            continue
+        for name in p.get("albums") or []:
+            name = str(name or "").strip()
+            if not name:
+                continue
+            if name.lower() not in by_name:
+                albums.append({"slug": album_id(name, {x["slug"] for x in albums}), "name": name, "nameDa": "", "cover": "", "images": []})
+                by_name[name.lower()] = albums[-1]
+            if p["image"] not in by_name[name.lower()]["images"]:
+                by_name[name.lower()]["images"].append(str(p["image"]))
+    return albums
+
+
 def photo_extras(gallery_doc, photos, titles):
     """The gear, the albums and the field trips of the photography page (content/gallery.json)."""
     gear = []
@@ -455,19 +501,7 @@ def photo_extras(gallery_doc, photos, titles):
             kind = g.get("kind") if g.get("kind") in ("camera", "compact", "phone", "prime", "zoom") else "other"
             gear.append({"name": name, "kind": kind})
 
-    # albums: a name on the photo (Photo Gallery → Albums); in the order they first appear
-    albums, seen = [], {}
-    for i, p in enumerate(gallery_doc.get("images") or []):
-        if not p or not p.get("image") or p.get("onPhotoPage") is False:
-            continue
-        for a in p.get("albums") or []:
-            a = str(a or "").strip()
-            if not a:
-                continue
-            if a not in seen:
-                seen[a] = len(albums)
-                albums.append({"name": a, "slug": re.sub(r"[^a-z0-9]+", "-", a.lower()).strip("-") or "album", "images": []})
-            albums[seen[a]]["images"].append(str(p["image"]))
+    albums = photo_albums(gallery_doc)
 
     # when a photo was taken: its sighting's date, else the date its file name starts with
     fl = load("fieldlog.json")

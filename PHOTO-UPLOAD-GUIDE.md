@@ -289,6 +289,38 @@ Without a sign-in on the device, open
   the file and takes it out of every place that shows it, right away.
 - Changes gather until you press **Save** (one save, live in a minute or two).
   **Discard** undoes everything since the last save. **Done** leaves edit mode.
-- **Add photos** opens the Photos page.
+- The panel also lists your **albums**: tap one to put the photo in it or take
+  it out, or **+ New album** to make one with the photo in it.
 
-Albums and field trips are still edited in /admin → Photo Gallery for now.
+### Adding photos on the page
+
+**+ Add photos** in the bar:
+
+- **From this device…** — the photos appear at the top of the stream, marked
+  *New*, and are sent when you press **Save**. Tap one to caption it, size it,
+  put it in albums, or tick **Keep metadata** (see above). Like on the Photos
+  page, they're shrunk to 2000 px on your device first. **Remove (not sent yet)**
+  drops one again. HEIC photos only work in Safari.
+- **From the library…** — photos already on the site but not on this page (for
+  example, field log photos). Tap the ones to put on the page; they go to the
+  top.
+- **Finds and blog posts** still go through the Photos page (the link in the
+  same menu).
+
+### Albums
+
+Open the **Albums** tab while editing.
+
+- **Tap an album** for its panel: its name, its Danish name (shown on the Danish
+  page; without one the English name is used), its place in the order (« ‹ › »,
+  or drag it on a laptop), **Open the album →** and **Delete album** (its photos
+  stay on the page).
+- **New album** makes an empty one; type its name straight away.
+- **In an album:** **+ Add photos** lets you tick photos from the stream (or add
+  new ones from this device). Tap a photo to move it in the album's order, to
+  **Make it the cover** (the print on top of the pile; without a choice it's the
+  first photo), or to **Take out of the album**.
+- Only photos that are on the photography page show in an album.
+
+Albums, new photos and everything else are saved together with **Save**.
+Field trips are still edited in /admin → Photo Gallery for now.
