@@ -107,7 +107,7 @@
     photos();
   });
 
-  /* gallery photos linked to this post (Photo Gallery → Blog post) follow the text */
+  /* gallery photos linked to this post (a photo's blog post, set on the Photos page) follow the text */
   function photos() {
     var data = {};
     try { data = JSON.parse($('pg-data').textContent) || {}; } catch (e) { data = {}; }

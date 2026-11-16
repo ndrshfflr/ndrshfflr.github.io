@@ -5,9 +5,9 @@ choose a size. A minute or two later they're at the top of the photography page.
 
 How it works: the Shortcut shrinks each photo, strips its location and other
 metadata, and sends it to the `images/inbox/` folder of this repository. The
-"Photo inbox" workflow (`.github/workflows/photo-inbox.yml`) then files it in the
-Photo Gallery with your caption and size, and removes any location data a second
-time to be safe.
+"Photo inbox" workflow (`.github/workflows/photo-inbox.yml`) then puts it at the
+top of the photography page with your caption and size, and removes any location
+data a second time to be safe.
 
 You need to do two things once: make a GitHub key, and build the Shortcut.
 
@@ -147,10 +147,6 @@ The Shortcut shows GitHub's answer when a photo didn't arrive:
 | `Resource not accessible` (403) | The key lacks **Contents: Read and write**. |
 | `Invalid request` / `sha` (422) | Two photos got the same name. Send the photo again. |
 
-If you have unpublished changes to the Photo Gallery waiting in /admin, publish
-them before sending photos from the phone. Otherwise the two edits to the gallery
-list can clash when you publish.
-
 If the photo arrived but doesn't appear on the site, open GitHub → **Actions** →
 **Photo inbox** to see what happened. A photo the workflow couldn't read stays in
 `images/inbox/`, and the reason is shown in the log.
@@ -159,10 +155,9 @@ If the photo arrived but doesn't appear on the site, open GitHub → **Actions**
 
 ## Other ways to add photos
 
-- **/admin → Photo Gallery** works from any browser, including on the phone.
-  Photos uploaded there are also cleaned automatically: the location is removed,
-  very large photos are shrunk, and HEIC photos are turned into JPEGs.
-- **The Photos page** (see the next section).
+- **The photography page itself:** **Edit → + Add photos → From this device**
+  (see "Editing the photography page on the page itself" below).
+- **The Photos page** (see the next section), also for finds and blog posts.
 - **Commit message format**, if you ever send photos another way (for example
   with the GitHub app): add an image to `images/inbox/` with a commit message like
   ```
@@ -191,9 +186,10 @@ If you're already signed in to /admin in this browser, the page uses that.
 
 ### New
 1. **Pictures** (optional): **From this device**, or **From the library** for
-   pictures already on the site. For each one: a caption, **Portfolio** (on the
-   photography page, with its size 1–5 and what to keep in frame), and, when you
-   make a find or a post, whether it goes **in the find** and **in the post**.
+   pictures already on the site. For each one: a caption, **On the photography
+   page** (new ones go to the top; size, crop and order are arranged on the page
+   itself), and, when you make a find or a post, whether it goes **in the find**
+   and **in the post**.
    A new picture that carries metadata also offers **Keep metadata** (see
    "Keeping a photo's metadata" below).
 2. **Also make it** (optional, one or both):
@@ -211,7 +207,8 @@ If you're already signed in to /admin in this browser, the page uses that.
 ### Library
 Every picture in the site's image folders, with where it's used: Portfolio, Field
 log, Blog, Pages, or Not used. Filter and search. Open one to:
-- change its caption, put it in or out of the portfolio, and set its size and crop;
+- change its caption, and put it on or off the photography page (its size, crop,
+  order and albums: **Edit** on the photography page);
 - link it to one or more sightings (or a new sighting), or unlink it;
 - choose its blog post, and put it in that post's text;
 - start something new with it (**New post or find with this picture…**).
@@ -239,9 +236,11 @@ everything else too. **Keep metadata** turns that off for one photo:
 - The photo file keeps all of it: camera, lens, settings, date and time, the
   exact position, the camera's serial number, and keywords or ratings added in
   a photo program.
-- The parts to sort by are also noted with the photo in the Photo Gallery
-  (`taken`, `camera`, `lens`, `lat`, `lon`), so the site can sort and group
-  photos later without opening each file.
+- The parts to sort by are also noted with the photo in the site's photo list,
+  `content/gallery.json` (`taken`, `camera`, `lens`, `lat`, `lon`), so the site
+  can sort and group photos without opening each file. Already used: a photo
+  is dated by `taken` for the field trips, and a trip's pin can go where its
+  photos were taken.
 - It's off unless you turn it on, photo by photo.
 
 The website and its repository are public, so **anyone can read all of it** from
@@ -261,8 +260,8 @@ Where to turn it on:
   website's side of this is tested; the Shortcut's side isn't yet. If a photo
   arrives without its metadata, the Shortcut dropped it on the way: use the
   Photos page for that photo.)
-- **/admin → Photo Gallery:** turn on **Keep metadata** on the photo before you
-  publish.
+- **The photography page:** **Edit → + Add photos → From this device**, then
+  tick **Keep metadata** in the new photo's panel.
 
 To undo it later, delete the photo for good and add it again without **Keep
 metadata**.
@@ -344,9 +343,27 @@ Open the **Field trips** tab while editing. Under the map is a list of your trip
 
 ### Gear
 
-**✎ Gear** (above the Stream / Albums / Field trips buttons) opens your gear:
+**✎ Page & gear** (above the Stream / Albums / Field trips buttons) opens your gear:
 rename a piece, choose its kind (the shape it turns as), move it up or down,
 remove it, or **+ Add a piece**. The gear line at the top changes as you go.
 
 Albums, field trips, gear, new photos and everything else are saved together
 with **Save**.
+
+### The page and gear
+
+**✎ Page & gear** (above the Stream / Albums / Field trips buttons) also holds
+the **line under the heading** (English and Danish; leave it empty for none)
+and the page's **look**: *Seasonal sky* (like the stone circle) or *Darkroom*
+(near-black, the season only tints it). Both show at once while you edit.
+
+### Where things are edited now
+
+- **The photography page (Edit):** everything about the photography page —
+  photos, sizes, crops, order, captions, albums, field trips, gear, the line
+  under the heading and the look.
+- **The Photos page:** new pictures together with a find and/or a blog post,
+  linking pictures to sightings and posts, and every picture on the site
+  (including ones not used anywhere), with deleting.
+- **/admin** no longer has a Photo Gallery, so an older form there can't
+  overwrite what you arranged on the page.

@@ -6,7 +6,9 @@
             a blog post. Any mix; each part also works on its own.
    Library  every picture in images/ with where it's used: portfolio, field log
             sightings, blog posts, pages. Open one to change its caption, put it
-            in or out of the portfolio, link it to sightings or a post.
+            on or off the photography page, link it to sightings or a post.
+   Size, crop, order, albums and field trips are arranged on the photography
+   page itself (Edit there: assets/photos-edit.js).
 
    Everything is saved straight into the repository, one commit per Publish/
    Save, on top of the newest version of each file:
@@ -25,7 +27,7 @@
   try { D = JSON.parse(doc.getElementById('upload-data').textContent) || {}; } catch (e) { D = {}; }
   /* signing in, saving, preparing photos and deleting them: the shared engine (assets/edit-core.js) */
   var E = window.SiteEdit.setup({ repo: D.repo, branch: D.branch || 'main', proxy: D.proxy, authEndpoint: D.authEndpoint });
-  var SIZES = E.SIZES, POS = E.POS;
+  var POS = E.POS;
   var store = E.store, arr = E.arr, norm = E.norm, same = E.same, isoDay = E.isoDay, slugify = E.slugify, jsonText = E.jsonText;
   var gh = E.gh, readFile = E.readFile, commit = E.commit, explain = E.explain;
   var GROUP = { fungi: 'Fungi', birds: 'Birds', insects: 'Insects', arachnids: 'Spiders & kin', mammals: 'Mammals', herps: 'Amphibians & reptiles', fish: 'Fish', molluscs: 'Molluscs', plants: 'Plants', other: 'Other' };
@@ -192,7 +194,7 @@
       if (!g || !g.image) return;
       var p = pic(g.image); if (!p) return;
       p.g = g; p.caption = g.caption || '';
-      if (g.onPhotoPage !== false) use(g.image, 'portfolio', 'Portfolio · size ' + (g.weight || 1), 'photography.html#photo=' + encodeURIComponent(g.image.replace(/^.*\//, '').replace(/\.[a-z]+$/i, '')));
+      if (g.onPhotoPage !== false) use(g.image, 'portfolio', 'On the photography page', 'photography.html#photo=' + encodeURIComponent(g.image.replace(/^.*\//, '').replace(/\.[a-z]+$/i, '')));
       var named = {};
       arr(g.sightings).forEach(function (id) {
         var s = sightingById(id);
@@ -310,31 +312,6 @@
   /* ---------- one picture, opened ---------- */
   var cur = null; // { p, links: [{id}|{species}|{find}] }
   var dlg = $('pic');
-  function sizeIcon(c, r) {
-    var ns = 'http://www.w3.org/2000/svg', svg = doc.createElementNS(ns, 'svg');
-    svg.setAttribute('viewBox', '0 0 20 20'); svg.setAttribute('width', '20'); svg.setAttribute('height', '20'); svg.setAttribute('aria-hidden', 'true');
-    var frame = doc.createElementNS(ns, 'rect');
-    frame.setAttribute('x', '0.5'); frame.setAttribute('y', '0.5'); frame.setAttribute('width', '19'); frame.setAttribute('height', '19'); frame.setAttribute('rx', '1.5');
-    frame.setAttribute('fill', 'none'); frame.setAttribute('stroke', 'currentColor'); frame.setAttribute('stroke-opacity', '.45');
-    var fill = doc.createElementNS(ns, 'rect');
-    fill.setAttribute('x', '1.5'); fill.setAttribute('y', '1.5'); fill.setAttribute('width', String(c * 17 / 3)); fill.setAttribute('height', String(r * 17 / 3)); fill.setAttribute('rx', '1');
-    fill.setAttribute('fill', 'currentColor');
-    svg.appendChild(frame); svg.appendChild(fill);
-    return svg;
-  }
-  function sizeRadios(row, name, weight, onChange) {
-    row.textContent = '';
-    SIZES.forEach(function (s) {
-      var lab = el('label', 'up-size');
-      var inp = el('input'); inp.type = 'radio'; inp.name = name; inp.value = s[0];
-      if (s[0] === weight) inp.checked = true;
-      var span = el('span');
-      span.appendChild(sizeIcon(s[2], s[3]));
-      span.appendChild(doc.createTextNode(s[0] + ' ' + s[1]));
-      lab.appendChild(inp); lab.appendChild(span); row.appendChild(lab);
-      inp.addEventListener('change', function () { if (onChange) onChange(s[0]); });
-    });
-  }
   function fillPostSelect(sel) {
     var keep = sel.value;
     while (sel.options.length > 1) sel.remove(1);
@@ -379,9 +356,8 @@
     });
     $('pic-caption').value = g.caption || '';
     $('pic-portfolio').checked = !!p.g && g.onPhotoPage !== false;
-    sizeRadios($('pic-sizes'), 'pic-size', Math.min(5, Math.max(1, +g.weight || 1)));
-    $('pic-focus').value = g.focus || 'center';
     $('pic-pf').hidden = !$('pic-portfolio').checked;
+    $('pic-arrange').href = (D.photography || 'photography.html') + '#edit';
     $('pic-post').value = g.post || '';
     syncInPost();
     $('pic-add').open = false;
@@ -550,7 +526,6 @@
   $('pic-save').addEventListener('click', function () {
     if (busy || !cur) return;
     var p = cur.p, st = $('pic-status');
-    var w = doc.querySelector('#pic-sizes input:checked');
     var newFinds = cur.links.filter(function (l) { return l.find; }).map(function (l) { return l.find; });
     var ids = cur.links.filter(function (l) { return l.id; }).map(function (l) { return l.id; }).concat(newFinds.map(function (f) { return 'manual:' + f.id; }));
     var species = [];
@@ -558,7 +533,7 @@
       var n = l.find ? l.find.name : l.species ? l.species : (sightingById(l.id) || {}).name;
       if (n && !species.some(function (x) { return norm(x) === norm(n); })) species.push(n);
     });
-    var set = { caption: $('pic-caption').value.trim(), portfolio: $('pic-portfolio').checked, weight: w ? +w.value : 1, focus: $('pic-focus').value,
+    var set = { caption: $('pic-caption').value.trim(), portfolio: $('pic-portfolio').checked,
       sightings: ids, species: species, post: $('pic-post').value };
     var edits = [{ path: 'content/gallery.json', fn: function (t) {
       var d0; try { d0 = t ? JSON.parse(t) : { images: [] }; } catch (e) { throw new Error('content/gallery.json can’t be read'); }
@@ -612,13 +587,7 @@
     li.querySelector('.up-caption').value = g ? g.caption || '' : '';
     var pf = li.querySelector('.up-portfolio');
     pf.checked = g ? g.onPhotoPage !== false : store.get('uploadPortfolio') !== '0';
-    var weight = g ? Math.min(5, Math.max(1, +g.weight || 1)) : Math.min(5, Math.max(1, parseInt(store.get('uploadWeight'), 10) || 1));
-    li.setAttribute('data-w', weight);
-    sizeRadios(li.querySelector('.up-size-row'), 'size-' + it.id, weight, function (w) { li.setAttribute('data-w', w); store.set('uploadWeight', String(w)); });
-    var focus = li.querySelector('.up-focus');
-    focus.value = g && g.focus || 'center';
-    img.style.objectPosition = POS[focus.value];
-    focus.addEventListener('change', function () { img.style.objectPosition = POS[focus.value] || POS.center; });
+    img.style.objectPosition = POS[g && g.focus] || POS.center;
     var pfBox = li.querySelector('.up-pf');
     pfBox.hidden = !pf.checked;
     pf.addEventListener('change', function () { pfBox.hidden = !pf.checked; if (!it.path) store.set('uploadPortfolio', pf.checked ? '1' : '0'); });
@@ -838,9 +807,6 @@
       return p.then(function () {
         it.caption = it.li.querySelector('.up-caption').value.trim();
         it.portfolio = it.li.querySelector('.up-portfolio').checked;
-        var w = it.li.querySelector('.up-size input:checked');
-        it.weight = w ? +w.value : 1;
-        it.focus = it.li.querySelector('.up-focus').value;
         it.inFind = wantFind && it.li.querySelector('.up-in-find').checked;
         it.inPost = wantPost && it.li.querySelector('.up-in-post').checked;
         if (it.path) return null;
@@ -861,7 +827,7 @@
         var d0; try { d0 = t ? JSON.parse(t) : { images: [] }; } catch (e) { throw new Error('content/gallery.json can’t be read'); }
         // new portfolio pictures go to the top, in the order chosen
         batch.slice().reverse().forEach(function (it) {
-          var set = { portfolio: it.portfolio, weight: it.weight, focus: it.focus };
+          var set = { portfolio: it.portfolio };
           if (it.caption || it.isNew) set.caption = it.caption;
           if (it.isNew && it.keep) set.meta = it.keep.meta;
           if (it.inFind) { set.addSighting = sightingId; set.addSpecies = speciesName; }

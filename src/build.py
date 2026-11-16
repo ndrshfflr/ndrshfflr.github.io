@@ -434,7 +434,7 @@ WEIGHT_CELLS = {1: (1, 1), 2: (2, 1), 3: (2, 2), 4: (3, 2), 5: (3, 3)}
 
 
 def photo_cells(p, weight):
-    """How many grid cells a photo spans (columns, rows). Width and height (1–3 each, Photo Gallery)
+    """How many grid cells a photo spans (columns, rows). Width and height (1–3 each, set on the page)
     win; without them the old size 1–5 gives the shape."""
     def cells(v):
         try:

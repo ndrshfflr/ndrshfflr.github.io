@@ -108,7 +108,8 @@ textarea.up-area{font-family:inherit}
 .up-only-find,.up-only-post{display:none}
 .has-find .up-only-find,.has-post .up-only-post{display:flex}
 .up-from{margin:0;word-break:break-all}
-.up-pf{display:flex;flex-direction:column;gap:12px}
+.up-pf{margin:4px 0 0}
+.up-pf a{color:#f4dcc2}
 #new .up-send{position:sticky;bottom:0;margin:18px -16px 0;padding-left:16px;padding-right:16px}
 
 /* Library */

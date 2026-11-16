@@ -274,7 +274,9 @@
       if (viewer && viewer.open) viewer.close();
       rebuild();
       renderText();
-    }
+    },
+    /* for editing on the page: the line under the heading, as it will read */
+    setIntro: function (intro) { PAGE_TEXT.en.intro = intro && intro.en || ''; PAGE_TEXT.da.intro = intro && intro.da || ''; renderText(); }
   };
 
   /* ------------------------------------------------------------------ start */

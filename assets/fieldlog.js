@@ -106,7 +106,7 @@
   function build(obs, cfg, gallery) {
     obs = obs || {};
     cfg = cfg || {};
-    // Photos from the gallery that are linked to a species (Photo Gallery → Species in the field log).
+    // Photos from the gallery that are linked to a species (their species, set on the Photos page).
     var galleryBy = {};
     arr(gallery && gallery.images).forEach(function (g) {
       if (!g || !g.image) return;
