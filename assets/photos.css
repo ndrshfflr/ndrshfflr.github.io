@@ -1,8 +1,9 @@
 /* ==========================================================================
    Photography (photography.html / photography.da.html) — one mosaic of
    photos. Sky, header and rune language come from assets/world.css.
-   A photo's weight sets its footprint in grid cells (columns × rows):
-     1 → 1×1 · 2 → 2×1 · 3 → 2×2 · 4 → 3×2 · 5 → 3×3
+   A photo spans --c columns × --r rows (1–3 each, set on the tile): its
+   width and height, or its weight 1 → 1×1 · 2 → 2×1 · 3 → 2×2 · 4 → 3×2 · 5 → 3×3
+   My gear, the views, albums and the field trip map: at the end.
    ========================================================================== */
 
 /* the darkroom look: near-black ground, the season only tints it */
@@ -28,10 +29,6 @@
   grid-auto-rows:170px;
   grid-auto-rows:calc((100cqw - (var(--cols) - 1) * var(--gap)) / var(--cols))}
 .tile{--c:1;--r:1;position:relative;min-width:0;grid-column:span var(--c);grid-row:span var(--r)}
-.wt2{--c:2}
-.wt3{--c:2;--r:2}
-.wt4{--c:3;--r:2}
-.wt5{--c:3;--r:3}
 .tile-a{position:absolute;inset:0;display:block;overflow:hidden;border-radius:3px;color:#f3f1ea;text-decoration:none;
   background:color-mix(in srgb,var(--sky3) 65%,#000);
   box-shadow:0 0 0 1px color-mix(in srgb,var(--line) 10%,transparent);transition:box-shadow .4s ease}
@@ -50,7 +47,7 @@
 .mosaic-empty{margin:60px 0;text-align:center;font-size:18px;color:var(--ink2)}
 
 
-/* full-screen viewer for photos that don't lead to a post */
+/* the full-screen viewer, for every photo */
 .viewer{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;overflow:hidden;
   background:rgba(4,5,8,.95);color:#f1efe8;font-family:'EB Garamond',Georgia,serif}
 .viewer[open]{display:grid;grid-template-rows:minmax(0,1fr) auto;animation:v-in .35s ease both}
@@ -99,4 +96,123 @@ body.v-open{overflow:hidden}
   .tile-a img,.tile-cap,.tile-a{transition:none !important}
   .tile-a:hover img,.tile-a:focus-visible img{transform:none}
   .viewer[open]{animation:none}
+}
+
+/* ---------------------------------------------------------------- my gear (assets/photos-more.js) */
+.gear{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;margin:22px auto 0;padding:0 20px}
+.gear-bar{display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 20px;min-height:60px;padding:4px 16px;border:0;background:transparent;color:var(--ink);font:inherit;cursor:pointer}
+.gear-title{display:inline-flex;align-items:center;gap:10px;font-family:'Cinzel',Georgia,serif;font-size:19px;letter-spacing:.06em}
+.gear-rune{font-family:'Skurd',serif;color:var(--acc)}
+.g3d-mini{display:inline-flex;align-items:center;gap:4px;font-size:16px;color:var(--ink2)}
+.gear.open .g3d-mini{display:none}
+.gear-chev{display:inline-flex;align-items:center;gap:6px;font-size:15px;color:var(--ink2)}
+.gear-chev svg{transition:transform .3s ease}
+.gear.open .gear-chev svg{transform:rotate(180deg)}
+.gear-bar:hover .gear-chev{color:var(--acc)}
+.gear-bar:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
+.gear-open{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 26px;padding:0 0 6px}
+.gear-open[hidden]{display:none}
+.gear.open .gear-open{animation:gear-in .5s ease both}
+@keyframes gear-in{from{opacity:0;transform:translateY(-8px)}}
+.g3d{display:flex;flex-direction:column;align-items:center;gap:2px;width:190px;text-align:center}
+.g-name{font-family:'Cinzel',Georgia,serif;font-size:17px;letter-spacing:.03em}
+.g3d-mini .g-name{font-family:inherit;font-size:16px;letter-spacing:0}
+.g-kind{font-size:14px;font-style:italic;color:var(--ink2)}
+.g3d-stage{position:relative;display:block;perspective:1100px;perspective-origin:50% 40%}
+.g3d-stage.mid{width:190px;height:170px}
+.g3d-stage.mini{display:inline-block;width:58px;height:50px;perspective:500px;vertical-align:middle}
+.g3d-scale{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:50% 46%}
+.g3d-spin{position:absolute;left:50%;top:46%;width:0;height:0;transform-style:preserve-3d;animation:g3d-turn 16s linear infinite}
+.g3d:nth-child(2n) .g3d-spin,.g3d-mini:nth-of-type(2n) .g3d-spin{animation-duration:19s;animation-delay:-6s}
+.g3d:nth-child(3n) .g3d-spin,.g3d-mini:nth-of-type(3n) .g3d-spin{animation-duration:13s;animation-delay:-3s}
+.gear:hover .g3d-spin{animation-play-state:paused}
+.face{position:absolute;left:0;top:0;box-shadow:inset 0 0 0 1px rgba(230,238,246,.08)}
+.g3d-shadow{position:absolute;left:50%;bottom:16px;width:200px;height:30px;margin-left:-100px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent);animation:g3d-breathe 16s linear infinite}
+.g3d-glow{position:absolute;left:50%;top:46%;width:280px;height:280px;margin:-140px 0 0 -140px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--acc) 12%,transparent),transparent);pointer-events:none}
+@keyframes g3d-turn{from{transform:rotateX(-14deg) rotateY(0deg)}to{transform:rotateX(-14deg) rotateY(360deg)}}
+@keyframes g3d-breathe{0%,50%,100%{transform:scaleX(1)}25%,75%{transform:scaleX(.62)}}
+
+/* ---------------------------------------------------------------- the views: stream · albums · field trips */
+.pviews{position:relative;z-index:1;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:26px auto 0;padding:0 16px}
+.pv{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 18px;border:1px solid color-mix(in srgb,var(--ink) 20%,transparent);background:transparent;color:var(--ink);font:inherit;font-size:18px;cursor:pointer}
+.pv:hover{border-color:color-mix(in srgb,var(--ink) 42%,transparent)}
+.pv.on,.pv[aria-pressed="true"]{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,transparent)}
+.pv[hidden]{display:none}
+.pv:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.pv-rune{font-family:'Skurd',serif;color:var(--acc)}
+.pv-n{font-size:14px;color:var(--ink2)}
+.pv-n:empty{display:none}
+.pane[hidden]{display:none}
+
+/* ---------------------------------------------------------------- albums: piles of prints */
+.albums{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:26px 22px}
+.album{display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 0 20px;border:0;background:transparent;color:var(--ink);font:inherit;cursor:pointer}
+.album:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
+.stack{position:relative;display:block;width:100%;height:250px}
+.stack img{position:absolute;left:50%;top:50%;width:170px;height:210px;object-fit:cover;border:7px solid #e9e4d8;box-shadow:0 12px 30px rgba(0,0,0,.55);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.stack .s1{transform:translate(-50%,-50%) rotate(-8deg) translateX(-30px)}
+.stack .s2{transform:translate(-50%,-50%) rotate(6deg) translateX(30px)}
+.stack .s3{transform:translate(-50%,-50%) rotate(-1deg)}
+.album:hover .s1,.album:focus-visible .s1{transform:translate(-50%,-50%) rotate(-13deg) translateX(-62px)}
+.album:hover .s2,.album:focus-visible .s2{transform:translate(-50%,-50%) rotate(11deg) translateX(62px)}
+.album-name{display:inline-flex;align-items:center;gap:10px;font-family:'Cinzel',Georgia,serif;font-size:23px}
+.album-rune{font-family:'Skurd',serif;color:var(--acc)}
+.album-n{font-size:16px;color:var(--ink2)}
+.album-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:0 0 18px}
+.album-title{margin:0;font-family:'Cinzel',Georgia,serif;font-weight:400;font-size:26px}
+
+/* ---------------------------------------------------------------- field trips: the map */
+.map-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:0 0 12px}
+.map-region{font-family:'Cinzel',Georgia,serif;font-size:18px;color:var(--ink2)}
+.map-region[hidden]{display:none}
+.tmap{position:relative;width:100%;aspect-ratio:1000/400;overflow:hidden;border:1px solid color-mix(in srgb,var(--line) 14%,transparent);
+  background:radial-gradient(ellipse 80% 70% at 50% 45%,#0e1726,#070b12 80%)}
+.tmap svg{display:block;width:100%;height:100%}
+.tmap .land{fill:#1b2737;stroke:rgba(214,226,238,.24);stroke-width:1;vector-effect:non-scaling-stroke;transition:opacity .4s ease}
+.tmap .grat line{stroke:rgba(214,226,238,.06);stroke-width:1;vector-effect:non-scaling-stroke}
+.tmap.loading .land{opacity:.3}
+.pins{position:absolute;inset:0;pointer-events:none}
+.pin{position:absolute;z-index:2;display:flex;align-items:center;gap:8px;padding:0;border:0;background:transparent;color:#eef2f6;font:inherit;font-size:17px;white-space:nowrap;cursor:pointer;pointer-events:auto;transform:translate(-7px,-50%)}
+.pin.left{flex-direction:row-reverse;transform:translate(calc(-100% + 7px),-50%)}
+.pin-mark{position:relative;flex:0 0 auto;width:12px;height:12px;transform:rotate(45deg);border:2px solid var(--acc);background:#0b1322}
+.pin-label{padding:2px 8px;background:rgba(6,9,14,.8)}
+.pin:hover .pin-mark,.pin.on .pin-mark{background:var(--acc);box-shadow:0 0 14px color-mix(in srgb,var(--acc) 80%,transparent)}
+.pin.on .pin-mark::after{content:"";position:absolute;inset:-9px;border:1px solid color-mix(in srgb,var(--acc) 70%,transparent);animation:pin-pulse 2.2s ease-out infinite}
+.pin.group .pin-label{font-style:italic;color:#f4dcc2}
+.pin:focus-visible{outline:2px solid var(--acc);outline-offset:6px}
+@keyframes pin-pulse{from{transform:scale(.6);opacity:1}to{transform:scale(1.8);opacity:0}}
+
+.trip-card{display:grid;grid-template-columns:300px minmax(0,1fr);margin-top:16px;background:rgba(6,9,14,.8);border:1px solid color-mix(in srgb,var(--line) 14%,transparent);color:#eef2f6}
+.trip-card[hidden]{display:none}
+.trip-info{display:flex;flex-direction:column;gap:8px;padding:22px 24px}
+.trip-when{font-family:'Cinzel',Georgia,serif;font-size:14px;letter-spacing:.08em;color:#a9b7c4}
+.trip-name{margin:0;display:flex;align-items:center;gap:10px;font-family:'Cinzel',Georgia,serif;font-weight:400;font-size:26px;line-height:1.2}
+.trip-rune{font-family:'Skurd',serif;color:var(--acc)}
+.trip-place{font-size:18px;font-style:italic;color:#c4d2df}
+.trip-facts{display:flex;flex-wrap:wrap;gap:4px 16px;margin:4px 0 0;font-size:16px;color:#a9b7c4}
+.trip-species{margin:0;font-size:15px;font-style:italic;color:#c4d2df}
+.trip-post{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;min-height:46px;margin-top:6px;padding:0 16px;border:1px solid var(--acc);background:color-mix(in srgb,var(--acc) 18%,rgba(6,9,14,.6));color:#fff3e6;font-size:17px;text-decoration:none}
+.trip-post:hover{background:color-mix(in srgb,var(--acc) 32%,rgba(6,9,14,.6))}
+.trip-post .lr{font-family:'Skurd',serif;color:var(--acc)}
+.trip-post .v-arrow{color:var(--acc)}
+.trip-post:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.trip-photos{list-style:none;margin:0;padding:4px;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));grid-auto-rows:170px;gap:4px;border-left:1px solid color-mix(in srgb,var(--line) 10%,transparent)}
+.trip-photo{display:block;width:100%;height:100%;padding:0;border:0;overflow:hidden;cursor:pointer;background:#0d121a}
+.trip-photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.trip-photo:hover img{transform:scale(1.05)}
+.trip-photo:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+
+@media (max-width:760px){
+  .g3d{width:150px}.g3d-stage.mid{width:150px;height:140px}
+  .gear-bar{gap:6px 14px}.g3d-mini .g-name{font-size:14px}
+  .pv{font-size:16px;padding:0 14px}
+  .pin{font-size:14px}
+  .trip-card{grid-template-columns:1fr}
+  .trip-photos{border-left:0;grid-template-columns:repeat(3,1fr);grid-auto-rows:110px}
+  .stack{height:210px}.stack img{width:140px;height:175px}
+}
+@media (prefers-reduced-motion:reduce){
+  .g3d-spin{animation:none;transform:rotateX(-14deg) rotateY(-28deg)}
+  .g3d-shadow,.gear.open .gear-open,.pin.on .pin-mark::after{animation:none}
+  .stack img,.trip-photo img{transition:none}
 }

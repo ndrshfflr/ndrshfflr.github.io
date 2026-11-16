@@ -161,11 +161,25 @@ PHOTO_UI = {
         "gridLabel": "Photographs", "empty": "No photos yet.", "photoN": "Photo {i}",
         "readPost": "Read the post", "readPostTitle": "Read the post: {t}", "inFieldlog": "In the field log",
         "close": "Close", "prevPhoto": "Previous photo", "nextPhoto": "Next photo", "count": "{i} of {n}",
+        "gear": "My gear", "show": "Show", "hide": "Hide", "views": "Ways to look at the photos",
+        "stream": "Stream", "albums": "Albums", "trips": "Field trips", "allAlbums": "All albums",
+        "photosN": "{n} photos", "photo1": "1 photo", "findsN": "{n} finds in the field log", "find1": "1 find in the field log",
+        "world": "World", "zoomTo": "Zoom in on {t}", "tripsHere": "{n} trips", "openTrip": "Open the trip {t}",
+        "mapLabel": "Map of the field trips", "noAlbums": "No albums yet.", "noTrips": "No field trips yet.",
+        "kinds": {"camera": "Interchangeable-lens camera", "compact": "Fixed-lens compact camera", "phone": "Phone",
+                  "prime": "Prime lens", "zoom": "Telephoto zoom lens", "other": ""},
     },
     "da": {
         "gridLabel": "Fotografier", "empty": "Ingen fotos endnu.", "photoN": "Foto {i}",
         "readPost": "Læs indlægget", "readPostTitle": "Læs indlægget: {t}", "inFieldlog": "I fundbogen",
         "close": "Luk", "prevPhoto": "Forrige foto", "nextPhoto": "Næste foto", "count": "{i} af {n}",
+        "gear": "Mit udstyr", "show": "Vis", "hide": "Skjul", "views": "Måder at se fotografierne på",
+        "stream": "Strøm", "albums": "Album", "trips": "Ture", "allAlbums": "Alle album",
+        "photosN": "{n} fotos", "photo1": "1 foto", "findsN": "{n} fund i fundbogen", "find1": "1 fund i fundbogen",
+        "world": "Verden", "zoomTo": "Zoom ind på {t}", "tripsHere": "{n} ture", "openTrip": "Åbn turen {t}",
+        "mapLabel": "Kort over turene", "noAlbums": "Ingen album endnu.", "noTrips": "Ingen ture endnu.",
+        "kinds": {"camera": "Systemkamera", "compact": "Kompaktkamera med fast objektiv", "phone": "Telefon",
+                  "prime": "Fastobjektiv", "zoom": "Telezoomobjektiv", "other": ""},
     },
 }
 # The field log in the circle's world (fieldlog.html / fieldlog.da.html): the
@@ -415,6 +429,119 @@ def render_world_page(env, tpl, files, lang, **ctx):
     print("wrote", files[lang])
 
 
+WEIGHT_CELLS = {1: (1, 1), 2: (2, 1), 3: (2, 2), 4: (3, 2), 5: (3, 3)}
+
+
+def photo_cells(p, weight):
+    """How many grid cells a photo spans (columns, rows). Width and height (1–3 each, Photo Gallery)
+    win; without them the old size 1–5 gives the shape."""
+    def cells(v):
+        try:
+            return min(3, max(1, int(v)))
+        except (TypeError, ValueError):
+            return 0
+    w, h = cells(p.get("width")), cells(p.get("height"))
+    if w or h:
+        return w or 1, h or 1
+    return WEIGHT_CELLS.get(weight, (1, 1))
+
+
+def photo_extras(gallery_doc, photos, titles):
+    """The gear, the albums and the field trips of the photography page (content/gallery.json)."""
+    gear = []
+    for g in gallery_doc.get("gear") or []:
+        name = str((g or {}).get("name") or "").strip()
+        if name:
+            kind = g.get("kind") if g.get("kind") in ("camera", "compact", "phone", "prime", "zoom") else "other"
+            gear.append({"name": name, "kind": kind})
+
+    # albums: a name on the photo (Photo Gallery → Albums); in the order they first appear
+    albums, seen = [], {}
+    for i, p in enumerate(gallery_doc.get("images") or []):
+        if not p or not p.get("image") or p.get("onPhotoPage") is False:
+            continue
+        for a in p.get("albums") or []:
+            a = str(a or "").strip()
+            if not a:
+                continue
+            if a not in seen:
+                seen[a] = len(albums)
+                albums.append({"name": a, "slug": re.sub(r"[^a-z0-9]+", "-", a.lower()).strip("-") or "album", "images": []})
+            albums[seen[a]]["images"].append(str(p["image"]))
+
+    # when a photo was taken: its sighting's date, else the date its file name starts with
+    fl = load("fieldlog.json")
+    obs = load("observations.json")
+    records = [r for r in obs.get("items") or [] if r.get("date")]
+    manual = {m.get("id"): m for m in fl.get("manual") or [] if m and m.get("id")}
+    records += [{"date": m.get("date"), "name": m.get("name"), "place": m.get("place") or ""} for m in manual.values() if m.get("date")]
+    by_id = {r.get("id"): r for r in obs.get("items") or [] if r.get("id")}
+
+    def sighting(sid):
+        sid = str(sid or "")
+        if sid.startswith("manual:"):
+            return manual.get(sid[7:])
+        return by_id.get(sid)
+
+    def taken(p):
+        for sid in p.get("sightings") or []:
+            s = sighting(sid)
+            if s and s.get("date"):
+                return s["date"][:10], s.get("place") or ""
+        m = re.match(r"(\d{4}-\d{2}-\d{2})", (p.get("image") or "").split("/")[-1])
+        return (m.group(1) if m else ""), ""
+
+    trips = []
+    for t in gallery_doc.get("trips") or []:
+        t = t or {}
+        name = str(t.get("name") or "").strip()
+        try:
+            lat, lon = float(t.get("lat")), float(t.get("lon"))
+        except (TypeError, ValueError):
+            continue
+        if not name or not (-90 <= lat <= 90 and -180 <= lon <= 180):
+            continue
+        start = str(t.get("from") or "")[:10]
+        end = str(t.get("to") or "")[:10] or start
+        match = str(t.get("placeMatch") or "").strip().lower()
+        pics = [str(x) for x in t.get("photos") or [] if x]
+        if start and t.get("gather", True) is not False:
+            for p in gallery_doc.get("images") or []:
+                if not p or not p.get("image"):
+                    continue
+                day, place = taken(p)
+                if day and start <= day <= end and not (match and place and match not in place.lower()) and p["image"] not in pics:
+                    pics.append(str(p["image"]))
+        finds = [r for r in records if start and start <= (r.get("date") or "")[:10] <= end
+                 and not (match and match not in (r.get("place") or "").lower())]
+        species = []
+        for r in finds:
+            n = str(r.get("name") or "").strip()
+            if n and n not in species:
+                species.append(n)
+        post = str(t.get("post") or "")
+        trips.append({"id": re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-") or "trip", "name": name,
+                      "nameDa": str(t.get("nameDa") or "").strip(), "from": start, "to": end,
+                      "place": str(t.get("place") or ""), "placeDa": str(t.get("placeDa") or ""),
+                      "lat": round(lat, 4), "lon": round(lon, 4), "images": pics,
+                      "finds": len(finds), "species": species[:8],
+                      "post": post if re.match(r"^[A-Za-z0-9._-]+$", post) else "", "postTitle": titles.get(post, "")})
+    trips.sort(key=lambda x: x["from"] or "", reverse=True)
+    # photos a trip shows that aren't in the stream (field-log-only): what the viewer needs for them
+    shown = {p["image"] for p in photos}
+    more = {}
+    for p in gallery_doc.get("images") or []:
+        img = str((p or {}).get("image") or "")
+        if img and img not in shown and any(img in t["images"] for t in trips):
+            post = str(p.get("post") or "")
+            more[img] = {"image": img, "caption": str(p.get("caption") or ""), "pos": PHOTO_POS.get(p.get("focus"), PHOTO_POS["center"]),
+                         "post": post if re.match(r"^[A-Za-z0-9._-]+$", post) else "",
+                         "species": [str(x) for x in (p.get("species") if isinstance(p.get("species"), list) else [p.get("species")]) if x]}
+    for t in trips:
+        t["images"] = [i for i in t["images"] if i in shown or i in more]
+    return {"gear": gear, "albums": albums, "trips": trips, "more": more}
+
+
 def render_photography(env, entry, gallery_doc, posts, versions):
     """photography.html / photography.da.html: one mosaic of weighted photos."""
     titles = {p["slug"]: p["title"] for p in posts}
@@ -427,8 +554,9 @@ def render_photography(env, entry, gallery_doc, posts, versions):
         except (TypeError, ValueError):
             weight = 1
         post = str(p.get("post") or "")
+        c, r = photo_cells(p, weight)
         photos.append({  # same keys, same order as normalise() in assets/photos.js
-            "image": str(p["image"]), "caption": str(p.get("caption") or ""), "weight": weight,
+            "image": str(p["image"]), "caption": str(p.get("caption") or ""), "weight": weight, "c": c, "r": r,
             "pos": PHOTO_POS.get(p.get("focus"), PHOTO_POS["center"]),
             "post": post if re.match(r"^[A-Za-z0-9._-]+$", post) else "",
             "species": [str(x) for x in (p.get("species") if isinstance(p.get("species"), list) else [p.get("species")]) if x],
@@ -438,7 +566,8 @@ def render_photography(env, entry, gallery_doc, posts, versions):
     portal = {lang: next((x for x in entry[lang]["portals"] if x.get("key") == "photography"), {}) for lang in ("en", "da")}
     text = {lang: {"heading": portal[lang].get("name") or ("Photography" if lang == "en" else "Fotografi"),
                    "intro": str(intro.get(lang) or "") if isinstance(intro, dict) else ""} for lang in ("en", "da")}
-    cover = max(photos, key=lambda p: p["weight"], default=None)  # the heaviest photo is the social preview
+    cover = max(photos, key=lambda p: p["c"] * p["r"], default=None)  # the biggest photo is the social preview
+    extras = photo_extras(gallery_doc, photos, titles)
     ui = world_ui(PHOTO_UI)
     for lang in ("en", "da"):
         alternates = [{"hreflang": l, "href": SITE_URL + PHOTOGRAPHY[l]} for l in ("en", "da")]
@@ -453,8 +582,9 @@ def render_photography(env, entry, gallery_doc, posts, versions):
             world_data={"page": lang, "ui": ui},
             heading=text[lang]["heading"], intro=text[lang]["intro"], rune=portal[lang].get("rune") or "ᛋ",
             photos=[dict(p, post_title=titles.get(p["post"], "")) for p in photos],
+            gear=extras["gear"], has_trips=bool(extras["trips"]),
             data={"photos": photos, "posts": titles,
-                  "text": text, "fieldlog": FIELDLOG},
+                  "text": text, "fieldlog": FIELDLOG, **extras},
         )
 
 
@@ -634,7 +764,7 @@ def main():
                 "fieldlog": asset_version("assets/fieldlog.js"), "fieldlogcss": asset_version("assets/fieldlog.css"),
                 "worldcss": asset_version("assets/world.css"), "worldjs": asset_version("assets/world.js"),
                 "entrycss": asset_version("assets/entry.css"), "entryjs": asset_version("assets/entry.js"),
-                "photoscss": asset_version("assets/photos.css"), "photosjs": asset_version("assets/photos.js"),
+                "photoscss": asset_version("assets/photos.css"), "photosjs": asset_version("assets/photos.js"), "photosmorejs": asset_version("assets/photos-more.js"),
                 "uploadcss": asset_version("assets/upload.css"), "uploadjs": asset_version("assets/upload.js"),
                 "pagescss": asset_version("assets/pages.css"), "pagesjs": asset_version("assets/pages.js"),
                 "skycss": asset_version("assets/sky.css"),

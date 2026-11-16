@@ -651,6 +651,36 @@ collections:
             fields:
               - { label: "English", name: "en", widget: "string", required: false }
               - { label: "Danish", name: "da", widget: "string", required: false }
+          - label: "My gear (top of the photography page)"
+            name: "gear"
+            widget: "list"
+            required: false
+            collapsed: true
+            summary: "{{fields.name}}"
+            hint: "Shown in the order of this list, each turning slowly in 3D. The shape follows the kind."
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Kind", name: "kind", widget: "select", default: "camera", options: [{ label: "Camera (interchangeable lenses)", value: "camera" }, { label: "Compact camera (fixed lens)", value: "compact" }, { label: "Phone", value: "phone" }, { label: "Prime lens", value: "prime" }, { label: "Zoom lens", value: "zoom" }] }
+          - label: "Field trips (the map on the photography page)"
+            name: "trips"
+            widget: "list"
+            required: false
+            collapsed: true
+            summary: "{{fields.name}} · {{fields.from}}"
+            hint: "Each trip is a pin on the map. Photos taken between its dates are gathered by themselves (a photo's date is its field log sighting's date, or the date its file name starts with), and so are the finds in the field log from those days."
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Name in Danish (optional)", name: "nameDa", widget: "string", required: false }
+              - { label: "From", name: "from", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+              - { label: "To (optional, for a trip of several days)", name: "to", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", required: false }
+              - { label: "Place", name: "place", widget: "string", hint: "As it should read under the map, e.g. Söderåsen National Park, Skåne, Sweden." }
+              - { label: "Place in Danish (optional)", name: "placeDa", widget: "string", required: false }
+              - { label: "Pin: latitude", name: "lat", widget: "number", value_type: "float", min: -90, max: 90, hint: "Where the pin goes. In Google Maps or Apple Maps, press and hold the spot and copy the two numbers: the first is the latitude (e.g. 56.04)." }
+              - { label: "Pin: longitude", name: "lon", widget: "number", value_type: "float", min: -180, max: 180, hint: "The second number (e.g. 13.24). West of Greenwich and south of the equator are negative." }
+              - { label: "Only places containing (optional)", name: "placeMatch", widget: "string", required: false, hint: "Gather only photos and finds whose field log place contains this word, e.g. Markaryd, when you were somewhere else the same day." }
+              - { label: "Gather photos from these dates", name: "gather", widget: "boolean", default: true, required: false }
+              - { label: "More photos (optional)", name: "photos", widget: "list", required: false, field: { label: "Photo", name: "photo", widget: "image", media_folder: "/images/gallery", public_folder: "/images/gallery" } }
+              - { label: "Blog post (optional)", name: "post", widget: "relation", required: false, collection: "posts", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"] }
           - label: "Photos"
             name: "images"
             widget: "list"
@@ -660,10 +690,13 @@ collections:
               - { label: "Photo", name: "image", widget: "image", media_folder: "/images/gallery", public_folder: "/images/gallery" }
               - { label: "Caption (optional)", name: "caption", widget: "string", required: false }
               - { label: "Show on the photography page", name: "onPhotoPage", widget: "boolean", default: true, required: false, hint: "Turn off for photos meant only for the field log (tag their species below)." }
-              - { label: "Weight", name: "weight", widget: "number", value_type: "int", min: 1, max: 5, step: 1, default: 1, required: false, hint: "How big the photo is on the photography page: 1 small · 2 wide · 3 large · 4 larger · 5 largest. Favourites get more." }
+              - { label: "Weight", name: "weight", widget: "number", value_type: "int", min: 1, max: 5, step: 1, default: 1, required: false, hint: "How big the photo is on the photography page: 1 small · 2 wide · 3 large · 4 larger · 5 largest. Width and height below, when set, win." }
+              - { label: "Width in the grid (optional)", name: "width", widget: "select", required: false, options: [{ label: "1 cell", value: 1 }, { label: "2 cells", value: 2 }, { label: "3 cells", value: 3 }], hint: "Any shape from 1×1 to 3×3, e.g. 1 wide and 3 tall. Leave both empty to use the weight." }
+              - { label: "Height in the grid (optional)", name: "height", widget: "select", required: false, options: [{ label: "1 cell", value: 1 }, { label: "2 cells", value: 2 }, { label: "3 cells", value: 3 }] }
+              - { label: "Albums (optional)", name: "albums", widget: "list", required: false, hint: "Type an album's name to put the photo in it; the same name puts photos together. A photo can be in several albums.", field: { label: "Album", name: "album", widget: "string" } }
               - { label: "Keep in frame", name: "focus", widget: "select", required: false, default: "center", options: [{ label: "Middle", value: "center" }, { label: "Top", value: "top" }, { label: "Bottom", value: "bottom" }, { label: "Left", value: "left" }, { label: "Right", value: "right" }], hint: "Tiles are cropped to fit the mosaic; this part of the photo stays in view." }
               - { label: "Species in the field log (optional)", name: "species", widget: "relation", multiple: true, required: false, collection: "observations", file: "synced", value_field: "species.*.name", search_fields: ["species.*.label"], display_fields: ["species.*.label"], hint: "Tag every species in the photo — one or several. The photo then links to them and shows up when someone opens them in the field log. Finds you add by hand appear in this list a minute or two after you publish them." }
-              - { label: "Blog post (optional)", name: "post", widget: "relation", required: false, collection: "posts", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], hint: "On the photography page the photo then leads to the post (it is also shown at the end of the post). Without a post, it opens full-screen." }
+              - { label: "Blog post (optional)", name: "post", widget: "relation", required: false, collection: "posts", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], hint: "When the photo is opened on the photography page, a clear link to the post is shown under it (the photo is also shown at the end of the post)." }
               - label: "Sightings in the field log"
                 name: "sightings"
                 widget: "list"

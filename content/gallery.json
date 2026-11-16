@@ -4,6 +4,70 @@
     "en": "",
     "da": ""
   },
+  "gear": [
+    {
+      "name": "Fujifilm X-T5",
+      "kind": "camera"
+    },
+    {
+      "name": "XF35mm",
+      "kind": "prime"
+    },
+    {
+      "name": "XF70-300mm",
+      "kind": "zoom"
+    },
+    {
+      "name": "Fujifilm X100F",
+      "kind": "compact"
+    },
+    {
+      "name": "iPhone 14",
+      "kind": "phone"
+    }
+  ],
+  "trips": [
+    {
+      "name": "Söderåsen",
+      "from": "2026-10-10",
+      "to": "2026-10-10",
+      "place": "Söderåsen National Park and Röstånga, Skåne, Sweden",
+      "placeDa": "Söderåsen nationalpark og Röstånga, Skåne, Sverige",
+      "lat": 56.04,
+      "lon": 13.24
+    },
+    {
+      "name": "Karens Minde",
+      "from": "2026-09-17",
+      "to": "2026-09-17",
+      "place": "Karens Minde, Copenhagen",
+      "placeDa": "Karens Minde, København",
+      "lat": 55.656,
+      "lon": 12.535
+    },
+    {
+      "name": "Elk safari",
+      "nameDa": "Elgsafari",
+      "from": "2026-08-29",
+      "to": "2026-08-29",
+      "place": "Smålandets Markaryds Älgsafari, Sweden",
+      "placeDa": "Smålandets Markaryds Älgsafari, Sverige",
+      "lat": 56.46,
+      "lon": 13.6,
+      "placeMatch": "Markaryd",
+      "post": "2026-10-30-one-of-the-remaining-giants-of-the-north"
+    },
+    {
+      "name": "Amazonas",
+      "from": "2026-01-07",
+      "to": "2026-01-14",
+      "place": "Manaus and the Rio Negro, Brazil",
+      "placeDa": "Manaus og Rio Negro, Brasilien",
+      "lat": -3.12,
+      "lon": -60.02,
+      "post": "2026-10-30-a-touching-encounter-with-the-spix-s-white-fronted"
+    }
+  ],
   "images": [
     {
       "image": "/images/gallery/2026-10-30-alces-alces-b0bf3d.jpg",
@@ -78,7 +142,10 @@
     {
       "image": "/images/gallery/2026-01-09-photo-43fd8b.jpg",
       "caption": "",
-      "weight": 1
+      "weight": 1,
+      "albums": [
+        "Water and sky"
+      ]
     },
     {
       "image": "/images/gallery/2026-01-09-photo-d12e91.jpg",
@@ -109,12 +176,18 @@
     {
       "image": "/images/gallery/2026-01-10-photo-2f6d44.jpg",
       "caption": "",
-      "weight": 1
+      "weight": 1,
+      "albums": [
+        "Flowers"
+      ]
     },
     {
       "image": "/images/gallery/2026-01-09-photo-177408.jpg",
       "caption": "",
-      "weight": 2
+      "weight": 2,
+      "albums": [
+        "Water and sky"
+      ]
     },
     {
       "image": "/images/gallery/2026-01-09-photo-3cdadd.jpg",
@@ -126,6 +199,9 @@
       ],
       "species": [
         "Cebus unicolor"
+      ],
+      "albums": [
+        "Capuchins"
       ]
     },
     {
@@ -143,6 +219,9 @@
       ],
       "species": [
         "Cebus unicolor"
+      ],
+      "albums": [
+        "Capuchins"
       ]
     },
     {
@@ -160,6 +239,9 @@
       ],
       "species": [
         "Cebus unicolor"
+      ],
+      "albums": [
+        "Capuchins"
       ]
     },
     {
@@ -198,7 +280,10 @@
     {
       "image": "/images/gallery/2026-03-11-photo-c7cce3.jpg",
       "caption": "",
-      "weight": 1
+      "weight": 1,
+      "albums": [
+        "Flowers"
+      ]
     },
     {
       "image": "/images/gallery/2026-04-27-photo-b0ade7.jpg",
@@ -218,12 +303,18 @@
     {
       "image": "/images/gallery/2026-08-26-photo-798d5a.jpg",
       "caption": "",
-      "weight": 1
+      "weight": 1,
+      "albums": [
+        "Small worlds"
+      ]
     },
     {
       "image": "/images/gallery/2026-08-26-photo-29f10a.jpg",
       "caption": "",
-      "weight": 4
+      "weight": 4,
+      "albums": [
+        "Small worlds"
+      ]
     },
     {
       "image": "/images/gallery/2026-08-26-photo-5f525f.jpg",
@@ -248,7 +339,10 @@
     {
       "image": "/images/gallery/2026-01-14-photo-3b6d07.jpg",
       "caption": "",
-      "weight": 2
+      "weight": 2,
+      "albums": [
+        "Small worlds"
+      ]
     },
     {
       "image": "/images/gallery/2026-03-17-photo-bf652d.jpg",
@@ -268,7 +362,10 @@
     {
       "image": "/images/gallery/2026-07-26-photo-a0315e.jpg",
       "caption": "",
-      "weight": 1
+      "weight": 1,
+      "albums": [
+        "Flowers"
+      ]
     },
     {
       "image": "/images/gallery/2026-07-26-photo-0ed682.jpg",
@@ -284,12 +381,18 @@
     {
       "image": "/images/gallery/2026-08-29-photo-395f7b.jpg",
       "caption": "",
-      "weight": 1
+      "weight": 1,
+      "albums": [
+        "Water and sky"
+      ]
     },
     {
       "image": "/images/gallery/2026-07-31-photo-ce3c9c.jpg",
       "caption": "",
-      "weight": 1
+      "weight": 1,
+      "albums": [
+        "Flowers"
+      ]
     },
     {
       "image": "/images/gallery/2026-08-29-photo-d10fbc.jpg",
@@ -310,7 +413,10 @@
     {
       "image": "/images/gallery/2026-08-09-photo-f44994.jpg",
       "caption": "",
-      "weight": 2
+      "weight": 2,
+      "albums": [
+        "Water and sky"
+      ]
     },
     {
       "image": "/images/gallery/2026-10-10-pseudohydnum-gelatinosum-c68fc8.jpg",
