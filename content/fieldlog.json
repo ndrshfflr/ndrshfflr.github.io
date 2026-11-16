@@ -115,6 +115,10 @@
     {
       "species": "Buteo lagopus",
       "favourite": true
+    },
+    {
+      "species": "Strix aluco",
+      "favourite": true
     }
   ],
   "hide": [],
