@@ -509,8 +509,11 @@
       g.species = sp;
     }
     if (set.post !== undefined) { if (set.post) g.post = set.post; else delete g.post; }
-    // "Keep location": the position stays in the file, and is noted here so the photo inbox leaves it alone
-    if (set.location) { g.keepLocation = true; g.lat = set.location.lat; g.lon = set.location.lon; }
+    // "Keep metadata": it stays in the file; marked here so the photo inbox leaves it alone, with the parts to sort by
+    if (set.meta) {
+      g.keepMetadata = true;
+      ['taken', 'camera', 'lens', 'lat', 'lon'].forEach(function (k) { if (set.meta[k] !== undefined && set.meta[k] !== '') g[k] = set.meta[k]; });
+    }
     if (set.postIfEmpty && !g.post) g.post = set.postIfEmpty;
     return g;
   }
@@ -619,7 +622,7 @@
     var pfBox = li.querySelector('.up-pf');
     pfBox.hidden = !pf.checked;
     pf.addEventListener('change', function () { pfBox.hidden = !pf.checked; if (!it.path) store.set('uploadPortfolio', pf.checked ? '1' : '0'); });
-    showLocation(it);
+    showMeta(it);
     li.querySelector('.up-caption').addEventListener('input', prefill);
     li.querySelector('.up-in-post').addEventListener('change', prefill);
     li.querySelector('.up-remove').addEventListener('click', function () {
@@ -631,25 +634,29 @@
     });
     list.appendChild(li);
   }
-  /* "Keep location" on a new picture: offered when the photo carries a position */
-  function showLocation(it) {
+  /* "Keep metadata" on a new picture: offered when the photo carries any */
+  function showMeta(it) {
     if (!it.li) return;
     var box = it.li.querySelector('.up-loc'), keep = it.li.querySelector('.up-keep-l'), note = it.li.querySelector('.up-loc-note');
     box.hidden = !it.file;
     if (!it.file) return;
-    keep.hidden = !it.gps;
-    note.textContent = it.gps
-      ? 'Taken at ' + it.gps.lat.toFixed(4) + ', ' + it.gps.lon.toFixed(4) + '. If kept, anyone can read the exact spot from the photo. Otherwise it’s removed.'
-      : 'No location in this photo, so there’s none to keep.';
+    var x = it.meta, m = x && x.meta || {};
+    keep.hidden = !(x && x.keep);
+    if (!x) { note.textContent = ''; return; }
+    var has = [m.camera, m.lens, m.taken ? 'taken ' + shortDate(m.taken) + (m.taken.length > 10 ? ' ' + m.taken.slice(11, 16) : '') : '',
+      x.gps ? 'at ' + x.gps.lat.toFixed(4) + ', ' + x.gps.lon.toFixed(4) : ''].filter(Boolean).join(' · ');
+    note.textContent = x.keep
+      ? (has ? has + '. ' : '') + 'If kept, anyone can read all of it from the photo' + (x.gps ? ', the exact spot included' : '') + '. Otherwise it’s removed.'
+      : 'No metadata in this photo, so there’s none to keep.';
   }
   function addFile(file) {
-    var it = { id: nextId++, file: file, url: URL.createObjectURL(file), taken: '', gps: null };
+    var it = { id: nextId++, file: file, url: URL.createObjectURL(file), taken: '', meta: null };
     items.push(it);
     makeCard(it);
-    /* the day it was taken and where, read here from the photo's own data */
+    /* the day it was taken, and what else the photo says about itself, read here from its own data */
     E.exif(file).then(function (x) {
-      it.taken = x.date; it.gps = x.gps;
-      showLocation(it);
+      it.taken = x.date; it.meta = x;
+      showMeta(it);
       if (items[0] === it) prefillFindDate();
     });
   }
@@ -838,8 +845,8 @@
         it.inPost = wantPost && it.li.querySelector('.up-in-post').checked;
         if (it.path) return null;
         status('Preparing picture ' + (i + 1) + ' of ' + batch.length + '…');
-        it.keep = it.gps && it.li.querySelector('.up-keep-loc').checked ? it.gps : null;
-        return E.shrink(it.file, it.keep).then(function (r) {
+        it.keep = it.meta && it.meta.keep && it.li.querySelector('.up-keep-loc').checked ? it.meta : null;
+        return E.shrink(it.file, it.keep && it.keep.keep).then(function (r) {
           it.path = '/images/gallery/' + (it.taken || today) + '-' + (slugify(it.caption || speciesName || 'photo').slice(0, 40) || 'photo') + '-' + r.hash + '.jpg';
           it.isNew = true;
           it.preview = URL.createObjectURL(r.blob);
@@ -856,7 +863,7 @@
         batch.slice().reverse().forEach(function (it) {
           var set = { portfolio: it.portfolio, weight: it.weight, focus: it.focus };
           if (it.caption || it.isNew) set.caption = it.caption;
-          if (it.isNew && it.keep) set.location = it.keep;
+          if (it.isNew && it.keep) set.meta = it.keep.meta;
           if (it.inFind) { set.addSighting = sightingId; set.addSpecies = speciesName; }
           if (it.inPost) set.postIfEmpty = slug;
           applyEntry(d0, it.path, set);

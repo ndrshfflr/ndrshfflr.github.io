@@ -22,7 +22,7 @@
 <link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ebgaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/world.css?v=633618d4">
-<link rel="stylesheet" href="assets/upload.css?v=a09be844">
+<link rel="stylesheet" href="assets/upload.css?v=fdab6443">
 </head>
 <body>
 <div class="world up" id="world">
@@ -70,7 +70,7 @@
           <button class="up-btn up-pick" id="from-lib" type="button">From the library</button>
         </div>
         <input class="up-file" id="files" type="file" accept="image/*" multiple>
-        <p class="up-small up-hint">Optional: a find or a post can do without. New pictures are shrunk to 2000 px and their location is removed on this device before they're sent, unless you tick “Keep location” on a picture.</p>
+        <p class="up-small up-hint">Optional: a find or a post can do without. New pictures are shrunk to 2000 px and their location is removed on this device before they're sent, and so is the rest of their metadata, unless you tick “Keep metadata” on a picture.</p>
         <ol class="up-list" id="list" aria-label="Pictures"></ol>
 
         <h2 class="up-h2">Also make it</h2>
@@ -182,7 +182,7 @@
           </label>
         </div>
         <div class="up-loc" hidden>
-          <label class="up-check up-keep-l" hidden><input class="up-keep-loc" type="checkbox"> Keep location</label>
+          <label class="up-check up-keep-l" hidden><input class="up-keep-loc" type="checkbox"> Keep metadata</label>
           <p class="up-small up-loc-note"></p>
         </div>
         <button class="up-link up-remove" type="button">Remove</button>
@@ -273,7 +273,7 @@
 </div>
 
 <script id="upload-data" type="application/json">{"authEndpoint": "auth", "branch": "main", "fieldlog": "fieldlog.html", "photography": "photography.html", "posts": [{"date": "2026-10-30", "slug": "2026-10-30-one-of-the-remaining-giants-of-the-north", "title": "One of the last (wild) giants of the North"}, {"date": "2026-10-30", "slug": "2026-10-30-close-encounter", "title": "Close encounter"}, {"date": "2026-01-09", "slug": "2026-10-30-a-touching-encounter-with-the-spix-s-white-fronted", "title": "A touching encounter with the Spix\u0027s white-fronted capuchin"}], "proxy": "https://decap-proxy.shhflr.workers.dev", "repo": "ndrshfflr/ndrshfflr.github.io"}</script>
-<script src="assets/edit-core.js?v=90432dc8"></script>
-<script src="assets/upload.js?v=3ed64935"></script>
+<script src="assets/edit-core.js?v=ea51471e"></script>
+<script src="assets/upload.js?v=02dcf116"></script>
 </body>
 </html>

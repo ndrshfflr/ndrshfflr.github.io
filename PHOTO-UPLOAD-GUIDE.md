@@ -194,8 +194,8 @@ If you're already signed in to /admin in this browser, the page uses that.
    pictures already on the site. For each one: a caption, **Portfolio** (on the
    photography page, with its size 1–5 and what to keep in frame), and, when you
    make a find or a post, whether it goes **in the find** and **in the post**.
-   A new picture that carries a position also offers **Keep location** (see
-   "Keeping a photo's location" below).
+   A new picture that carries metadata also offers **Keep metadata** (see
+   "Keeping a photo's metadata" below).
 2. **Also make it** (optional, one or both):
    - **A find in the field log.** Type the species. Pick one of its sightings,
      or **A new sighting** (date, read from the first picture; place; for a new
@@ -230,42 +230,42 @@ To add it to the home screen: open the page in Safari → **Share** · *Del* →
 
 ---
 
-## Keeping a photo's location
+## Keeping a photo's metadata
 
-Normally every photo's location is removed before it reaches the website. **Keep
-location** turns that off for one photo:
+Normally a photo is stripped of what it says about itself before it reaches the
+website: where it was taken above all, and from the Photos page and the Shortcut
+everything else too. **Keep metadata** turns that off for one photo:
 
-- The GPS position stays in the photo file, and its coordinates are noted with
-  the photo in the Photo Gallery (latitude and longitude), ready for the site to
-  use, e.g. for pinning field trips.
-- Everything else in the photo's data (camera, serial number, date) is still
-  removed.
+- The photo file keeps all of it: camera, lens, settings, date and time, the
+  exact position, the camera's serial number, and keywords or ratings added in
+  a photo program.
+- The parts to sort by are also noted with the photo in the Photo Gallery
+  (`taken`, `camera`, `lens`, `lat`, `lon`), so the site can sort and group
+  photos later without opening each file.
 - It's off unless you turn it on, photo by photo.
 
-The website and its repository are public, so **anyone can read the exact spot**
-from a photo that keeps its location. Leave it off for photos taken at home and
-for places that shouldn't be found.
+The website and its repository are public, so **anyone can read all of it** from
+a photo that keeps its metadata, the exact spot included. Leave it off for photos
+taken at home and for places that shouldn't be found.
 
 Where to turn it on:
 
-- **The Photos page → New:** tick **Keep location** on the picture. It's offered
-  when the photo has a position; the page shows the coordinates. If it says
-  "No location in this photo" for a photo that should have one, the iPhone's
-  photo picker has left it out: look for **Options** in the picker and turn on
-  **Location** there.
+- **The Photos page → New:** tick **Keep metadata** on the picture. The page
+  shows what the photo holds (camera, lens, when, where). If a photo that should
+  have a position shows none, the iPhone's photo picker has left it out: look
+  for **Options** in the picker and turn on **Location** there.
 - **The iPhone Shortcut:** in action 7 (Convert Image), turn **Preserve
   Metadata** · *Bevar metadata* **on**, and add a fourth line to the text in
-  action 13: `location: keep`. To choose per photo instead, add another *Choose
-  from List* (keep / remove) and put its answer after `location:`. (The
+  action 13: `metadata: keep`. To choose per photo instead, add another *Choose
+  from List* (keep / remove) and put its answer after `metadata:`. (The
   website's side of this is tested; the Shortcut's side isn't yet. If a photo
-  arrives without its location, the Shortcut dropped it on the way: use the
+  arrives without its metadata, the Shortcut dropped it on the way: use the
   Photos page for that photo.)
-- **/admin → Photo Gallery:** turn on **Keep location** on the photo before you
+- **/admin → Photo Gallery:** turn on **Keep metadata** on the photo before you
   publish.
 
-To remove a kept location later: in **/admin → Photo Gallery**, turn **Keep
-location** off on the photo and empty its latitude and longitude. The next time
-photos are filed, the position is taken out of the file.
+To undo it later, delete the photo for good and add it again without **Keep
+metadata**.
 
 ---
 

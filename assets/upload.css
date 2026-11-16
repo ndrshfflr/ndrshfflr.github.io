@@ -188,6 +188,6 @@ textarea.up-area{font-family:inherit}
   .up-pair{grid-template-columns:1fr}
 }
 
-/* "Keep location" on a new picture */
+/* "Keep metadata" on a new picture */
 .up-loc[hidden],.up-keep-l[hidden]{display:none}
 .up-loc-note{margin:0 0 4px;font-size:14px}

@@ -8,8 +8,8 @@
    - saving: one commit per save, straight into the repository, on top of the
      newest version of each file
    - preparing photos: shrunk to 2000 px and re-drawn on this device, so they
-     carry no metadata; with "keep location" the GPS position alone is written
-     back into the new file
+     carry no metadata; with "keep metadata" the photo's own data (camera,
+     lens, settings, date, position, keywords) is put back into the new file
    - deleting a picture for good: the file, and every place that shows it
 
    window.SiteEdit.setup({ repo, branch, proxy, authEndpoint }) first.
@@ -173,103 +173,101 @@
   function signOut() { store.set('uploadAuth', null); auth = null; }
 
   /* ------------------------------------------------------------------ a photo's own data */
-  /* The day a photo was taken and where, from its EXIF data (read here, on
-     this device). → { date: 'YYYY-MM-DD' or '', gps: { lat, lon } or null } */
+  /* What a photo says about itself (EXIF), read here, on this device.
+     → { date: 'YYYY-MM-DD' or '', gps: { lat, lon } or null,
+         meta: { taken, camera, lens, lat, lon } (what there is of it; noted on a photo that keeps its metadata),
+         keep: the photo's metadata as bytes, ready for shrink(), or null when it has none } */
   function exif(file) {
     var fallback = file.lastModified ? isoDay(new Date(file.lastModified)) : '';
-    if (!/jpe?g$/i.test(file.type || file.name)) return Promise.resolve({ date: fallback, gps: null });
-    return file.slice(0, 256 * 1024).arrayBuffer().then(function (buf) {
+    var none = { date: fallback, gps: null, meta: {}, keep: null };
+    if (!/jpe?g$/i.test(file.type || file.name)) return Promise.resolve(none);
+    return file.slice(0, 1024 * 1024).arrayBuffer().then(function (buf) {
       var x = readExif(new DataView(buf));
-      return { date: x.date || fallback, gps: x.gps };
-    }).catch(function () { return { date: fallback, gps: null }; });
+      x.date = x.date || fallback;
+      return x;
+    }).catch(function () { return none; });
   }
   function readExif(v) {
-    var out = { date: '', gps: null };
+    var out = { date: '', gps: null, meta: {}, keep: null }, segs = [], seen = false;
     if (v.byteLength < 4 || v.getUint16(0) !== 0xFFD8) return out;
     var o = 2;
     while (o + 4 <= v.byteLength) {
-      var marker = v.getUint16(o), len = v.getUint16(o + 2);
-      if (marker === 0xFFE1 && o + 10 <= v.byteLength && v.getUint32(o + 4) === 0x45786966) { // "Exif"
-        var t = o + 10, le = v.getUint16(t) === 0x4949;
-        var u16 = function (a) { return v.getUint16(a, le); }, u32 = function (a) { return v.getUint32(a, le); };
-        var find = function (ifd, tag) {
-          if (ifd + 2 > v.byteLength) return null;
-          for (var i = 0, n = u16(ifd); i < n; i++) {
-            var e = ifd + 2 + i * 12;
-            if (e + 12 > v.byteLength) return null;
-            if (u16(e) === tag) return e;
-          }
-          return null;
-        };
-        var text = function (e) {
-          if (!e) return '';
-          var at = t + u32(e + 8), s = '';
-          for (var i = 0; i < 19 && at + i < v.byteLength; i++) s += String.fromCharCode(v.getUint8(at + i));
-          var m = /^(\d{4}):(\d{2}):(\d{2})/.exec(s);
-          return m && m[1] !== '0000' ? m[1] + '-' + m[2] + '-' + m[3] : '';
-        };
-        /* degrees, minutes, seconds as three fractions → decimal degrees */
-        var angle = function (e) {
-          if (!e || u16(e + 2) !== 5 || u32(e + 4) !== 3) return null;
-          var at = t + u32(e + 8), deg = 0;
-          if (at + 24 > v.byteLength) return null;
-          for (var i = 0; i < 3; i++) {
-            var den = u32(at + i * 8 + 4);
-            if (!den) return null;
-            deg += u32(at + i * 8) / den / Math.pow(60, i);
-          }
-          return deg;
-        };
-        var ifd0 = t + u32(t + 4), ptr = find(ifd0, 0x8769);
-        out.date = (ptr ? text(find(t + u32(ptr + 8), 0x9003)) : '') || text(find(ifd0, 0x0132));
-        var gp = find(ifd0, 0x8825);
-        if (gp) {
-          var g = t + u32(gp + 8);
-          var lat = angle(find(g, 2)), lon = angle(find(g, 4));
-          var ref = function (tag) { var e = find(g, tag); return e ? String.fromCharCode(v.getUint8(e + 8)) : ''; };
-          if (lat !== null && lon !== null && (lat || lon) && lat <= 90 && lon <= 180) {
-            if (ref(1) === 'S') lat = -lat;
-            if (ref(3) === 'W') lon = -lon;
-            out.gps = { lat: Math.round(lat * 1e5) / 1e5, lon: Math.round(lon * 1e5) / 1e5, exact: [lat, lon] }; // 5 decimals (about a metre) to show and note; exact for the file
-          }
-        }
-        return out;
+      var marker = v.getUint16(o), len = v.getUint16(o + 2), end = o + 2 + len;
+      if ((marker & 0xFF00) !== 0xFF00 || marker === 0xFFDA || len < 2 || end > v.byteLength) break;
+      if (marker === 0xFFE1 && !seen && len >= 16 && v.getUint32(o + 4) === 0x45786966) { // "Exif": camera, settings, date, position
+        seen = true;
+        var seg = new Uint8Array(v.buffer.slice(v.byteOffset + o, v.byteOffset + end));
+        try { exifFacts(new DataView(seg.buffer), out); segs.push(seg); } catch (e) { /* unreadable: left out */ }
+      } else if (marker === 0xFFE1 || marker === 0xFFED) {                                // XMP and IPTC: keywords, ratings, captions
+        segs.push(new Uint8Array(v.buffer.slice(v.byteOffset + o, v.byteOffset + end)));
       }
-      if ((marker & 0xFF00) !== 0xFF00 || marker === 0xFFDA) break;
-      o += 2 + len;
+      o = end;
+    }
+    if (segs.length) {
+      var total = segs.reduce(function (n, x) { return n + x.length; }, 0), at = 0;
+      out.keep = new Uint8Array(total);
+      segs.forEach(function (x) { out.keep.set(x, at); at += x.length; });
     }
     return out;
   }
-  /* A JPEG's bytes with a GPS position written into it, and nothing else:
-     a small EXIF block holding only the latitude and longitude. */
-  function withGps(bytes, gps) {
-    if (bytes[0] !== 0xFF || bytes[1] !== 0xD8) return bytes;
-    var T = 140, seg = new Uint8Array(4 + 6 + T), v = new DataView(seg.buffer), t = 10; // t: where the TIFF data starts
-    v.setUint16(0, 0xFFE1); v.setUint16(2, 2 + 6 + T);
-    v.setUint32(4, 0x45786966); v.setUint16(8, 0);                    // "Exif\0\0"
-    v.setUint16(t, 0x4D4D); v.setUint16(t + 2, 42); v.setUint32(t + 4, 8); // big-endian TIFF, first directory at 8
-    var entry = function (at, tag, type, count) { v.setUint16(at, tag); v.setUint16(at + 2, type); v.setUint32(at + 4, count); return at + 8; };
-    v.setUint16(t + 8, 1);                                             // the main directory: one entry, pointing at the GPS directory
-    v.setUint32(entry(t + 10, 0x8825, 4, 1), 26);
-    var g = t + 26;
-    v.setUint16(g, 5);
-    var val = entry(g + 2, 0, 1, 4); v.setUint8(val, 2); v.setUint8(val + 1, 3);           // GPS version 2.3
-    v.setUint8(entry(g + 14, 1, 2, 2), gps.lat < 0 ? 0x53 : 0x4E);                          // N or S
-    v.setUint32(entry(g + 26, 2, 5, 3), 92);
-    v.setUint8(entry(g + 38, 3, 2, 2), gps.lon < 0 ? 0x57 : 0x45);                          // E or W
-    v.setUint32(entry(g + 50, 4, 5, 3), 116);
-    var dms = function (at, deg) {
-      deg = Math.abs(deg);
-      var d = Math.floor(deg), m = Math.floor((deg - d) * 60), s = Math.round(((deg - d) * 60 - m) * 60 * 10000);
-      if (s >= 600000) { s = 0; m += 1; }
-      if (m >= 60) { m = 0; d += 1; }
-      [[d, 1], [m, 1], [s, 10000]].forEach(function (f, i) { v.setUint32(at + i * 8, f[0]); v.setUint32(at + i * 8 + 4, f[1]); });
+  /* Reads one EXIF block (v: the whole segment) into out, and makes it fit the
+     re-drawn photo: marked upright (the browser has already turned the
+     picture) and without its small built-in preview (which isn't turned). */
+  function exifFacts(v, out) {
+    var t = 10, le = v.getUint16(t) === 0x4949, size = v.byteLength;
+    var u16 = function (a) { return v.getUint16(a, le); }, u32 = function (a) { return v.getUint32(a, le); };
+    var find = function (ifd, tag) {
+      if (ifd + 2 > size) return null;
+      for (var i = 0, n = u16(ifd); i < n; i++) {
+        var e = ifd + 2 + i * 12;
+        if (e + 12 > size) return null;
+        if (u16(e) === tag) return e;
+      }
+      return null;
     };
-    var at = gps.exact || [gps.lat, gps.lon];
-    dms(t + 92, at[0]); dms(t + 116, at[1]);
-    var out = new Uint8Array(bytes.length + seg.length);
-    out.set(bytes.subarray(0, 2), 0); out.set(seg, 2); out.set(bytes.subarray(2), 2 + seg.length);
-    return out;
+    var text = function (e) {
+      if (!e || u16(e + 2) !== 2) return '';
+      var n = u32(e + 4), at = n > 4 ? t + u32(e + 8) : e + 8, s = '';
+      for (var i = 0; i < n && i < 120 && at + i < size; i++) { var c = v.getUint8(at + i); if (!c) break; s += String.fromCharCode(c); }
+      return s.replace(/[^\x20-\x7e]/g, '').trim();
+    };
+    /* degrees, minutes, seconds as three fractions → decimal degrees */
+    var angle = function (e) {
+      if (!e || u16(e + 2) !== 5 || u32(e + 4) !== 3) return null;
+      var at = t + u32(e + 8), deg = 0;
+      if (at + 24 > size) return null;
+      for (var i = 0; i < 3; i++) {
+        var den = u32(at + i * 8 + 4);
+        if (!den) return null;
+        deg += u32(at + i * 8) / den / Math.pow(60, i);
+      }
+      return deg;
+    };
+    var when = function (s) { var m = /^(\d{4}):(\d{2}):(\d{2})(?: (\d{2}):(\d{2}):(\d{2}))?/.exec(s); return m && m[1] !== '0000' ? m[1] + '-' + m[2] + '-' + m[3] + (m[4] ? 'T' + m[4] + ':' + m[5] + ':' + m[6] : '') : ''; };
+    var ifd0 = t + u32(t + 4), ptr = find(ifd0, 0x8769), sub = ptr ? t + u32(ptr + 8) : 0;
+    var taken = (sub ? when(text(find(sub, 0x9003))) : '') || when(text(find(ifd0, 0x0132)));
+    var make = text(find(ifd0, 0x010F)), model = text(find(ifd0, 0x0110)), lens = sub ? text(find(sub, 0xA434)) : '';
+    var camera = model && make && model.toLowerCase().indexOf(make.toLowerCase().split(' ')[0]) !== 0 ? make + ' ' + model : (model || make);
+    out.date = taken.slice(0, 10);
+    if (taken) out.meta.taken = taken;
+    if (camera) out.meta.camera = camera;
+    if (lens) out.meta.lens = lens;
+    var gp = find(ifd0, 0x8825);
+    if (gp) {
+      var g = t + u32(gp + 8);
+      var lat = angle(find(g, 2)), lon = angle(find(g, 4));
+      var ref = function (tag) { var e = find(g, tag); return e ? String.fromCharCode(v.getUint8(e + 8)) : ''; };
+      if (lat !== null && lon !== null && (lat || lon) && lat <= 90 && lon <= 180) {
+        if (ref(1) === 'S') lat = -lat;
+        if (ref(3) === 'W') lon = -lon;
+        out.gps = { lat: Math.round(lat * 1e5) / 1e5, lon: Math.round(lon * 1e5) / 1e5 }; // 5 decimals: about a metre
+        out.meta.lat = out.gps.lat; out.meta.lon = out.gps.lon;
+      }
+    }
+    var turn = find(ifd0, 0x0112);
+    if (turn && u16(turn + 2) === 3) v.setUint16(turn + 8, 1, le);   // upright
+    var next = ifd0 + 2 + u16(ifd0) * 12;
+    if (next + 4 <= size) v.setUint32(next, 0, le);                   // no built-in preview
   }
   function loadImage(file) {
     return new Promise(function (resolve, reject) {
@@ -281,10 +279,11 @@
     });
   }
   /* Re-draw at most 2000 px on a canvas: the browser turns it upright, and the
-     new JPEG carries no metadata, so the location is gone — unless a position
-     is passed in (keepGps: { lat, lon }), which is then written back, alone.
+     new JPEG carries no metadata, so the location and everything else is gone
+     — unless the photo's metadata is passed in (keep: from exif()), which is
+     then put back into the new file.
      → { b64, hash, blob } */
-  function shrink(file, keepGps) {
+  function shrink(file, keep) {
     return loadImage(file).then(function (r) {
       var w = r.img.naturalWidth, h = r.img.naturalHeight, s = Math.min(1, LONG_SIDE / Math.max(w, h));
       var c = doc.createElement('canvas');
@@ -299,7 +298,11 @@
     }).then(function (blob) {
       return blob.arrayBuffer().then(function (buf) {
         var bytes = new Uint8Array(buf);
-        if (keepGps && isFinite(keepGps.lat) && isFinite(keepGps.lon)) bytes = withGps(bytes, keepGps);
+        if (keep && keep.length && bytes[0] === 0xFF && bytes[1] === 0xD8) { // straight after the start of the file
+          var all = new Uint8Array(bytes.length + keep.length);
+          all.set(bytes.subarray(0, 2), 0); all.set(keep, 2); all.set(bytes.subarray(2), 2 + keep.length);
+          bytes = all;
+        }
         return crypto.subtle.digest('SHA-1', bytes).then(function (h) {
           var hex = Array.prototype.map.call(new Uint8Array(h), function (b) { return ('0' + b.toString(16)).slice(-2); }).join('').slice(0, 6);
           return { b64: bytesToB64(bytes), hash: hex, blob: new Blob([bytes], { type: 'image/jpeg' }) };
