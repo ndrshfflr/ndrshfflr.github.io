@@ -503,7 +503,7 @@ def photo_extras(gallery_doc, photos, titles):
 
     albums = photo_albums(gallery_doc)
 
-    # when a photo was taken: its sighting's date, else the date its file name starts with
+    # when a photo was taken: its sighting's date, else its kept metadata's date, else the date its file name starts with
     fl = load("fieldlog.json")
     obs = load("observations.json")
     records = [r for r in obs.get("items") or [] if r.get("date")]
@@ -518,10 +518,13 @@ def photo_extras(gallery_doc, photos, titles):
         return by_id.get(sid)
 
     def taken(p):
+        """When a photo was taken: its sighting's date, else the date kept in its metadata, else the date its file name starts with."""
         for sid in p.get("sightings") or []:
             s = sighting(sid)
             if s and s.get("date"):
                 return s["date"][:10], s.get("place") or ""
+        if re.match(r"^\d{4}-\d{2}-\d{2}", str(p.get("taken") or "")):
+            return str(p["taken"])[:10], ""
         m = re.match(r"(\d{4}-\d{2}-\d{2})", (p.get("image") or "").split("/")[-1])
         return (m.group(1) if m else ""), ""
 

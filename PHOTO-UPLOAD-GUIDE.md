@@ -322,5 +322,31 @@ Open the **Albums** tab while editing.
   first photo), or to **Take out of the album**.
 - Only photos that are on the photography page show in an album.
 
-Albums, new photos and everything else are saved together with **Save**.
-Field trips are still edited in /admin → Photo Gallery for now.
+### Field trips
+
+Open the **Field trips** tab while editing. Under the map is a list of your trips
+(newest first, with how many photos and finds each has).
+
+- **Tap a trip** (or its pin) for its panel: name and Danish name, dates, place
+  (English and Danish), the pin, which photos it holds, and its blog post.
+- **The pin:** **⌖ Place it on the map**, then click the spot. On the world map
+  the first click zooms in; click again to move the pin; **Done** when it's
+  right. You can also type the position (`56.04, 13.24`, as Google Maps or
+  Apple Maps give it), or press **Where the photos were taken** when the trip's
+  photos kept their metadata.
+- **Photos:** the photos taken on the trip's dates are gathered by themselves
+  (a photo's date is its field log sighting's date, else the date its kept
+  metadata says, else the date its file name starts with). **Only where the
+  field log place contains** narrows that to one place. **+ Add photos by hand**
+  adds any other photo; untick **Gather** to choose them all by hand.
+- **+ New field trip** makes one; it needs a name and a pin before you can save.
+  **Delete field trip** removes it (Discard brings it back).
+
+### Gear
+
+**✎ Gear** (above the Stream / Albums / Field trips buttons) opens your gear:
+rename a piece, choose its kind (the shape it turns as), move it up or down,
+remove it, or **+ Add a piece**. The gear line at the top changes as you go.
+
+Albums, field trips, gear, new photos and everything else are saved together
+with **Save**.

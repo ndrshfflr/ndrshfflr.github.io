@@ -3,7 +3,7 @@
    the signed-in owner. Its own dark colours, so it reads the same in every
    season and time of day; the ember accent comes from the page.
    ========================================================================== */
-.pe,body.pe-on .pane{--pe-acc:#e39a5c;--pe-ink:#f1efe8;--pe-ink2:#b9c0c9;--pe-bg:rgba(10,15,25,.96);--pe-line:rgba(255,255,255,.16)}
+.pe,body.pe-on .pane,body.pe-on .pe-gear-btn{--pe-acc:#e39a5c;--pe-ink:#f1efe8;--pe-ink2:#b9c0c9;--pe-bg:rgba(10,15,25,.96);--pe-line:rgba(255,255,255,.16)}
 .pe{color-scheme:dark;font-family:'EB Garamond',Georgia,serif;font-size:16px;line-height:1.35;color:var(--pe-ink)}
 .pe [hidden]{display:none !important}
 .pe button{font:inherit;-webkit-tap-highlight-color:transparent}
@@ -171,6 +171,56 @@ body.pe-on .pe-albums,body.pe-on .pe-agrid{padding-bottom:8px}
 .pe-pk-tick{position:absolute;right:6px;top:6px;display:flex;align-items:center;justify-content:center;width:26px;height:26px;border:2px solid rgba(255,255,255,.75);border-radius:50%;background:rgba(0,0,0,.45);color:transparent;font-size:15px;font-weight:700}
 .pe-pk.on .pe-pk-tick{border-color:var(--pe-acc);background:var(--pe-acc);color:#1a0f07}
 
+/* field trips while editing */
+.pe-wide{width:384px}
+body.pe-side .mosaic-wrap{padding-right:432px;transition:padding .25s ease}
+.pe-ptitle{flex:1;margin:4px 0 0;font-family:'Cinzel',Georgia,serif;font-size:18px}
+.pe-pair{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.pe-trip-box .pe-label{margin-bottom:10px}
+.pe-trip-box .pe-input{font-size:16px}
+.pe-trip-box input[type=date]{min-height:42px}
+.pe-pin,.pe-gath{margin:2px 0 12px;padding:10px 12px 4px;border:1px solid var(--pe-line);border-radius:10px;background:rgba(255,255,255,.03)}
+.pe-pin .pe-foot{margin:0 0 8px}
+.pe-pin>.pe-small{margin:0 0 8px}
+.pe-gath .pe-check{margin-bottom:6px}
+.pe-tstrip{list-style:none;margin:0 0 8px;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+.pe-tstrip li{position:relative;aspect-ratio:1;overflow:hidden;border-radius:3px;background:#000}
+.pe-tstrip img{display:block;width:100%;height:100%;object-fit:cover}
+.pe-tstrip .pe-badge{left:2px;top:auto;bottom:2px;padding:0 5px;font-size:11px}
+.pe-tstrip .pe-more{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);color:var(--pe-ink2);font-size:14px}
+.pe-badge.pe-hand{background:rgba(227,154,92,.9);color:#1a0f07}
+.pe-trip-box select.pe-input{appearance:auto}
+.trip-card.pe-trips{display:block;padding:16px 18px 18px}
+.pe-trips-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:12px}
+.pe-trips-h{margin:0;font-family:'Cinzel',Georgia,serif;font-size:20px;color:var(--ink)}
+.pe-tlist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.pe-trow{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%;min-height:96px;padding:12px 14px;border:1px solid color-mix(in srgb,var(--ink) 14%,transparent);border-radius:10px;
+  background:rgba(255,255,255,.03);color:var(--ink);font:inherit;text-align:left;cursor:pointer}
+.pe-trow:hover{border-color:color-mix(in srgb,var(--acc) 60%,transparent)}
+.pe-trow.on{border-color:var(--acc);box-shadow:0 0 0 2px var(--acc),0 0 24px rgba(227,154,92,.3)}
+.pe-tname{font-family:'Cinzel',Georgia,serif;font-size:18px;line-height:1.25}
+.pe-twhen{font-size:14px;letter-spacing:.04em;color:#a9b7c4}
+.pe-tplace{font-size:15px;font-style:italic;color:#c4d2df}
+.pe-tfacts{font-size:14px;color:var(--ink2)}
+.pe-trow .pe-nopin{position:static;margin-top:4px;background:#7a3b2e;color:#ffe4dc}
+body.pe-on .pin{pointer-events:auto}
+body.pe-placing .tmap{cursor:crosshair;box-shadow:0 0 0 2px var(--acc),0 0 40px rgba(227,154,92,.25)}
+body.pe-placing .tmap .pin{pointer-events:none;opacity:.75} /* placing: every click is a spot on the map, even next to another pin */
+.pe-placebar{position:fixed;left:50%;bottom:calc(var(--pe-bar,62px) + 12px);z-index:42;transform:translateX(-50%);display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;
+  width:min(640px,calc(100vw - 24px));padding:10px 14px;border:1px solid var(--pe-acc);border-radius:14px;background:var(--pe-bg);box-shadow:0 10px 40px rgba(0,0,0,.55)}
+.pe-placebar .pe-small{flex:1 1 240px;color:var(--pe-ink);font-size:16px}
+
+/* gear */
+.pe-gear-btn{position:relative;z-index:2;display:flex;margin:14px auto 0;font-family:'EB Garamond',Georgia,serif;font-size:16px;min-height:38px}
+.pe-gear-btn[aria-pressed=true]{border-color:var(--pe-acc);color:var(--pe-acc)}
+.pe-gear-box>.pe-small{margin:8px 0 10px}
+.pe-grows{list-style:none;margin:0 0 10px;padding:0;display:flex;flex-direction:column;gap:10px}
+.pe-grow{display:grid;grid-template-columns:1fr;gap:5px;padding:8px 10px;border:1px solid var(--pe-line);border-radius:10px;background:rgba(255,255,255,.03)}
+.pe-grow .pe-input{margin-top:0;min-height:38px;font-size:16px}
+.pe-grow select.pe-input{appearance:auto}
+.pe-grow-b{display:flex;gap:6px;justify-content:flex-end}
+.pe-mini{min-height:34px;min-width:40px;padding:0 10px}
+
 /* phone: the panel is a sheet above the bar; tap controls */
 @media (max-width:699px){
   .pe{--pe-cell:34px}
@@ -199,6 +249,11 @@ body.pe-on .pe-albums,body.pe-on .pe-agrid{padding-bottom:8px}
   .pe-menu{left:8px !important;right:8px}
   .pe-album-box .pe-order{grid-template-columns:repeat(4,calc(var(--pe-cell) + 8px));grid-auto-rows:44px}
   .pe-aphoto-box .pe-order{grid-template-columns:repeat(4,calc(var(--pe-cell) + 8px));grid-auto-rows:44px}
+  .pe-wide{width:auto}
+  .pe-pair{grid-template-columns:1fr}
+  .pe-tlist{grid-template-columns:1fr}
+  .trip-card.pe-trips{padding:12px}
+  .pe-placebar{bottom:calc(var(--pe-bar,104px) + 8px)}
 }
 @media (max-width:359px){
   .pe{--pe-cell:30px}

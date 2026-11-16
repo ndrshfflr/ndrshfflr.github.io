@@ -66,7 +66,7 @@
     stage.innerHTML = '<span class="g3d-scale" style="transform:scale(' + scale + ')">' + (big ? '<span class="g3d-glow"></span><span class="g3d-shadow"></span>' : '') +
       '<span class="g3d-spin">' + make() + '</span></span>';
   }
-  function setGear(open, keep) {
+  function setGearOpen(open, keep) {
     if (!gear) return;
     gear.classList.toggle('open', open);
     gearBar.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -80,10 +80,48 @@
   }
   if (gear) {
     $$('.g3d-stage.mini', gear).forEach(function (s) { fillStage(s, 0.2, false); });
-    gearBar.addEventListener('click', function () { setGear(!gear.classList.contains('open'), true); });
+    gearBar.addEventListener('click', function () { setGearOpen(!gear.classList.contains('open'), true); });
     W.onRender(function () { W.say('gear-toggle', gear.classList.contains('open') ? U().hide : U().show); });
-    setGear(W.local.get('gearOpen') === '1', false);
+    setGearOpen(W.local.get('gearOpen') === '1', false);
   }
+
+  /* the gear, drawn again from a list (editing on the page) */
+  function setGear(list) {
+    list = (list || []).filter(function (g) { return g && String(g.name || '').trim(); });
+    DATA.gear = list;
+    if (!gear && list.length) { // no gear yet: the section, as the page template writes it
+      gear = el('section', 'gear chrome'); gear.id = 'gear'; gear.setAttribute('aria-label', U().gear);
+      gearBar = el('button', 'gear-bar'); gearBar.type = 'button'; gearBar.id = 'gear-bar'; gearBar.setAttribute('aria-expanded', 'false'); gearBar.setAttribute('aria-controls', 'gear-open');
+      var title = el('span', 'gear-title'), rn = el('span', 'gear-rune', 'ᚢ'); rn.setAttribute('aria-hidden', 'true');
+      title.appendChild(rn); title.appendChild(W.rv(U().gear, 'gear')); gearBar.appendChild(title);
+      var chev = el('span', 'gear-chev');
+      chev.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+      chev.appendChild(W.rv(U().show, 'gear-toggle')); gearBar.appendChild(chev);
+      gearOpen = el('div', 'gear-open'); gearOpen.id = 'gear-open'; gearOpen.hidden = true;
+      gear.appendChild(gearBar); gear.appendChild(gearOpen);
+      var nav = $('pviews'); nav.parentNode.insertBefore(gear, nav);
+      gearBar.addEventListener('click', function () { setGear0(!gear.classList.contains('open'), true); });
+    }
+    if (!gear) return;
+    gear.hidden = !list.length;
+    $$('.g3d-mini', gearBar).forEach(function (n) { n.remove(); });
+    var chev0 = gearBar.querySelector('.gear-chev'), kinds = U().kinds || {};
+    while (gearOpen.firstChild) gearOpen.removeChild(gearOpen.firstChild);
+    gearOpen.removeAttribute('data-filled');
+    list.forEach(function (g, i) {
+      var kind = SHAPES[g.kind] && g.kind !== 'other' ? g.kind : 'other';
+      var mini = el('span', 'g3d-mini'), st = el('span', 'g3d-stage mini'); st.setAttribute('data-kind', kind); st.setAttribute('aria-hidden', 'true');
+      mini.appendChild(st); mini.appendChild(el('span', 'g-name', g.name));
+      gearBar.insertBefore(mini, chev0);
+      fillStage(st, 0.2, false);
+      var big = el('div', 'g3d'), st2 = el('div', 'g3d-stage mid'); st2.setAttribute('data-kind', kind); st2.setAttribute('aria-hidden', 'true');
+      big.appendChild(st2); big.appendChild(el('span', 'g-name', g.name));
+      if (kinds[kind]) { var gk = el('span', 'g-kind'); gk.appendChild(W.rv(kinds[kind], 'kind-' + (i + 1))); big.appendChild(gk); }
+      gearOpen.appendChild(big);
+    });
+    if (gear.classList.contains('open')) { $$('.g3d-stage', gearOpen).forEach(function (s) { fillStage(s, 0.62, true); }); gearOpen.setAttribute('data-filled', '1'); }
+  }
+  function setGear0(open, keep) { setGearOpen(open, keep); }
 
   /* the words written into the page: in the page's language, or as runes */
   W.onRender(function () {
@@ -121,7 +159,18 @@
     editor: null,
     setAlbums: function (list) { albums = list || []; openAlbum = null; albumCount(); if (built.albums) buildAlbums(); },
     redraw: function () { albumCount(); if (built.albums) buildAlbums(); },
-    view: function () { for (var k in panes) if (panes[k] && !panes[k].hidden) return k; return 'stream'; }
+    view: function () { for (var k in panes) if (panes[k] && !panes[k].hidden) return k; return 'stream'; },
+    /* field trips while editing: { pin(id), click(lat, lon, world), card(el) } */
+    tripEdit: null,
+    setTrips: function (list) { trips = list || []; tripCount(); if (built.trips) { while (panes.trips.firstChild) panes.trips.removeChild(panes.trips.firstChild); buildTrips(); } },
+    selTrip: function (id) { sel = id; if (built.trips && pinLayer) drawPins(); },
+    zoom: function (lat, lon, spanLat) { // a close view around a point
+      var cos = Math.max(0.2, Math.cos(lat * Math.PI / 180)), spanLon = spanLat * 2.5 / cos;
+      view = { lonL: lon - spanLon / 2, lonR: lon + spanLon / 2, latT: lat + spanLat / 2, latB: lat - spanLat / 2, world: false, name: '' };
+      if (built.trips && mapBox) update();
+    },
+    world: function () { view = WORLD; if (built.trips && mapBox) update(); },
+    setGear: setGear
   };
   var openAlbum = null;
   function countText(n) { return n === 1 ? U().photo1 : fmt(U().photosN, { n: n }); }
@@ -181,6 +230,11 @@
     var n = $('pv-n-albums'); if (n) n.textContent = nAlb || '';
   }
   albumCount();
+  function tripCount() {
+    var tab = doc.querySelector('.pv[data-view="trips"]'), n = $('pv-n-trips');
+    if (tab) tab.hidden = !trips.length && !PM.tripEdit; // while editing, the tab is there to make the first trip
+    if (n) n.textContent = trips.length || '';
+  }
 
   /* ================================================================== field trips */
   var MW = 1000, MH = 400;                      // the map's drawing, 2.5 : 1
@@ -278,6 +332,7 @@
       var xy = pr(t.lon, t.lat);
       if (xy[0] < -5 || xy[0] > MW + 5 || xy[1] < -5 || xy[1] > MH + 5) return;
       var g = null;
+      if (PM.tripEdit && t.id === sel) { pin({ x: xy[0], y: xy[1], trips: [t] }); return; } // editing: the chosen trip always has its own pin
       for (var i = 0; i < groups.length; i++) if (Math.hypot(groups[i].x - xy[0], groups[i].y - xy[1]) < near) { g = groups[i]; break; }
       if (g) { g.trips.push(t); g.x = (g.x * (g.trips.length - 1) + xy[0]) / g.trips.length; g.y = (g.y * (g.trips.length - 1) + xy[1]) / g.trips.length; }
       else groups.push({ x: xy[0], y: xy[1], trips: [t] });
@@ -300,14 +355,16 @@
       b.appendChild(el('span', 'pin-mark'));
       var lab = el('span', 'pin-label'); lab.appendChild(W.rv(label)); b.appendChild(lab);
       if (g.x > MW * 0.78) b.classList.add('left');
-      b.addEventListener('click', function () {
+      b.addEventListener('click', function (e) {
+        e.stopPropagation();
         if (many) { view = around(g.trips); view.name = label; update(); }
-        else { sel = t.id; drawPins(); fillCard(); }
+        else { sel = t.id; drawPins(); if (PM.tripEdit) PM.tripEdit.pin(t.id); else fillCard(); }
       });
       pinLayer.appendChild(b);
     }
   }
   function fillCard() {
+    if (PM.tripEdit) { PM.tripEdit.card(card); return; }
     var t = trips.filter(function (x) { return x.id === sel; })[0];
     while (card.firstChild) card.removeChild(card.firstChild);
     card.hidden = !t;
@@ -353,7 +410,7 @@
   }
   function buildTrips() {
     var pane = panes.trips;
-    if (!trips.length) { pane.appendChild(el('p', 'mosaic-empty', U().noTrips)); return; }
+    if (!trips.length && !PM.tripEdit) { pane.appendChild(el('p', 'mosaic-empty', U().noTrips)); return; }
     var bar = el('div', 'map-bar');
     worldBtn = el('button', 'pv'); worldBtn.type = 'button'; worldBtn.appendChild(W.rv(U().world));
     worldBtn.addEventListener('click', function () { view = WORLD; update(); });
@@ -366,6 +423,15 @@
     svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', U().mapLabel);
     pinLayer = el('div', 'pins');
     mapBox.appendChild(svg); mapBox.appendChild(pinLayer);
+    /* while editing: a click on the map is a place (for pinning a trip) */
+    mapBox.addEventListener('click', function (e) {
+      if (!PM.tripEdit || (e.target.closest && e.target.closest('.pin'))) return;
+      var r = mapBox.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * MW, y = (e.clientY - r.top) / r.height * MH;
+      var lon = view.world ? x / MW * 360 - 180 : view.lonL + x / MW * (view.lonR - view.lonL);
+      var lat = view.world ? 84 - y / MH * 144 : view.latT - y / MH * (view.latT - view.latB);
+      if (lon > 180) lon -= 360;
+      PM.tripEdit.click(Math.max(-89, Math.min(89, lat)), Math.max(-180, Math.min(180, lon)), !!view.world);
+    });
     pane.appendChild(mapBox);
     card = el('article', 'trip-card');
     pane.appendChild(card);
@@ -374,12 +440,14 @@
   }
   /* switching language or runes: the words on the map and the card follow */
   W.onRender(function () {
-    if (built.trips && trips.length) { worldBtn.innerHTML = ''; worldBtn.appendChild(W.rv(U().world)); drawPins(); fillCard(); }
+    if (built.trips && worldBtn) { worldBtn.innerHTML = ''; worldBtn.appendChild(W.rv(U().world)); drawPins(); fillCard(); }
     if (built.albums) buildAlbums();
   });
 
   /* ================================================================== start */
   var start = (/^#(albums|trips)\b/.exec(location.hash) || [])[1];
   if (start === 'albums' && (!albumTab || albumTab.hidden)) start = '';
+  if (start === 'trips' && !trips.length) start = '';
+  tripCount();
   show(start || 'stream', !start);
 })();
