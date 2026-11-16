@@ -1,15 +1,18 @@
 {% extends "world.html.j2" %}
-{#- The photography world (photography.html / photography.da.html): one mosaic
-    of photos from content/gallery.json (Photo Gallery in /admin). A photo's
-    weight (1–5) sets its size; a photo linked to a blog post leads there,
-    the others open full-screen. assets/photos.js reloads the gallery live. -#}
+{#- The photography world (photography.html / photography.da.html), all from
+    content/gallery.json (Photo Gallery in /admin):
+    - My gear: a slim line that opens; each piece turns in 3D (assets/photos-more.js)
+    - Stream: the mosaic; each photo 1–3 cells wide and tall (or its weight 1–5);
+      every photo opens full-screen, with a link to its blog post if it has one
+    - Albums and Field trips (a world map with a pin per trip): assets/photos-more.js
+    assets/photos.js reloads the gallery live. -#}
 {% block styles %}<link rel="stylesheet" href="assets/photos.css?v={{ v.photoscss }}">{% endblock %}
+{%- macro rv(k, text) -%}<span class="rv" data-k="{{ k }}"><span class="rn" aria-hidden="true"></span><span class="lt">{{ text }}</span></span>{%- endmacro -%}
 {% block content %}
 {%- macro tile(p, i) -%}
-{%- set href = ('post.html?slug=' ~ (p.post | urlencode)) if p.post else p.image -%}
 {%- set name = p.caption or ui.photoN | replace('{i}', (i + 1) | string) -%}
-<li class="tile wt{{ p.weight }}">
-      <a class="tile-a" href="{{ href }}" data-i="{{ i }}"{% if p.post %} data-post="{{ p.post }}"{% endif %} aria-label="{{ name }}{% if p.post %} — {{ (ui.readPostTitle | replace('{t}', p.post_title)) if p.post_title else ui.readPost }}{% endif %}">
+<li class="tile" style="--c:{{ p.c }};--r:{{ p.r }}">
+      <a class="tile-a" href="{{ p.image }}" data-i="{{ i }}" aria-label="{{ name }}">
         <img src="{{ p.image }}" alt="{{ p.caption }}" loading="lazy" decoding="async" style="object-position:{{ p.pos }}">
         <span class="tile-cap" aria-hidden="true"><span class="tile-rune">{{ 'ᚬ' if p.post else 'ᛋ' }}</span>{% if p.caption %}<span class="rv" data-k="cap-{{ i }}"><span class="rn"></span><span class="lt">{{ p.caption }}</span></span>{% endif %}</span>
       </a>
@@ -22,11 +25,35 @@
     <button class="aa" id="aa" type="button" aria-pressed="false" aria-label="{{ ui.aa }}">Aa</button>
   </div>
 
+  {% if gear %}
+  <section class="gear chrome" id="gear" aria-label="{{ ui.gear }}">
+    <button class="gear-bar" id="gear-bar" type="button" aria-expanded="false" aria-controls="gear-open">
+      <span class="gear-title"><span class="gear-rune" aria-hidden="true">ᚢ</span>{{ rv('gear', ui.gear) }}</span>
+      {% for g in gear %}<span class="g3d-mini"><span class="g3d-stage mini" data-kind="{{ g.kind }}" aria-hidden="true"></span><span class="g-name">{{ g.name }}</span></span>
+      {% endfor %}<span class="gear-chev"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>{{ rv('gear-toggle', ui.show) }}</span>
+    </button>
+    <div class="gear-open" id="gear-open" hidden>
+      {% for g in gear %}<div class="g3d"><div class="g3d-stage mid" data-kind="{{ g.kind }}" aria-hidden="true"></div><span class="g-name">{{ g.name }}</span>{% if ui.kinds[g.kind] %}<span class="g-kind">{{ rv('kind-' ~ loop.index, ui.kinds[g.kind]) }}</span>{% endif %}</div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <nav class="pviews chrome" id="pviews" aria-label="{{ ui.views }}">
+    <button class="pv" type="button" data-view="stream" aria-pressed="true"><span class="pv-rune" aria-hidden="true">ᛚ</span>{{ rv('v-stream', ui.stream) }}<span class="pv-n">{{ photos | length }}</span></button>
+    <button class="pv" type="button" data-view="albums" aria-pressed="false" hidden><span class="pv-rune" aria-hidden="true">ᛒ</span>{{ rv('v-albums', ui.albums) }}<span class="pv-n" id="pv-n-albums"></span></button>
+    {% if has_trips %}<button class="pv" type="button" data-view="trips" aria-pressed="false"><span class="pv-rune" aria-hidden="true">ᚱ</span>{{ rv('v-trips', ui.trips) }}<span class="pv-n">{{ data.trips | length }}</span></button>{% endif %}
+  </nav>
+
   <main class="mosaic-wrap" id="main">
-    <ul class="mosaic" id="mosaic" aria-label="{{ ui.gridLabel }}">
-    {% for p in photos %}{{ tile(p, loop.index0) }}
-    {% endfor %}</ul>
-    <p class="mosaic-empty" id="mosaic-empty"{% if photos %} hidden{% endif %}><span class="rv" data-k="empty"><span class="rn" aria-hidden="true"></span><span class="lt">{{ ui.empty }}</span></span></p>
+    <div class="pane" id="pane-stream">
+      <ul class="mosaic" id="mosaic" aria-label="{{ ui.gridLabel }}">
+      {% for p in photos %}{{ tile(p, loop.index0) }}
+      {% endfor %}</ul>
+      <p class="mosaic-empty" id="mosaic-empty"{% if photos %} hidden{% endif %}>{{ rv('empty', ui.empty) }}</p>
+    </div>
+    <div class="pane" id="pane-albums" hidden></div>
+    <div class="pane" id="pane-trips" hidden></div>
   </main>
 
   <footer class="world-foot chrome">
@@ -48,4 +75,5 @@
 {% block scripts %}
 <script id="photo-data" type="application/json">{{ data | tojson }}</script>
 <script src="assets/photos.js?v={{ v.photosjs }}"></script>
+<script src="assets/photos-more.js?v={{ v.photosmorejs }}"></script>
 {% endblock %}

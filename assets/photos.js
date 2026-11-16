@@ -1,6 +1,7 @@
 /* ==========================================================================
    Photography — the mosaic and the full-screen viewer.
    - every photo opens full-screen; one linked to a blog post shows a clear link to it there
+   - each photo spans 1–3 cells each way (width/height, or its weight 1–5)
      (‹ › / arrow keys / swipe to move on, Esc to close)
    - reloads content/gallery.json so photos added in /admin show up without
      a rebuild
@@ -26,17 +27,27 @@
   var mosaic = $('mosaic'), empty = $('mosaic-empty');
   var viewer = $('viewer'), vImg = $('v-img'), vCap = $('v-cap'), vLinks = $('v-links'), vCount = $('v-count');
   var vPrev = $('v-prev'), vNext = $('v-next'), vClose = $('v-close');
-  var current = -1, opener = null;
+  var current = -1, opener = null, seq = null; // seq: the photos the viewer walks through (an album), else all
+  var vlist = null;                             // or a set of its own (a field trip, which may hold field-log-only photos)
+  function vp() { return vlist || photos; }
 
   function T(key) { var t = PAGE_TEXT[W.latin()] || PAGE_TEXT[W.page] || {}; return t[key] || ''; }
 
+  /* cells a photo spans (columns, rows): width and height 1–3 win, else the weight 1–5 (as build.py) */
+  var WEIGHT_CELLS = { 1: [1, 1], 2: [2, 1], 3: [2, 2], 4: [3, 2], 5: [3, 3] };
+  function cells(p, w) {
+    var f = function (v) { v = parseInt(v, 10); return v >= 1 ? Math.min(3, v) : 0; };
+    var cw = f(p.width), ch = f(p.height);
+    if (cw || ch) return [cw || 1, ch || 1];
+    return WEIGHT_CELLS[w] || [1, 1];
+  }
   /* the same clean-up build.py does, for photos that arrive live */
   function normalise(list) {
     return (Array.isArray(list) ? list : []).filter(function (p) { return p && p.image && p.onPhotoPage !== false; }).map(function (p) {
-      var w = Math.round(Number(p.weight) || 1);
+      var w = Math.min(5, Math.max(1, Math.round(Number(p.weight) || 1))), cr = cells(p, w);
       return {
         image: String(p.image), caption: p.caption ? String(p.caption) : '',
-        weight: Math.min(5, Math.max(1, w)), pos: POS[p.focus] || POS.center,
+        weight: w, c: cr[0], r: cr[1], pos: POS[p.focus] || POS.center,
         post: p.post && SLUG.test(p.post) ? String(p.post) : '',
         species: (Array.isArray(p.species) ? p.species : [p.species]).filter(Boolean).map(String)
       };
@@ -77,7 +88,8 @@
   /* ------------------------------------------------------------------ the mosaic */
   function el(tag, cls) { var e = doc.createElement(tag); if (cls) e.className = cls; return e; }
   function buildTile(p, i) {
-    var li = el('li', 'tile wt' + p.weight);
+    var li = el('li', 'tile');
+    li.style.setProperty('--c', p.c); li.style.setProperty('--r', p.r);
     var a = el('a', 'tile-a');
     a.href = p.image;
     a.setAttribute('data-i', i);
@@ -125,7 +137,7 @@
     return a;
   }
   function fillViewer(i) {
-    var p = photos[i], u = U();
+    var all = vp(), p = all[i], u = U();
     if (!p) return;
     vImg.style.objectPosition = '';
     if (vImg.getAttribute('src') !== p.image) vImg.src = p.image;
@@ -141,10 +153,10 @@
     p.species.forEach(function (name) {
       vLinks.appendChild(link('ᚱ', p.species.length > 1 ? name : u.inFieldlog, DATA.fieldlog[W.latin()] + '#sp=' + encodeURIComponent(name)));
     });
-    vCount.textContent = fmt(u.count, { i: i + 1, n: photos.length });
-    var many = photos.length > 1;
-    vPrev.hidden = vNext.hidden = !many;
-    [i - 1, i + 1].forEach(function (j) { var q = photos[(j + photos.length) % photos.length]; if (q) { var im = new Image(); im.src = q.image; } });
+    var list = seq || null, at = list ? list.indexOf(i) : i, n = list ? list.length : all.length;
+    vCount.textContent = fmt(u.count, { i: at + 1, n: n });
+    vPrev.hidden = vNext.hidden = n < 2;
+    [at - 1, at + 1].forEach(function (j) { var k = list ? list[(j + n) % n] : (j + n) % n; var q = all[k]; if (q) { var im = new Image(); im.src = q.image; } });
   }
   function grow(fromEl) {
     /* the photo grows out of its tile */
@@ -161,8 +173,10 @@
     };
     if (vImg.complete && vImg.naturalWidth) run(); else vImg.addEventListener('load', run, { once: true });
   }
-  function open(i, fromLink) {
-    if (!viewer || !viewer.showModal) { location.href = photos[i].image; return; }
+  function open(i, fromLink, list, own) {
+    vlist = own || null;
+    if (!viewer || !viewer.showModal) { location.href = vp()[i].image; return; }
+    seq = list && list.length ? list : null;
     current = i;
     opener = fromLink || null;
     fillViewer(i);
@@ -172,11 +186,14 @@
     vClose.focus({ preventScroll: true });
   }
   function mark(i) {
+    if (vlist) return; // a field trip's own set: no link to the photo
     try { history.replaceState(null, '', location.pathname + location.search + '#photo=' + encodeURIComponent(idOf(photos[i]))); } catch (e) { /* file:// */ }
   }
   function go(d) {
-    if (current < 0 || photos.length < 2) return;
-    current = (current + d + photos.length) % photos.length;
+    var n = seq ? seq.length : vp().length;
+    if (current < 0 || n < 2) return;
+    if (seq) current = seq[(seq.indexOf(current) + d + n) % n];
+    else current = (current + d + n) % n;
     fillViewer(current);
     mark(current);
     if (!W.reduced && vImg.animate) vImg.animate([{ opacity: 0.2, transform: 'translateX(' + (d * 24) + 'px)' }, { opacity: 1, transform: 'none' }], { duration: 280, easing: 'ease-out' });
@@ -184,8 +201,8 @@
   function closed() {
     doc.body.classList.remove('v-open');
     try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* file:// */ }
-    var back = mosaic.querySelector('.tile-a[data-i="' + current + '"]') || opener;
-    current = -1;
+    var back = (opener && doc.body.contains(opener) && opener.offsetParent) ? opener : mosaic.querySelector('.tile-a[data-i="' + current + '"]');
+    current = -1; seq = null; vlist = null;
     if (back) back.focus({ preventScroll: true });
   }
   if (viewer) {
@@ -235,6 +252,17 @@
       renderText();
     }).catch(function () {});
   }
+
+  /* ------------------------------------------------------------------ for photos-more.js */
+  /* albums and field trips show their own tiles and open the viewer on their own set of photos */
+  window.Photos = {
+    list: function () { return photos; },
+    tile: buildTile,
+    indexOf: function (image) { for (var i = 0; i < photos.length; i++) if (photos[i].image === image) return i; return -1; },
+    open: function (i, fromEl, list) { open(i, fromEl, list); },
+    openSet: function (set, k, fromEl) { open(k, fromEl, null, set); },
+    data: DATA
+  };
 
   /* ------------------------------------------------------------------ start */
   PAGE_TEXT.en = PAGE_TEXT.en || {}; PAGE_TEXT.da = PAGE_TEXT.da || {};
