@@ -8,9 +8,13 @@ This script, run by .github/workflows/photo-inbox.yml, files each one:
          caption: Fly agaric after rain
          weight: 3
      (also understood: post: <blog post file name>, focus: top/bottom/left/right,
-      species: <field-log species, several separated by commas>)
+      species: <field-log species, several separated by commas>,
+      metadata: keep)
   2. turns it upright, shrinks it to 2000 px on the long side, saves it as a JPEG
-     with no EXIF data at all (so no GPS location), keeping its colour profile
+     with no EXIF data at all (so no GPS location), keeping its colour profile.
+     With "metadata: keep" the photo's metadata (camera, lens, settings, date,
+     position) stays in the new file, and the parts to sort by are noted on the
+     photo in content/gallery.json (keepMetadata, taken, camera, lens, lat, lon)
   3. moves it to images/gallery/ and puts it at the top of content/gallery.json,
      so it shows on the photography page within a minute or two
   4. a species sent from the upload page as a new find (one the field log doesn't
@@ -20,7 +24,9 @@ This script, run by .github/workflows/photo-inbox.yml, files each one:
 It also sweeps the photo folders the CMS uploads to (images/gallery, images/uploads,
 images/blog): GPS location is removed from every JPEG (losslessly — the photo
 itself is untouched), very large photos are shrunk, and HEIC photos are turned
-into JPEGs (with links to them updated in content/).
+into JPEGs (with links to them updated in content/). Photos marked "Keep
+metadata" in content/gallery.json (keepMetadata: true) are left as they are,
+position included.
 
     pip install pillow pillow-heif piexif
     python3 src/photo_inbox.py
@@ -58,7 +64,7 @@ TOO_BIG = 2600            # photos larger than this get shrunk in the sweep
 FOCUS = {"center": "center", "centre": "center", "middle": "center", "midt": "center",
          "top": "top", "top.": "top", "bottom": "bottom", "bund": "bottom",
          "left": "left", "venstre": "left", "right": "right", "højre": "right"}
-KEYS = ("caption", "weight", "post", "focus", "species")
+KEYS = ("caption", "weight", "post", "focus", "species", "metadata")
 
 log = []
 
@@ -76,7 +82,7 @@ def git(*args):
 def parse_lines(text):
     meta = {}
     for line in (text or "").splitlines():
-        m = re.match(r"^\s*(caption|weight|post|focus|species|billedtekst|vægt)\s*[:=]\s*(.*?)\s*$", line, re.I)
+        m = re.match(r"^\s*(caption|weight|post|focus|species|metadata|billedtekst|vægt)\s*[:=]\s*(.*?)\s*$", line, re.I)
         if m:
             key = {"billedtekst": "caption", "vægt": "weight"}.get(m.group(1).lower(), m.group(1).lower())
             meta[key] = m.group(2)
@@ -125,6 +131,8 @@ def details_for(path):
         entry["species"] = names
     if meta.get("onPhotoPage") is False:
         entry["onPhotoPage"] = False
+    if re.match(r"^(keep|behold|yes|ja|true|1)\b", str(meta.get("metadata") or "").strip().lower()):
+        entry["keepMetadata"] = True
     finds = [f for f in (clean_find(x, date) for x in meta.get("newFinds") or []) if f]
     if finds:
         entry["newFinds"] = finds
@@ -206,8 +214,68 @@ def slug(text, fallback="photo"):
 
 
 # ---------------------------------------------------------------- image work
-def save_clean(img, dest, icc=None):
-    """Upright, at most LONG_SIDE px, JPEG with no EXIF (so no location)."""
+NOTED = ("taken", "camera", "lens", "lat", "lon")  # what's noted on a photo that keeps its metadata, to sort by
+
+
+def kept_exif(exif):
+    """A photo's EXIF for a photo that keeps its metadata: all of it, marked upright
+    (the photo itself gets turned) and without its small built-in preview (which
+    isn't). None when it can't be read."""
+    try:
+        d = piexif.load(exif)
+    except Exception:
+        return None
+    d["0th"][piexif.ImageIFD.Orientation] = 1
+    d["1st"], d["thumbnail"] = {}, None
+    try:
+        return piexif.dump(d)
+    except Exception:
+        d["Exif"].pop(piexif.ExifIFD.MakerNote, None)  # some cameras' own notes can't be written back
+        try:
+            return piexif.dump(d)
+        except Exception:
+            return None
+
+
+def facts(src):
+    """The parts of a photo's metadata the site sorts by (src: a file path, or EXIF
+    bytes): when it was taken, camera, lens, and position (5 decimals)."""
+    try:
+        d = piexif.load(src)
+    except Exception:
+        return {}
+    def text(ifd, tag):
+        v = d.get(ifd, {}).get(tag) or b""
+        v = v.decode("latin-1", "ignore") if isinstance(v, bytes) else str(v)
+        return re.sub(r"[^\x20-\x7e]", "", v.split("\x00")[0]).strip()
+    out = {}
+    m = re.match(r"^(\d{4}):(\d{2}):(\d{2})(?: (\d{2}:\d{2}:\d{2}))?", text("Exif", piexif.ExifIFD.DateTimeOriginal) or text("0th", piexif.ImageIFD.DateTime))
+    if m and m.group(1) != "0000":
+        out["taken"] = f"{m.group(1)}-{m.group(2)}-{m.group(3)}" + (f"T{m.group(4)}" if m.group(4) else "")
+    make, model = text("0th", piexif.ImageIFD.Make), text("0th", piexif.ImageIFD.Model)
+    camera = f"{make} {model}" if make and model and not model.lower().startswith(make.lower().split(" ")[0]) else (model or make)
+    if camera:
+        out["camera"] = camera
+    if text("Exif", piexif.ExifIFD.LensModel):
+        out["lens"] = text("Exif", piexif.ExifIFD.LensModel)
+    gps = d.get("GPS") or {}
+    def degrees(value, ref, negative):
+        deg = sum((n / m) / 60 ** i for i, (n, m) in enumerate(value))
+        ref = ref.decode() if isinstance(ref, bytes) else str(ref or "")
+        return round(-deg if ref.strip("\x00 ").upper() == negative else deg, 5)
+    try:
+        lat = degrees(gps[piexif.GPSIFD.GPSLatitude], gps.get(piexif.GPSIFD.GPSLatitudeRef), "S")
+        lon = degrees(gps[piexif.GPSIFD.GPSLongitude], gps.get(piexif.GPSIFD.GPSLongitudeRef), "W")
+        if (lat or lon) and abs(lat) <= 90 and abs(lon) <= 180:
+            out["lat"], out["lon"] = lat, lon
+    except (KeyError, TypeError, ValueError, ZeroDivisionError):
+        pass
+    return out
+
+
+def save_clean(img, dest, icc=None, exif=None):
+    """Upright, at most LONG_SIDE px, JPEG with no EXIF (so no location) — or, for
+    a photo that keeps its metadata, with the EXIF passed in (from kept_exif)."""
     img = ImageOps.exif_transpose(img)
     if img.mode not in ("RGB", "L"):
         if "A" in img.getbands():
@@ -220,6 +288,8 @@ def save_clean(img, dest, icc=None):
     kwargs = {"quality": 85, "optimize": True, "progressive": True}
     if icc:
         kwargs["icc_profile"] = icc
+    if exif:
+        kwargs["exif"] = exif
     img.save(dest, "JPEG", **kwargs)
 
 
@@ -243,11 +313,13 @@ def file_inbox():
                 icc = img.info.get("icc_profile")
                 h = hashlib.sha1(p.read_bytes()).hexdigest()[:6]
                 dest = GALLERY_DIR / f"{date}-{slug(entry['caption'])}-{h}.jpg"
+                # "metadata: keep": the photo's EXIF goes along into the new file
+                kept = kept_exif(img.info["exif"]) if entry.get("keepMetadata") and img.info.get("exif") else None
                 # the upload page already sends small JPEGs with no metadata: keep them as they are
                 if img.format == "JPEG" and not img.info.get("exif") and max(img.size) <= LONG_SIDE:
                     shutil.copyfile(p, dest)
                 else:
-                    save_clean(img, dest, icc)
+                    save_clean(img, dest, icc, kept)
         except Exception as e:  # leave it in the inbox and say why
             say(f"could not file {p.name}: {e}")
             continue
@@ -257,12 +329,15 @@ def file_inbox():
                 item[k] = entry[k]
         if entry.get("onPhotoPage") is False:
             item["onPhotoPage"] = False  # a field-log photo only
+        if kept:
+            item["keepMetadata"] = True
+            item.update(facts(kept))
         new.append(item)
         finds += [(f, item) for f in entry.get("newFinds", [])]
         for side in (p, p.with_suffix(".json"), p.with_suffix(".txt")):
             if side.exists():
                 side.unlink()
-        say(f"filed {p.name} → {dest.name} (weight {entry['weight']}{', “' + entry['caption'] + '”' if entry['caption'] else ''})")
+        say(f"filed {p.name} → {dest.name} (weight {entry['weight']}{', “' + entry['caption'] + '”' if entry['caption'] else ''}{', metadata kept' if kept else ''})")
         done += 1
     if done:
         add_finds(finds)  # before saving the gallery: it links the photos to their sightings
@@ -281,9 +356,25 @@ def relink(old, new):
                 f.write_text(text.replace(old_url, new_url), encoding="utf-8")
 
 
+def keepers():
+    """The photos marked "Keep metadata" in content/gallery.json: {path on the site: its entry}."""
+    try:
+        doc = json.loads(GALLERY_JSON.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}, None
+    keep = {}
+    for g in doc.get("images") or []:
+        if isinstance(g, dict) and g.get("keepMetadata") is True and g.get("image"):
+            keep["/" + str(g["image"]).lstrip("/")] = g
+    return keep, doc
+
+
 def sweep():
-    """Remove GPS from photos uploaded through /admin; shrink huge ones; HEIC → JPEG."""
+    """Remove GPS from photos uploaded through /admin; shrink huge ones; HEIC → JPEG.
+    Photos marked "Keep metadata" are left as they are (and get the parts to sort by noted)."""
     changed = 0
+    keep, gallery = keepers()
+    noted = False
     for folder in SWEEP:
         if not folder.exists():
             continue
@@ -303,17 +394,26 @@ def sweep():
                     continue
                 if ext not in (".jpg", ".jpeg"):
                     continue
+                entry = keep.get("/" + str(p.relative_to(ROOT)).replace("\\", "/"))
                 with Image.open(p) as img:
                     big = max(img.size) > TOO_BIG
                     if big:
                         icc = img.info.get("icc_profile")
+                        kept = kept_exif(img.info["exif"]) if entry is not None and img.info.get("exif") else None
                         img.load()
                         tmp = p.with_suffix(".tmp.jpg")
-                        save_clean(img, tmp, icc)
+                        save_clean(img, tmp, icc, kept)
                 if big:
                     tmp.replace(p)
-                    say(f"shrank {p.relative_to(ROOT)} to {LONG_SIDE} px (location removed)")
+                    say(f"shrank {p.relative_to(ROOT)} to {LONG_SIDE} px ({'metadata kept' if kept else 'location removed'})")
                     changed += 1
+                if entry is not None:  # "Keep metadata": the file stays as it is; note the parts to sort by
+                    found = facts(str(p))
+                    if any(entry.get(k) != found[k] for k in found):
+                        entry.update(found)
+                        noted = True
+                    continue
+                if big:
                     continue
                 exif = piexif.load(str(p))
                 if exif.get("GPS"):
@@ -327,6 +427,10 @@ def sweep():
                     changed += 1
             except Exception as e:
                 say(f"skipped {p.relative_to(ROOT)}: {e}")
+    if noted:
+        GALLERY_JSON.write_text(json.dumps(gallery, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        say("noted the details of photos that keep their metadata")
+        changed += 1
     return changed
 
 

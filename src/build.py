@@ -584,16 +584,23 @@ def render_photography(env, entry, gallery_doc, posts, versions):
             photos=[dict(p, post_title=titles.get(p["post"], "")) for p in photos],
             gear=extras["gear"], has_trips=bool(extras["trips"]),
             data={"photos": photos, "posts": titles,
-                  "text": text, "fieldlog": FIELDLOG, **extras},
+                  "text": text, "fieldlog": FIELDLOG, **extras,
+                  # for editing on the page (assets/photos-edit.js): fetched only when the owner is signed in
+                  "edit": dict(edit_backend(), v={"core": versions["editcorejs"], "js": versions["photoseditjs"], "css": versions["photoseditcss"]})},
         )
 
 
-def render_upload(env, posts, versions):
-    """upload.html: send photos from the phone into images/inbox/ (not linked, not indexed)."""
+def edit_backend():
+    """Where edits made on the site itself are saved, and how to sign in: the same as /admin."""
     cms = yaml.safe_load((ROOT / "admin" / "config.yml").read_text(encoding="utf-8"))["backend"]
+    return {"repo": cms["repo"], "branch": cms.get("branch", "main"),
+            "proxy": cms.get("base_url", ""), "authEndpoint": cms.get("auth_endpoint", "auth")}
+
+
+def render_upload(env, posts, versions):
+    """upload.html: the Photos page — every picture on the site, and one New form (not linked, not indexed)."""
     data = {
-        "repo": cms["repo"], "branch": cms.get("branch", "main"),
-        "proxy": cms.get("base_url", ""), "authEndpoint": cms.get("auth_endpoint", "auth"),
+        **edit_backend(),
         "photography": PHOTOGRAPHY["en"], "fieldlog": "fieldlog.html",
         "posts": [{"slug": p["slug"], "title": p["title"], "date": p["date_iso"]} for p in posts],
     }
@@ -766,6 +773,8 @@ def main():
                 "entrycss": asset_version("assets/entry.css"), "entryjs": asset_version("assets/entry.js"),
                 "photoscss": asset_version("assets/photos.css"), "photosjs": asset_version("assets/photos.js"), "photosmorejs": asset_version("assets/photos-more.js"),
                 "uploadcss": asset_version("assets/upload.css"), "uploadjs": asset_version("assets/upload.js"),
+                "editcorejs": asset_version("assets/edit-core.js"),
+                "photoseditjs": asset_version("assets/photos-edit.js"), "photoseditcss": asset_version("assets/photos-edit.css"),
                 "pagescss": asset_version("assets/pages.css"), "pagesjs": asset_version("assets/pages.js"),
                 "skycss": asset_version("assets/sky.css"),
                 "cvcss": asset_version("assets/cv.css"), "cvjs": asset_version("assets/cv.js")}

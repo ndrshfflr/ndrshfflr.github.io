@@ -128,9 +128,9 @@ Optionally, add it to the home screen to get an icon: in the shortcut's
   it asks for each one.
 - **From the icon:** tap **Add to website** and pick the photos.
 
-New photos go to the **top** of the photography page. Later, in **/admin → Photo
-Gallery**, you can change the size (weight 1–5), the **Keep in frame** crop,
-the order, or link a photo to a blog post.
+New photos go to the **top** of the photography page. Later, on the photography
+page itself (**Edit**, bottom right — see the last section), you can change the
+size, the **Keep in frame** crop, the caption and the order.
 
 Sizes: 1 small (1×1) · 2 wide (2×1) · 3 large (2×2) · 4 larger (3×2) · 5 largest (3×3).
 
@@ -194,6 +194,8 @@ If you're already signed in to /admin in this browser, the page uses that.
    pictures already on the site. For each one: a caption, **Portfolio** (on the
    photography page, with its size 1–5 and what to keep in frame), and, when you
    make a find or a post, whether it goes **in the find** and **in the post**.
+   A new picture that carries metadata also offers **Keep metadata** (see
+   "Keeping a photo's metadata" below).
 2. **Also make it** (optional, one or both):
    - **A find in the field log.** Type the species. Pick one of its sightings,
      or **A new sighting** (date, read from the first picture; place; for a new
@@ -225,3 +227,68 @@ Without a sign-in it can't do anything.
 
 To add it to the home screen: open the page in Safari → **Share** · *Del* →
 **Add to Home Screen** · *Føj til hjemmeskærm*.
+
+---
+
+## Keeping a photo's metadata
+
+Normally a photo is stripped of what it says about itself before it reaches the
+website: where it was taken above all, and from the Photos page and the Shortcut
+everything else too. **Keep metadata** turns that off for one photo:
+
+- The photo file keeps all of it: camera, lens, settings, date and time, the
+  exact position, the camera's serial number, and keywords or ratings added in
+  a photo program.
+- The parts to sort by are also noted with the photo in the Photo Gallery
+  (`taken`, `camera`, `lens`, `lat`, `lon`), so the site can sort and group
+  photos later without opening each file.
+- It's off unless you turn it on, photo by photo.
+
+The website and its repository are public, so **anyone can read all of it** from
+a photo that keeps its metadata, the exact spot included. Leave it off for photos
+taken at home and for places that shouldn't be found.
+
+Where to turn it on:
+
+- **The Photos page → New:** tick **Keep metadata** on the picture. The page
+  shows what the photo holds (camera, lens, when, where). If a photo that should
+  have a position shows none, the iPhone's photo picker has left it out: look
+  for **Options** in the picker and turn on **Location** there.
+- **The iPhone Shortcut:** in action 7 (Convert Image), turn **Preserve
+  Metadata** · *Bevar metadata* **on**, and add a fourth line to the text in
+  action 13: `metadata: keep`. To choose per photo instead, add another *Choose
+  from List* (keep / remove) and put its answer after `metadata:`. (The
+  website's side of this is tested; the Shortcut's side isn't yet. If a photo
+  arrives without its metadata, the Shortcut dropped it on the way: use the
+  Photos page for that photo.)
+- **/admin → Photo Gallery:** turn on **Keep metadata** on the photo before you
+  publish.
+
+To undo it later, delete the photo for good and add it again without **Keep
+metadata**.
+
+---
+
+## Editing the photography page on the page itself
+
+Open the photography page on a device where you're signed in (to /admin or the
+Photos page). An **Edit** button shows bottom right; visitors never see it.
+Without a sign-in on the device, open
+<https://ndrshfflr.github.io/photography.html#edit> and sign in there.
+
+- **Tap a photo** to select it. A panel shows its caption, its **size** (tap a
+  cell of the 3 × 3 grid: 1–3 cells wide and tall), what to **keep in frame**,
+  and its place in the **order**.
+- **Laptop:** drag a photo to move it (a line shows where it lands), and drag
+  the corner of the selected photo to resize it.
+- **Phone:** use the « ‹ › » buttons (first, earlier, later, last) and the size
+  grid.
+- **Take off the page** removes the photo from the photography page only. It
+  stays in your library (Photos page → Library) and in the field log.
+- **Delete…** → **Delete for good** is a separate, confirmed step. It removes
+  the file and takes it out of every place that shows it, right away.
+- Changes gather until you press **Save** (one save, live in a minute or two).
+  **Discard** undoes everything since the last save. **Done** leaves edit mode.
+- **Add photos** opens the Photos page.
+
+Albums and field trips are still edited in /admin → Photo Gallery for now.

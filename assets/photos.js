@@ -6,6 +6,8 @@
    - reloads content/gallery.json so photos added in /admin show up without
      a rebuild
    - a photo can be linked directly: photography.html#photo=<file name>
+   - editing on the page (assets/photos-edit.js) is fetched only when a
+     sign-in is kept on this device, or with photography.html#edit
    The sky, seasons, header and rune language come from assets/world.js.
    ========================================================================== */
 (function () {
@@ -116,6 +118,8 @@
     photos.forEach(function (p, i) { frag.appendChild(buildTile(p, i)); });
     mosaic.appendChild(frag);
     if (empty) empty.hidden = photos.length > 0;
+    var n = doc.querySelector('.pv[data-view="stream"] .pv-n');
+    if (n) n.textContent = photos.length;
     wire();
   }
 
@@ -236,10 +240,11 @@
   }
 
   /* ------------------------------------------------------------------ live photos from /admin */
+  var held = false; // while the page is being edited, the editor decides what the mosaic shows
   function refresh() {
     if (!window.fetch) return;
     fetch('content/gallery.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (g) {
-      if (!g) return;
+      if (!g || held) return;
       var fresh = normalise(g.images);
       if (g.intro && typeof g.intro === 'object') { PAGE_TEXT.en.intro = g.intro.en || ''; PAGE_TEXT.da.intro = g.intro.da || ''; }
       if (g.look) W.setLook(g.look);
@@ -261,7 +266,15 @@
     indexOf: function (image) { for (var i = 0; i < photos.length; i++) if (photos[i].image === image) return i; return -1; },
     open: function (i, fromEl, list) { open(i, fromEl, list); },
     openSet: function (set, k, fromEl) { open(k, fromEl, null, set); },
-    data: DATA
+    data: DATA,
+    /* for editing on the page: show this list of photos (as written in content/gallery.json) */
+    show: function (list) {
+      held = true;
+      photos = normalise(list);
+      if (viewer && viewer.open) viewer.close();
+      rebuild();
+      renderText();
+    }
   };
 
   /* ------------------------------------------------------------------ start */
@@ -271,4 +284,22 @@
   W.onRender(renderText);
   openFromHash();
   refresh();
+
+  /* ------------------------------------------------------------------ editing on the page */
+  /* Only the owner gets the editor: it is fetched when a sign-in is kept on
+     this device (from /admin, the Photos page or here), or with #edit, which
+     offers to sign in. Visitors never load it. */
+  (function () {
+    var ED = DATA.edit, signedIn = false;
+    if (!ED || !ED.repo || !window.fetch || !window.TextDecoder) return;
+    try {
+      signedIn = ['uploadAuth', 'decap-cms-user', 'netlify-cms-user', 'sveltia-cms.user'].some(function (k) { return /"token"/.test(localStorage.getItem(k) || ''); });
+    } catch (e) { signedIn = false; }
+    if (!signedIn && !/^#edit\b/.test(location.hash)) return;
+    var v = ED.v || {};
+    var css = el('link'); css.rel = 'stylesheet'; css.href = 'assets/photos-edit.css?v=' + (v.css || '');
+    doc.head.appendChild(css);
+    var load = function (src, then) { var s = el('script'); s.src = src; s.onload = then || null; doc.body.appendChild(s); };
+    load('assets/edit-core.js?v=' + (v.core || ''), function () { load('assets/photos-edit.js?v=' + (v.js || '')); });
+  })();
 })();

@@ -187,3 +187,7 @@ textarea.up-area{font-family:inherit}
   .up-card[data-w="2"] .up-thumb,.up-card[data-w="4"] .up-thumb{width:100%}
   .up-pair{grid-template-columns:1fr}
 }
+
+/* "Keep metadata" on a new picture */
+.up-loc[hidden],.up-keep-l[hidden]{display:none}
+.up-loc-note{margin:0 0 4px;font-size:14px}

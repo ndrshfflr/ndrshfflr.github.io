@@ -685,7 +685,7 @@ collections:
             name: "images"
             widget: "list"
             summary: "{{caption}}"
-            hint: "Drag photos to change their order on the photography page. Photos sent from the iPhone Shortcut appear at the top (see PHOTO-UPLOAD-GUIDE.md). Location data is removed from every photo automatically, and very large ones are shrunk."
+            hint: "Drag photos to change their order on the photography page. Photos sent from the iPhone Shortcut appear at the top (see PHOTO-UPLOAD-GUIDE.md). Location data is removed from every photo automatically (unless a photo has “Keep metadata” turned on), and very large ones are shrunk. Order, size, crop and caption are quickest on the photography page itself: Edit, bottom right."
             fields:
               - { label: "Photo", name: "image", widget: "image", media_folder: "/images/gallery", public_folder: "/images/gallery" }
               - { label: "Caption (optional)", name: "caption", widget: "string", required: false }
@@ -697,6 +697,12 @@ collections:
               - { label: "Keep in frame", name: "focus", widget: "select", required: false, default: "center", options: [{ label: "Middle", value: "center" }, { label: "Top", value: "top" }, { label: "Bottom", value: "bottom" }, { label: "Left", value: "left" }, { label: "Right", value: "right" }], hint: "Tiles are cropped to fit the mosaic; this part of the photo stays in view." }
               - { label: "Species in the field log (optional)", name: "species", widget: "relation", multiple: true, required: false, collection: "observations", file: "synced", value_field: "species.*.name", search_fields: ["species.*.label"], display_fields: ["species.*.label"], hint: "Tag every species in the photo — one or several. The photo then links to them and shows up when someone opens them in the field log. Finds you add by hand appear in this list a minute or two after you publish them." }
               - { label: "Blog post (optional)", name: "post", widget: "relation", required: false, collection: "posts", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], hint: "When the photo is opened on the photography page, a clear link to the post is shown under it (the photo is also shown at the end of the post)." }
+              - { label: "Keep metadata", name: "keepMetadata", widget: "boolean", default: false, required: false, hint: "Leave off to have the photo's location removed (the normal case). Turned on, the photo keeps everything it says about itself: camera, lens, settings, date and the exact spot, which anyone can then read from it. The fields below are filled in by themselves, for sorting." }
+              - { label: "Taken (filled in by itself)", name: "taken", widget: "string", required: false, hint: "When a photo that keeps its metadata was taken, e.g. 2026-10-10T09:30:00." }
+              - { label: "Camera (filled in by itself)", name: "camera", widget: "string", required: false }
+              - { label: "Lens (filled in by itself)", name: "lens", widget: "string", required: false }
+              - { label: "Latitude (filled in by itself)", name: "lat", widget: "number", value_type: "float", required: false }
+              - { label: "Longitude (filled in by itself)", name: "lon", widget: "number", value_type: "float", required: false }
               - label: "Sightings in the field log"
                 name: "sightings"
                 widget: "list"
