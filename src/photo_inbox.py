@@ -8,9 +8,12 @@ This script, run by .github/workflows/photo-inbox.yml, files each one:
          caption: Fly agaric after rain
          weight: 3
      (also understood: post: <blog post file name>, focus: top/bottom/left/right,
-      species: <field-log species, several separated by commas>)
+      species: <field-log species, several separated by commas>,
+      location: keep)
   2. turns it upright, shrinks it to 2000 px on the long side, saves it as a JPEG
-     with no EXIF data at all (so no GPS location), keeping its colour profile
+     with no EXIF data at all (so no GPS location), keeping its colour profile.
+     With "location: keep" the GPS position alone is written back into the new
+     file, and noted on the photo in content/gallery.json (keepLocation, lat, lon)
   3. moves it to images/gallery/ and puts it at the top of content/gallery.json,
      so it shows on the photography page within a minute or two
   4. a species sent from the upload page as a new find (one the field log doesn't
@@ -20,7 +23,8 @@ This script, run by .github/workflows/photo-inbox.yml, files each one:
 It also sweeps the photo folders the CMS uploads to (images/gallery, images/uploads,
 images/blog): GPS location is removed from every JPEG (losslessly — the photo
 itself is untouched), very large photos are shrunk, and HEIC photos are turned
-into JPEGs (with links to them updated in content/).
+into JPEGs (with links to them updated in content/). Photos marked "Keep
+location" in content/gallery.json (keepLocation: true) keep their GPS position.
 
     pip install pillow pillow-heif piexif
     python3 src/photo_inbox.py
@@ -58,7 +62,7 @@ TOO_BIG = 2600            # photos larger than this get shrunk in the sweep
 FOCUS = {"center": "center", "centre": "center", "middle": "center", "midt": "center",
          "top": "top", "top.": "top", "bottom": "bottom", "bund": "bottom",
          "left": "left", "venstre": "left", "right": "right", "højre": "right"}
-KEYS = ("caption", "weight", "post", "focus", "species")
+KEYS = ("caption", "weight", "post", "focus", "species", "location")
 
 log = []
 
@@ -76,9 +80,9 @@ def git(*args):
 def parse_lines(text):
     meta = {}
     for line in (text or "").splitlines():
-        m = re.match(r"^\s*(caption|weight|post|focus|species|billedtekst|vægt)\s*[:=]\s*(.*?)\s*$", line, re.I)
+        m = re.match(r"^\s*(caption|weight|post|focus|species|location|billedtekst|vægt|placering)\s*[:=]\s*(.*?)\s*$", line, re.I)
         if m:
-            key = {"billedtekst": "caption", "vægt": "weight"}.get(m.group(1).lower(), m.group(1).lower())
+            key = {"billedtekst": "caption", "vægt": "weight", "placering": "location"}.get(m.group(1).lower(), m.group(1).lower())
             meta[key] = m.group(2)
     return meta
 
@@ -125,6 +129,8 @@ def details_for(path):
         entry["species"] = names
     if meta.get("onPhotoPage") is False:
         entry["onPhotoPage"] = False
+    if re.match(r"^(keep|behold|yes|ja|true|1)\b", str(meta.get("location") or "").strip().lower()):
+        entry["keepLocation"] = True
     finds = [f for f in (clean_find(x, date) for x in meta.get("newFinds") or []) if f]
     if finds:
         entry["newFinds"] = finds
@@ -206,6 +212,40 @@ def slug(text, fallback="photo"):
 
 
 # ---------------------------------------------------------------- image work
+GPS_KEEP = (piexif.GPSIFD.GPSVersionID, piexif.GPSIFD.GPSLatitudeRef, piexif.GPSIFD.GPSLatitude,
+            piexif.GPSIFD.GPSLongitudeRef, piexif.GPSIFD.GPSLongitude)
+
+
+def gps_of(src):
+    """The GPS position in a photo's EXIF (a file path, or EXIF bytes): only the
+    latitude and longitude tags, or None when there is no position."""
+    try:
+        gps = piexif.load(src).get("GPS") or {}
+    except Exception:
+        return None
+    if piexif.GPSIFD.GPSLatitude not in gps or piexif.GPSIFD.GPSLongitude not in gps:
+        return None
+    return {k: gps[k] for k in GPS_KEEP if k in gps}
+
+
+def lat_lon(gps):
+    """Decimal degrees (5 decimals) from the EXIF position, or None."""
+    def degrees(value, ref, negative):
+        d = sum((n / m) / 60 ** i for i, (n, m) in enumerate(value))
+        ref = ref.decode() if isinstance(ref, bytes) else str(ref or "")
+        return round(-d if ref.strip("\x00 ").upper() == negative else d, 5)
+    try:
+        return (degrees(gps[piexif.GPSIFD.GPSLatitude], gps.get(piexif.GPSIFD.GPSLatitudeRef), "S"),
+                degrees(gps[piexif.GPSIFD.GPSLongitude], gps.get(piexif.GPSIFD.GPSLongitudeRef), "W"))
+    except (KeyError, TypeError, ValueError, ZeroDivisionError):
+        return None
+
+
+def put_gps(path, gps):
+    """Write a position into a JPEG as its only EXIF data (the photo itself is untouched)."""
+    piexif.insert(piexif.dump({"0th": {}, "Exif": {}, "GPS": gps, "1st": {}, "thumbnail": None}), str(path))
+
+
 def save_clean(img, dest, icc=None):
     """Upright, at most LONG_SIDE px, JPEG with no EXIF (so no location)."""
     img = ImageOps.exif_transpose(img)
@@ -243,11 +283,15 @@ def file_inbox():
                 icc = img.info.get("icc_profile")
                 h = hashlib.sha1(p.read_bytes()).hexdigest()[:6]
                 dest = GALLERY_DIR / f"{date}-{slug(entry['caption'])}-{h}.jpg"
+                # "location: keep": remember the position before the metadata goes
+                gps = gps_of(img.info["exif"]) if entry.get("keepLocation") and img.info.get("exif") else None
                 # the upload page already sends small JPEGs with no metadata: keep them as they are
                 if img.format == "JPEG" and not img.info.get("exif") and max(img.size) <= LONG_SIDE:
                     shutil.copyfile(p, dest)
                 else:
                     save_clean(img, dest, icc)
+            if gps:
+                put_gps(dest, gps)
         except Exception as e:  # leave it in the inbox and say why
             say(f"could not file {p.name}: {e}")
             continue
@@ -257,12 +301,16 @@ def file_inbox():
                 item[k] = entry[k]
         if entry.get("onPhotoPage") is False:
             item["onPhotoPage"] = False  # a field-log photo only
+        if gps:
+            item["keepLocation"] = True
+            if lat_lon(gps):
+                item["lat"], item["lon"] = lat_lon(gps)
         new.append(item)
         finds += [(f, item) for f in entry.get("newFinds", [])]
         for side in (p, p.with_suffix(".json"), p.with_suffix(".txt")):
             if side.exists():
                 side.unlink()
-        say(f"filed {p.name} → {dest.name} (weight {entry['weight']}{', “' + entry['caption'] + '”' if entry['caption'] else ''})")
+        say(f"filed {p.name} → {dest.name} (weight {entry['weight']}{', “' + entry['caption'] + '”' if entry['caption'] else ''}{', location kept' if gps else ''})")
         done += 1
     if done:
         add_finds(finds)  # before saving the gallery: it links the photos to their sightings
@@ -281,9 +329,25 @@ def relink(old, new):
                 f.write_text(text.replace(old_url, new_url), encoding="utf-8")
 
 
+def keepers():
+    """The photos marked "Keep location" in content/gallery.json: {path on the site: its entry}."""
+    try:
+        doc = json.loads(GALLERY_JSON.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}, None
+    keep = {}
+    for g in doc.get("images") or []:
+        if isinstance(g, dict) and g.get("keepLocation") is True and g.get("image"):
+            keep["/" + str(g["image"]).lstrip("/")] = g
+    return keep, doc
+
+
 def sweep():
-    """Remove GPS from photos uploaded through /admin; shrink huge ones; HEIC → JPEG."""
+    """Remove GPS from photos uploaded through /admin; shrink huge ones; HEIC → JPEG.
+    Photos marked "Keep location" keep their position (and get it noted as lat/lon)."""
     changed = 0
+    keep, gallery = keepers()
+    noted = False
     for folder in SWEEP:
         if not folder.exists():
             continue
@@ -303,6 +367,8 @@ def sweep():
                     continue
                 if ext not in (".jpg", ".jpeg"):
                     continue
+                entry = keep.get("/" + str(p.relative_to(ROOT)).replace("\\", "/"))
+                gps = gps_of(str(p)) if entry is not None else None
                 with Image.open(p) as img:
                     big = max(img.size) > TOO_BIG
                     if big:
@@ -312,8 +378,16 @@ def sweep():
                         save_clean(img, tmp, icc)
                 if big:
                     tmp.replace(p)
-                    say(f"shrank {p.relative_to(ROOT)} to {LONG_SIDE} px (location removed)")
+                    if gps:
+                        put_gps(p, gps)
+                    say(f"shrank {p.relative_to(ROOT)} to {LONG_SIDE} px (location {'kept' if gps else 'removed'})")
                     changed += 1
+                if entry is not None:  # "Keep location": the position stays; note it on the photo
+                    if gps and lat_lon(gps) and (entry.get("lat"), entry.get("lon")) != lat_lon(gps):
+                        entry["lat"], entry["lon"] = lat_lon(gps)
+                        noted = True
+                    continue
+                if big:
                     continue
                 exif = piexif.load(str(p))
                 if exif.get("GPS"):
@@ -327,6 +401,10 @@ def sweep():
                     changed += 1
             except Exception as e:
                 say(f"skipped {p.relative_to(ROOT)}: {e}")
+    if noted:
+        GALLERY_JSON.write_text(json.dumps(gallery, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        say("noted the position of photos that keep their location")
+        changed += 1
     return changed
 
 

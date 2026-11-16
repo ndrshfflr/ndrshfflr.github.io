@@ -128,9 +128,9 @@ Optionally, add it to the home screen to get an icon: in the shortcut's
   it asks for each one.
 - **From the icon:** tap **Add to website** and pick the photos.
 
-New photos go to the **top** of the photography page. Later, in **/admin → Photo
-Gallery**, you can change the size (weight 1–5), the **Keep in frame** crop,
-the order, or link a photo to a blog post.
+New photos go to the **top** of the photography page. Later, on the photography
+page itself (**Edit**, bottom right — see the last section), you can change the
+size, the **Keep in frame** crop, the caption and the order.
 
 Sizes: 1 small (1×1) · 2 wide (2×1) · 3 large (2×2) · 4 larger (3×2) · 5 largest (3×3).
 
@@ -194,6 +194,8 @@ If you're already signed in to /admin in this browser, the page uses that.
    pictures already on the site. For each one: a caption, **Portfolio** (on the
    photography page, with its size 1–5 and what to keep in frame), and, when you
    make a find or a post, whether it goes **in the find** and **in the post**.
+   A new picture that carries a position also offers **Keep location** (see
+   "Keeping a photo's location" below).
 2. **Also make it** (optional, one or both):
    - **A find in the field log.** Type the species. Pick one of its sightings,
      or **A new sighting** (date, read from the first picture; place; for a new
@@ -225,3 +227,68 @@ Without a sign-in it can't do anything.
 
 To add it to the home screen: open the page in Safari → **Share** · *Del* →
 **Add to Home Screen** · *Føj til hjemmeskærm*.
+
+---
+
+## Keeping a photo's location
+
+Normally every photo's location is removed before it reaches the website. **Keep
+location** turns that off for one photo:
+
+- The GPS position stays in the photo file, and its coordinates are noted with
+  the photo in the Photo Gallery (latitude and longitude), ready for the site to
+  use, e.g. for pinning field trips.
+- Everything else in the photo's data (camera, serial number, date) is still
+  removed.
+- It's off unless you turn it on, photo by photo.
+
+The website and its repository are public, so **anyone can read the exact spot**
+from a photo that keeps its location. Leave it off for photos taken at home and
+for places that shouldn't be found.
+
+Where to turn it on:
+
+- **The Photos page → New:** tick **Keep location** on the picture. It's offered
+  when the photo has a position; the page shows the coordinates. If it says
+  "No location in this photo" for a photo that should have one, the iPhone's
+  photo picker has left it out: look for **Options** in the picker and turn on
+  **Location** there.
+- **The iPhone Shortcut:** in action 7 (Convert Image), turn **Preserve
+  Metadata** · *Bevar metadata* **on**, and add a fourth line to the text in
+  action 13: `location: keep`. To choose per photo instead, add another *Choose
+  from List* (keep / remove) and put its answer after `location:`. (The
+  website's side of this is tested; the Shortcut's side isn't yet. If a photo
+  arrives without its location, the Shortcut dropped it on the way: use the
+  Photos page for that photo.)
+- **/admin → Photo Gallery:** turn on **Keep location** on the photo before you
+  publish.
+
+To remove a kept location later: in **/admin → Photo Gallery**, turn **Keep
+location** off on the photo and empty its latitude and longitude. The next time
+photos are filed, the position is taken out of the file.
+
+---
+
+## Editing the photography page on the page itself
+
+Open the photography page on a device where you're signed in (to /admin or the
+Photos page). An **Edit** button shows bottom right; visitors never see it.
+Without a sign-in on the device, open
+<https://ndrshfflr.github.io/photography.html#edit> and sign in there.
+
+- **Tap a photo** to select it. A panel shows its caption, its **size** (tap a
+  cell of the 3 × 3 grid: 1–3 cells wide and tall), what to **keep in frame**,
+  and its place in the **order**.
+- **Laptop:** drag a photo to move it (a line shows where it lands), and drag
+  the corner of the selected photo to resize it.
+- **Phone:** use the « ‹ › » buttons (first, earlier, later, last) and the size
+  grid.
+- **Take off the page** removes the photo from the photography page only. It
+  stays in your library (Photos page → Library) and in the field log.
+- **Delete…** → **Delete for good** is a separate, confirmed step. It removes
+  the file and takes it out of every place that shows it, right away.
+- Changes gather until you press **Save** (one save, live in a minute or two).
+  **Discard** undoes everything since the last save. **Done** leaves edit mode.
+- **Add photos** opens the Photos page.
+
+Albums and field trips are still edited in /admin → Photo Gallery for now.

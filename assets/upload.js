@@ -23,10 +23,11 @@
   var doc = document;
   var D = {};
   try { D = JSON.parse(doc.getElementById('upload-data').textContent) || {}; } catch (e) { D = {}; }
-  var REPO = D.repo, BRANCH = D.branch || 'main', API = 'https://api.github.com';
-  var LONG_SIDE = 2000, QUALITY = 0.86;
-  var SIZES = [[1, 'small', 1, 1], [2, 'wide', 2, 1], [3, 'large', 2, 2], [4, 'larger', 3, 2], [5, 'largest', 3, 3]];
-  var POS = { center: '50% 50%', top: '50% 18%', bottom: '50% 82%', left: '22% 50%', right: '78% 50%' };
+  /* signing in, saving, preparing photos and deleting them: the shared engine (assets/edit-core.js) */
+  var E = window.SiteEdit.setup({ repo: D.repo, branch: D.branch || 'main', proxy: D.proxy, authEndpoint: D.authEndpoint });
+  var SIZES = E.SIZES, POS = E.POS;
+  var store = E.store, arr = E.arr, norm = E.norm, same = E.same, isoDay = E.isoDay, slugify = E.slugify, jsonText = E.jsonText;
+  var gh = E.gh, readFile = E.readFile, commit = E.commit, explain = E.explain;
   var GROUP = { fungi: 'Fungi', birds: 'Birds', insects: 'Insects', arachnids: 'Spiders & kin', mammals: 'Mammals', herps: 'Amphibians & reptiles', fish: 'Fish', molluscs: 'Molluscs', plants: 'Plants', other: 'Other' };
   var GROUP_DA = { fungi: 'Svampe', birds: 'Fugle', insects: 'Insekter', arachnids: 'Edderkopper m.fl.', mammals: 'Pattedyr', herps: 'Padder og krybdyr', fish: 'Fisk', molluscs: 'Bløddyr', plants: 'Planter', other: 'Andet' };
   var SOURCE = { inaturalist: 'iNaturalist', svampeatlas: 'Svampeatlas', arter: 'Arter.dk', dofbasen: 'DOFbasen', ebird: 'Merlin/eBird', manual: 'by hand' };
@@ -40,25 +41,11 @@
     if (text !== undefined && text !== null && text !== '') n.textContent = text;
     return n;
   }
-  var store = {
-    get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
-    set: function (k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) { /* private mode */ } }
-  };
   var standalone = window.navigator.standalone === true || (window.matchMedia && matchMedia('(display-mode: standalone)').matches);
   var signin = $('signin'), work = $('work'), who = $('who'), signOut = $('sign-out');
   var auth = null, busy = false;
 
   /* ------------------------------------------------------------------ small helpers */
-  function arr(x) { return Array.isArray(x) ? x : []; }
-  function norm(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim(); }
-  function same(url) { // every picture is known by its path on this site: /images/…
-    var u = String(url || '').trim().replace(/^https?:\/\/ndrshfflr\.github\.io(?=\/)/, '');
-    return /^images\//.test(u) ? '/' + u : u;
-  }
-  function isoDay(d) {
-    var p = function (n) { return (n < 10 ? '0' : '') + n; };
-    return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
-  }
   function longDate(iso, lang) {
     var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
     if (!m) return iso || '';
@@ -69,103 +56,12 @@
     var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
     return m ? (+m[3]) + ' ' + MONTHS.en[+m[2] - 1].slice(0, 3) + ' ' + m[1] : (iso || 'no date');
   }
-  function slugify(t) {
-    t = String(t || '').toLowerCase().replace(/æ/g, 'ae').replace(/ø/g, 'oe').replace(/å/g, 'aa').normalize('NFKD').replace(/[̀-ͯ]/g, '');
-    return (t.match(/[a-z0-9]+/g) || []).join('-').slice(0, 50).replace(/-+$/, '');
-  }
   function latinName(name) { name = String(name || '').trim().replace(/\s+/g, ' '); return name.charAt(0).toUpperCase() + name.slice(1); }
   function newId(date) {
     var r = new Uint8Array(2); (window.crypto || {}).getRandomValues ? crypto.getRandomValues(r) : (r[0] = Math.random() * 256, r[1] = Math.random() * 256);
     return 'm' + String(date || isoDay(new Date())).replace(/-/g, '') + '-' + ('0' + r[0].toString(16)).slice(-2) + ('0' + r[1].toString(16)).slice(-2);
   }
-  function fromB64(s) {
-    var bin = atob(String(s || '').replace(/\s/g, '')), bytes = new Uint8Array(bin.length);
-    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-    return new TextDecoder().decode(bytes);
-  }
-  function toB64(text) {
-    var bytes = new TextEncoder().encode(text), bin = '';
-    for (var i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
-    return btoa(bin);
-  }
-  function jsonText(obj, nl) { return JSON.stringify(obj, null, 2) + (nl ? '\n' : ''); }
-
-  /* ------------------------------------------------------------------ GitHub */
-  function gh(method, path, body) {
-    var headers = { Authorization: 'Bearer ' + auth.token, Accept: 'application/vnd.github+json' };
-    if (body) headers['Content-Type'] = 'application/json';
-    return fetch(API + path, { method: method, headers: headers, body: body ? JSON.stringify(body) : undefined, cache: 'no-store' })
-      .then(function (r) {
-        return r.text().then(function (t) {
-          var data = null;
-          try { data = t ? JSON.parse(t) : null; } catch (e) { data = null; }
-          if (!r.ok) { var err = new Error((data && data.message) || ('GitHub answered ' + r.status)); err.status = r.status; throw err; }
-          return data;
-        });
-      });
-  }
-  function readFile(path, ref) { // → { text } or null when the file isn't there
-    return gh('GET', '/repos/' + REPO + '/contents/' + path.split('/').map(encodeURIComponent).join('/') + '?ref=' + encodeURIComponent(ref || BRANCH))
-      .then(function (f) { return { text: fromB64(f.content) }; }, function (e) { if (e.status === 404) return null; throw e; });
-  }
-  /* One commit with new files and changes to existing ones. Changes are
-     functions applied to the newest version of each file, so nothing done
-     meanwhile (in /admin, on the field log) is lost; if someone commits in
-     between, it simply tries again on top. */
-  function commit(message, plan) {
-    var base = '/repos/' + REPO + '/git/', blobs = {};
-    var blob = function (f) {
-      if (blobs[f.path + '|' + f.content.length] && f.encoding === 'base64') return Promise.resolve(blobs[f.path + '|' + f.content.length]);
-      return gh('POST', base + 'blobs', { content: f.content, encoding: f.encoding || 'utf-8' }).then(function (b) {
-        if (f.encoding === 'base64') blobs[f.path + '|' + f.content.length] = b.sha;
-        return b.sha;
-      });
-    };
-    var attempt = function (n) {
-      var head, files = (plan.files || []).slice();
-      return gh('GET', base + 'ref/heads/' + encodeURIComponent(BRANCH)).then(function (ref) {
-        head = ref.object.sha;
-        return Promise.all((plan.edits || []).map(function (ed) {
-          return readFile(ed.path, head).then(function (f) {
-            var out = ed.fn(f ? f.text : null);
-            if (out !== null && out !== undefined && (!f || out !== f.text)) files.push({ path: ed.path, content: out, encoding: 'utf-8' });
-          });
-        }));
-      }).then(function () {
-        var gone = (plan.deletes || []).map(function (path) { return { path: path, mode: '100644', type: 'blob', sha: null }; }); // sha null: the file is removed
-        if (!files.length && !gone.length) return 'nothing';
-        return Promise.all(files.map(function (f) {
-          return blob(f).then(function (sha) { return { path: f.path, mode: '100644', type: 'blob', sha: sha }; });
-        })).then(function (tree) {
-          tree = tree.concat(gone);
-          return gh('GET', base + 'commits/' + head)
-            .then(function (c) { return gh('POST', base + 'trees', { base_tree: c.tree.sha, tree: tree }); })
-            .then(function (t) { return gh('POST', base + 'commits', { message: message, tree: t.sha, parents: [head] }); })
-            .then(function (c) { return gh('PATCH', base + 'refs/heads/' + encodeURIComponent(BRANCH), { sha: c.sha }); });
-        });
-      }).catch(function (e) {
-        if (e.status === 422 && n < 4) return attempt(n + 1); // someone else committed meanwhile
-        throw e;
-      });
-    };
-    return attempt(1);
-  }
-  function explain(e) {
-    if (e.status === 401) return 'GitHub didn’t accept the sign-in (expired?). Sign in again — nothing was saved.';
-    if (e.status === 403 || e.status === 404) return 'This sign-in can’t change the website (' + e.message + '). A key needs “Contents: Read and write” for ndrshfflr.github.io.';
-    if (e instanceof TypeError) return 'No connection to GitHub — nothing was saved. Try again when you’re online.';
-    return 'Something went wrong: ' + e.message + '. Nothing was saved; try again.';
-  }
-
   /* ------------------------------------------------------------------ signing in */
-  function findAuth() {
-    try { var own = JSON.parse(store.get('uploadAuth') || 'null'); if (own && own.token) return own; } catch (e) { /* ignore */ }
-    var keys = ['decap-cms-user', 'netlify-cms-user'];
-    for (var i = 0; i < keys.length; i++) {
-      try { var u = JSON.parse(store.get(keys[i]) || 'null'); if (u && u.token) return { token: u.token, via: 'admin' }; } catch (e) { /* ignore */ }
-    }
-    return null;
-  }
   function showSignin(message) {
     auth = null;
     work.hidden = true; signOut.hidden = true; signin.hidden = false;
@@ -173,7 +69,7 @@
     if (standalone) $('key-box').open = true;
   }
   function start() {
-    auth = findAuth();
+    auth = E.findAuth();
     if (!auth) return showSignin();
     who.textContent = 'Checking your sign-in…';
     signin.hidden = true; work.hidden = false;
@@ -184,7 +80,7 @@
       loadAll();
     }).catch(function (e) {
       if (e.status === 401) {
-        if (auth && auth.via !== 'admin') store.set('uploadAuth', null);
+        if (auth && auth.via !== 'admin') E.signOut();
         showSignin(auth && auth.via === 'admin' ? 'Your /admin sign-in on this device has expired. Sign in again here.' : 'That sign-in no longer works (expired or wrong key). Sign in again.');
       } else {
         who.textContent = 'Couldn’t reach GitHub just now (' + e.message + ').';
@@ -192,35 +88,15 @@
     });
   }
   $('gh-signin').addEventListener('click', function () {
-    var proxy = String(D.proxy || '').replace(/\/$/, '');
-    var origin;
-    try { origin = new URL(proxy).origin; } catch (e) { $('signin-msg').textContent = 'Sign-in helper isn’t set up.'; return; }
-    var url = proxy + '/' + (D.authEndpoint || 'auth') + '?provider=github&site_id=' + encodeURIComponent(location.host) + '&scope=public_repo';
-    var popup = window.open(url, 'github-sign-in', 'width=620,height=760');
-    if (!popup) { $('signin-msg').textContent = 'The sign-in window was blocked. Allow pop-ups for this page, or use a key below.'; return; }
-    $('signin-msg').textContent = 'Finish signing in in the GitHub window…';
-    var onMessage = function (e) {
-      if (e.origin !== origin || typeof e.data !== 'string') return;
-      if (e.data === 'authorizing:github') { e.source.postMessage(e.data, e.origin); return; }
-      var m = /^authorization:github:(success|error):([\s\S]*)$/.exec(e.data);
-      if (!m) return;
-      window.removeEventListener('message', onMessage);
-      var token = null;
-      try { token = JSON.parse(m[2]).token; } catch (err) { token = null; }
-      if (m[1] === 'success' && token) { store.set('uploadAuth', JSON.stringify({ token: token, via: 'github' })); start(); }
-      else $('signin-msg').textContent = 'GitHub sign-in didn’t work. Try again, or use a key below.';
-    };
-    window.addEventListener('message', onMessage);
+    E.githubSignIn(function (text) { $('signin-msg').textContent = text.replace('use a key.', 'use a key below.'); }, start);
   });
   $('key-save').addEventListener('click', function () {
-    var k = $('key').value.trim();
-    if (!/^(github_pat_|ghp_|gho_)[A-Za-z0-9_]+$/.test(k)) { $('signin-msg').textContent = 'That doesn’t look like a GitHub key (it starts with github_pat_).'; return; }
-    store.set('uploadAuth', JSON.stringify({ token: k, via: 'key' }));
+    if (!E.useKey($('key').value)) { $('signin-msg').textContent = 'That doesn’t look like a GitHub key (it starts with github_pat_).'; return; }
     $('key').value = '';
     start();
   });
   signOut.addEventListener('click', function () {
-    store.set('uploadAuth', null);
+    E.signOut();
     showSignin('Signed out on this device.');
   });
 
@@ -228,46 +104,19 @@
   var S = { loaded: false, images: [], gallery: { images: [] }, galleryNL: true, cfg: {}, cfgNL: true, obs: {}, posts: [], texts: [], pics: [], byPath: {}, temp: {} };
   function loadAll() {
     $('lib-msg').textContent = 'Loading the pictures…';
-    var R = '/repos/' + REPO;
-    var list = function (dir) { return gh('GET', R + '/contents/' + dir + '?ref=' + encodeURIComponent(BRANCH)).catch(function () { return []; }); };
-    return Promise.all([
-      gh('GET', R + '/git/trees/' + encodeURIComponent(BRANCH) + '?recursive=1'),
-      readFile('content/gallery.json'), readFile('content/fieldlog.json'), readFile('content/observations.json'),
-      list('content/posts'), list('content/pages'),
-      readFile('content/home.json'), readFile('content/home.da.json'), readFile('content/entry.json'), readFile('content/entry.da.json')
-    ]).then(function (r) {
-      S.images = arr(r[0] && r[0].tree).filter(function (t) {
-        return t.type === 'blob' && /^images\//.test(t.path) && !/^images\/(inbox|icons)\//.test(t.path) && /\.(jpe?g|png|webp|gif|avif)$/i.test(t.path);
-      }).map(function (t) { return '/' + t.path; });
-      try { S.gallery = r[1] ? JSON.parse(r[1].text) : { images: [] }; S.galleryNL = !r[1] || /\n$/.test(r[1].text); } catch (e) { S.gallery = { images: [] }; }
-      try { S.cfg = r[2] ? JSON.parse(r[2].text) : {}; S.cfgNL = !r[2] || /\n$/.test(r[2].text); } catch (e) { S.cfg = {}; }
-      try { S.obs = r[3] ? JSON.parse(r[3].text) : {}; } catch (e) { S.obs = {}; }
-      S.texts = [
-        { path: 'content/home.json', label: 'Classic page (English)', text: r[6] && r[6].text },
-        { path: 'content/home.da.json', label: 'Classic page (Danish)', text: r[7] && r[7].text },
-        { path: 'content/entry.json', label: 'Stone circle', text: r[8] && r[8].text },
-        { path: 'content/entry.da.json', label: 'Stone circle (Danish)', text: r[9] && r[9].text }
-      ];
-      var md = function (files, dir) { return arr(files).filter(function (f) { return /\.md$/.test(f.name); }).map(function (f) { return dir + '/' + f.name; }); };
-      var postPaths = md(r[4], 'content/posts'), pagePaths = md(r[5], 'content/pages');
-      return Promise.all(postPaths.concat(pagePaths).map(function (p) { return readFile(p).catch(function () { return null; }); })).then(function (texts) {
-        S.posts = [];
-        postPaths.concat(pagePaths).forEach(function (p, i) {
-          var t = texts[i] && texts[i].text || '';
-          var slug = p.replace(/^.*\//, '').replace(/\.md$/, '');
-          var title = (/^---[\s\S]*?\ntitle:\s*["']?(.+?)["']?\s*\n[\s\S]*?---/.exec(t) || [])[1] || slug;
-          var date = (/\ndate:\s*["']?(\d{4}-\d{2}-\d{2})/.exec(t) || [])[1] || '';
-          if (i < postPaths.length) S.posts.push({ slug: slug, path: p, title: title, date: date, text: t });
-          else S.texts.push({ path: p, label: 'Page: ' + title, text: t, href: 'page.html?slug=' + encodeURIComponent(slug) });
-        });
-        S.posts.sort(function (a, b) { return a.slug < b.slug ? 1 : -1; });
-        S.loaded = true;
-        index();
-        fillSpecies();
-        fillPostSelect($('pic-post'));
-        renderLibrary();
-        refreshNew();
-      });
+    return E.loadSite({ observations: true }).then(function (r) {
+      S.images = r.images;
+      try { S.gallery = r.gallery ? JSON.parse(r.gallery.text) : { images: [] }; S.galleryNL = !r.gallery || /\n$/.test(r.gallery.text); } catch (e) { S.gallery = { images: [] }; }
+      try { S.cfg = r.fieldlog ? JSON.parse(r.fieldlog.text) : {}; S.cfgNL = !r.fieldlog || /\n$/.test(r.fieldlog.text); } catch (e) { S.cfg = {}; }
+      try { S.obs = r.observations ? JSON.parse(r.observations.text) : {}; } catch (e) { S.obs = {}; }
+      S.texts = r.texts;
+      S.posts = r.posts;
+      S.loaded = true;
+      index();
+      fillSpecies();
+      fillPostSelect($('pic-post'));
+      renderLibrary();
+      refreshNew();
     }).catch(function (e) {
       $('lib-msg').textContent = 'Couldn’t load the pictures: ' + e.message;
     });
@@ -575,71 +424,7 @@
     renderLinks();
   });
   /* ---------- deleting pictures: the file, and every place that shows it ---------- */
-  function esc(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
-  function pathPattern(path) { // the picture's path, written any of the ways the site writes it
-    return '(?:https?:\\/\\/ndrshfflr\\.github\\.io)?\\/?' + esc(path.replace(/^\//, ''));
-  }
-  function stripMarkdown(text, path) {
-    var P = pathPattern(path);
-    return text
-      .replace(new RegExp('^cover:\\s*["\']?' + P + '["\']?\\s*\\n', 'm'), '')             // the cover in the front matter
-      .replace(new RegExp('^[ \\t]*!\\[[^\\]]*\\]\\(' + P + '(?:\\s+"[^"]*")?\\)[ \\t]*\\n?', 'gm'), '') // a picture on its own line
-      .replace(new RegExp('!\\[[^\\]]*\\]\\(' + P + '(?:\\s+"[^"]*")?\\)', 'g'), '')    // a picture inside a paragraph
-      .replace(new RegExp('<img[^>]*' + P + '[^>]*>', 'g'), '')
-      .replace(/\n{3,}/g, '\n\n');
-  }
-  function stripJSON(value, gone) { // a page field that holds the picture is emptied
-    if (typeof value === 'string') return gone[same(value)] ? '' : value;
-    if (Array.isArray(value)) return value.filter(function (v) { return !(typeof v === 'string' && gone[same(v)]); }).map(function (v) { return stripJSON(v, gone); });
-    if (value && typeof value === 'object') { Object.keys(value).forEach(function (k) { value[k] = stripJSON(value[k], gone); }); }
-    return value;
-  }
-  function deletePlan(paths) {
-    var gone = {};
-    paths.forEach(function (p) { gone[p] = true; });
-    var photoGone = function (x) { return gone[same(typeof x === 'string' ? x : x && (x.src || x.image || x.photo))]; };
-    var edits = [];
-    edits.push({ path: 'content/gallery.json', fn: function (t) {
-      if (t === null) return null;
-      var d0 = JSON.parse(t), before = (d0.images || []).length;
-      d0.images = arr(d0.images).filter(function (g) { return !(g && gone[same(g.image)]); });
-      return d0.images.length === before ? t : jsonText(d0, /\n$/.test(t));
-    } });
-    edits.push({ path: 'content/fieldlog.json', fn: function (t) {
-      if (t === null) return null;
-      var c = JSON.parse(t), before = JSON.stringify(c);
-      arr(c.manual).forEach(function (m) {
-        if (!m) return;
-        if (m.photos) m.photos = arr(m.photos).filter(function (x) { return !photoGone(x); });
-        if (m.photo && photoGone(m.photo)) delete m.photo;
-      });
-      arr(c.finds).forEach(function (f) {
-        if (!f) return;
-        if (f.photos) f.photos = arr(f.photos).filter(function (x) { return !photoGone(x); });
-        if (f.cover && photoGone(f.cover)) delete f.cover;
-      });
-      return JSON.stringify(c) === before ? t : jsonText(c, /\n$/.test(t));
-    } });
-    var mentions = function (text) { return paths.some(function (p) { return String(text || '').indexOf(p.replace(/^\//, '')) >= 0; }); };
-    S.posts.forEach(function (post) {
-      if (!mentions(post.text)) return;
-      edits.push({ path: post.path, fn: function (t) {
-        if (t === null) return null;
-        paths.forEach(function (p) { t = stripMarkdown(t, p); });
-        return t;
-      } });
-    });
-    S.texts.forEach(function (doc0) {
-      if (!mentions(doc0.text)) return;
-      edits.push({ path: doc0.path, fn: function (t) {
-        if (t === null) return null;
-        if (/\.json$/.test(doc0.path)) { var j = JSON.parse(t), before = JSON.stringify(j); j = stripJSON(j, gone); return JSON.stringify(j) === before ? t : jsonText(j, /\n$/.test(t)); }
-        paths.forEach(function (p) { t = stripMarkdown(t, p); });
-        return t;
-      } });
-    });
-    return { deletes: paths.filter(function (p) { return S.images.indexOf(p) >= 0; }).map(function (p) { return p.replace(/^\//, ''); }), edits: edits };
-  }
+  function deletePlan(paths) { return E.deletePlan(paths, { images: S.images, posts: S.posts, texts: S.texts }); }
   /* the confirm step, shown in the picture's window ('pic') or under the library ('lib') */
   function showConfirm(where, paths) {
     var box = $(where + '-confirm'), uses = [];
@@ -706,7 +491,13 @@
     }
     if (set.caption !== undefined) g.caption = set.caption;
     if (set.portfolio !== undefined) {
-      if (set.portfolio) { delete g.onPhotoPage; g.weight = set.weight || g.weight || 1; if (set.focus && set.focus !== 'center') g.focus = set.focus; else if (set.focus) delete g.focus; }
+      if (set.portfolio) {
+        delete g.onPhotoPage;
+        // a size 1–5 chosen here replaces a width × height set on the photography page
+        if (set.weight && set.weight !== (g.weight || 1)) { delete g.width; delete g.height; }
+        g.weight = set.weight || g.weight || 1;
+        if (set.focus && set.focus !== 'center') g.focus = set.focus; else if (set.focus) delete g.focus;
+      }
       else g.onPhotoPage = false;
     }
     if (set.sightings) { if (set.sightings.length) g.sightings = set.sightings; else delete g.sightings; }
@@ -718,6 +509,8 @@
       g.species = sp;
     }
     if (set.post !== undefined) { if (set.post) g.post = set.post; else delete g.post; }
+    // "Keep location": the position stays in the file, and is noted here so the photo inbox leaves it alone
+    if (set.location) { g.keepLocation = true; g.lat = set.location.lat; g.lon = set.location.lon; }
     if (set.postIfEmpty && !g.post) g.post = set.postIfEmpty;
     return g;
   }
@@ -806,48 +599,6 @@
   /* ------------------------------------------------------------------ New: pictures, a find, a post */
   var items = [], nextId = 1;
   var list = $('list'), statusEl = $('status'), sendBtn = $('send');
-  /* The day a photo was taken, from its EXIF data (read here, on the phone;
-     the photo sent to the website carries none). Falls back to the file date. */
-  function takenOn(file) {
-    var fallback = file.lastModified ? isoDay(new Date(file.lastModified)) : '';
-    if (!/jpe?g$/i.test(file.type || file.name)) return Promise.resolve(fallback);
-    return file.slice(0, 256 * 1024).arrayBuffer().then(function (buf) {
-      return exifDate(new DataView(buf)) || fallback;
-    }).catch(function () { return fallback; });
-  }
-  function exifDate(v) {
-    if (v.byteLength < 4 || v.getUint16(0) !== 0xFFD8) return '';
-    var o = 2;
-    while (o + 4 <= v.byteLength) {
-      var marker = v.getUint16(o), len = v.getUint16(o + 2);
-      if (marker === 0xFFE1 && o + 10 <= v.byteLength && v.getUint32(o + 4) === 0x45786966) { // "Exif"
-        var t = o + 10, le = v.getUint16(t) === 0x4949;
-        var u16 = function (a) { return v.getUint16(a, le); }, u32 = function (a) { return v.getUint32(a, le); };
-        var find = function (ifd, tag) {
-          if (ifd + 2 > v.byteLength) return null;
-          for (var i = 0, n = u16(ifd); i < n; i++) {
-            var e = ifd + 2 + i * 12;
-            if (e + 12 > v.byteLength) return null;
-            if (u16(e) === tag) return e;
-          }
-          return null;
-        };
-        var text = function (e) {
-          if (!e) return '';
-          var at = t + u32(e + 8), s = '';
-          for (var i = 0; i < 19 && at + i < v.byteLength; i++) s += String.fromCharCode(v.getUint8(at + i));
-          var m = /^(\d{4}):(\d{2}):(\d{2})/.exec(s);
-          return m && m[1] !== '0000' ? m[1] + '-' + m[2] + '-' + m[3] : '';
-        };
-        var ifd0 = t + u32(t + 4), ptr = find(ifd0, 0x8769);
-        var original = ptr ? text(find(t + u32(ptr + 8), 0x9003)) : '';
-        return original || text(find(ifd0, 0x0132));
-      }
-      if ((marker & 0xFF00) !== 0xFF00 || marker === 0xFFDA) break;
-      o += 2 + len;
-    }
-    return '';
-  }
   function makeCard(it) {
     var li = $('card-tpl').content.firstElementChild.cloneNode(true);
     it.li = li;
@@ -868,6 +619,7 @@
     var pfBox = li.querySelector('.up-pf');
     pfBox.hidden = !pf.checked;
     pf.addEventListener('change', function () { pfBox.hidden = !pf.checked; if (!it.path) store.set('uploadPortfolio', pf.checked ? '1' : '0'); });
+    showLocation(it);
     li.querySelector('.up-caption').addEventListener('input', prefill);
     li.querySelector('.up-in-post').addEventListener('change', prefill);
     li.querySelector('.up-remove').addEventListener('click', function () {
@@ -879,11 +631,27 @@
     });
     list.appendChild(li);
   }
+  /* "Keep location" on a new picture: offered when the photo carries a position */
+  function showLocation(it) {
+    if (!it.li) return;
+    var box = it.li.querySelector('.up-loc'), keep = it.li.querySelector('.up-keep-l'), note = it.li.querySelector('.up-loc-note');
+    box.hidden = !it.file;
+    if (!it.file) return;
+    keep.hidden = !it.gps;
+    note.textContent = it.gps
+      ? 'Taken at ' + it.gps.lat.toFixed(4) + ', ' + it.gps.lon.toFixed(4) + '. If kept, anyone can read the exact spot from the photo. Otherwise it’s removed.'
+      : 'No location in this photo, so there’s none to keep.';
+  }
   function addFile(file) {
-    var it = { id: nextId++, file: file, url: URL.createObjectURL(file), taken: '' };
+    var it = { id: nextId++, file: file, url: URL.createObjectURL(file), taken: '', gps: null };
     items.push(it);
     makeCard(it);
-    takenOn(file).then(function (d) { it.taken = d; if (items[0] === it) prefillFindDate(); });
+    /* the day it was taken and where, read here from the photo's own data */
+    E.exif(file).then(function (x) {
+      it.taken = x.date; it.gps = x.gps;
+      showLocation(it);
+      if (items[0] === it) prefillFindDate();
+    });
   }
   function addLibraryItem(p) {
     if (items.some(function (x) { return x.path === p.path; })) return;
@@ -1011,40 +779,6 @@
   }
 
   /* ---------- publishing ---------- */
-  function loadImage(file) {
-    return new Promise(function (resolve, reject) {
-      var img = new Image();
-      var url = URL.createObjectURL(file);
-      img.onload = function () { resolve({ img: img, url: url }); };
-      img.onerror = function () { URL.revokeObjectURL(url); reject(new Error('couldn’t read ' + file.name)); };
-      img.src = url;
-    });
-  }
-  /* Re-draw at most 2000 px on a canvas: the browser turns it upright, and the
-     new JPEG carries no metadata, so the location is gone. */
-  function shrink(file) {
-    return loadImage(file).then(function (r) {
-      var w = r.img.naturalWidth, h = r.img.naturalHeight, s = Math.min(1, LONG_SIDE / Math.max(w, h));
-      var c = doc.createElement('canvas');
-      c.width = Math.max(1, Math.round(w * s)); c.height = Math.max(1, Math.round(h * s));
-      var ctx = c.getContext('2d');
-      ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
-      ctx.drawImage(r.img, 0, 0, c.width, c.height);
-      URL.revokeObjectURL(r.url);
-      return new Promise(function (resolve, reject) {
-        c.toBlob(function (b) { if (b) resolve(b); else reject(new Error('couldn’t prepare ' + file.name)); }, 'image/jpeg', QUALITY);
-      });
-    }).then(function (blob) {
-      return blob.arrayBuffer().then(function (buf) {
-        var bytes = new Uint8Array(buf), bin = '';
-        for (var i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
-        return crypto.subtle.digest('SHA-1', buf).then(function (h) {
-          var hex = Array.prototype.map.call(new Uint8Array(h), function (b) { return ('0' + b.toString(16)).slice(-2); }).join('').slice(0, 6);
-          return { b64: btoa(bin), hash: hex, blob: blob };
-        });
-      });
-    });
-  }
   function status(text, kind, links) {
     statusEl.textContent = text;
     statusEl.className = 'up-status' + (kind ? ' ' + kind : '');
@@ -1104,7 +838,8 @@
         it.inPost = wantPost && it.li.querySelector('.up-in-post').checked;
         if (it.path) return null;
         status('Preparing picture ' + (i + 1) + ' of ' + batch.length + '…');
-        return shrink(it.file).then(function (r) {
+        it.keep = it.gps && it.li.querySelector('.up-keep-loc').checked ? it.gps : null;
+        return E.shrink(it.file, it.keep).then(function (r) {
           it.path = '/images/gallery/' + (it.taken || today) + '-' + (slugify(it.caption || speciesName || 'photo').slice(0, 40) || 'photo') + '-' + r.hash + '.jpg';
           it.isNew = true;
           it.preview = URL.createObjectURL(r.blob);
@@ -1121,6 +856,7 @@
         batch.slice().reverse().forEach(function (it) {
           var set = { portfolio: it.portfolio, weight: it.weight, focus: it.focus };
           if (it.caption || it.isNew) set.caption = it.caption;
+          if (it.isNew && it.keep) set.location = it.keep;
           if (it.inFind) { set.addSighting = sightingId; set.addSpecies = speciesName; }
           if (it.inPost) set.postIfEmpty = slug;
           applyEntry(d0, it.path, set);

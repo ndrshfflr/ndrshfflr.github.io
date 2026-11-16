@@ -70,7 +70,7 @@
           <button class="up-btn up-pick" id="from-lib" type="button">From the library</button>
         </div>
         <input class="up-file" id="files" type="file" accept="image/*" multiple>
-        <p class="up-small up-hint">Optional: a find or a post can do without. New pictures are shrunk to 2000 px and their location is removed on this device before they're sent.</p>
+        <p class="up-small up-hint">Optional: a find or a post can do without. New pictures are shrunk to 2000 px and their location is removed on this device before they're sent, unless you tick “Keep location” on a picture.</p>
         <ol class="up-list" id="list" aria-label="Pictures"></ol>
 
         <h2 class="up-h2">Also make it</h2>
@@ -181,6 +181,10 @@
             </select>
           </label>
         </div>
+        <div class="up-loc" hidden>
+          <label class="up-check up-keep-l" hidden><input class="up-keep-loc" type="checkbox"> Keep location</label>
+          <p class="up-small up-loc-note"></p>
+        </div>
         <button class="up-link up-remove" type="button">Remove</button>
       </div>
     </li>
@@ -269,6 +273,7 @@
 </div>
 
 <script id="upload-data" type="application/json">{{ data | tojson }}</script>
+<script src="assets/edit-core.js?v={{ v.editcorejs }}"></script>
 <script src="assets/upload.js?v={{ v.uploadjs }}"></script>
 </body>
 </html>
