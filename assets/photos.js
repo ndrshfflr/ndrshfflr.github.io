@@ -1,6 +1,6 @@
 /* ==========================================================================
    Photography — the mosaic and the full-screen viewer.
-   - a photo linked to a blog post leads to it; the others open full-screen
+   - every photo opens full-screen; one linked to a blog post shows a clear link to it there
      (‹ › / arrow keys / swipe to move on, Esc to close)
    - reloads content/gallery.json so photos added in /admin show up without
      a rebuild
@@ -48,7 +48,6 @@
   /* ------------------------------------------------------------------ text */
   function tileLabel(p, i) {
     var u = U(), name = p.caption || fmt(u.photoN, { i: i + 1 });
-    if (p.post) name += ' — ' + (postTitle(p.post) ? fmt(u.readPostTitle, { t: postTitle(p.post) }) : u.readPost);
     return name;
   }
   function renderText() {
@@ -80,9 +79,8 @@
   function buildTile(p, i) {
     var li = el('li', 'tile wt' + p.weight);
     var a = el('a', 'tile-a');
-    a.href = p.post ? 'post.html?slug=' + encodeURIComponent(p.post) : p.image;
+    a.href = p.image;
     a.setAttribute('data-i', i);
-    if (p.post) a.setAttribute('data-post', p.post);
     a.setAttribute('aria-label', tileLabel(p, i));
     var img = el('img');
     img.src = p.image; img.alt = p.caption; img.loading = 'lazy'; img.decoding = 'async';
@@ -113,15 +111,15 @@
     var a = e.target.closest && e.target.closest('.tile-a');
     if (!a) return;
     var i = +a.getAttribute('data-i'), p = photos[i];
-    if (!p || p.post) return;                                  // a post: follow the link
+    if (!p) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return; // new tab
     e.preventDefault();
     open(i, a);
   });
 
   /* ------------------------------------------------------------------ the viewer */
-  function link(rune, text, href) {
-    var a = el('a'); a.href = href;
+  function link(rune, text, href, cls) {
+    var a = el('a', cls); a.href = href;
     var r = el('span', 'lr'); r.setAttribute('aria-hidden', 'true'); r.textContent = rune;
     a.appendChild(r); a.appendChild(W.rv(text));
     return a;
@@ -135,7 +133,11 @@
     while (vCap.firstChild) vCap.removeChild(vCap.firstChild);
     if (p.caption) vCap.appendChild(W.rv(p.caption));
     while (vLinks.firstChild) vLinks.removeChild(vLinks.firstChild);
-    if (p.post) vLinks.appendChild(link('ᚬ', postTitle(p.post) ? fmt(u.readPostTitle, { t: postTitle(p.post) }) : u.readPost, 'post.html?slug=' + encodeURIComponent(p.post)));
+    if (p.post) {
+      var pl = link('ᚬ', postTitle(p.post) ? fmt(u.readPostTitle, { t: postTitle(p.post) }) : u.readPost, 'post.html?slug=' + encodeURIComponent(p.post), 'v-post');
+      var arrow = el('span', 'v-arrow'); arrow.setAttribute('aria-hidden', 'true'); arrow.textContent = '\u2192'; pl.appendChild(arrow);
+      vLinks.appendChild(pl);
+    }
     p.species.forEach(function (name) {
       vLinks.appendChild(link('ᚱ', p.species.length > 1 ? name : u.inFieldlog, DATA.fieldlog[W.latin()] + '#sp=' + encodeURIComponent(name)));
     });
