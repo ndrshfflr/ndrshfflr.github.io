@@ -79,6 +79,22 @@
   "license": "cc-by",
   "checked": "2026-10-25"
  },
+ "Buteo buteo": {
+  "inat": 204472,
+  "da": "Musvåge",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/337150135/medium.jpeg",
+  "credit": "(c) Christoph Moning, some rights reserved (CC BY), uploaded by Christoph Moning",
+  "license": "cc-by",
+  "checked": "2026-11-16"
+ },
+ "Buteo lagopus": {
+  "inat": 5200,
+  "da": "Fjeldvåge",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/171806471/medium.jpg",
+  "credit": "(c) Jonathan Eisen, some rights reserved (CC BY), uploaded by Jonathan Eisen",
+  "license": "cc-by",
+  "checked": "2026-11-16"
+ },
  "Cacicus cela": {
   "inat": 10359,
   "da": "gulgumpet pungstær",
@@ -431,6 +447,14 @@
   "license": "cc-by",
   "checked": "2026-10-25"
  },
+ "Nannus troglodytes": {
+  "inat": 1720028,
+  "da": "Gærdesmutte",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/123587461/medium.jpg",
+  "credit": "(c) William Stephens, some rights reserved (CC BY), uploaded by William Stephens",
+  "license": "cc-by",
+  "checked": "2026-11-16"
+ },
  "Oenanthe oenanthe": {
   "inat": 12822,
   "da": "Stenpikker",
@@ -657,6 +681,14 @@
   "da": "Havterne",
   "checked": "2026-10-25"
  },
+ "Strix aluco": {
+  "inat": 19898,
+  "da": "Natugle",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/451350360/medium.jpg",
+  "credit": "(c) caroline legg, some rights reserved (CC BY)",
+  "license": "cc-by",
+  "checked": "2026-11-16"
+ },
  "Sturnus vulgaris": {
   "inat": 14850,
   "da": "Stær",
@@ -728,6 +760,14 @@
   "credit": "(c) Luiz Lapa, some rights reserved (CC BY)",
   "license": "cc-by",
   "checked": "2026-10-25"
+ },
+ "Turdus phaeopygus": {
+  "inat": 1720755,
+  "da": "",
+  "photo": "https://inaturalist-open-data.s3.amazonaws.com/photos/686885362/medium.jpg",
+  "credit": "(c) Thibaud Aronson, some rights reserved (CC BY-SA), uploaded by Thibaud Aronson",
+  "license": "cc-by-sa",
+  "checked": "2026-11-16"
  },
  "Turdus philomelos": {
   "inat": 12748,
