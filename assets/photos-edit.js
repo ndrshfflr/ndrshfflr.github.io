@@ -20,6 +20,11 @@
    Albums
    - make, rename (English and Danish), reorder and delete albums; open one to
      add photos, order them, pick the cover or take photos out
+   Field trips
+   - make, edit and delete trips: names, dates, place, the pin (click the map),
+     which photos it gathers, extra photos, its blog post
+   Gear (✎ Gear, above the views)
+   - names and kinds, in their order
    Changes gather until Save: one commit (new photo files + content/gallery.json),
    applied on top of the newest version, so photos added meanwhile are kept.
    Discard undoes. Signing in, saving and deleting come from assets/edit-core.js.
@@ -27,7 +32,7 @@
 (function () {
   'use strict';
 
-  var P = window.Photos, E = window.SiteEdit, PM = window.PhotosMore, doc = document;
+  var P = window.Photos, E = window.SiteEdit, PM = window.PhotosMore, W0 = window.World || {}, doc = document;
   if (!P || !E || !P.data || !P.data.edit || window.PhotosEdit) return;
   window.PhotosEdit = true;
   E.setup(P.data.edit);
@@ -47,7 +52,9 @@
      st.preview: sent photos shown from this device until the site has them */
   var st = { on: false, busy: false, work: [], saved: '[]', base: {}, order0: [], off: {}, site: null, note: '', kind: '',
     albums: [], albumsSaved: '[]', savedIds: {}, legacy: false, legacy0: false, fresh: {}, preview: {},
-    view: 'stream', sel: null, selAlbum: null, openAlbum: null };
+    view: 'stream', sel: null, selAlbum: null, openAlbum: null,
+    trips: [], tripsSaved: '[]', selTrip: null, placing: false, fl: null, flLoading: null,
+    gear: [], gearSaved: '[]', gearOpen: false };
 
   /* ------------------------------------------------------------------ small helpers */
   function h(tag, cls, text) {
@@ -127,6 +134,100 @@
     return legacy;
   }
 
+  /* ---------- field trips ---------- */
+  var nextTrip = 1;
+  function trip(k) { for (var i = 0; i < st.trips.length; i++) if (st.trips[i]._k === k) return st.trips[i]; return null; }
+  function copyObj(o) { var c = {}; Object.keys(o).forEach(function (k) { c[k] = Array.isArray(o[k]) ? o[k].slice() : o[k]; }); return c; }
+  function readTrips(d) {
+    st.trips = E.arr(d.trips).filter(function (t) { return t && typeof t === 'object'; }).map(function (t) {
+      var o = copyObj(t);
+      if (o.photos) o.photos = E.arr(o.photos).map(E.same);
+      o._k = 't' + (nextTrip++);
+      return o;
+    });
+    st.gear = E.arr(d.gear).filter(function (g) { return g && String(g.name || '').trim(); }).map(copyObj);
+  }
+  function hasPin(t) { return t.lat !== undefined && t.lat !== '' && t.lat !== null && t.lon !== undefined && t.lon !== '' && t.lon !== null && isFinite(+t.lat) && isFinite(+t.lon); }
+  function tripLabel(t) { return String(t.name || '').trim() || 'New field trip'; }
+  /* the pins the map shows while editing */
+  function pins() { return st.trips.filter(hasPin).map(function (t) { return { id: t._k, name: tripLabel(t), nameDa: t.nameDa || '', lat: +t.lat, lon: +t.lon, images: [] }; }); }
+  function shortDay(iso) { var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || ''); return m ? (+m[3]) + ' ' + MONTHS[+m[2] - 1] + ' ' + m[1] : ''; }
+  function whenText(t) {
+    var a = String(t.from || '').slice(0, 10), b = String(t.to || '').slice(0, 10);
+    if (!a) return 'No dates yet';
+    return !b || b === a ? shortDay(a) : shortDay(a) + ' – ' + shortDay(b);
+  }
+  /* the field log, for dating photos and counting finds as src/build.py does */
+  function ensureFl() {
+    if (st.fl) return Promise.resolve(st.fl);
+    if (!st.flLoading) {
+      st.flLoading = Promise.all(['content/fieldlog.json', 'content/observations.json'].map(function (u) {
+        return fetch(u, { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; });
+      })).then(function (r) {
+        var fl = r[0] || {}, obs = r[1] || {}, manual = {}, byId = {}, records = [];
+        E.arr(obs.items).forEach(function (o) { if (!o) return; if (o.id) byId[o.id] = o; if (o.date) records.push(o); });
+        E.arr(fl.manual).forEach(function (m) { if (m && m.id) { manual[m.id] = m; if (m.date) records.push(m); } });
+        st.fl = { records: records, sighting: function (sid) { sid = String(sid || ''); return sid.indexOf('manual:') === 0 ? manual[sid.slice(7)] : byId[sid]; } };
+        return st.fl;
+      });
+    }
+    return st.flLoading;
+  }
+  /* when a photo was taken (and where, if its sighting says): its sighting, its kept metadata, or its file name */
+  function takenOf(e) {
+    var sg = E.arr(e.sightings);
+    for (var i = 0; st.fl && i < sg.length; i++) { var s = st.fl.sighting(sg[i]); if (s && s.date) return [String(s.date).slice(0, 10), s.place || '']; }
+    var f = st.fresh[key(e)];
+    if (f) return [f.meta && f.meta.date || '', ''];
+    if (/^\d{4}-\d{2}-\d{2}/.test(e.taken || '')) return [String(e.taken).slice(0, 10), ''];
+    var m = /^(\d{4}-\d{2}-\d{2})/.exec(String(e.image).replace(/^.*\//, ''));
+    return [m ? m[1] : '', ''];
+  }
+  /* a trip's photos (added by hand first, then those taken on its dates) and its finds */
+  function gather(t) {
+    var start = String(t.from || '').slice(0, 10), end = String(t.to || '').slice(0, 10) || start, match = String(t.placeMatch || '').trim().toLowerCase();
+    var pics = E.arr(t.photos).filter(function (k) { return entry(k); }), byDate = {};
+    if (start && t.gather !== false) st.work.forEach(function (e) {
+      var k = key(e), d = takenOf(e);
+      if (d[0] && start <= d[0] && d[0] <= end && !(match && d[1] && d[1].toLowerCase().indexOf(match) < 0) && pics.indexOf(k) < 0) { pics.push(k); byDate[k] = true; }
+    });
+    var finds = !st.fl || !start ? [] : st.fl.records.filter(function (r) {
+      var d = String(r.date || '').slice(0, 10);
+      return start <= d && d <= end && !(match && String(r.place || '').toLowerCase().indexOf(match) < 0);
+    });
+    var species = [];
+    finds.forEach(function (r) { var n = String(r.name || '').trim(); if (n && species.indexOf(n) < 0) species.push(n); });
+    return { photos: pics, byDate: byDate, finds: finds.length, species: species.slice(0, 8), known: !!st.fl };
+  }
+  /* the trips as the page shows them (src/build.py's shape), for after editing */
+  function shownTrips() {
+    var more = P.data.more || (P.data.more = {}), titles = P.data.posts || {};
+    var out = st.trips.filter(function (t) { return hasPin(t) && String(t.name || '').trim(); }).map(function (t) {
+      var g = gather(t), start = String(t.from || '').slice(0, 10);
+      var imgs = g.photos.map(function (k) {
+        var e = entry(k);
+        if (!onPage(e)) more[disp(k)] = { image: disp(k), caption: e.caption || '', pos: E.POS[e.focus] || E.POS.center, post: e.post || '',
+          species: (Array.isArray(e.species) ? e.species : e.species ? [e.species] : []).map(String) };
+        return disp(k);
+      });
+      return { id: E.slugify(t.name) || 'trip', name: String(t.name).trim(), nameDa: t.nameDa || '', from: start, to: String(t.to || '').slice(0, 10) || start,
+        place: t.place || '', placeDa: t.placeDa || '', lat: +t.lat, lon: +t.lon, images: imgs, finds: g.finds, species: g.species,
+        post: t.post || '', postTitle: titles[t.post] || '' };
+    });
+    out.sort(function (a, b) { return a.from < b.from ? 1 : a.from > b.from ? -1 : 0; });
+    return out;
+  }
+  function tripsSorted() {
+    return st.trips.slice().sort(function (a, b) { var x = String(a.from || '9999'), y = String(b.from || '9999'); return x < y ? 1 : x > y ? -1 : 0; });
+  }
+  function setKey(d, k, v) { // a top-level key of content/gallery.json, put before the photos when it's new
+    if (k in d) { d[k] = v; return d; }
+    var out = {};
+    Object.keys(d).forEach(function (x) { if (x === 'images') out[k] = v; out[x] = d[x]; });
+    if (!(k in out)) out[k] = v;
+    return out;
+  }
+
   /* ------------------------------------------------------------------ what has changed */
   function snap(e) { var o = {}; FIELDS.forEach(function (f) { if (e[f] !== undefined && e[f] !== '') o[f] = e[f]; }); return JSON.stringify(o); }
   function remember() {
@@ -137,12 +238,16 @@
     st.albumsSaved = JSON.stringify(st.albums);
     st.savedIds = {};
     st.albums.forEach(function (a) { st.savedIds[a.id] = true; });
+    st.tripsSaved = JSON.stringify(st.trips);
+    st.gearSaved = JSON.stringify(st.gear);
   }
   function freshKeys() { return st.work.map(key).filter(function (k) { return st.fresh[k]; }); }
   function changed() { return st.work.filter(function (e) { return !st.fresh[key(e)] && snap(e) !== st.base[key(e)]; }); }
   function reordered() { return st.work.map(key).filter(function (k) { return !st.fresh[k]; }).join('\n') !== st.order0.join('\n'); }
   function albumsChanged() { return st.legacy || JSON.stringify(st.albums) !== st.albumsSaved; }
-  function dirty() { return changed().length + (reordered() ? 1 : 0) + (albumsChanged() ? 1 : 0) + freshKeys().length; }
+  function tripsChanged() { return JSON.stringify(st.trips) !== st.tripsSaved; }
+  function gearChanged() { return JSON.stringify(st.gear) !== st.gearSaved; }
+  function dirty() { return changed().length + (reordered() ? 1 : 0) + (albumsChanged() ? 1 : 0) + freshKeys().length + (tripsChanged() ? 1 : 0) + (gearChanged() ? 1 : 0); }
 
   /* ------------------------------------------------------------------ the controls */
   var fab = btn('pe-fab', '', 'Edit the photography page');
@@ -274,8 +379,52 @@
   var apNote = h('p', 'pe-small');
   aphotoBox.appendChild(aphotoOrder.box); aphotoBox.appendChild(apFoot); aphotoBox.appendChild(apNote);
 
-  var topRow = h('div', 'pe-top'); topRow.appendChild(head); topRow.appendChild(closeB);
-  [topRow, nameP, tools, albBox, freshBox, foot, offNote, confirmBox, albumBox, aphotoBox].forEach(function (n) { panel.appendChild(n); });
+  /* --- a field trip --- */
+  var tripBox = h('div', 'pe-trip-box');
+  function field(label, type, parent, cls) {
+    var l = h('label', 'pe-label' + (cls ? ' ' + cls : ''), label), i = h('input', 'pe-input');
+    i.type = type; i.autocomplete = 'off'; if (type === 'text') { i.maxLength = 140; i.setAttribute('enterkeyhint', 'done'); }
+    l.appendChild(i); (parent || tripBox).appendChild(l);
+    return i;
+  }
+  var pair = function () { var d = h('div', 'pe-pair'); tripBox.appendChild(d); return d; };
+  var p1 = pair(), tName = field('Name', 'text', p1), tDa = field('Name in Danish (optional)', 'text', p1); tDa.lang = 'da';
+  var p2 = pair(), tFrom = field('From', 'date', p2), tTo = field('To (optional)', 'date', p2);
+  var p3 = pair(), tPlace = field('Place', 'text', p3), tPlaceDa = field('Place in Danish (optional)', 'text', p3); tPlaceDa.lang = 'da';
+  tPlace.placeholder = 'e.g. Söderåsen, Skåne, Sweden';
+  var pinBox = h('div', 'pe-group pe-pin'); tripBox.appendChild(pinBox);
+  var tPin = field('Pin on the map', 'text', pinBox); tPin.placeholder = 'latitude, longitude (e.g. 56.04, 13.24)'; tPin.inputMode = 'decimal';
+  var pinRow = h('div', 'pe-foot'), placeB = btn('pe-btn pe-primary', '⌖ Place it on the map'), fromPhotosB = btn('pe-btn', 'Where the photos were taken');
+  pinRow.appendChild(placeB); pinRow.appendChild(fromPhotosB); pinBox.appendChild(pinRow);
+  var pinNote = h('p', 'pe-small'); pinBox.appendChild(pinNote);
+  var gBox = h('div', 'pe-group pe-gath'); tripBox.appendChild(gBox);
+  var gL = h('label', 'pe-check'), tGather = h('input'); tGather.type = 'checkbox';
+  gL.appendChild(tGather); gL.appendChild(doc.createTextNode(' Gather the photos taken on these dates')); gBox.appendChild(gL);
+  var tMatch = field('Only where the field log place contains (optional)', 'text', gBox); tMatch.placeholder = 'e.g. Markaryd';
+  var phBox = h('div', 'pe-group'); tripBox.appendChild(phBox);
+  var tFacts = h('p', 'pe-label'), tStrip = h('ul', 'pe-tstrip'), tAdd = btn('pe-btn', '+ Add photos by hand');
+  phBox.appendChild(tFacts); phBox.appendChild(tStrip); phBox.appendChild(tAdd);
+  var postL = h('label', 'pe-label', 'Blog post (optional)'), tPost = h('select', 'pe-input');
+  postL.appendChild(tPost); tripBox.appendChild(postL);
+  var tDel = btn('pe-btn pe-danger-line', 'Delete field trip');
+  var tFoot = h('div', 'pe-foot'); tFoot.appendChild(tDel); tripBox.appendChild(tFoot);
+
+  /* --- gear --- */
+  var gearBox = h('div', 'pe-gear-box'), gRows = h('ul', 'pe-grows'), gAdd = btn('pe-btn', '+ Add a piece');
+  gearBox.appendChild(h('p', 'pe-small', 'Shown in this order under the heading, each turning in 3D; the shape follows the kind.'));
+  gearBox.appendChild(gRows); gearBox.appendChild(gAdd);
+  var KINDS = [['camera', 'Camera (interchangeable lenses)'], ['compact', 'Compact camera (fixed lens)'], ['phone', 'Phone'], ['prime', 'Prime lens'], ['zoom', 'Zoom lens'], ['other', 'Other']];
+
+  var pTitle = h('p', 'pe-ptitle');
+  var topRow = h('div', 'pe-top'); topRow.appendChild(pTitle); topRow.appendChild(head); topRow.appendChild(closeB);
+  [topRow, nameP, tools, albBox, freshBox, foot, offNote, confirmBox, albumBox, aphotoBox, tripBox, gearBox].forEach(function (n) { panel.appendChild(n); });
+
+  /* placing a pin: a strip above the bar while the map takes the clicks */
+  var placebar = h('div', 'pe-placebar'), placeText = h('p', 'pe-small'), worldB = btn('pe-btn', 'World map'), placeDone = btn('pe-btn pe-primary', 'Done');
+  placebar.hidden = true;
+  placebar.appendChild(placeText); placebar.appendChild(worldB); placebar.appendChild(placeDone);
+  /* gear: its button, above the views while editing */
+  var gearBtn = btn('pe-btn pe-gear-btn', '✎ Gear');
 
   /* choosing several photos at once: for an album, or from the library */
   var picker = h('div', 'pe-picker');
@@ -302,11 +451,13 @@
   signin.appendChild(signRow); signin.appendChild(signMsg); signin.appendChild(keyBox);
 
   var ui = h('div', 'pe');
-  [fab, menu, bar, panel, picker, signin, fileIn].forEach(function (n) { ui.appendChild(n); });
+  [fab, menu, placebar, bar, panel, picker, signin, fileIn].forEach(function (n) { ui.appendChild(n); });
   doc.body.appendChild(ui);
 
   /* ------------------------------------------------------------------ drawing */
   function mode() {
+    if (st.gearOpen) return 'gear';
+    if (st.view === 'trips') return st.selTrip && trip(st.selTrip) && !st.placing ? 'trip' : '';
     if (st.view === 'stream' && st.sel && entry(st.sel)) return 'photo';
     if (st.view === 'albums' && st.openAlbum && st.sel && entry(st.sel) && album(st.openAlbum)) return 'aphoto';
     if (st.view === 'albums' && !st.openAlbum && st.selAlbum && album(st.selAlbum)) return 'album';
@@ -314,7 +465,7 @@
   }
   function say(text, kind) { st.note = text || ''; st.kind = kind || ''; drawBar(); }
   function hint() {
-    if (st.view === 'trips') return 'Field trips are edited in /admin for now; the stream and albums here.';
+    if (st.view === 'trips') return 'Tap a pin or a trip to edit it, or make a new one.';
     if (st.view === 'albums' && st.openAlbum) return 'Tap a photo to order it, make it the cover or take it out' + (fine ? ', or drag it.' : '.');
     if (st.view === 'albums') return 'Tap an album to rename or order it, or make a new one.';
     return 'Tap a photo to change it' + (fine ? ', or drag it to a new place.' : '.');
@@ -326,16 +477,23 @@
     saveB.disabled = discardB.disabled = st.busy || !n;
     doneB.disabled = addB.disabled = st.busy;
     doc.documentElement.style.setProperty('--pe-bar', bar.offsetHeight + 'px');
-    doc.body.style.paddingBottom = st.on ? (bar.offsetHeight + (panel.hidden || fine ? 0 : panel.offsetHeight) + 24) + 'px' : '';
+    doc.body.style.paddingBottom = st.on ? (bar.offsetHeight + (panel.hidden || fine ? 0 : panel.offsetHeight) + (placebar.hidden ? 0 : placebar.offsetHeight) + 24) + 'px' : '';
   }
   function show(n, on) { n.hidden = !on; }
   function drawPanel() {
     var m = mode();
     panel.hidden = !m;
-    if (!m) { confirmBox.hidden = true; newRow.hidden = true; drawBar(); return; }
+    if (!m) { confirmBox.hidden = true; newRow.hidden = true; doc.body.classList.remove('pe-side'); drawBar(); return; }
     var e = (m === 'photo' || m === 'aphoto') && entry(st.sel), isFresh = e && !!st.fresh[st.sel];
-    panel.setAttribute('aria-label', m === 'album' ? 'The selected album' : 'The selected photo');
-    show(topRow, true); show(head, m !== 'album'); show(nameP, m !== 'album');
+    var TITLES = { album: 'Album', trip: 'Field trip', gear: 'My gear' };
+    panel.setAttribute('aria-label', TITLES[m] ? 'The selected ' + TITLES[m].toLowerCase() : 'The selected photo');
+    pTitle.textContent = m === 'album' ? '' : TITLES[m] || ''; show(pTitle, m === 'trip' || m === 'gear');
+    show(topRow, true); show(head, m === 'photo' || m === 'aphoto'); show(nameP, m === 'photo' || m === 'aphoto');
+    show(tripBox, m === 'trip'); show(gearBox, m === 'gear');
+    panel.classList.toggle('pe-wide', m === 'trip' || m === 'gear');
+    /* on a wide screen the trips make room for the panel, so no trip or pin hides under it */
+    var side = fine && window.innerWidth >= 1000 && st.view === 'trips' && (m === 'trip' || m === 'gear');
+    if (doc.body.classList.contains('pe-side') !== side) { doc.body.classList.toggle('pe-side', side); }
     show(tools, m === 'photo'); show(albBox, m === 'photo'); show(freshBox, m === 'photo' && isFresh);
     show(foot, m === 'photo'); show(offNote, m === 'photo' && !isFresh && !onPage(e));
     show(albumBox, m === 'album'); show(aphotoBox, m === 'aphoto');
@@ -372,6 +530,10 @@
       aCount.textContent = n2(nOn, 'photo', 'photos') + (albumPhotos(a).length > nOn ? ' (and ' + (albumPhotos(a).length - nOn) + ' off the page, not shown)' : '');
       albumOrder.update(j, st.albums.length, false);
       aOpen.disabled = aDel.disabled = st.busy;
+    } else if (m === 'trip') {
+      drawTrip();
+    } else if (m === 'gear') {
+      drawGear();
     } else {
       var al = album(st.openAlbum), ph = albumPhotos(al), k = ph.indexOf(st.sel), isCover = coverOf(al) === st.sel;
       aphotoOrder.update(k, ph.length, false);
@@ -477,6 +639,249 @@
     render();
     inView(tileOf(st.sel));
   }
+
+  /* ------------------------------------------------------------------ field trips while editing */
+  var tripCard = null;
+  var tripHooks = {
+    pin: function (id) { selectTrip(id, false); },
+    click: function (lat, lon, world) { mapClick(lat, lon, world); },
+    card: function (el) { drawTripList(el); }
+  };
+  function drawTripList(el) {
+    tripCard = el;
+    el.hidden = false;
+    el.className = 'trip-card pe-trips';
+    while (el.firstChild) el.removeChild(el.firstChild);
+    var top = h('div', 'pe-trips-head');
+    top.appendChild(h('p', 'pe-trips-h', n2(st.trips.length, 'field trip', 'field trips')));
+    var nb = btn('pe-btn pe-primary', '+ New field trip');
+    nb.addEventListener('click', newTrip);
+    top.appendChild(nb); el.appendChild(top);
+    if (!st.trips.length) el.appendChild(h('p', 'pe-small', 'No field trips yet. Make one, then place its pin on the map.'));
+    var ul = h('ul', 'pe-tlist');
+    tripsSorted().forEach(function (t) {
+      var li = h('li'), b = btn('pe-trow' + (t._k === st.selTrip ? ' on' : ''));
+      b.setAttribute('aria-pressed', t._k === st.selTrip ? 'true' : 'false');
+      b.setAttribute('data-trip', t._k);
+      var g = gather(t);
+      b.appendChild(h('span', 'pe-tname', tripLabel(t)));
+      b.appendChild(h('span', 'pe-twhen', whenText(t)));
+      if (t.place) b.appendChild(h('span', 'pe-tplace', t.place));
+      var facts = [n2(g.photos.length, 'photo', 'photos')];
+      if (g.known && g.finds) facts.push(n2(g.finds, 'find', 'finds'));
+      b.appendChild(h('span', 'pe-tfacts', facts.join(' · ')));
+      if (!hasPin(t)) b.appendChild(h('span', 'pe-badge pe-nopin', 'No pin yet'));
+      b.addEventListener('click', function () { selectTrip(t._k === st.selTrip ? null : t._k, true); });
+      li.appendChild(b); ul.appendChild(li);
+    });
+    el.appendChild(ul);
+  }
+  function redrawTrips(keepList) {
+    if (!PM || st.view !== 'trips') return;
+    PM.setTrips(pins()); // the map again, with its pins (the list comes with it)
+    PM.selTrip(st.selTrip);
+    if (keepList && tripCard) drawTripList(tripCard);
+  }
+  function selectTrip(k, focusMap) {
+    stopPlacing(true);
+    st.selTrip = k && trip(k) ? k : null; st.note = '';
+    if (PM) PM.selTrip(st.selTrip);
+    if (tripCard) drawTripList(tripCard);
+    drawPanel();
+    var t = trip(st.selTrip);
+    if (focusMap && t && hasPin(t) && PM) PM.zoom(+t.lat, +t.lon, 6);
+  }
+  function newTrip() {
+    if (st.busy) return;
+    var t = { name: '', from: today(), place: '', placeDa: '', _k: 't' + (nextTrip++) };
+    st.trips.push(t);
+    selectTrip(t._k, false);
+    say('A new field trip: give it a name, then place its pin on the map.');
+    tName.focus();
+  }
+  function drawTrip() {
+    var t = trip(st.selTrip), g = gather(t);
+    [[tName, 'name'], [tDa, 'nameDa'], [tFrom, 'from'], [tTo, 'to'], [tPlace, 'place'], [tPlaceDa, 'placeDa'], [tMatch, 'placeMatch']].forEach(function (f) {
+      if (doc.activeElement !== f[0]) f[0].value = String(t[f[1]] || '').slice(0, f[0].type === 'date' ? 10 : 200);
+    });
+    if (doc.activeElement !== tPin) tPin.value = hasPin(t) ? (+t.lat) + ', ' + (+t.lon) : '';
+    tGather.checked = t.gather !== false;
+    tMatch.parentNode.hidden = t.gather === false;
+    var at = photosPosition(t);
+    fromPhotosB.hidden = !at;
+    pinNote.textContent = hasPin(t) ? '' : 'No pin yet: the trip shows on the map once it has one.';
+    pinNote.hidden = !pinNote.textContent;
+    var nDate = Object.keys(g.byDate).length, nHand = g.photos.length - nDate;
+    tFacts.textContent = n2(g.photos.length, 'photo', 'photos') + (g.photos.length ? ' (' + [nDate ? nDate + ' from the dates' : '', nHand ? nHand + ' added by hand' : ''].filter(Boolean).join(', ') + ')' : '') +
+      (g.known ? ' · ' + n2(g.finds, 'find', 'finds') + ' in the field log' : '');
+    tStrip.textContent = '';
+    g.photos.slice(0, 16).forEach(function (k) {
+      var li = h('li'), im = h('img'); im.src = disp(k); im.alt = ''; im.loading = 'lazy';
+      li.appendChild(im);
+      if (!g.byDate[k]) li.appendChild(h('span', 'pe-badge pe-hand', 'added'));
+      tStrip.appendChild(li);
+    });
+    if (g.photos.length > 16) tStrip.appendChild(h('li', 'pe-more', '+' + (g.photos.length - 16)));
+    var titles = P.data.posts || {}, slugs = Object.keys(titles).sort().reverse();
+    if (tPost.options.length !== slugs.length + 1) {
+      tPost.textContent = '';
+      var o0 = h('option', null, 'None'); o0.value = ''; tPost.appendChild(o0);
+      slugs.forEach(function (sl) { var o = h('option', null, titles[sl] || sl); o.value = sl; tPost.appendChild(o); });
+    }
+    tPost.value = t.post && titles[t.post] ? t.post : '';
+    tDel.disabled = placeB.disabled = st.busy;
+  }
+  /* where a trip's photos were taken, if they kept their metadata: the middle of them */
+  function photosPosition(t) {
+    var pts = [];
+    gather(t).photos.forEach(function (k) {
+      var e = entry(k), f = st.fresh[k];
+      if (f && f.meta && f.meta.gps) pts.push([f.meta.gps.lat, f.meta.gps.lon]);
+      else if (e && isFinite(+e.lat) && isFinite(+e.lon) && e.lat !== undefined && e.lat !== '') pts.push([+e.lat, +e.lon]);
+    });
+    if (!pts.length) return null;
+    var la = 0, lo = 0;
+    pts.forEach(function (p) { la += p[0]; lo += p[1]; });
+    return [Math.round(la / pts.length * 1e4) / 1e4, Math.round(lo / pts.length * 1e4) / 1e4];
+  }
+  function tripSet(field, value, redraw) {
+    var t = trip(st.selTrip);
+    if (!t) return;
+    if (value === '' || value === null || value === undefined) delete t[field]; else t[field] = value;
+    st.note = '';
+    if (redraw) { redrawTrips(true); drawPanel(); } else drawBar();
+  }
+  [[tName, 'name'], [tDa, 'nameDa'], [tPlace, 'place'], [tPlaceDa, 'placeDa'], [tMatch, 'placeMatch']].forEach(function (f) {
+    f[0].addEventListener('input', function () { tripSet(f[1], f[0].value.replace(/\s+/g, ' ').replace(/^ /, ''), false); });
+    f[0].addEventListener('change', function () { tripSet(f[1], f[0].value.trim(), true); });
+    f[0].addEventListener('keydown', function (ev) { if (ev.key === 'Enter') f[0].blur(); });
+  });
+  [[tFrom, 'from'], [tTo, 'to']].forEach(function (f) {
+    f[0].addEventListener('change', function () {
+      var t = trip(st.selTrip);
+      tripSet(f[1], f[0].value, false);
+      if (t && t.from && t.to && t.to < t.from) { if (f[1] === 'from') t.to = t.from; else t.from = t.to; }
+      redrawTrips(true); drawPanel();
+    });
+  });
+  tGather.addEventListener('change', function () { tripSet('gather', tGather.checked ? '' : false, true); });
+  tPost.addEventListener('change', function () { tripSet('post', tPost.value, true); });
+  tPin.addEventListener('change', function () {
+    var t = trip(st.selTrip), v = tPin.value.trim();
+    if (!t) return;
+    if (!v) { delete t.lat; delete t.lon; redrawTrips(true); drawPanel(); return; }
+    var m = /^\s*(-?\d+(?:[.,]\d+)?)\s*°?\s*([NS])?\s*[,; ]\s*(-?\d+(?:[.,]\d+)?)\s*°?\s*([EW])?\s*$/i.exec(v.replace(/(\d),(\d)(?=.*[,;]\s)/, '$1.$2'));
+    var lat = m && parseFloat(m[1].replace(',', '.')), lon = m && parseFloat(m[3].replace(',', '.'));
+    if (m && /s/i.test(m[2] || '')) lat = -Math.abs(lat);
+    if (m && /w/i.test(m[4] || '')) lon = -Math.abs(lon);
+    if (!m || !(Math.abs(lat) <= 90) || !(Math.abs(lon) <= 180)) { say('That pin isn’t a position. Write it as latitude, longitude, e.g. 56.04, 13.24.', 'err'); tPin.value = hasPin(t) ? t.lat + ', ' + t.lon : ''; return; }
+    t.lat = Math.round(lat * 1e4) / 1e4; t.lon = Math.round(lon * 1e4) / 1e4;
+    st.note = ''; redrawTrips(true); drawPanel();
+    if (PM) PM.zoom(t.lat, t.lon, 6);
+  });
+  tPin.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') tPin.blur(); });
+  fromPhotosB.addEventListener('click', function () {
+    var t = trip(st.selTrip), at = t && photosPosition(t);
+    if (!at) return;
+    t.lat = at[0]; t.lon = at[1];
+    st.note = ''; redrawTrips(true); drawPanel();
+    if (PM) PM.zoom(t.lat, t.lon, 6);
+    say('Pinned where the photos were taken (' + t.lat + ', ' + t.lon + ').');
+  });
+  /* placing the pin: the panel steps aside, the map takes the clicks */
+  function startPlacing() {
+    var t = trip(st.selTrip);
+    if (!t) return;
+    st.placing = true;
+    doc.body.classList.add('pe-placing');
+    placebar.hidden = false;
+    placeText.textContent = 'Click the map where “' + tripLabel(t) + '” was.' + (hasPin(t) ? '' : ' On the world map, the first click zooms in.');
+    if (hasPin(t) && PM) PM.zoom(+t.lat, +t.lon, 6);
+    drawPanel();
+    var map = doc.querySelector('#pane-trips .tmap');
+    if (map) map.scrollIntoView({ block: 'center', behavior: W0.reduced ? 'auto' : 'smooth' });
+  }
+  function stopPlacing(quiet) {
+    if (!st.placing) return;
+    st.placing = false;
+    doc.body.classList.remove('pe-placing');
+    placebar.hidden = true;
+    if (!quiet) drawPanel();
+  }
+  function mapClick(lat, lon, world) {
+    var t = trip(st.selTrip);
+    if (!st.placing || !t) return;
+    if (world) { PM.zoom(lat, lon, 8); placeText.textContent = 'Zoomed in. Now click the spot (click again to move it).'; return; }
+    t.lat = Math.round(lat * 1e4) / 1e4; t.lon = Math.round(lon * 1e4) / 1e4;
+    st.note = '';
+    redrawTrips(true);
+    placeText.textContent = 'Pinned at ' + t.lat + ', ' + t.lon + '. Click again to move it, or Done.';
+    drawBar();
+  }
+  placeB.addEventListener('click', startPlacing);
+  placeDone.addEventListener('click', function () { stopPlacing(false); placeB.focus(); });
+  worldB.addEventListener('click', function () { if (PM) PM.world(); placeText.textContent = 'The world map: the first click zooms in.'; });
+  tAdd.addEventListener('click', function () {
+    var t = trip(st.selTrip);
+    if (!t) return;
+    var g = gather(t);
+    openPicker({
+      title: 'Photos of “' + tripLabel(t) + '”',
+      note: '',
+      empty: 'No photos in the library yet.',
+      items: function () { return st.work.map(key); },
+      on: function (k) { return E.arr(t.photos).indexOf(k) >= 0; },
+      badge: function (k) { return g.byDate[k] ? 'from the dates' : ''; },
+      toggle: function (k) { var ph = E.arr(t.photos); t.photos = ph.indexOf(k) >= 0 ? ph.filter(function (x) { return x !== k; }) : ph.concat([k]); if (!t.photos.length) delete t.photos; },
+      count: function () { return n2(E.arr(t.photos).length, 'photo', 'photos') + ' added by hand. Photos marked “from the dates” are in the trip anyway' + (t.gather === false ? ' (gathering is off now)' : '') + '.'; },
+      done: function () { redrawTrips(true); }
+    });
+  });
+  tDel.addEventListener('click', function () {
+    var t = trip(st.selTrip);
+    if (!t || st.busy) return;
+    st.trips.splice(st.trips.indexOf(t), 1);
+    st.selTrip = null;
+    redrawTrips(true); drawPanel();
+    say('Field trip “' + tripLabel(t) + '” deleted. Discard brings it back.');
+  });
+
+  /* ------------------------------------------------------------------ gear while editing */
+  var gearTimer = null;
+  function gearLive() { clearTimeout(gearTimer); gearTimer = setTimeout(function () { if (PM) PM.setGear(st.gear); }, 250); }
+  function drawGear() {
+    gRows.textContent = '';
+    st.gear.forEach(function (g, i) {
+      var li = h('li', 'pe-grow'), name = h('input', 'pe-input'), kind = h('select', 'pe-input');
+      name.type = 'text'; name.maxLength = 60; name.value = g.name || ''; name.setAttribute('aria-label', 'Name of piece ' + (i + 1)); name.setAttribute('enterkeyhint', 'done');
+      KINDS.forEach(function (k) { var o = h('option', null, k[1]); o.value = k[0]; kind.appendChild(o); });
+      kind.value = KINDS.some(function (k) { return k[0] === g.kind; }) ? g.kind : 'other'; kind.setAttribute('aria-label', 'Kind of ' + (g.name || 'piece ' + (i + 1)));
+      name.addEventListener('input', function () { g.name = name.value.replace(/\s+/g, ' ').replace(/^ /, ''); st.note = ''; drawBar(); gearLive(); });
+      name.addEventListener('change', function () { g.name = name.value.trim(); drawBar(); gearLive(); });
+      kind.addEventListener('change', function () { g.kind = kind.value; st.note = ''; drawBar(); gearLive(); });
+      var up = btn('pe-btn pe-mini', '↑', 'Move ' + (g.name || 'it') + ' up'), down = btn('pe-btn pe-mini', '↓', 'Move ' + (g.name || 'it') + ' down'), x = btn('pe-btn pe-mini pe-danger-line', '×', 'Remove ' + (g.name || 'it'));
+      up.disabled = i === 0; down.disabled = i === st.gear.length - 1;
+      up.addEventListener('click', function () { st.gear.splice(i - 1, 0, st.gear.splice(i, 1)[0]); drawPanel(); gearLive(); var b = gRows.children[i - 1]; if (b) b.querySelector('.pe-mini').focus(); });
+      down.addEventListener('click', function () { st.gear.splice(i + 1, 0, st.gear.splice(i, 1)[0]); drawPanel(); gearLive(); var b = gRows.children[i + 1]; if (b) b.querySelectorAll('.pe-mini')[1].focus(); });
+      x.addEventListener('click', function () { st.gear.splice(i, 1); drawPanel(); gearLive(); });
+      var row = h('div', 'pe-grow-b'); row.appendChild(up); row.appendChild(down); row.appendChild(x);
+      li.appendChild(name); li.appendChild(kind); li.appendChild(row);
+      gRows.appendChild(li);
+    });
+    if (!st.gear.length) gRows.appendChild(h('li', 'pe-small', 'No gear yet; the section is hidden until you add a piece.'));
+  }
+  gAdd.addEventListener('click', function () {
+    st.gear.push({ name: '', kind: 'camera' });
+    drawPanel();
+    var last = gRows.lastElementChild; if (last) last.querySelector('input').focus();
+  });
+  gearBtn.addEventListener('click', function () {
+    if (!st.on) return;
+    st.gearOpen = !st.gearOpen;
+    if (st.gearOpen) stopPlacing(true);
+    gearBtn.setAttribute('aria-pressed', st.gearOpen ? 'true' : 'false');
+    drawPanel();
+  });
 
   /* ------------------------------------------------------------------ the albums pane while editing */
   var paneEl = null;
@@ -737,7 +1142,10 @@
   window.addEventListener('keydown', function (ev) {
     if (ev.key !== 'Escape' || !st.on) return;
     if (drag) endDrag(null, true);
+    else if (st.placing) stopPlacing(false);
     else if (!picker.hidden) closePicker();
+    else if (st.gearOpen) { st.gearOpen = false; gearBtn.setAttribute('aria-pressed', 'false'); drawPanel(); }
+    else if (st.view === 'trips' && st.selTrip) selectTrip(null);
     else if (!menu.hidden) setMenu(false);
     else if (!confirmBox.hidden) confirmBox.hidden = true;
     else if (st.sel || st.selAlbum) { st.selAlbum = null; select(null); redrawAlbums(); }
@@ -756,7 +1164,11 @@
     if (e) { e.caption = String(e.caption || '').trim(); if (st.view === 'stream') render(); else { redrawAlbums(); drawPanel(); } }
   });
   cap.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') cap.blur(); });
-  closeB.addEventListener('click', function () { st.selAlbum = null; select(null); redrawAlbums(); });
+  closeB.addEventListener('click', function () {
+    if (st.gearOpen) { st.gearOpen = false; gearBtn.setAttribute('aria-pressed', 'false'); drawPanel(); return; }
+    if (st.view === 'trips') { selectTrip(null); return; }
+    st.selAlbum = null; select(null); redrawAlbums();
+  });
   offB.addEventListener('click', function () {
     change(function (e) {
       if (onPage(e)) { e.onPhotoPage = false; st.off[key(e)] = true; }
@@ -859,6 +1271,9 @@
       var sa = JSON.parse(st.albumsSaved);
       sa.forEach(function (a) { a.photos = a.photos.filter(function (x) { return x !== k; }); if (a.cover === k) a.cover = ''; });
       st.albumsSaved = JSON.stringify(sa);
+      var strip = function (list) { list.forEach(function (t) { if (t.photos) { t.photos = t.photos.filter(function (x) { return x !== k; }); if (!t.photos.length) delete t.photos; } }); return list; };
+      strip(st.trips);
+      st.tripsSaved = JSON.stringify(strip(JSON.parse(st.tripsSaved)));
       st.sel = null; st.site = null; st.busy = false;
       render();
       say('Deleted ✓ It’s off the site in a minute or two.', 'ok');
@@ -929,6 +1344,7 @@
   function dropFresh(k) {
     st.work = st.work.filter(function (x) { return key(x) !== k; });
     st.albums.forEach(function (a) { takeFromAlbum(a, k); });
+    st.trips.forEach(function (t) { if (t.photos) { t.photos = t.photos.filter(function (x) { return x !== k; }); if (!t.photos.length) delete t.photos; } });
     URL.revokeObjectURL(k);
     delete st.fresh[k];
   }
@@ -953,6 +1369,7 @@
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
       var im = h('img'); im.src = disp(k); im.alt = ''; im.loading = 'lazy'; b.appendChild(im);
       b.appendChild(h('span', 'pe-pk-tick', '✓'));
+      var bd = pk.badge && pk.badge(k); if (bd) b.appendChild(h('span', 'pe-badge', bd));
       b.addEventListener('click', function () {
         pk.toggle(k);
         var now = pk.on(k);
@@ -1011,6 +1428,13 @@
   function today() { return E.isoDay(new Date()); }
   function save() {
     if (st.busy || !dirty()) return;
+    var bad = st.trips.filter(function (t) { return !String(t.name || '').trim() || !hasPin(t); })[0];
+    if (bad) {
+      if (st.view === 'trips') selectTrip(bad._k, false); // first: choosing a trip clears the message line
+      say('The field trip “' + tripLabel(bad) + '” needs ' + (!String(bad.name || '').trim() ? 'a name' + (hasPin(bad) ? '' : ' and a pin') : 'a pin') + ' before saving (or delete it).', 'err');
+      return;
+    }
+    stopPlacing(true);
     st.busy = true;
     setMenu(false);
     drawPanel();
@@ -1058,6 +1482,21 @@
       if (news.length) parts.push(n2(news.length, 'new photo', 'new photos'));
       if (reordered()) parts.push('new order');
       if (albumsOut) parts.push('albums');
+      var tripsOut = tripsChanged() ? st.trips.map(function (t) {
+        var o = {};
+        Object.keys(t).forEach(function (k) {
+          var v = t[k];
+          if (k === '_k' || v === '' || v === null || v === undefined || (Array.isArray(v) && !v.length)) return;
+          if (typeof v === 'string') v = v.trim();
+          o[k] = v;
+        });
+        if (o.photos) o.photos = o.photos.map(M);
+        o.lat = +o.lat; o.lon = +o.lon;
+        return o;
+      }) : null;
+      var gearOut = gearChanged() ? st.gear.filter(function (g) { return String(g.name || '').trim(); }).map(function (g) { var o = copyObj(g); o.name = String(g.name).trim(); return o; }) : null;
+      if (tripsOut) parts.push('field trips');
+      if (gearOut) parts.push('gear');
       say('Saving…');
       return E.commit('Photography: ' + parts.join(', '), { files: files, edits: [{ path: FILE, fn: function (t) {
         /* on top of the newest version: only the photos and fields changed here are touched */
@@ -1093,21 +1532,33 @@
           if (!('albums' in out)) put();
           d = out;
         }
+        if (tripsOut || gearOut) {
+          var there = {};
+          list.forEach(function (g) { if (g && g.image) there[E.same(g.image)] = true; });
+          if (gearOut) d = setKey(d, 'gear', gearOut);
+          if (tripsOut) d = setKey(d, 'trips', tripsOut.map(function (t) {
+            if (t.photos) { t.photos = t.photos.filter(function (x) { return there[x]; }); if (!t.photos.length) delete t.photos; }
+            return t;
+          }));
+        }
         d.images = list;
         return E.jsonText(d, /\n$/.test(t));
       } }] });
     }).then(function () {
       news.forEach(function (k) { st.preview[map[k]] = k; delete st.fresh[k]; }); // shown from this device until the site has them
+      var tripAt = st.trips.indexOf(trip(st.selTrip));
       var sel = st.sel && M(st.sel), selAlbum = st.selAlbum, open = st.openAlbum, ids = albumsOut ? st.albums.map(function (a, i) { return [a.id, albumsOut[i].id]; }) : [];
       return load().then(function () {
         ids.forEach(function (p) { if (selAlbum === p[0]) selAlbum = p[1]; if (open === p[0]) open = p[1]; });
         st.sel = sel && entry(sel) && (st.view !== 'stream' || onPage(entry(sel))) ? sel : null;
         st.selAlbum = album(selAlbum) ? selAlbum : null;
         st.openAlbum = album(open) ? open : null;
+        st.selTrip = tripAt >= 0 && st.trips[tripAt] ? st.trips[tripAt]._k : null;
       });
     }).then(function () {
       st.busy = false;
       render();
+      redrawTrips(true);
       say('Saved ✓ On the site in a minute or two.', 'ok');
     }).catch(function (err) {
       st.busy = false;
@@ -1124,6 +1575,12 @@
     st.albums = JSON.parse(st.albumsSaved);
     st.legacy = st.legacy0;
     st.off = {};
+    st.trips = JSON.parse(st.tripsSaved);
+    st.gear = JSON.parse(st.gearSaved);
+    if (st.selTrip && !trip(st.selTrip)) st.selTrip = null;
+    stopPlacing(true);
+    if (PM) PM.setGear(st.gear);
+    redrawTrips(true);
     if (st.sel && (!entry(st.sel) || (st.view === 'stream' && !onPage(entry(st.sel))))) st.sel = null;
     if (st.selAlbum && !album(st.selAlbum)) st.selAlbum = null;
     if (st.openAlbum && !album(st.openAlbum)) st.openAlbum = null;
@@ -1139,6 +1596,7 @@
       var d = f ? JSON.parse(f.text) : { images: [] };
       st.work = E.arr(d.images).filter(function (e) { return e && e.image; });
       st.legacy = st.legacy0 = readAlbums(d);
+      readTrips(d);
       remember();
     });
   }
@@ -1155,9 +1613,10 @@
       if (!st.on || !PM) return;
       var v = PM.view();
       if (v === st.view) return;
-      st.view = v; st.sel = null; st.selAlbum = null; st.openAlbum = null; st.note = '';
-      setMenu(false);
+      st.view = v; st.sel = null; st.selAlbum = null; st.openAlbum = null; st.selTrip = null; st.note = '';
+      setMenu(false); stopPlacing(true);
       if (v === 'albums') PM.redraw(); // drawn fresh: it may have changed while hidden (a save gives new albums their names)
+      if (v === 'trips') { redrawTrips(false); ensureFl().then(function () { if (st.view === 'trips' && tripCard) { drawTripList(tripCard); drawPanel(); } }); }
       drawPanel();
     });
   });
@@ -1169,12 +1628,15 @@
     load().then(function () {
       st.busy = false; st.on = true; st.sel = null; st.selAlbum = null; st.openAlbum = null; st.note = '';
       st.view = PM ? PM.view() : 'stream';
-      if (st.view === 'trips') { var stream = doc.querySelector('.pv[data-view="stream"]'); if (stream) stream.click(); st.view = 'stream'; }
       doc.body.classList.add('pe-on');
       fab.hidden = true; bar.hidden = false;
-      if (PM) PM.editor = drawAlbums;
+      if (PM) { PM.editor = drawAlbums; PM.tripEdit = tripHooks; }
+      var nav = doc.getElementById('pviews');
+      if (nav) nav.parentNode.insertBefore(gearBtn, nav);
+      gearBtn.setAttribute('aria-pressed', 'false'); st.gearOpen = false;
       render();
-      if (PM) PM.redraw();
+      if (PM) { PM.redraw(); PM.setTrips(pins()); }
+      if (st.view === 'trips') { redrawTrips(false); ensureFl().then(function () { if (st.view === 'trips' && tripCard) drawTripList(tripCard); }); }
     }).catch(function (err) {
       st.busy = false;
       fab.disabled = false; fab.lastChild.textContent = 'Edit';
@@ -1190,15 +1652,22 @@
   function leave() {
     if (st.busy) return;
     if (dirty()) { say('Save or discard your changes first.', 'err'); return; }
-    st.on = false; st.sel = null; st.selAlbum = null; st.openAlbum = null;
-    setMenu(false);
-    doc.body.classList.remove('pe-on');
+    st.on = false; st.sel = null; st.selAlbum = null; st.openAlbum = null; st.selTrip = null; st.gearOpen = false;
+    setMenu(false); stopPlacing(true);
+    if (gearBtn.parentNode) gearBtn.parentNode.removeChild(gearBtn);
+    doc.body.classList.remove('pe-on', 'pe-side');
     doc.body.style.paddingBottom = '';
     bar.hidden = true; panel.hidden = true; picker.hidden = true;
     fab.hidden = false; fab.disabled = false; fab.lastChild.textContent = 'Edit';
     /* keep showing what was just saved: the site itself catches up in a minute or two */
     P.show(st.work.filter(onPage).map(function (e) { var c = {}; Object.keys(e).forEach(function (k) { c[k] = e[k]; }); c.image = disp(key(e)); return c; }));
-    if (PM) { PM.editor = null; PM.setAlbums(shownAlbums()); }
+    if (PM) {
+      PM.editor = null; PM.tripEdit = null;
+      PM.setAlbums(shownAlbums());
+      PM.setGear(st.gear);
+      PM.world();
+      ensureFl().then(function () { if (!st.on) PM.setTrips(shownTrips()); });
+    }
     try { if (/^#edit\b/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* file:// */ }
   }
   fab.addEventListener('click', enter);

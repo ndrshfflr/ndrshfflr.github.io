@@ -42,7 +42,7 @@
   <nav class="pviews chrome" id="pviews" aria-label="{{ ui.views }}">
     <button class="pv" type="button" data-view="stream" aria-pressed="true"><span class="pv-rune" aria-hidden="true">ᛚ</span>{{ rv('v-stream', ui.stream) }}<span class="pv-n">{{ photos | length }}</span></button>
     <button class="pv" type="button" data-view="albums" aria-pressed="false" hidden><span class="pv-rune" aria-hidden="true">ᛒ</span>{{ rv('v-albums', ui.albums) }}<span class="pv-n" id="pv-n-albums"></span></button>
-    {% if has_trips %}<button class="pv" type="button" data-view="trips" aria-pressed="false"><span class="pv-rune" aria-hidden="true">ᚱ</span>{{ rv('v-trips', ui.trips) }}<span class="pv-n">{{ data.trips | length }}</span></button>{% endif %}
+    <button class="pv" type="button" data-view="trips" aria-pressed="false"{% if not has_trips %} hidden{% endif %}><span class="pv-rune" aria-hidden="true">ᚱ</span>{{ rv('v-trips', ui.trips) }}<span class="pv-n" id="pv-n-trips">{{ data.trips | length if has_trips else '' }}</span></button>
   </nav>
 
   <main class="mosaic-wrap" id="main">

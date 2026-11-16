@@ -667,7 +667,7 @@ collections:
             required: false
             collapsed: true
             summary: "{{fields.name}} · {{fields.from}}"
-            hint: "Each trip is a pin on the map. Photos taken between its dates are gathered by themselves (a photo's date is its field log sighting's date, or the date its file name starts with), and so are the finds in the field log from those days."
+            hint: "Easiest on the photography page itself: Edit → Field trips (click the map to place the pin). Each trip is a pin on the map. Photos taken between its dates are gathered by themselves (a photo's date is its field log sighting's date, or the date its file name starts with), and so are the finds in the field log from those days."
             fields:
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Name in Danish (optional)", name: "nameDa", widget: "string", required: false }
