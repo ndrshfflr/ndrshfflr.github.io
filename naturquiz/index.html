@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NaturQuiz — Danmarks træer, rovfugle, pattedyr og flagermus</title>
+<meta name="description" content="Fire quizzer om dansk natur: træer, dagrovfugle, vilde pattedyr og flagermus. Vælg en quiz og øv dig i at kende arterne.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300..700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ctext y='19' font-size='18'%3E🌿%3C/text%3E%3C/svg%3E">
+<style>
+:root {
+  --font-display: 'Zodiak', Georgia, serif;
+  --font-body: 'Work Sans', 'Helvetica Neue', sans-serif;
+  --bg: #f5f1e6; --surface: #fbf8ef; --surface-2: #efe9d8;
+  --border: #d8d0bb; --divider: #e4ddc9;
+  --ink: #26301f; --ink-soft: #4c5442; --muted: #77705d;
+  --green: #3d6b3a; --green-deep: #24401f; --green-tint: #e3ecd9;
+  --terra: #b4562c;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-body); color: var(--ink); background: var(--bg);
+  line-height: 1.55; min-height: 100vh; display: flex; flex-direction: column;
+}
+a { color: inherit; }
+
+.topbar {
+  display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+  padding: .75rem clamp(1rem, 4vw, 2.5rem);
+  border-bottom: 1px solid var(--divider);
+}
+.site-back {
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .4rem .8rem .4rem .55rem; border: 1px solid var(--border); border-radius: 999px;
+  font-size: .85rem; font-weight: 500; color: var(--ink-soft); text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.site-back:hover { background: var(--green-tint); color: var(--green-deep); }
+.site-back svg { width: 16px; height: 16px; }
+.lang {
+  padding: .4rem .85rem; border-radius: 999px; border: 0; background: none; cursor: pointer;
+  font: 500 .9rem var(--font-body); color: var(--ink-soft);
+}
+.lang:hover { background: var(--green-tint); color: var(--green-deep); }
+
+main { flex: 1; width: 100%; max-width: 1120px; margin: 0 auto; padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2.5rem) 3rem; }
+
+.intro { max-width: 40rem; margin-bottom: clamp(2rem, 5vw, 3rem); }
+.kicker { font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--terra); margin-bottom: .6rem; }
+h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.08; color: var(--green-deep); margin-bottom: .9rem; }
+.lede { font-size: 1.08rem; color: var(--ink-soft); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 1.25rem; list-style: none; }
+.card {
+  display: flex; flex-direction: column; height: 100%;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+  text-decoration: none; color: inherit;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s;
+}
+.card:hover, .card:focus-visible { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(38, 48, 31, .12); border-color: var(--green); }
+.card:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+.card-img { aspect-ratio: 4 / 3; background: var(--surface-2); overflow: hidden; }
+.card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+.card:hover .card-img img { transform: scale(1.04); }
+.card-body { display: flex; flex-direction: column; gap: .45rem; padding: 1.1rem 1.15rem 1.2rem; flex: 1; }
+.card-title { display: flex; align-items: center; gap: .5rem; font-family: var(--font-display); font-weight: 600; font-size: 1.35rem; color: var(--green-deep); }
+.card-title .emoji { font-size: 1.15rem; }
+.card-text { font-size: .93rem; color: var(--ink-soft); flex: 1; }
+.card-meta { display: flex; justify-content: space-between; align-items: center; margin-top: .4rem; font-size: .82rem; color: var(--muted); }
+.card-go { font-weight: 600; color: var(--green); }
+
+footer { padding: 1.5rem clamp(1rem, 4vw, 2.5rem); border-top: 1px solid var(--divider); font-size: .8rem; color: var(--muted); text-align: center; }
+
+@media (prefers-reduced-motion: reduce) { .card, .card-img img { transition: none; } .card:hover { transform: none; } .card:hover .card-img img { transform: none; } }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="site-back" href="../bioinformatics.html" id="siteBack">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    <span data-t="back">Bioinformatik</span>
+  </a>
+  <button class="lang" id="langBtn" type="button" aria-label="Switch to English">EN</button>
+</header>
+
+<main>
+  <div class="intro">
+    <p class="kicker" data-t="kicker">Dansk natur · 4 quizzer · 114 arter</p>
+    <h1 data-t="title">NaturQuiz</h1>
+    <p class="lede" data-t="lede">Øv dig i at kende Danmarks træer, rovfugle, pattedyr og flagermus. Vælg en quiz — hver har en artsliste, en guide og tre sværhedsgrader.</p>
+  </div>
+
+  <ul class="grid">
+    <li>
+      <a class="card" href="traequiz/">
+        <div class="card-img"><img src="traequiz/assets/hero.jpg" alt="" loading="lazy"></div>
+        <div class="card-body">
+          <h2 class="card-title"><span class="emoji" aria-hidden="true">🌳</span>TræQuiz</h2>
+          <p class="card-text" data-t="tree">Danmarks hjemmehørende træer — kend dem på blade, bark, blomster og frugter.</p>
+          <p class="card-meta"><span data-t="treeN">33 arter</span><span class="card-go" data-t="go">Start →</span></p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="rovfuglequiz/">
+        <div class="card-img"><img src="rovfuglequiz/img/foto_001.jpg" alt="" loading="lazy"></div>
+        <div class="card-body">
+          <h2 class="card-title"><span class="emoji" aria-hidden="true">🦅</span>RovfugleQuiz</h2>
+          <p class="card-text" data-t="raptor">Danmarks dagrovfugle — våger, høge, kærhøge, glenter, ørne og falke, siddende og i flugt.</p>
+          <p class="card-meta"><span data-t="raptorN">18 arter</span><span class="card-go" data-t="go">Start →</span></p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="pattedyrquiz/">
+        <div class="card-img"><img src="pattedyrquiz/img/elaphus_1.jpg" alt="" loading="lazy"></div>
+        <div class="card-body">
+          <h2 class="card-title"><span class="emoji" aria-hidden="true">🦊</span>PattedyrQuiz</h2>
+          <p class="card-text" data-t="mammal">Danmarks vilde pattedyr — hjorte, rovdyr, gnavere, spidsmus, sæler og hvaler.</p>
+          <p class="card-meta"><span data-t="mammalN">46 arter</span><span class="card-go" data-t="go">Start →</span></p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="flagermusquiz/">
+        <div class="card-img"><img src="flagermusquiz/img/auritus_1.jpg" alt="" loading="lazy"></div>
+        <div class="card-body">
+          <h2 class="card-title"><span class="emoji" aria-hidden="true">🦇</span>FlagermusQuiz</h2>
+          <p class="card-text" data-t="bat">Danmarks flagermus — museører, pipistreller, brunflagermus, langøre og bredøre.</p>
+          <p class="card-meta"><span data-t="batN">17 arter</span><span class="card-go" data-t="go">Start →</span></p>
+        </div>
+      </a>
+    </li>
+  </ul>
+</main>
+
+<footer data-t="foot">Fotos fra Wikimedia Commons. Krediteringer findes i hver quiz.</footer>
+
+<script>
+const T = {
+  da: {
+    back: 'Bioinformatik', kicker: 'Dansk natur · 4 quizzer · 114 arter', title: 'NaturQuiz',
+    lede: 'Øv dig i at kende Danmarks træer, rovfugle, pattedyr og flagermus. Vælg en quiz — hver har en artsliste, en guide og tre sværhedsgrader.',
+    tree: 'Danmarks hjemmehørende træer — kend dem på blade, bark, blomster og frugter.', treeN: '33 arter',
+    raptor: 'Danmarks dagrovfugle — våger, høge, kærhøge, glenter, ørne og falke, siddende og i flugt.', raptorN: '18 arter',
+    mammal: 'Danmarks vilde pattedyr — hjorte, rovdyr, gnavere, spidsmus, sæler og hvaler.', mammalN: '46 arter',
+    bat: 'Danmarks flagermus — museører, pipistreller, brunflagermus, langøre og bredøre.', batN: '17 arter',
+    go: 'Start →', foot: 'Fotos fra Wikimedia Commons. Krediteringer findes i hver quiz.',
+    btn: 'EN', btnAria: 'Switch to English'
+  },
+  en: {
+    back: 'Bioinformatics', kicker: 'Danish nature · 4 quizzes · 114 species', title: 'NatureQuiz',
+    lede: 'Learn to recognise Denmark’s trees, birds of prey, mammals and bats. Pick a quiz — each has a species list, a guide and three difficulty levels.',
+    tree: 'Denmark’s native trees — know them by leaves, bark, flowers and fruit.', treeN: '33 species',
+    raptor: 'Denmark’s diurnal birds of prey — buzzards, hawks, harriers, kites, eagles and falcons, perched and in flight.', raptorN: '18 species',
+    mammal: 'Denmark’s wild mammals — deer, carnivores, rodents, shrews, seals and whales.', mammalN: '46 species',
+    bat: 'Denmark’s bats — Myotis, pipistrelles, serotines and noctules, long-eared and barbastelle.', batN: '17 species',
+    go: 'Start →', foot: 'Photos from Wikimedia Commons. Credits are given in each quiz.',
+    btn: 'DA', btnAria: 'Skift til dansk'
+  }
+};
+const KEY = 'naturquiz-lang';
+let lang = 'da';
+try { lang = localStorage.getItem(KEY) || ((navigator.language || '').toLowerCase().startsWith('en') ? 'en' : 'da'); } catch (e) {}
+function apply() {
+  const t = T[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-t]').forEach(el => { const v = t[el.dataset.t]; if (v) el.textContent = v; });
+  const b = document.getElementById('langBtn');
+  b.textContent = t.btn; b.setAttribute('aria-label', t.btnAria);
+  document.getElementById('siteBack').href = lang === 'da' ? '../bioinformatics.da.html' : '../bioinformatics.html';
+}
+document.getElementById('langBtn').addEventListener('click', () => {
+  lang = lang === 'da' ? 'en' : 'da';
+  try { localStorage.setItem(KEY, lang); } catch (e) {}
+  apply();
+});
+apply();
+</script>
+</body>
+</html>

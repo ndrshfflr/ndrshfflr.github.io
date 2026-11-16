@@ -21,6 +21,15 @@
         "en": "Microscopy-assisted identification for indoor Penicillium & Aspergillus — the moulds most often implicated in water-damaged buildings.",
         "da": "Mikroskopi-assisteret bestemmelse af indendørs Penicillium og Aspergillus — de skimmelsvampe der oftest optræder i fugtskadede bygninger."
       }
+    },
+    {
+      "name": "NaturQuiz",
+      "status": "live",
+      "link": "naturquiz/",
+      "description": {
+        "en": "Four quizzes on Danish nature — native trees, birds of prey, wild mammals and bats (114 species) — with species lists, field guides and three difficulty levels.",
+        "da": "Fire quizzer om dansk natur — hjemmehørende træer, dagrovfugle, vilde pattedyr og flagermus (114 arter) — med artslister, guides og tre sværhedsgrader."
+      }
     }
   ]
 }

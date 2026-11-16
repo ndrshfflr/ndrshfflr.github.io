@@ -1,0 +1,3767 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RovfugleQuiz — Danmarks dagrovfugle</title>
+<meta name="description" content="Øv dig i at kende Danmarks dagrovfugle siddende og i flugt. Quiz med 18 arter: våger, høge, kærhøge, glenter, ørne og falke.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300..700&display=swap" rel="stylesheet">
+<style>
+/* RovfugleQuiz (fra TræQuiz) — ============================================================
+   TræQuiz — botanisk design, varm creme + skovgrøn + terrakotta
+   ============================================================ */
+
+/* hidden-attributten skal altid respekteres, også når klassen sætter display */
+[hidden] { display: none !important; }
+
+:root {
+  --font-display: 'Zodiak', Georgia, serif;
+  --font-body: 'Work Sans', 'Helvetica Neue', sans-serif;
+
+  --bg: #f5f1e6;
+  --surface: #fbf8ef;
+  --surface-2: #efe9d8;
+  --border: #d8d0bb;
+  --divider: #e4ddc9;
+
+  --ink: #26301f;
+  --ink-soft: #4c5442;
+  --muted: #77705d;
+  --faint: #a39c86;
+
+  --green: #35566a;
+  --green-deep: #213a49;
+  --green-tint: #e0e9ee;
+  --terra: #b4562c;
+  --terra-deep: #8f3f1e;
+  --terra-tint: #f2e2d6;
+  --gold: #a5812a;
+  --error: #a12c2c;
+  --error-tint: #f3e0dc;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+
+  --shadow-sm: 0 1px 3px rgba(58, 48, 30, 0.08);
+  --shadow-md: 0 6px 20px rgba(58, 48, 30, 0.10);
+  --shadow-lg: 0 16px 44px rgba(58, 48, 30, 0.16);
+
+  --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(1200px 500px at 10% -10%, rgba(46, 91, 52, 0.06), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(180, 86, 44, 0.05), transparent 60%);
+}
+
+img, svg { display: block; max-width: 100%; height: auto; }
+button { cursor: pointer; background: none; border: none; color: inherit; font: inherit; }
+a { color: var(--green); }
+
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- topbar ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem clamp(1rem, 4vw, 2.5rem);
+  background: rgba(245, 241, 230, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--divider);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--green-deep);
+}
+
+.brand-leaf {
+  width: 26px;
+  height: 26px;
+  fill: var(--green);
+  transform: rotate(-8deg);
+}
+
+.topbar-nav { display: flex; align-items: center; gap: 0.25rem; }
+
+.navlink {
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--ink-soft);
+  transition: background var(--transition), color var(--transition);
+}
+
+.navlink:hover { background: var(--green-tint); color: var(--green-deep); }
+.navlink.icon { display: inline-flex; padding: 0.45rem; }
+.navlink.icon svg { width: 20px; height: 20px; }
+
+/* ---------- layout ---------- */
+
+main { flex: 1; width: 100%; }
+.screen { animation: rise 320ms cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* skærme med centreret indhold — start-skærmen har egne bredde-regler */
+#screen-quiz, #screen-result, #screen-list {
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 1.5rem) 3rem;
+}
+#screen-quiz { max-width: 780px; }
+#screen-result { max-width: 720px; }
+#screen-list { max-width: 1080px; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem);
+}
+
+/* ---------- start screen ---------- */
+
+.hero-wrap {
+  position: relative;
+  max-width: 1080px;
+  margin: clamp(1rem, 3vw, 2.5rem) auto 0;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+}
+
+.hero-img {
+  width: 100%;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  background: var(--surface);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+}
+
+.hero-kicker {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra-deep);
+  background: rgba(251, 248, 239, 0.75);
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 8vw, 4.8rem);
+  line-height: 1.02;
+  color: var(--green-deep);
+  margin: 0.6rem 0 0.9rem;
+  text-shadow: 0 1px 0 rgba(251, 248, 239, 0.8), 0 0 24px rgba(245, 241, 230, 0.9);
+}
+
+.hero-sub {
+  max-width: 42ch;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  background: rgba(251, 248, 239, 0.72);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(3px);
+}
+
+.setup { display: flex; justify-content: center; }
+.setup-card {
+  width: 100%;
+  max-width: 720px;
+  margin: clamp(1.25rem, 3vw, 2rem) auto clamp(2.5rem, 6vw, 4rem);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.setup-heading {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--green-deep);
+  margin: 1.4rem 0 0.7rem;
+}
+.setup-heading:first-child { margin-top: 0; }
+
+.choice-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.6rem;
+}
+
+.choice {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.75rem 0.9rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  text-align: left;
+  transition: border-color var(--transition), background var(--transition), transform var(--transition);
+}
+.choice:hover { border-color: var(--green); transform: translateY(-1px); }
+.choice.is-selected {
+  border-color: var(--green);
+  background: var(--green-tint);
+}
+
+.choice-emoji { font-size: 1.25rem; line-height: 1; }
+.choice-label { font-weight: 600; font-size: 0.95rem; color: var(--ink); }
+.choice-desc { font-size: 0.78rem; color: var(--muted); }
+
+.btn-primary {
+  display: inline-block;
+  width: 100%;
+  margin-top: 1.6rem;
+  padding: 0.9rem 1.5rem;
+  background: var(--green);
+  color: #f7f4e9;
+  font-weight: 600;
+  font-size: 1.05rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.btn-primary:hover { background: var(--green-deep); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.btn-primary:active { transform: translateY(0); }
+
+.setup-tip { margin-top: 0.8rem; font-size: 0.8rem; color: var(--muted); text-align: center; }
+
+/* ---------- quiz screen ---------- */
+
+.quiz-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 1.5rem) 3rem;
+}
+
+.quiz-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.quiz-progress {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--green-deep);
+}
+
+.quiz-meta { display: flex; gap: 0.5rem; }
+
+.score-pill, .streak-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+.score-pill strong { font-variant-numeric: tabular-nums; color: var(--green-deep); }
+.streak-pill { background: var(--terra-tint); border-color: #e3c4ae; }
+.streak-pill strong { color: var(--terra-deep); }
+
+.quiz-progressbar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+  margin-bottom: 1.4rem;
+}
+
+.quiz-progressbar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--green), #5d8a53);
+  border-radius: 999px;
+  transition: width 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quiz-figure { margin-bottom: 1.2rem; }
+
+.img-frame {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  aspect-ratio: 4 / 3;
+  max-height: 52vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-frame img.img-contain { object-fit: contain; padding: 1.5rem; background: #fff; }
+
+.img-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(38, 48, 31, 0.75);
+  color: #f2efe3;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+}
+
+.img-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.img-loading[hidden] { display: none; }
+
+.answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+
+.answer {
+  padding: 0.85rem 1.1rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: left;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  transition: border-color var(--transition), background var(--transition), transform var(--transition);
+}
+.answer:hover:not(:disabled) { border-color: var(--green); transform: translateY(-1px); }
+.answer .key {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0 0.35rem;
+  flex-shrink: 0;
+}
+.answer .latin { display: block; font-size: 0.78rem; font-style: italic; color: var(--muted); font-weight: 400; }
+.answer:disabled { cursor: default; }
+.answer.dimmed { opacity: 0.78; }
+
+.answer.correct {
+  border-color: var(--green);
+  background: var(--green-tint);
+}
+.answer.wrong {
+  border-color: var(--error);
+  background: var(--error-tint);
+}
+
+/* ---------- feedback ---------- */
+
+.feedback {
+  margin-top: 1.2rem;
+  padding: 1.2rem 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--green);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  animation: rise 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.feedback.was-wrong { border-left-color: var(--terra); }
+
+.feedback-head {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--green-deep);
+  margin-bottom: 0.35rem;
+}
+.feedback.was-wrong .feedback-head { color: var(--terra-deep); }
+
+.feedback-hint { font-size: 0.92rem; color: var(--ink-soft); margin-bottom: 0.6rem; }
+
+.feedback-fact {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.fact-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terra-deep);
+  margin-right: 0.4rem;
+}
+
+/* ---------- result ---------- */
+
+.result-card {
+  max-width: 640px;
+  margin: clamp(2rem, 6vw, 4rem) auto;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.result-kicker {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra-deep);
+}
+
+.result-score {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 500;
+  color: var(--green-deep);
+  line-height: 1.1;
+  margin: 0.4rem 0 0.2rem;
+}
+
+.result-sub { color: var(--ink-soft); margin-bottom: 1.5rem; }
+
+.result-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat { display: flex; flex-direction: column; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--green-deep);
+}
+.stat-label { font-size: 0.78rem; color: var(--muted); }
+
+.result-missed {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.missed-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.75rem 0.3rem 0.3rem;
+  background: var(--terra-tint);
+  border: 1px solid #e3c4ae;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+.missed-chip img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.btn-ghost {
+  padding: 0.8rem 1.4rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  transition: border-color var(--transition), background var(--transition);
+}
+.btn-ghost:hover { border-color: var(--green); background: var(--green-tint); }
+
+/* ---------- artsliste ---------- */
+
+.list-head {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2rem) 0.5rem;
+}
+
+.list-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 500;
+  color: var(--green-deep);
+}
+
+.list-sub { max-width: 62ch; color: var(--ink-soft); font-size: 0.95rem; margin: 0.4rem 0 0; }
+
+.species-grid {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 2rem) 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 1rem;
+}
+
+.species-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.species-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+/* karrusel i artskortet */
+.carousel { position: relative; }
+.carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  aspect-ratio: 4 / 3;
+  background: var(--surface-2);
+  scrollbar-width: none;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.slide { flex: 0 0 100%; scroll-snap-align: start; position: relative; margin: 0; }
+.slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.slide.contain img { object-fit: contain; background: #fff; }
+.slide-tag {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(38, 48, 31, 0.75);
+  color: #f2efe3;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.car-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(38, 48, 31, 0.72);
+  color: #f2efe3;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+.car-btn:hover { background: rgba(38, 48, 31, 0.92); }
+.car-prev { left: 0.55rem; }
+.car-next { right: 0.55rem; }
+.car-count {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  background: rgba(38, 48, 31, 0.72);
+  color: #f2efe3;
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+}
+
+/* egenskabs-chips */
+.species-body { padding: 0.85rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.2rem; flex: 1; }
+.species-title-row { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.species-name { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; color: var(--green-deep); }
+.species-latin { font-style: italic; font-size: 0.8rem; color: var(--muted); }
+.prop-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.45rem 0 0.25rem; }
+.chip {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.18rem 0.62rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.chip-st-standfugl { background: var(--green-tint); color: var(--green-deep); border-color: #c3d3dc; }
+.chip-st-sommer { background: #fdf0d7; color: #8a5a12; border-color: #ecd8a8; }
+.chip-st-vinter { background: #e6e8f3; color: #3c4377; border-color: #c9cde6; }
+.chip-st-sjaelden { background: #f3e4ee; color: #74345c; border-color: #e3c4d8; }
+.chip-status-EN { background: #fbe9e2; color: #8f2f14; border-color: #eec6b6; }
+.chip-status-NE { background: #ececec; color: #5c5c5c; border-color: #d8d8d8; }
+.chip-status-CR { background: #f7dcd6; color: #7a1e06; border-color: #e8b0a0; }
+.chip-status-VU { background: #fdf0d7; color: #8a5a12; border-color: #ecd8a8; }
+.chip-status-NT { background: #fdf0d7; color: #8a5a12; border-color: #ecd8a8; }
+
+/* sortering */
+.sort-row { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.1rem; }
+.sort-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+.sort-buttons { display: inline-flex; flex-wrap: wrap; gap: 0.4rem; }
+.sort-btn {
+  padding: 0.34rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: inherit;
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition), color var(--transition);
+}
+.sort-btn:hover { border-color: var(--green); }
+.sort-btn.active { background: var(--green); border-color: var(--green); color: #fff; }
+
+.level-badge {
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+}
+.level-nem { background: var(--green-tint); color: var(--green-deep); }
+.level-mellem { background: var(--terra-tint); color: var(--terra-deep); }
+.level-svær { background: #e7dff0; color: #5b3d73; }
+
+.species-fact {
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* ---------- footer ---------- */
+
+.footer {
+  border-top: 1px solid var(--divider);
+  padding: 1.2rem clamp(1rem, 4vw, 2.5rem) 1.6rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 640px) {
+  .answers { grid-template-columns: 1fr; }
+  .result-stats { gap: 1.5rem; }
+  .navlink { padding: 0.4rem 0.6rem; font-size: 0.85rem; }
+
+  /* hero: tekst under illustrationen i stedet for ovenpå */
+  .hero-wrap { position: static; }
+  .hero-overlay {
+    position: static;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 1.1rem 1.25rem 1.4rem;
+  }
+  .hero-img { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+  .hero-title {
+    font-size: clamp(2.1rem, 11vw, 3rem);
+    margin: 0.45rem 0 0.7rem;
+    text-shadow: none;
+  }
+  .hero-sub { background: none; padding: 0; font-size: 0.88rem; }
+}
+
+/* ---------- guide: lær at kende træerne ---------- */
+
+.linklike {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--green);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.linklike:hover { color: var(--green-deep, #1f3f24); }
+
+.learn-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+.learn-title {
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  color: var(--ink);
+  margin: 0 0 0.6rem;
+}
+
+.learn-intro {
+  font-size: 1rem;
+  color: var(--ink-soft, var(--ink));
+  line-height: 1.6;
+  margin: 0 0 1.6rem;
+}
+
+.learn-h3 {
+  font-size: 1.25rem;
+  color: var(--green);
+  margin: 2.2rem 0 0.9rem;
+}
+
+.learn-p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--ink-soft, var(--ink));
+  margin: 0 0 0.8rem;
+}
+
+/* fem trin */
+.learn-step {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ink-soft, var(--ink));
+}
+.learn-step strong { color: var(--ink); }
+.learn-step-num {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 999px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-top: 0.1rem;
+}
+
+/* eksempelbilleder */
+.learn-imgs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.7rem;
+  margin: 0.4rem 0 1rem;
+}
+.learn-img {
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.learn-img img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.learn-img.contain img { object-fit: contain; background: #fff; }
+.learn-img figcaption {
+  font-size: 0.78rem;
+  color: var(--muted);
+  padding: 0.45rem 0.6rem;
+  border-top: 1px solid var(--border);
+}
+
+/* forvekslinger */
+.lookalike-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0.7rem;
+  margin-top: 0.4rem;
+}
+.lookalike-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-soft, var(--ink));
+}
+.lookalike-names {
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+}
+.lookalike-card .vs { color: var(--green); padding: 0 0.2rem; }
+.lookalike-card p { margin: 0; }
+
+/* CTA */
+.learn-cta { margin-top: 2.4rem; }
+.learn-cta-card {
+  background: var(--green-tint, #e9f0e4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem 1.5rem;
+  text-align: center;
+}
+.learn-cta-card h3 { margin: 0 0 0.5rem; color: var(--green); font-size: 1.3rem; }
+.learn-cta-card p { margin: 0 0 1rem; color: var(--ink-soft, var(--ink)); font-size: 0.95rem; line-height: 1.55; }
+
+@media (max-width: 500px) {
+  .brand-name { display: none; }
+  .lookalike-grid { grid-template-columns: 1fr; }
+}
+
+/* Artsliste: søgning, filtre, grupper, kompakt visning */
+.species-groups {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 2rem) 3rem;
+}
+.species-groups .species-grid { max-width: none; margin: 0; padding: 0; }
+.species-group + .species-group { margin-top: 1.4rem; }
+.species-group-head {
+  display: flex; align-items: center; justify-content: space-between; gap: .6rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .35rem; margin-bottom: .85rem;
+}
+.group-toggle {
+  display: inline-flex; align-items: baseline; gap: .45rem;
+  background: none; border: 0; padding: .2rem 0; cursor: pointer; text-align: left;
+  font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; color: var(--green-deep);
+}
+.group-caret { font-size: .95rem; color: var(--muted); width: 1em; }
+.species-group.collapsed .species-grid { display: none; }
+.species-group.collapsed .species-group-head { margin-bottom: 0; }
+.group-quiz {
+  flex-shrink: 0; font: inherit; font-size: .8rem; font-weight: 600;
+  padding: .3rem .85rem; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--green); background: var(--green-tint); color: var(--green-deep);
+}
+.list-controls { margin-top: 1rem; display: flex; flex-direction: column; gap: .7rem; }
+.list-search {
+  width: 100%; font: inherit; font-size: 1rem; padding: .6rem .9rem;
+  border-radius: var(--radius-md); border: 1px solid var(--border); background: var(--surface); color: var(--ink);
+}
+.list-search:focus { outline: 2px solid var(--green); outline-offset: 1px; }
+.list-filters summary { cursor: pointer; font-weight: 600; font-size: .9rem; color: var(--green-deep); padding: .2rem 0; }
+.filter-dims { display: flex; flex-direction: column; gap: .7rem; margin-top: .6rem; }
+.filter-dim-label { display: block; font-size: .78rem; color: var(--muted); font-weight: 500; margin-bottom: .3rem; }
+.filter-chips { display: flex; flex-wrap: wrap; gap: .35rem; }
+.filter-chip {
+  font: inherit; font-size: .8rem; padding: .28rem .8rem; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--border); background: var(--surface); color: var(--ink-soft);
+}
+.filter-chip.on { background: var(--green); border-color: var(--green); color: #fff; }
+.list-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; }
+.list-count { font-size: .85rem; color: var(--muted); }
+.toolbar-spacer { flex: 1; }
+.quiz-shown { border-color: var(--green); color: var(--green-deep); font-weight: 600; }
+.quiz-shown:disabled { opacity: .45; cursor: default; }
+.list-note { font-size: .8rem; color: var(--muted); margin: 0; }
+.list-empty { text-align: center; color: var(--muted); padding: 2rem 0; }
+
+.species-grid.compact { grid-template-columns: 1fr; gap: .5rem; }
+.species-row {
+  display: flex; align-items: center; gap: .8rem; width: 100%;
+  font: inherit; text-align: left; cursor: pointer;
+  padding: .45rem .7rem .45rem .45rem; border-radius: var(--radius-md);
+  border: 1px solid var(--border); background: var(--surface);
+}
+.species-row img { width: 56px; height: 56px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0; background: var(--surface-2); }
+.row-text { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.row-chips { display: flex; flex-wrap: wrap; gap: .3rem; justify-content: flex-end; }
+@media (max-width: 480px) { .row-chips .chip:last-child { display: none; } }
+.species-card.expanded { max-width: 560px; }
+.card-less { align-self: flex-start; margin-top: .5rem; }
+.sort-select {
+  font: inherit; font-size: .95rem; padding: .45rem 2rem .45rem .8rem; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--ink); max-width: 100%;
+}
+.species-traits { font-size: .78rem; color: var(--ink-soft); margin: 0; }
+.species-traits + .species-fact { margin-top: .35rem; }
+
+/* Forhåndsvisning i gitteret */
+.species-card.preview { cursor: pointer; transition: transform var(--transition), box-shadow var(--transition); }
+.species-card.preview:hover, .species-card.preview:focus-visible { transform: translateY(-2px); box-shadow: var(--shadow-md); outline: none; }
+.card-photo { aspect-ratio: 4 / 3; background: var(--surface-2); overflow: hidden; }
+.card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card-photo.contain img { object-fit: contain; }
+.species-fact.clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-more { margin-top: auto; padding-top: .4rem; font-size: .8rem; font-weight: 600; color: var(--green); }
+
+/* Artsark */
+body.sheet-open { overflow: hidden; }
+.sheet {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(30, 36, 24, .55);
+  display: flex; align-items: stretch; justify-content: center;
+}
+.sheet[hidden] { display: none; }
+.sheet-panel {
+  background: var(--bg); width: 100%; max-width: 720px;
+  display: flex; flex-direction: column; height: 100%;
+  box-shadow: var(--shadow-lg);
+}
+@media (min-width: 760px) {
+  .sheet { align-items: center; padding: 2rem 1rem; }
+  .sheet-panel { height: auto; max-height: 100%; border-radius: var(--radius-lg); overflow: hidden; }
+}
+.sheet-top {
+  display: flex; align-items: center; gap: .4rem;
+  padding: .55rem .8rem; border-bottom: 1px solid var(--divider); background: var(--surface);
+  padding-top: max(.55rem, env(safe-area-inset-top));
+}
+.sheet-nav, .sheet-close {
+  font: inherit; font-size: 1.3rem; line-height: 1; width: 2.4rem; height: 2.4rem;
+  border-radius: 999px; border: 1px solid var(--border); background: var(--bg); color: var(--ink); cursor: pointer;
+}
+.sheet-close { font-size: 1rem; }
+.sheet-pos { font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 3.5rem; text-align: center; }
+.sheet-scroll { overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 1rem 1rem 2.5rem; flex: 1; }
+.sheet-head { margin-bottom: .8rem; }
+.sheet-name { font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; color: var(--green-deep); margin: 0; }
+.sheet-photo {
+  position: relative; aspect-ratio: 4 / 3; border-radius: var(--radius-md); overflow: hidden; background: var(--surface-2);
+}
+.sheet-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sheet-photo.contain img { object-fit: contain; }
+.ph-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 2.4rem; height: 2.4rem; border-radius: 999px; border: 0; cursor: pointer;
+  background: rgba(38, 48, 31, .6); color: #fff; font-size: 1.4rem; line-height: 1;
+}
+.ph-prev { left: .5rem; } .ph-next { right: .5rem; }
+.sheet-photo .car-count { position: absolute; right: .6rem; bottom: .6rem; }
+.photo-tabs { display: flex; gap: .35rem; margin: .6rem 0 1rem; overflow-x: auto; }
+.photo-tab {
+  font: inherit; font-size: .85rem; padding: .35rem .85rem; border-radius: 999px; cursor: pointer; white-space: nowrap;
+  border: 1px solid var(--border); background: var(--surface); color: var(--ink-soft);
+}
+.photo-tab.on { background: var(--green); border-color: var(--green); color: #fff; }
+.tab-n { opacity: .7; font-size: .75rem; }
+.facts {
+  display: grid; grid-template-columns: 1fr 1fr; gap: .6rem .9rem; margin: 0 0 1rem;
+  background: var(--surface); border: 1px solid var(--divider); border-radius: var(--radius-md); padding: .8rem .9rem;
+}
+.fact dt { font-size: .72rem; color: var(--muted); font-weight: 500; }
+.fact dd { margin: .1rem 0 0; font-size: .9rem; color: var(--ink); }
+.fact dd i { color: var(--muted); font-size: .8rem; }
+.season { margin-bottom: 1rem; }
+.season-row { display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px; }
+.season-cell { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.season-bar { width: 100%; height: 14px; border-radius: 3px; background: var(--surface-2); }
+.season-cell.fl .season-bar { background: var(--green); }
+.season-cell.fr .season-bar { background: var(--terra); }
+.season-cell.fl.fr .season-bar { background: linear-gradient(180deg, #e2b5c9 50%, var(--terra) 50%); }
+.season-m { font-size: .68rem; color: var(--muted); }
+.season-cell.now .season-m { color: var(--green-deep); font-weight: 700; }
+.season-cell.now .season-bar { outline: 2px solid var(--green); outline-offset: 1px; }
+.season-legend { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin-top: .45rem; font-size: .8rem; color: var(--ink-soft); }
+.sw { display: inline-block; width: .8rem; height: .8rem; border-radius: 2px; margin-right: .35rem; vertical-align: -1px; }
+.sw-fl { background: var(--green); } .sw-fr { background: var(--terra); }
+.native-note {
+  background: var(--terra-tint); border: 1px solid #e6c8b5; color: var(--terra-deep);
+  border-radius: var(--radius-md); padding: .7rem .85rem; font-size: .88rem; margin-bottom: 1rem;
+}
+.sheet-sec { margin-top: 1rem; }
+.sheet-sec h3 { font-family: var(--font-display); font-size: 1.05rem; color: var(--green-deep); margin: 0 0 .25rem; }
+.sheet-sec p { margin: 0; color: var(--ink-soft); line-height: 1.5; }
+.look-list { display: flex; flex-direction: column; gap: .5rem; }
+.look-item {
+  display: flex; gap: .7rem; align-items: flex-start; text-align: left; font: inherit; cursor: pointer;
+  border: 1px solid var(--border); background: var(--surface); border-radius: var(--radius-md); padding: .5rem;
+}
+.look-item img { width: 52px; height: 52px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0; }
+.look-item strong { display: block; color: var(--green-deep); }
+.look-diff { display: block; font-size: .85rem; color: var(--ink-soft); }
+.sheet-quiz { margin-top: .6rem; }
+.sheet-sources a { color: var(--green); }
+
+/* RovfugleQuiz: vis hele fuglen i quiz og artsark (ingen beskæring af hoved og vinger) */
+.img-frame img, .sheet-photo img { object-fit: contain; background: var(--surface-2); }
+
+</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M2 13c3-1 6-1.5 9-1l1-3 1 3c3-.5 6 0 9 1-3 .3-5.5 1.3-7.5 3l-1.5 4h-2l-1.5-4C7.5 14.3 5 13.3 2 13z' fill='%237a4a24'/%3E%3C/svg%3E">
+<style id="portal-back-css">
+.topbar { gap: .5rem; }
+.portal-back { display: inline-flex; align-items: center; gap: .3rem; flex-shrink: 0; padding: .38rem .75rem .38rem .5rem; border: 1px solid var(--border); border-radius: 999px; font-family: var(--font-body); font-size: .82rem; font-weight: 500; color: var(--ink-soft); text-decoration: none; white-space: nowrap; transition: background .2s, color .2s; }
+.portal-back:hover { background: var(--green-tint); color: var(--green-deep); }
+.portal-back svg { width: 15px; height: 15px; }
+.portal-back + .brand { margin-right: auto; }
+@media (max-width: 640px) { .portal-back .pb-label { display: none; } .portal-back { padding: .4rem; } }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="portal-back" href="../" aria-label="Alle quizzer" title="Alle quizzer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="pb-label">Alle quizzer</span></a>
+  <button class="brand" data-nav="start" aria-label="Tilbage til forsiden" data-i18n-aria="brandAria">
+    <svg class="brand-leaf" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 13c3-1 6-1.5 9-1l1-3 1 3c3-.5 6 0 9 1-3 .3-5.5 1.3-7.5 3l-1.5 4h-2l-1.5-4C7.5 14.3 5 13.3 2 13z"/></svg>
+    <span class="brand-name">RovfugleQuiz</span>
+  </button>
+  <nav class="topbar-nav">
+    <button class="navlink" data-nav="start" data-i18n="navQuiz">Quiz</button>
+    <button class="navlink" data-nav="learn" data-i18n="navGuide">Guide</button>
+    <button class="navlink" data-nav="list" data-i18n="navList">Artsliste</button>
+    <button class="navlink icon" id="langBtn" aria-label="Switch to English" data-i18n-aria="langAria" title="Dansk / English" data-i18n-title="langTitle">EN</button>
+    <button class="navlink icon" id="muteBtn" aria-label="Slå lyd til eller fra" title="Lyd til/fra" data-i18n-aria="muteAria" data-i18n-title="muteTitle">
+      <svg id="soundOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+      <svg id="soundOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="app">
+
+  <!-- START -->
+  <section id="screen-start" class="screen">
+    <div class="hero-wrap">
+      <img class="hero-img" src="img/foto_001.jpg" alt="Havørn i flugt" width="1280" height="640">
+      <div class="hero-overlay">
+        <p class="hero-kicker" data-i18n="heroKicker">18 danske dagrovfugle</p>
+        <h1 class="hero-title" data-i18n-html="heroTitle">Kender du<br>rovfuglene?</h1>
+        <p class="hero-sub" data-i18n="heroSub">Våger, høge, kærhøge, glenter, ørne og falke.</p>
+      </div>
+    </div>
+
+    <div class="setup">
+      <div class="setup-card">
+        <h2 class="setup-heading" data-i18n="setupWhat">Hvad vil du øve dig på?</h2>
+        <div class="choice-group" role="radiogroup" aria-label="Spørgsmålstype" data-i18n-group-aria="modeAria">
+          <button class="choice is-selected" data-choice-mode="sidder" role="radio" aria-checked="true">
+            <span class="choice-emoji" aria-hidden="true">🪵</span>
+            <span class="choice-label" data-i18n="modeSidder">Siddende</span>
+            <span class="choice-desc" data-i18n="modeSidderDesc">Fuglen på pæl, gren eller jord</span>
+          </button>
+          <button class="choice" data-choice-mode="flugt" role="radio" aria-checked="false">
+            <span class="choice-emoji" aria-hidden="true">🪶</span>
+            <span class="choice-label" data-i18n="modeFlugt">I flugt</span>
+            <span class="choice-desc" data-i18n="modeFlugtDesc">Silhuet, vinger og hale</span>
+          </button>
+          <button class="choice" data-choice-mode="blandet" role="radio" aria-checked="false">
+            <span class="choice-emoji" aria-hidden="true">🎲</span>
+            <span class="choice-label" data-i18n="modeBlandet">Blandet</span>
+            <span class="choice-desc" data-i18n="modeBlandetDesc">Lidt af hvert</span>
+          </button>
+        </div>
+
+        <h2 class="setup-heading" data-i18n="setupLevel">Sværhedsgrad</h2>
+        <div class="choice-group" role="radiogroup" aria-label="Sværhedsgrad" data-i18n-group-aria="levelAria">
+          <button class="choice is-selected" data-choice-level="alle" role="radio" aria-checked="true">
+            <span class="choice-label" id="lvlAlle">Alle 18</span>
+            <span class="choice-desc" data-i18n="levelAlleDesc">Blanding af alt</span>
+          </button>
+          <button class="choice" data-choice-level="nem" role="radio" aria-checked="false">
+            <span class="choice-label" id="lvlNem">Nem</span>
+            <span class="choice-desc" id="lvlNemDesc">10 almindelige arter</span>
+          </button>
+          <button class="choice" data-choice-level="mellem" role="radio" aria-checked="false">
+            <span class="choice-label" id="lvlMellem">Mellem</span>
+            <span class="choice-desc" id="lvlMellemDesc">15 lidt sværere</span>
+          </button>
+          <button class="choice" data-choice-level="svær" role="radio" aria-checked="false">
+            <span class="choice-label" id="lvlSvaer">Svær</span>
+            <span class="choice-desc" id="lvlSvaerDesc">8 kendere</span>
+          </button>
+        </div>
+
+        <button class="btn-primary" id="startBtn" data-i18n="startBtn">Start quizzen · 10 spørgsmål</button>
+        <p class="setup-tip" data-i18n="tip">Tip: Brug tastaturgenveje 1-4 for at svare og Enter for at gå videre.</p>
+        <p class="setup-tip"><button class="linklike" data-nav="learn" data-i18n="guideLink">Ny til rovfugle? Læs den korte guide til at kende dem →</button></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="screen-quiz" class="screen" hidden>
+    <div class="quiz-top">
+      <div class="quiz-progress" aria-live="polite"><span id="qLabel" data-i18n="qLabel">Spørgsmål</span> <span id="qNum">1</span>/<span id="qTotal">10</span></div>
+      <div class="quiz-meta">
+        <span class="score-pill"><span id="pointsLabel" data-i18n="pointsLabel">Points</span> <strong id="score">0</strong></span>
+        <span class="streak-pill" id="streakPill" hidden>🔥 <strong id="streak">0</strong> <span id="streakTxt" data-i18n="streakTxt">i træk</span></span>
+      </div>
+    </div>
+    <div class="quiz-progressbar"><div class="quiz-progressbar-fill" id="progressFill"></div></div>
+
+    <figure class="quiz-figure">
+      <div class="img-frame" id="imgFrame">
+        <img id="quizImg" alt="Hvilken rovfugl er dette?" width="800" height="600" data-i18n-alt="imgAlt">
+        <div class="img-badge" id="imgBadge">Siddende</div>
+        <div class="img-loading" id="imgLoading" hidden></div>
+      </div>
+    </figure>
+
+    <div class="answers" id="answers"></div>
+
+    <div class="feedback" id="feedback" hidden>
+      <p class="feedback-head" id="feedbackHead"></p>
+      <p class="feedback-hint" id="feedbackHint"></p>
+      <p class="feedback-fact"><span class="fact-tag" data-i18n="factTag">Vidste du</span> <span id="feedbackFact"></span></p>
+      <button class="btn-primary" id="nextBtn">Næste</button>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="screen-result" class="screen" hidden>
+    <div class="result-card">
+      <p class="result-kicker" id="resultKicker" data-i18n="resultKicker">Runden er slut</p>
+      <h2 class="result-score"><span id="finalScore">0</span> <span id="pointsWord" data-i18n="pointsWord">points</span></h2>
+      <p class="result-sub" id="resultSub"></p>
+      <div class="result-stats">
+        <div class="stat"><span class="stat-num" id="statCorrect">0</span><span class="stat-label" data-i18n="statCorrectLabel">rigtige af 10</span></div>
+        <div class="stat"><span class="stat-num" id="statStreak">0</span><span class="stat-label" data-i18n="statStreakLabel">bedste streak</span></div>
+      </div>
+      <div class="result-missed" id="resultMissed"></div>
+      <div class="result-actions">
+        <button class="btn-primary" id="againBtn" data-i18n="again">Prøv igen</button>
+        <button class="btn-ghost" data-nav="start" data-i18n="changeSettings">Skift indstillinger</button>
+        <button class="btn-ghost" data-nav="list" data-i18n="seeList">Se artslisten</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDE -->
+  <section id="screen-learn" class="screen" hidden>
+    <div class="learn-wrap">
+      <div class="learn-head">
+        <h2 class="learn-title" id="learnTitle"></h2>
+        <p class="learn-intro" id="learnIntro"></p>
+      </div>
+      <div class="learn-steps" id="learnSteps"></div>
+      <div class="learn-body" id="learnBody"></div>
+      <div class="learn-cta" id="learnCta"></div>
+    </div>
+  </section>
+
+  <!-- ARTSLISTE -->
+  <section id="screen-list" class="screen" hidden>
+    <div class="list-head">
+      <h2 class="list-title" data-i18n="listTitle">De 18 dagrovfugle</h2>
+      <p class="list-sub" data-i18n="listSub"></p>
+      <div class="sort-row">
+        <span class="sort-label" data-i18n="sortLabel">Gruppér efter:</span>
+        <select id="sortSelect" class="sort-select" aria-label="Gruppér artslisten"></select>
+      </div>
+      <div class="list-controls" id="listControls"></div>
+    </div>
+    <div class="species-groups" id="speciesGrid"></div>
+  </section>
+
+</main>
+
+<div id="sheet" class="sheet" hidden role="dialog" aria-modal="true"><div class="sheet-panel"></div></div>
+
+<footer class="footer">
+  <p data-i18n-html="footer"></p>
+</footer>
+
+<script>
+/* RovfugleQuiz — artsdata. Bestandstal (ynglepar 2021): DOFT 117 (2023): 69-85. Billeder: Wikimedia Commons. */
+const SPECIES = [
+ {
+  "id": "buteo",
+  "dk": "Musvåge",
+  "en": "Common buzzard",
+  "latin": "Buteo buteo",
+  "level": "nem",
+  "hyppighed": "Meget almindelig",
+  "status": "standfugl",
+  "gruppe": "vaage",
+  "family": "Accipitridae",
+  "size": "mellem",
+  "span": "110–130",
+  "habitat": [
+   "skov",
+   "aaben"
+  ],
+  "fl": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "lookalikes": [
+   "apivorus",
+   "lagopus"
+  ],
+  "sidder": "Kompakt, rundhovedet våge, der ofte sidder på pæle og i træer langs veje og marker. Fjerdragten varierer fra næsten hvid til mørkebrun, men mange har et lyst bånd hen over brystet.",
+  "sidder_en": "A compact, round-headed buzzard that often sits on posts and in trees along roads and fields. Plumage varies from almost white to dark brown, but many have a pale band across the breast.",
+  "flugt": "Brede, afrundede vinger og kort, vifteformet hale. Svæver i cirkler med vingerne holdt i et fladt V og har en mørk plet ved \"håndleddet\" under vingen.",
+  "flugt_en": "Broad, rounded wings and a short, fan-shaped tail. Soars in circles with the wings held in a shallow V, and has a dark patch at the \"wrist\" under the wing.",
+  "fakta": "Musvågen er Danmarks almindeligste rovfugl med 4.500–5.000 ynglepar i 2021. Dens klagende \"pi-æh\" hører man ofte over skoven, og skovskaden kan efterligne det.",
+  "fakta_en": "The common buzzard is Denmark’s most numerous bird of prey, with 4,500–5,000 breeding pairs in 2021. Its mewing \"pee-ah\" call is often heard over woods, and jays can imitate it.",
+  "imgs": {
+   "sidder": [
+    "img/foto_002.jpg",
+    "img/foto_003.jpg",
+    "img/foto_004.jpg",
+    "img/foto_005.jpg"
+   ],
+   "flugt": [
+    "img/foto_006.jpg",
+    "img/foto_007.jpg",
+    "img/foto_008.jpg",
+    "img/foto_009.jpg",
+    "img/foto_010.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "nisus",
+  "dk": "Spurvehøg",
+  "en": "Eurasian sparrowhawk",
+  "latin": "Accipiter nisus",
+  "level": "nem",
+  "hyppighed": "Almindelig",
+  "status": "standfugl",
+  "gruppe": "hoeg",
+  "family": "Accipitridae",
+  "size": "lille",
+  "span": "60–75",
+  "habitat": [
+   "skov",
+   "by"
+  ],
+  "fl": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "lookalikes": [
+   "gentilis",
+   "tinnunculus"
+  ],
+  "sidder": "Lille høg med lange, tynde gule ben, gule øjne og lang, lige afskåret hale. Hannen er skifergrå med orangebrune tværbånd på brystet. Hunnen er gråbrun med grå tværbånd og en lys stribe over øjet.",
+  "sidder_en": "A small hawk with long, thin yellow legs, yellow eyes and a long, square-ended tail. The male is slate grey with orange-brown bars on the breast. The female is grey-brown with grey bars and a pale stripe over the eye.",
+  "flugt": "Korte, brede, afrundede vinger og lang, smal hale. Flyver med nogle hurtige vingeslag og et kort glid, igen og igen. Jager lavt og overraskende langs hække og i haver.",
+  "flugt_en": "Short, broad, rounded wings and a long, narrow tail. Flies with a few quick wingbeats and a short glide, over and over. Hunts low and by surprise along hedges and in gardens.",
+  "fakta": "Hunnen er næsten dobbelt så tung som hannen. Spurvehøgen lever næsten kun af småfugle og er en kendt gæst ved foderbrættet om vinteren.",
+  "fakta_en": "The female weighs almost twice as much as the male. The sparrowhawk feeds almost entirely on small birds and is a familiar visitor to bird feeders in winter.",
+  "imgs": {
+   "sidder": [
+    "img/foto_011.jpg",
+    "img/foto_012.jpg",
+    "img/foto_013.jpg",
+    "img/foto_014.jpg",
+    "img/foto_015.jpg"
+   ],
+   "flugt": [
+    "img/foto_016.jpg",
+    "img/foto_017.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "gentilis",
+  "dk": "Duehøg",
+  "en": "Northern goshawk",
+  "latin": "Astur gentilis",
+  "level": "mellem",
+  "hyppighed": "Hist og her",
+  "status": "standfugl",
+  "gruppe": "hoeg",
+  "family": "Accipitridae",
+  "size": "mellem",
+  "span": "90–125",
+  "habitat": [
+   "skov"
+  ],
+  "fl": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "lookalikes": [
+   "nisus",
+   "buteo"
+  ],
+  "sidder": "Stor, kraftig høg med tydelig hvid stribe over øjet, orange til røde øjne hos voksne og fint gråt tværbåndet underside. Ungfugle er brune med dråbeformede længdepletter.",
+  "sidder_en": "A large, powerful hawk with a clear white stripe over the eye, orange to red eyes in adults and finely grey-barred underparts. Juveniles are brown with drop-shaped streaks.",
+  "flugt": "Ligner en meget stor spurvehøg, men har kraftigere bryst, mere spidse vinger, bredere hale med afrundet spids og lyse, luftige fjer under halen. Vingeslagene er stive og kraftige.",
+  "flugt_en": "Looks like a very large sparrowhawk, but has a heavier chest, more pointed wings, a broader, round-tipped tail and pale, fluffy feathers under the tail. The wingbeats are stiff and powerful.",
+  "fakta": "Bestanden er omtrent halveret siden midten af 1990’erne og var ca. 500 par i 2021. Arten hed tidligere Accipiter gentilis.",
+  "fakta_en": "The population has roughly halved since the mid-1990s and was about 500 pairs in 2021. The species was previously called Accipiter gentilis.",
+  "imgs": {
+   "sidder": [
+    "img/foto_018.jpg",
+    "img/foto_019.jpg"
+   ],
+   "flugt": [
+    "img/foto_020.jpg",
+    "img/foto_021.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "tinnunculus",
+  "dk": "Tårnfalk",
+  "en": "Common kestrel",
+  "latin": "Falco tinnunculus",
+  "level": "nem",
+  "hyppighed": "Almindelig",
+  "status": "standfugl",
+  "gruppe": "falk",
+  "family": "Falconidae",
+  "size": "lille",
+  "span": "65–80",
+  "habitat": [
+   "aaben",
+   "by"
+  ],
+  "fl": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "lookalikes": [
+   "subbuteo",
+   "nisus",
+   "columbarius"
+  ],
+  "sidder": "Rødbrun ryg med sorte pletter. Hannen har blågråt hoved og blågrå hale med sort endebånd. Hunnen er rødbrun med tværbåndet hale. Sidder ofte på ledninger og pæle.",
+  "sidder_en": "A red-brown back with black spots. The male has a blue-grey head and a blue-grey tail with a black band at the tip. The female is red-brown with a barred tail. Often sits on wires and posts.",
+  "flugt": "Lange, spidse vinger og lang hale. Står ofte stille i luften over vejkanter og marker med hurtige vingeslag og spredt hale, mens den kigger efter mus.",
+  "flugt_en": "Long, pointed wings and a long tail. Often hangs still in the air over verges and fields with quick wingbeats and a spread tail while it looks for voles.",
+  "fakta": "Tårnfalken bygger ikke selv rede, men bruger gamle kragereder, huller i bygninger og redekasser. Bestanden var 1.500–1.700 par i 2021 og er gået tilbage siden slutningen af 1990’erne.",
+  "fakta_en": "The kestrel does not build its own nest but uses old crow nests, holes in buildings and nest boxes. There were 1,500–1,700 pairs in 2021, and numbers have fallen since the late 1990s.",
+  "imgs": {
+   "sidder": [
+    "img/foto_022.jpg",
+    "img/foto_023.jpg",
+    "img/foto_024.jpg"
+   ],
+   "flugt": [
+    "img/foto_025.jpg",
+    "img/foto_026.jpg",
+    "img/foto_027.jpg",
+    "img/foto_028.jpg",
+    "img/foto_029.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "milvus",
+  "dk": "Rød glente",
+  "en": "Red kite",
+  "latin": "Milvus milvus",
+  "level": "nem",
+  "hyppighed": "Hist og her",
+  "status": "standfugl",
+  "gruppe": "glente",
+  "family": "Accipitridae",
+  "size": "stor",
+  "span": "145–165",
+  "habitat": [
+   "aaben",
+   "skov"
+  ],
+  "fl": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "lookalikes": [
+   "migrans",
+   "buteo"
+  ],
+  "sidder": "Rustrød krop, lyst gråhvidt hoved og lang, dybt kløftet hale. Gule ben og gult næb med sort spids.",
+  "sidder_en": "A rusty-red body, a pale grey-white head and a long, deeply forked tail. Yellow legs and a yellow bill with a black tip.",
+  "flugt": "Lange, smalle, vinklede vinger med store hvide felter under håndsvingfjerene og en lang, rustrød, dybt kløftet hale, som den hele tiden drejer som et ror.",
+  "flugt_en": "Long, narrow, angled wings with large white patches under the primaries, and a long, rusty, deeply forked tail that it twists constantly like a rudder.",
+  "fakta": "Bestanden er vokset kraftigt, fra omkring 200 par i 2015 til 340–400 par i 2021. Rød glente pynter gerne reden med plastik, klude og papir.",
+  "fakta_en": "The population has grown fast, from about 200 pairs in 2015 to 340–400 pairs in 2021. Red kites often decorate their nests with plastic, rags and paper.",
+  "imgs": {
+   "sidder": [
+    "img/foto_030.jpg"
+   ],
+   "flugt": [
+    "img/foto_031.jpg",
+    "img/foto_032.jpg",
+    "img/foto_033.jpg",
+    "img/foto_034.jpg",
+    "img/foto_035.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "migrans",
+  "dk": "Sort glente",
+  "en": "Black kite",
+  "latin": "Milvus migrans",
+  "level": "svær",
+  "hyppighed": "Sjælden",
+  "status": "sjaelden",
+  "gruppe": "glente",
+  "family": "Accipitridae",
+  "size": "stor",
+  "span": "135–155",
+  "habitat": [
+   "vaad",
+   "aaben"
+  ],
+  "fl": [
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "lookalikes": [
+   "milvus",
+   "aeruginosus"
+  ],
+  "sidder": "Mørkebrun med lidt lysere, gråligt hoved, gult næbrod og gule ben. Ligner en mørk musvåge, men har længere vinger og hale.",
+  "sidder_en": "Dark brown with a slightly paler, greyish head, a yellow base to the bill and yellow legs. Looks like a dark buzzard but has longer wings and tail.",
+  "flugt": "Halen er kun svagt kløftet og ser næsten lige afskåret ud, når den spredes. Mørkere og mindre kontrastrig end rød glente, med mindre lyse felter under vingen.",
+  "flugt_en": "The tail is only shallowly forked and looks almost square when spread. Darker and less contrasting than the red kite, with smaller pale patches under the wing.",
+  "fakta": "Sort glente er en af verdens talrigeste rovfugle, men i Danmark ses den mest som fåtallig trækgæst om foråret. Den tager gerne døde fisk og affald.",
+  "fakta_en": "The black kite is one of the world’s most numerous birds of prey, but in Denmark it is mostly a scarce spring migrant. It readily takes dead fish and scraps.",
+  "imgs": {
+   "sidder": [
+    "img/foto_036.jpg",
+    "img/foto_037.jpg",
+    "img/foto_038.jpg"
+   ],
+   "flugt": [
+    "img/foto_039.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "albicilla",
+  "dk": "Havørn",
+  "en": "White-tailed eagle",
+  "latin": "Haliaeetus albicilla",
+  "level": "nem",
+  "hyppighed": "Hist og her",
+  "status": "standfugl",
+  "gruppe": "oern",
+  "family": "Accipitridae",
+  "size": "kaempe",
+  "span": "200–245",
+  "habitat": [
+   "kyst",
+   "vaad"
+  ],
+  "fl": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "lookalikes": [
+   "chrysaetos",
+   "pandion"
+  ],
+  "sidder": "Kæmpestor brun ørn med kraftigt gult næb. Gamle fugle har lyst, gulligt hoved og kort, kileformet hvid hale. Ungfugle er mørke og har mørkt næb.",
+  "sidder_en": "A huge brown eagle with a massive yellow bill. Old birds have a pale, yellowish head and a short, wedge-shaped white tail. Juveniles are dark with a dark bill.",
+  "flugt": "Enorme, brede og nærmest rektangulære vinger med lange \"fingre\", fremstrakt hoved og kort, kileformet hale. Kaldes ofte \"en flyvende dør\".",
+  "flugt_en": "Enormous, broad, almost rectangular wings with long \"fingers\", a projecting head and a short, wedge-shaped tail. Often called \"a flying barn door\".",
+  "fakta": "Havørnen er Danmarks største rovfugl med et vingefang på over 2 meter. Den vendte tilbage som ynglefugl i 1990’erne, og i 2021 var der 155–160 par.",
+  "fakta_en": "The white-tailed eagle is Denmark’s largest bird of prey, with a wingspan of over 2 metres. It returned as a breeding bird in the 1990s, and there were 155–160 pairs in 2021.",
+  "imgs": {
+   "sidder": [
+    "img/foto_040.jpg",
+    "img/foto_041.jpg",
+    "img/foto_042.jpg"
+   ],
+   "flugt": [
+    "img/foto_043.jpg",
+    "img/foto_044.jpg",
+    "img/foto_045.jpg",
+    "img/foto_046.jpg",
+    "img/foto_047.jpg",
+    "img/foto_048.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "aeruginosus",
+  "dk": "Rørhøg",
+  "en": "Western marsh harrier",
+  "latin": "Circus aeruginosus",
+  "level": "nem",
+  "hyppighed": "Almindelig",
+  "status": "sommer",
+  "gruppe": "kaerhoeg",
+  "family": "Accipitridae",
+  "size": "mellem",
+  "span": "115–140",
+  "habitat": [
+   "vaad",
+   "aaben"
+  ],
+  "fl": [
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "lookalikes": [
+   "cyaneus",
+   "pygargus",
+   "migrans"
+  ],
+  "sidder": "Hunnen er chokoladebrun med flødefarvet isse og strube. Hannen har brun ryg og krop, gråt hoved og grå, brune og sorte vinger.",
+  "sidder_en": "The female is chocolate brown with a cream crown and throat. The male has a brown back and body, a grey head, and grey, brown and black wings.",
+  "flugt": "Glider lavt over rørskov og enge med vingerne holdt i et tydeligt V. Hannens vinger er trefarvede: brune, grå og sorte. Hunnen er mørkebrun med lyst hoved.",
+  "flugt_en": "Glides low over reedbeds and meadows with the wings held in a clear V. The male’s wings have three colours: brown, grey and black. The female is dark brown with a pale head.",
+  "fakta": "Rørhøgen er den største af de danske kærhøge og bygger rede direkte i rørskoven. Bestanden var 1.000–1.100 par i 2021, og de fleste trækker til Afrika om vinteren.",
+  "fakta_en": "The marsh harrier is the largest of Denmark’s harriers and nests right in the reedbed. There were 1,000–1,100 pairs in 2021, and most migrate to Africa for the winter.",
+  "imgs": {
+   "sidder": [
+    "img/foto_049.jpg",
+    "img/foto_050.jpg",
+    "img/foto_051.jpg",
+    "img/foto_052.jpg"
+   ],
+   "flugt": [
+    "img/foto_053.jpg",
+    "img/foto_054.jpg",
+    "img/foto_055.jpg",
+    "img/foto_056.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "cyaneus",
+  "dk": "Blå kærhøg",
+  "en": "Hen harrier",
+  "latin": "Circus cyaneus",
+  "level": "mellem",
+  "hyppighed": "Hist og her",
+  "status": "vinter",
+  "gruppe": "kaerhoeg",
+  "family": "Accipitridae",
+  "size": "mellem",
+  "span": "100–120",
+  "habitat": [
+   "aaben",
+   "kyst"
+  ],
+  "fl": [
+   9,
+   10,
+   11,
+   12,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "lookalikes": [
+   "pygargus",
+   "aeruginosus"
+  ],
+  "sidder": "Hannen er lys perlegrå med hvid bug. Hunnen er brun med stribet underside og en ugleagtig ansigtskrans.",
+  "sidder_en": "The male is pale pearl grey with a white belly. The female is brown with streaked underparts and an owl-like facial ruff.",
+  "flugt": "Glider lavt med vingerne i et V. Hannen er grå med sorte vingespidser og hvid overgump. Hunnen er brun med stor hvid overgump og tværbåndet hale. Vingerne er bredere end hos hedehøg.",
+  "flugt_en": "Glides low with the wings in a V. The male is grey with black wingtips and a white rump. The female is brown with a large white rump and a barred tail. The wings are broader than a Montagu’s harrier’s.",
+  "fakta": "Blå kærhøg ynglede i Danmark i 1990’erne, men er forsvundet som ynglefugl. Om vinteren jager den over strandenge og marsk og overnatter ofte flere sammen i moser.",
+  "fakta_en": "The hen harrier bred in Denmark in the 1990s but has disappeared as a breeding bird. In winter it hunts over salt marsh and grassland and often roosts communally in bogs.",
+  "imgs": {
+   "sidder": [],
+   "flugt": [
+    "img/foto_057.jpg",
+    "img/foto_058.jpg",
+    "img/foto_059.jpg",
+    "img/foto_060.jpg",
+    "img/foto_061.jpg",
+    "img/foto_062.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "pygargus",
+  "dk": "Hedehøg",
+  "en": "Montagu’s harrier",
+  "latin": "Circus pygargus",
+  "level": "svær",
+  "hyppighed": "Sjælden",
+  "status": "sommer",
+  "gruppe": "kaerhoeg",
+  "family": "Accipitridae",
+  "size": "mellem",
+  "span": "100–115",
+  "habitat": [
+   "aaben"
+  ],
+  "fl": [
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "lookalikes": [
+   "cyaneus",
+   "aeruginosus"
+  ],
+  "sidder": "Hannen er grå med fine rødbrune striber på bugen. Hunnen er brun med hvid overgump og ligner hunnen af blå kærhøg, men er slankere.",
+  "sidder_en": "The male is grey with fine rufous streaks on the belly. The female is brown with a white rump and looks like a female hen harrier but slimmer.",
+  "flugt": "Slank kærhøg med smalle, spidse vinger. Hannen er grå med sort bånd over armen på vingens overside og to sorte bånd på undersiden samt rødbrune striber under vingen.",
+  "flugt_en": "A slender harrier with narrow, pointed wings. The male is grey with a black bar across the upper wing, two black bars underneath and rufous streaks on the underwing.",
+  "fakta": "De få danske hedehøge yngler mest i Sønderjylland nær Vadehavet, ofte i kornmarker. Bestanden var 22–28 par i 2021, og fuglene overvintrer i Afrika syd for Sahara.",
+  "fakta_en": "Denmark’s few Montagu’s harriers breed mainly in southern Jutland near the Wadden Sea, often in cereal fields. There were 22–28 pairs in 2021, and the birds winter in Africa south of the Sahara.",
+  "imgs": {
+   "sidder": [],
+   "flugt": [
+    "img/foto_063.jpg",
+    "img/foto_064.jpg",
+    "img/foto_065.jpg",
+    "img/foto_066.jpg",
+    "img/foto_067.jpg",
+    "img/foto_068.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "apivorus",
+  "dk": "Hvepsevåge",
+  "en": "European honey buzzard",
+  "latin": "Pernis apivorus",
+  "level": "mellem",
+  "hyppighed": "Hist og her",
+  "status": "sommer",
+  "gruppe": "vaage",
+  "family": "Accipitridae",
+  "size": "mellem",
+  "span": "125–145",
+  "habitat": [
+   "skov"
+  ],
+  "fl": [
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "lookalikes": [
+   "buteo"
+  ],
+  "sidder": "Ligner en musvåge, men har et lille, næsten duelignende hoved, smalle skælagtige fjer i ansigtet og gule øjne hos voksne. Fjerdragten varierer fra lys til mørk.",
+  "sidder_en": "Looks like a common buzzard but has a small, almost pigeon-like head, narrow scale-like feathers on the face and yellow eyes in adults. Plumage varies from pale to dark.",
+  "flugt": "Længere hale og smallere, mere fremstrakt hoved end musvåge. Halen har ét bredt mørkt endebånd og to smallere bånd ved roden. Svæver på flade vinger, ikke i V.",
+  "flugt_en": "A longer tail and a narrower, more projecting head than the common buzzard. The tail has one broad dark band at the tip and two narrower bands near the base. Soars on flat wings, not in a V.",
+  "fakta": "Hvepsevågen lever især af larver fra hvepse og humlebier, som den graver op af jorden. De tætte fjer i ansigtet beskytter mod stik. Den kommer først i maj og overvintrer i Afrika.",
+  "fakta_en": "The honey buzzard lives mainly on wasp and bumblebee larvae, which it digs out of the ground. The dense feathers on its face protect it from stings. It arrives in May and winters in Africa.",
+  "imgs": {
+   "sidder": [
+    "img/foto_069.jpg",
+    "img/foto_070.jpg",
+    "img/foto_071.jpg",
+    "img/foto_072.jpg",
+    "img/foto_073.jpg"
+   ],
+   "flugt": [
+    "img/foto_074.jpg",
+    "img/foto_075.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "lagopus",
+  "dk": "Fjeldvåge",
+  "en": "Rough-legged buzzard",
+  "latin": "Buteo lagopus",
+  "level": "mellem",
+  "hyppighed": "Hist og her",
+  "status": "vinter",
+  "gruppe": "vaage",
+  "family": "Accipitridae",
+  "size": "mellem",
+  "span": "120–150",
+  "habitat": [
+   "aaben",
+   "kyst"
+  ],
+  "fl": [
+   10,
+   11,
+   12,
+   1,
+   2,
+   3,
+   4
+  ],
+  "lookalikes": [
+   "buteo"
+  ],
+  "sidder": "Lyst hoved og bryst og et mørkt bælte over bugen. Benene er fjerklædte helt ned til tæerne.",
+  "sidder_en": "A pale head and breast and a dark band across the belly. The legs are feathered right down to the toes.",
+  "flugt": "Hvid hale med bredt mørkt endebånd, store sorte pletter ved håndleddet under vingen og mørk bug. Står ofte stille i luften som en tårnfalk, men er meget større.",
+  "flugt_en": "A white tail with a broad dark band at the tip, large black patches at the wrist under the wing and a dark belly. Often hangs still in the air like a kestrel, but is much bigger.",
+  "fakta": "Fjeldvågen yngler på fjeld og tundra i Norden og ses kun i Danmark om vinteren og på træk. Hvor mange der kommer, svinger fra år til år.",
+  "fakta_en": "The rough-legged buzzard breeds on mountains and tundra in the Nordic countries and is seen in Denmark only in winter and on migration. The number that arrives varies from year to year.",
+  "imgs": {
+   "sidder": [
+    "img/foto_076.jpg",
+    "img/foto_077.jpg",
+    "img/foto_078.jpg"
+   ],
+   "flugt": [
+    "img/foto_079.jpg",
+    "img/foto_080.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "pandion",
+  "dk": "Fiskeørn",
+  "en": "Osprey",
+  "latin": "Pandion haliaetus",
+  "level": "mellem",
+  "hyppighed": "Sjælden",
+  "status": "sommer",
+  "gruppe": "oern",
+  "family": "Pandionidae",
+  "size": "stor",
+  "span": "145–170",
+  "habitat": [
+   "vaad",
+   "kyst"
+  ],
+  "fl": [
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "lookalikes": [
+   "albicilla",
+   "buteo"
+  ],
+  "sidder": "Hvid underside, mørkebrun ryg og et mørkt bånd gennem øjet. Lille hoved med en kort top.",
+  "sidder_en": "White underparts, a dark brown back and a dark stripe through the eye. A small head with a short crest.",
+  "flugt": "Lange, smalle vinger med et tydeligt knæk, så den minder om en stor måge. Hvid underside med mørke pletter ved håndleddet og et mørkt bånd over brystet. Styrtdykker ned i vandet med fødderne forrest.",
+  "flugt_en": "Long, narrow wings with a clear bend, so it looks like a large gull. White underparts with dark wrist patches and a dark band across the breast. Plunges into water feet first.",
+  "fakta": "Fiskeørnen lever næsten kun af fisk og kan vende den ydre tå bagud for at holde fast i en glat fisk. Den har ynglet i Danmark igen siden 1994, og der var 8 par i 2021.",
+  "fakta_en": "The osprey lives almost only on fish and can turn its outer toe backwards to grip a slippery fish. It has bred in Denmark again since 1994, and there were 8 pairs in 2021.",
+  "imgs": {
+   "sidder": [
+    "img/foto_081.jpg",
+    "img/foto_082.jpg"
+   ],
+   "flugt": [
+    "img/foto_083.jpg",
+    "img/foto_084.jpg",
+    "img/foto_085.jpg",
+    "img/foto_086.jpg",
+    "img/foto_087.jpg",
+    "img/foto_088.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "chrysaetos",
+  "dk": "Kongeørn",
+  "en": "Golden eagle",
+  "latin": "Aquila chrysaetos",
+  "level": "svær",
+  "hyppighed": "Sjælden",
+  "status": "standfugl",
+  "gruppe": "oern",
+  "family": "Accipitridae",
+  "size": "kaempe",
+  "span": "190–225",
+  "habitat": [
+   "aaben",
+   "skov"
+  ],
+  "fl": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "lookalikes": [
+   "albicilla"
+  ],
+  "sidder": "Mørkebrun ørn med gyldenbrune fjer i nakken og fjerklædte ben. Næbbet er mindre og mørkere end havørnens.",
+  "sidder_en": "A dark brown eagle with golden-brown feathers on the nape and feathered legs. The bill is smaller and darker than a white-tailed eagle’s.",
+  "flugt": "Lange vinger, der er smallere ved kroppen og bredest midt på, og en lang hale. Svæver med vingerne løftet i et let V. Unge fugle har hvide felter på vingerne og hvid halerod.",
+  "flugt_en": "Long wings that are narrower at the body and broadest in the middle, and a long tail. Soars with the wings raised in a shallow V. Young birds have white wing patches and a white tail base.",
+  "fakta": "Kongeørnen indvandrede til Danmark i 1990’erne, og det første par slog sig ned i Lille Vildmose. I 2021 var der 5 par.",
+  "fakta_en": "The golden eagle colonised Denmark in the 1990s, and the first pair settled in Lille Vildmose. There were 5 pairs in 2021.",
+  "imgs": {
+   "sidder": [
+    "img/foto_089.jpg"
+   ],
+   "flugt": [
+    "img/foto_090.jpg",
+    "img/foto_091.jpg",
+    "img/foto_092.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "peregrinus",
+  "dk": "Vandrefalk",
+  "en": "Peregrine falcon",
+  "latin": "Falco peregrinus",
+  "level": "mellem",
+  "hyppighed": "Sjælden",
+  "status": "standfugl",
+  "gruppe": "falk",
+  "family": "Falconidae",
+  "size": "mellem",
+  "span": "95–115",
+  "habitat": [
+   "kyst",
+   "by"
+  ],
+  "fl": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "lookalikes": [
+   "subbuteo",
+   "columbarius",
+   "gentilis"
+  ],
+  "sidder": "Kraftig falk med skifergrå ryg, sort \"hjelm\" og bred sort skægstribe på lyse kinder. Undersiden er lys med fine sorte tværbånd. Ungfugle er brune med længdestriber.",
+  "sidder_en": "A powerful falcon with a slate-grey back, a black \"helmet\" and a broad black moustache on pale cheeks. The underparts are pale with fine black bars. Juveniles are brown with streaks.",
+  "flugt": "Bredt bryst, spidse vinger med bred vingerod og ret kort hale, så den ligner et anker. I styrtdyk er den det hurtigste dyr på jorden.",
+  "flugt_en": "A broad chest, pointed wings with a broad base and a fairly short tail, giving an anchor shape. In a stoop it is the fastest animal on earth.",
+  "fakta": "Vandrefalken var væk som dansk ynglefugl i næsten 30 år, men vendte tilbage i 2001. Den yngler nu bl.a. på klinter og høje bygninger, og der var mindst 24 par i 2021.",
+  "fakta_en": "The peregrine was absent as a Danish breeding bird for almost 30 years but returned in 2001. It now nests on cliffs and tall buildings, among other places, and there were at least 24 pairs in 2021.",
+  "imgs": {
+   "sidder": [
+    "img/foto_093.jpg",
+    "img/foto_094.jpg",
+    "img/foto_095.jpg",
+    "img/foto_096.jpg"
+   ],
+   "flugt": [
+    "img/foto_097.jpg",
+    "img/foto_098.jpg",
+    "img/foto_099.jpg",
+    "img/foto_100.jpg",
+    "img/foto_101.jpg",
+    "img/foto_102.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "subbuteo",
+  "dk": "Lærkefalk",
+  "en": "Eurasian hobby",
+  "latin": "Falco subbuteo",
+  "level": "svær",
+  "hyppighed": "Sjælden",
+  "status": "sommer",
+  "gruppe": "falk",
+  "family": "Falconidae",
+  "size": "lille",
+  "span": "70–85",
+  "habitat": [
+   "skov",
+   "vaad"
+  ],
+  "fl": [
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "lookalikes": [
+   "peregrinus",
+   "tinnunculus",
+   "vespertinus"
+  ],
+  "sidder": "Skifergrå ryg, kraftig sort skægstribe, hvide kinder og strube, sorte længdestriber på brystet og rustrøde \"bukser\".",
+  "sidder_en": "A slate-grey back, a strong black moustache, white cheeks and throat, black streaks on the breast and rusty-red \"trousers\".",
+  "flugt": "Ligner en kæmpe mursejler: lange, smalle, seglformede vinger og kort hale. Fanger guldsmede i luften og spiser dem i flugten.",
+  "flugt_en": "Looks like a giant swift: long, narrow, sickle-shaped wings and a short tail. Catches dragonflies in the air and eats them on the wing.",
+  "fakta": "Lærkefalken er så hurtig og adræt, at den kan fange svaler i luften. Den overvintrer i Afrika og kommer først i maj. Der var 20–30 ynglepar i 2021.",
+  "fakta_en": "The hobby is so fast and agile that it can catch swallows in mid-air. It winters in Africa and arrives in May. There were 20–30 breeding pairs in 2021.",
+  "imgs": {
+   "sidder": [
+    "img/foto_103.jpg",
+    "img/foto_104.jpg",
+    "img/foto_105.jpg",
+    "img/foto_106.jpg",
+    "img/foto_107.jpg",
+    "img/foto_108.jpg",
+    "img/foto_109.jpg",
+    "img/foto_110.jpg"
+   ],
+   "flugt": [
+    "img/foto_111.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "columbarius",
+  "dk": "Dværgfalk",
+  "en": "Merlin",
+  "latin": "Falco columbarius",
+  "level": "svær",
+  "hyppighed": "Hist og her",
+  "status": "vinter",
+  "gruppe": "falk",
+  "family": "Falconidae",
+  "size": "lille",
+  "span": "55–70",
+  "habitat": [
+   "aaben",
+   "kyst"
+  ],
+  "fl": [
+   9,
+   10,
+   11,
+   12,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "lookalikes": [
+   "tinnunculus",
+   "nisus",
+   "peregrinus"
+  ],
+  "sidder": "Danmarks mindste falk. Hannen er blågrå på ryggen og har rustorange, stribet bryst. Hunnen er brun med stribet bryst og tværbåndet hale. Skægstriben er kun svag.",
+  "sidder_en": "Denmark’s smallest falcon. The male is blue-grey above with a rusty-orange, streaked breast. The female is brown with a streaked breast and a barred tail. The moustache is only faint.",
+  "flugt": "Lille, kompakt falk med korte, spidse vinger. Jager lavt og hurtigt over åbent land med kraftige vingeslag, ofte tæt efter en småfugl.",
+  "flugt_en": "A small, compact falcon with short, pointed wings. Hunts low and fast over open country with powerful wingbeats, often right behind a small bird.",
+  "fakta": "Dværgfalken yngler i Norden og ses i Danmark på træk og om vinteren. Hannen er ikke meget større end en drossel.",
+  "fakta_en": "The merlin breeds in the Nordic countries and is seen in Denmark on migration and in winter. The male is not much bigger than a thrush.",
+  "imgs": {
+   "sidder": [
+    "img/foto_112.jpg",
+    "img/foto_113.jpg",
+    "img/foto_114.jpg",
+    "img/foto_115.jpg",
+    "img/foto_116.jpg"
+   ],
+   "flugt": [
+    "img/foto_117.jpg"
+   ]
+  },
+  "fr": []
+ },
+ {
+  "id": "vespertinus",
+  "dk": "Aftenfalk",
+  "en": "Red-footed falcon",
+  "latin": "Falco vespertinus",
+  "level": "svær",
+  "hyppighed": "Sjælden",
+  "status": "sjaelden",
+  "gruppe": "falk",
+  "family": "Falconidae",
+  "size": "lille",
+  "span": "65–75",
+  "habitat": [
+   "aaben"
+  ],
+  "fl": [
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "lookalikes": [
+   "tinnunculus",
+   "subbuteo"
+  ],
+  "sidder": "Hannen er helt skifergrå med rustrøde \"bukser\" og orangerøde ben. Hunnen har orangebrunt hoved og bryst og grå, tværbåndet ryg.",
+  "sidder_en": "The male is all slate grey with rusty-red \"trousers\" and orange-red legs. The female has an orange-brown head and breast and a grey, barred back.",
+  "flugt": "Ligner en lærkefalk eller tårnfalk i flugten. Står ofte stille i luften og fanger store insekter, gerne flere sammen.",
+  "flugt_en": "Looks like a hobby or kestrel in flight. Often hangs still in the air and catches large insects, often in small groups.",
+  "fakta": "Aftenfalken yngler i Østeuropa og Asien og ses kun fåtalligt i Danmark, oftest i maj og juni. Den lever mest af store insekter og yngler i kolonier i gamle kragereder.",
+  "fakta_en": "The red-footed falcon breeds in eastern Europe and Asia and is seen only in small numbers in Denmark, mostly in May and June. It feeds mainly on large insects and nests in colonies in old crow nests.",
+  "imgs": {
+   "sidder": [
+    "img/foto_118.jpg",
+    "img/foto_119.jpg",
+    "img/foto_120.jpg",
+    "img/foto_121.jpg"
+   ],
+   "flugt": [
+    "img/foto_122.jpg"
+   ]
+  },
+  "fr": []
+ }
+];
+
+/* RovfugleQuiz — udbredelse i Danmark og forskelle på forvekslinger. */
+const DETAILS = {
+ "buteo": {
+  "dist": [
+   "I hele landet, hele året. Om efteråret trækker mange musvåger fra Norden ned gennem landet.",
+   "Throughout Denmark all year. In autumn, many buzzards from further north migrate south through the country."
+  ]
+ },
+ "nisus": {
+  "dist": [
+   "I hele landet, hele året. Flere kommer fra Norden om vinteren.",
+   "Throughout Denmark all year, with more arriving from the north in winter."
+  ]
+ },
+ "gentilis": {
+  "dist": [
+   "Yngler i skove i hele landet, men er sky og ses sjældent.",
+   "Breeds in woods throughout Denmark but is shy and rarely seen."
+  ]
+ },
+ "tinnunculus": {
+  "dist": [
+   "I hele landet i åbent land, også i byer.",
+   "Throughout Denmark in open country, also in towns."
+  ]
+ },
+ "milvus": {
+  "dist": [
+   "Yngler spredt i store dele af landet og breder sig fortsat.",
+   "Breeds in much of the country and is still spreading."
+  ]
+ },
+ "migrans": {
+  "dist": [
+   "Fåtallig trækgæst, oftest ved kysterne i forår og forsommer.",
+   "A scarce migrant, mostly along the coasts in spring and early summer."
+  ]
+ },
+ "albicilla": {
+  "dist": [
+   "Yngler nu i store dele af landet, især nær søer, fjorde og kyst.",
+   "Now breeds in much of the country, especially near lakes, fjords and coasts."
+  ]
+ },
+ "aeruginosus": {
+  "dist": [
+   "Yngler i rørskove og moser i hele landet fra marts til oktober.",
+   "Breeds in reedbeds and marshes throughout Denmark from March to October."
+  ]
+ },
+ "cyaneus": {
+  "dist": [
+   "Vintergæst og trækgæst, især over strandenge, marsk og store moser.",
+   "A winter visitor and migrant, especially over salt marsh, grassland and large bogs."
+  ]
+ },
+ "pygargus": {
+  "dist": [
+   "Yngler fåtalligt, især i marsken i Sønderjylland.",
+   "A scarce breeder, mainly in the marshland of southern Jutland."
+  ]
+ },
+ "apivorus": {
+  "dist": [
+   "Yngler i større skove fra maj til september.",
+   "Breeds in larger woods from May to September."
+  ]
+ },
+ "lagopus": {
+  "dist": [
+   "Vintergæst fra Norden i åbent land.",
+   "A winter visitor from the north in open country."
+  ]
+ },
+ "pandion": {
+  "dist": [
+   "Få ynglepar, men ses ret almindeligt på træk ved søer og fjorde.",
+   "Few breeding pairs, but fairly often seen on migration at lakes and fjords."
+  ]
+ },
+ "chrysaetos": {
+  "dist": [
+   "Få par i Nordjylland, bl.a. i Lille Vildmose.",
+   "A few pairs in north Jutland, including Lille Vildmose."
+  ]
+ },
+ "peregrinus": {
+  "dist": [
+   "Yngler fåtalligt på klinter og bygninger. Flere ses på træk og om vinteren ved kysterne.",
+   "A scarce breeder on cliffs and buildings. More are seen on migration and in winter along the coasts."
+  ]
+ },
+ "subbuteo": {
+  "dist": [
+   "Fåtallig ynglefugl ved skove, søer og moser fra maj til september.",
+   "A scarce breeder near woods, lakes and bogs from May to September."
+  ]
+ },
+ "columbarius": {
+  "dist": [
+   "Træk- og vintergæst i åbent land og ved kysterne.",
+   "A migrant and winter visitor in open country and along the coasts."
+  ]
+ },
+ "vespertinus": {
+  "dist": [
+   "Sjælden gæst, oftest i maj og juni.",
+   "A rare visitor, mostly in May and June."
+  ]
+ }
+};
+const PAIR_DIFF = {
+ "apivorus|buteo": [
+  "Hvepsevågen har længere hale med tydelige bånd, smallere hoved og svæver på flade vinger. Musvågen svæver i et let V.",
+  "The honey buzzard has a longer, clearly banded tail and a slimmer head and soars on flat wings. The common buzzard soars in a shallow V."
+ ],
+ "buteo|lagopus": [
+  "Fjeldvågen har hvid hale med bredt mørkt endebånd og mørk bug. Musvågens hale er tæt tværbåndet uden kontrast.",
+  "The rough-legged buzzard has a white tail with a broad dark band at the tip and a dark belly. The common buzzard’s tail is finely barred without contrast."
+ ],
+ "gentilis|nisus": [
+  "Duehøgen er på størrelse med en musvåge, har kraftigere bryst og afrundet halespids. Spurvehøgen er på størrelse med en due og har lige afskåret hale.",
+  "The goshawk is buzzard-sized with a heavier chest and a rounded tail tip. The sparrowhawk is pigeon-sized with a square-ended tail."
+ ],
+ "nisus|tinnunculus": [
+  "Spurvehøgen har korte, runde vinger. Tårnfalken har lange, spidse vinger og står ofte stille i luften.",
+  "The sparrowhawk has short, rounded wings. The kestrel has long, pointed wings and often hangs still in the air."
+ ],
+ "migrans|milvus": [
+  "Rød glente har dybt kløftet, rustrød hale og store hvide vingefelter. Sort glente er mørkere og har næsten lige afskåret hale.",
+  "The red kite has a deeply forked, rusty tail and large white wing patches. The black kite is darker with an almost square tail."
+ ],
+ "albicilla|chrysaetos": [
+  "Havørnen har kort, kileformet hale og stort næb. Kongeørnen har længere hale og vinger, der er smallest ved kroppen.",
+  "The white-tailed eagle has a short, wedge-shaped tail and a big bill. The golden eagle has a longer tail and wings that are narrowest at the body."
+ ],
+ "albicilla|pandion": [
+  "Fiskeørnen er meget mindre og har hvid underside og vinger med knæk som en måge.",
+  "The osprey is much smaller, with white underparts and gull-like angled wings."
+ ],
+ "aeruginosus|cyaneus": [
+  "Rørhøgen er større og mørkere og mangler den hvide overgump, som blå kærhøg har.",
+  "The marsh harrier is larger and darker and lacks the hen harrier’s white rump."
+ ],
+ "cyaneus|pygargus": [
+  "Hedehøgen har smallere og mere spidse vinger. Hannen har sorte bånd på vingen, som blå kærhøg-hannen mangler.",
+  "Montagu’s harrier has narrower, more pointed wings. The male has black wing bars that the male hen harrier lacks."
+ ],
+ "subbuteo|tinnunculus": [
+  "Lærkefalken har kort hale, mursejlerlignende vinger og sort skægstribe. Tårnfalken har lang hale og rødbrun ryg.",
+  "The hobby has a short tail, swift-like wings and a black moustache. The kestrel has a long tail and a red-brown back."
+ ],
+ "peregrinus|subbuteo": [
+  "Vandrefalken er større og har tværbåndet underside. Lærkefalken har længdestribet bryst og rustrøde \"bukser\".",
+  "The peregrine is larger with barred underparts. The hobby has a streaked breast and rusty-red \"trousers\"."
+ ],
+ "columbarius|tinnunculus": [
+  "Dværgfalken er mindre, har kortere hale og står ikke stille i luften. Tårnfalken har langt mere rødbrun ryg.",
+  "The merlin is smaller, has a shorter tail and does not hover. The kestrel has a much more red-brown back."
+ ],
+ "tinnunculus|vespertinus": [
+  "Aftenfalk-hannen er helt grå med røde ben. Hunnen har orangebrunt hoved og bryst og grå ryg.",
+  "The male red-footed falcon is all grey with red legs. The female has an orange-brown head and breast and a grey back."
+ ]
+};
+
+/* RovfugleQuiz — guide: lær at kende rovfuglene */
+
+const LEARN = {
+  da: {
+    navLabel: 'Guide',
+    title: 'Sådan kender du en rovfugl',
+    intro: 'Rovfugle ses ofte langt væk, i modlys eller kun et øjeblik. Derfor handler det mindre om farver og mere om form: vinger, hale og måden fuglen flyver på. Her er metoden, som quizzen er bygget på.',
+    stepsTitle: 'Fem spørgsmål der fører dig til svaret',
+    steps: [
+      { head: 'Hvor stor er den?', text: 'Sammenlign med noget, du kender. Spurvehøg, tårnfalk og dværgfalk er på størrelse med en due. Musvåge, rørhøg og duehøg er på størrelse med en krage eller større. Havørn og kongeørn er kæmpestore, med et vingefang på omkring 2 meter.' },
+      { head: 'Hvordan ser vingerne ud?', text: 'Brede vinger med "fingre" i spidsen: våge eller ørn. Korte, runde vinger: høg. Lange vinger holdt i et V tæt over jorden: kærhøg. Lange, spidse vinger uden fingre: falk.' },
+      { head: 'Hvordan ser halen ud?', text: 'Kløftet hale betyder glente. Lang, smal hale: høg, kærhøg eller falk. Kort, bred hale: våge eller ørn. Læg også mærke til bånd og farver: fjeldvågens hvide hale med mørkt endebånd eller den gamle havørns hvide kilehale.' },
+      { head: 'Hvordan flyver den?', text: 'Svæver i cirkler (våger, ørne, glenter). Står stille i luften (tårnfalk, fjeldvåge). Nogle hurtige vingeslag og et glid (spurvehøg). Glider lavt i et V over rør og enge (kærhøge). Lynhurtig jagt efter fugle eller insekter (falke).' },
+      { head: 'Hvor og hvornår?', text: 'Fjeldvåge, blå kærhøg og dværgfalk ses mest om vinteren. Hvepsevåge, lærkefalk og hedehøg kun om sommeren. Fiskeørnen holder til ved søer og fjorde, rørhøgen ved rørskov og havørnen tæt på vand.' },
+    ],
+    sections: [
+      {
+        title: 'De seks grupper',
+        paras: [
+          'Våger (musvåge, fjeldvåge, hvepsevåge) er mellemstore og kompakte med brede vinger og kort hale. Høge (spurvehøg, duehøg) har korte, runde vinger og lang hale og jager i skov og have.',
+          'Kærhøge (rørhøg, blå kærhøg, hedehøg) er slanke med lange vinger og lang hale og jager lavt over åbent land. Glenter har kløftet hale. Ørne er store med lange "fingre". Falke har spidse vinger og er hurtige flyvere.',
+        ],
+        imgs: [
+          { sp: 'buteo', kind: 'flugt', caption: 'Våge · musvåge' },
+          { sp: 'nisus', kind: 'flugt', caption: 'Høg · spurvehøg' },
+          { sp: 'aeruginosus', kind: 'flugt', caption: 'Kærhøg · rørhøg' },
+          { sp: 'milvus', kind: 'flugt', caption: 'Glente · rød glente' },
+          { sp: 'albicilla', kind: 'flugt', caption: 'Ørn · havørn' },
+          { sp: 'tinnunculus', kind: 'flugt', caption: 'Falk · tårnfalk' },
+        ],
+      },
+      {
+        title: 'Siddende fugle',
+        paras: [
+          'En siddende rovfugl giver dig tid til detaljer: øjenfarve, næb, ben og mønstret på brystet. Musvåger sidder ofte på hegnspæle langs motorveje, tårnfalke på ledninger og spurvehøge gemt i en busk ved foderbrættet.',
+          'Husk at mange arter skifter dragt med alderen, og at han og hun kan se helt forskellige ud, fx hos tårnfalk, spurvehøg og kærhøgene.',
+        ],
+        imgs: [
+          { sp: 'buteo', kind: 'sidder', caption: 'Kompakt og rundhovedet · musvåge' },
+          { sp: 'tinnunculus', kind: 'sidder', caption: 'Rødbrun ryg · tårnfalk' },
+          { sp: 'peregrinus', kind: 'sidder', caption: 'Sort "hjelm" · vandrefalk' },
+        ],
+      },
+    ],
+    lookalikesTitle: 'Klassiske forvekslinger',
+    lookalikesIntro: 'Seks par, som selv erfarne fuglekiggere blander sammen. Lær forskellen, og brug den, når du er i tvivl i quizzen.',
+    lookalikes: [
+      { a: 'Musvåge', b: 'Hvepsevåge', text: 'Hvepsevågen har længere hale med tydelige bånd og et lille, fremstrakt hoved, og den svæver på flade vinger. Musvågen svæver i et let V.' },
+      { a: 'Spurvehøg', b: 'Duehøg', text: 'Størrelsen er nøglen: spurvehøgen er som en due, duehøgen som en musvåge. Duehøgen har kraftigere bryst og afrundet halespids.' },
+      { a: 'Rød glente', b: 'Sort glente', text: 'Rød glente har dybt kløftet, rustrød hale og store hvide felter under vingen. Sort glente er mørk og har næsten lige afskåret hale.' },
+      { a: 'Havørn', b: 'Kongeørn', text: 'Havørnen har kort kilehale, stort næb og vinger som en dør. Kongeørnen har længere hale og vinger, der er smallest ind mod kroppen.' },
+      { a: 'Blå kærhøg', b: 'Hedehøg', text: 'Hedehøgen er slankere med smallere, spidsere vinger. Hannen har sorte vingebånd, som blå kærhøg-hannen mangler.' },
+      { a: 'Tårnfalk', b: 'Lærkefalk', text: 'Tårnfalken har lang hale og står stille i luften. Lærkefalken har kort hale, mursejlerlignende vinger og sort skægstribe.' },
+    ],
+    ctaTitle: 'Nu er du klar',
+    ctaText: 'Start med de nemme arter og siddende fugle, og gå så over til fugle i flugt. Det er dér, de rigtige kendere skiller sig ud.',
+    ctaBtn: 'Start quizzen',
+    ctaList: 'Se alle 18 arter',
+  },
+  en: {
+    navLabel: 'Guide',
+    title: 'How to identify a bird of prey',
+    intro: 'Birds of prey are often seen far away, against the light or only for a moment. So it is less about colours and more about shape: wings, tail and the way the bird flies. Here is the method the quiz is built on.',
+    stepsTitle: 'Five questions that lead you to the answer',
+    steps: [
+      { head: 'How big is it?', text: 'Compare it with something you know. Sparrowhawk, kestrel and merlin are pigeon-sized. Common buzzard, marsh harrier and goshawk are crow-sized or bigger. White-tailed and golden eagles are huge, with a wingspan of about 2 metres.' },
+      { head: 'What are the wings like?', text: 'Broad wings with "fingers" at the tips: buzzard or eagle. Short, rounded wings: hawk. Long wings held in a V low over the ground: harrier. Long, pointed wings without fingers: falcon.' },
+      { head: 'What is the tail like?', text: 'A forked tail means a kite. A long, narrow tail: hawk, harrier or falcon. A short, broad tail: buzzard or eagle. Also look at bands and colours, like the rough-legged buzzard’s white tail with a dark tip or the adult white-tailed eagle’s white wedge.' },
+      { head: 'How does it fly?', text: 'Soars in circles (buzzards, eagles, kites). Hangs still in the air (kestrel, rough-legged buzzard). A few quick wingbeats and a glide (sparrowhawk). Glides low in a V over reeds and meadows (harriers). Very fast chases after birds or insects (falcons).' },
+      { head: 'Where and when?', text: 'Rough-legged buzzard, hen harrier and merlin are mostly seen in winter. Honey buzzard, hobby and Montagu’s harrier only in summer. The osprey lives at lakes and fjords, the marsh harrier at reedbeds and the white-tailed eagle near water.' },
+    ],
+    sections: [
+      {
+        title: 'The six groups',
+        paras: [
+          'Buzzards (common, rough-legged, honey) are medium-sized and compact with broad wings and a short tail. Hawks (sparrowhawk, goshawk) have short, rounded wings and a long tail and hunt in woods and gardens.',
+          'Harriers (marsh, hen, Montagu’s) are slim with long wings and a long tail and hunt low over open country. Kites have forked tails. Eagles are big with long "fingers". Falcons have pointed wings and are fast fliers.',
+        ],
+        imgs: [
+          { sp: 'buteo', kind: 'flugt', caption: 'Buzzard · common buzzard' },
+          { sp: 'nisus', kind: 'flugt', caption: 'Hawk · sparrowhawk' },
+          { sp: 'aeruginosus', kind: 'flugt', caption: 'Harrier · marsh harrier' },
+          { sp: 'milvus', kind: 'flugt', caption: 'Kite · red kite' },
+          { sp: 'albicilla', kind: 'flugt', caption: 'Eagle · white-tailed eagle' },
+          { sp: 'tinnunculus', kind: 'flugt', caption: 'Falcon · kestrel' },
+        ],
+      },
+      {
+        title: 'Perched birds',
+        paras: [
+          'A perched raptor gives you time for details: eye colour, bill, legs and the pattern on the breast. Buzzards often sit on fence posts along motorways, kestrels on wires and sparrowhawks hidden in a bush near the bird feeder.',
+          'Remember that many species change plumage with age, and males and females can look completely different, as in the kestrel, sparrowhawk and the harriers.',
+        ],
+        imgs: [
+          { sp: 'buteo', kind: 'sidder', caption: 'Compact and round-headed · common buzzard' },
+          { sp: 'tinnunculus', kind: 'sidder', caption: 'Red-brown back · kestrel' },
+          { sp: 'peregrinus', kind: 'sidder', caption: 'Black "helmet" · peregrine' },
+        ],
+      },
+    ],
+    lookalikesTitle: 'Classic mix-ups',
+    lookalikesIntro: 'Six pairs that even experienced birders confuse. Know the difference, and use it when you are unsure in the quiz.',
+    lookalikes: [
+      { a: 'Common buzzard', b: 'Honey buzzard', text: 'The honey buzzard has a longer, clearly banded tail and a small, projecting head, and it soars on flat wings. The common buzzard soars in a shallow V.' },
+      { a: 'Sparrowhawk', b: 'Goshawk', text: 'Size is the key: the sparrowhawk is pigeon-sized, the goshawk buzzard-sized. The goshawk has a heavier chest and a rounded tail tip.' },
+      { a: 'Red kite', b: 'Black kite', text: 'The red kite has a deeply forked, rusty tail and large white patches under the wing. The black kite is dark with an almost square tail.' },
+      { a: 'White-tailed eagle', b: 'Golden eagle', text: 'The white-tailed eagle has a short wedge-shaped tail, a big bill and barn-door wings. The golden eagle has a longer tail and wings that narrow towards the body.' },
+      { a: 'Hen harrier', b: 'Montagu’s harrier', text: 'Montagu’s harrier is slimmer with narrower, more pointed wings. The male has black wing bars that the male hen harrier lacks.' },
+      { a: 'Kestrel', b: 'Hobby', text: 'The kestrel has a long tail and hangs still in the air. The hobby has a short tail, swift-like wings and a black moustache.' },
+    ],
+    ctaTitle: 'Now you are ready',
+    ctaText: 'Start with the easy species and perched birds, then move on to birds in flight. That is where real experts stand out.',
+    ctaBtn: 'Start the quiz',
+    ctaList: 'See all 18 species',
+  },
+};
+
+/* RovfugleQuiz — Danmarks dagrovfugle (bygget på TræQuiz) */
+
+/* ------------------- i18n ------------------- */
+
+const I18N = {
+  da: {
+    title: 'RovfugleQuiz — Danmarks dagrovfugle',
+    brandAria: 'Tilbage til forsiden',
+    navQuiz: 'Quiz', navList: 'Artsliste', navGuide: 'Guide',
+    guideLink: 'Ny til rovfugle? Læs den korte guide til at kende dem →',
+    langAria: 'Switch to English', langTitle: 'Dansk / English',
+    muteAria: 'Slå lyd til eller fra', muteTitle: 'Lyd til/fra',
+    heroKicker: '18 danske dagrovfugle',
+    heroTitle: 'Kender du<br>rovfuglene?',
+    heroSub: 'Våger, høge, kærhøge, glenter, ørne og falke — alle de dagrovfugle, man med rimelighed kan møde i Danmark, fra den almindelige musvåge til den sjældne aftenfalk.',
+    setupWhat: 'Hvad vil du øve dig på?',
+    setupLevel: 'Sværhedsgrad',
+    modeAria: 'Spørgsmålstype', levelAria: 'Sværhedsgrad',
+    modeSidder: 'Siddende', modeSidderDesc: 'Fuglen på pæl, gren eller jord',
+    modeFlugt: 'I flugt', modeFlugtDesc: 'Silhuet, vinger og hale',
+    modeBlandet: 'Blandet', modeBlandetDesc: 'Lidt af hvert',
+    levelAlleDesc: 'Blanding af alt',
+    levelNem: 'Nem', levelNemDesc: n => `${n} almindelige arter`,
+    levelMellem: 'Mellem', levelMellemDesc: n => `${n} lidt sværere`,
+    levelSvaer: 'Svær', levelSvaerDesc: n => `${n} for kendere`,
+    startBtn: 'Start quizzen · 10 spørgsmål',
+    tip: 'Tip: Brug tastaturgenveje 1-4 for at svare og Enter for at gå videre.',
+    qLabel: 'Spørgsmål', pointsLabel: 'Points', streakTxt: 'i træk',
+    imgAlt: 'Hvilken rovfugl er dette?',
+    factTag: 'Vidste du',
+    next: 'Næste', seeResult: 'Se resultat',
+    resultKicker: 'Runden er slut', pointsWord: 'points',
+    statCorrectLabel: 'rigtige af 10', statStreakLabel: 'bedste streak',
+    again: 'Prøv igen', changeSettings: 'Skift indstillinger', seeList: 'Se artslisten',
+    missedLabel: 'Til næste gang:',
+    listTitle: 'De 18 dagrovfugle',
+    listSub: 'Alle arter i quizzen yngler, overvintrer eller trækker regelmæssigt gennem Danmark. Tryk på et kort for at se fuglen siddende og i flugt.',
+    sortAria: 'Gruppér artslisten', sortLabel: 'Gruppér efter:',
+    sortDefault: 'Standard', sortHyppighed: 'Almindelighed', sortStatus: 'Forekomst', sortGruppe: 'Gruppe', sortSize: 'Størrelse',
+    sortMine: 'Svære for mig', sortLookalike: 'Forvekslinger',
+    cardMore: 'Se alt om arten', openSpecies: n => `Åbn ${n}`,
+    sheetClose: 'Luk', sheetPrev: 'Forrige art', sheetNext: 'Næste art',
+    secDist: 'I Danmark', secSpan: 'Vingefang',
+    secLook: 'Kan forveksles med', secStats: 'Dine svar', secSources: 'Læs mere',
+    statsLine: (r, n) => `Du har svaret rigtigt ${r} af ${n} gange.`, statsNone: 'Du har ikke øvet denne art endnu.',
+    quizSpecies: 'Quiz denne art og dens forvekslinger',
+    sortFamily: 'Familie', sortHabitat: 'Levested', sortNow: 'Lige nu: hvem er i landet?',
+    filterFamily: 'Familie', filterHabitat: 'Levested', filterGruppe: 'Gruppe', filterSize: 'Størrelse',
+    familyVals: { Accipitridae: 'Høgefamilien', Falconidae: 'Falkefamilien', Pandionidae: 'Fiskeørnefamilien' },
+    gruppeVals: { vaage: 'Våger', hoeg: 'Høge', kaerhoeg: 'Kærhøge', glente: 'Glenter', oern: 'Ørne', falk: 'Falke' },
+    sizeVals: { lille: 'Lille (under 90 cm vingefang)', mellem: 'Mellemstor (90–140 cm)', stor: 'Stor (140–180 cm)', kaempe: 'Kæmpe (over 180 cm)' },
+    habitatVals: { skov: 'Skov', aaben: 'Åbent land og marker', vaad: 'Moser, søer og rørskov', kyst: 'Kyst og strandeng', by: 'Byer og haver' },
+    months: ['jan.', 'feb.', 'mar.', 'apr.', 'maj', 'jun.', 'jul.', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'],
+    monthsLong: ['januar', 'februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december'],
+    allYear: 'hele året',
+    nowGroups: { here: m => `Kan ses i Danmark i ${m}`, away: m => `Normalt ikke i Danmark i ${m}` },
+    nowNote: 'Månederne er omtrentlige. Enkelte fugle kan dukke op uden for den normale periode.',
+    cardSeen: 'Ses i Danmark',
+    searchPh: 'Søg efter art (også latin)',
+    filtersLabel: n => n ? `Filtre (${n})` : 'Filtre',
+    filterHyppighed: 'Almindelighed', filterStatus: 'Forekomst', filterLevel: 'Sværhedsgrad',
+    clearFilters: 'Nulstil', listEmpty: 'Ingen arter passer til din søgning.',
+    listCount: (n, t) => n === t ? `${t} arter` : `${n} af ${t} arter`,
+    viewCompact: 'Kompakt liste', viewCards: 'Store kort', showLess: 'Vis mindre',
+    quizShown: 'Quiz de viste arter', quizThese: 'Quiz disse',
+    mineGroups: { often: 'Ofte forkert', some: 'Af og til forkert', good: 'Har styr på', new: 'Ikke øvet endnu' },
+    mineNote: 'Grupperne bygger på dine svar i quizzen på denne enhed.',
+    correctOf: n => `rigtige af ${n}`,
+    footer: 'Billeder: <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · Bestandstal: <a href="https://pub.dof.dk/artikler/2546" target="_blank" rel="noopener">DOF, Dansk Ornitologisk Forenings Tidsskrift 117 (2023)</a> · En søsterquiz til <a href="https://ndrshfflr.github.io/traequiz/">TræQuiz</a>.',
+    kind: { sidder: 'Siddende', flugt: 'I flugt' },
+    kindPlural: { sidder: 'siddende', flugt: 'i flugt' },
+    levelName: { nem: 'nem', mellem: 'mellem', svær: 'svær' },
+    status: { standfugl: 'Ynglefugl hele året', sommer: 'Ynglefugl om sommeren', vinter: 'Vinter- og trækgæst', sjaelden: 'Fåtallig gæst' },
+    hyppighed: { 'Meget almindelig': 'Meget almindelig', 'Almindelig': 'Almindelig', 'Hist og her': 'Hist og her', 'Sjælden': 'Sjælden' },
+    loading: 'Henter billede …',
+    loadFail: 'Billedet kunne ikke hentes — prøv igen om lidt.',
+    correctHead: (p, bonus) => 'Rigtigt!' + (bonus ? ` +${p} points (streak-bonus!)` : ` +${p} points`),
+    wrongHead: (chosen, right) => `Desværre — det var ikke ${chosen}. Rigtigt svar: ${right}.`,
+    kick10: 'Fuldt hus!', sub10: 'Falkeøjne! Du kender dine rovfugle helt ud i vingespidserne.',
+    kick8: 'Stærkt gået', sub8: 'Du kender dine rovfugle. En tur gennem forvekslingerne i guiden, og du er i top.',
+    kick5: 'Godt på vej', sub5: 'Halvvejs der. Prøv en runde mere — eller start på nem-niveau.',
+    kick3: 'Øvelse gør mester', sub3: 'Kig artslisten igennem og læg mærke til vinger og hale — så prøv igen.',
+    kick0: 'Sådan begynder alle', sub0: 'Start med de nemme arter, og byg deropfra. Du bliver skarpere for hver runde.',
+    carPrev: 'Forrige billede', carNext: 'Næste billede',
+    slideAlt: (kind, name) => `${name}, ${kind.toLowerCase()}`,
+  },
+  en: {
+    title: 'RaptorQuiz — Denmark’s birds of prey',
+    brandAria: 'Back to the front page',
+    navQuiz: 'Quiz', navList: 'Species list', navGuide: 'Guide',
+    guideLink: 'New to raptors? Read the short identification guide →',
+    langAria: 'Skift til dansk', langTitle: 'Dansk / English',
+    muteAria: 'Turn sound on or off', muteTitle: 'Sound on/off',
+    heroKicker: '18 Danish birds of prey',
+    heroTitle: 'Do you know<br>your raptors?',
+    heroSub: 'Buzzards, hawks, harriers, kites, eagles and falcons — every diurnal bird of prey you can reasonably expect to meet in Denmark, from the common buzzard to the rare red-footed falcon.',
+    setupWhat: 'What do you want to practise?',
+    setupLevel: 'Difficulty',
+    modeAria: 'Question type', levelAria: 'Difficulty',
+    modeSidder: 'Perched', modeSidderDesc: 'On a post, branch or the ground',
+    modeFlugt: 'In flight', modeFlugtDesc: 'Silhouette, wings and tail',
+    modeBlandet: 'Mixed', modeBlandetDesc: 'A bit of everything',
+    levelAlleDesc: 'A mix of everything',
+    levelNem: 'Easy', levelNemDesc: n => `${n} common species`,
+    levelMellem: 'Medium', levelMellemDesc: n => `${n} a bit harder`,
+    levelSvaer: 'Hard', levelSvaerDesc: n => `${n} for experts`,
+    startBtn: 'Start the quiz · 10 questions',
+    tip: 'Tip: Use keyboard shortcuts 1-4 to answer and Enter to continue.',
+    qLabel: 'Question', pointsLabel: 'Points', streakTxt: 'in a row',
+    imgAlt: 'Which bird of prey is this?',
+    factTag: 'Did you know',
+    next: 'Next', seeResult: 'See results',
+    resultKicker: 'Round finished', pointsWord: 'points',
+    statCorrectLabel: 'correct out of 10', statStreakLabel: 'best streak',
+    again: 'Try again', changeSettings: 'Change settings', seeList: 'See the species list',
+    missedLabel: 'For next time:',
+    listTitle: 'The 18 birds of prey',
+    listSub: 'Every species in the quiz breeds in, winters in or regularly passes through Denmark. Tap a card to see the bird perched and in flight.',
+    sortAria: 'Group the species list', sortLabel: 'Group by:',
+    sortDefault: 'Default', sortHyppighed: 'Abundance', sortStatus: 'Occurrence', sortGruppe: 'Group', sortSize: 'Size',
+    sortMine: 'Hard for me', sortLookalike: 'Look-alikes',
+    cardMore: 'See everything about it', openSpecies: n => `Open ${n}`,
+    sheetClose: 'Close', sheetPrev: 'Previous species', sheetNext: 'Next species',
+    secDist: 'In Denmark', secSpan: 'Wingspan',
+    secLook: 'Can be confused with', secStats: 'Your answers', secSources: 'Read more',
+    statsLine: (r, n) => `You have answered correctly ${r} of ${n} times.`, statsNone: 'You have not practised this species yet.',
+    quizSpecies: 'Quiz this species and its look-alikes',
+    sortFamily: 'Family', sortHabitat: 'Habitat', sortNow: 'Right now: who is in the country?',
+    filterFamily: 'Family', filterHabitat: 'Habitat', filterGruppe: 'Group', filterSize: 'Size',
+    familyVals: { Accipitridae: 'Hawk family', Falconidae: 'Falcon family', Pandionidae: 'Osprey family' },
+    gruppeVals: { vaage: 'Buzzards', hoeg: 'Hawks', kaerhoeg: 'Harriers', glente: 'Kites', oern: 'Eagles', falk: 'Falcons' },
+    sizeVals: { lille: 'Small (wingspan under 90 cm)', mellem: 'Medium (90–140 cm)', stor: 'Large (140–180 cm)', kaempe: 'Huge (over 180 cm)' },
+    habitatVals: { skov: 'Woodland', aaben: 'Open country and farmland', vaad: 'Marshes, lakes and reedbeds', kyst: 'Coasts and salt marsh', by: 'Towns and gardens' },
+    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    monthsLong: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    allYear: 'all year',
+    nowGroups: { here: m => `Can be seen in Denmark in ${m}`, away: m => `Usually not in Denmark in ${m}` },
+    nowNote: 'Months are approximate. Single birds can turn up outside the usual period.',
+    cardSeen: 'Seen in Denmark',
+    searchPh: 'Search species (Latin too)',
+    filtersLabel: n => n ? `Filters (${n})` : 'Filters',
+    filterHyppighed: 'Abundance', filterStatus: 'Occurrence', filterLevel: 'Difficulty',
+    clearFilters: 'Clear', listEmpty: 'No species match your search.',
+    listCount: (n, t) => n === t ? `${t} species` : `${n} of ${t} species`,
+    viewCompact: 'Compact list', viewCards: 'Large cards', showLess: 'Show less',
+    quizShown: 'Quiz the species shown', quizThese: 'Quiz these',
+    mineGroups: { often: 'Often wrong', some: 'Sometimes wrong', good: 'Got it', new: 'Not practised yet' },
+    mineNote: 'Groups are based on your quiz answers on this device.',
+    correctOf: n => `correct out of ${n}`,
+    footer: 'Images: <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · Population figures: <a href="https://pub.dof.dk/artikler/2546" target="_blank" rel="noopener">DOF, Dansk Ornitologisk Forenings Tidsskrift 117 (2023)</a> · A sister quiz to <a href="https://ndrshfflr.github.io/traequiz/">TreeQuiz</a>.',
+    kind: { sidder: 'Perched', flugt: 'In flight' },
+    kindPlural: { sidder: 'perched', flugt: 'in flight' },
+    levelName: { nem: 'easy', mellem: 'medium', svær: 'hard' },
+    status: { standfugl: 'Breeds, present all year', sommer: 'Summer breeder', vinter: 'Winter visitor and migrant', sjaelden: 'Scarce visitor' },
+    hyppighed: { 'Meget almindelig': 'Very common', 'Almindelig': 'Common', 'Hist og her': 'Scattered', 'Sjælden': 'Rare' },
+    loading: 'Loading image …',
+    loadFail: 'The image could not be loaded — please try again shortly.',
+    correctHead: (p, bonus) => 'Correct!' + (bonus ? ` +${p} points (streak bonus!)` : ` +${p} points`),
+    wrongHead: (chosen, right) => `Sorry — not ${chosen}. Correct answer: ${right}.`,
+    kick10: 'Perfect score!', sub10: 'Eyes like a hawk! You know your raptors down to the wingtips.',
+    kick8: 'Strong round', sub8: 'You know your raptors. One pass through the look-alikes in the guide and you will be at the top.',
+    kick5: 'Getting there', sub5: 'Halfway. Play another round — or start on the easy level.',
+    kick3: 'Practice makes perfect', sub3: 'Go through the species list and look closely at wings and tails — then try again.',
+    kick0: 'Everyone starts here', sub0: 'Start with the easy species and build from there. You get sharper with every round.',
+    carPrev: 'Previous image', carNext: 'Next image',
+    slideAlt: (kind, name) => `${name}, ${kind.toLowerCase()}`,
+  },
+};
+
+let LANG = 'da';
+const T = k => I18N[LANG][k];
+const spName = sp => LANG === 'en' ? (sp.en || sp.dk) : sp.dk;
+const spText = (sp, field) => LANG === 'en' ? (sp[field + '_en'] || sp[field]) : sp[field];
+const nameOf = sp => LANG === 'en' ? (sp.en || sp.dk) : sp.dk;
+const sortName = sp => (LANG === 'en' ? (sp.en || sp.dk) : sp.dk);
+
+/* ------------------- state ------------------- */
+
+const KINDS = ['sidder', 'flugt'];
+
+const S = {
+  screen: 'start',
+  mode: 'sidder',         // sidder | flugt | blandet
+  level: 'alle',          // alle | nem | mellem | svær
+  customPool: null,       // arts-id'er når quizzen startes fra artslisten
+  questions: [],
+  qIndex: 0,
+  score: 0,
+  streak: 0,
+  bestStreak: 0,
+  correctCount: 0,
+  answered: false,
+  missed: [],
+  chosenIdx: -1,
+  lastPoints: 10,
+  lastBonus: 0,
+  muted: false,
+  audioCtx: null,
+};
+
+const LEVEL_COUNT = {};
+SPECIES.forEach(s => { LEVEL_COUNT[s.level] = (LEVEL_COUNT[s.level] || 0) + 1; });
+
+const $ = id => document.getElementById(id);
+const screens = {
+  start: $('screen-start'),
+  quiz: $('screen-quiz'),
+  result: $('screen-result'),
+  list: $('screen-list'),
+  learn: $('screen-learn'),
+};
+
+/* ------------------- sprog ------------------- */
+
+function applyLang() {
+  document.documentElement.lang = LANG;
+  document.title = T('title');
+  $('langBtn').textContent = LANG === 'da' ? 'EN' : 'DA';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = T(el.dataset.i18n);
+    if (typeof v === 'string') el.textContent = v;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const v = T(el.dataset.i18nHtml);
+    if (typeof v === 'string') el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    const v = T(el.dataset.i18nAria);
+    if (typeof v === 'string') el.setAttribute('aria-label', v);
+  });
+  document.querySelectorAll('[data-i18n-title]').forEach(el => {
+    const v = T(el.dataset.i18nTitle);
+    if (typeof v === 'string') el.setAttribute('title', v);
+  });
+  document.querySelectorAll('[data-i18n-group-aria]').forEach(el => {
+    const v = T(el.dataset.i18nGroupAria);
+    if (typeof v === 'string') el.setAttribute('aria-label', v);
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+    el.alt = T(el.dataset.i18nAlt);
+  });
+  // niveauer med rigtige tal
+  $('lvlAlle').textContent = (LANG === 'en' ? `All ${SPECIES.length}` : `Alle ${SPECIES.length}`);
+  $('lvlNem').textContent = T('levelNem');
+  $('lvlNemDesc').textContent = T('levelNemDesc')(LEVEL_COUNT.nem || 0);
+  $('lvlMellem').textContent = T('levelMellem');
+  $('lvlMellemDesc').textContent = T('levelMellemDesc')(LEVEL_COUNT.mellem || 0);
+  $('lvlSvaer').textContent = T('levelSvaer');
+  $('lvlSvaerDesc').textContent = T('levelSvaerDesc')(LEVEL_COUNT.svær || 0);
+  // dynamiske skærme
+  if (S.screen === 'list') renderList();
+  else if (S.screen === 'learn') renderLearn();
+  else if (S.screen === 'quiz') refreshQuizTexts();
+  else if (S.screen === 'result') showResult(true);
+}
+
+$('langBtn').addEventListener('click', () => {
+  LANG = LANG === 'da' ? 'en' : 'da';
+  ensureAudio(); sfx.click();
+  applyLang();
+});
+
+/* ------------------- audio ------------------- */
+
+function ensureAudio() {
+  if (!S.audioCtx) {
+    try { S.audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { /* no audio */ }
+  }
+  if (S.audioCtx && S.audioCtx.state === 'suspended') S.audioCtx.resume();
+}
+
+function tone(freq, dur, type, vol, delay) {
+  if (S.muted || !S.audioCtx) return;
+  const t0 = S.audioCtx.currentTime + (delay || 0);
+  const osc = S.audioCtx.createOscillator();
+  const gain = S.audioCtx.createGain();
+  osc.type = type || 'sine';
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(vol || 0.18, t0);
+  gain.gain.exponentialRampToValueAtTime(0.001, t0 + dur);
+  osc.connect(gain).connect(S.audioCtx.destination);
+  osc.start(t0);
+  osc.stop(t0 + dur + 0.02);
+}
+
+const sfx = {
+  click() { tone(660, 0.05, 'triangle', 0.06); },
+  correct() { tone(523, 0.12, 'sine', 0.14); tone(784, 0.16, 'sine', 0.14, 0.09); },
+  wrong() { tone(220, 0.22, 'sawtooth', 0.06); tone(164, 0.28, 'sine', 0.1, 0.06); },
+  finish() { [523, 659, 784, 1047].forEach((f, i) => tone(f, 0.22, 'sine', 0.12, i * 0.12)); },
+};
+
+/* ------------------- navigation ------------------- */
+
+function show(name) {
+  S.screen = name;
+  Object.values(screens).forEach(s => s.hidden = true);
+  screens[name].hidden = false;
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  if (name === 'list') renderList();
+  if (name === 'learn') renderLearn();
+}
+
+document.querySelectorAll('[data-nav]').forEach(btn =>
+  btn.addEventListener('click', () => { ensureAudio(); sfx.click(); show(btn.dataset.nav); })
+);
+
+$('muteBtn').addEventListener('click', () => {
+  S.muted = !S.muted;
+  $('soundOn').style.display = S.muted ? 'none' : 'block';
+  $('soundOff').style.display = S.muted ? 'block' : 'none';
+  if (!S.muted) { ensureAudio(); sfx.click(); }
+});
+
+/* ------------------- setup ------------------- */
+
+document.querySelectorAll('[data-choice-mode]').forEach(btn =>
+  btn.addEventListener('click', () => {
+    ensureAudio(); sfx.click();
+    S.mode = btn.dataset.choiceMode;
+    document.querySelectorAll('[data-choice-mode]').forEach(b => {
+      b.classList.toggle('is-selected', b === btn);
+      b.setAttribute('aria-checked', b === btn ? 'true' : 'false');
+    });
+  })
+);
+
+document.querySelectorAll('[data-choice-level]').forEach(btn =>
+  btn.addEventListener('click', () => {
+    ensureAudio(); sfx.click();
+    S.level = btn.dataset.choiceLevel;
+    document.querySelectorAll('[data-choice-level]').forEach(b => {
+      b.classList.toggle('is-selected', b === btn);
+      b.setAttribute('aria-checked', b === btn ? 'true' : 'false');
+    });
+  })
+);
+
+$('startBtn').addEventListener('click', () => {
+  ensureAudio(); sfx.click();
+  S.customPool = null;
+  startQuiz();
+});
+
+/* ------------------- quiz logic ------------------- */
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function pickDistractors(target, pool) {
+  const others = pool.filter(s => s.id !== target.id);
+  const sameLookalike = others.filter(s => (target.lookalikes || []).includes(s.id));
+  const sameLevel = others.filter(s => s.level === target.level && !sameLookalike.includes(s));
+  const rest = others.filter(s => !sameLookalike.includes(s) && !sameLevel.includes(s));
+  const chosen = [
+    ...shuffle(sameLookalike),
+    ...shuffle(sameLevel),
+    ...shuffle(rest),
+  ].slice(0, 3);
+  return chosen;
+}
+
+function startQuiz() {
+  let pool = S.customPool
+    ? SPECIES.filter(s => S.customPool.includes(s.id))
+    : (S.level === 'alle' ? SPECIES : SPECIES.filter(s => s.level === S.level));
+  // i en bestemt billedtype skal kun arter med billeder af den type med
+  let mode = S.mode;
+  if (mode !== 'blandet') {
+    const withImgs = pool.filter(s => (s.imgs[mode] || []).length);
+    if (withImgs.length >= 2 || !S.customPool) pool = withImgs;
+    else mode = 'blandet';
+  }
+  const n = Math.min(10, pool.length);
+  if (!n) { show('start'); return; }
+  // små udvalg fra artslisten får svarmuligheder fra alle arter
+  const distractorPool = pool.length >= 4 ? pool : SPECIES;
+  const picked = shuffle(pool).slice(0, n);
+  S.questions = picked.map(sp => {
+    let kind = mode;
+    if (mode === 'blandet') {
+      const kinds = KINDS.filter(k => (sp.imgs[k] || []).length);
+      kind = kinds[Math.floor(Math.random() * kinds.length)] || 'sidder';
+    }
+    return {
+      species: sp,
+      kind,
+      imgIdx: Math.floor(Math.random() * sp.imgs[kind].length),
+      options: shuffle([sp, ...pickDistractors(sp, distractorPool)]),
+    };
+  });
+  S.qIndex = 0;
+  S.score = 0;
+  S.streak = 0;
+  S.bestStreak = 0;
+  S.correctCount = 0;
+  S.missed = [];
+  show('quiz');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  S.answered = false;
+  S.chosenIdx = -1;
+  const q = S.questions[S.qIndex];
+  $('qNum').textContent = S.qIndex + 1;
+  $('qTotal').textContent = S.questions.length;
+  $('progressFill').style.width = ((S.qIndex) / S.questions.length * 100) + '%';
+  $('score').textContent = S.score;
+  $('streakPill').hidden = S.streak < 2;
+  $('streak').textContent = S.streak;
+  $('feedback').hidden = true;
+  $('nextBtn').textContent = S.qIndex === S.questions.length - 1 ? T('seeResult') : T('next');
+  $('imgBadge').textContent = T('kind')[q.kind];
+
+  renderAnswers(q);
+  loadImage(q, 0);
+}
+
+function renderAnswers(q) {
+  const answers = $('answers');
+  answers.innerHTML = '';
+  q.options.forEach((sp, i) => {
+    const b = document.createElement('button');
+    b.className = 'answer';
+    b.innerHTML = `<span class="key">${i + 1}</span><span>${spName(sp)}<span class="latin">${sp.latin}</span></span>`;
+    b.addEventListener('click', () => answer(i));
+    answers.appendChild(b);
+  });
+}
+
+/* opdater quiz-tekster ved sprogskift uden at nulstille spørgsmålet */
+function refreshQuizTexts() {
+  const q = S.questions[S.qIndex];
+  if (!q) return;
+  $('qLabel').textContent = T('qLabel');
+  $('pointsLabel').textContent = T('pointsLabel');
+  $('streakTxt').textContent = T('streakTxt');
+  $('imgBadge').textContent = T('kind')[q.kind];
+  $('nextBtn').textContent = S.qIndex === S.questions.length - 1 ? T('seeResult') : T('next');
+  const buttons = [...document.querySelectorAll('.answer')];
+  if (S.answered && buttons.length) {
+    buttons.forEach((b, j) => {
+      b.disabled = true;
+      b.innerHTML = `<span class="key">${j + 1}</span><span>${spName(q.options[j])}<span class="latin">${q.options[j].latin}</span></span>`;
+      if (q.options[j].id === q.species.id) b.classList.add('correct');
+      else if (j === S.chosenIdx) b.classList.add('wrong');
+      else b.classList.add('dimmed');
+    });
+    if (q.options[S.chosenIdx] && q.options[S.chosenIdx].id === q.species.id) {
+      $('feedbackHead').textContent = T('correctHead')(S.lastPoints || 10, S.lastBonus || 0);
+    } else {
+      $('feedbackHead').textContent = T('wrongHead')(spName(q.options[S.chosenIdx] || q.options[0]), spName(q.species));
+    }
+    $('feedbackHint').textContent = spText(q.species, q.kind);
+    $('feedbackFact').textContent = spText(q.species, 'fakta');
+  } else {
+    renderAnswers(q);
+  }
+}
+
+function loadImage(q, attempt) {
+  const img = $('quizImg');
+  const urls = q.species.imgs[q.kind] || [];
+  if (attempt >= urls.length) {
+    // alle billeder fejlede — prøv en ny art med samme billedtype (men aldrig efter der er svaret)
+    let pool = S.customPool
+      ? SPECIES.filter(s => S.customPool.includes(s.id))
+      : (S.level === 'alle' ? SPECIES : SPECIES.filter(s => s.level === S.level));
+    const used = S.questions.map(x => x.species.id);
+    const fresh = S.answered ? [] : pool.filter(s => !used.includes(s.id) && (s.imgs[q.kind] || []).length);
+    if (fresh.length) {
+      const sp = fresh[Math.floor(Math.random() * fresh.length)];
+      q.species = sp;
+      q.imgIdx = Math.floor(Math.random() * sp.imgs[q.kind].length);
+      q.options = shuffle([sp, ...pickDistractors(sp, pool.length >= 4 ? pool : SPECIES)]);
+      renderQuestion();
+    } else {
+      $('imgLoading').hidden = false;
+      $('imgLoading').textContent = T('loadFail');
+    }
+    return;
+  }
+  const url = urls[(q.imgIdx + attempt) % urls.length];
+  $('imgLoading').hidden = false;
+  $('imgLoading').textContent = T('loading');
+  img.className = isScanUrl(url) ? 'img-contain' : '';
+  img.onload = () => { $('imgLoading').hidden = true; };
+  img.onerror = () => loadImage(q, attempt + 1);
+  img.src = url;
+  if (img.complete && img.naturalWidth > 0) $('imgLoading').hidden = true;
+}
+
+function answer(i) {
+  if (S.answered) return;
+  S.answered = true;
+  S.chosenIdx = i;
+  ensureAudio();
+  const q = S.questions[S.qIndex];
+  const chosen = q.options[i];
+  const correct = chosen.id === q.species.id;
+  recordAnswer(q.species.id, correct);
+  const buttons = [...document.querySelectorAll('.answer')];
+  buttons.forEach((b, j) => {
+    b.disabled = true;
+    if (q.options[j].id === q.species.id) b.classList.add('correct');
+    else if (j === i) b.classList.add('wrong');
+    else b.classList.add('dimmed');
+  });
+
+  if (correct) {
+    S.streak += 1;
+    S.bestStreak = Math.max(S.bestStreak, S.streak);
+    S.correctCount += 1;
+    const bonus = Math.min(S.streak - 1, 5) * 2;
+    S.score += 10 + bonus;
+    S.lastPoints = 10 + bonus; S.lastBonus = bonus;
+    sfx.correct();
+    $('feedbackHead').textContent = T('correctHead')(10 + bonus, bonus);
+  } else {
+    S.streak = 0;
+    S.missed.push(q.species);
+    sfx.wrong();
+    $('feedbackHead').textContent = T('wrongHead')(spName(chosen), spName(q.species));
+  }
+
+  $('feedbackHint').textContent = spText(q.species, q.kind);
+  $('feedbackFact').textContent = spText(q.species, 'fakta');
+  const fb = $('feedback');
+  fb.classList.toggle('was-wrong', !correct);
+  fb.hidden = false;
+  fb.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  $('score').textContent = S.score;
+}
+
+$('nextBtn').addEventListener('click', () => {
+  if (!S.answered) return;
+  sfx.click();
+  if (S.qIndex < S.questions.length - 1) {
+    S.qIndex += 1;
+    renderQuestion();
+  } else {
+    showResult();
+  }
+});
+
+/* ------------------- result ------------------- */
+
+function showResult(quiet) {
+  $('finalScore').textContent = S.score;
+  $('statCorrect').textContent = S.correctCount;
+  $('statCorrect').nextElementSibling.textContent = T('correctOf')(S.questions.length);
+  $('statStreak').textContent = S.bestStreak;
+
+  let sub, kicker;
+  const c = S.correctCount;
+  if (c === 10) { kicker = T('kick10'); sub = T('sub10'); }
+  else if (c >= 8) { kicker = T('kick8'); sub = T('sub8'); }
+  else if (c >= 5) { kicker = T('kick5'); sub = T('sub5'); }
+  else if (c >= 3) { kicker = T('kick3'); sub = T('sub3'); }
+  else { kicker = T('kick0'); sub = T('sub0'); }
+  $('resultKicker').textContent = kicker;
+  $('resultSub').textContent = sub;
+
+  const missedBox = $('resultMissed');
+  missedBox.innerHTML = '';
+  if (S.missed.length) {
+    const label = document.createElement('p');
+    label.style.cssText = 'width:100%;font-size:0.8rem;color:var(--muted);margin-bottom:0.5rem;';
+    label.textContent = T('missedLabel');
+    missedBox.appendChild(label);
+    S.missed.forEach(sp => {
+      const chip = document.createElement('span');
+      chip.className = 'missed-chip';
+      const img = document.createElement('img');
+      img.src = firstImg(sp);
+      img.alt = '';
+      img.loading = 'lazy';
+      const t = document.createElement('span');
+      t.textContent = spName(sp);
+      chip.append(img, t);
+      missedBox.appendChild(chip);
+    });
+  }
+  if (!quiet) sfx.finish();
+  show('result');
+}
+
+$('againBtn').addEventListener('click', () => { ensureAudio(); sfx.click(); startQuiz(); });
+
+/* ------------------- artsliste: søgning, filtre, grupper og visninger ------------------- */
+
+const HYPPIGHED_ORDER = ['Meget almindelig', 'Almindelig', 'Hist og her', 'Sjælden'];
+const STATUS_ORDER = ['standfugl', 'sommer', 'vinter', 'sjaelden'];
+const GRUPPE_ORDER = ['vaage', 'hoeg', 'kaerhoeg', 'glente', 'oern', 'falk'];
+const SIZE_ORDER = ['lille', 'mellem', 'stor', 'kaempe'];
+const LEVEL_ORDER = ['nem', 'mellem', 'svær'];
+const MINE_ORDER = ['often', 'some', 'good', 'new'];
+let currentSort = 'default';
+
+const LIST = {
+  q: '',
+  filters: { gruppe: new Set(), hyppighed: new Set(), status: new Set(), level: new Set(), size: new Set(), habitat: new Set(), family: new Set() },
+  compact: false,
+  collapsed: new Set(),
+  expanded: new Set(),
+  ctrlLang: null,
+};
+try { LIST.compact = localStorage.getItem('rq-compact') === '1'; } catch (e) { /* ingen lager */ }
+
+/* personlig statistik — gemmes kun i denne browser */
+const STATS_KEY = 'rq-stats';
+function loadStats() {
+  try { return JSON.parse(localStorage.getItem(STATS_KEY)) || {}; } catch (e) { return {}; }
+}
+function recordAnswer(id, correct) {
+  const st = loadStats();
+  const r = st[id] || { seen: 0, wrong: 0 };
+  r.seen += 1;
+  if (!correct) r.wrong += 1;
+  st[id] = r;
+  try { localStorage.setItem(STATS_KEY, JSON.stringify(st)); } catch (e) { /* ignorer */ }
+}
+function mastery(sp, st) {
+  const r = st[sp.id];
+  if (!r || !r.seen) return 'new';
+  const rate = r.wrong / r.seen;
+  if (rate >= 0.34) return 'often';
+  if (rate > 0) return 'some';
+  return 'good';
+}
+
+const cmpName = (a, b) => sortName(a).localeCompare(sortName(b), LANG === 'da' ? 'da' : 'en');
+const FILTER_DIMS = [
+  { key: 'gruppe', order: GRUPPE_ORDER, label: () => T('filterGruppe'), val: v => T('gruppeVals')[v] || v },
+  { key: 'hyppighed', order: HYPPIGHED_ORDER, label: () => T('filterHyppighed'), val: v => T('hyppighed')[v] || v },
+  { key: 'status', order: STATUS_ORDER, label: () => T('filterStatus'), val: v => T('status')[v] || v },
+  { key: 'level', order: LEVEL_ORDER, label: () => T('filterLevel'), val: v => T('levelName')[v] || v },
+  { key: 'size', order: SIZE_ORDER, label: () => T('filterSize'), val: v => T('sizeVals')[v] || v },
+  { key: 'habitat', order: ['skov', 'aaben', 'vaad', 'kyst', 'by'], label: () => T('filterHabitat'), val: v => T('habitatVals')[v] || v },
+  { key: 'family', order: ['Accipitridae', 'Pandionidae', 'Falconidae'], label: () => T('filterFamily'), val: v => `${T('familyVals')[v] || v} · ${v}` },
+];
+const dimOrder = d => (typeof d.order === 'function' ? d.order() : d.order);
+const hasVal = (sp, key, v) => [].concat(sp[key]).includes(v);
+
+const SORTS = ['default', 'gruppe', 'hyppighed', 'status', 'size', 'habitat', 'family', 'lookalike', 'mine', 'now'];
+const SORT_LABEL_KEY = { default: 'sortDefault', gruppe: 'sortGruppe', hyppighed: 'sortHyppighed', status: 'sortStatus', size: 'sortSize', family: 'sortFamily', habitat: 'sortHabitat', lookalike: 'sortLookalike', mine: 'sortMine', now: 'sortNow' };
+
+/* måneder som korte intervaller, fx "sep.–okt." eller "okt.–mar." */
+function formatMonths(ms) {
+  if (!ms || !ms.length) return '';
+  if (ms.length >= 12) return T('allYear');
+  const on = m => ms.includes(((m - 1 + 12) % 12) + 1);
+  const names = T('months');
+  const runs = [];
+  for (let m = 1; m <= 12; m++) {
+    if (on(m) && !on(m - 1)) {
+      let e = m;
+      while (on(e + 1)) e++;
+      const end = ((e - 1) % 12) + 1;
+      runs.push(end === m ? names[m - 1] : `${names[m - 1]}–${names[end - 1]}`);
+    }
+  }
+  return runs.join(', ');
+}
+
+function matches(sp) {
+  const q = LIST.q.trim().toLowerCase();
+  if (q && ![sp.dk, sp.en, sp.latin].some(n => (n || '').toLowerCase().includes(q))) return false;
+  return FILTER_DIMS.every(d => !LIST.filters[d.key].size || [].concat(sp[d.key]).some(v => LIST.filters[d.key].has(v)));
+}
+const activeFilterCount = () => FILTER_DIMS.reduce((n, d) => n + LIST.filters[d.key].size, 0);
+
+function buildGroups(list) {
+  if (currentSort === 'default') return [{ key: 'all', label: null, items: list }];
+
+  if (currentSort === 'lookalike') {
+    const ids = new Set(list.map(s => s.id));
+    const seen = new Set();
+    const groups = [];
+    list.forEach(a => (a.lookalikes || []).forEach(bid => {
+      if (!ids.has(bid)) return;
+      const key = [a.id, bid].sort().join('|');
+      if (seen.has(key)) return;
+      seen.add(key);
+      const b = SPECIES.find(s => s.id === bid);
+      const pair = [a, b].sort(cmpName);
+      groups.push({ key, label: `${spName(pair[0])} ↔ ${spName(pair[1])}`, items: pair, showCount: false });
+    }));
+    return groups.sort((x, y) => x.label.localeCompare(y.label, LANG === 'da' ? 'da' : 'en'));
+  }
+
+  if (currentSort === 'mine') {
+    const st = loadStats();
+    const rate = sp => { const r = st[sp.id]; return r && r.seen ? r.wrong / r.seen : 0; };
+    return MINE_ORDER.map(k => ({
+      key: k,
+      label: T('mineGroups')[k],
+      items: list.filter(sp => mastery(sp, st) === k).sort((a, b) => rate(b) - rate(a) || cmpName(a, b)),
+    })).filter(g => g.items.length);
+  }
+
+  if (currentSort === 'now') {
+    const m = new Date().getMonth() + 1;
+    const mName = T('monthsLong')[m - 1];
+    const here = list.filter(sp => (sp.fl || []).includes(m)).sort(cmpName);
+    const away = list.filter(sp => !here.includes(sp)).sort(cmpName);
+    return [
+      { key: 'here', label: T('nowGroups').here(mName), items: here },
+      { key: 'away', label: T('nowGroups').away(mName), items: away },
+    ].filter(g => g.items.length);
+  }
+
+  const dim = FILTER_DIMS.find(d => d.key === currentSort);
+  return dimOrder(dim).map(v => ({
+    key: v,
+    label: dim.val(v),
+    items: list.filter(sp => hasVal(sp, dim.key, v)).sort(cmpName),
+  })).filter(g => g.items.length);
+}
+
+function ensureListControls(force) {
+  if (!force && LIST.ctrlLang === LANG) return;
+  LIST.ctrlLang = LANG;
+  const box = $('listControls');
+  box.innerHTML = `
+    <input type="search" class="list-search" id="listSearch" autocomplete="off">
+    <details class="list-filters" id="listFilters">
+      <summary id="filtersSummary"></summary>
+      <div class="filter-dims"></div>
+    </details>
+    <div class="list-toolbar">
+      <span class="list-count" id="listCount"></span>
+      <button class="linklike" id="clearFilters"></button>
+      <span class="toolbar-spacer"></span>
+      <button class="sort-btn" id="viewToggle"></button>
+      <button class="sort-btn quiz-shown" id="quizShownBtn"></button>
+    </div>
+    <p class="list-note" id="mineNote" hidden></p>`;
+
+  const search = $('listSearch');
+  search.placeholder = T('searchPh');
+  search.setAttribute('aria-label', T('searchPh'));
+  search.value = LIST.q;
+  search.addEventListener('input', () => { LIST.q = search.value; renderGroups(); });
+
+  const dims = box.querySelector('.filter-dims');
+  FILTER_DIMS.forEach(d => {
+    const present = dimOrder(d).filter(v => SPECIES.some(sp => hasVal(sp, d.key, v)));
+    const row = document.createElement('div');
+    row.className = 'filter-dim';
+    row.innerHTML = `<span class="filter-dim-label">${d.label()}</span><div class="filter-chips"></div>`;
+    const chips = row.querySelector('.filter-chips');
+    present.forEach(v => {
+      const b = document.createElement('button');
+      b.className = 'filter-chip';
+      b.textContent = d.val(v);
+      const sync = () => {
+        const on = LIST.filters[d.key].has(v);
+        b.classList.toggle('on', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      };
+      sync();
+      b.addEventListener('click', () => {
+        const set = LIST.filters[d.key];
+        set.has(v) ? set.delete(v) : set.add(v);
+        sync(); sfx.click(); renderGroups();
+      });
+      chips.appendChild(b);
+    });
+    dims.appendChild(row);
+  });
+
+  $('clearFilters').textContent = T('clearFilters');
+  $('clearFilters').addEventListener('click', () => {
+    LIST.q = ''; search.value = '';
+    FILTER_DIMS.forEach(d => LIST.filters[d.key].clear());
+    sfx.click(); ensureListControls(true); renderGroups();
+  });
+  $('viewToggle').addEventListener('click', () => {
+    LIST.compact = !LIST.compact;
+    LIST.expanded.clear();
+    try { localStorage.setItem('rq-compact', LIST.compact ? '1' : '0'); } catch (e) { /* ignorer */ }
+    sfx.click(); renderGroups();
+  });
+  $('quizShownBtn').textContent = T('quizShown');
+  $('quizShownBtn').addEventListener('click', () => quizFromList(SPECIES.filter(matches)));
+}
+
+function quizFromList(items) {
+  if (items.length < 2) return;
+  ensureAudio(); sfx.click();
+  S.customPool = items.map(s => s.id);
+  startQuiz();
+}
+
+function renderList() {
+  const sel = $('sortSelect');
+  sel.innerHTML = SORTS.map(k => `<option value="${k}"${k === currentSort ? ' selected' : ''}>${T(SORT_LABEL_KEY[k])}</option>`).join('');
+  sel.onchange = () => { currentSort = sel.value; sfx.click(); renderGroups(); };
+  ensureListControls();
+  renderGroups();
+  if (SHEET.open) renderSheet();
+}
+
+function renderGroups() {
+  const wrap = $('speciesGrid');
+  wrap.innerHTML = '';
+  const list = SPECIES.filter(matches);
+  const nf = activeFilterCount();
+
+  $('filtersSummary').textContent = T('filtersLabel')(nf);
+  $('listCount').textContent = T('listCount')(list.length, SPECIES.length);
+  $('clearFilters').hidden = !nf && !LIST.q;
+  $('viewToggle').textContent = LIST.compact ? T('viewCards') : T('viewCompact');
+  $('quizShownBtn').disabled = list.length < 2;
+  $('mineNote').hidden = currentSort !== 'mine' && currentSort !== 'now';
+  $('mineNote').textContent = currentSort === 'now' ? T('nowNote') : T('mineNote');
+
+  if (!list.length) {
+    wrap.innerHTML = `<p class="list-empty">${T('listEmpty')}</p>`;
+    return;
+  }
+
+  const groups = buildGroups(list);
+  if (!groups.length) {
+    wrap.innerHTML = `<p class="list-empty">${T('listEmpty')}</p>`;
+    return;
+  }
+
+  groups.forEach(g => {
+    const sec = document.createElement('section');
+    sec.className = 'species-group';
+    const gid = currentSort + ':' + g.key;
+
+    if (g.label) {
+      const head = document.createElement('div');
+      head.className = 'species-group-head';
+      const toggle = document.createElement('button');
+      toggle.className = 'group-toggle';
+      const title = g.showCount === false ? g.label : `${g.label} (${g.items.length})`;
+      const setState = () => {
+        const c = LIST.collapsed.has(gid);
+        sec.classList.toggle('collapsed', c);
+        toggle.setAttribute('aria-expanded', c ? 'false' : 'true');
+        toggle.innerHTML = `<span class="group-caret" aria-hidden="true">${c ? '▸' : '▾'}</span>`;
+        const t = document.createElement('span');
+        t.textContent = title;
+        toggle.appendChild(t);
+      };
+      toggle.addEventListener('click', () => {
+        LIST.collapsed.has(gid) ? LIST.collapsed.delete(gid) : LIST.collapsed.add(gid);
+        sfx.click(); setState();
+      });
+      head.appendChild(toggle);
+      if (g.items.length >= 2) {
+        const qb = document.createElement('button');
+        qb.className = 'group-quiz';
+        qb.textContent = T('quizThese');
+        qb.addEventListener('click', () => quizFromList(g.items));
+        head.appendChild(qb);
+      }
+      sec.appendChild(head);
+      setState();
+    }
+
+    const grid = document.createElement('div');
+    grid.className = 'species-grid' + (LIST.compact ? ' compact' : '');
+    g.items.forEach(sp => {
+      grid.appendChild(LIST.compact ? makeRow(sp, g.items) : makeCard(sp, g.items));
+    });
+    sec.appendChild(grid);
+    wrap.appendChild(sec);
+  });
+}
+
+function makeRow(sp, seq) {
+  const row = document.createElement('button');
+  row.className = 'species-row';
+  const thumb = firstImg(sp);
+  row.innerHTML = `
+    <img src="${thumb}" alt="" loading="lazy">
+    <span class="row-text">
+      <span class="species-name">${spName(sp)}</span>
+      <span class="species-latin">${sp.latin}</span>
+    </span>
+    <span class="row-chips">
+      <span class="chip chip-st-${sp.status}">${T('gruppeVals')[sp.gruppe] || ''}</span>
+    </span>`;
+  row.addEventListener('click', () => openSheet(sp, seq));
+  return row;
+}
+
+const isScanUrl = u => /illustration/i.test(u);
+const firstImg = sp => KINDS.map(k => (sp.imgs[k] || [])[0]).find(Boolean) || '';
+
+/* kort i gitteret: et overblik — hele arten åbnes i et ark */
+function makeCard(sp, seq) {
+  const card = document.createElement('article');
+  card.className = 'species-card preview';
+  card.tabIndex = 0;
+  card.setAttribute('role', 'button');
+  card.setAttribute('aria-label', T('openSpecies')(spName(sp)));
+  const img = firstImg(sp);
+  card.innerHTML = `
+    <div class="card-photo${isScanUrl(img) ? ' contain' : ''}"><img src="${img}" alt="" loading="lazy"></div>
+    <div class="species-body">
+      <div class="species-title-row">
+        <span class="species-name">${spName(sp)}</span>
+        <span class="level-badge level-${sp.level}">${T('levelName')[sp.level] || sp.level}</span>
+      </div>
+      <span class="species-latin">${sp.latin}</span>
+      <div class="prop-chips">
+        <span class="chip chip-st-${sp.status}">${T('status')[sp.status] || ''}</span>
+        <span class="chip">${T('hyppighed')[sp.hyppighed] || sp.hyppighed}</span>
+      </div>
+      <p class="species-fact clamp">${spText(sp, 'flugt')}</p>
+      <span class="card-more">${T('cardMore')} →</span>
+    </div>`;
+  const open = () => openSheet(sp, seq);
+  card.addEventListener('click', open);
+  card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+  return card;
+}
+
+/* ------------------- artsark: hele arten på én skærm ------------------- */
+
+const SHEET = { seq: [], idx: 0, kind: 'sidder', imgIdx: 0, open: false };
+
+function openSheet(sp, seq) {
+  ensureAudio(); sfx.click();
+  SHEET.seq = seq && seq.length ? seq : [sp];
+  SHEET.idx = Math.max(0, SHEET.seq.indexOf(sp));
+  SHEET.kind = KINDS.find(k => (sp.imgs[k] || []).length) || 'sidder';
+  SHEET.imgIdx = 0;
+  SHEET.open = true;
+  $('sheet').hidden = false;
+  document.body.classList.add('sheet-open');
+  renderSheet();
+  $('sheet').querySelector('.sheet-close').focus();
+}
+
+function closeSheet() {
+  SHEET.open = false;
+  $('sheet').hidden = true;
+  document.body.classList.remove('sheet-open');
+}
+
+function sheetGo(delta) {
+  const n = SHEET.seq.length;
+  if (n < 2) return;
+  SHEET.idx = (SHEET.idx + delta + n) % n;
+  const sp = SHEET.seq[SHEET.idx];
+  SHEET.kind = KINDS.find(k => (sp.imgs[k] || []).length) || 'sidder';
+  SHEET.imgIdx = 0;
+  sfx.click();
+  renderSheet();
+  $('sheet').querySelector('.sheet-scroll').scrollTop = 0;
+}
+
+function photoGo(delta) {
+  const sp = SHEET.seq[SHEET.idx];
+  const n = (sp.imgs[SHEET.kind] || []).length;
+  if (n < 2) return;
+  SHEET.imgIdx = (SHEET.imgIdx + delta + n) % n;
+  renderSheetPhoto();
+}
+
+function renderSheetPhoto() {
+  const sp = SHEET.seq[SHEET.idx];
+  const urls = sp.imgs[SHEET.kind] || [];
+  const url = urls[SHEET.imgIdx] || '';
+  const box = $('sheet').querySelector('.sheet-photo');
+  box.classList.toggle('contain', isScanUrl(url));
+  const img = box.querySelector('img');
+  img.src = url;
+  img.alt = T('slideAlt')(T('kind')[SHEET.kind], spName(sp));
+  box.querySelector('.car-count').textContent = `${SHEET.imgIdx + 1}/${urls.length}`;
+  box.querySelectorAll('.ph-btn').forEach(b => { b.hidden = urls.length < 2; });
+  $('sheet').querySelectorAll('.photo-tab').forEach(t => {
+    const on = t.dataset.kind === SHEET.kind;
+    t.classList.toggle('on', on);
+    t.setAttribute('aria-selected', on ? 'true' : 'false');
+  });
+}
+
+function seasonStrip(sp) {
+  const names = T('months');
+  const cells = names.map((m, i) => {
+    const on = (sp.fl || []).includes(i + 1);
+    const now = new Date().getMonth() === i;
+    return `<span class="season-cell${on ? ' fl' : ''}${now ? ' now' : ''}" title="${T('monthsLong')[i]}">
+      <span class="season-bar"></span><span class="season-m">${m.charAt(0).toUpperCase()}</span></span>`;
+  }).join('');
+  return `<div class="season" role="img" aria-label="${T('cardSeen')}: ${formatMonths(sp.fl)}.">
+      <div class="season-row">${cells}</div>
+      <div class="season-legend">
+        <span><i class="sw sw-fl"></i>${T('cardSeen')}: ${formatMonths(sp.fl)}</span>
+      </div>
+    </div>`;
+}
+
+function renderSheet() {
+  if (!SHEET.open) return;
+  const sp = SHEET.seq[SHEET.idx];
+  const D = DETAILS[sp.id] || {};
+  const li = LANG === 'en' ? 1 : 0;
+  const kindLabel = T('kind');
+  const kinds = KINDS.filter(k => (sp.imgs[k] || []).length);
+  const st = loadStats()[sp.id];
+
+  const facts = [
+    [T('filterGruppe'), T('gruppeVals')[sp.gruppe]],
+    [T('filterFamily'), `${T('familyVals')[sp.family] || sp.family} <i>${sp.family}</i>`],
+    [T('secSpan'), sp.span ? `ca. ${sp.span} cm` : ''],
+    [T('filterHyppighed'), T('hyppighed')[sp.hyppighed] || sp.hyppighed],
+    [T('filterStatus'), `<span class="chip chip-st-${sp.status}">${T('status')[sp.status] || ''}</span>`],
+    [T('filterHabitat'), (sp.habitat || []).map(h => T('habitatVals')[h]).join(', ')],
+  ].filter(f => f[1]);
+
+  const sections = [
+    [kindLabel.sidder, spText(sp, 'sidder')],
+    [kindLabel.flugt, spText(sp, 'flugt')],
+    [T('secDist'), D.dist ? D.dist[li] : ''],
+    [T('factTag'), spText(sp, 'fakta')],
+  ].filter(s => s[1]);
+
+  const looks = (sp.lookalikes || []).map(id => SPECIES.find(s => s.id === id)).filter(Boolean);
+  const pairText = other => {
+    const d = PAIR_DIFF[[sp.id, other.id].sort().join('|')];
+    return d ? d[li] : spText(other, 'flugt');
+  };
+
+  const nbUrl = `https://www.naturbasen.dk/artsoegning?id=${encodeURIComponent(sp.latin)}&at=start`;
+  const wikiUrl = `https://da.wikipedia.org/w/index.php?search=${encodeURIComponent(sp.latin)}`;
+
+  const panel = $('sheet').querySelector('.sheet-panel');
+  panel.innerHTML = `
+    <div class="sheet-top">
+      <button class="sheet-nav" data-go="-1" aria-label="${T('sheetPrev')}" ${SHEET.seq.length < 2 ? 'hidden' : ''}>‹</button>
+      <span class="sheet-pos">${SHEET.seq.length > 1 ? `${SHEET.idx + 1} / ${SHEET.seq.length}` : ''}</span>
+      <button class="sheet-nav" data-go="1" aria-label="${T('sheetNext')}" ${SHEET.seq.length < 2 ? 'hidden' : ''}>›</button>
+      <span class="toolbar-spacer"></span>
+      <button class="sheet-close" aria-label="${T('sheetClose')}">✕</button>
+    </div>
+    <div class="sheet-scroll">
+      <header class="sheet-head">
+        <div class="species-title-row">
+          <h2 class="sheet-name">${spName(sp)}</h2>
+          <span class="level-badge level-${sp.level}">${T('levelName')[sp.level] || sp.level}</span>
+        </div>
+        <span class="species-latin">${sp.latin}</span>
+      </header>
+
+      <div class="sheet-photo">
+        <img alt="">
+        <button class="ph-btn ph-prev" aria-label="${T('carPrev')}">‹</button>
+        <button class="ph-btn ph-next" aria-label="${T('carNext')}">›</button>
+        <span class="car-count"></span>
+      </div>
+      <div class="photo-tabs" role="tablist">
+        ${kinds.map(k => `<button class="photo-tab" role="tab" data-kind="${k}">${kindLabel[k]} <span class="tab-n">${sp.imgs[k].length}</span></button>`).join('')}
+      </div>
+
+      <dl class="facts">${facts.map(f => `<div class="fact"><dt>${f[0]}</dt><dd>${f[1]}</dd></div>`).join('')}</dl>
+
+      ${seasonStrip(sp)}
+
+      
+      ${sections.map(s => `<section class="sheet-sec"><h3>${s[0]}</h3><p>${s[1]}</p></section>`).join('')}
+
+      ${looks.length ? `<section class="sheet-sec">
+        <h3>${T('secLook')}</h3>
+        <div class="look-list">
+          ${looks.map(o => `<button class="look-item" data-id="${o.id}">
+              <img src="${firstImg(o)}" alt="" loading="lazy">
+              <span><strong>${spName(o)}</strong><span class="look-diff">${pairText(o)}</span></span>
+            </button>`).join('')}
+        </div>
+      </section>` : ''}
+
+      <section class="sheet-sec sheet-stats">
+        <h3>${T('secStats')}</h3>
+        <p>${st && st.seen ? T('statsLine')(st.seen - st.wrong, st.seen) : T('statsNone')}</p>
+        <button class="btn-primary sheet-quiz">${T('quizSpecies')}</button>
+      </section>
+
+      <section class="sheet-sec sheet-sources">
+        <h3>${T('secSources')}</h3>
+        <p><a href="${nbUrl}" target="_blank" rel="noopener">Naturbasen</a> · <a href="${wikiUrl}" target="_blank" rel="noopener">Wikipedia (dansk)</a></p>
+      </section>
+    </div>`;
+
+  panel.querySelector('.sheet-close').addEventListener('click', () => { sfx.click(); closeSheet(); });
+  panel.querySelectorAll('.sheet-nav').forEach(b => b.addEventListener('click', () => sheetGo(+b.dataset.go)));
+  panel.querySelector('.ph-prev').addEventListener('click', () => photoGo(-1));
+  panel.querySelector('.ph-next').addEventListener('click', () => photoGo(1));
+  panel.querySelectorAll('.photo-tab').forEach(t => t.addEventListener('click', () => {
+    SHEET.kind = t.dataset.kind; SHEET.imgIdx = 0; sfx.click(); renderSheetPhoto();
+  }));
+  panel.querySelectorAll('.look-item').forEach(b => b.addEventListener('click', () => {
+    const o = SPECIES.find(s => s.id === b.dataset.id);
+    const inSeq = SHEET.seq.indexOf(o);
+    if (inSeq >= 0) { SHEET.idx = inSeq; } else { SHEET.seq = [o]; SHEET.idx = 0; }
+    SHEET.kind = KINDS.find(k => (o.imgs[k] || []).length) || 'sidder';
+    SHEET.imgIdx = 0;
+    sfx.click(); renderSheet();
+    $('sheet').querySelector('.sheet-scroll').scrollTop = 0;
+  }));
+  panel.querySelector('.sheet-quiz').addEventListener('click', () => {
+    let pool = [sp, ...looks];
+    if (pool.length < 4) {
+      const extra = shuffle(SPECIES.filter(s => !pool.includes(s) && s.level === sp.level)).slice(0, 4 - pool.length);
+      pool = pool.concat(extra);
+    }
+    closeSheet();
+    quizFromList(pool);
+  });
+
+  // swipe: på billedet skifter det billede, ellers art
+  const scroller = panel.querySelector('.sheet-scroll');
+  let sx = 0, sy = 0, onPhoto = false;
+  scroller.addEventListener('touchstart', e => {
+    const t = e.touches[0]; sx = t.clientX; sy = t.clientY;
+    onPhoto = !!e.target.closest('.sheet-photo');
+  }, { passive: true });
+  scroller.addEventListener('touchend', e => {
+    const t = e.changedTouches[0];
+    const dx = t.clientX - sx, dy = t.clientY - sy;
+    if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+    if (onPhoto) photoGo(dx < 0 ? 1 : -1);
+    else sheetGo(dx < 0 ? 1 : -1);
+  }, { passive: true });
+
+  renderSheetPhoto();
+}
+
+document.addEventListener('keydown', e => {
+  if (!SHEET.open) return;
+  if (e.key === 'Escape') closeSheet();
+  else if (e.key === 'ArrowRight') sheetGo(1);
+  else if (e.key === 'ArrowLeft') sheetGo(-1);
+});
+$('sheet').addEventListener('click', e => { if (e.target.id === 'sheet') closeSheet(); });
+
+
+/* ------------------- guide: lær at kende rovfuglene ------------------- */
+
+function renderLearn() {
+  const L = LEARN[LANG];
+  $('learnTitle').textContent = L.title;
+  $('learnIntro').textContent = L.intro;
+
+  // fem trin
+  const steps = $('learnSteps');
+  steps.innerHTML = '';
+  const stepsHead = document.createElement('h3');
+  stepsHead.className = 'learn-h3';
+  stepsHead.textContent = L.stepsTitle;
+  steps.appendChild(stepsHead);
+  L.steps.forEach((st, i) => {
+    const el = document.createElement('div');
+    el.className = 'learn-step';
+    el.innerHTML = `<span class="learn-step-num">${i + 1}</span>
+      <div><strong>${st.head}</strong> <span>${st.text}</span></div>`;
+    steps.appendChild(el);
+  });
+
+  // afsnit med billeder
+  const body = $('learnBody');
+  body.innerHTML = '';
+  L.sections.forEach(sec => {
+    const wrap = document.createElement('section');
+    wrap.className = 'learn-section';
+    const h = document.createElement('h3');
+    h.className = 'learn-h3';
+    h.textContent = sec.title;
+    wrap.appendChild(h);
+    sec.paras.forEach(p => {
+      const el = document.createElement('p');
+      el.className = 'learn-p';
+      el.textContent = p;
+      wrap.appendChild(el);
+    });
+    if (sec.imgs && sec.imgs.length) {
+      const grid = document.createElement('div');
+      grid.className = 'learn-imgs';
+      sec.imgs.forEach(im => {
+        const sp = SPECIES.find(s => s.id === im.sp);
+        if (!sp || !(sp.imgs[im.kind] || []).length) return;
+        const url = sp.imgs[im.kind][0];
+        const fig = document.createElement('figure');
+        fig.className = 'learn-img' + (isScanUrl(url) ? ' contain' : '');
+        fig.innerHTML = `<img src="${url}" alt="${im.caption}" loading="lazy">
+          <figcaption>${im.caption}</figcaption>`;
+        grid.appendChild(fig);
+      });
+      if (grid.children.length) wrap.appendChild(grid);
+    }
+    body.appendChild(wrap);
+  });
+
+  // forvekslinger
+  const la = document.createElement('section');
+  la.className = 'learn-section';
+  const laHead = document.createElement('h3');
+  laHead.className = 'learn-h3';
+  laHead.textContent = L.lookalikesTitle;
+  la.appendChild(laHead);
+  const laIntro = document.createElement('p');
+  laIntro.className = 'learn-p';
+  laIntro.textContent = L.lookalikesIntro;
+  la.appendChild(laIntro);
+  const laGrid = document.createElement('div');
+  laGrid.className = 'lookalike-grid';
+  L.lookalikes.forEach(pair => {
+    const card = document.createElement('div');
+    card.className = 'lookalike-card';
+    card.innerHTML = `<div class="lookalike-names">${pair.a} <span class="vs">↔</span> ${pair.b}</div>
+      <p>${pair.text}</p>`;
+    laGrid.appendChild(card);
+  });
+  la.appendChild(laGrid);
+  body.appendChild(la);
+
+  // CTA
+  const cta = $('learnCta');
+  cta.innerHTML = '';
+  const ctaIn = document.createElement('div');
+  ctaIn.className = 'learn-cta-card';
+  const ctaH = document.createElement('h3');
+  ctaH.textContent = L.ctaTitle;
+  const ctaP = document.createElement('p');
+  ctaP.textContent = L.ctaText;
+  const ctaBtns = document.createElement('div');
+  ctaBtns.className = 'result-actions';
+  const b1 = document.createElement('button');
+  b1.className = 'btn-primary';
+  b1.textContent = L.ctaBtn;
+  b1.addEventListener('click', () => { ensureAudio(); sfx.click(); show('start'); });
+  const b2 = document.createElement('button');
+  b2.className = 'btn-ghost';
+  b2.textContent = L.ctaList;
+  b2.addEventListener('click', () => { ensureAudio(); sfx.click(); show('list'); });
+  ctaBtns.append(b1, b2);
+  ctaIn.append(ctaH, ctaP, ctaBtns);
+  cta.appendChild(ctaIn);
+}
+
+/* ------------------- keyboard ------------------- */
+
+document.addEventListener('keydown', e => {
+  if (S.screen !== 'quiz') return;
+  if (['1', '2', '3', '4'].includes(e.key) && !S.answered) {
+    answer(Number(e.key) - 1);
+  } else if ((e.key === 'Enter' || e.key === ' ') && S.answered) {
+    e.preventDefault();
+    $('nextBtn').click();
+  }
+});
+
+/* ------------------- init ------------------- */
+
+applyLang();
+
+
+</script>
+<script>
+(function () {
+  var a = document.querySelector('.portal-back'); if (!a) return;
+  function set() { var en = document.documentElement.lang === 'en'; var t = en ? 'All quizzes' : 'Alle quizzer';
+    a.querySelector('.pb-label').textContent = t; a.setAttribute('aria-label', t); a.title = t; }
+  new MutationObserver(set).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] }); set();
+})();
+</script>
+</body>
+</html>
