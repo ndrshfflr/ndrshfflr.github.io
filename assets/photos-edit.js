@@ -4,22 +4,30 @@
    /admin, the Photos page or here), or with photography.html#edit. Visitors
    never load it.
 
-   Edit (bottom right) turns the stream into an editor:
+   Edit (bottom right) turns the page into an editor:
+   Stream
    - tap a photo to select it; a panel shows its caption, its size in the grid
-     (1–3 cells wide and tall), what to keep in frame, and its place in the order
+     (1–3 cells wide and tall), what to keep in frame, its place in the order
+     and the albums it's in
    - laptop: drag a photo to move it (a line shows where it lands), drag the
-     corner of the selected photo to resize it
-   - phone: the First / Earlier / Later / Last buttons and the size grid
-   - "Take off the page" keeps the photo in the library (Photos page);
-     "Delete for good" is its own, confirmed step and removes it everywhere
-   Changes gather until Save: one commit to content/gallery.json, applied on top
-   of the newest version (so photos added meanwhile are kept). Discard undoes.
-   Signing in, saving and deleting come from assets/edit-core.js.
+     corner of the selected photo to resize it; phone: the buttons
+   - "Take off the page" keeps the photo in the library; "Delete for good" is
+     its own, confirmed step and removes it everywhere, right away
+   Adding photos (Add photos, in the bar)
+   - from this device: shrunk on this device, location and other metadata
+     removed unless "Keep metadata" is ticked; sent on Save
+   - from the library: photos that aren't on the page (field log only)
+   Albums
+   - make, rename (English and Danish), reorder and delete albums; open one to
+     add photos, order them, pick the cover or take photos out
+   Changes gather until Save: one commit (new photo files + content/gallery.json),
+   applied on top of the newest version, so photos added meanwhile are kept.
+   Discard undoes. Signing in, saving and deleting come from assets/edit-core.js.
    ========================================================================== */
 (function () {
   'use strict';
 
-  var P = window.Photos, E = window.SiteEdit, doc = document;
+  var P = window.Photos, E = window.SiteEdit, PM = window.PhotosMore, doc = document;
   if (!P || !E || !P.data || !P.data.edit || window.PhotosEdit) return;
   window.PhotosEdit = true;
   E.setup(P.data.edit);
@@ -27,13 +35,19 @@
   var mosaic = doc.getElementById('mosaic');
   var FILE = 'content/gallery.json';
   var FIELDS = ['caption', 'weight', 'width', 'height', 'focus', 'onPhotoPage']; // what this editor changes on a photo
+  var NOTED = ['taken', 'camera', 'lens', 'lat', 'lon'];                        // noted on a new photo that keeps its metadata
   var WEIGHT = { '1x1': 1, '2x1': 2, '2x2': 3, '3x2': 4, '3x3': 5 };           // the shapes the old sizes 1–5 stand for
   var CELLS = { 1: [1, 1], 2: [2, 1], 3: [2, 2], 4: [3, 2], 5: [3, 3] };
   var FOCUS = [['top', 'Top', '↑'], ['left', 'Left', '←'], ['center', 'Middle', '•'], ['right', 'Right', '→'], ['bottom', 'Bottom', '↓']];
+  var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var fine = !!(window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches);
 
-  /* st.work: the photo library as it will be saved; st.saved: as it is on the site now */
-  var st = { on: false, busy: false, work: [], saved: '[]', base: {}, order0: [], off: {}, sel: null, site: null, note: '', kind: '' };
+  /* st.work: the photo library as it will be saved; st.albums likewise; the *Saved / base copies: as on the site now.
+     st.fresh: photos added from this device, not sent yet (keyed by a temporary address);
+     st.preview: sent photos shown from this device until the site has them */
+  var st = { on: false, busy: false, work: [], saved: '[]', base: {}, order0: [], off: {}, site: null, note: '', kind: '',
+    albums: [], albumsSaved: '[]', savedIds: {}, legacy: false, legacy0: false, fresh: {}, preview: {},
+    view: 'stream', sel: null, selAlbum: null, openAlbum: null };
 
   /* ------------------------------------------------------------------ small helpers */
   function h(tag, cls, text) {
@@ -48,10 +62,12 @@
     if (label) b.setAttribute('aria-label', label);
     return b;
   }
-  function key(e) { return E.same(e.image); }
-  function fileName(e) { return String(e.image).replace(/^.*\//, ''); }
+  function key(e) { return st.fresh[e.image] ? e.image : E.same(e.image); }
+  function fileName(e) { return st.fresh[e.image] ? st.fresh[e.image].name : String(e.image).replace(/^.*\//, ''); }
   function entry(k) { for (var i = 0; i < st.work.length; i++) if (key(st.work[i]) === k) return st.work[i]; return null; }
   function onPage(e) { return e.onPhotoPage !== false; }
+  function disp(k) { return st.fresh[k] ? k : st.preview[k] || k; } // what to show for a photo
+  function n2(n, one, many) { return n === 1 ? '1 ' + one : n + ' ' + many; }
   /* the cells a photo spans, as assets/photos.js and src/build.py work it out */
   function cells(e) {
     var f = function (v) { v = parseInt(v, 10); return v >= 1 ? Math.min(3, v) : 0; };
@@ -64,8 +80,52 @@
     if (w) { e.weight = w; delete e.width; delete e.height; } // one of the five old shapes: keep it as the plain size
     else { e.width = c; e.height = r; }
   }
-  /* the photos shown while editing: those on the page, and those taken off it since the last save (dimmed) */
+  /* the photos shown in the stream while editing: those on the page, and those taken off it since the last save (dimmed) */
   function shown() { return st.work.filter(function (e) { return onPage(e) || st.off[key(e)]; }); }
+
+  /* ---------- albums ---------- */
+  function album(id) { for (var i = 0; i < st.albums.length; i++) if (st.albums[i].id === id) return st.albums[i]; return null; }
+  function albumPhotos(a) { return a.photos.filter(function (k) { return entry(k); }); }
+  function coverOf(a) { var ph = albumPhotos(a).filter(function (k) { return onPage(entry(k)); }); return a.cover && ph.indexOf(a.cover) >= 0 ? a.cover : ph[0] || albumPhotos(a)[0] || ''; }
+  function inAlbum(a, k) { return a.photos.indexOf(k) >= 0; }
+  function uniqueId(name, self) {
+    var base = E.slugify(name) || 'album', id = base, i = 2;
+    while (st.albums.some(function (a) { return a !== self && a.id === id; })) id = base + '-' + (i++);
+    return id;
+  }
+  var nextNew = 1;
+  function newAlbum(name) {
+    var a = { id: 'new-' + (nextNew++), name: name || 'New album', nameDa: '', cover: '', photos: [] };
+    st.albums.push(a);
+    return a;
+  }
+  function addToAlbum(a, k) { if (!inAlbum(a, k)) a.photos.push(k); }
+  function takeFromAlbum(a, k) { a.photos = a.photos.filter(function (x) { return x !== k; }); if (a.cover === k) a.cover = ''; }
+  /* the albums as content/gallery.json has them, with old-style album names on photos folded in */
+  function readAlbums(d) {
+    var list = [], legacy = false;
+    E.arr(d.albums).forEach(function (a) {
+      var name = String(a && a.name || '').trim();
+      if (!name) return;
+      var x = { id: String(a.id || '').trim(), name: name, nameDa: String(a.nameDa || '').trim(), cover: a.cover ? E.same(a.cover) : '', photos: [] };
+      E.arr(a.photos).forEach(function (p) { p = E.same(p); if (p && x.photos.indexOf(p) < 0) x.photos.push(p); });
+      if (!/^[a-z0-9-]+$/.test(x.id) || list.some(function (y) { return y.id === x.id; })) { x.id = ''; legacy = true; }
+      list.push(x);
+    });
+    E.arr(d.images).forEach(function (g) {
+      E.arr(g && g.albums).forEach(function (name) {
+        name = String(name || '').trim();
+        if (!name) return;
+        legacy = true;
+        var a = list.filter(function (y) { return y.name.toLowerCase() === name.toLowerCase(); })[0];
+        if (!a) { a = { id: '', name: name, nameDa: '', cover: '', photos: [] }; list.push(a); }
+        if (a.photos.indexOf(E.same(g.image)) < 0) a.photos.push(E.same(g.image));
+      });
+    });
+    st.albums = list;
+    list.forEach(function (a) { if (!a.id) a.id = uniqueId(a.name, a); });
+    return legacy;
+  }
 
   /* ------------------------------------------------------------------ what has changed */
   function snap(e) { var o = {}; FIELDS.forEach(function (f) { if (e[f] !== undefined && e[f] !== '') o[f] = e[f]; }); return JSON.stringify(o); }
@@ -74,25 +134,40 @@
     st.base = {}; st.off = {};
     st.work.forEach(function (e) { st.base[key(e)] = snap(e); });
     st.order0 = st.work.map(key);
+    st.albumsSaved = JSON.stringify(st.albums);
+    st.savedIds = {};
+    st.albums.forEach(function (a) { st.savedIds[a.id] = true; });
   }
-  function changed() { return st.work.filter(function (e) { return snap(e) !== st.base[key(e)]; }); }
-  function reordered() { return st.work.map(key).join('\n') !== st.order0.join('\n'); }
-  function dirty() { return changed().length + (reordered() ? 1 : 0); }
+  function freshKeys() { return st.work.map(key).filter(function (k) { return st.fresh[k]; }); }
+  function changed() { return st.work.filter(function (e) { return !st.fresh[key(e)] && snap(e) !== st.base[key(e)]; }); }
+  function reordered() { return st.work.map(key).filter(function (k) { return !st.fresh[k]; }).join('\n') !== st.order0.join('\n'); }
+  function albumsChanged() { return st.legacy || JSON.stringify(st.albums) !== st.albumsSaved; }
+  function dirty() { return changed().length + (reordered() ? 1 : 0) + (albumsChanged() ? 1 : 0) + freshKeys().length; }
 
   /* ------------------------------------------------------------------ the controls */
   var fab = btn('pe-fab', '', 'Edit the photography page');
   fab.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4z"/><path d="M13.5 6.5l4 4"/></svg><span>Edit</span>';
 
+  /* the bar along the bottom */
   var bar = h('div', 'pe-bar');
   bar.setAttribute('role', 'region'); bar.setAttribute('aria-label', 'Editing the photography page');
   bar.hidden = true;
   var status = h('p', 'pe-status'); status.setAttribute('role', 'status'); status.setAttribute('aria-live', 'polite');
-  var addLink = h('a', 'pe-link', 'Add photos'); addLink.href = 'upload.html';
-  var discardB = btn('pe-btn', 'Discard'), saveB = btn('pe-btn pe-primary', 'Save'), doneB = btn('pe-btn', 'Done');
+  var addB = btn('pe-btn pe-add', '+ Add photos'), discardB = btn('pe-btn', 'Discard'), saveB = btn('pe-btn pe-primary', 'Save'), doneB = btn('pe-btn', 'Done');
+  addB.setAttribute('aria-haspopup', 'true'); addB.setAttribute('aria-expanded', 'false');
   var acts = h('div', 'pe-acts');
-  [addLink, discardB, saveB, doneB].forEach(function (n) { acts.appendChild(n); });
+  [addB, discardB, saveB, doneB].forEach(function (n) { acts.appendChild(n); });
   bar.appendChild(status); bar.appendChild(acts);
 
+  /* Add photos: a small menu above the bar */
+  var menu = h('div', 'pe-menu');
+  menu.setAttribute('role', 'menu'); menu.hidden = true;
+  var mDevice = btn('pe-mi', 'From this device…'), mLib = btn('pe-mi', 'From the library…');
+  var mPage = h('a', 'pe-mi', 'Finds and blog posts: the Photos page ↗'); mPage.href = 'upload.html'; mPage.target = '_blank'; mPage.rel = 'noopener';
+  [mDevice, mLib, mPage].forEach(function (n) { n.setAttribute('role', 'menuitem'); menu.appendChild(n); });
+  var fileIn = h('input', 'pe-file'); fileIn.type = 'file'; fileIn.accept = 'image/*'; fileIn.multiple = true; fileIn.hidden = true; fileIn.setAttribute('aria-hidden', 'true');
+
+  /* the panel for what's selected: a photo, an album, or a photo inside an album */
   var panel = h('aside', 'pe-panel');
   panel.setAttribute('aria-label', 'The selected photo');
   panel.hidden = true;
@@ -101,8 +176,28 @@
   var capL = h('label', 'pe-label pe-cap', 'Caption'), cap = h('input', 'pe-input');
   cap.type = 'text'; cap.maxLength = 160; cap.setAttribute('enterkeyhint', 'done'); cap.autocomplete = 'off';
   capL.appendChild(cap);
-  var head = h('div', 'pe-head'); head.appendChild(thumb); head.appendChild(capL); head.appendChild(closeB);
+  var head = h('div', 'pe-head'); head.appendChild(thumb); head.appendChild(capL);
 
+  /* an order row: « ‹ › » */
+  function orderRow(label, onMove) {
+    var box = h('div', 'pe-group pe-order-box'), row = h('div', 'pe-order');
+    box.appendChild(h('p', 'pe-label', label));
+    var MOVES = [['first', '«', 'First'], ['earlier', '‹', 'Earlier'], ['later', '›', 'Later'], ['last', '»', 'Last']];
+    var btns = MOVES.map(function (m) {
+      var b = btn('pe-btn pe-move', '', 'Move ' + (m[0] === 'first' ? 'to the start' : m[0] === 'last' ? 'to the end' : m[0]));
+      var a = h('span', 'pe-arrow', m[1]), t = h('span', 'pe-move-t', m[2]); a.setAttribute('aria-hidden', 'true');
+      if (m[0] === 'later' || m[0] === 'last') { b.appendChild(t); b.appendChild(a); } else { b.appendChild(a); b.appendChild(t); }
+      b.addEventListener('click', function () { onMove(m[0]); if (!b.disabled) b.focus(); });
+      row.appendChild(b);
+      return { b: b, v: m[0] };
+    });
+    box.appendChild(row);
+    return { box: box, update: function (i, n, off) {
+      btns.forEach(function (m) { m.b.disabled = st.busy || off || ((m.v === 'first' || m.v === 'earlier') ? i <= 0 : i >= n - 1); });
+    } };
+  }
+
+  /* --- a photo in the stream --- */
   var sizeBox = h('div', 'pe-group'), sizeT = h('p', 'pe-label'), sizeGrid = h('div', 'pe-grid');
   sizeGrid.setAttribute('role', 'group'); sizeGrid.setAttribute('aria-label', 'Size in the grid');
   var sizeCells = [];
@@ -112,7 +207,6 @@
     sizeCells.push({ b: b, c: c, r: r }); sizeGrid.appendChild(b);
   })(cc, rr);
   sizeBox.appendChild(sizeT); sizeBox.appendChild(sizeGrid);
-
   var focusBox = h('div', 'pe-group'), focusGrid = h('div', 'pe-cross');
   focusGrid.setAttribute('role', 'group'); focusGrid.setAttribute('aria-label', 'Keep in frame');
   focusBox.appendChild(h('p', 'pe-label', 'Keep in frame'));
@@ -123,28 +217,29 @@
     return { b: b, v: f[0] };
   });
   focusBox.appendChild(focusGrid);
-
-  var orderBox = h('div', 'pe-group pe-order-box'), orderRow = h('div', 'pe-order');
-  orderBox.appendChild(h('p', 'pe-label', fine ? 'Order (or drag the photo)' : 'Order'));
-  var MOVES = [['first', '«', 'First'], ['earlier', '‹', 'Earlier'], ['later', '›', 'Later'], ['last', '»', 'Last']];
-  var moveBtns = MOVES.map(function (m) {
-    var b = btn('pe-btn pe-move', '', 'Move ' + (m[0] === 'first' ? 'to the start' : m[0] === 'last' ? 'to the end' : m[0]));
-    var a = h('span', 'pe-arrow', m[1]), t = h('span', 'pe-move-t', m[2]); a.setAttribute('aria-hidden', 'true');
-    if (m[0] === 'later' || m[0] === 'last') { b.appendChild(t); b.appendChild(a); }
-    else { b.appendChild(a); b.appendChild(t); }
-    b.addEventListener('click', function () { move(m[0]); });
-    orderRow.appendChild(b);
-    return { b: b, v: m[0] };
-  });
-  orderBox.appendChild(orderRow);
-
+  var streamOrder = orderRow(fine ? 'Order (or drag the photo)' : 'Order', function (how) { moveInStream(how); });
   var tools = h('div', 'pe-tools');
-  tools.appendChild(sizeBox); tools.appendChild(focusBox); tools.appendChild(orderBox);
+  tools.appendChild(sizeBox); tools.appendChild(focusBox); tools.appendChild(streamOrder.box);
 
-  var offB = btn('pe-btn', 'Take off the page'), delB = btn('pe-btn pe-danger-line', 'Delete…');
-  var foot = h('div', 'pe-foot'); foot.appendChild(offB); foot.appendChild(delB);
+  /* its albums: a chip per album, and a new one */
+  var albBox = h('div', 'pe-group pe-alb'), albChips = h('div', 'pe-chips');
+  albBox.appendChild(h('p', 'pe-label', 'Albums'));
+  albBox.appendChild(albChips);
+  var newRow = h('div', 'pe-newrow'), newIn = h('input', 'pe-input'), newOk = btn('pe-btn', 'Add');
+  newIn.type = 'text'; newIn.maxLength = 60; newIn.placeholder = 'Name of the new album'; newIn.setAttribute('aria-label', 'Name of the new album'); newIn.setAttribute('enterkeyhint', 'done');
+  newRow.appendChild(newIn); newRow.appendChild(newOk); newRow.hidden = true;
+  albBox.appendChild(newRow);
+
+  /* a new photo, not sent yet: keep its metadata? */
+  var freshBox = h('div', 'pe-group pe-fresh');
+  var keepL = h('label', 'pe-check'), keepIn = h('input'); keepIn.type = 'checkbox';
+  keepL.appendChild(keepIn); keepL.appendChild(doc.createTextNode(' Keep metadata'));
+  var keepNote = h('p', 'pe-small');
+  freshBox.appendChild(keepL); freshBox.appendChild(keepNote);
+
+  var offB = btn('pe-btn', 'Take off the page'), delB = btn('pe-btn pe-danger-line', 'Delete…'), dropB = btn('pe-btn pe-danger-line', 'Remove (not sent yet)');
+  var foot = h('div', 'pe-foot'); foot.appendChild(offB); foot.appendChild(delB); foot.appendChild(dropB);
   var offNote = h('p', 'pe-small');
-
   var confirmBox = h('div', 'pe-confirm');
   confirmBox.setAttribute('role', 'alertdialog'); confirmBox.setAttribute('aria-label', 'Delete for good?');
   confirmBox.hidden = true;
@@ -156,7 +251,39 @@
   confirmBox.appendChild(h('p', 'pe-small', 'This can’t be undone from here, and it happens right away (your other changes stay unsaved until you press Save).'));
   confirmBox.appendChild(confirmRow);
 
-  [head, nameP, tools, foot, offNote, confirmBox].forEach(function (n) { panel.appendChild(n); });
+  /* --- an album --- */
+  var albumBox = h('div', 'pe-album-box');
+  var aNameL = h('label', 'pe-label', 'Name'), aName = h('input', 'pe-input');
+  var aDaL = h('label', 'pe-label', 'Name in Danish (optional)'), aDa = h('input', 'pe-input');
+  [aName, aDa].forEach(function (i) { i.type = 'text'; i.maxLength = 60; i.autocomplete = 'off'; i.setAttribute('enterkeyhint', 'done'); });
+  aDa.lang = 'da';
+  aNameL.appendChild(aName); aDaL.appendChild(aDa);
+  var aCount = h('p', 'pe-small');
+  var albumOrder = orderRow(fine ? 'Order (or drag the album)' : 'Order', function (how) { moveAlbum(st.selAlbum, how); });
+  var aOpen = btn('pe-btn pe-primary', 'Open the album →'), aDel = btn('pe-btn pe-danger-line', 'Delete album');
+  var aFoot = h('div', 'pe-foot'); aFoot.appendChild(aOpen); aFoot.appendChild(aDel);
+  albumBox.appendChild(aNameL); albumBox.appendChild(aDaL); albumBox.appendChild(aCount); albumBox.appendChild(albumOrder.box); albumBox.appendChild(aFoot);
+  albumBox.appendChild(h('p', 'pe-small', 'Deleting an album keeps its photos.'));
+
+  /* --- a photo inside an album --- */
+  var aphotoBox = h('div', 'pe-aphoto-box');
+  var coverB = btn('pe-btn', '');
+  var aphotoOrder = orderRow(fine ? 'Order in the album (or drag)' : 'Order in the album', function (how) { moveInAlbum(how); });
+  var takeB = btn('pe-btn pe-danger-line', 'Take out of the album');
+  var apFoot = h('div', 'pe-foot'); apFoot.appendChild(coverB); apFoot.appendChild(takeB);
+  var apNote = h('p', 'pe-small');
+  aphotoBox.appendChild(aphotoOrder.box); aphotoBox.appendChild(apFoot); aphotoBox.appendChild(apNote);
+
+  var topRow = h('div', 'pe-top'); topRow.appendChild(head); topRow.appendChild(closeB);
+  [topRow, nameP, tools, albBox, freshBox, foot, offNote, confirmBox, albumBox, aphotoBox].forEach(function (n) { panel.appendChild(n); });
+
+  /* choosing several photos at once: for an album, or from the library */
+  var picker = h('div', 'pe-picker');
+  picker.setAttribute('role', 'dialog'); picker.setAttribute('aria-modal', 'true'); picker.hidden = true;
+  var pkHead = h('div', 'pe-pk-head'), pkTitle = h('p', 'pe-pk-title'), pkDone = btn('pe-btn pe-primary', 'Done');
+  var pkDevice = btn('pe-btn', '+ From this device…'), pkNote = h('p', 'pe-small'), pkGrid = h('ul', 'pe-pk-grid');
+  pkHead.appendChild(pkTitle); pkHead.appendChild(pkDone);
+  [pkHead, pkNote, pkDevice, pkGrid].forEach(function (n) { picker.appendChild(n); });
 
   /* signing in, when no sign-in is kept on this device (or it has expired) */
   var signin = h('div', 'pe-signin');
@@ -175,78 +302,147 @@
   signin.appendChild(signRow); signin.appendChild(signMsg); signin.appendChild(keyBox);
 
   var ui = h('div', 'pe');
-  [fab, bar, panel, signin].forEach(function (n) { ui.appendChild(n); });
+  [fab, menu, bar, panel, picker, signin, fileIn].forEach(function (n) { ui.appendChild(n); });
   doc.body.appendChild(ui);
 
   /* ------------------------------------------------------------------ drawing */
+  function mode() {
+    if (st.view === 'stream' && st.sel && entry(st.sel)) return 'photo';
+    if (st.view === 'albums' && st.openAlbum && st.sel && entry(st.sel) && album(st.openAlbum)) return 'aphoto';
+    if (st.view === 'albums' && !st.openAlbum && st.selAlbum && album(st.selAlbum)) return 'album';
+    return '';
+  }
   function say(text, kind) { st.note = text || ''; st.kind = kind || ''; drawBar(); }
+  function hint() {
+    if (st.view === 'trips') return 'Field trips are edited in /admin for now; the stream and albums here.';
+    if (st.view === 'albums' && st.openAlbum) return 'Tap a photo to order it, make it the cover or take it out' + (fine ? ', or drag it.' : '.');
+    if (st.view === 'albums') return 'Tap an album to rename or order it, or make a new one.';
+    return 'Tap a photo to change it' + (fine ? ', or drag it to a new place.' : '.');
+  }
   function drawBar() {
-    var n = dirty();
+    var n = dirty(), f = freshKeys().length;
     status.className = 'pe-status' + (st.kind ? ' ' + st.kind : '');
-    status.textContent = st.note || (away() ? 'Editing works in the Stream for now; albums and field trips come next.'
-      : n ? (n === 1 ? '1 change' : n + ' changes') + ' not saved yet'
-      : 'Tap a photo to change it' + (fine ? ', or drag it to a new place.' : '.'));
+    status.textContent = st.note || (n ? (n === 1 ? '1 change' : n + ' changes') + ' not saved yet' + (f ? ' (' + n2(f, 'new photo', 'new photos') + ' to send)' : '') : hint());
     saveB.disabled = discardB.disabled = st.busy || !n;
-    doneB.disabled = st.busy;
+    doneB.disabled = addB.disabled = st.busy;
     doc.documentElement.style.setProperty('--pe-bar', bar.offsetHeight + 'px');
     doc.body.style.paddingBottom = st.on ? (bar.offsetHeight + (panel.hidden || fine ? 0 : panel.offsetHeight) + 24) + 'px' : '';
   }
-  /* looking at Albums or Field trips while editing: the editor waits */
-  var streamPane = doc.getElementById('pane-stream');
-  function away() { return !!(streamPane && streamPane.hidden); }
-  Array.prototype.forEach.call(doc.querySelectorAll('.pv'), function (b) {
-    b.addEventListener('click', function () { if (st.on) { if (away()) select(null); else drawBar(); } });
-  });
+  function show(n, on) { n.hidden = !on; }
   function drawPanel() {
-    var e = st.sel && entry(st.sel);
-    panel.hidden = !e;
-    if (!e) { confirmBox.hidden = true; return; }
-    var cr = cells(e), list = shown(), i = list.indexOf(e);
-    if (thumb.getAttribute('src') !== e.image) thumb.src = e.image;
-    nameP.textContent = fileName(e);
-    if (doc.activeElement !== cap) cap.value = e.caption || '';
-    sizeT.textContent = 'Size: ' + cr[0] + ' × ' + cr[1];
-    sizeCells.forEach(function (s) {
-      s.b.classList.toggle('on', s.c <= cr[0] && s.r <= cr[1]);
-      s.b.setAttribute('aria-pressed', s.c === cr[0] && s.r === cr[1] ? 'true' : 'false');
+    var m = mode();
+    panel.hidden = !m;
+    if (!m) { confirmBox.hidden = true; newRow.hidden = true; drawBar(); return; }
+    var e = (m === 'photo' || m === 'aphoto') && entry(st.sel), isFresh = e && !!st.fresh[st.sel];
+    panel.setAttribute('aria-label', m === 'album' ? 'The selected album' : 'The selected photo');
+    show(topRow, true); show(head, m !== 'album'); show(nameP, m !== 'album');
+    show(tools, m === 'photo'); show(albBox, m === 'photo'); show(freshBox, m === 'photo' && isFresh);
+    show(foot, m === 'photo'); show(offNote, m === 'photo' && !isFresh && !onPage(e));
+    show(albumBox, m === 'album'); show(aphotoBox, m === 'aphoto');
+    if (m !== 'photo') confirmBox.hidden = true;
+    if (e) {
+      if (thumb.getAttribute('src') !== disp(st.sel)) thumb.src = disp(st.sel);
+      nameP.textContent = isFresh ? 'New · ' + fileName(e) + ' · sent when you press Save' : fileName(e);
+      if (doc.activeElement !== cap) cap.value = e.caption || '';
+    }
+    if (m === 'photo') {
+      var cr = cells(e), list = shown(), i = list.indexOf(e);
+      sizeT.textContent = 'Size: ' + cr[0] + ' × ' + cr[1];
+      sizeCells.forEach(function (s) {
+        s.b.classList.toggle('on', s.c <= cr[0] && s.r <= cr[1]);
+        s.b.setAttribute('aria-pressed', s.c === cr[0] && s.r === cr[1] ? 'true' : 'false');
+      });
+      focusBtns.forEach(function (f) {
+        var on = (e.focus || 'center') === f.v;
+        f.b.classList.toggle('on', on); f.b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      streamOrder.update(i, list.length, !onPage(e));
+      drawChips(e);
+      show(offB, !isFresh); show(delB, !isFresh); show(dropB, isFresh);
+      offB.textContent = onPage(e) ? 'Take off the page' : 'Put back on the page';
+      offNote.textContent = 'Off the photography page once you save. It stays in your library (Add photos → From the library).';
+      offB.disabled = delB.disabled = dropB.disabled = st.busy;
+      tools.classList.toggle('pe-dim', !onPage(e));
+      if (isFresh) drawFresh();
+    } else if (m === 'album') {
+      var a = album(st.selAlbum), j = st.albums.indexOf(a);
+      if (doc.activeElement !== aName) aName.value = a.name;
+      if (doc.activeElement !== aDa) aDa.value = a.nameDa;
+      var nOn = albumPhotos(a).filter(function (k) { return onPage(entry(k)); }).length;
+      aCount.textContent = n2(nOn, 'photo', 'photos') + (albumPhotos(a).length > nOn ? ' (and ' + (albumPhotos(a).length - nOn) + ' off the page, not shown)' : '');
+      albumOrder.update(j, st.albums.length, false);
+      aOpen.disabled = aDel.disabled = st.busy;
+    } else {
+      var al = album(st.openAlbum), ph = albumPhotos(al), k = ph.indexOf(st.sel), isCover = coverOf(al) === st.sel;
+      aphotoOrder.update(k, ph.length, false);
+      coverB.textContent = isCover ? '★ The cover' : 'Make it the cover';
+      coverB.setAttribute('aria-pressed', isCover ? 'true' : 'false');
+      coverB.classList.toggle('on', isCover);
+      coverB.disabled = st.busy || (isCover && !al.cover);
+      apNote.textContent = isCover && !al.cover ? 'The first photo is the cover until you choose one.' : onPage(e) ? '' : 'This photo is off the page, so the album doesn’t show it.';
+      apNote.hidden = !apNote.textContent;
+      takeB.disabled = st.busy;
+    }
+    drawBar();
+  }
+  function drawChips(e) {
+    var k = key(e);
+    albChips.textContent = '';
+    st.albums.forEach(function (a) {
+      var on = inAlbum(a, k), b = btn('pe-chip' + (on ? ' on' : ''), (on ? '✓ ' : '') + a.name);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.addEventListener('click', function () {
+        if (inAlbum(a, k)) takeFromAlbum(a, k); else addToAlbum(a, k);
+        st.note = ''; drawPanel();
+        var again = albChips.querySelectorAll('.pe-chip')[st.albums.indexOf(a)]; if (again) again.focus();
+      });
+      albChips.appendChild(b);
     });
-    focusBtns.forEach(function (f) {
-      var on = (e.focus || 'center') === f.v;
-      f.b.classList.toggle('on', on); f.b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
-    moveBtns.forEach(function (m) { m.b.disabled = st.busy || !onPage(e) || ((m.v === 'first' || m.v === 'earlier') ? i <= 0 : i >= list.length - 1); });
-    offB.textContent = onPage(e) ? 'Take off the page' : 'Put back on the page';
-    offNote.textContent = onPage(e) ? '' : 'Off the photography page once you save. It stays in your library (Add photos → Library).';
-    offNote.hidden = onPage(e);
-    offB.disabled = delB.disabled = st.busy;
-    tools.classList.toggle('pe-dim', !onPage(e));
+    var nb = btn('pe-chip pe-chip-new', '+ New album');
+    nb.addEventListener('click', function () { newRow.hidden = false; newIn.value = ''; newIn.focus(); drawBar(); });
+    albChips.appendChild(nb);
+    if (!st.albums.length) albChips.insertBefore(h('span', 'pe-small', 'No albums yet. '), nb);
+  }
+  function drawFresh() {
+    var f = st.fresh[st.sel], x = f.meta, m = x && x.meta || {};
+    keepIn.checked = !!f.keep;
+    keepL.hidden = !(x && x.keep);
+    if (!x) { keepNote.textContent = 'Reading the photo…'; return; }
+    var t = m.taken ? /^(\d{4})-(\d{2})-(\d{2})(?:T(\d{2}:\d{2}))?/.exec(m.taken) : null;
+    var has = [m.camera, m.lens, t ? 'taken ' + (+t[3]) + ' ' + MONTHS[+t[2] - 1] + ' ' + t[1] + (t[4] ? ' ' + t[4] : '') : '',
+      x.gps ? 'at ' + x.gps.lat.toFixed(4) + ', ' + x.gps.lon.toFixed(4) : ''].filter(Boolean).join(' · ');
+    keepNote.textContent = x.keep
+      ? (has ? has + '. ' : '') + 'If kept, anyone can read all of it from the photo' + (x.gps ? ', the exact spot included' : '') + '. Otherwise it’s removed.'
+      : 'No metadata in this photo, so there’s none to keep.';
   }
   function decorate() {
     var list = shown();
     Array.prototype.forEach.call(mosaic.children, function (li, i) {
       var e = list[i], a = li.querySelector('.tile-a');
       if (!e) return;
-      li.setAttribute('data-key', key(e));
+      var k = key(e);
+      li.setAttribute('data-key', k);
       if (a) { a.draggable = false; var im = a.querySelector('img'); if (im) im.draggable = false; }
       if (!onPage(e)) { li.classList.add('pe-off'); li.appendChild(h('span', 'pe-badge', 'Off the page')); }
-      if (key(e) === st.sel) {
+      else if (st.fresh[k]) li.appendChild(h('span', 'pe-badge pe-new', 'New'));
+      if (k === st.sel && st.view === 'stream') {
         li.classList.add('pe-sel');
         if (a) a.setAttribute('aria-current', 'true');
-        if (onPage(e)) { var hd = h('span', 'pe-handle'); hd.setAttribute('aria-hidden', 'true'); li.appendChild(hd); }
+        if (onPage(e) && fine) { var hd = h('span', 'pe-handle'); hd.setAttribute('aria-hidden', 'true'); li.appendChild(hd); }
       }
     });
   }
   /* show the working list on the page */
   function render() {
-    P.show(shown().map(function (e) { var c = {}; Object.keys(e).forEach(function (k) { if (k !== 'onPhotoPage') c[k] = e[k]; }); return c; }));
+    P.show(shown().map(function (e) { var c = {}; Object.keys(e).forEach(function (k) { if (k !== 'onPhotoPage') c[k] = e[k]; }); c.image = disp(key(e)); return c; }));
     decorate();
+    if (st.view === 'albums' && PM) PM.redraw();
     drawPanel();
-    drawBar();
   }
-  function tileOf(k) { return k ? mosaic.querySelector('.tile[data-key="' + String(k).replace(/["\\]/g, '\\$&') + '"]') : null; }
+  function tileOf(k, root) { return k ? (root || mosaic).querySelector('[data-key="' + String(k).replace(/["\\]/g, '\\$&') + '"]') : null; }
   function select(k, reveal) {
     st.sel = k && entry(k) ? k : null;
-    confirmBox.hidden = true;
+    confirmBox.hidden = true; newRow.hidden = true;
     Array.prototype.forEach.call(mosaic.querySelectorAll('.pe-sel'), function (li) {
       li.classList.remove('pe-sel');
       var a = li.querySelector('.tile-a'), hd = li.querySelector('.pe-handle');
@@ -258,14 +454,15 @@
       li.classList.add('pe-sel');
       var a = li.querySelector('.tile-a');
       if (a) a.setAttribute('aria-current', 'true');
-      if (e && onPage(e)) { var hd = h('span', 'pe-handle'); hd.setAttribute('aria-hidden', 'true'); li.appendChild(hd); }
+      if (e && onPage(e) && fine) { var hd = h('span', 'pe-handle'); hd.setAttribute('aria-hidden', 'true'); li.appendChild(hd); }
     }
     if (st.note && st.kind !== 'err') st.note = '';
-    drawPanel(); drawBar();
+    drawPanel();
     if (li && reveal) inView(li);
   }
-  /* keep the selected photo clear of the bar and (on the phone) the panel */
+  /* keep the selected thing clear of the bar and (on the phone) the panel */
   function inView(li) {
+    if (!li) return;
     var r = li.getBoundingClientRect();
     var bottom = window.innerHeight - bar.offsetHeight - (fine || panel.hidden ? 0 : panel.offsetHeight) - 10;
     if (r.bottom > bottom) window.scrollBy(0, Math.min(r.bottom - bottom, r.top - 10));
@@ -278,9 +475,106 @@
     fn(e);
     st.note = '';
     render();
-    var li = tileOf(st.sel);
-    if (li) inView(li);
+    inView(tileOf(st.sel));
   }
+
+  /* ------------------------------------------------------------------ the albums pane while editing */
+  var paneEl = null;
+  function drawAlbums(pane) {
+    paneEl = pane;
+    while (pane.firstChild) pane.removeChild(pane.firstChild);
+    if (st.openAlbum && !album(st.openAlbum)) st.openAlbum = null;
+    if (st.openAlbum) return drawAlbum(pane, album(st.openAlbum));
+    var ul = h('ul', 'pe-albums');
+    ul.setAttribute('aria-label', 'Albums');
+    st.albums.forEach(function (a) {
+      var li = h('li', 'pe-acard' + (a.id === st.selAlbum ? ' pe-sel' : '')); li.setAttribute('data-key', a.id);
+      var b = btn('pe-acard-b');
+      b.setAttribute('aria-pressed', a.id === st.selAlbum ? 'true' : 'false');
+      var fr = h('span', 'pe-acover'), c = coverOf(a);
+      if (c) { var im = h('img'); im.src = disp(c); im.alt = ''; im.loading = 'lazy'; im.draggable = false; var ce = entry(c); if (ce && ce.focus) im.className = 'pe-pos-' + ce.focus; fr.appendChild(im); }
+      else fr.appendChild(h('span', 'pe-aempty', 'No photos yet'));
+      b.appendChild(fr);
+      b.appendChild(h('span', 'pe-aname', a.name));
+      if (a.nameDa) b.appendChild(h('span', 'pe-ada', a.nameDa));
+      b.appendChild(h('span', 'pe-an', n2(albumPhotos(a).filter(function (k) { return onPage(entry(k)); }).length, 'photo', 'photos')));
+      if (!st.savedIds[a.id]) b.appendChild(h('span', 'pe-badge pe-new', 'New'));
+      b.addEventListener('click', function () {
+        if (skipClick) { skipClick = false; return; }
+        st.selAlbum = st.selAlbum === a.id ? null : a.id; st.note = '';
+        drawAlbums(pane); drawPanel(); inView(tileOf(a.id, pane));
+      });
+      b.addEventListener('dblclick', function () { openAlbumView(a.id); });
+      li.appendChild(b); ul.appendChild(li);
+    });
+    var nl = h('li', 'pe-acard pe-acard-new'), nb = btn('pe-acard-b', '');
+    nb.appendChild(h('span', 'pe-acover pe-aplus', '+'));
+    nb.appendChild(h('span', 'pe-aname', 'New album'));
+    nb.addEventListener('click', function () {
+      if (st.busy) return;
+      var a = newAlbum();
+      st.selAlbum = a.id; st.note = '';
+      drawAlbums(pane); drawPanel();
+      aName.focus(); aName.select();
+    });
+    nl.appendChild(nb); ul.appendChild(nl);
+    pane.appendChild(ul);
+    if (!st.albums.length) pane.appendChild(h('p', 'pe-small pe-pane-note', 'No albums yet. Make one here, or from a photo in the stream (its panel has “+ New album”).'));
+    sortable(ul, function (from, to, before) {
+      var a = album(from), t = album(to);
+      if (!a || !t) return;
+      st.albums.splice(st.albums.indexOf(a), 1);
+      st.albums.splice(st.albums.indexOf(t) + (before ? 0 : 1), 0, a);
+      st.selAlbum = from; st.note = '';
+      drawAlbums(pane); drawPanel();
+    });
+  }
+  function drawAlbum(pane, a) {
+    var head0 = h('div', 'album-head pe-ahead');
+    var back = btn('pv album-back', '‹ All albums');
+    back.addEventListener('click', function () { st.openAlbum = null; st.sel = null; st.selAlbum = a.id; drawAlbums(pane); drawPanel(); });
+    var title = h('h2', 'album-title', a.name);
+    var ph = albumPhotos(a);
+    var add = btn('pe-btn pe-primary', '+ Add photos');
+    add.addEventListener('click', function () { pickForAlbum(a); });
+    head0.appendChild(back); head0.appendChild(title); head0.appendChild(h('span', 'album-n', n2(ph.length, 'photo', 'photos'))); head0.appendChild(add);
+    pane.appendChild(head0);
+    if (!ph.length) { pane.appendChild(h('p', 'pe-small pe-pane-note', 'No photos in this album yet. “+ Add photos” chooses them from the stream or this device.')); return; }
+    var ul = h('ul', 'pe-agrid');
+    ul.setAttribute('aria-label', 'Photos in ' + a.name);
+    var cov = coverOf(a);
+    ph.forEach(function (k) {
+      var e = entry(k), li = h('li', 'pe-aph' + (k === st.sel ? ' pe-sel' : '') + (onPage(e) ? '' : ' pe-off'));
+      li.setAttribute('data-key', k);
+      var b = btn('pe-aph-b', '', e.caption || fileName(e));
+      b.setAttribute('aria-pressed', k === st.sel ? 'true' : 'false');
+      var im = h('img'); im.src = disp(k); im.alt = ''; im.loading = 'lazy'; im.draggable = false; if (e.focus) im.className = 'pe-pos-' + e.focus;
+      b.appendChild(im);
+      if (k === cov) b.appendChild(h('span', 'pe-badge pe-cover', '★ Cover'));
+      else if (!onPage(e)) b.appendChild(h('span', 'pe-badge', 'Off the page'));
+      if (st.fresh[k]) b.appendChild(h('span', 'pe-badge pe-new pe-badge-r', 'New'));
+      b.addEventListener('click', function () {
+        if (skipClick) { skipClick = false; return; }
+        st.sel = st.sel === k ? null : k; st.note = '';
+        drawAlbums(pane); drawPanel(); inView(tileOf(k, pane));
+      });
+      li.appendChild(b); ul.appendChild(li);
+    });
+    pane.appendChild(ul);
+    sortable(ul, function (from, to, before) {
+      a.photos = a.photos.filter(function (x) { return x !== from; });
+      a.photos.splice(a.photos.indexOf(to) + (before ? 0 : 1), 0, from);
+      st.sel = from; st.note = '';
+      drawAlbums(pane); drawPanel();
+    });
+  }
+  function openAlbumView(id) {
+    st.openAlbum = id; st.sel = null; st.selAlbum = null; st.note = '';
+    if (paneEl) drawAlbums(paneEl);
+    drawPanel();
+    window.scrollTo({ top: Math.max(0, (paneEl ? paneEl.getBoundingClientRect().top + window.pageYOffset : 0) - 90) });
+  }
+  function redrawAlbums() { if (st.view === 'albums' && paneEl) drawAlbums(paneEl); }
 
   /* ------------------------------------------------------------------ the order */
   function place(k, targetK, before) {
@@ -292,19 +586,34 @@
     st.note = '';
     st.sel = k;
     render();
-    var li = tileOf(k);
-    if (li) inView(li);
+    inView(tileOf(k));
   }
-  function move(how) {
+  function target(list, i, how) { return how === 'first' ? 0 : how === 'last' ? list.length - 1 : how === 'earlier' ? i - 1 : i + 1; }
+  function moveInStream(how) {
     var e = st.sel && entry(st.sel), list = shown(), i = list.indexOf(e);
     if (!e || i < 0) return;
-    var t = how === 'first' ? list[0] : how === 'last' ? list[list.length - 1] : how === 'earlier' ? list[i - 1] : list[i + 1];
+    var t = list[target(list, i, how)];
     if (t && t !== e) place(st.sel, key(t), how === 'first' || how === 'earlier');
-    var b = moveBtns.filter(function (m) { return m.v === how; })[0];
-    if (b && !b.b.disabled) b.b.focus(); // Safari doesn't focus buttons on click
+  }
+  function moveAlbum(id, how) {
+    var a = album(id), i = st.albums.indexOf(a);
+    if (!a) return;
+    var t = Math.max(0, Math.min(st.albums.length - 1, target(st.albums, i, how)));
+    st.albums.splice(i, 1); st.albums.splice(t, 0, a);
+    st.note = ''; redrawAlbums(); drawPanel(); inView(tileOf(id, paneEl));
+  }
+  function moveInAlbum(how) {
+    var a = album(st.openAlbum), ph = a && albumPhotos(a), i = ph ? ph.indexOf(st.sel) : -1;
+    if (i < 0) return;
+    var t = ph[Math.max(0, Math.min(ph.length - 1, target(ph, i, how)))];
+    if (t === st.sel) return;
+    a.photos = a.photos.filter(function (x) { return x !== st.sel; });
+    var at = a.photos.indexOf(t);
+    a.photos.splice(how === 'first' || how === 'earlier' ? at : at + 1, 0, st.sel);
+    st.note = ''; redrawAlbums(); drawPanel(); inView(tileOf(st.sel, paneEl));
   }
 
-  /* tapping a photo selects it (it doesn't open the viewer while editing) */
+  /* tapping a photo in the stream selects it (it doesn't open the viewer while editing) */
   var skipClick = false;
   mosaic.addEventListener('click', function (ev) {
     if (!st.on) return;
@@ -317,7 +626,8 @@
   }, true);
   mosaic.addEventListener('dragstart', function (ev) { if (st.on) ev.preventDefault(); });
 
-  /* laptop: drag a photo to a new place, or drag the selected photo's corner to resize it */
+  /* laptop: drag to a new place (the stream, the albums, the photos in an album),
+     and drag the corner of the selected photo in the stream to resize it */
   var drag = null;
   function metrics() {
     var cs = getComputedStyle(mosaic);
@@ -325,10 +635,19 @@
     return { cols: cols, gap: gap, cell: (mosaic.clientWidth - (cols - 1) * gap) / cols };
   }
   function clearMarks() {
-    Array.prototype.forEach.call(mosaic.querySelectorAll('.pe-before,.pe-after'), function (n) { n.classList.remove('pe-before', 'pe-after'); });
+    Array.prototype.forEach.call(doc.querySelectorAll('.pe-before,.pe-after'), function (n) { n.classList.remove('pe-before', 'pe-after'); });
+  }
+  function sortable(container, onDrop) {
+    container.addEventListener('pointerdown', function (ev) {
+      if (!st.on || st.busy || ev.button || (ev.pointerType !== 'mouse' && ev.pointerType !== 'pen')) return;
+      var li = ev.target.closest && ev.target.closest('[data-key]');
+      if (!li || li.parentNode !== container) return;
+      drag = { kind: 'wait', li: li, box: container, onDrop: onDrop, x: ev.clientX, y: ev.clientY, id: ev.pointerId };
+    });
+    container.addEventListener('dragstart', function (ev) { if (st.on) ev.preventDefault(); });
   }
   mosaic.addEventListener('pointerdown', function (ev) {
-    if (!st.on || st.busy || ev.button) return;
+    if (!st.on || st.busy || ev.button || st.view !== 'stream') return;
     var li = ev.target.closest && ev.target.closest('.tile');
     if (!li) return;
     if (ev.target.classList.contains('pe-handle')) {
@@ -342,7 +661,7 @@
       return;
     }
     if (ev.pointerType !== 'mouse' && ev.pointerType !== 'pen') return; // touch scrolls the page; the phone uses the buttons
-    drag = { kind: 'wait', li: li, x: ev.clientX, y: ev.clientY, id: ev.pointerId };
+    drag = { kind: 'wait', li: li, box: mosaic, onDrop: place, x: ev.clientX, y: ev.clientY, id: ev.pointerId };
   });
   window.addEventListener('pointermove', function (ev) {
     if (!drag || ev.pointerId !== drag.id) return;
@@ -380,13 +699,13 @@
     drag.ghost.style.transform = 'translate(' + (ev.clientX + 14) + 'px,' + (ev.clientY + 14) + 'px)';
     ev.preventDefault();
   });
-  /* which photo the dragged one would land next to, and on which side */
+  /* which item the dragged one would land next to, and on which side */
   function aim() {
     var under = doc.elementFromPoint(drag.cx, drag.cy);
-    var li = under && under.closest ? under.closest('.tile') : null;
+    var li = under && under.closest ? under.closest('[data-key]') : null;
     clearMarks();
     drag.target = null;
-    if (!li || li === drag.li || li.parentNode !== mosaic) return;
+    if (!li || li === drag.li || li.parentNode !== drag.box) return;
     var r = li.getBoundingClientRect();
     drag.before = drag.cx < r.left + r.width / 2;
     drag.target = li;
@@ -411,32 +730,33 @@
     if (d.ghost) d.ghost.remove();
     clearMarks();
     skipClick = true; setTimeout(function () { skipClick = false; }, 0);
-    if (!cancel && d.target) place(d.li.getAttribute('data-key'), d.target.getAttribute('data-key'), d.before);
+    if (!cancel && d.target) d.onDrop(d.li.getAttribute('data-key'), d.target.getAttribute('data-key'), d.before);
   }
   window.addEventListener('pointerup', function (ev) { endDrag(ev, false); });
   window.addEventListener('pointercancel', function (ev) { endDrag(ev, true); });
   window.addEventListener('keydown', function (ev) {
     if (ev.key !== 'Escape' || !st.on) return;
     if (drag) endDrag(null, true);
+    else if (!picker.hidden) closePicker();
+    else if (!menu.hidden) setMenu(false);
     else if (!confirmBox.hidden) confirmBox.hidden = true;
-    else if (st.sel) select(null);
+    else if (st.sel || st.selAlbum) { st.selAlbum = null; select(null); redrawAlbums(); }
   });
 
   /* ------------------------------------------------------------------ the panel's buttons */
   cap.addEventListener('input', function () {
     var e = st.sel && entry(st.sel);
     if (!e) return;
-    var v = cap.value.replace(/\s+/g, ' ').replace(/^ /, '');
-    if (v) e.caption = v; else e.caption = '';
+    e.caption = cap.value.replace(/\s+/g, ' ').replace(/^ /, '');
     st.note = '';
     drawBar();
   });
   cap.addEventListener('change', function () {
     var e = st.sel && entry(st.sel);
-    if (e) { e.caption = String(e.caption || '').trim(); render(); }
+    if (e) { e.caption = String(e.caption || '').trim(); if (st.view === 'stream') render(); else { redrawAlbums(); drawPanel(); } }
   });
   cap.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') cap.blur(); });
-  closeB.addEventListener('click', function () { select(null); });
+  closeB.addEventListener('click', function () { st.selAlbum = null; select(null); redrawAlbums(); });
   offB.addEventListener('click', function () {
     change(function (e) {
       if (onPage(e)) { e.onPhotoPage = false; st.off[key(e)] = true; }
@@ -444,11 +764,68 @@
     });
     offB.focus();
   });
+  /* a new album, from a photo's panel */
+  function makeFromPanel() {
+    var name = newIn.value.replace(/\s+/g, ' ').trim();
+    if (!name) { newIn.focus(); return; }
+    var a = newAlbum(name);
+    if (st.sel) addToAlbum(a, st.sel);
+    newRow.hidden = true; st.note = '';
+    drawPanel();
+  }
+  newOk.addEventListener('click', makeFromPanel);
+  newIn.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); makeFromPanel(); } });
+  /* a new photo: keep its metadata, or take it out again */
+  keepIn.addEventListener('change', function () { var f = st.fresh[st.sel]; if (f) f.keep = keepIn.checked; drawBar(); });
+  dropB.addEventListener('click', function () {
+    var k = st.sel;
+    if (!st.fresh[k]) return;
+    dropFresh(k);
+    st.sel = null; render();
+    say('Removed; nothing was sent.');
+  });
+  /* the album's own panel */
+  aName.addEventListener('input', function () { var a = album(st.selAlbum); if (a) { a.name = aName.value.replace(/\s+/g, ' ').replace(/^ /, ''); st.note = ''; drawBar(); } });
+  aDa.addEventListener('input', function () { var a = album(st.selAlbum); if (a) { a.nameDa = aDa.value.replace(/\s+/g, ' ').replace(/^ /, ''); st.note = ''; drawBar(); } });
+  [aName, aDa].forEach(function (i) {
+    i.addEventListener('change', function () {
+      var a = album(st.selAlbum);
+      if (!a) return;
+      a.name = aName.value.trim() || a.name.trim() || 'Untitled album';
+      a.nameDa = aDa.value.trim();
+      redrawAlbums(); drawPanel();
+    });
+    i.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') i.blur(); });
+  });
+  aOpen.addEventListener('click', function () { if (st.selAlbum) openAlbumView(st.selAlbum); });
+  aDel.addEventListener('click', function () {
+    var a = album(st.selAlbum);
+    if (!a || st.busy) return;
+    st.albums.splice(st.albums.indexOf(a), 1);
+    st.selAlbum = null;
+    redrawAlbums(); drawPanel();
+    say('Album “' + a.name + '” deleted (its photos stay). Discard brings it back.');
+  });
+  /* a photo inside an album */
+  coverB.addEventListener('click', function () {
+    var a = album(st.openAlbum);
+    if (!a || !st.sel) return;
+    a.cover = coverOf(a) === st.sel && a.cover ? '' : st.sel;
+    st.note = ''; redrawAlbums(); drawPanel(); coverB.focus();
+  });
+  takeB.addEventListener('click', function () {
+    var a = album(st.openAlbum);
+    if (!a || !st.sel) return;
+    takeFromAlbum(a, st.sel);
+    st.sel = null; st.note = '';
+    redrawAlbums(); drawPanel();
+    say('Taken out of “' + a.name + '” (still on the page).');
+  });
 
   /* delete for good: its own step, confirmed, and done right away */
   delB.addEventListener('click', function () {
     var e = st.sel && entry(st.sel);
-    if (!e || st.busy) return;
+    if (!e || st.busy || st.fresh[st.sel]) return;
     var k = st.sel;
     confirmBox.hidden = false;
     confirmUses.textContent = '';
@@ -459,6 +836,7 @@
       st.site = site;
       if (st.sel !== k || confirmBox.hidden) return;
       var uses = E.usesOf(k, site);
+      st.albums.forEach(function (a) { if (inAlbum(a, k)) uses.push('Album: ' + a.name); });
       confirmWhat.textContent = 'The photo is deleted from the website' + (uses.length ? ' and taken out of:' : '. It isn’t used anywhere else.');
       uses.forEach(function (u) { confirmUses.appendChild(h('li', null, u)); });
       yesB.disabled = false;
@@ -474,9 +852,13 @@
     say('Deleting…');
     E.commit('Photos: delete ' + fileName(e), E.deletePlan([k], st.site)).then(function () {
       st.work = st.work.filter(function (x) { return key(x) !== k; });
-      st.saved = JSON.stringify(JSON.parse(st.saved).filter(function (x) { return key(x) !== k; }));
+      st.saved = JSON.stringify(JSON.parse(st.saved).filter(function (x) { return E.same(x.image) !== k; }));
       st.order0 = st.order0.filter(function (x) { return x !== k; });
       delete st.base[k]; delete st.off[k];
+      st.albums.forEach(function (a) { takeFromAlbum(a, k); });
+      var sa = JSON.parse(st.albumsSaved);
+      sa.forEach(function (a) { a.photos = a.photos.filter(function (x) { return x !== k; }); if (a.cover === k) a.cover = ''; });
+      st.albumsSaved = JSON.stringify(sa);
       st.sel = null; st.site = null; st.busy = false;
       render();
       say('Deleted ✓ It’s off the site in a minute or two.', 'ok');
@@ -488,40 +870,243 @@
     });
   });
 
+  /* ------------------------------------------------------------------ adding photos */
+  function setMenu(open) {
+    menu.hidden = !open;
+    addB.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) {
+      var r = addB.getBoundingClientRect();
+      menu.style.left = Math.max(8, Math.min(window.innerWidth - menu.offsetWidth - 8, r.left)) + 'px';
+      menu.style.bottom = (window.innerHeight - r.top + 8) + 'px';
+      mDevice.focus();
+    }
+  }
+  addB.addEventListener('click', function () {
+    if (st.busy) return;
+    if (st.view === 'albums' && st.openAlbum) return pickForAlbum(album(st.openAlbum));
+    setMenu(menu.hidden);
+  });
+  doc.addEventListener('pointerdown', function (ev) { if (!menu.hidden && !menu.contains(ev.target) && ev.target !== addB) setMenu(false); });
+  var fileTarget = null; // the album new photos go into, if any
+  function chooseFiles(intoAlbum) { fileTarget = intoAlbum || null; fileIn.value = ''; fileIn.click(); }
+  mDevice.addEventListener('click', function () { setMenu(false); chooseFiles(st.view === 'albums' && st.openAlbum ? album(st.openAlbum) : null); });
+  mLib.addEventListener('click', function () { setMenu(false); pickFromLibrary(); });
+  mPage.addEventListener('click', function () { setMenu(false); });
+  fileIn.addEventListener('change', function () {
+    var files = Array.prototype.slice.call(fileIn.files || []);
+    fileIn.value = '';
+    if (files.length) addFiles(files, fileTarget);
+  });
+  /* new photos from this device: at the top of the stream (and in the album, if one is open); sent on Save */
+  function addFiles(files, intoAlbum) {
+    var added = [], bad = [];
+    files.forEach(function (f) {
+      if (!(/^image\//.test(f.type) || /\.(jpe?g|png|webp|heic|heif)$/i.test(f.name))) { bad.push(f.name); return; }
+      var url = URL.createObjectURL(f);
+      st.fresh[url] = { file: f, name: f.name, meta: null, keep: false };
+      added.push({ image: url, caption: '', weight: 1 });
+      E.exif(f).then(function (x) { if (st.fresh[url]) { st.fresh[url].meta = x; if (st.sel === url) drawPanel(); } });
+      var probe = new Image(); // a photo this browser can't show can't be prepared here either (HEIC outside Safari)
+      probe.onerror = function () {
+        if (!st.fresh[url]) return;
+        dropFresh(url);
+        if (st.sel === url) st.sel = null;
+        render(); if (!picker.hidden) fillPicker();
+        say('This browser can’t read ' + f.name + ' (HEIC photos need Safari, or a JPEG). It was left out.', 'err');
+      };
+      probe.src = url;
+    });
+    if (!added.length) { if (bad.length) say('Not a photo: ' + bad.join(', '), 'err'); return; }
+    st.work.splice.apply(st.work, [0, 0].concat(added));
+    if (intoAlbum && album(intoAlbum.id)) added.forEach(function (e) { addToAlbum(intoAlbum, e.image); });
+    if (st.view === 'stream') st.sel = added[0].image;
+    render();
+    if (!picker.hidden) fillPicker();
+    else if (st.view === 'stream') inView(tileOf(st.sel));
+    say(n2(added.length, 'new photo', 'new photos') + (intoAlbum ? ' in “' + intoAlbum.name + '” and' : '') + ' at the top of the stream. ' +
+      (added.length === 1 ? 'It’s' : 'They’re') + ' sent when you press Save; tap one to keep its metadata.');
+  }
+  function dropFresh(k) {
+    st.work = st.work.filter(function (x) { return key(x) !== k; });
+    st.albums.forEach(function (a) { takeFromAlbum(a, k); });
+    URL.revokeObjectURL(k);
+    delete st.fresh[k];
+  }
+
+  /* the picker: several photos at once */
+  var pk = null;
+  function openPicker(opts) {
+    pk = opts;
+    pkTitle.textContent = opts.title;
+    pkDevice.hidden = !opts.device;
+    picker.hidden = false;
+    fillPicker();
+    pkDone.focus();
+  }
+  function fillPicker() {
+    if (!pk) return;
+    var items = pk.items();
+    pkGrid.textContent = '';
+    pkNote.textContent = items.length ? pk.note || '' : pk.empty;
+    items.forEach(function (k) {
+      var e = entry(k), on = pk.on(k), li = h('li'), b = btn('pe-pk' + (on ? ' on' : ''), '', (e.caption || fileName(e)) + (on ? ' (chosen)' : ''));
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      var im = h('img'); im.src = disp(k); im.alt = ''; im.loading = 'lazy'; b.appendChild(im);
+      b.appendChild(h('span', 'pe-pk-tick', '✓'));
+      b.addEventListener('click', function () {
+        pk.toggle(k);
+        var now = pk.on(k);
+        b.classList.toggle('on', now); b.setAttribute('aria-pressed', now ? 'true' : 'false');
+        b.setAttribute('aria-label', (e.caption || fileName(e)) + (now ? ' (chosen)' : ''));
+        if (pk.count) pkNote.textContent = pk.count();
+      });
+      li.appendChild(b); pkGrid.appendChild(li);
+    });
+    if (pk.count && items.length) pkNote.textContent = pk.count();
+  }
+  function closePicker() {
+    if (!pk) return;
+    var done = pk.done;
+    picker.hidden = true; pk = null;
+    if (done) done();
+    render();
+  }
+  pkDone.addEventListener('click', closePicker);
+  pkDevice.addEventListener('click', function () { if (pk && pk.device) chooseFiles(pk.device); });
+  function pickForAlbum(a) {
+    if (!a) return;
+    openPicker({
+      title: 'Photos in “' + a.name + '”',
+      device: a,
+      empty: 'No photos on the page yet. Add some from this device.',
+      items: function () { return shown().filter(onPage).map(key); },
+      on: function (k) { return inAlbum(a, k); },
+      toggle: function (k) { if (inAlbum(a, k)) takeFromAlbum(a, k); else addToAlbum(a, k); },
+      count: function () { return n2(albumPhotos(a).length, 'photo', 'photos') + ' in the album. Tap to add or take out.'; }
+    });
+  }
+  function pickFromLibrary() {
+    var chosen = {};
+    openPicker({
+      title: 'From the library',
+      note: 'Photos in your library that aren’t on the page (for example, field log photos). Tap the ones to put on the page.',
+      empty: 'Every photo in the library is on the page already. Photos used only in posts or pages are on the Photos page.',
+      items: function () { return st.work.filter(function (e) { return !onPage(e) && !st.off[key(e)]; }).map(key); },
+      on: function (k) { return !!chosen[k]; },
+      toggle: function (k) { if (chosen[k]) delete chosen[k]; else chosen[k] = true; },
+      done: function () {
+        var ks = Object.keys(chosen);
+        if (!ks.length) return;
+        var moved = st.work.filter(function (e) { return chosen[key(e)]; });
+        st.work = st.work.filter(function (e) { return !chosen[key(e)]; });
+        moved.forEach(function (e) { delete e.onPhotoPage; });
+        st.work.splice.apply(st.work, [0, 0].concat(moved));
+        st.sel = st.view === 'stream' ? key(moved[0]) : st.sel;
+        say(n2(ks.length, 'photo', 'photos') + ' put on the page, at the top.');
+      }
+    });
+  }
+
   /* ------------------------------------------------------------------ saving */
+  function today() { return E.isoDay(new Date()); }
   function save() {
     if (st.busy || !dirty()) return;
-    var patches = {}, ch = changed(), order = reordered() ? st.work.map(key) : null;
-    ch.forEach(function (e) { var p = {}; FIELDS.forEach(function (f) { p[f] = e[f]; }); patches[key(e)] = p; });
-    var parts = [];
-    if (ch.length) parts.push(ch.length === 1 ? '1 photo changed' : ch.length + ' photos changed');
-    if (order) parts.push('new order');
     st.busy = true;
-    say('Saving…');
+    setMenu(false);
     drawPanel();
-    E.commit('Photography: ' + parts.join(', '), { edits: [{ path: FILE, fn: function (t) {
-      /* on top of the newest version: only the photos and fields changed here are touched */
-      if (t === null) throw new Error(FILE + ' is missing');
-      var d = JSON.parse(t), list = E.arr(d.images);
-      list.forEach(function (g) {
-        var p = g && g.image && patches[E.same(g.image)];
-        if (!p) return;
-        FIELDS.forEach(function (f) { if (p[f] === undefined || p[f] === '') { if (f === 'caption') g[f] = ''; else delete g[f]; } else g[f] = p[f]; });
+    var news = freshKeys(), map = {}, files = [], noted = {};
+    /* the new photos first: shrunk here, metadata kept or removed */
+    var prep = news.reduce(function (p, k, i) {
+      return p.then(function () {
+        var f = st.fresh[k], e = entry(k), keep = f.keep && f.meta && f.meta.keep;
+        say('Preparing photo ' + (i + 1) + ' of ' + news.length + '…');
+        return E.shrink(f.file, keep || null).then(function (r) {
+          var path = '/images/gallery/' + (f.meta && f.meta.date || today()) + '-' + (E.slugify(e.caption || 'photo').slice(0, 40) || 'photo') + '-' + r.hash + '.jpg';
+          map[k] = path;
+          files.push({ path: path.slice(1), content: r.b64, encoding: 'base64' });
+          if (keep) noted[path] = f.meta.meta || {};
+        });
       });
-      if (order) { // the photos known here take the new order, in the places they hold; any added meanwhile stay where they are
-        var pos = {};
-        order.forEach(function (k, i) { pos[k] = i; });
-        var known = function (g) { return g && g.image && pos[E.same(g.image)] !== undefined; };
-        var sorted = list.filter(known).sort(function (a, b) { return pos[E.same(a.image)] - pos[E.same(b.image)]; }), n = 0;
-        list = list.map(function (g) { return known(g) ? sorted[n++] : g; });
+    }, Promise.resolve());
+    var M = function (k) { return map[k] || k; };
+    var patches = {}, ch, order, albumsOut, parts = [];
+    prep.then(function () {
+      ch = changed();
+      ch.forEach(function (e) { var p = {}; FIELDS.forEach(function (f) { p[f] = e[f]; }); patches[key(e)] = p; });
+      var added = news.map(function (k) {
+        var e = entry(k), o = { image: map[k], caption: String(e.caption || '').trim() };
+        ['weight', 'width', 'height', 'focus'].forEach(function (f) { if (e[f] !== undefined && e[f] !== '') o[f] = e[f]; });
+        if (noted[map[k]]) { o.keepMetadata = true; NOTED.forEach(function (f) { var v = noted[map[k]][f]; if (v !== undefined && v !== '') o[f] = v; }); }
+        return o;
+      });
+      order = reordered() || news.length ? st.work.map(function (e) { return M(key(e)); }) : null;
+      if (albumsChanged()) {
+        var taken = {};
+        albumsOut = st.albums.map(function (a) {
+          var id = st.savedIds[a.id] ? a.id : null;
+          if (!id) { id = E.slugify(a.name) || 'album'; var base = id, i = 2; while (taken[id] || st.albums.some(function (b) { return b !== a && st.savedIds[b.id] && b.id === id; })) id = base + '-' + (i++); }
+          taken[id] = true;
+          var o = { id: id, name: a.name.trim() || 'Untitled album' };
+          if (a.nameDa) o.nameDa = a.nameDa;
+          var ph = a.photos.map(M), cv = a.cover ? M(a.cover) : '';
+          if (cv && ph.indexOf(cv) >= 0) o.cover = cv;
+          o.photos = ph;
+          return o;
+        });
       }
-      d.images = list;
-      return E.jsonText(d, /\n$/.test(t));
-    } }] }).then(function () {
-      return load();
+      if (ch.length) parts.push(n2(ch.length, 'photo changed', 'photos changed'));
+      if (news.length) parts.push(n2(news.length, 'new photo', 'new photos'));
+      if (reordered()) parts.push('new order');
+      if (albumsOut) parts.push('albums');
+      say('Saving…');
+      return E.commit('Photography: ' + parts.join(', '), { files: files, edits: [{ path: FILE, fn: function (t) {
+        /* on top of the newest version: only the photos and fields changed here are touched */
+        if (t === null) throw new Error(FILE + ' is missing');
+        var d = JSON.parse(t), list = E.arr(d.images), have = {};
+        list.forEach(function (g) { if (g && g.image) have[E.same(g.image)] = true; });
+        list = added.filter(function (o) { return !have[o.image]; }).concat(list); // new photos at the top
+        list.forEach(function (g) {
+          var p = g && g.image && patches[E.same(g.image)];
+          if (!p) return;
+          FIELDS.forEach(function (f) { if (p[f] === undefined || p[f] === '') { if (f === 'caption') g[f] = ''; else delete g[f]; } else g[f] = p[f]; });
+        });
+        if (order) { // the photos known here take the new order, in the places they hold; any added meanwhile stay where they are
+          var pos = {};
+          order.forEach(function (k, i) { pos[k] = i; });
+          var known = function (g) { return g && g.image && pos[E.same(g.image)] !== undefined; };
+          var sorted = list.filter(known).sort(function (a, b) { return pos[E.same(a.image)] - pos[E.same(b.image)]; }), n = 0;
+          list = list.map(function (g) { return known(g) ? sorted[n++] : g; });
+        }
+        if (albumsOut) {
+          var exists = {};
+          list.forEach(function (g) { if (g && g.image) { exists[E.same(g.image)] = true; delete g.albums; } }); // album names on photos: the old way
+          var out = {};
+          var put = function () {
+            out.albums = albumsOut.map(function (a) {
+              var o = {}; Object.keys(a).forEach(function (k) { o[k] = a[k]; });
+              o.photos = a.photos.filter(function (x) { return exists[x]; });
+              if (o.cover && o.photos.indexOf(o.cover) < 0) delete o.cover;
+              return o;
+            });
+          };
+          Object.keys(d).forEach(function (k) { if (k === 'images' && !('albums' in d)) put(); if (k === 'albums') put(); else out[k] = d[k]; });
+          if (!('albums' in out)) put();
+          d = out;
+        }
+        d.images = list;
+        return E.jsonText(d, /\n$/.test(t));
+      } }] });
+    }).then(function () {
+      news.forEach(function (k) { st.preview[map[k]] = k; delete st.fresh[k]; }); // shown from this device until the site has them
+      var sel = st.sel && M(st.sel), selAlbum = st.selAlbum, open = st.openAlbum, ids = albumsOut ? st.albums.map(function (a, i) { return [a.id, albumsOut[i].id]; }) : [];
+      return load().then(function () {
+        ids.forEach(function (p) { if (selAlbum === p[0]) selAlbum = p[1]; if (open === p[0]) open = p[1]; });
+        st.sel = sel && entry(sel) && (st.view !== 'stream' || onPage(entry(sel))) ? sel : null;
+        st.selAlbum = album(selAlbum) ? selAlbum : null;
+        st.openAlbum = album(open) ? open : null;
+      });
     }).then(function () {
       st.busy = false;
-      if (st.sel && (!entry(st.sel) || !onPage(entry(st.sel)))) st.sel = null;
       render();
       say('Saved ✓ On the site in a minute or two.', 'ok');
     }).catch(function (err) {
@@ -533,9 +1118,15 @@
   saveB.addEventListener('click', save);
   discardB.addEventListener('click', function () {
     if (st.busy) return;
+    freshKeys().forEach(function (k) { URL.revokeObjectURL(k); });
+    st.fresh = {};
     st.work = JSON.parse(st.saved);
+    st.albums = JSON.parse(st.albumsSaved);
+    st.legacy = st.legacy0;
     st.off = {};
-    if (st.sel && (!entry(st.sel) || !onPage(entry(st.sel)))) st.sel = null;
+    if (st.sel && (!entry(st.sel) || (st.view === 'stream' && !onPage(entry(st.sel))))) st.sel = null;
+    if (st.selAlbum && !album(st.selAlbum)) st.selAlbum = null;
+    if (st.openAlbum && !album(st.openAlbum)) st.openAlbum = null;
     st.note = '';
     render();
   });
@@ -547,21 +1138,43 @@
     return E.readFile(FILE).then(function (f) {
       var d = f ? JSON.parse(f.text) : { images: [] };
       st.work = E.arr(d.images).filter(function (e) { return e && e.image; });
+      st.legacy = st.legacy0 = readAlbums(d);
       remember();
     });
   }
+  /* the albums as the page shows them (src/build.py's shape) */
+  function shownAlbums() {
+    return st.albums.map(function (a) {
+      var ph = a.photos.filter(function (k) { var e = entry(k); return e && onPage(e); });
+      return { slug: a.id, name: a.name, nameDa: a.nameDa, cover: a.cover && ph.indexOf(a.cover) >= 0 ? disp(a.cover) : '', images: ph.map(disp) };
+    });
+  }
+  /* which view is showing: the stream, the albums or the field trips */
+  Array.prototype.forEach.call(doc.querySelectorAll('.pv'), function (b) {
+    b.addEventListener('click', function () {
+      if (!st.on || !PM) return;
+      var v = PM.view();
+      if (v === st.view) return;
+      st.view = v; st.sel = null; st.selAlbum = null; st.openAlbum = null; st.note = '';
+      setMenu(false);
+      if (v === 'albums') PM.redraw(); // drawn fresh: it may have changed while hidden (a save gives new albums their names)
+      drawPanel();
+    });
+  });
   function enter() {
     if (st.on || st.busy) return;
     if (!E.findAuth()) return askSignin('');
     st.busy = true;
     fab.disabled = true; fab.lastChild.textContent = 'Opening…';
     load().then(function () {
-      st.busy = false; st.on = true; st.sel = null; st.note = '';
-      var stream = doc.querySelector('.pv[data-view="stream"]');
-      if (stream && stream.getAttribute('aria-pressed') !== 'true') stream.click();
+      st.busy = false; st.on = true; st.sel = null; st.selAlbum = null; st.openAlbum = null; st.note = '';
+      st.view = PM ? PM.view() : 'stream';
+      if (st.view === 'trips') { var stream = doc.querySelector('.pv[data-view="stream"]'); if (stream) stream.click(); st.view = 'stream'; }
       doc.body.classList.add('pe-on');
       fab.hidden = true; bar.hidden = false;
+      if (PM) PM.editor = drawAlbums;
       render();
+      if (PM) PM.redraw();
     }).catch(function (err) {
       st.busy = false;
       fab.disabled = false; fab.lastChild.textContent = 'Edit';
@@ -577,13 +1190,15 @@
   function leave() {
     if (st.busy) return;
     if (dirty()) { say('Save or discard your changes first.', 'err'); return; }
-    st.on = false; st.sel = null;
+    st.on = false; st.sel = null; st.selAlbum = null; st.openAlbum = null;
+    setMenu(false);
     doc.body.classList.remove('pe-on');
     doc.body.style.paddingBottom = '';
-    bar.hidden = true; panel.hidden = true;
+    bar.hidden = true; panel.hidden = true; picker.hidden = true;
     fab.hidden = false; fab.disabled = false; fab.lastChild.textContent = 'Edit';
     /* keep showing what was just saved: the site itself catches up in a minute or two */
-    P.show(st.work.filter(onPage));
+    P.show(st.work.filter(onPage).map(function (e) { var c = {}; Object.keys(e).forEach(function (k) { c[k] = e[k]; }); c.image = disp(key(e)); return c; }));
+    if (PM) { PM.editor = null; PM.setAlbums(shownAlbums()); }
     try { if (/^#edit\b/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* file:// */ }
   }
   fab.addEventListener('click', enter);

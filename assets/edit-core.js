@@ -382,9 +382,15 @@
     var edits = [];
     edits.push({ path: 'content/gallery.json', fn: function (t) {
       if (t === null) return null;
-      var d0 = JSON.parse(t), before = (d0.images || []).length;
+      var d0 = JSON.parse(t), before = JSON.stringify(d0);
       d0.images = arr(d0.images).filter(function (g) { return !(g && gone[same(g.image)]); });
-      return d0.images.length === before ? t : jsonText(d0, /\n$/.test(t));
+      arr(d0.albums).forEach(function (a) { // out of every album, and no longer a cover
+        if (!a) return;
+        a.photos = arr(a.photos).filter(function (x) { return !gone[same(x)]; });
+        if (a.cover && gone[same(a.cover)]) delete a.cover;
+      });
+      arr(d0.trips).forEach(function (tr) { if (tr && tr.photos) tr.photos = arr(tr.photos).filter(function (x) { return !gone[same(x)]; }); });
+      return JSON.stringify(d0) === before ? t : jsonText(d0, /\n$/.test(t));
     } });
     edits.push({ path: 'content/fieldlog.json', fn: function (t) {
       if (t === null) return null;

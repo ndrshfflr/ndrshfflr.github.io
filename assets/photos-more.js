@@ -5,7 +5,8 @@
      phone, prime, zoom). Open or closed is remembered.
    - The views: Stream (the mosaic, assets/photos.js) · Albums · Field trips.
      #albums and #trips open those views directly.
-   - Albums: piles of prints that fan out; one opens as its own mosaic.
+   - Albums: piles of prints that fan out, the cover on top; one opens as its
+     own mosaic. Names follow the language (a Danish name when there is one).
    - Field trips: a world map with a pin per trip. Trips close together gather
      into one pin that zooms in. The coastlines (Natural Earth, public domain)
      load only when the map is opened: assets/map/land-50m.json, made by
@@ -108,13 +109,25 @@
   tabs.forEach(function (b) { b.addEventListener('click', function () { show(b.getAttribute('data-view')); }); });
 
   /* ================================================================== albums */
-  function albumPhotos(a) {
-    return a.images.map(function (img) { return P.indexOf(img); }).filter(function (i) { return i >= 0; });
+  function albumPhotos(a) { // the album's photos in the stream, the cover first
+    var idx = a.images.map(function (img) { return P.indexOf(img); }).filter(function (i) { return i >= 0; });
+    var c = a.cover ? P.indexOf(a.cover) : -1;
+    return c >= 0 && idx.indexOf(c) > 0 ? [c].concat(idx.filter(function (i) { return i !== c; })) : idx;
   }
+  function albumName(a) { return lang() === 'da' && a.nameDa ? a.nameDa : a.name; }
+  /* for editing on the page (assets/photos-edit.js): it can draw the albums pane itself,
+     and hand back the albums as edited */
+  var PM = window.PhotosMore = {
+    editor: null,
+    setAlbums: function (list) { albums = list || []; openAlbum = null; albumCount(); if (built.albums) buildAlbums(); },
+    redraw: function () { albumCount(); if (built.albums) buildAlbums(); },
+    view: function () { for (var k in panes) if (panes[k] && !panes[k].hidden) return k; return 'stream'; }
+  };
   var openAlbum = null;
   function countText(n) { return n === 1 ? U().photo1 : fmt(U().photosN, { n: n }); }
   function buildAlbums() {
     var pane = panes.albums;
+    if (PM.editor) { PM.editor(pane); return; }
     while (pane.firstChild) pane.removeChild(pane.firstChild);
     var list = albums.filter(function (a) { return albumPhotos(a).length; });
     if (openAlbum) { albumView(openAlbum); return; }
@@ -131,7 +144,7 @@
       });
       b.appendChild(stack);
       var name = el('span', 'album-name'); var r = el('span', 'album-rune', 'ᛒ'); r.setAttribute('aria-hidden', 'true');
-      name.appendChild(r); name.appendChild(W.rv(a.name)); b.appendChild(name);
+      name.appendChild(r); name.appendChild(W.rv(albumName(a))); b.appendChild(name);
       b.appendChild(el('span', 'album-n', countText(idx.length)));
       b.addEventListener('click', function () { openAlbum = a; albumView(a); });
       grid.appendChild(b);
@@ -146,10 +159,10 @@
     back.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>';
     back.appendChild(W.rv(U().allAlbums));
     back.addEventListener('click', function () { openAlbum = null; buildAlbums(); });
-    var h = el('h2', 'album-title'); h.appendChild(W.rv(a.name));
+    var h = el('h2', 'album-title'); h.appendChild(W.rv(albumName(a)));
     head.appendChild(back); head.appendChild(h); head.appendChild(el('span', 'album-n', countText(idx.length)));
     pane.appendChild(head);
-    var ul = el('ul', 'mosaic'); ul.setAttribute('aria-label', a.name);
+    var ul = el('ul', 'mosaic'); ul.setAttribute('aria-label', albumName(a));
     idx.forEach(function (i) { ul.appendChild(P.tile(ph[i], i)); });
     $$('.tile-a img', ul).forEach(function (img) { var done = function () { img.classList.add('ld'); }; if (img.complete) done(); else { img.addEventListener('load', done); img.addEventListener('error', done); } });
     ul.addEventListener('click', function (e) {
@@ -161,11 +174,13 @@
     pane.appendChild(ul);
     back.focus({ preventScroll: true });
   }
-  if (albumTab) {
+  function albumCount() {
+    if (!albumTab) return;
     var nAlb = albums.filter(function (a) { return albumPhotos(a).length; }).length;
-    albumTab.hidden = !nAlb;
+    albumTab.hidden = !nAlb && !PM.editor; // while editing, the tab is there to make the first album
     var n = $('pv-n-albums'); if (n) n.textContent = nAlb || '';
   }
+  albumCount();
 
   /* ================================================================== field trips */
   var MW = 1000, MH = 400;                      // the map's drawing, 2.5 : 1
