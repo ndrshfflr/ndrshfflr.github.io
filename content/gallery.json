@@ -184,10 +184,12 @@
     {
       "image": "/images/gallery/2026-01-09-photo-177408.jpg",
       "caption": "",
-      "weight": 2,
+      "weight": 3,
       "albums": [
         "Water and sky"
-      ]
+      ],
+      "width": 3,
+      "height": 1
     },
     {
       "image": "/images/gallery/2026-01-09-photo-3cdadd.jpg",
@@ -207,7 +209,9 @@
     {
       "image": "/images/gallery/2026-01-10-photo-bc7eeb.jpg",
       "caption": "",
-      "weight": 1
+      "weight": 1,
+      "width": 1,
+      "height": 2
     },
     {
       "image": "/images/gallery/2026-10-30-photo-bf7b87.jpg",
@@ -298,7 +302,9 @@
     {
       "image": "/images/gallery/2026-08-09-photo-5eb997.jpg",
       "caption": "",
-      "weight": 1
+      "weight": 1,
+      "width": 1,
+      "height": 3
     },
     {
       "image": "/images/gallery/2026-08-26-photo-798d5a.jpg",
@@ -311,7 +317,7 @@
     {
       "image": "/images/gallery/2026-08-26-photo-29f10a.jpg",
       "caption": "",
-      "weight": 4,
+      "weight": 3,
       "albums": [
         "Small worlds"
       ]
@@ -362,7 +368,7 @@
     {
       "image": "/images/gallery/2026-07-26-photo-a0315e.jpg",
       "caption": "",
-      "weight": 1,
+      "weight": 3,
       "albums": [
         "Flowers"
       ]
