@@ -107,6 +107,10 @@
     {
       "species": "Apus apus",
       "favourite": true
+    },
+    {
+      "species": "Buteo buteo",
+      "favourite": true
     }
   ],
   "hide": [],
