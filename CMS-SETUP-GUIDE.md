@@ -117,7 +117,7 @@ GitHub Pages will automatically rebuild your site with this change — that usua
 Visit `https://ndrshfflr.github.io/admin/`. Click **Login with GitHub**, authorize the app, and you'll land in the CMS dashboard with three sections:
 
 - **Main Page** — every headline, paragraph, button label, and link on the homepage; your credentials list; the navigation menu labels; and, at the bottom of the Contact section, an optional list of social/other links (Instagram, LinkedIn, a booking page — add as many rows as you like, or none).
-- **Photo Gallery** — add, remove, and reorder gallery photos, each with an optional caption. Upload the images directly through the form.
+- **Photography** — no longer here: the photography page is edited on the page itself (photography.html → **Edit**), and new photos with finds or posts go through upload.html. See PHOTO-UPLOAD-GUIDE.md.
 - **Extra Pages** — write new pages (e.g. "Guided Tours") using a simple text editor with bold/italic/links/lists/images. Each new page automatically appears in the site's navigation menu.
 
 ### Draft → Review → Publish

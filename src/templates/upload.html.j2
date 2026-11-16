@@ -166,21 +166,11 @@
         <p class="up-from up-small"></p>
         <label class="up-label">Caption <span class="up-opt">(optional)</span><input class="up-input up-caption" type="text" maxlength="160" enterkeyhint="done"></label>
         <div class="up-checks">
-          <label class="up-check"><input class="up-portfolio" type="checkbox"> Portfolio</label>
+          <label class="up-check"><input class="up-portfolio" type="checkbox"> On the photography page</label>
           <label class="up-check up-only-find"><input class="up-in-find" type="checkbox" checked> In the find</label>
           <label class="up-check up-only-post"><input class="up-in-post" type="checkbox" checked> In the post</label>
         </div>
-        <div class="up-pf">
-          <fieldset class="up-sizes">
-            <legend class="up-label">Size on the photography page</legend>
-            <div class="up-size-row"></div>
-          </fieldset>
-          <label class="up-label">Keep in frame
-            <select class="up-input up-focus">
-              <option value="center">Middle</option><option value="top">Top</option><option value="bottom">Bottom</option><option value="left">Left</option><option value="right">Right</option>
-            </select>
-          </label>
-        </div>
+        <p class="up-small up-pf">New pictures go to the top of the photography page. Size, crop, order and albums: <b>Edit</b> on the photography page.</p>
         <div class="up-loc" hidden>
           <label class="up-check up-keep-l" hidden><input class="up-keep-loc" type="checkbox"> Keep metadata</label>
           <p class="up-small up-loc-note"></p>
@@ -204,12 +194,7 @@
       <label class="up-label">Caption <input class="up-input" id="pic-caption" type="text" maxlength="160"></label>
 
       <label class="up-check"><input type="checkbox" id="pic-portfolio"> On the photography page (portfolio)</label>
-      <div class="up-pf" id="pic-pf">
-        <fieldset class="up-sizes"><legend class="up-label">Size</legend><div class="up-size-row" id="pic-sizes"></div></fieldset>
-        <label class="up-label">Keep in frame
-          <select class="up-input" id="pic-focus"><option value="center">Middle</option><option value="top">Top</option><option value="bottom">Bottom</option><option value="left">Left</option><option value="right">Right</option></select>
-        </label>
-      </div>
+      <p class="up-small up-pf" id="pic-pf">Size, crop, order and albums are arranged on the page: <a id="pic-arrange" href="photography.html#edit" target="_blank" rel="noopener">photography page → Edit</a>.</p>
 
       <h3 class="up-h3">Field log</h3>
       <ul class="up-chips" id="pic-sightings" aria-label="Sightings in this picture"></ul>
