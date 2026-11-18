@@ -16,6 +16,8 @@
  * with a key that can change the website, you also get a ★ on every card and
  * "Use as cover" on every picture. Those save straight into
  * content/fieldlog.json ("Favourites, photos and stories" in /admin).
+ * The bar along the bottom also has "Fetch new finds now", which starts the
+ * field-log sync right away instead of waiting for the night (see addRefresh).
  *
  * The page stands in the circle's world: sky, header and rune language come
  * from assets/world.js. Species names, dates and places stay in Latin letters.
@@ -716,10 +718,102 @@
         var st = el('span', 'fl-edit-status');
         st.setAttribute('role', 'status');
         bar.appendChild(st);
+        addRefresh(bar);
         document.body.appendChild(bar);
         rebuild();
       });
     }).catch(function () { /* not signed in here, expired or offline: the page stays as it is */ });
+  }
+
+  /* ---------- fetching new finds now, instead of waiting for tonight ----------
+     Starts the "Sync field log" workflow (.github/workflows/sync-observations.yml),
+     follows it until it is done, then reads the fresh content/observations.json
+     straight from the repository, so the new finds show here at once (the public
+     page catches up when GitHub Pages has rebuilt, a minute or two later). */
+  var WORKFLOW = 'sync-observations.yml';
+  var sync = { btn: null, busy: false };
+  function refreshSay(msg, kind, link) {
+    say(msg, kind);
+    if (!link) return;
+    var st = document.querySelector('#fl-edit .fl-edit-status');
+    if (!st) return;
+    var a = el('a', 'fl-edit-link', U().flRefreshLog || 'see the log');
+    a.href = link; a.target = '_blank'; a.rel = 'noopener';
+    st.appendChild(document.createTextNode(' · '));
+    st.appendChild(a);
+  }
+  function runsPath(event) {
+    return '/repos/' + DATA.repo + '/actions/workflows/' + WORKFLOW + '/runs?per_page=5' + (event ? '&event=' + event : '');
+  }
+  function readObs() {
+    return gh('GET', '/repos/' + DATA.repo + '/contents/content/observations.json?ref=' + encodeURIComponent(DATA.branch || 'main')).then(function (f) {
+      if (f && f.content) return JSON.parse(fromB64(f.content));
+      return gh('GET', '/repos/' + DATA.repo + '/git/blobs/' + f.sha).then(function (b) { return JSON.parse(fromB64(b.content)); });
+    });
+  }
+  function setBusy(on) {
+    sync.busy = on;
+    if (sync.btn) { sync.btn.disabled = on; sync.btn.setAttribute('aria-busy', on ? 'true' : 'false'); }
+  }
+  /* follow one run until it is done; started = Date.now() when it was asked for */
+  function follow(findRun, started) {
+    var u = U(), run = null;
+    var tick = function () {
+      if (Date.now() - started > 20 * 60 * 1000) { setBusy(false); refreshSay(u.flRefreshSlow || 'The sync is still running.', 'err', run && run.html_url); return; }
+      (run ? gh('GET', '/repos/' + DATA.repo + '/actions/runs/' + run.id) : findRun()).then(function (r) {
+        if (r) run = r;
+        if (!run || run.status !== 'completed') {
+          if (run) say(run.status === 'in_progress' ? (u.flRefreshRunning || 'Fetching from the sources…') : (u.flRefreshQueued || 'Sync waiting to start…'));
+          setTimeout(tick, run ? 6000 : 3000);
+          return;
+        }
+        if (run.conclusion !== 'success') { setBusy(false); refreshSay((u.flRefreshFailed || 'The sync failed') + ' (' + run.conclusion + ')', 'err', run.html_url); return; }
+        var before = arr(raw.obs && raw.obs.items).length;
+        return readObs().then(function (obs) {
+          raw.obs = obs; rebuild(); setBusy(false);
+          var added = arr(obs.items).length - before, st = obs.status || {};
+          var broken = Object.keys(st).filter(function (k) { return st[k] && st[k].state === 'error'; }).map(SOURCE);
+          var msg = (u.flRefreshDone || 'Field log is up to date.') + ' ' + (added > 0 ? added + ' ' + (u.flRefreshNew || 'new records') + '.' : (u.flRefreshNone || 'No new records.'));
+          if (broken.length) msg += ' ' + broken.join(', ') + ' ' + (u.flRefreshSourceErr || "didn't answer") + '.';
+          refreshSay(msg, broken.length ? 'err' : 'ok', broken.length ? run.html_url : '');
+        });
+      }).catch(function (e) {
+        if (e instanceof TypeError) { setTimeout(tick, 10000); return; } // offline for a moment: keep following
+        setBusy(false); refreshSay((u.flRefreshFailed || 'The sync failed') + ': ' + e.message, 'err', run && run.html_url);
+      });
+    };
+    tick();
+  }
+  function startSync() {
+    if (sync.busy) return;
+    var u = U(), started = Date.now();
+    setBusy(true);
+    say(u.flRefreshAsking || 'Starting the sync…');
+    gh('POST', '/repos/' + DATA.repo + '/actions/workflows/' + WORKFLOW + '/dispatches', { ref: DATA.branch || 'main' }).then(function () {
+      // GitHub doesn't say which run it started: take the newest one asked for by hand since the click
+      follow(function () {
+        return gh('GET', runsPath('workflow_dispatch')).then(function (r) {
+          return arr(r && r.workflow_runs).filter(function (x) { return Date.parse(x.created_at) >= started - 60000 && (!edit.login || !x.actor || x.actor.login === edit.login); })[0] || null;
+        });
+      }, started);
+    }, function (e) {
+      setBusy(false);
+      if (e.status === 403 || e.status === 404) say(u.flRefreshNoRights || "This sign-in can't start the sync.", 'err');
+      else say((u.flRefreshFailed || 'The sync failed') + ': ' + e.message, 'err');
+    });
+  }
+  function addRefresh(bar) {
+    var b = el('button', 'fl-refresh', U().flRefresh || '↻ Fetch new finds now');
+    b.type = 'button';
+    b.title = U().flRefreshTitle || '';
+    b.addEventListener('click', startSync);
+    sync.btn = b;
+    bar.appendChild(b);
+    // a sync already running (started here before a reload, tonight's, or after a CMS save): follow it
+    gh('GET', runsPath('')).then(function (r) {
+      var run = arr(r && r.workflow_runs).filter(function (x) { return x.status !== 'completed'; })[0];
+      if (run && !sync.busy) { setBusy(true); follow(function () { return Promise.resolve(run); }, Date.parse(run.created_at) || Date.now()); }
+    }).catch(function () { /* can't see runs with this sign-in: the button still tries */ });
   }
 
   // ---------- controls ----------

@@ -195,6 +195,12 @@ span.fl-d-cover{cursor:default}
 .fl-edit-status:empty{display:none}
 .fl-edit-status.ok{color:#cfe7c0}
 .fl-edit-status.err{color:#ffb4a6}
+.fl-refresh{align-self:flex-start;pointer-events:auto;margin-top:4px;min-height:34px;padding:0 12px;border:1px solid color-mix(in srgb,var(--acc) 55%,transparent);
+  background:transparent;color:#f1efe8;font:inherit;font-size:14px;cursor:pointer}
+.fl-refresh:hover:not(:disabled){background:color-mix(in srgb,var(--acc) 18%,transparent)}
+.fl-refresh:disabled{opacity:.55;cursor:progress}
+.fl-refresh:focus-visible,.fl-edit-link:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.fl-edit-link{pointer-events:auto;color:inherit;text-decoration:underline}
 .fl-fav-btn:focus-visible,.fl-d-fav:focus-visible,.fl-d-cover:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.fl-fav-btn{transition:none}.fl-card:hover .fl-fav-btn{transform:none}}
 

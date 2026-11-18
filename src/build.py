@@ -194,6 +194,12 @@ FIELDLOG_UI = {
         "flEditing": "Editing as", "flFavAdd": "Mark as favourite", "flFavRemove": "Remove from favourites",
         "flUseCover": "Use as cover", "flIsCover": "Cover", "flCoverAuto": "Cover · tap to go back to automatic",
         "flSaving": "Saving…", "flSaved": "Saved. On the site for everyone in a minute or two.", "flSaveFailed": "Couldn't save",
+        "flRefresh": "↻ Fetch new finds now", "flRefreshTitle": "Pull your finds from iNaturalist, Svampeatlas, Arter.dk, DOFbasen and eBird now, instead of waiting for tonight",
+        "flRefreshAsking": "Starting the sync…", "flRefreshQueued": "Sync waiting to start…", "flRefreshRunning": "Fetching from the sources… (usually 1–3 minutes)",
+        "flRefreshDone": "Field log is up to date.", "flRefreshNew": "new records", "flRefreshNone": "No new records.",
+        "flRefreshSourceErr": "didn't answer", "flRefreshFailed": "The sync failed", "flRefreshLog": "see the log",
+        "flRefreshNoRights": "This sign-in can't start the sync. Sign in through /admin (it asks GitHub for full access), or use a key with “Actions: Read and write”.",
+        "flRefreshSlow": "The sync is still running; this page will show the new finds after a reload in a few minutes.",
     },
     "da": {
         "flSortLatest": "Senest set først", "flSortNewest": "Nyeste arter først",
@@ -202,6 +208,12 @@ FIELDLOG_UI = {
         "flEditing": "Redigerer som", "flFavAdd": "Markér som favorit", "flFavRemove": "Fjern fra favoritter",
         "flUseCover": "Brug som forsidebillede", "flIsCover": "Forsidebillede", "flCoverAuto": "Forsidebillede · tryk for automatisk",
         "flSaving": "Gemmer…", "flSaved": "Gemt. Synligt for alle om et minut eller to.", "flSaveFailed": "Kunne ikke gemme",
+        "flRefresh": "↻ Hent nye fund nu", "flRefreshTitle": "Hent dine fund fra iNaturalist, Svampeatlas, Arter.dk, DOFbasen og eBird nu i stedet for at vente til i nat",
+        "flRefreshAsking": "Starter synkroniseringen…", "flRefreshQueued": "Synkroniseringen venter på at starte…", "flRefreshRunning": "Henter fra kilderne… (normalt 1–3 minutter)",
+        "flRefreshDone": "Feltloggen er opdateret.", "flRefreshNew": "nye fund", "flRefreshNone": "Ingen nye fund.",
+        "flRefreshSourceErr": "svarede ikke", "flRefreshFailed": "Synkroniseringen fejlede", "flRefreshLog": "se loggen",
+        "flRefreshNoRights": "Dette login kan ikke starte synkroniseringen. Log ind via /admin (det beder GitHub om fuld adgang), eller brug en nøgle med “Actions: Read and write”.",
+        "flRefreshSlow": "Synkroniseringen kører stadig; genindlæs siden om et par minutter for at se de nye fund.",
     },
 }
 
