@@ -797,11 +797,11 @@ def render_cv(env, content, entry, posts, versions):
 CARD = {"en": "card.html", "da": "card.da.html"}
 CARD_UI = {
     "en": {"lead": "Indoor microbiology · mould · mycology", "save": "Save contact", "email": "Email",
-           "services": "Mould & indoor climate", "fungi": "Grow & tours", "cv": "CV", "site": "The website",
+           "site": "The website",
            "showQr": "Show QR code", "close": "Close", "qrHint": "Scan to open this card",
            "description": "Digital business card: contact details, services and CV."},
     "da": {"lead": "Indeklima · skimmelsvamp · mykologi", "save": "Gem kontakt", "email": "E-mail",
-           "services": "Skimmel & indeklima", "fungi": "Dyrkning & ture", "cv": "CV", "site": "Hjemmesiden",
+           "site": "Hjemmesiden",
            "showQr": "Vis QR-kode", "close": "Luk", "qrHint": "Scan for at åbne kortet",
            "description": "Digitalt visitkort: kontakt, ydelser og CV."},
 }
@@ -809,6 +809,13 @@ CARD_UI = {
 
 def vcard_escape(s):
     return s.replace("\\", "\\\\").replace(",", "\\,").replace(";", "\\;").replace("\n", "\\n")
+
+
+def card_pages(entry, lang):
+    """The card links only to the new world pages that have content (names and runes from the circle)."""
+    pages = [("photography", PHOTOGRAPHY, "Photography"), ("bioinformatics", BIOINFO, "Bioinformatics"),
+             ("fieldlog", FIELDLOG, "Field log"), ("blog", BLOG, "Labdiary"), ("cv", CV, "CV")]
+    return [dict(menu_item(entry, lang, start, fallback), href=hrefs[lang]) for start, hrefs, fallback in pages]
 
 
 def render_card(env, content, entry, versions):
@@ -840,7 +847,7 @@ def render_card(env, content, entry, versions):
         html = env.get_template("card.html.j2").render(
             lang=lang, ui=CARD_UI[lang], name=name, title=entry[lang].get("title") or "", email=email,
             phone=phone, socials=socials, qr_svg=qr, site_url=SITE_URL, self_href=CARD[lang], other_href=CARD[other],
-            entry_href=ENTRY[lang], services_href=HOME[lang] + "#services-heading", fungi_href=FUNGI[lang], cv_href=CV[lang],
+            entry_href=ENTRY[lang], pages=card_pages(entry, lang),
             year=datetime.date.today().year)
         (ROOT / CARD[lang]).write_text(html, encoding="utf-8")
         print("wrote", CARD[lang])
