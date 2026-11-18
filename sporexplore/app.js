@@ -129,7 +129,7 @@ function score(sp,Q){
   add('wid',dimScore(Q.wmin,Q.wmax,sp.sp.wlo,sp.sp.whi,tol),`width ${fmt(sp.sp.wlo)}–${fmt(sp.sp.whi)} µm`);
   const uL=(Q.lmin!=null&&Q.lmax!=null)?(Q.lmin+Q.lmax)/2:(Q.lmin??Q.lmax), uW=(Q.wmin!=null&&Q.wmax!=null)?(Q.wmin+Q.wmax)/2:(Q.wmin??Q.wmax);
   if(uL!=null&&uW!=null&&uW>0){
-    const uq=uL/uW, qr=sp.sp.q||[sp.sp.lo/sp.sp.whi, sp.sp.hi/sp.sp.wlo];
+    const uq=uL/uW, qr=sp.sp.q||((sp.sp.shape==='globose'||sp.sp.shape==='subglobose')?[1,1.15]:[sp.sp.lo/sp.sp.whi, sp.sp.hi/sp.sp.wlo]);
     const v=(uq>=qr[0]-.15&&uq<=qr[1]+.15)?1:Math.max(0,1-Math.min(Math.abs(uq-qr[0]),Math.abs(uq-qr[1]))/.8);
     add('q',v,`Q ${qr[0].toFixed(1)}–${qr[1].toFixed(1)}`);
   }
@@ -367,7 +367,7 @@ function card(r,i,any,maxL,maxW){
     </div></li>`;
 }
 function spRange(mn,lo,hi,mx){ return `${mn!=null?`(${fmt(mn)}–) `:''}${fmt(lo)}–${fmt(hi)}${mx!=null?` (–${fmt(mx)})`:''}`; }
-function flagShort(f){ return {'disagree-L':'Sources disagree','disagree-Q':'Sources disagree','legacy':'Unverified value','nomen-gbif':'Name in flux','nomen-sa':'Name differs','new':'New in v4'}[f.k]||'Note'; }
+function flagShort(f){ return {'disagree-L':'Sources disagree','disagree-Q':'Sources disagree','legacy':'Unverified value','nomen-gbif':'Name in flux','nomen-sa':'Name differs','nomen-sf':'Name changed','new':'New in v4'}[f.k]||'Note'; }
 
 const CHARS=[
   {k:'ft',label:'fruitbody type',step:4,ctl:'ft',get:s=>[s.ft]},{k:'print',label:'spore print colour',step:3,get:s=>[s.sp.print]},
@@ -391,35 +391,45 @@ function discriminator(shown){
 }
 
 function plotSVG(rows,hasYou){
-  const Wd=760,H=280,ml=38,mr=12,mt=12,mb=34;
+  const narrow=window.innerWidth<640, Wd=narrow?420:760, H=narrow?330:290, ml=38, mr=narrow?10:120, mt=12, mb=36;
   const sp=rows.map(r=>r.s);
-  const maxL=Math.ceil(Math.max(20,...sp.map(s=>s.sp.hi),Q.lmax||0,Q.lmin||0)+2), maxW=Math.ceil(Math.max(10,...sp.map(s=>s.sp.whi),Q.wmax||0,Q.wmin||0)+1);
-  const x=v=>ml+v/maxL*(Wd-ml-mr), y=v=>H-mb-v/maxW*(H-mt-mb);
+  const uv=[Q.lmin,Q.lmax].filter(v=>v!=null), wv=[Q.wmin,Q.wmax].filter(v=>v!=null);
+  const lows=sp.map(s=>s.sp.lo).concat(uv), highs=sp.map(s=>s.sp.hi).concat(uv);
+  let x0=lows.length?Math.max(0,Math.floor(Math.min(...lows)-2)):0, x1=highs.length?Math.ceil(Math.max(...highs)+2):24;
+  if(x1-x0<8){x1=x0+8;}
+  const y1=Math.ceil(Math.max(6,...sp.map(s=>s.sp.whi),...wv)+1), y0=0;
+  const x=v=>ml+(v-x0)/(x1-x0)*(Wd-ml-mr), y=v=>H-mb-(v-y0)/(y1-y0)*(H-mt-mb);
+  const step=(r)=>r>40?10:r>20?5:r>10?2:1;
   let g='';
-  for(let v=0;v<=maxL;v+=maxL>30?5:2) g+=`<line class="grid" x1="${x(v)}" x2="${x(v)}" y1="${mt}" y2="${H-mb}"/><text class="tick" x="${x(v)}" y="${H-mb+15}" text-anchor="middle">${v}</text>`;
-  for(let v=0;v<=maxW;v+=maxW>14?2:1) g+=`<line class="grid" x1="${ml}" x2="${Wd-mr}" y1="${y(v)}" y2="${y(v)}"/><text class="tick" x="${ml-6}" y="${y(v)+4}" text-anchor="end">${v}</text>`;
+  for(let v=Math.ceil(x0/step(x1-x0))*step(x1-x0);v<=x1;v+=step(x1-x0)) g+=`<line class="grid" x1="${x(v)}" x2="${x(v)}" y1="${mt}" y2="${H-mb}"/><text class="tick" x="${x(v)}" y="${H-mb+15}" text-anchor="middle">${v}</text>`;
+  for(let v=0;v<=y1;v+=step(y1)) g+=`<line class="grid" x1="${ml}" x2="${Wd-mr}" y1="${y(v)}" y2="${y(v)}"/><text class="tick" x="${ml-6}" y="${y(v)+4}" text-anchor="end">${v}</text>`;
   g+=`<line class="ax" x1="${ml}" x2="${Wd-mr}" y1="${H-mb}" y2="${H-mb}"/><line class="ax" x1="${ml}" x2="${ml}" y1="${mt}" y2="${H-mb}"/>`;
   g+=`<text class="tick" x="${(ml+Wd-mr)/2}" y="${H-4}" text-anchor="middle">spore length (µm)</text><text class="tick" transform="translate(11 ${(mt+H-mb)/2}) rotate(-90)" text-anchor="middle">width (µm)</text>`;
   const boxes=sp.slice().reverse().map((s,ri)=>{
-    const i=sp.length-1-ri, c=PRINT_COLOR[s.sp.print]||'#888', op=i<5?.42:.16;
-    return `<rect class="sbox" tabindex="0" role="link" data-id="${s.id}" x="${x(s.sp.lo).toFixed(1)}" y="${y(s.sp.whi).toFixed(1)}" width="${Math.max(2,x(s.sp.hi)-x(s.sp.lo)).toFixed(1)}" height="${Math.max(2,y(s.sp.wlo)-y(s.sp.whi)).toFixed(1)}" fill="${c}" fill-opacity="${op}" stroke="${c}"><title>${esc(s.n)}: ${fmt(s.sp.lo)}–${fmt(s.sp.hi)} × ${fmt(s.sp.wlo)}–${fmt(s.sp.whi)} µm</title></rect>`;
+    const i=sp.length-1-ri, c=PRINT_COLOR[s.sp.print]||'#888', op=i<5?.42:.14;
+    return `<rect class="sbox" tabindex="0" role="link" data-id="${s.id}" x="${x(s.sp.lo).toFixed(1)}" y="${y(s.sp.whi).toFixed(1)}" width="${Math.max(2,x(s.sp.hi)-x(s.sp.lo)).toFixed(1)}" height="${Math.max(2,y(s.sp.wlo)-y(s.sp.whi)).toFixed(1)}" fill="${c}" fill-opacity="${op}" stroke="${c}" stroke-opacity="${i<5?1:.5}"><title>${esc(s.n)}: ${fmt(s.sp.lo)}–${fmt(s.sp.hi)} × ${fmt(s.sp.wlo)}–${fmt(s.sp.whi)} µm</title></rect>`;
   }).join('');
-  const labels=sp.slice(0,5).map(s=>`<text class="slab" x="${(x(s.sp.hi)+4).toFixed(1)}" y="${(y(s.sp.whi)+11).toFixed(1)}">${esc(s.n.replace(/^(\w)\w+/,'$1.'))}</text>`).join('');
+  // labels for the top five, in a column to the right of the plot, joined by leader lines (no overlaps)
+  let labels='';
+  if(!narrow&&sp.length){
+    const top=sp.slice(0,5).map((s,i)=>({s,i,ty:y((s.sp.wlo+s.sp.whi)/2)})).sort((a,b)=>a.ty-b.ty);
+    let last=-1e9; top.forEach(t=>{ t.ly=Math.max(t.ty,last+15); last=t.ly; });
+    const over=last-(H-mb); if(over>0) top.forEach(t=>t.ly-=over);
+    labels=top.map(t=>{ const lx=Wd-mr+8; return `<line x1="${x(t.s.sp.hi).toFixed(1)}" y1="${t.ty.toFixed(1)}" x2="${lx-2}" y2="${t.ly.toFixed(1)}" style="stroke:var(--ink3);stroke-width:.6"/><text class="slab" x="${lx}" y="${(t.ly+4).toFixed(1)}">${t.i+1}. ${esc(t.s.n.replace(/^(\w)\w+/,'$1.'))}</text>`; }).join('');
+  }
   let you='';
   if(hasYou){
     const l1=Q.lmin??Q.lmax, l2=Q.lmax??Q.lmin, w1=Q.wmin??Q.wmax, w2=Q.wmax??Q.wmin;
-    if(l1!=null&&w1!=null){
-      you=`<rect class="you" x="${x(Math.min(l1,l2))-2}" y="${y(Math.max(w1,w2))-2}" width="${Math.max(4,x(Math.max(l1,l2))-x(Math.min(l1,l2))+4)}" height="${Math.max(4,y(Math.min(w1,w2))-y(Math.max(w1,w2))+4)}" rx="3"/>`+
-          `<circle class="youdot" cx="${x((l1+l2)/2)}" cy="${y((w1+w2)/2)}" r="3.5"/>`;
-    } else if(l1!=null){ you=`<rect class="you" x="${x(Math.min(l1,l2))-2}" y="${mt}" width="${Math.max(4,x(Math.max(l1,l2))-x(Math.min(l1,l2))+4)}" height="${H-mb-mt}"/>`; }
-    else if(w1!=null){ you=`<rect class="you" x="${ml}" y="${y(Math.max(w1,w2))-2}" width="${Wd-ml-mr}" height="${Math.max(4,y(Math.min(w1,w2))-y(Math.max(w1,w2))+4)}"/>`; }
+    const bx=(a,b)=>[x(Math.min(a,b))-2, Math.max(4,x(Math.max(a,b))-x(Math.min(a,b))+4)], by=(a,b)=>[y(Math.max(a,b))-2, Math.max(4,y(Math.min(a,b))-y(Math.max(a,b))+4)];
+    if(l1!=null&&w1!=null){ const [X0,XW]=bx(l1,l2),[Y0,YH]=by(w1,w2); you=`<rect class="you" x="${X0}" y="${Y0}" width="${XW}" height="${YH}" rx="3"/><circle class="youdot" cx="${x((l1+l2)/2)}" cy="${y((w1+w2)/2)}" r="3.5"/>`; }
+    else if(l1!=null){ const [X0,XW]=bx(l1,l2); you=`<rect class="you" x="${X0}" y="${mt}" width="${XW}" height="${H-mb-mt}"/>`; }
+    else if(w1!=null){ const [Y0,YH]=by(w1,w2); you=`<rect class="you" x="${ml}" y="${Y0}" width="${Wd-ml-mr}" height="${YH}"/>`; }
   }
-  const msg = rows.length?`Each box is a species' typical spore range, tinted by its spore print. The dashed box is your measurement. Select a box to open the species.`
+  const msg = rows.length?`Each box is a species' typical spore range, tinted by its spore print; the five best matches are numbered. The dashed box is your measurement. Select a box to open the species.`
                          :`Enter a measurement to see where your spores fall among the candidates.`;
   return `<div class="plot-h"><h3>Where your spores fall</h3><p>${msg}</p></div>
     <svg viewBox="0 0 ${Wd} ${H}" role="group" aria-label="Spore length against width for the top candidates">${g}${boxes}${labels}${you}</svg>`;
 }
-
 /* ================================================================ SPECIES PAGE */
 function viewSpecies(main,s){
   const e=s.sp.ext||{}, srcs=[...new Set(s.meas.map(m=>m.src))];
@@ -461,6 +471,7 @@ function viewSpecies(main,s){
   </div><div>
     <section class="panel"><h2>Names</h2><dl class="kv">
       <dt>Used here</dt><dd><i class="sci">${esc(s.n)}</i> ${esc(s.a||'')}</dd>
+      ${s.sf?`<dt>Species Fungorum</dt><dd><i class="sci">${esc(s.sf.current)}</i>${s.sf.referee?` <span class="verb">(${esc(s.sf.referee)})</span>`:''}</dd>`:''}
       ${s.syn?`<dt>Synonym</dt><dd><i class="sci">${esc(s.syn)}</i></dd>`:''}
       ${s.dk?`<dt>Danish name</dt><dd>${esc(s.dk)}${s.dkOld?` <span class="verb">(v3 used “${esc(s.dkOld)}”)</span>`:''}</dd>`:''}
       </dl><p style="margin:10px 0 0">${links}</p></section>
@@ -567,7 +578,7 @@ function viewSources(main){
 
 /* ---------- theme + boot ---------- */
 function setThemeLabel(){ $('#themeBtn').textContent=document.documentElement.dataset.theme==='light'?'Dark field':'Light sheet'; }
-$('#themeBtn').onclick=()=>{ const t=document.documentElement.dataset.theme==='light'?'dark':'light'; document.documentElement.dataset.theme=t; store.set('sporex-theme',t); try{localStorage.setItem('sporex-theme',t);}catch(e){} setThemeLabel(); };
+$('#themeBtn').onclick=()=>{ const t=document.documentElement.dataset.theme==='light'?'dark':'light'; document.documentElement.dataset.theme=t; try{localStorage.setItem('sporex-theme',t);}catch(e){} setThemeLabel(); };
 setThemeLabel();
 $('#pinCount').textContent=pins.length;
 $('#foot').innerHTML=`Sporexplore ${esc(X.version)} · data built ${esc(X.built)} · ${SPECIES.length} species · <a href="#/sources">Sources &amp; method</a>`;

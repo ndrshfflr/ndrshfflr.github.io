@@ -55,7 +55,7 @@ RANGE = (rf"(?:\(\s*(?P<{{p}}min>{NUM})\s*[-–]?\s*\)\s*)?"
          rf"(?:\s*\(\s*[-–]?\s*(?P<{{p}}max>{NUM})\s*\))?")
 PAIR = re.compile(RANGE.format(p="L") + r"\s*[x×X]\s*" + RANGE.format(p="W") + r"(?=\s*(?:µ|μ|u)m|\s*[,;.]|\s*$)", re.U)
 ONE = re.compile(RANGE.format(p="D") + r"\s*(?:µ|μ|u)m(?!\s*(?:long|lang))", re.U)
-ROUND = re.compile(r"kugle|rund|globose|spheric|subglobose|diamet", re.I)
+ROUND = re.compile(r"kugle|rund|globose|spheric|subglobose|diamet|ornament|netmønster|reticul", re.I)
 GLOBOSE = re.compile(r"(?:sporer|spores)[^.]{0,120}?(?:måler|measure|are|er)?\s*" + RANGE.format(p="D") +
                      r"\s*(?:µ|μ|u)m", re.U | re.I)
 QRE = re.compile(r"Q\s*(?:=|:)?\s*(?P<qlo>\d+[.,]\d+)\s*[-–]\s*(?P<qhi>\d+[.,]\d+)")
@@ -185,6 +185,8 @@ def if_info(name):
             "status": xml_field(x, "NAME_x0020_STATUS"),
             "current": xml_field(x, "CURRENT_x0020_NAME_x0020_RECORD_x0020_NUMBER"),
             "currentName": xml_field(x, "CURRENT_x0020_NAME"),
+            "referee": xml_field(x, "TAXONOMIC_x0020_REFEREE"),
+            "family": xml_field(x, "Family_x0020_name"),
             "isCurrentOf": v.get("isCurrentOf"),
             "url": v.get("url"),
         })
@@ -384,6 +386,17 @@ def main():
         if g and g.get("status") and g["status"] not in ("ACCEPTED", "DOUBTFUL"):
             acc = (g.get("accepted") or "")
             flags.append({"k": "nomen-gbif", "t": f'GBIF treats this name as {g["status"].lower()}' + (f' (accepted: {acc})' if acc else "")})
+        sf = None
+        if ifi:
+            recs = [r for r in ifi["records"] if r.get("currentName")]
+            mine = [r for r in recs if r["name"] == name] or [r for r in recs if r["name"] in names_to_try]
+            if mine:
+                mine.sort(key=lambda r: r["id"] != r["current"])
+                sf = {"current": mine[0]["currentName"], "currentId": mine[0]["current"], "referee": mine[0]["referee"],
+                      "family": mine[0]["family"], "recordId": mine[0]["id"]}
+        nomen["sf"] = sf
+        if sf and sf["current"] and sf["current"] != name:
+            flags.append({"k": "nomen-sf", "t": f'Species Fungorum gives the current name as {sf["current"]}'})
         if sa and nomen["sa"]["name"] and nomen["sa"]["name"] != name:
             flags.append({"k": "nomen-sa", "t": f'Svampeatlas uses {nomen["sa"]["name"]}'})
 
@@ -393,7 +406,8 @@ def main():
                     "gbif": {"key": g["acceptedKey"], "counts": g["counts"], "retrieved": g["retrieved"]} if g else None,
                     "saId": sa["taxon"]["_id"] if sa else s.get("saId"),
                     "dkSA": nomen["sa"]["dk"] if sa else None,
-                    "ifId": next((r["id"] for r in (ifi or {}).get("records", []) if r["name"] == name), None) if ifi else None,
+                    "ifId": (sf or {}).get("currentId") or (sa["taxon"].get("FunIndexCurrUseNumber") if sa else None),
+                    "sf": sf,
                     "legacyOnly": cons is None})
         if sa and nomen["sa"]["dk"] and s.get("dk") and nomen["sa"]["dk"].lower() != s["dk"].lower():
             rec["dkOld"] = s["dk"]
