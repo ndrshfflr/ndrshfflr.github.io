@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /upload.html
 
-Sitemap: https://alkemisten.dk/sitemap.xml
+Sitemap: https://me.alkemisten.dk/sitemap.xml
