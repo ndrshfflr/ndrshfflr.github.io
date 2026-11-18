@@ -104,5 +104,51 @@
   "volume": 27,
   "pages": "81–303",
   "url": "https://www.zobodat.at/pdf/OestZPilz_27_0081-0303.pdf"
+ },
+ "KORHONEN2009": {
+  "type": "article",
+  "authors": [
+   {
+    "family": "Korhonen",
+    "given": "Mauri"
+   },
+   {
+    "family": "Liimatainen",
+    "given": "Kare"
+   },
+   {
+    "family": "Niskanen",
+    "given": "Tuula"
+   }
+  ],
+  "year": 2009,
+  "title": "A new boletoid fungus, <i>Boletus pinetorum</i>, in the <i>Boletus</i> section <i>Boletus</i> from Fennoscandia (Basidiomycota, Boletales)",
+  "container": "Karstenia",
+  "volume": 49,
+  "pages": "41–60",
+  "doi": "10.29203/ka.2009.433",
+  "method": "Finnish and Norwegian collections; 50 spores per collection."
+ },
+ "HOLEC2013": {
+  "type": "article",
+  "authors": [
+   {
+    "family": "Holec",
+    "given": "Jan"
+   },
+   {
+    "family": "Kolařík",
+    "given": "Miroslav"
+   }
+  ],
+  "year": 2013,
+  "title": "Notes on the identity of <i>Hygrophoropsis rufa</i> (Basidiomycota, Boletales)",
+  "container": "Czech Mycology",
+  "volume": 65,
+  "issue": 1,
+  "pages": "15–24",
+  "doi": "10.33585/cmy.65102",
+  "fromCrossref": true,
+  "method": "Typical range = 10th–90th percentile; extremes in brackets."
  }
 }

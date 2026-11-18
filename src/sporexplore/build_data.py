@@ -321,7 +321,10 @@ def apa_authors(auth):
         for p in parts:
             if not p:
                 continue
-            initials.append("-".join(x[0] + "." for x in p.split("-") if x))
+            if re.fullmatch(r"[A-Z][a-z]", p) and given.find(p + ".") >= 0:
+                initials.append(p + ".")          # transliterated digraph initial, e.g. "Yu."
+            else:
+                initials.append("-".join(x[0] + "." for x in p.split("-") if x))
         return f'{a["family"]}, {" ".join(initials)}'.strip().rstrip(",")
     names = [one(a) for a in auth]
     if not names:
@@ -383,7 +386,11 @@ def main():
                     if s.get("fromCrossref"):
                         s["authors"] = [{"family": a.get("family"), "given": a.get("given", "")} if a.get("family")
                                         else {"literal": a.get("name")} for a in msg.get("author", [])]
-                        s["title"] = re.sub(r"\s+", " ", (msg.get("title") or [s["title"]])[0]).strip()
+                        cr_t = re.sub(r"\s+", " ", (msg.get("title") or [s["title"]])[0]).strip()
+                        norm = lambda t: re.sub(r"[^a-z0-9]", "", re.sub(r"<[^>]+>", "", t).lower())
+                        if norm(cr_t) != norm(s["title"]):
+                            s["title"] = cr_t.rstrip(".")
+                            s["titleFromCrossref"] = True
                         s["container"] = (msg.get("container-title") or [s.get("container")])[0]
                         s["volume"] = msg.get("volume") or s.get("volume")
                         s["issue"] = msg.get("issue") or s.get("issue")
@@ -501,6 +508,7 @@ def main():
         if sa and nomen["sa"]["name"] and nomen["sa"]["name"] != name:
             flags.append({"k": "nomen-sa", "t": f'Svampeatlas uses {nomen["sa"]["name"]}'})
 
+        flags += additions.get("flagsExtra", {}).get(name, [])
         rec = {k: v for k, v in s.items() if k not in ("src", "sp", "nordic")}
         rec.update({"id": slug(name), "sp": sp, "meas": meas, "flags": flags,
                     "legacy": legacy if (legacy and cons and (abs(legacy["lo"] - cons["lo"]) > 0.4 or abs(legacy["hi"] - cons["hi"]) > 0.4 or abs(legacy["wlo"] - cons["wlo"]) > 0.4 or abs(legacy["whi"] - cons["whi"]) > 0.4)) or (legacy and not cons) else None,
@@ -521,7 +529,13 @@ def main():
     for sid, s in sources.items():
         s["apa"] = apa(s)
 
-    used = {m["src"] for sp in out_species for m in sp["meas"]} | {sid for sid, s in sources.items() if s.get("always")}
+    concept = additions.get("conceptRefs", {})
+    for sp in out_species:
+        refs = [r for r in concept.get(sp["n"], []) if r in sources]
+        if refs:
+            sp["refs"] = refs
+    used = {m["src"] for sp in out_species for m in sp["meas"]} | {r for sp in out_species for r in sp.get("refs", [])} \
+        | {sid for sid, s in sources.items() if s.get("always")}
     data = {"built": today, "version": "4.0",
             "sources": {k: v for k, v in sources.items() if k in used},
             "species": out_species,

@@ -52,6 +52,7 @@ SPECIES.forEach(s=>{
     else if(o.includes('verruc')||o.includes('wart')){s.micro.orn='verrucose';s.microSrc.orn='species';}
   }
   if(s.sp.shape==='truncate' && !ov.apex){s.micro.apex='truncate';s.microSrc.apex='species';}
+  if(!s.micro.orn && s.sp.orn && VOCAB.orn.includes(s.sp.orn)){s.micro.orn=s.sp.orn;s.microSrc.orn='species';}
   if(ov.q) s.microQuote=ov.q;
   s.m = s.m || {}; ['pore','cap','host'].forEach(k=>{ if(!Array.isArray(s.m[k])) s.m[k]=s.m[k]?[s.m[k]]:[]; });
 });
@@ -81,7 +82,7 @@ function sporeIcon(sp,dispW,dispH){
   q=isRound?(shape==='globose'?1:1.12):Math.max(1.15,Math.min(3.2,q));
   let ry=bh/2,rx=ry*q; if(rx>bw/2){rx=bw/2;ry=rx/q;} if(ry<bh/2*.32) ry=bh/2*.32;
   const fill=PRINT_COLOR[sp.sp.print]||'#8a8a8a';
-  const wallW=sp.micro.wall==='thick'?2.2:sp.micro.wall==='slightly-thickened'?1.5:1, orn=sp.micro.orn;
+  const wallW=sp.micro.wall==='thick'?2.2:sp.micro.wall==='slightly-thickened'?1.5:1, orn=sp.micro.orn||'smooth';
   let d=null,defs='',over='';
   if(ORN_ROUGH.has(orn)){
     const r=Math.min(rx,ry), L=orn==='long-spiny'?r*.55:orn==='spiny'?r*.38:r*.24; let p='';
@@ -367,7 +368,7 @@ function card(r,i,any,maxL,maxW){
     </div></li>`;
 }
 function spRange(mn,lo,hi,mx){ return `${mn!=null?`(${fmt(mn)}–) `:''}${fmt(lo)}–${fmt(hi)}${mx!=null?` (–${fmt(mx)})`:''}`; }
-function flagShort(f){ return {'disagree-L':'Sources disagree','disagree-Q':'Sources disagree','legacy':'Unverified value','nomen-gbif':'Name in flux','nomen-sa':'Name differs','nomen-sf':'Name changed','new':'New in v4'}[f.k]||'Note'; }
+function flagShort(f){ return {'disagree-L':'Sources disagree','disagree-Q':'Sources disagree','legacy':'Unverified value','nomen-gbif':'Name in flux','nomen-sa':'Name differs','nomen-sf':'Name changed','nomen-flux':'Name in flux','merged':'Merged','cross-check':'Cross-check','new':'New in v4'}[f.k]||'Note'; }
 
 const CHARS=[
   {k:'ft',label:'fruitbody type',step:4,ctl:'ft',get:s=>[s.ft]},{k:'print',label:'spore print colour',step:3,get:s=>[s.sp.print]},
@@ -432,7 +433,7 @@ function plotSVG(rows,hasYou){
 }
 /* ================================================================ SPECIES PAGE */
 function viewSpecies(main,s){
-  const e=s.sp.ext||{}, srcs=[...new Set(s.meas.map(m=>m.src))];
+  const e=s.sp.ext||{}, msrcs=[...new Set(s.meas.map(m=>m.src))], srcs=[...new Set(msrcs.concat(s.refs||[]))];
   const qtxt=s.sp.q?`, Q = ${s.sp.q[0]}–${s.sp.q[1]}`:'';
   const measRows=s.meas.map(m=>`<tr><td>${citeShort(m.src,m.page)}<div class="verb">${esc(FIELD_LABEL[m.field]||m.where||'')}</div></td>
       <td class="n">${spRange(m.L[0],m.L[1],m.L[2],m.L[3])} × ${spRange(m.W[0],m.W[1],m.W[2],m.W[3])} µm${m.Q?`<br>Q ${m.Q[0]}–${m.Q[1]}`:''}${m.Qav?`<br>Qav ${m.Qav[0]}–${m.Qav[1]}`:''}${m.Qm?`<br>Qm ${m.Qm}`:''}${m.n?`<br>n = ${m.n}`:''}</td>
@@ -451,7 +452,7 @@ function viewSpecies(main,s){
   <div class="cols"><div>
     <section class="panel"><h2>Spores</h2>
       <p class="notation num">${spRange(e.lmin,s.sp.lo,s.sp.hi,e.lmax)} × ${spRange(e.wmin,s.sp.wlo,s.sp.whi,e.wmax)} µm${qtxt}</p>
-      <p class="verb" style="font-style:normal">${s.legacyOnly?'This value comes from Sporexplore v3 and its source could not yet be verified.':`Consensus of ${srcs.length} source${srcs.length>1?'s':''}: the range covers every source's typical range; extremes in brackets.`}</p>
+      <p class="verb" style="font-style:normal">${s.legacyOnly?'This value comes from Sporexplore v3 and its source could not yet be verified.':`Consensus of ${msrcs.length} source${msrcs.length>1?'s':''}: the range covers every source's typical range; extremes in brackets.`}</p>
       ${s.meas.length?`<table class="t"><thead><tr><th>Source</th><th>Measurement</th><th>As published</th></tr></thead><tbody>${measRows}</tbody></table>`:''}
       ${s.legacy&&!s.legacyOnly?`<p class="verb" style="font-style:normal">Sporexplore v3 showed ${fmt(s.legacy.lo)}–${fmt(s.legacy.hi)} × ${fmt(s.legacy.wlo)}–${fmt(s.legacy.whi)} µm.</p>`:''}
       <h3>Spore characters</h3>
@@ -472,7 +473,7 @@ function viewSpecies(main,s){
     <section class="panel"><h2>Names</h2><dl class="kv">
       <dt>Used here</dt><dd><i class="sci">${esc(s.n)}</i> ${esc(s.a||'')}</dd>
       ${s.sf?`<dt>Species Fungorum</dt><dd><i class="sci">${esc(s.sf.current)}</i>${s.sf.referee?` <span class="verb">(${esc(s.sf.referee)})</span>`:''}</dd>`:''}
-      ${s.syn?`<dt>Synonym</dt><dd><i class="sci">${esc(s.syn)}</i></dd>`:''}
+      ${s.syn?`<dt>Synonym</dt><dd><i class="sci">${esc(s.syn)}</i></dd>`:''}${s.merged?`<dt>Includes</dt><dd>${s.merged.map(m=>`<i class="sci">${esc(m)}</i>`).join(', ')}</dd>`:''}${s.renamedFrom?`<dt>v3 name</dt><dd><i class="sci">${esc(s.renamedFrom)}</i></dd>`:''}
       ${s.dk?`<dt>Danish name</dt><dd>${esc(s.dk)}${s.dkOld?` <span class="verb">(v3 used “${esc(s.dkOld)}”)</span>`:''}</dd>`:''}
       </dl><p style="margin:10px 0 0">${links}</p></section>
     <section class="panel"><h2>Nordic records</h2><div class="terrs num">${terr}</div>

@@ -1066,6 +1066,37 @@
    "ed": "inedible",
    "note": "Small, firm, white false truffle with a stringy white cover; tiny warted spherical spores (4–5 µm).",
    "dk": "tofarvet lædertrøffel"
+  },
+  {
+   "n": "Boletus pinetorum",
+   "a": "M. Korhonen",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow",
+     "olive"
+    ],
+    "blue": "none",
+    "stipe": "reticulate-white",
+    "cap": [
+     "grey-brown",
+     "yellow-brown",
+     "dark-brown"
+    ],
+    "host": [
+     "pine"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "unknown",
+   "note": "Porcini with Scots pine on dry sandy heaths: greyish-brown cap with a wrinkled edge, white stem net, large spores and lageniform caulocystidia (Korhonen et al. 2009). Scandinavia, Finland, Estonia."
   }
  ],
  "notAdded": {
@@ -1181,6 +1212,11 @@
    "orn": "smooth",
    "melzer": "dextrinoid",
    "q": "smooth, dark, blackish, moderately dextrinoid"
+  },
+  "Boletus pinetorum": {
+   "orn": "smooth",
+   "wall": "thick",
+   "q": "fusiform, smooth, yellowish brown, thick-walled"
   }
  },
  "vocabAdd": {
@@ -1191,6 +1227,61 @@
   ],
   "cap": [
    "pinkish-brown"
+  ]
+ },
+ "conceptRefs": {
+  "Neoboletus luridiformis": [
+   "KLOFAC2018"
+  ],
+  "Hortiboletus engelii": [
+   "BIKETOVA2025"
+  ],
+  "Hortiboletus rubellus": [
+   "BIKETOVA2025"
+  ],
+  "Hortiboletus bubalinus": [
+   "BIKETOVA2025"
+  ],
+  "Chroogomphus rutilus": [
+   "SCAMBLER2018"
+  ],
+  "Leccinum aurantiacum": [
+   "DENBAKKER2005"
+  ],
+  "Boletus pinetorum": [
+   "KORHONEN2009"
+  ]
+ },
+ "flagsExtra": {
+  "Neoboletus luridiformis": [
+   {
+    "k": "nomen-flux",
+    "t": "One species concept under three names: N. luridiformis (Species Fungorum), N. erythropus (Svampeatlas) and N. praestigiator (used in Norway; Klofac & Krisai-Greilhuber 2018). Nordic record counts combine all three."
+   }
+  ],
+  "Leccinum aurantiacum": [
+   {
+    "k": "merged",
+    "t": "Includes Leccinum quercinum, which Species Fungorum, GBIF, Svampeatlas and den Bakker & Noordeloos (2005) treat as this species."
+   }
+  ],
+  "Chroogomphus rutilus": [
+   {
+    "k": "cross-check",
+    "t": "Scambler et al. (2018) report C. rutilus in the strict sense as not yet known from Fennoscandia; Svampeatlas uses the name in a broad sense."
+   }
+  ],
+  "Rhizopogon luteolus": [
+   {
+    "k": "nomen-flux",
+    "t": "Svampeatlas lists this species as Rhizopogon obtextus (also known as R. luteolus); record counts combine both names."
+   }
+  ],
+  "Pisolithus capsulifer": [
+   {
+    "k": "nomen-flux",
+    "t": "Shown as P. arhizus in Sporexplore v3. Svampeatlas: the names P. arrhizus and P. tinctorius have been used for this species."
+   }
   ]
  }
 }

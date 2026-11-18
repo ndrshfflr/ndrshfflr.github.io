@@ -12,15 +12,18 @@
   },
   "consensus": {
    "lo": 14.0,
-   "hi": 17.0,
+   "hi": 19,
    "wlo": 4.5,
    "whi": 6.0,
    "lmin": null,
    "lmax": null,
    "wmin": null,
    "wmax": null,
-   "q": null,
-   "n_sources": 1
+   "q": [
+    2.7,
+    3.4
+   ],
+   "n_sources": 2
   },
   "meas": [
    {
@@ -40,6 +43,29 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-11069"
+   },
+   {
+    "src": "KORHONEN2009",
+    "page": "45",
+    "L": [
+     null,
+     16,
+     19,
+     null
+    ],
+    "W": [
+     null,
+     5,
+     6,
+     null
+    ],
+    "Q": [
+     2.7,
+     3.4
+    ],
+    "n": 350,
+    "verbatim": "Spores 16–19 × 5–6 μm, Q=2.7–3.4 (350 spores, 7 collections), X(av.)=17 × 5.5 μm",
+    "note": "Fennoscandian collections; 50 spores per collection (Korhonen et al. 2009)."
    }
   ],
   "flags": [],
@@ -506,8 +532,11 @@
    "lmax": null,
    "wmin": null,
    "wmax": null,
-   "q": null,
-   "n_sources": 1
+   "q": [
+    2.7,
+    3.6
+   ],
+   "n_sources": 2
   },
   "meas": [
    {
@@ -527,6 +556,29 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-11093"
+   },
+   {
+    "src": "KORHONEN2009",
+    "page": "49",
+    "L": [
+     null,
+     13.5,
+     16,
+     null
+    ],
+    "W": [
+     null,
+     4.5,
+     5.5,
+     null
+    ],
+    "Q": [
+     2.7,
+     3.6
+    ],
+    "n": 300,
+    "verbatim": "Spores 13.5–16 × 4.5–5.5 μm, Q=2.7–3.6 (300 spores, 6 collections), X(av.)=15 × 4.8 μm",
+    "note": "Fennoscandian collections; 50 spores per collection (Korhonen et al. 2009)."
    }
   ],
   "flags": [],
@@ -827,15 +879,18 @@
   },
   "consensus": {
    "lo": 15.0,
-   "hi": 19.0,
+   "hi": 20,
    "wlo": 4.5,
-   "whi": 5.5,
+   "whi": 6,
    "lmin": null,
    "lmax": null,
    "wmin": null,
    "wmax": null,
-   "q": null,
-   "n_sources": 1
+   "q": [
+    3.0,
+    3.8
+   ],
+   "n_sources": 2
   },
   "meas": [
    {
@@ -855,6 +910,29 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-11083"
+   },
+   {
+    "src": "KORHONEN2009",
+    "page": "45",
+    "L": [
+     null,
+     17,
+     20,
+     null
+    ],
+    "W": [
+     null,
+     4.5,
+     6,
+     null
+    ],
+    "Q": [
+     3.0,
+     3.8
+    ],
+    "n": 500,
+    "verbatim": "Spores 17–20 × 4.5–6 μm, Q=3–3.8 (500 spores, 10 collections), X(av.)=18 × 5.5 μm",
+    "note": "Fennoscandian collections; 50 spores per collection (Korhonen et al. 2009)."
    }
   ],
   "flags": [],
@@ -1621,6 +1699,10 @@
    {
     "k": "nomen-sa",
     "t": "Svampeatlas uses Neoboletus erythropus"
+   },
+   {
+    "k": "nomen-flux",
+    "t": "One species concept under three names: N. luridiformis (Species Fungorum), N. erythropus (Svampeatlas) and N. praestigiator (used in Norway; Klofac & Krisai-Greilhuber 2018). Nordic record counts combine all three."
    }
   ],
   "nomen": {
@@ -9713,7 +9795,12 @@
     ]
    }
   ],
-  "flags": [],
+  "flags": [
+   {
+    "k": "merged",
+    "t": "Includes Leccinum quercinum, which Species Fungorum, GBIF, Svampeatlas and den Bakker & Noordeloos (2005) treat as this species."
+   }
+  ],
   "nomen": {
    "gbif": {
     "key": 2524513,
@@ -14816,15 +14903,15 @@
   },
   "consensus": {
    "lo": 5.0,
-   "hi": 7.0,
+   "hi": 8.0,
    "wlo": 3.5,
-   "whi": 4.5,
+   "whi": 5.0,
    "lmin": null,
    "lmax": null,
    "wmin": null,
    "wmax": null,
    "q": null,
-   "n_sources": 1
+   "n_sources": 2
   },
   "meas": [
    {
@@ -14844,9 +14931,32 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-14886"
+   },
+   {
+    "src": "HOLEC2013",
+    "page": "23",
+    "L": [
+     null,
+     6.5,
+     8.0,
+     null
+    ],
+    "W": [
+     null,
+     4.0,
+     5.0,
+     null
+    ],
+    "verbatim": "Normal spore size (10–90 percentiles) in μm … H. aurantiaca 6.5–8.0 × 4.0–5.0 (Tab. 3)",
+    "note": "10th–90th percentile range, from the comparison table."
    }
   ],
-  "flags": [],
+  "flags": [
+   {
+    "k": "disagree-L",
+    "t": "Sources differ by 19 % in mean spore length"
+   }
+  ],
   "nomen": {
    "gbif": {
     "key": 2525710,
@@ -15755,6 +15865,10 @@
    {
     "k": "nomen-sa",
     "t": "Svampeatlas uses Chroogomphus rutilus i bred forstand "
+   },
+   {
+    "k": "cross-check",
+    "t": "Scambler et al. (2018) report C. rutilus in the strict sense as not yet known from Fennoscandia; Svampeatlas uses the name in a broad sense."
    }
   ],
   "nomen": {
@@ -17275,7 +17389,12 @@
     "src": "SA-68863"
    }
   ],
-  "flags": [],
+  "flags": [
+   {
+    "k": "nomen-flux",
+    "t": "Shown as P. arhizus in Sporexplore v3. Svampeatlas: the names P. arrhizus and P. tinctorius have been used for this species."
+   }
+  ],
   "nomen": {
    "gbif": {
     "key": 8014599,
@@ -17390,7 +17509,12 @@
     "src": "SA-47475"
    }
   ],
-  "flags": [],
+  "flags": [
+   {
+    "k": "nomen-flux",
+    "t": "Svampeatlas lists this species as Rhizopogon obtextus (also known as R. luteolus); record counts combine both names."
+   }
+  ],
   "nomen": {
    "gbif": {
     "key": 2524248,
@@ -19754,13 +19878,16 @@
    "lo": 5.0,
    "hi": 6.5,
    "wlo": 3.0,
-   "whi": 4.0,
+   "whi": 4.4,
    "lmin": null,
    "lmax": 7.0,
    "wmin": null,
    "wmax": null,
-   "q": null,
-   "n_sources": 1
+   "q": [
+    1.3,
+    1.7
+   ],
+   "n_sources": 2
   },
   "meas": [
    {
@@ -19780,6 +19907,29 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-14887"
+   },
+   {
+    "src": "HOLEC2013",
+    "page": "18",
+    "L": [
+     5.2,
+     5.6,
+     6.4,
+     6.8
+    ],
+    "W": [
+     null,
+     3.6,
+     4.4,
+     null
+    ],
+    "Q": [
+     1.3,
+     1.7
+    ],
+    "Qm": 1.53,
+    "verbatim": "Basidiospores (5.2)5.6–6.4(6.8) × 3.6–4.4 μm, Q = 1.30–1.70, Qav = 1.53",
+    "note": "10th–90th percentile range, extremes in brackets."
    }
   ],
   "flags": [],
@@ -22856,5 +23006,109 @@
   },
   "dkOld": null,
   "dk": "tofarvet lædertrøffel"
+ },
+ {
+  "n": "Boletus pinetorum",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 16.5,
+   "hi": 19,
+   "wlo": 5.5,
+   "whi": 6.5,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": [
+    2.8,
+    3.3
+   ],
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "src": "KORHONEN2009",
+    "page": "44",
+    "L": [
+     null,
+     16.5,
+     19,
+     null
+    ],
+    "W": [
+     null,
+     5.5,
+     6.5,
+     null
+    ],
+    "Q": [
+     2.8,
+     3.3
+    ],
+    "n": 600,
+    "verbatim": "Spores 16.5–19 × 5.5–6.5 μm, Q=2.8–3.3 (600 spores, 12 collections), X(av.)=17.5 × 5.8 μm",
+    "note": "Fennoscandian collections; 50 spores per collection (Korhonen et al. 2009)."
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 7971379,
+    "acceptedKey": 7971379,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Boletus pinetorum M.Korhonen",
+    "accepted": null,
+    "family": "Boletaceae",
+    "counts": {
+     "DK": 0,
+     "NO": 12,
+     "SE": 4,
+     "FI": 72,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "fin",
+      "kangasherkkutatti"
+     ],
+     [
+      "fin",
+      "kangasherkkutatti"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "515526",
+      "name": "Boletus pinetorum",
+      "authors": "M. Korhonen",
+      "year": "2009",
+      "status": "Legitimate",
+      "current": "515526",
+      "currentName": "Boletus pinetorum",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Boletus+pinetorum&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": null,
+   "sf": {
+    "current": "Boletus pinetorum",
+    "currentId": "515526",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "515526"
+   }
+  },
+  "dkOld": null,
+  "dk": null
  }
 ]
