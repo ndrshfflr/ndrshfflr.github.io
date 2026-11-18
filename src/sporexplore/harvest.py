@@ -179,6 +179,15 @@ def names():
             print(f"  {i}/{len(todo)}", flush=True)
 
 
+def if_refresh():
+    """Re-pull Index Fungorum records that lack Species Fungorum's CURRENT_NAME field."""
+    for nm in lines("names.txt"):
+        p = os.path.join(RAW, "indexfungorum", slug(nm) + ".json")
+        if os.path.exists(p) and "CURRENT_x0020_NAME" in open(p, encoding="utf-8").read():
+            continue
+        save("indexfungorum", slug(nm), if_name(nm))
+
+
 def dois():
     for d in lines("dois.txt"):
         d = d.lower().removeprefix("https://doi.org/")
@@ -212,6 +221,8 @@ if __name__ == "__main__":
         print(len([n for n in lines("names.txt")
                    if not os.path.exists(os.path.join(RAW, "svampeatlas", slug(n) + ".json"))]))
         sys.exit(0)
+    if "if" in parts:
+        if_refresh()
     if "refs" in parts:
         refs()
     if "dois" in parts:
