@@ -1,0 +1,98 @@
+[
+ {
+  "species": "Chroogomphus rutilus",
+  "src": "SCAMBLER2018",
+  "L": [
+   14.0,
+   16.0,
+   21.5,
+   23.0
+  ],
+  "W": [
+   null,
+   5.5,
+   7.0,
+   7.5
+  ],
+  "Q": [
+   2.43,
+   3.63
+  ],
+  "Qm": 2.94,
+  "mount": "Melzer",
+  "verbatim": "(14.0–)16.0–21.5(–23.0) × 5.5–7.0(–7.5) μm, av. = 18.0 × 6.2 μm … Q av. = 2.94",
+  "note": "Melzer's reagent, ≥ 20 spores per collection from deposits; typical range covers ≥ 90 % of values. The authors report C. rutilus s. str. as not yet known from Fennoscandia."
+ },
+ {
+  "species": "Chroogomphus purpurascens",
+  "src": "SCAMBLER2018",
+  "L": [
+   14.0,
+   15.0,
+   18.0,
+   19.0
+  ],
+  "W": [
+   null,
+   5.0,
+   6.5,
+   null
+  ],
+  "Q": [
+   2.63,
+   3.52
+  ],
+  "Qm": 2.95,
+  "mount": "Melzer",
+  "verbatim": "(14.0–)15.0–18.0(–19.0) × 5–6.5 μm, av. = 16.6 × 5.7 μm … Q av. = 2.95",
+  "note": "Melzer's reagent, ≥ 20 spores per collection from deposits; typical range covers ≥ 90 % of values. Treated as C. cf. purpurascens (type not studied)."
+ },
+ {
+  "species": "Chroogomphus mediterraneus",
+  "src": "SCAMBLER2018",
+  "L": [
+   14.0,
+   15.0,
+   18.5,
+   20.5
+  ],
+  "W": [
+   5.0,
+   6.0,
+   7.5,
+   8.0
+  ],
+  "Q": [
+   2.11,
+   2.96
+  ],
+  "Qm": 2.57,
+  "mount": "Melzer",
+  "verbatim": "(14.0–)15.0–18.5(–20.5) × (5.0–)6.0–7.5(–8.0) μm, av. 16.9 × 6.6 μm … Q av. 2.57",
+  "note": "Melzer's reagent, ≥ 20 spores per collection from deposits; typical range covers ≥ 90 % of values."
+ },
+ {
+  "species": "Chroogomphus subfulmineus",
+  "src": "SCAMBLER2018",
+  "L": [
+   16.0,
+   17.0,
+   24.0,
+   26.0
+  ],
+  "W": [
+   6.0,
+   7.0,
+   8.0,
+   8.5
+  ],
+  "Q": [
+   2.18,
+   3.37
+  ],
+  "Qm": 2.81,
+  "mount": "Melzer",
+  "verbatim": "(16.0–)17.0–24.0(–26.0) × (6.0–)7.0–8.0(–8.5) μm, av. 20.6 × 7.0 μm … Q av. 2.81",
+  "note": "Melzer's reagent, ≥ 20 spores per collection from deposits; typical range covers ≥ 90 % of values. Protologue (new species)."
+ }
+]

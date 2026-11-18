@@ -1,0 +1,51 @@
+{
+ "SCAMBLER2018": {
+  "type": "article",
+  "authors": [
+   {
+    "family": "Scambler",
+    "given": "Ross"
+   },
+   {
+    "family": "Niskanen",
+    "given": "Tuula"
+   },
+   {
+    "family": "Assyov",
+    "given": "Boris"
+   },
+   {
+    "family": "Ainsworth",
+    "given": "A. Martyn"
+   },
+   {
+    "family": "Bellanger",
+    "given": "Jean-Michel"
+   },
+   {
+    "family": "Loizides",
+    "given": "Michael"
+   },
+   {
+    "family": "Moreau",
+    "given": "Pierre-Arthur"
+   },
+   {
+    "family": "Kirk",
+    "given": "Paul M."
+   },
+   {
+    "family": "Liimatainen",
+    "given": "Kare"
+   }
+  ],
+  "year": 2018,
+  "title": "Diversity of <i>Chroogomphus</i> (Gomphidiaceae, Boletales) in Europe, and typification of <i>C. rutilus</i>",
+  "container": "IMA Fungus",
+  "volume": 9,
+  "issue": 2,
+  "pages": "271–290",
+  "doi": "10.5598/imafungus.2018.09.02.04",
+  "method": "Melzer's reagent; 20 mature spores per collection from spore deposits; range covers ≥ 90 % of measurements, extremes in brackets."
+ }
+}

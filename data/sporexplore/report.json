@@ -11674,12 +11674,15 @@
    "hi": 22.0,
    "wlo": 5.5,
    "whi": 7.0,
-   "lmin": null,
-   "lmax": null,
+   "lmin": 14.0,
+   "lmax": 23.0,
    "wmin": null,
-   "wmax": null,
-   "q": null,
-   "n_sources": 1
+   "wmax": 7.5,
+   "q": [
+    2.43,
+    3.63
+   ],
+   "n_sources": 2
   },
   "meas": [
    {
@@ -11699,6 +11702,29 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-71498"
+   },
+   {
+    "src": "SCAMBLER2018",
+    "L": [
+     14.0,
+     16.0,
+     21.5,
+     23.0
+    ],
+    "W": [
+     null,
+     5.5,
+     7.0,
+     7.5
+    ],
+    "Q": [
+     2.43,
+     3.63
+    ],
+    "Qm": 2.94,
+    "mount": "Melzer",
+    "verbatim": "(14.0–)16.0–21.5(–23.0) × 5.5–7.0(–7.5) μm, av. = 18.0 × 6.2 μm … Q av. = 2.94",
+    "note": "Melzer's reagent, ≥ 20 spores per collection from deposits; typical range covers ≥ 90 % of values. The authors report C. rutilus s. str. as not yet known from Fennoscandia."
    }
   ],
   "flags": [
