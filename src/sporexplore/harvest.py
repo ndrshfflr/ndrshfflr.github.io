@@ -208,7 +208,10 @@ def files():
             open(os.path.join(d, key + ".pdf"), "wb").write(body)
             continue
         html_ = body.decode("utf-8", "replace")
-        links = re.findall(r'href="([^"]+?\.pdf[^"]*)"', html_, re.I)
+        links = (re.findall(r'<meta name="citation_pdf_url" content="([^"]+)"', html_, re.I)
+                 + re.findall(r'href="([^"]+?\.pdf[^"]*)"', html_, re.I)
+                 + re.findall(r'href="([^"]*/article/download/[^"]+)"', html_, re.I)
+                 + re.findall(r'href="([^"]*/article/view/\d+/\d+)"', html_, re.I))
         for i, l in enumerate(dict.fromkeys(links)):
             if i >= 3:
                 break
