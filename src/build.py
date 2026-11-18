@@ -754,7 +754,8 @@ def whatsapp_link(phone):
 
 def render_card(env, content, entry, versions):
     """card.html / card.da.html + card.vcf: the digital business card the QR code points to
-    (assets/card/qr.svg encodes SITE_URL + "card"). Name and title come from the
+    (assets/card/qr.svg encodes https://me.alkemisten.dk/card; old printed codes with
+    https://ndrshfflr.github.io/card redirect here). Name and title come from the
     entry page, email and socials from the contact section, the photo from the CV portrait, so the
     card follows the site. The phone number (with a WhatsApp link) is only on the card while
     "Share phone & WhatsApp on the business card" is on (/admin, or the owner's switch on the card)."""
