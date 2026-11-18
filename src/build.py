@@ -319,7 +319,7 @@ PAGES = {
 }
 # The pages above that the circle no longer leads to (since the worlds were emptied
 # for a rebuild). They stay online for old links but ask search engines to drop them.
-UNLISTED = {"classic.html", "classic.da.html", "exploration.html", "exploration.da.html",
+UNLISTED = {"classic.html", "classic.da.html", "card.html", "card.da.html", "exploration.html", "exploration.da.html",
             "fungi.html", "fungi.da.html", "terrarium.html", "terrarium.da.html"}
 ENTRY = {"en": "index.html", "da": "da.html"}
 HOME = {"en": "classic.html", "da": "classic.da.html"}
@@ -766,6 +766,58 @@ def render_cv(env, content, entry, posts, versions):
         )
 
 
+CARD = {"en": "card.html", "da": "card.da.html"}
+CARD_UI = {
+    "en": {"lead": "Indoor microbiology · mould · mycology", "save": "Save contact", "email": "Email",
+           "services": "Mould & indoor climate", "fungi": "Grow & tours", "cv": "CV", "site": "The website",
+           "showQr": "Show QR code", "close": "Close", "qrHint": "Scan to open this card",
+           "description": "Digital business card: contact details, services and CV."},
+    "da": {"lead": "Indeklima · skimmelsvamp · mykologi", "save": "Gem kontakt", "email": "E-mail",
+           "services": "Skimmel & indeklima", "fungi": "Dyrkning & ture", "cv": "CV", "site": "Hjemmesiden",
+           "showQr": "Vis QR-kode", "close": "Luk", "qrHint": "Scan for at åbne kortet",
+           "description": "Digitalt visitkort: kontakt, ydelser og CV."},
+}
+
+
+def vcard_escape(s):
+    return s.replace("\\", "\\\\").replace(",", "\\,").replace(";", "\\;").replace("\n", "\\n")
+
+
+def render_card(env, content, entry, versions):
+    """card.html / card.da.html + card.vcf: the digital business card the QR code points to
+    (assets/card/qr.svg encodes https://ndrshfflr.github.io/card). Name and title come from the
+    entry page, email and socials from the contact section, so the card follows the site."""
+    name = entry["en"].get("name") or "Pieter Shiffler Carpentier"
+    email = (content["en"].get("contact") or {}).get("email") or ""
+    socials = (content["en"].get("contact") or {}).get("socials") or []
+    parts = name.split()
+    lines = ["BEGIN:VCARD", "VERSION:3.0",
+             "N:" + vcard_escape(" ".join(parts[1:])) + ";" + vcard_escape(parts[0]) + ";;;",
+             "FN:" + vcard_escape(name),
+             "TITLE:" + vcard_escape(entry["en"].get("title") or ""),
+             "URL:" + SITE_URL + CARD["en"]]
+    if email:
+        lines.append("EMAIL;TYPE=INTERNET:" + email)
+    phone = (content["en"].get("contact") or {}).get("phone") or ""
+    if phone:
+        lines.append("TEL;TYPE=CELL:" + phone.replace(" ", ""))
+    for s in socials:
+        lines.append("X-SOCIALPROFILE;TYPE=" + vcard_escape(s.get("label", "")) + ":" + s.get("url", ""))
+    lines += ["NOTE:" + vcard_escape(CARD_UI["en"]["lead"]), "END:VCARD"]
+    (ROOT / "card.vcf").write_text("\r\n".join(lines) + "\r\n", encoding="utf-8")
+    print("wrote card.vcf")
+    qr = (ROOT / "assets" / "card" / "qr.svg").read_text(encoding="utf-8")
+    for lang in ("en", "da"):
+        other = "da" if lang == "en" else "en"
+        html = env.get_template("card.html.j2").render(
+            lang=lang, ui=CARD_UI[lang], name=name, title=entry[lang].get("title") or "", email=email,
+            phone=phone, socials=socials, qr_svg=qr, site_url=SITE_URL, self_href=CARD[lang], other_href=CARD[other],
+            entry_href=ENTRY[lang], services_href=HOME[lang] + "#services-heading", fungi_href=FUNGI[lang], cv_href=CV[lang],
+            year=datetime.date.today().year)
+        (ROOT / CARD[lang]).write_text(html, encoding="utf-8")
+        print("wrote", CARD[lang])
+
+
 def render_entry(env, content, entry, versions):
     """index.html and da.html: the stone circle of portals."""
     count = len(entry["en"]["portals"])
@@ -824,6 +876,7 @@ def main():
     render_pages(env, content, entry, posts, versions)
     render_sky(env, versions)
     render_cv(env, content, entry, posts, versions)
+    render_card(env, content, entry, versions)
 
     for out, (tpl, lang) in PAGES.items():
         d = content[lang]
