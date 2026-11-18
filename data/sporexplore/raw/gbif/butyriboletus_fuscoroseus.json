@@ -1,0 +1,137 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 8137685,
+  "scientificName": "Butyriboletus fuscoroseus (Smotl.) Vizzini & Gelardi",
+  "canonicalName": "Butyriboletus fuscoroseus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Butyriboletus",
+  "species": "Butyriboletus fuscoroseus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 8405404,
+  "speciesKey": 8137685,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Butyriboletus+fuscoroseus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 38,
+  "NO": 0,
+  "SE": 0,
+  "FI": 0,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 8137685,
+  "nubKey": 8137685,
+  "nameKey": 1743938,
+  "taxonID": "gbif:8137685",
+  "sourceTaxonKey": 172026133,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Butyriboletus",
+  "species": "Butyriboletus fuscoroseus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 8405404,
+  "speciesKey": 8137685,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 8405404,
+  "parent": "Butyriboletus",
+  "basionymKey": 6016440,
+  "basionym": "Boletus fuscoroseus Smotl.",
+  "scientificName": "Butyriboletus fuscoroseus (Smotl.) Vizzini & Gelardi",
+  "canonicalName": "Butyriboletus fuscoroseus",
+  "vernacularName": "pretender",
+  "authorship": "(Smotl.) Vizzini & Gelardi",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2014). In Vizzini, Index Fungorum 162: 1.",
+  "numDescendants": 0,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:07.916+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 8137685,
+   "vernacularName": "Brunrosa rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905095
+  },
+  {
+   "taxonKey": 8137685,
+   "vernacularName": "Brunrosa rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299883608
+  },
+  {
+   "taxonKey": 8137685,
+   "vernacularName": "brunrosa sommarsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299883608
+  },
+  {
+   "taxonKey": 8137685,
+   "vernacularName": "pretender",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299883608
+  },
+  {
+   "taxonKey": 8137685,
+   "vernacularName": "the pretender",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299883608
+  },
+  {
+   "taxonKey": 8137685,
+   "vernacularName": "Brunrosa rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 163416980,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8137685,
+   "vernacularName": "brunrosa sommarsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 163416980,
+   "preferred": true
+  }
+ ]
+}

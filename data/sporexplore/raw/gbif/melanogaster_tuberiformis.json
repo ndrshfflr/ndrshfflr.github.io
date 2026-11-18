@@ -1,0 +1,142 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 5240037,
+  "scientificName": "Melanogaster tuberiformis Corda",
+  "canonicalName": "Melanogaster tuberiformis",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Paxillaceae",
+  "genus": "Melanogaster",
+  "species": "Melanogaster tuberiformis",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4195,
+  "genusKey": 2524217,
+  "speciesKey": 5240037,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Melanogaster+tuberiformis&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 34,
+  "NO": 5,
+  "SE": 9,
+  "FI": 0,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 5240037,
+  "nubKey": 5240037,
+  "nameKey": 6812064,
+  "taxonID": "gbif:5240037",
+  "sourceTaxonKey": 172019730,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Paxillaceae",
+  "genus": "Melanogaster",
+  "species": "Melanogaster tuberiformis",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4195,
+  "genusKey": 2524217,
+  "speciesKey": 5240037,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2524217,
+  "parent": "Melanogaster",
+  "scientificName": "Melanogaster tuberiformis Corda",
+  "canonicalName": "Melanogaster tuberiformis",
+  "authorship": "Corda",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1831). In Sturm, Deutschl. Fl., 3 Abt. (Pilze Deutschl.) 3(11): 1.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:12.363+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 5240037,
+   "vernacularName": "Stor slimtrøffel",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299872673
+  },
+  {
+   "taxonKey": 5240037,
+   "vernacularName": "Stor slimtrøffel",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334904916
+  },
+  {
+   "taxonKey": 5240037,
+   "vernacularName": "bøkeslimknoll",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299872673
+  },
+  {
+   "taxonKey": 5240037,
+   "vernacularName": "luddslemtryffel",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299872673
+  },
+  {
+   "taxonKey": 5240037,
+   "vernacularName": "bøkeslimknoll",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069296,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5240037,
+   "vernacularName": "luddslemtryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019189,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5240037,
+   "vernacularName": "luddslemtryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691363,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5240037,
+   "vernacularName": "luddslemtryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329811,
+   "preferred": true
+  }
+ ]
+}
