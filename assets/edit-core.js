@@ -313,7 +313,7 @@
 
   /* ------------------------------------------------------------------ the site's content */
   /* Everything that can show a picture: the image files, the photo library,
-     the field log, the blog posts, the pages and the page texts.
+     the field log, the blog posts and the page texts.
      → { images, gallery, fieldlog, observations, posts, texts } (texts as { path, label, text, href }) */
   function loadSite(opts) {
     opts = opts || {};
@@ -323,7 +323,7 @@
       gh('GET', R + '/git/trees/' + encodeURIComponent(cfg.branch) + '?recursive=1'),
       readFile('content/gallery.json'), readFile('content/fieldlog.json'),
       opts.observations ? readFile('content/observations.json') : Promise.resolve(null),
-      list('content/posts'), list('content/pages'),
+      list('content/posts'), Promise.resolve([]),
       readFile('content/home.json'), readFile('content/home.da.json'), readFile('content/entry.json'), readFile('content/entry.da.json')
     ]).then(function (r) {
       var site = { gallery: r[1], fieldlog: r[2], observations: r[3], posts: [] };
@@ -331,21 +331,20 @@
         return t.type === 'blob' && /^images\//.test(t.path) && !/^images\/(inbox|icons)\//.test(t.path) && /\.(jpe?g|png|webp|gif|avif)$/i.test(t.path);
       }).map(function (t) { return '/' + t.path; });
       site.texts = [
-        { path: 'content/home.json', label: 'Classic page (English)', text: r[6] && r[6].text },
-        { path: 'content/home.da.json', label: 'Classic page (Danish)', text: r[7] && r[7].text },
+        { path: 'content/home.json', label: 'Site texts (English)', text: r[6] && r[6].text },
+        { path: 'content/home.da.json', label: 'Site texts (Danish)', text: r[7] && r[7].text },
         { path: 'content/entry.json', label: 'Stone circle', text: r[8] && r[8].text },
         { path: 'content/entry.da.json', label: 'Stone circle (Danish)', text: r[9] && r[9].text }
       ];
       var md = function (files, dir) { return arr(files).filter(function (f) { return /\.md$/.test(f.name); }).map(function (f) { return dir + '/' + f.name; }); };
-      var postPaths = md(r[4], 'content/posts'), pagePaths = md(r[5], 'content/pages');
-      return Promise.all(postPaths.concat(pagePaths).map(function (p) { return readFile(p).catch(function () { return null; }); })).then(function (texts) {
-        postPaths.concat(pagePaths).forEach(function (p, i) {
+      var postPaths = md(r[4], 'content/posts');
+      return Promise.all(postPaths.map(function (p) { return readFile(p).catch(function () { return null; }); })).then(function (texts) {
+        postPaths.forEach(function (p, i) {
           var t = texts[i] && texts[i].text || '';
           var slug = p.replace(/^.*\//, '').replace(/\.md$/, '');
           var title = (/^---[\s\S]*?\ntitle:\s*["']?(.+?)["']?\s*\n[\s\S]*?---/.exec(t) || [])[1] || slug;
           var date = (/\ndate:\s*["']?(\d{4}-\d{2}-\d{2})/.exec(t) || [])[1] || '';
-          if (i < postPaths.length) site.posts.push({ slug: slug, path: p, title: title, date: date, text: t });
-          else site.texts.push({ path: p, label: 'Page: ' + title, text: t, href: 'page.html?slug=' + encodeURIComponent(slug) });
+          site.posts.push({ slug: slug, path: p, title: title, date: date, text: t });
         });
         site.posts.sort(function (a, b) { return a.slug < b.slug ? 1 : -1; });
         return site;

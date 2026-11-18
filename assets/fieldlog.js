@@ -1070,7 +1070,7 @@
     if (sp) openSpecies(sp.key);
     startEditing();
   });
-  // wording edited in /admin (Main page → Field log) shows up without a rebuild
+  // wording edited in /admin (Site texts → Field log) shows up without a rebuild
   Promise.all([getJSON('content/home.json'), getJSON('content/home.da.json')]).then(function (r) {
     if (r[0] && r[0].fieldlog) TEXT.en = r[0].fieldlog;
     if (r[1] && r[1].fieldlog) TEXT.da = r[1].fieldlog;

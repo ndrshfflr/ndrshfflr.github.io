@@ -19,9 +19,6 @@ admin/index.html
 admin/config.yml
 content/home.json
 content/gallery.json
-content/pages/example-page.md   (skip if you already have this)
-page.html
-styles.css
 index.html          (replaces your current one)
 favicon.svg
 favicon.ico
@@ -116,9 +113,9 @@ GitHub Pages will automatically rebuild your site with this change — that usua
 
 Visit `https://ndrshfflr.github.io/admin/`. Click **Login with GitHub**, authorize the app, and you'll land in the CMS dashboard with three sections:
 
-- **Main Page** — every headline, paragraph, button label, and link on the homepage; your credentials list; the navigation menu labels; and, at the bottom of the Contact section, an optional list of social/other links (Instagram, LinkedIn, a booking page — add as many rows as you like, or none).
+- **Entry Page (portals)** — the name, title, portals and small menu of the stone circle.
+- **Site texts** — your email, phone and social links (used by the business card, the CV and search engines), and the texts around the Labdiary and the Field log.
 - **Photography** — no longer here: the photography page is edited on the page itself (photography.html → **Edit**), and new photos with finds or posts go through upload.html. See PHOTO-UPLOAD-GUIDE.md.
-- **Extra Pages** — write new pages (e.g. "Guided Tours") using a simple text editor with bold/italic/links/lists/images. Each new page automatically appears in the site's navigation menu.
 
 ### Draft → Review → Publish
 
@@ -134,17 +131,16 @@ Every change becomes a real commit to your GitHub repo once published — so not
 
 ## Step 6 — Turn on visitor analytics (optional but recommended)
 
-Both `index.html` and `page.html` already have a Cloudflare Web Analytics tag in them — it just needs your own tracking token. This is free, doesn't use cookies, and doesn't need a cookie-consent banner.
+Every page built on the stone circle's world (`src/templates/world.html.j2`) already has a Cloudflare Web Analytics tag in it — it just needs your own tracking token. This is free, doesn't use cookies, and doesn't need a cookie-consent banner.
 
 1. In the [Cloudflare dashboard](https://dash.cloudflare.com), go to **Analytics & Logs → Web Analytics** in the left sidebar.
 2. Click **Add a site**, enter `ndrshfflr.github.io`, and follow the prompt to add it as a **JavaScript snippet** (not a DNS-based site, since GitHub Pages doesn't run through Cloudflare's DNS).
 3. Cloudflare will show you a snippet that includes a `data-cf-beacon='{"token": "..."}'` value — copy just that token (a long string of letters and numbers).
-4. Back in your repo (same web-editor approach as Step 4), open `index.html`, find this line near the top:
+4. Back in your repo (same web-editor approach as Step 4), open `src/templates/world.html.j2`, find this line near the bottom:
    ```html
    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN"}'></script>
    ```
-   Replace `REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN` with your real token, keeping the quotes. Commit.
-5. Do the same in `page.html` (same line, same token).
+   Replace `REPLACE-WITH-YOUR-CF-ANALYTICS-TOKEN` with your real token, keeping the quotes. Commit; the "Build site" workflow puts it into every page.
 
 After that, visits show up in the Cloudflare dashboard within a few minutes — a simple way to see how many people are landing on the site after scanning your QR code.
 
