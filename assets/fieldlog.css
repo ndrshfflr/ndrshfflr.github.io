@@ -209,3 +209,30 @@ span.fl-d-cover{cursor:default}
 .fl-r-thumb{width:48px;height:48px;padding:0;border:1px solid color-mix(in srgb,var(--line) 25%,transparent);background:none;overflow:hidden;cursor:pointer}
 .fl-r-thumb img{display:block;width:100%;height:100%;object-fit:cover}
 .fl-r-thumb:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+
+/* adding, changing, deleting and hiding finds (signed in) */
+.fl-edit-actions{display:flex;flex-wrap:wrap;gap:6px}
+.fl-edit-actions .fl-refresh{margin-top:4px}
+.fl-r-tools{grid-column:1/-1;display:flex;gap:8px;margin-top:2px}
+.fl-r-btn{min-height:32px;padding:0 10px;border:1px solid color-mix(in srgb,var(--acc) 45%,transparent);background:transparent;color:var(--ink);font:inherit;font-size:14px;cursor:pointer}
+.fl-r-btn:hover{background:color-mix(in srgb,var(--acc) 15%,transparent)}
+.fl-r-danger.is-sure{border-color:#ffb4a6;color:#ffb4a6}
+.fl-r-btn:focus-visible,.fl-d-fav:focus-visible,.fl-form input:focus-visible,.fl-form select:focus-visible,.fl-form textarea:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.fl-panel{width:min(560px,calc(100% - 32px))}
+.fl-p-body{overflow-y:auto;max-height:calc(100dvh - 48px);padding:28px 28px 24px}
+.fl-p-title{margin:0 54px 14px 0;font-family:'Cinzel',Georgia,serif;font-weight:500;font-size:22px}
+.fl-form{display:grid;gap:12px}
+.fl-f-row{display:grid;gap:4px}
+.fl-f-label{font-size:14px;color:var(--ink2)}
+.fl-form input,.fl-form select,.fl-form textarea{width:100%;box-sizing:border-box;min-height:42px;padding:8px 10px;border:1px solid color-mix(in srgb,var(--line) 30%,transparent);
+  background:rgba(0,0,0,.35);color:var(--ink);font:inherit;font-size:16px;color-scheme:dark}
+.fl-form textarea{resize:vertical}
+.fl-f-hint{margin:0;font-size:14px;color:var(--ink2)}
+.fl-f-msg{margin:0;color:#ffb4a6}
+.fl-f-msg:empty{display:none}
+.fl-f-buttons{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.fl-f-save{min-height:44px;padding:0 22px;border:0;background:var(--acc);color:#1a0f07;font:inherit;font-weight:600;font-size:16px;cursor:pointer}
+.fl-f-save:hover{background:color-mix(in srgb,var(--acc) 85%,#fff)}
+.fl-f-save:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.fl-hidden-list li{grid-template-columns:auto 1fr auto;align-items:center}
+@media (max-width:760px){.fl-panel{width:100%;height:100dvh;max-height:100dvh;border:0}.fl-p-body{max-height:100dvh;padding:22px 18px 30px}}
