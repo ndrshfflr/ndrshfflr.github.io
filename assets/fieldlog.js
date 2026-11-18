@@ -14,7 +14,8 @@
  *
  * Signed in (the same sign-in as /admin or the upload page, on this device)
  * with a key that can change the website, you also get a ★ on every card and
- * "Use as cover" on every picture. Those save straight into
+ * "Use as cover" on every picture, and you can add, change and delete your
+ * own finds and hide synced finds or whole species. Those save straight into
  * content/fieldlog.json ("Favourites, photos and stories" in /admin).
  * The bar along the bottom also has "Fetch new finds now", which starts the
  * field-log sync right away instead of waiting for the night (see addRefresh).
@@ -389,7 +390,10 @@
     renderChips();
     renderGrid();
     renderSync();
-    if (current) openSpecies(current, true);
+    if (current) {
+      if (data.list.some(function (s) { return s.key === current; })) openSpecies(current, true);
+      else closeDialog(); // hidden or deleted just now
+    }
   }
 
   // ---------- detail dialog ----------
@@ -435,6 +439,8 @@
       editRow = el('div', 'fl-d-edit');
       editRow.id = 'fl-d-edit';
       editRow.appendChild(favButton(sp, 'fl-d-fav'));
+      editRow.appendChild(editButton('fl-d-fav', '+ ' + (u.flAddSighting || 'Add a sighting'), function () { openFindForm(null, sp); }));
+      editRow.appendChild(editButton('fl-d-fav fl-d-hide', u.flHideSp || 'Hide this species', function () { hideSpecies(sp); }));
       editRow.appendChild(el('span', 'fl-edit-status' + (edit.kind ? ' ' + edit.kind : ''), edit.msg));
       $('fl-d-group').insertAdjacentElement('afterend', editRow);
     }
@@ -530,6 +536,7 @@
         });
         li.appendChild(row);
       }
+      if (edit.on) li.appendChild(recordTools(r));
       recs.appendChild(li);
     });
 
@@ -571,6 +578,7 @@
     var key = keep && a.getAttribute('data-key');
     data = build(raw.obs, raw.cfg, raw.gallery);
     renderAll();
+    countHidden();
     if (keep) {
       var n = document.querySelector('.' + keep + (key ? '[data-key="' + key.replace(/["\\]/g, '\\$&') + '"]' : ''));
       if (n && n !== document.activeElement) n.focus({ preventScroll: true });
@@ -703,6 +711,214 @@
     b.addEventListener('click', function () { b.focus(); setCover(sp, isCover ? '' : photo); });
     return b;
   }
+  /* ---------- adding, changing, deleting and hiding finds ----------
+     Your own finds ("Finds I add by hand" in /admin) live in cfg.manual and can
+     be added, changed and deleted here. Synced finds stay on their source site;
+     here they can only be hidden (cfg.hide), like whole species (cfg.hideSpecies).
+     Everything hidden can be shown again from "Hidden" in the bar. */
+  var hiddenBtn = null;
+  function editButton(cls, text, onClick) {
+    var b = el('button', cls, text);
+    b.type = 'button';
+    b.addEventListener('click', function (e) { e.stopPropagation(); onClick(b); });
+    return b;
+  }
+  function manualKey(r) { return String(r.id).replace(/^manual:/, ''); } // its id, or its place in the list for old entries without one
+  function findManual(cfg, key) {
+    var list = arr(cfg.manual), hit = -1;
+    list.forEach(function (m, i) { if (hit < 0 && m && (m.id ? m.id === key : String(i) === key)) hit = i; });
+    return hit;
+  }
+  function newId(date) { return 'm' + String(date || isoToday()).replace(/-/g, '') + '-' + Math.random().toString(16).slice(2, 6); }
+  function isoToday() { var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; }; return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()); }
+  function rawManual(key) { var i = findManual(raw.cfg || {}, key); return i >= 0 ? raw.cfg.manual[i] : null; }
+
+  function recordTools(r) {
+    var u = U(), box = el('span', 'fl-r-tools');
+    if (r.source === 'manual') {
+      box.appendChild(editButton('fl-r-btn', u.flEditFind || 'Edit', function () { openFindForm(rawManual(manualKey(r)), null, manualKey(r)); }));
+      box.appendChild(editButton('fl-r-btn fl-r-danger', u.flDeleteFind || 'Delete', function (b) {
+        if (!b.classList.contains('is-sure')) { // a second tap deletes
+          b.classList.add('is-sure'); b.textContent = u.flDeleteSure || 'Sure? Delete';
+          setTimeout(function () { if (b.isConnected) { b.classList.remove('is-sure'); b.textContent = u.flDeleteFind || 'Delete'; } }, 5000);
+          return;
+        }
+        deleteManual(r);
+      }));
+    } else {
+      box.appendChild(editButton('fl-r-btn', u.flHideRec || 'Hide', function () { hideRecord(r); }));
+    }
+    return box;
+  }
+  function deleteManual(r) {
+    var key = manualKey(r);
+    change('Field log: delete ' + r.name + ' (' + (r.date || 'no date') + ')', function (cfg) {
+      var i = findManual(cfg, key);
+      if (i >= 0) cfg.manual.splice(i, 1);
+      cfg.hide = arr(cfg.hide).filter(function (id) { return id !== r.id; });
+    });
+  }
+  function hideRecord(r) {
+    change('Field log: hide ' + r.name + ' (' + (r.date || '') + ', ' + r.source + ')', function (cfg) {
+      cfg.hide = arr(cfg.hide);
+      if (cfg.hide.indexOf(r.id) < 0) cfg.hide.push(r.id);
+    });
+  }
+  function hideSpecies(sp) {
+    change('Field log: hide the species ' + sp.name, function (cfg) {
+      cfg.hideSpecies = arr(cfg.hideSpecies);
+      if (!cfg.hideSpecies.some(function (n) { return norm(n) === sp.key; })) cfg.hideSpecies.push(sp.name);
+    });
+  }
+  function showAgain(kind, value) {
+    change('Field log: show again: ' + value, function (cfg) {
+      if (kind === 'species') cfg.hideSpecies = arr(cfg.hideSpecies).filter(function (n) { return norm(n) !== norm(value); });
+      else cfg.hide = arr(cfg.hide).filter(function (id) { return id !== value; });
+    });
+  }
+  function countHidden() {
+    if (!hiddenBtn) return;
+    var c = raw.cfg || {}, n = arr(c.hide).length + arr(c.hideSpecies).length;
+    hiddenBtn.textContent = (U().flHidden || 'Hidden') + ' (' + n + ')';
+  }
+
+  /* a second pop-up, over the page or over a species, for the forms */
+  var panel = null;
+  function openPanel(title, fill) {
+    if (!panel) {
+      panel = el('dialog', 'fl-dialog fl-panel');
+      panel.setAttribute('aria-labelledby', 'fl-p-title');
+      panel.addEventListener('click', function (e) { if (e.target === panel) closePanel(); });
+      $('world').appendChild(panel); // inside the world, so it has the page's colours
+    }
+    panel.textContent = '';
+    var close = editButton('fl-d-close', '', closePanel);
+    close.setAttribute('aria-label', U().close || 'Close');
+    close.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+    var body = el('div', 'fl-p-body');
+    var h = el('h2', 'fl-p-title', title); h.id = 'fl-p-title';
+    body.appendChild(h);
+    panel.appendChild(close);
+    panel.appendChild(body);
+    fill(body);
+    if (!panel.open) { if (typeof panel.showModal === 'function') panel.showModal(); else panel.setAttribute('open', ''); }
+    var first = body.querySelector('input,select,textarea,button');
+    if (first) first.focus();
+  }
+  function closePanel() { if (panel && panel.open) { if (typeof panel.close === 'function') panel.close(); else panel.removeAttribute('open'); } }
+
+  /* add a find (m null; sp: a species to prefill) or change one of yours (m, key) */
+  function openFindForm(m, sp, key) {
+    var u = U(), isNew = !m;
+    m = m || {};
+    openPanel(isNew ? (u.flAddFind || 'Add a find') : (u.flEditFindTitle || 'Change this find'), function (body) {
+      var form = el('form', 'fl-form');
+      form.noValidate = true;
+      var field = function (name, label, input) {
+        var lab = el('label', 'fl-f-row');
+        lab.appendChild(el('span', 'fl-f-label', label));
+        input.name = name;
+        lab.appendChild(input);
+        form.appendChild(lab);
+        return input;
+      };
+      var text = function (v, type) { var i = el('input'); i.type = type || 'text'; i.value = v || ''; i.autocomplete = 'off'; return i; };
+      var name = field('name', u.flFName || 'Latin name', text(m.name || (sp && sp.name)));
+      var known = el('datalist'); known.id = 'fl-known';
+      (data ? data.list : []).forEach(function (s) { var o = el('option'); o.value = s.name; known.appendChild(o); });
+      form.appendChild(known);
+      name.setAttribute('list', 'fl-known');
+      name.required = true;
+      var en = field('common', u.flFCommon || 'Common name (English)', text(m.common || (sp && isNew ? sp.en : '')));
+      var da = field('commonDa', u.flFCommonDa || 'Common name (Danish)', text(m.commonDa || (sp && isNew ? sp.da : '')));
+      var group = el('select');
+      var groups = GROUPS();
+      Object.keys(groups).forEach(function (g) { var o = el('option', null, groups[g]); o.value = g; group.appendChild(o); });
+      group.value = m.group || (sp && sp.group) || 'fungi';
+      field('group', u.flFGroup || 'Group', group);
+      var date = field('date', u.flFDate || 'Date', text(String(m.date || isoToday()).slice(0, 10), 'date'));
+      var place = field('place', u.flFPlace || 'Place', text(m.place));
+      place.placeholder = u.flFPlaceHint || 'Keep it general, e.g. Rold Skov';
+      var notes = el('textarea'); notes.rows = 3; notes.value = m.notes || '';
+      field('notes', u.flFNotes || 'Note', notes);
+      var link = field('link', u.flFLink || 'Link (optional)', text(m.link, 'url'));
+      // picking a species you already have fills in its names and group
+      name.addEventListener('change', function () {
+        var hit = data && data.list.filter(function (s) { return s.key === norm(name.value); })[0];
+        if (!hit) return;
+        if (!en.value) en.value = hit.en || '';
+        if (!da.value) da.value = hit.da || '';
+        group.value = hit.group || group.value;
+      });
+      form.appendChild(el('p', 'fl-f-hint', u.flFPhotosHint || 'Photos: add them on the Photos page and link them to this find.'));
+      var msg = el('p', 'fl-f-msg'); msg.setAttribute('role', 'alert');
+      form.appendChild(msg);
+      var row = el('div', 'fl-f-buttons');
+      var save = el('button', 'fl-f-save', u.flFSave || 'Save'); save.type = 'submit';
+      row.appendChild(save);
+      row.appendChild(editButton('fl-d-fav', u.flFCancel || 'Cancel', closePanel));
+      form.appendChild(row);
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var nm = name.value.trim().replace(/\s+/g, ' ');
+        if (!nm) { msg.textContent = u.flFNeedName || 'Give it a Latin name.'; name.focus(); return; }
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(date.value)) { msg.textContent = u.flFNeedDate || 'Give it a date.'; date.focus(); return; }
+        var vals = { name: nm, common: en.value.trim(), commonDa: da.value.trim(), group: group.value, date: date.value, place: place.value.trim(), notes: notes.value.trim(), link: link.value.trim() };
+        if (isNew) {
+          var entry = { id: newId(vals.date) };
+          Object.keys(vals).forEach(function (k) { if (vals[k]) entry[k] = vals[k]; });
+          change('Field log: new find: ' + nm + ' (' + vals.date + ')', function (cfg) {
+            cfg.manual = arr(cfg.manual);
+            cfg.manual.unshift(JSON.parse(JSON.stringify(entry)));
+          });
+        } else {
+          change('Field log: change ' + nm + ' (' + vals.date + ')', function (cfg) {
+            var i = findManual(cfg, key);
+            if (i < 0) return;
+            var cur = cfg.manual[i];
+            Object.keys(vals).forEach(function (k) { if (vals[k]) cur[k] = vals[k]; else delete cur[k]; });
+          });
+        }
+        closePanel();
+        // open the species the find belongs to, so you see it landed
+        if (data.list.some(function (s) { return s.key === norm(nm); })) openSpecies(norm(nm), !!(dialog && dialog.open));
+      });
+      body.appendChild(form);
+    });
+  }
+
+  /* everything hidden, with "Show again" */
+  function openHidden() {
+    var u = U();
+    openPanel(u.flHidden || 'Hidden', function (body) {
+      var c = raw.cfg || {}, sp = arr(c.hideSpecies), recs = arr(c.hide);
+      if (!sp.length && !recs.length) { body.appendChild(el('p', 'fl-f-hint', u.flHiddenNone || 'Nothing is hidden.')); return; }
+      var byId = {};
+      arr(raw.obs && raw.obs.items).forEach(function (o) { if (o && o.id) byId[o.id] = o; });
+      arr(c.manual).forEach(function (m, i) { if (m) byId['manual:' + (m.id || i)] = { name: m.name, date: m.date, place: m.place, source: 'manual' }; });
+      var list = function (title, items, kind) {
+        if (!items.length) return;
+        body.appendChild(el('h3', 'fl-d-recs-h', title));
+        var ul = el('ul', 'fl-d-recs fl-hidden-list');
+        items.forEach(function (v) {
+          var li = el('li');
+          if (kind === 'species') {
+            var em = el('em', 'fl-r-date', v); li.appendChild(em); li.appendChild(el('span', 'fl-r-place', ''));
+          } else {
+            var o = byId[v];
+            li.appendChild(el('span', 'fl-r-date', o ? fmtDate(o.date) : ''));
+            li.appendChild(el('span', 'fl-r-place', o ? [o.name, o.place, SOURCE(o.source)].filter(Boolean).join(' · ') : v + ' · ' + (u.flGone || 'no longer at the source')));
+          }
+          li.appendChild(editButton('fl-r-btn', u.flShowAgain || 'Show again', function () { showAgain(kind, v); li.remove(); countHidden(); }));
+          ul.appendChild(li);
+        });
+        body.appendChild(ul);
+      };
+      list(u.flHiddenSpecies || 'Hidden species', sp, 'species');
+      list(u.flHiddenRecords || 'Hidden finds', recs, 'record');
+    });
+  }
+
   function startEditing() {
     edit.token = storedToken();
     if (!edit.token || !DATA.repo || !window.TextDecoder) return;
@@ -718,8 +934,13 @@
         var st = el('span', 'fl-edit-status');
         st.setAttribute('role', 'status');
         bar.appendChild(st);
-        addRefresh(bar);
-        document.body.appendChild(bar);
+        var tools = el('div', 'fl-edit-actions');
+        tools.appendChild(editButton('fl-refresh', '+ ' + (U().flAddFind || 'Add a find'), function () { openFindForm(null, null); }));
+        hiddenBtn = editButton('fl-refresh', '', openHidden);
+        tools.appendChild(hiddenBtn);
+        bar.appendChild(tools);
+        addRefresh(tools);
+        $('world').appendChild(bar); // inside the world, so it has the page's colours
         rebuild();
       });
     }).catch(function () { /* not signed in here, expired or offline: the page stays as it is */ });
