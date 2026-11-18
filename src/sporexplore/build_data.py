@@ -176,28 +176,31 @@ def xml_field(xml, tag):
 
 
 def if_info(name):
+    """Index Fungorum NameSearch records. Each carries Species Fungorum's CURRENT_NAME and
+    the Kew referee, so this is where the accepted name comes from."""
     r = raw("indexfungorum", name)
     if not r:
         return None
-    recs = []
-    for num, v in (r.get("full") or {}).items():
-        x = v.get("xml") if isinstance(v, dict) else None
-        if not isinstance(x, str):
-            continue
-        recs.append({
-            "id": num,
-            "name": xml_field(x, "NAME_x0020_OF_x0020_FUNGUS"),
-            "authors": xml_field(x, "AUTHORS"),
-            "year": xml_field(x, "YEAR_x0020_OF_x0020_PUBLICATION"),
-            "status": xml_field(x, "NAME_x0020_STATUS"),
-            "current": xml_field(x, "CURRENT_x0020_NAME_x0020_RECORD_x0020_NUMBER"),
-            "currentName": xml_field(x, "CURRENT_x0020_NAME"),
-            "referee": xml_field(x, "TAXONOMIC_x0020_REFEREE"),
-            "family": xml_field(x, "Family_x0020_name"),
-            "isCurrentOf": v.get("isCurrentOf"),
-            "url": v.get("url"),
-        })
-    return {"records": recs, "retrieved": r.get("retrieved")}
+    blobs = [r.get("search") or ""] + [v.get("xml") for v in (r.get("full") or {}).values() if isinstance(v, dict)]
+    recs, seen = [], set()
+    for blob in blobs:
+        for x in re.findall(r"<IndexFungorum>(.*?)</IndexFungorum>", str(blob), re.S):
+            num = xml_field(x, "RECORD_x0020_NUMBER")
+            if not num or num in seen:
+                continue
+            seen.add(num)
+            recs.append({
+                "id": num,
+                "name": xml_field(x, "NAME_x0020_OF_x0020_FUNGUS"),
+                "authors": xml_field(x, "AUTHORS"),
+                "year": xml_field(x, "YEAR_x0020_OF_x0020_PUBLICATION"),
+                "status": xml_field(x, "NAME_x0020_STATUS"),
+                "current": xml_field(x, "CURRENT_x0020_NAME_x0020_RECORD_x0020_NUMBER"),
+                "currentName": xml_field(x, "CURRENT_x0020_NAME"),
+                "referee": xml_field(x, "TAXONOMIC_x0020_REFEREE"),
+                "family": xml_field(x, "Family_x0020_name"),
+            })
+    return {"records": recs, "retrieved": r.get("retrieved"), "url": r.get("searchUrl")}
 
 
 # ------------------------------------------------------------------ GBIF
@@ -398,7 +401,7 @@ def main():
             recs = [r for r in ifi["records"] if r.get("currentName")]
             mine = [r for r in recs if r["name"] == name] or [r for r in recs if r["name"] in names_to_try]
             if mine:
-                mine.sort(key=lambda r: r["id"] != r["current"])
+                mine.sort(key=lambda r: (r["id"] != r["current"], (r["status"] or "") != "Legitimate"))
                 sf = {"current": mine[0]["currentName"], "currentId": mine[0]["current"], "referee": mine[0]["referee"],
                       "family": mine[0]["family"], "recordId": mine[0]["id"]}
         nomen["sf"] = sf
