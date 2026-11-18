@@ -30,7 +30,20 @@ body{min-height:100vh;min-height:100dvh;background:radial-gradient(120% 70% at 5
 a{color:inherit}
 .card{width:100%;max-width:420px;display:flex;flex-direction:column;align-items:center;text-align:center}
 .lang{align-self:flex-end;font:600 12px/1 Cinzel,serif;letter-spacing:.12em;color:var(--dim);text-decoration:none;padding:8px 4px}
-.eye{width:84px;height:84px;margin:6px 0 14px;filter:drop-shadow(0 0 18px #e39a5c55)}
+/* the seeing eye, as in the worlds' header (assets/world.css): it follows the pointer (or, on a phone,
+   looks where you touch), blinks now and then, and widens, glows and flickers while a link is hovered or pressed */
+.eye{width:84px;height:84px;margin:6px 0 14px;color:var(--ink);overflow:visible;filter:drop-shadow(0 0 18px #e39a5c55);transition:filter .5s ease}
+.eye-pupil{fill:var(--ember);transform-box:fill-box;transform-origin:center;transition:transform .45s ease}
+.eye-look{transition:transform .14s ease-out}
+.eye-lid{transform-box:view-box;transform-origin:50px 50px}
+.card:has(a:hover,a:active,a:focus-visible) .eye-pupil{transform:scale(1.32)}
+.card:has(a:hover,a:active,a:focus-visible) .eye{filter:drop-shadow(0 0 3px rgba(255,255,255,.85)) drop-shadow(0 0 14px #e39a5cb3)}
+@keyframes eyeflicker{0%{opacity:1}7%{opacity:.62}9%{opacity:1}20%{opacity:.85}22%{opacity:1}43%{opacity:.7}45%{opacity:.98}65%{opacity:.6}67%{opacity:1}86%{opacity:.82}100%{opacity:1}}
+@keyframes blink{0%,44%,48%,90%,92.5%,95%,97.5%,100%{transform:scaleY(1)}46%,91.2%,96.2%{transform:scaleY(.06)}}
+@media (prefers-reduced-motion:no-preference){
+  .eye-lid{animation:blink 11s ease-in-out infinite}
+  .card:has(a:hover,a:active,a:focus-visible) .eye{animation:eyeflicker 2.6s steps(1,end) infinite}
+}
 h1{font:600 clamp(24px,7vw,30px)/1.15 Cinzel,serif;letter-spacing:.04em;margin:0 0 8px}
 .title{margin:0;color:var(--ember);font:500 14px/1.4 Cinzel,serif;letter-spacing:.14em;text-transform:uppercase}
 .lead{margin:10px 0 26px;color:var(--dim);font-style:italic}
@@ -60,7 +73,7 @@ footer a{color:var(--dim)}
 <body>
 <main class="card">
   <a class="lang" href="card.html?en" hreflang="en">EN</a>
-  <svg class="eye" viewBox="0 0 100 100" aria-hidden="true"><path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="#e8eef5" stroke-width="5" stroke-linejoin="round"/><circle cx="50" cy="50" r="15" fill="#e39a5c"/><circle cx="45" cy="45" r="4" fill="#fff5e8" opacity=".85"/></svg>
+  <svg class="eye" viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="eye-clip"><path d="M6 50Q50 6 94 50Q50 94 6 50Z"/></clipPath></defs><g class="eye-lid"><g clip-path="url(#eye-clip)"><g class="eye-look" id="eye-look"><circle cx="50" cy="50" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><circle cx="50" cy="50" r="10" class="eye-pupil"/><circle cx="46.5" cy="46.5" r="2.6" fill="#fff5e8" opacity=".85"/></g></g><path d="M6 50Q50 6 94 50Q50 94 6 50Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/></g></svg>
   <h1>Pieter Shiffler Carpentier</h1>
   <p class="title">Biolog · Mykolog · Animist</p>
   <p class="lead">Indeklima · skimmelsvamp · mykologi</p>
@@ -106,6 +119,28 @@ footer a{color:var(--dim)}
   <small>Scan for at åbne kortet · ndrshfflr.github.io/card</small>
 </section>
 <script>
+/* The eye follows the pointer; on touch screens it looks toward the finger and drifts back. */
+(function () {
+  var look = document.getElementById('eye-look'), eye = document.querySelector('.card .eye');
+  if (!look || !eye) return;
+  var frame = 0, px = 0, py = 0, back = 0;
+  function aim() {
+    frame = 0;
+    var r = eye.getBoundingClientRect();
+    var dx = px - (r.left + r.width / 2), dy = py - (r.top + r.height / 2);
+    var d = Math.sqrt(dx * dx + dy * dy) || 1, m = Math.min(1, d / 260);
+    look.setAttribute('transform', 'translate(' + (dx / d * m * 8).toFixed(2) + ' ' + (dy / d * m * 4.5).toFixed(2) + ')');
+  }
+  function follow(e) {
+    px = e.clientX; py = e.clientY;
+    if (e.pointerType === 'touch') { clearTimeout(back); back = setTimeout(rest, 1600); }
+    if (!frame) frame = requestAnimationFrame(aim);
+  }
+  function rest() { look.removeAttribute('transform'); }
+  document.addEventListener('pointermove', follow, { passive: true });
+  document.addEventListener('pointerdown', follow, { passive: true });
+  document.documentElement.addEventListener('mouseleave', rest);
+})();
 /* While the QR is showing, ask the phone to keep the screen awake. */
 (function () {
   var lock = null;
