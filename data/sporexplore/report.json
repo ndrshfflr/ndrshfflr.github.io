@@ -1633,10 +1633,10 @@
     "accepted": null,
     "family": "Boletaceae",
     "counts": {
-     "DK": 23,
-     "NO": 102,
-     "SE": 4648,
-     "FI": 87,
+     "DK": 4507,
+     "NO": 1256,
+     "SE": 4803,
+     "FI": 97,
      "IS": 0,
      "FO": 0,
      "GL": 0
@@ -1659,7 +1659,12 @@
       "blodsopp"
      ]
     ],
-    "retrieved": "2026-11-18"
+    "retrieved": "2026-11-18",
+    "countNames": [
+     "Neoboletus luridiformis",
+     "Neoboletus erythropus",
+     "Neoboletus praestigiator"
+    ]
    },
    "if": {
     "records": [
@@ -4947,7 +4952,7 @@
   "dk": "hvidsprukken rørhat"
  },
  {
-  "n": "Xerocomellus engelii",
+  "n": "Hortiboletus engelii",
   "origin": "v3",
   "legacy": {
    "lo": 12,
@@ -4967,7 +4972,7 @@
    "wmin": null,
    "wmax": null,
    "q": null,
-   "n_sources": 1
+   "n_sources": 2
   },
   "meas": [
    {
@@ -4987,30 +4992,51 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-67237"
+   },
+   {
+    "src": "BIKETOVA2025",
+    "L": [
+     null,
+     10.0,
+     14.2,
+     null
+    ],
+    "W": [
+     null,
+     4.7,
+     5.9,
+     null
+    ],
+    "Qav": [
+     2.04,
+     2.57
+    ],
+    "Qm": 2.35,
+    "mean": [
+     12.1,
+     5.1
+    ],
+    "stat": "collection-means",
+    "n": "1691",
+    "mount": "KOH",
+    "verbatim": "(10.0–)12.1 ± 0.8(–14.2) × (4.7–)5.1 ± 0.3(–5.9) μm, Q = (2.04–)2.35 ± 0.13(–2.57)",
+    "note": "Range and mean ± SD of collection means (KOH, ≥ 31 spores per collection); not a range of individual spores, so used for cross-checking only."
    }
   ],
   "flags": [
    {
-    "k": "nomen-gbif",
-    "t": "GBIF treats this name as synonym (accepted: Hortiboletus engelii (Hlaváček) Biketova & Wasser)"
-   },
-   {
-    "k": "nomen-sf",
-    "t": "Species Fungorum gives the current name as Hortiboletus engelii"
-   },
-   {
-    "k": "nomen-sa",
-    "t": "Svampeatlas uses Hortiboletus engelii"
+    "k": "cross-check",
+    "t": "Collection means in a recent study span 10.0–14.2 µm in length, beyond the 12.0–13.5 µm typical range"
    }
   ],
   "nomen": {
    "gbif": {
-    "key": 8426556,
+    "key": 7525078,
     "acceptedKey": 7525078,
     "matchType": "EXACT",
-    "status": "SYNONYM",
-    "scientificName": "Xerocomellus engelii (Hlaváček) Šutara",
-    "accepted": "Hortiboletus engelii (Hlaváček) Biketova & Wasser",
+    "status": "ACCEPTED",
+    "scientificName": "Hortiboletus engelii (Hlaváček) Biketova & Wasser",
+    "accepted": null,
     "family": "Boletaceae",
     "counts": {
      "DK": 262,
@@ -5068,19 +5094,19 @@
    "if": {
     "records": [
      {
-      "id": "511894",
-      "name": "Xerocomellus engelii",
-      "authors": "(Hlaváček) Šutara",
-      "year": "2008",
+      "id": "551542",
+      "name": "Hortiboletus engelii",
+      "authors": "(Hlaváček) Biketova & Wasser",
+      "year": "2015",
       "status": "Legitimate",
       "current": "551542",
       "currentName": "Hortiboletus engelii",
-      "referee": null,
+      "referee": "Kew Mycology (2025)",
       "family": null
      }
     ],
     "retrieved": "2026-11-18",
-    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Xerocomellus+engelii&AnywhereInText=false&MaxNumber=20"
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Hortiboletus+engelii&AnywhereInText=false&MaxNumber=20"
    },
    "sa": {
     "id": 67237,
@@ -5093,9 +5119,9 @@
    "sf": {
     "current": "Hortiboletus engelii",
     "currentId": "551542",
-    "referee": null,
+    "referee": "Kew Mycology (2025)",
     "family": null,
-    "recordId": "511894"
+    "recordId": "551542"
    }
   },
   "dkOld": "Orangeprikket Rørhat",
@@ -5122,7 +5148,7 @@
    "wmin": null,
    "wmax": null,
    "q": null,
-   "n_sources": 1
+   "n_sources": 2
   },
   "meas": [
    {
@@ -5142,9 +5168,43 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-11095"
+   },
+   {
+    "src": "BIKETOVA2025",
+    "L": [
+     null,
+     10.3,
+     12.8,
+     null
+    ],
+    "W": [
+     null,
+     4.7,
+     5.5,
+     null
+    ],
+    "Qav": [
+     2.07,
+     2.59
+    ],
+    "Qm": 2.31,
+    "mean": [
+     11.6,
+     5.0
+    ],
+    "stat": "collection-means",
+    "n": "561",
+    "mount": "KOH",
+    "verbatim": "(10.3–)11.6 ± 0.6(–12.8) × (4.7–)5.0 ± 0.2(–5.5) μm, Q = (2.07–)2.31 ± 0.12(–2.59)",
+    "note": "Range and mean ± SD of collection means (KOH, ≥ 31 spores per collection); not a range of individual spores, so used for cross-checking only."
    }
   ],
-  "flags": [],
+  "flags": [
+   {
+    "k": "cross-check",
+    "t": "Collection means in a recent study span 10.3–12.8 µm in length, beyond the 11.5–12.5 µm typical range"
+   }
+  ],
   "nomen": {
    "gbif": {
     "key": 8060178,
@@ -5280,7 +5340,7 @@
    "wmin": null,
    "wmax": null,
    "q": null,
-   "n_sources": 1
+   "n_sources": 2
   },
   "meas": [
    {
@@ -5300,9 +5360,43 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-11067"
+   },
+   {
+    "src": "BIKETOVA2025",
+    "L": [
+     null,
+     10.7,
+     13.3,
+     null
+    ],
+    "W": [
+     null,
+     4.3,
+     5.3,
+     null
+    ],
+    "Qav": [
+     2.26,
+     2.7
+    ],
+    "Qm": 2.46,
+    "mean": [
+     11.7,
+     4.8
+    ],
+    "stat": "collection-means",
+    "n": "1020",
+    "mount": "KOH",
+    "verbatim": "(10.7–)11.7 ± 0.6(–13.3) × (4.3–)4.8 ± 0.2(–5.3) μm, Q = (2.26–)2.46 ± 0.10(–2.70)",
+    "note": "Range and mean ± SD of collection means (KOH, ≥ 31 spores per collection); not a range of individual spores, so used for cross-checking only."
    }
   ],
-  "flags": [],
+  "flags": [
+   {
+    "k": "cross-check",
+    "t": "Collection means in a recent study span 10.7–13.3 µm in length, beyond the 11.5–12.0 µm typical range"
+   }
+  ],
   "nomen": {
    "gbif": {
     "key": 8235150,
@@ -5788,24 +5882,6 @@
     "verbatim": "De ± tenformede sporer måler 12-17,5 x 4-5,5 μm.",
     "field": "diagnose",
     "lang": "da",
-    "src": "SA-11081"
-   },
-   {
-    "L": [
-     null,
-     12.0,
-     15.0,
-     null
-    ],
-    "W": [
-     null,
-     4.0,
-     5.0,
-     null
-    ],
-    "verbatim": "The ± fusiform spores measure 12–15 × 4–5 µm.",
-    "field": "bogtekst_gyldendal_en",
-    "lang": "en",
     "src": "SA-11081"
    }
   ],
@@ -7122,13 +7198,16 @@
    "lo": 14.0,
    "hi": 20.0,
    "wlo": 5.0,
-   "whi": 6.0,
-   "lmin": null,
-   "lmax": null,
-   "wmin": null,
+   "whi": 6.5,
+   "lmin": 13.5,
+   "lmax": 22.0,
+   "wmin": 4.0,
    "wmax": null,
-   "q": null,
-   "n_sources": 1
+   "q": [
+    2.5,
+    3.5
+   ],
+   "n_sources": 2
   },
   "meas": [
    {
@@ -7148,6 +7227,29 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-16111"
+   },
+   {
+    "src": "DENBAKKER2005",
+    "page": "547",
+    "L": [
+     13.5,
+     14.5,
+     19.0,
+     22.0
+    ],
+    "W": [
+     4.0,
+     5.0,
+     6.5,
+     null
+    ],
+    "mount": "water",
+    "verbatim": "Spores (13.5–)14.5–19.0(–22.0) × (4.0–)5.0–6.5 µm, Q = 2.5–3.5",
+    "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+    "Q": [
+     2.5,
+     3.5
+    ]
    }
   ],
   "flags": [],
@@ -7530,12 +7632,15 @@
    "hi": 17.5,
    "wlo": 5.0,
    "whi": 6.5,
-   "lmin": null,
-   "lmax": null,
+   "lmin": 10.0,
+   "lmax": 20.0,
    "wmin": null,
    "wmax": null,
-   "q": null,
-   "n_sources": 1
+   "q": [
+    2.4,
+    3.1
+   ],
+   "n_sources": 2
   },
   "meas": [
    {
@@ -7559,6 +7664,33 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-16116"
+   },
+   {
+    "src": "DENBAKKER2005",
+    "page": "558",
+    "L": [
+     10.0,
+     13.5,
+     17.5,
+     20.0
+    ],
+    "W": [
+     null,
+     5.0,
+     6.5,
+     null
+    ],
+    "mount": "water",
+    "verbatim": "Spores (10.0–)13.5–17.5(–20.0) × 5.0–6.5 µm, Q = 2.4–3.1, Qav = 2.6–2.8(–2.9)",
+    "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+    "Q": [
+     2.4,
+     3.1
+    ],
+    "Qav": [
+     2.6,
+     2.8
+    ]
    }
   ],
   "flags": [],
@@ -7753,12 +7885,15 @@
    "hi": 17.0,
    "wlo": 5.0,
    "whi": 6.5,
-   "lmin": null,
+   "lmin": 13.0,
    "lmax": null,
    "wmin": null,
-   "wmax": null,
-   "q": null,
-   "n_sources": 1
+   "wmax": 7.5,
+   "q": [
+    2.3,
+    3.1
+   ],
+   "n_sources": 2
   },
   "meas": [
    {
@@ -7782,6 +7917,29 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-16100"
+   },
+   {
+    "src": "DENBAKKER2005",
+    "page": "556",
+    "L": [
+     13.0,
+     13.5,
+     17.0,
+     null
+    ],
+    "W": [
+     null,
+     5.0,
+     6.5,
+     7.5
+    ],
+    "mount": "water",
+    "verbatim": "Spores (13.0–)13.5–17.0 × 5.0–6.5(–7.5) µm, Q = 2.3–3.1(–3.4)",
+    "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+    "Q": [
+     2.3,
+     3.1
+    ]
    }
   ],
   "flags": [],
@@ -7910,16 +8068,19 @@
    "src": "SA"
   },
   "consensus": {
-   "lo": 17.5,
+   "lo": 15.5,
    "hi": 20.0,
    "wlo": 5.5,
-   "whi": 6.5,
+   "whi": 7.0,
    "lmin": null,
    "lmax": null,
    "wmin": null,
    "wmax": null,
-   "q": null,
-   "n_sources": 1
+   "q": [
+    2.5,
+    3.0
+   ],
+   "n_sources": 2
   },
   "meas": [
    {
@@ -7943,9 +8104,41 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-63681"
+   },
+   {
+    "src": "DENBAKKER2005",
+    "page": "565",
+    "L": [
+     null,
+     15.5,
+     18.0,
+     null
+    ],
+    "W": [
+     null,
+     5.5,
+     7.0,
+     null
+    ],
+    "mount": "water",
+    "verbatim": "Spores 15.5–18.0 × 5.5–7.0 µm, Q = 2.5–3.0, Qav = 2.6–2.8",
+    "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+    "Q": [
+     2.5,
+     3.0
+    ],
+    "Qav": [
+     2.6,
+     2.8
+    ]
    }
   ],
-  "flags": [],
+  "flags": [
+   {
+    "k": "disagree-Q",
+    "t": "Sources differ by 15 % in mean Q"
+   }
+  ],
   "nomen": {
    "gbif": {
     "key": 2524503,
@@ -8168,12 +8361,12 @@
    "hi": 19.5,
    "wlo": 4.0,
    "whi": 6.5,
-   "lmin": null,
-   "lmax": null,
-   "wmin": null,
-   "wmax": null,
+   "lmin": 11.0,
+   "lmax": 21.0,
+   "wmin": 3.5,
+   "wmax": 7.0,
    "q": null,
-   "n_sources": 1
+   "n_sources": 2
   },
   "meas": [
    {
@@ -8197,6 +8390,25 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-63618"
+   },
+   {
+    "src": "DENBAKKER2005",
+    "page": "561",
+    "L": [
+     11.0,
+     14.0,
+     19.5,
+     21.0
+    ],
+    "W": [
+     3.5,
+     4.0,
+     6.5,
+     7.0
+    ],
+    "mount": "water",
+    "verbatim": "Spores (11.0–)14.0–19.5(–21.0) × (3.5–)4.0–6.5(–7.0) µm",
+    "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005)."
    }
   ],
   "flags": [],
@@ -8379,12 +8591,15 @@
    "hi": 17.5,
    "wlo": 4.5,
    "whi": 7.0,
-   "lmin": null,
-   "lmax": null,
+   "lmin": 11.5,
+   "lmax": 20.0,
    "wmin": null,
    "wmax": null,
-   "q": null,
-   "n_sources": 1
+   "q": [
+    2.2,
+    3.2
+   ],
+   "n_sources": 2
   },
   "meas": [
    {
@@ -8408,6 +8623,33 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-61472"
+   },
+   {
+    "src": "DENBAKKER2005",
+    "page": "554",
+    "L": [
+     11.5,
+     13.5,
+     17.5,
+     20.0
+    ],
+    "W": [
+     null,
+     4.5,
+     7.0,
+     null
+    ],
+    "mount": "water",
+    "verbatim": "Spores (11.5–)13.5–17.5(–20.0) × 4.5–7.0 µm, Q = 2.2–3.2, Qav = 2.5–2.7(–2.9)",
+    "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+    "Q": [
+     2.2,
+     3.2
+    ],
+    "Qav": [
+     2.5,
+     2.7
+    ]
    }
   ],
   "flags": [
@@ -8663,16 +8905,16 @@
    "src": "SA"
   },
   "consensus": {
-   "lo": 14.5,
+   "lo": 12.0,
    "hi": 16.0,
    "wlo": 4.5,
    "whi": 6.0,
-   "lmin": null,
+   "lmin": 11.5,
    "lmax": null,
    "wmin": null,
    "wmax": null,
    "q": null,
-   "n_sources": 1
+   "n_sources": 2
   },
   "meas": [
    {
@@ -8696,6 +8938,25 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-16090"
+   },
+   {
+    "src": "DENBAKKER2005",
+    "page": "545",
+    "L": [
+     11.5,
+     12.0,
+     15.5,
+     null
+    ],
+    "W": [
+     null,
+     4.5,
+     6.0,
+     null
+    ],
+    "mount": "water",
+    "verbatim": "Spores (11.5–)12.0–15.5 × 4.5–6.0 µm, on average 13.0–14.0 × 4.8–5.0 µm",
+    "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005)."
    }
   ],
   "flags": [],
@@ -8875,16 +9136,19 @@
    "src": "SA"
   },
   "consensus": {
-   "lo": 12.5,
-   "hi": 16.0,
-   "wlo": 4.0,
+   "lo": 11.5,
+   "hi": 16.5,
+   "wlo": 3.5,
    "whi": 5.0,
-   "lmin": null,
+   "lmin": 9.0,
    "lmax": null,
    "wmin": null,
    "wmax": null,
-   "q": null,
-   "n_sources": 1
+   "q": [
+    2.6,
+    3.8
+   ],
+   "n_sources": 2
   },
   "meas": [
    {
@@ -8904,9 +9168,41 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-16117"
+   },
+   {
+    "src": "DENBAKKER2005",
+    "page": "542",
+    "L": [
+     9.0,
+     11.5,
+     16.5,
+     null
+    ],
+    "W": [
+     null,
+     3.5,
+     4.0,
+     5.0
+    ],
+    "mount": "water",
+    "verbatim": "Spores (9.0–)11.5–16.5 × 3.5–4.0(–5.0) µm, Q = 2.6–3.8, Qav = 3.0–3.3",
+    "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+    "Q": [
+     2.6,
+     3.8
+    ],
+    "Qav": [
+     3.0,
+     3.3
+    ]
    }
   ],
-  "flags": [],
+  "flags": [
+   {
+    "k": "disagree-Q",
+    "t": "Sources differ by 16 % in mean Q"
+   }
+  ],
   "nomen": {
    "gbif": {
     "key": 2524490,
@@ -9151,12 +9447,15 @@
    "hi": 17.0,
    "wlo": 4.0,
    "whi": 5.0,
-   "lmin": null,
+   "lmin": 9.5,
    "lmax": null,
    "wmin": null,
-   "wmax": null,
-   "q": null,
-   "n_sources": 1
+   "wmax": 5.5,
+   "q": [
+    2.3,
+    3.6
+   ],
+   "n_sources": 2
   },
   "meas": [
    {
@@ -9176,6 +9475,29 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-16080"
+   },
+   {
+    "src": "DENBAKKER2005",
+    "page": "536",
+    "L": [
+     9.5,
+     11.0,
+     17.0,
+     null
+    ],
+    "W": [
+     null,
+     4.0,
+     5.0,
+     5.5
+    ],
+    "mount": "water",
+    "verbatim": "Spores (9.5–)11.0–17.0 × 4.0–5.0(–5.5) µm, Q = 2.3–3.6(–4.0)",
+    "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+    "Q": [
+     2.3,
+     3.6
+    ]
    }
   ],
   "flags": [
@@ -9331,11 +9653,14 @@
    "wlo": 3.5,
    "whi": 5.0,
    "lmin": null,
-   "lmax": null,
+   "lmax": 22.5,
    "wmin": null,
-   "wmax": null,
-   "q": null,
-   "n_sources": 1
+   "wmax": 6.0,
+   "q": [
+    2.8,
+    4.1
+   ],
+   "n_sources": 2
   },
   "meas": [
    {
@@ -9359,6 +9684,33 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-61471"
+   },
+   {
+    "src": "DENBAKKER2005",
+    "page": "534",
+    "L": [
+     null,
+     12.5,
+     18.5,
+     22.5
+    ],
+    "W": [
+     null,
+     3.5,
+     5.0,
+     6.0
+    ],
+    "mount": "water",
+    "verbatim": "Spores 12.5–18.5(–22.5) × 3.5–5.0(–6.0) µm, Q = 2.8–4.1, Qav = 3.2–3.6",
+    "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+    "Q": [
+     2.8,
+     4.1
+    ],
+    "Qav": [
+     3.2,
+     3.6
+    ]
    }
   ],
   "flags": [],
@@ -9776,16 +10128,19 @@
    "src": "SA"
   },
   "consensus": {
-   "lo": 12.5,
-   "hi": 15.0,
+   "lo": 11.0,
+   "hi": 15.5,
    "wlo": 3.0,
-   "whi": 4.0,
-   "lmin": null,
+   "whi": 4.5,
+   "lmin": 9.5,
    "lmax": null,
    "wmin": null,
    "wmax": null,
-   "q": null,
-   "n_sources": 1
+   "q": [
+    2.5,
+    3.8
+   ],
+   "n_sources": 2
   },
   "meas": [
    {
@@ -9809,9 +10164,41 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-16118"
+   },
+   {
+    "src": "DENBAKKER2005",
+    "page": "539",
+    "L": [
+     9.5,
+     11.0,
+     15.5,
+     null
+    ],
+    "W": [
+     null,
+     3.5,
+     4.5,
+     null
+    ],
+    "mount": "water",
+    "verbatim": "Spores (9.5–)11.0–15.5 × 3.5–4.5 µm, Q = 2.5–3.8, Qav = 3.2–3.4(–3.7)",
+    "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+    "Q": [
+     2.5,
+     3.8
+    ],
+    "Qav": [
+     3.2,
+     3.4
+    ]
    }
   ],
-  "flags": [],
+  "flags": [
+   {
+    "k": "disagree-Q",
+    "t": "Sources differ by 17 % in mean Q"
+   }
+  ],
   "nomen": {
    "gbif": {
     "key": 2524528,
@@ -9963,271 +10350,6 @@
   "dk": "fyrre-skælrørhat"
  },
  {
-  "n": "Leccinum quercinum",
-  "origin": "v3",
-  "legacy": {
-   "lo": 12.5,
-   "hi": 18.5,
-   "wlo": 3.5,
-   "whi": 5,
-   "q": [
-    3.2,
-    3.6
-   ],
-   "src": "SA"
-  },
-  "consensus": {
-   "lo": 12.5,
-   "hi": 18.5,
-   "wlo": 3.5,
-   "whi": 5.0,
-   "lmin": null,
-   "lmax": null,
-   "wmin": null,
-   "wmax": null,
-   "q": null,
-   "n_sources": 1
-  },
-  "meas": [
-   {
-    "L": [
-     null,
-     12.5,
-     18.5,
-     null
-    ],
-    "W": [
-     null,
-     3.5,
-     5.0,
-     null
-    ],
-    "verbatim": "Sporerne måler 12,5-18,5 x 3,5-5 μm, Q-gns 3,2-3,6.",
-    "Qav": [
-     3.2,
-     3.6
-    ],
-    "field": "diagnose",
-    "lang": "da",
-    "src": "SA-61471"
-   }
-  ],
-  "flags": [
-   {
-    "k": "nomen-gbif",
-    "t": "GBIF treats this name as synonym (accepted: Leccinum aurantiacum (Bull.) Gray)"
-   },
-   {
-    "k": "nomen-sf",
-    "t": "Species Fungorum gives the current name as Leccinum aurantiacum"
-   },
-   {
-    "k": "nomen-sa",
-    "t": "Svampeatlas uses Leccinum aurantiacum"
-   }
-  ],
-  "nomen": {
-   "gbif": {
-    "key": 8142395,
-    "acceptedKey": 2524513,
-    "matchType": "EXACT",
-    "status": "SYNONYM",
-    "scientificName": "Leccinum quercinum (Pilát) E.E.Green & Watling",
-    "accepted": "Leccinum aurantiacum (Bull.) Gray",
-    "family": "Boletaceae",
-    "counts": {
-     "DK": 441,
-     "NO": 675,
-     "SE": 2513,
-     "FI": 279,
-     "IS": 1,
-     "FO": 0,
-     "GL": 0
-    },
-    "vernacular": [
-     [
-      "eng",
-      "Copper-Top"
-     ],
-     [
-      "fin",
-      "Lehtopunikkitatti"
-     ],
-     [
-      "eng",
-      "Orange Bolete"
-     ],
-     [
-      "eng",
-      "Orange Oak Bolete"
-     ],
-     [
-      "eng",
-      "Orange Oak Bolete"
-     ],
-     [
-      "eng",
-      "Orange Oak Bolete"
-     ],
-     [
-      "eng",
-      "Orange Oak Bolete"
-     ],
-     [
-      "dan",
-      "Orange aspe-rørhat"
-     ],
-     [
-      "dan",
-      "Orange aspe-rørhat"
-     ],
-     [
-      "eng",
-      "Orange-capped Bolete"
-     ],
-     [
-      "eng",
-      "Red-capped Scaber Stalk"
-     ],
-     [
-      "dan",
-      "Rustrød skælrørhat"
-     ],
-     [
-      "dan",
-      "Rustrød skælrørhat"
-     ],
-     [
-      "swe",
-      "aspsopp"
-     ],
-     [
-      "swe",
-      "brun aspsopp"
-     ],
-     [
-      "nob",
-      "eikeskrubb"
-     ],
-     [
-      "swe",
-      "eksopp"
-     ],
-     [
-      "fin",
-      "tammenpunikkitatti"
-     ],
-     [
-      "eng",
-      "Orange Bolete"
-     ],
-     [
-      "eng",
-      "Orange Bolete"
-     ],
-     [
-      "eng",
-      "Orange Bolete"
-     ],
-     [
-      "eng",
-      "Red-capped Scaber Stalk"
-     ],
-     [
-      "eng",
-      "Red-capped Scaber Stalk"
-     ],
-     [
-      "swe",
-      "aspsopp"
-     ],
-     [
-      "nob",
-      "eikeskrubb"
-     ],
-     [
-      "nno",
-      "eikeskrubb"
-     ],
-     [
-      "eng",
-      "Copper-Top"
-     ],
-     [
-      "eng",
-      "Orange Bolete"
-     ],
-     [
-      "eng",
-      "Orange Oak Bolete"
-     ],
-     [
-      "eng",
-      "Orange Oak Bolete"
-     ],
-     [
-      "eng",
-      "Orange-capped Bolete"
-     ],
-     [
-      "eng",
-      "Red-capped Scaber Stalk"
-     ],
-     [
-      "swe",
-      "eksopp"
-     ]
-    ],
-    "retrieved": "2026-11-18"
-   },
-   "if": {
-    "records": [
-     {
-      "id": "283512",
-      "name": "Leccinum quercinum",
-      "authors": "(Pilát) E.E. Green & Watling",
-      "year": "1969",
-      "status": "Legitimate",
-      "current": "101071",
-      "currentName": "Leccinum aurantiacum",
-      "referee": null,
-      "family": null
-     },
-     {
-      "id": "459318",
-      "name": "Leccinum quercinum",
-      "authors": "Pilát",
-      "year": "1974",
-      "status": "Illegitimate",
-      "current": null,
-      "currentName": null,
-      "referee": null,
-      "family": null
-     }
-    ],
-    "retrieved": "2026-11-18",
-    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Leccinum+quercinum&AnywhereInText=false&MaxNumber=20"
-   },
-   "sa": {
-    "id": 61471,
-    "name": "Leccinum aurantiacum",
-    "author": "(Bull.) Gray",
-    "acceptedName": "Leccinum aurantiacum",
-    "ifCurrent": 344338,
-    "dk": "rustrød skælrørhat"
-   },
-   "sf": {
-    "current": "Leccinum aurantiacum",
-    "currentId": "101071",
-    "referee": null,
-    "family": null,
-    "recordId": "283512"
-   }
-  },
-  "dkOld": "Ege-Skælrørhat",
-  "dk": "rustrød skælrørhat"
- },
- {
   "n": "Leccinellum crocipodium",
   "origin": "v3",
   "legacy": {
@@ -10246,12 +10368,12 @@
    "hi": 18.0,
    "wlo": 5.0,
    "whi": 7.0,
-   "lmin": null,
+   "lmin": 11.5,
    "lmax": null,
    "wmin": null,
    "wmax": null,
    "q": null,
-   "n_sources": 1
+   "n_sources": 2
   },
   "meas": [
    {
@@ -10272,9 +10394,28 @@
      2.3,
      2.4
     ],
-    "field": "diagnose",
+    "field": "bogtekst_gyldendal",
     "lang": "da",
     "src": "SA-16088"
+   },
+   {
+    "src": "DENBAKKER2005",
+    "page": "566",
+    "L": [
+     11.5,
+     12.0,
+     15.0,
+     null
+    ],
+    "W": [
+     null,
+     5.0,
+     6.5,
+     null
+    ],
+    "mount": "water",
+    "verbatim": "Spores (11.5–)12.0–15.0 × 5.0–6.5 µm, on average 13–14 × 5.5–6.0 µm (as Leccinum crocipodium)",
+    "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005)."
    }
   ],
   "flags": [],
@@ -10425,16 +10566,16 @@
    "src": "LIT"
   },
   "consensus": {
-   "lo": 15.0,
+   "lo": 13.0,
    "hi": 19.0,
-   "wlo": 5.0,
+   "wlo": 4.5,
    "whi": 6.0,
-   "lmin": null,
+   "lmin": 12.5,
    "lmax": null,
    "wmin": null,
    "wmax": null,
    "q": null,
-   "n_sources": 1
+   "n_sources": 2
   },
   "meas": [
    {
@@ -10458,6 +10599,25 @@
     "field": "diagnose",
     "lang": "da",
     "src": "SA-69740"
+   },
+   {
+    "src": "DENBAKKER2005",
+    "page": "569",
+    "L": [
+     12.5,
+     13.0,
+     18.5,
+     null
+    ],
+    "W": [
+     null,
+     4.5,
+     6.0,
+     null
+    ],
+    "mount": "water",
+    "verbatim": "Spores (12.5–)13.0–18.5 × 4.5–6.0 µm, on average 14.5–15 × 4.8–5.3 µm (as Leccinum pseudoscabrum)",
+    "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005)."
    }
   ],
   "flags": [],
@@ -14394,9 +14554,9 @@
      4.0,
      null
     ],
-    "verbatim": "De glatte, ellipsoidiske sporer måler 4-6 x 3-4 μm.",
-    "field": "diagnose",
-    "lang": "da",
+    "verbatim": "The smooth, ellipsoid spores measure 4–6 × 3–4 µm.",
+    "field": "bogtekst_gyldendal_en",
+    "lang": "en",
     "src": "SA-20829"
    }
   ],
@@ -16083,13 +16243,13 @@
   },
   "consensus": {
    "lo": 8.0,
-   "hi": 11.0,
+   "hi": 10.0,
    "wlo": 8.0,
-   "whi": 11.0,
+   "whi": 10.0,
    "lmin": null,
-   "lmax": null,
+   "lmax": 11.0,
    "wmin": null,
-   "wmax": null,
+   "wmax": 11.0,
    "q": null,
    "n_sources": 1
   },
@@ -16112,25 +16272,6 @@
     "ornIncluded": false,
     "field": "diagnose",
     "lang": "da",
-    "src": "SA-20225"
-   },
-   {
-    "L": [
-     null,
-     11.0,
-     11.0,
-     null
-    ],
-    "W": [
-     null,
-     11.0,
-     11.0,
-     null
-    ],
-    "verbatim": "The spores are larger, typically more than 11 µm in diameter.",
-    "globose": true,
-    "field": "bogtekst_gyldendal_en",
-    "lang": "en",
     "src": "SA-20225"
    }
   ],
@@ -16435,25 +16576,6 @@
     "ornIncluded": false,
     "field": "diagnose",
     "lang": "da",
-    "src": "SA-20216"
-   },
-   {
-    "L": [
-     null,
-     11.0,
-     11.0,
-     null
-    ],
-    "W": [
-     null,
-     11.0,
-     11.0,
-     null
-    ],
-    "verbatim": "The spores are less than 11 µm in diameter.",
-    "globose": true,
-    "field": "bogtekst_gyldendal_en",
-    "lang": "en",
     "src": "SA-20216"
    }
   ],
@@ -17110,7 +17232,7 @@
   "dk": "Sand-Bruskbold"
  },
  {
-  "n": "Pisolithus arhizus",
+  "n": "Pisolithus capsulifer",
   "origin": "v3",
   "legacy": {
    "lo": 7,
@@ -17120,27 +17242,53 @@
    "q": null,
    "src": "SA"
   },
-  "consensus": null,
-  "meas": [],
-  "flags": [
+  "consensus": {
+   "lo": 7.0,
+   "hi": 8.0,
+   "wlo": 7.0,
+   "whi": 8.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
    {
-    "k": "legacy",
-    "t": "No verifiable published measurement found yet; showing the v3 value, whose source could not be checked"
+    "L": [
+     null,
+     7.0,
+     8.0,
+     null
+    ],
+    "W": [
+     null,
+     7.0,
+     8.0,
+     null
+    ],
+    "verbatim": "The spiny, spherical, brown spores measure 7–8 µm in diameter.",
+    "globose": true,
+    "field": "bogtekst_gyldendal_en",
+    "lang": "en",
+    "src": "SA-68863"
    }
   ],
+  "flags": [],
   "nomen": {
    "gbif": {
-    "key": 2525455,
-    "acceptedKey": 2525455,
+    "key": 8014599,
+    "acceptedKey": 8014599,
     "matchType": "EXACT",
     "status": "ACCEPTED",
-    "scientificName": "Pisolithus arhizus (Scop.) Rauschert",
+    "scientificName": "Pisolithus capsulifer (Sowerby) Watling, Phosri & M.P.Martín",
     "accepted": null,
     "family": "Sclerodermataceae",
     "counts": {
-     "DK": 35,
+     "DK": 103,
      "NO": 19,
-     "SE": 284,
+     "SE": 289,
      "FI": 111,
      "IS": 0,
      "FO": 0,
@@ -17148,96 +17296,56 @@
     },
     "vernacular": [
      [
-      "eng",
-      "Bohemian Truffle"
-     ],
-     [
-      "eng",
-      "Dyeball"
-     ],
-     [
-      "eng",
-      "Dyeball"
-     ],
-     [
       "dan",
       "Farvebold"
      ],
      [
       "dan",
       "Farvebold"
-     ],
-     [
-      "eng",
-      "Gum Puffball"
-     ],
-     [
-      "eng",
-      "Horse Dung Fungus"
-     ],
-     [
-      "fin",
-      "hernekuukunen"
-     ],
-     [
-      "fin",
-      "hernekuukunen"
-     ],
-     [
-      "nob",
-      "trollrøyksopp"
-     ],
-     [
-      "swe",
-      "ärtröksvamp"
-     ],
-     [
-      "eng",
-      "Dyeball"
-     ],
-     [
-      "nob",
-      "trollrøyksopp"
-     ],
-     [
-      "nno",
-      "trollrøyksopp"
-     ],
-     [
-      "swe",
-      "ärtröksvamp"
      ]
     ],
-    "retrieved": "2026-11-18"
+    "retrieved": "2026-11-18",
+    "countNames": [
+     "Pisolithus capsulifer",
+     "Pisolithus arhizus",
+     "Pisolithus tinctorius"
+    ]
    },
    "if": {
     "records": [
      {
-      "id": "276857",
-      "name": "Pisolithus arhizus",
-      "authors": "(Scop.) Rauschert",
-      "year": "1959",
+      "id": "519949",
+      "name": "Pisolithus capsulifer",
+      "authors": "(Sowerby) Watling, Phosri & M.P. Martín",
+      "year": "2012",
       "status": "Legitimate",
-      "current": "276857",
-      "currentName": "Pisolithus arhizus",
-      "referee": "Kew Mycology (2022)",
+      "current": "519949",
+      "currentName": "Pisolithus capsulifer",
+      "referee": "Kew Mycology (2015)",
       "family": null
      }
     ],
     "retrieved": "2026-11-18",
-    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Pisolithus+arhizus&AnywhereInText=false&MaxNumber=20"
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Pisolithus+capsulifer&AnywhereInText=false&MaxNumber=20"
    },
-   "sa": null,
+   "sa": {
+    "id": 68863,
+    "name": "Pisolithus capsulifer",
+    "author": "(Sowerby) Watling, Phosri & M.P. Martín",
+    "acceptedName": "Pisolithus capsulifer",
+    "ifCurrent": 519949,
+    "dk": "farvebold"
+   },
    "sf": {
-    "current": "Pisolithus arhizus",
-    "currentId": "276857",
-    "referee": "Kew Mycology (2022)",
+    "current": "Pisolithus capsulifer",
+    "currentId": "519949",
+    "referee": "Kew Mycology (2015)",
     "family": null,
-    "recordId": "276857"
+    "recordId": "519949"
    }
   },
-  "dkOld": null,
-  "dk": "Ærtebold"
+  "dkOld": "Ærtebold",
+  "dk": "farvebold"
  },
  {
   "n": "Rhizopogon luteolus",
@@ -17293,9 +17401,9 @@
     "accepted": null,
     "family": "Rhizopogonaceae",
     "counts": {
-     "DK": 331,
-     "NO": 434,
-     "SE": 546,
+     "DK": 382,
+     "NO": 445,
+     "SE": 547,
      "FI": 55,
      "IS": 0,
      "FO": 0,
@@ -17363,7 +17471,11 @@
       "gul hartryffel"
      ]
     ],
-    "retrieved": "2026-11-18"
+    "retrieved": "2026-11-18",
+    "countNames": [
+     "Rhizopogon luteolus",
+     "Rhizopogon obtextus"
+    ]
    },
    "if": {
     "records": [
@@ -17712,5 +17824,5037 @@
   },
   "dkOld": "Rødmende Skægtrøffel",
   "dk": "rødlig skægtrøffel"
+ },
+ {
+  "n": "Serpula lacrymans",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 9.0,
+   "hi": 12.0,
+   "wlo": 5.0,
+   "whi": 7.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     9.0,
+     12.0,
+     null
+    ],
+    "W": [
+     null,
+     5.0,
+     7.0,
+     null
+    ],
+    "verbatim": "De brunlige, cyanofile sporer måler 9-12 x 5-7 µm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-20372"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 5239534,
+    "acceptedKey": 5239534,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Serpula lacrymans (Wulfen) J.Schröt.",
+    "accepted": null,
+    "family": "Serpulaceae",
+    "counts": {
+     "DK": 47,
+     "NO": 197,
+     "SE": 183,
+     "FI": 144,
+     "IS": 0,
+     "FO": 1,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "eng",
+      "Dry Rot"
+     ],
+     [
+      "eng",
+      "Dry Rot"
+     ],
+     [
+      "eng",
+      "Dry Rot"
+     ],
+     [
+      "nob",
+      "ekte hussopp"
+     ],
+     [
+      "swe",
+      "hussvamp"
+     ],
+     [
+      "fin",
+      "lattiasieni"
+     ],
+     [
+      "fin",
+      "lattiasieni"
+     ],
+     [
+      "dan",
+      "Ægte hussvamp"
+     ],
+     [
+      "dan",
+      "Ægte hussvamp"
+     ],
+     [
+      "swe",
+      "äkta hussvamp"
+     ],
+     [
+      "eng",
+      "Dry Rot"
+     ],
+     [
+      "nob",
+      "ekte hussopp"
+     ],
+     [
+      "nno",
+      "ekte hussopp"
+     ],
+     [
+      "swe",
+      "hussvamp"
+     ],
+     [
+      "eng",
+      "Dry Rot"
+     ],
+     [
+      "swe",
+      "äkta hussvamp"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "102458",
+      "name": "Serpula lacrymans",
+      "authors": "(Wulfen) J. Schröt.",
+      "year": "1888",
+      "status": "Legitimate",
+      "current": "102458",
+      "currentName": "Serpula lacrymans",
+      "referee": "Kew Mycology (2021)",
+      "family": null
+     },
+     {
+      "id": "347611",
+      "name": "Serpula lacrymans var. carbonaria",
+      "authors": "W.B. Cooke",
+      "year": "1957",
+      "status": "Legitimate",
+      "current": "102458",
+      "currentName": "Serpula lacrymans",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "347612",
+      "name": "Serpula lacrymans var. himantioides",
+      "authors": "(Fr.) W.B. Cooke",
+      "year": "1957",
+      "status": "Legitimate",
+      "current": "305939",
+      "currentName": "Serpula himantioides",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "426597",
+      "name": "Serpula lacrymans var. lacrymans",
+      "authors": "(Wulfen) J. Schröt.",
+      "year": "1888",
+      "status": "Legitimate",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "447498",
+      "name": "Serpula lacrymans var. shastensis",
+      "authors": "(Harmsen) Ginns & M.N.L. Lefebvre",
+      "year": "1993",
+      "status": "Legitimate",
+      "current": "102458",
+      "currentName": "Serpula lacrymans",
+      "referee": null,
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Serpula+lacrymans&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 20372,
+    "name": "Serpula lacrymans",
+    "author": "(Wulfen) J. Schröt.",
+    "acceptedName": "Serpula lacrymans",
+    "ifCurrent": 102458,
+    "dk": "ægte hussvamp"
+   },
+   "sf": {
+    "current": "Serpula lacrymans",
+    "currentId": "102458",
+    "referee": "Kew Mycology (2021)",
+    "family": null,
+    "recordId": "102458"
+   }
+  },
+  "dkOld": null,
+  "dk": "ægte hussvamp"
+ },
+ {
+  "n": "Serpula himantioides",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 9.0,
+   "hi": 12.0,
+   "wlo": 5.0,
+   "whi": 7.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     9.0,
+     12.0,
+     null
+    ],
+    "W": [
+     null,
+     5.0,
+     7.0,
+     null
+    ],
+    "verbatim": "De ret tykvæggede, lysebrune, cyanofile sporer måler 9-12 x 5-7 µm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-20371"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 5239518,
+    "acceptedKey": 5239518,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Serpula himantioides (Fr.) P.Karst.",
+    "accepted": null,
+    "family": "Serpulaceae",
+    "counts": {
+     "DK": 919,
+     "NO": 346,
+     "SE": 1315,
+     "FI": 501,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Tyndkødet hussvamp"
+     ],
+     [
+      "dan",
+      "Tyndkødet hussvamp"
+     ],
+     [
+      "fin",
+      "suklaakesikkä"
+     ],
+     [
+      "fin",
+      "suklaakesikkä"
+     ],
+     [
+      "swe",
+      "timmergröppa"
+     ],
+     [
+      "nob",
+      "tømmernettsopp"
+     ],
+     [
+      "swe",
+      "timmergröppa"
+     ],
+     [
+      "nno",
+      "tømmernettsopp"
+     ],
+     [
+      "nob",
+      "tømmernettsopp"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "305939",
+      "name": "Serpula himantioides",
+      "authors": "(Fr.) P. Karst.",
+      "year": "1884",
+      "status": "Legitimate",
+      "current": "305939",
+      "currentName": "Serpula himantioides",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Serpula+himantioides&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 20371,
+    "name": "Serpula himantioides",
+    "author": "(Fr.) P. Karst.",
+    "acceptedName": "Serpula himantioides",
+    "ifCurrent": 305939,
+    "dk": "tyndkødet hussvamp"
+   },
+   "sf": {
+    "current": "Serpula himantioides",
+    "currentId": "305939",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "305939"
+   }
+  },
+  "dkOld": null,
+  "dk": "tyndkødet hussvamp"
+ },
+ {
+  "n": "Coniophora puteana",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 10.0,
+   "hi": 15.0,
+   "wlo": 7.0,
+   "whi": 9.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     10.0,
+     15.0,
+     null
+    ],
+    "W": [
+     null,
+     7.0,
+     9.0,
+     null
+    ],
+    "verbatim": "De brunlige, glatte, ret tykvæggede, kun svagt dextrinoide sporer måler 10-15 x 7-9 µm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-11903"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 5240101,
+    "acceptedKey": 5240101,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Coniophora puteana (Schumach.) P.Karst.",
+    "accepted": null,
+    "family": "Coniophoraceae",
+    "counts": {
+     "DK": 1252,
+     "NO": 279,
+     "SE": 1501,
+     "FI": 427,
+     "IS": 3,
+     "FO": 0,
+     "GL": 1
+    },
+    "vernacular": [
+     [
+      "eng",
+      "Cellar Fungus"
+     ],
+     [
+      "dan",
+      "Gul tømmersvamp"
+     ],
+     [
+      "dan",
+      "Gul tømmersvamp"
+     ],
+     [
+      "eng",
+      "Wet Rot"
+     ],
+     [
+      "eng",
+      "Wet Rot"
+     ],
+     [
+      "eng",
+      "Wet Rot"
+     ],
+     [
+      "swe",
+      "gul timmersvamp"
+     ],
+     [
+      "fin",
+      "kellarikesikkä"
+     ],
+     [
+      "fin",
+      "kellarikesikkä"
+     ],
+     [
+      "nno",
+      "kjellarsopp"
+     ],
+     [
+      "nob",
+      "kjellersopp"
+     ],
+     [
+      "swe",
+      "källarsvamp"
+     ],
+     [
+      "eng",
+      "Wet Rot"
+     ],
+     [
+      "nno",
+      "kjellarsopp"
+     ],
+     [
+      "nob",
+      "kjellersopp"
+     ],
+     [
+      "swe",
+      "källarsvamp"
+     ],
+     [
+      "eng",
+      "Cellar Fungus"
+     ],
+     [
+      "eng",
+      "Cellar Fungus"
+     ],
+     [
+      "eng",
+      "Cellar Fungus"
+     ],
+     [
+      "eng",
+      "Wet Rot"
+     ],
+     [
+      "swe",
+      "gul timmersvamp"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "204571",
+      "name": "Coniophora puteana",
+      "authors": "(Schumach.) P. Karst.",
+      "year": "1865",
+      "status": "Legitimate",
+      "current": "204571",
+      "currentName": "Coniophora puteana",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     },
+     {
+      "id": "664685",
+      "name": "Coniophora puteana",
+      "authors": "(Schumach.) P. Karst.",
+      "year": "1868",
+      "status": "Legitimate",
+      "current": "204571",
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "468860",
+      "name": "Coniophora puteana f. laxa",
+      "authors": "(Fr.) J. Erikss.",
+      "year": "1948",
+      "status": "Legitimate",
+      "current": "204571",
+      "currentName": "Coniophora puteana",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "485452",
+      "name": "Coniophora puteana f. puteana",
+      "authors": "(Schumach.) P. Karst.",
+      "year": "1868",
+      "status": "Legitimate",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "493677",
+      "name": "Coniophora puteana subsp. areolatum",
+      "authors": "(Fr.) Fr.",
+      "year": "1874",
+      "status": "Legitimate",
+      "current": "204571",
+      "currentName": "Coniophora puteana",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "332762",
+      "name": "Coniophora puteana subsp. puteana",
+      "authors": "(Schumach.) P. Karst.",
+      "year": "1868",
+      "status": "Legitimate",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "136856",
+      "name": "Coniophora puteana var. areolata",
+      "authors": "(Fr.) P. Karst.",
+      "year": "1882",
+      "status": "Legitimate",
+      "current": "204571",
+      "currentName": "Coniophora puteana",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "461675",
+      "name": "Coniophora puteana var. cellaris",
+      "authors": "(Pers.) Massee",
+      "year": "1889",
+      "status": "Legitimate",
+      "current": "204571",
+      "currentName": "Coniophora puteana",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "468861",
+      "name": "Coniophora puteana var. cerebella",
+      "authors": "(Pers.) Sacc.",
+      "year": "1879",
+      "status": "Legitimate",
+      "current": "204571",
+      "currentName": "Coniophora puteana",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "117536",
+      "name": "Coniophora puteana var. incrustata",
+      "authors": "(P.H.B. Talbot) Ginns",
+      "year": "1982",
+      "status": "Legitimate",
+      "current": "204571",
+      "currentName": "Coniophora puteana",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "417667",
+      "name": "Coniophora puteana var. puteana",
+      "authors": "(Schumach.) P. Karst.",
+      "year": "1868",
+      "status": "Legitimate",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "468862",
+      "name": "Coniophora puteana var. rimosa",
+      "authors": "Peck",
+      "year": "1891",
+      "status": "Legitimate",
+      "current": "204571",
+      "currentName": "Coniophora puteana",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "468863",
+      "name": "Coniophora puteana var. tuberculosa",
+      "authors": "Peck",
+      "year": "1891",
+      "status": "Legitimate",
+      "current": "204571",
+      "currentName": "Coniophora puteana",
+      "referee": null,
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Coniophora+puteana&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 11903,
+    "name": "Coniophora puteana",
+    "author": "(Schumach.) P. Karst.",
+    "acceptedName": "Coniophora puteana",
+    "ifCurrent": 204571,
+    "dk": "gul tømmersvamp"
+   },
+   "sf": {
+    "current": "Coniophora puteana",
+    "currentId": "204571",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "204571"
+   }
+  },
+  "dkOld": null,
+  "dk": "gul tømmersvamp"
+ },
+ {
+  "n": "Coniophora arida",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 10.0,
+   "hi": 14.0,
+   "wlo": 6.0,
+   "whi": 8.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     10.0,
+     14.0,
+     null
+    ],
+    "W": [
+     null,
+     6.0,
+     8.0,
+     null
+    ],
+    "verbatim": "De meget dextrinoide, gullige sporer måler 10-14 x 6-8 µm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-11900"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 5240136,
+    "acceptedKey": 5240136,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Coniophora arida (Fr.) P.Karst.",
+    "accepted": null,
+    "family": "Coniophoraceae",
+    "counts": {
+     "DK": 173,
+     "NO": 245,
+     "SE": 1356,
+     "FI": 326,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "eng",
+      "Dry Duster"
+     ],
+     [
+      "dan",
+      "Tynd tømmersvamp"
+     ],
+     [
+      "dan",
+      "Tynd tømmersvamp"
+     ],
+     [
+      "nno",
+      "gulbrun kjellarsopp"
+     ],
+     [
+      "nob",
+      "gulbrun kjellersopp"
+     ],
+     [
+      "nob",
+      "gulbrun tømmersopp"
+     ],
+     [
+      "fin",
+      "jauhokesikkä"
+     ],
+     [
+      "fin",
+      "jauhokesikkä"
+     ],
+     [
+      "swe",
+      "pulverskinn"
+     ],
+     [
+      "eng",
+      "Dry Duster"
+     ],
+     [
+      "eng",
+      "Dry Duster"
+     ],
+     [
+      "nob",
+      "gulbrun tømmersopp"
+     ],
+     [
+      "swe",
+      "pulverskinn"
+     ],
+     [
+      "eng",
+      "Dry Duster"
+     ],
+     [
+      "nno",
+      "gulbrun kjellarsopp"
+     ],
+     [
+      "nob",
+      "gulbrun kjellersopp"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "140661",
+      "name": "Coniophora arida",
+      "authors": "(Fr.) P. Karst.",
+      "year": "1868",
+      "status": "Legitimate",
+      "current": "140661",
+      "currentName": "Coniophora arida",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     },
+     {
+      "id": "485445",
+      "name": "Coniophora arida f. arida",
+      "authors": "(Fr.) P. Karst.",
+      "year": "1868",
+      "status": "Legitimate",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "468838",
+      "name": "Coniophora arida f. hyphis-incrustatis",
+      "authors": "Litsch.",
+      "year": "1936",
+      "status": "Legitimate",
+      "current": "140661",
+      "currentName": "Coniophora arida",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "485446",
+      "name": "Coniophora arida subsp. arida",
+      "authors": "(Fr.) P. Karst.",
+      "year": "1868",
+      "status": "Legitimate",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "468839",
+      "name": "Coniophora arida subsp. fumosa",
+      "authors": "(Fr.) Bourdot & Galzin",
+      "year": "1923",
+      "status": "Legitimate",
+      "current": "474103",
+      "currentName": "Xenasmatella vaga",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "468840",
+      "name": "Coniophora arida subsp. lurida",
+      "authors": "P. Karst.",
+      "year": "1881",
+      "status": "Legitimate",
+      "current": "140661",
+      "currentName": "Coniophora arida",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "468841",
+      "name": "Coniophora arida subsp. macra",
+      "authors": "P. Karst.",
+      "year": "1882",
+      "status": "Legitimate",
+      "current": "140661",
+      "currentName": "Coniophora arida",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "417666",
+      "name": "Coniophora arida var. arida",
+      "authors": "(Fr.) P. Karst.",
+      "year": "1868",
+      "status": "Legitimate",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "139199",
+      "name": "Coniophora arida var. flavobrunnea",
+      "authors": "Bres.",
+      "year": "1903",
+      "status": "Legitimate",
+      "current": "140661",
+      "currentName": "Coniophora arida",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "654657",
+      "name": "Coniophora arida var. furva",
+      "authors": "(P. Karst.) Bourdot & Galzin",
+      "year": "1923",
+      "status": "Legitimate",
+      "current": "207945",
+      "currentName": "Coniophora olivacea",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "139196",
+      "name": "Coniophora arida var. lurida",
+      "authors": "(P. Karst.) P. Karst.",
+      "year": "1882",
+      "status": "Legitimate",
+      "current": "204571",
+      "currentName": "Coniophora puteana",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "117535",
+      "name": "Coniophora arida var. suffocata",
+      "authors": "(Peck) Ginns",
+      "year": "1982",
+      "status": "Legitimate",
+      "current": "140661",
+      "currentName": "Coniophora arida",
+      "referee": null,
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Coniophora+arida&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 11900,
+    "name": "Coniophora arida",
+    "author": "(Fr.) P. Karst.",
+    "acceptedName": "Coniophora arida",
+    "ifCurrent": 140661,
+    "dk": "tynd tømmersvamp"
+   },
+   "sf": {
+    "current": "Coniophora arida",
+    "currentId": "140661",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "140661"
+   }
+  },
+  "dkOld": null,
+  "dk": "tynd tømmersvamp"
+ },
+ {
+  "n": "Coniophora olivacea",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 8.0,
+   "hi": 12.0,
+   "wlo": 4.0,
+   "whi": 6.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     8.0,
+     12.0,
+     null
+    ],
+    "W": [
+     null,
+     4.0,
+     6.0,
+     null
+    ],
+    "verbatim": "De ± gulbrune, tykvæggede, svagt dextrinoide sporer med spirepore måler 8-12 x 4-6 µm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-71851"
+   }
+  ],
+  "flags": [
+   {
+    "k": "nomen-sa",
+    "t": "Svampeatlas uses Penttilamyces olivascens"
+   }
+  ],
+  "nomen": {
+   "gbif": {
+    "key": 5240157,
+    "acceptedKey": 5240157,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Coniophora olivacea (Fr.) P.Karst.",
+    "accepted": null,
+    "family": "Coniophoraceae",
+    "counts": {
+     "DK": 8,
+     "NO": 200,
+     "SE": 644,
+     "FI": 547,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Oiivenbrun tømmersvamp"
+     ],
+     [
+      "eng",
+      "Olive Duster"
+     ],
+     [
+      "nno",
+      "oliven tømmersopp"
+     ],
+     [
+      "swe",
+      "olivpulverskinn"
+     ],
+     [
+      "fin",
+      "tummakesikkä"
+     ],
+     [
+      "fin",
+      "tummakesikkä"
+     ],
+     [
+      "eng",
+      "Olive Duster"
+     ],
+     [
+      "eng",
+      "Olive Duster"
+     ],
+     [
+      "nno",
+      "oliven tømmersopp"
+     ],
+     [
+      "nob",
+      "oliven tømmersopp"
+     ],
+     [
+      "swe",
+      "olivpulverskinn"
+     ],
+     [
+      "eng",
+      "Olive Duster"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "207610",
+      "name": "Coniophora olivacea",
+      "authors": "(Fr.) Sacc.",
+      "year": "1888",
+      "status": "Legitimate",
+      "current": "207945",
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "207702",
+      "name": "Coniophora olivacea",
+      "authors": "(Fr.) Massee",
+      "year": "1889",
+      "status": "Illegitimate",
+      "current": "207610",
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "207945",
+      "name": "Coniophora olivacea",
+      "authors": "(Fr.) P. Karst.",
+      "year": "1882",
+      "status": "Legitimate",
+      "current": "207945",
+      "currentName": "Coniophora olivacea",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     },
+     {
+      "id": "468858",
+      "name": "Coniophora olivacea var. atrocinerea",
+      "authors": "(P. Karst.) P. Karst.",
+      "year": "1889",
+      "status": "Legitimate",
+      "current": "207945",
+      "currentName": "Coniophora olivacea",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "485450",
+      "name": "Coniophora olivacea var. olivacea",
+      "authors": "(Fr.) P. Karst.",
+      "year": "1882",
+      "status": "Legitimate",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Coniophora+olivacea&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 71851,
+    "name": "Penttilamyces olivascens",
+    "author": "(Berk. & M.A. Curtis) Zmitr., Kalinovskaya & Myasnikov",
+    "acceptedName": "Penttilamyces olivascens",
+    "ifCurrent": 556850,
+    "dk": "olivenbrun tømmersvamp"
+   },
+   "sf": {
+    "current": "Coniophora olivacea",
+    "currentId": "207945",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "207945"
+   }
+  },
+  "dkOld": null,
+  "dk": "olivenbrun tømmersvamp"
+ },
+ {
+  "n": "Coniophora fusispora",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 14.0,
+   "hi": 20.0,
+   "wlo": 5.0,
+   "whi": 8.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     14.0,
+     20.0,
+     null
+    ],
+    "W": [
+     null,
+     5.0,
+     8.0,
+     null
+    ],
+    "verbatim": "De meget mørke, tykvæggede sporer er udpræget bugtet-tenformede og måler 14-20 x 5-8 µm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-11901"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 5240176,
+    "acceptedKey": 5240176,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Coniophora fusispora (Cooke & Ellis) Cooke",
+    "accepted": null,
+    "family": "Coniophoraceae",
+    "counts": {
+     "DK": 31,
+     "NO": 10,
+     "SE": 56,
+     "FI": 36,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "eng",
+      "Spindle Duster"
+     ],
+     [
+      "dan",
+      "Tensporet tømmersvamp"
+     ],
+     [
+      "dan",
+      "Tensporet tømmersvamp"
+     ],
+     [
+      "nob",
+      "kjølsporetømmersopp"
+     ],
+     [
+      "fin",
+      "pikkukesikkä"
+     ],
+     [
+      "swe",
+      "sprött pulverskinn"
+     ],
+     [
+      "eng",
+      "Spindle Duster"
+     ],
+     [
+      "nob",
+      "kjølsporetømmersopp"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "215275",
+      "name": "Coniophora fusispora",
+      "authors": "(Cooke & Ellis) Cooke",
+      "year": "1888",
+      "status": "Legitimate",
+      "current": "215275",
+      "currentName": "Coniophora fusispora",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Coniophora+fusispora&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 11901,
+    "name": "Coniophora fusispora",
+    "author": "(Cooke & Ellis) Cooke",
+    "acceptedName": "Coniophora fusispora",
+    "ifCurrent": 215275,
+    "dk": "tensporet tømmersvamp"
+   },
+   "sf": {
+    "current": "Coniophora fusispora",
+    "currentId": "215275",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "215275"
+   }
+  },
+  "dkOld": null,
+  "dk": "tensporet tømmersvamp"
+ },
+ {
+  "n": "Pseudomerulius aureus",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 4.0,
+   "hi": 4.5,
+   "wlo": 1.2,
+   "whi": 1.5,
+   "lmin": null,
+   "lmax": 5.0,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     4.0,
+     4.5,
+     5.0
+    ],
+    "W": [
+     null,
+     1.2,
+     1.5,
+     null
+    ],
+    "verbatim": "De svagt gullige, svagt tykvæggede, noget dextrinoide, cyanofile sporer måler 4-4,5(-5) x 1,2-1,5 µm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-19262"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 8036570,
+    "acceptedKey": 8036570,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Pseudomerulius aureus (Fr.) Jülich",
+    "accepted": null,
+    "family": "Tapinellaceae",
+    "counts": {
+     "DK": 5,
+     "NO": 395,
+     "SE": 2105,
+     "FI": 617,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Gylden hussvamp"
+     ],
+     [
+      "dan",
+      "Gylden hussvamp"
+     ],
+     [
+      "eng",
+      "Orange Netcrust"
+     ],
+     [
+      "nob",
+      "flammenettskinn"
+     ],
+     [
+      "swe",
+      "gullgröppa"
+     ],
+     [
+      "fin",
+      "kultarypykkä"
+     ],
+     [
+      "fin",
+      "kultarypykkä"
+     ],
+     [
+      "eng",
+      "Orange Netcrust"
+     ],
+     [
+      "eng",
+      "Orange Netcrust"
+     ],
+     [
+      "nno",
+      "flammenettskinn"
+     ],
+     [
+      "nob",
+      "flammenettskinn"
+     ],
+     [
+      "swe",
+      "gullgröppa"
+     ],
+     [
+      "eng",
+      "Orange Netcrust"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "321835",
+      "name": "Pseudomerulius aureus",
+      "authors": "(Fr.) Jülich",
+      "year": "1979",
+      "status": "Legitimate",
+      "current": "321835",
+      "currentName": "Pseudomerulius aureus",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Pseudomerulius+aureus&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 19262,
+    "name": "Pseudomerulius aureus",
+    "author": "(Fr.) Jülich",
+    "acceptedName": "Pseudomerulius aureus",
+    "ifCurrent": 321835,
+    "dk": "gylden hussvamp"
+   },
+   "sf": {
+    "current": "Pseudomerulius aureus",
+    "currentId": "321835",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "321835"
+   }
+  },
+  "dkOld": null,
+  "dk": "gylden hussvamp"
+ },
+ {
+  "n": "Leucogyrophana mollusca",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 6.0,
+   "hi": 7.0,
+   "wlo": 4.0,
+   "whi": 4.5,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     6.0,
+     7.0,
+     null
+    ],
+    "W": [
+     null,
+     4.0,
+     4.5,
+     null
+    ],
+    "verbatim": "The spores are dextrinoid, smooth and ± thick-walled, and measure 6–7 × 4–4.5 µm.",
+    "field": "bogtekst_gyldendal_en",
+    "lang": "en",
+    "src": "SA-16423"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 9228008,
+    "acceptedKey": 9228008,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Leucogyrophana mollusca (Fr.) Pouzar",
+    "accepted": null,
+    "family": "Hygrophoropsidaceae",
+    "counts": {
+     "DK": 73,
+     "NO": 159,
+     "SE": 479,
+     "FI": 173,
+     "IS": 0,
+     "FO": 2,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Blød hussvamp"
+     ],
+     [
+      "dan",
+      "Blød hussvamp"
+     ],
+     [
+      "nob",
+      "gullnettsopp"
+     ],
+     [
+      "fin",
+      "ryppykesikkä"
+     ],
+     [
+      "fin",
+      "ryppykesikkä"
+     ],
+     [
+      "swe",
+      "stor spindelgröppa"
+     ],
+     [
+      "nno",
+      "gullnettsopp"
+     ],
+     [
+      "nob",
+      "gullnettsopp"
+     ],
+     [
+      "swe",
+      "stor spindelgröppa"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "299736",
+      "name": "Leucogyrophana mollusca",
+      "authors": "(Fr.) Pouzar",
+      "year": "1958",
+      "status": "Legitimate",
+      "current": "299736",
+      "currentName": "Leucogyrophana mollusca",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Leucogyrophana+mollusca&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 16423,
+    "name": "Leucogyrophana mollusca",
+    "author": "(Fr.) Pouzar",
+    "acceptedName": "Leucogyrophana mollusca",
+    "ifCurrent": 299736,
+    "dk": "blød hussvamp"
+   },
+   "sf": {
+    "current": "Leucogyrophana mollusca",
+    "currentId": "299736",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "299736"
+   }
+  },
+  "dkOld": null,
+  "dk": "blød hussvamp"
+ },
+ {
+  "n": "Leucogyrophana sororia",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 4.0,
+   "hi": 4.5,
+   "wlo": 2.5,
+   "whi": 3.0,
+   "lmin": null,
+   "lmax": 5.0,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     4.0,
+     4.5,
+     5.0
+    ],
+    "W": [
+     null,
+     2.5,
+     3.0,
+     null
+    ],
+    "verbatim": "Uden skelethyfer og med tykvæggede, gullige, stort set ikke dextrinoide sporer, der måler 4-4,5(-5) x 2,5-3 µm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-16427"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 2525702,
+    "acceptedKey": 2525702,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Leucogyrophana sororia (Burt) Ginns",
+    "accepted": null,
+    "family": "Hygrophoropsidaceae",
+    "counts": {
+     "DK": 30,
+     "NO": 121,
+     "SE": 72,
+     "FI": 65,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Kortsporet hussvamp"
+     ],
+     [
+      "dan",
+      "Kortsporet hussvamp"
+     ],
+     [
+      "swe",
+      "blek spindelgröppa"
+     ],
+     [
+      "fin",
+      "ruskokesikkä"
+     ],
+     [
+      "fin",
+      "ruskokesikkä"
+     ],
+     [
+      "nob",
+      "ullnettsopp"
+     ],
+     [
+      "swe",
+      "blek spindelgröppa"
+     ],
+     [
+      "nno",
+      "ullnettsopp"
+     ],
+     [
+      "nob",
+      "ullnettsopp"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "316853",
+      "name": "Leucogyrophana sororia",
+      "authors": "(Burt) Ginns",
+      "year": "1976",
+      "status": "Legitimate",
+      "current": "316853",
+      "currentName": "Leucogyrophana sororia",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Leucogyrophana+sororia&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 16427,
+    "name": "Leucogyrophana sororia",
+    "author": "(Burt) Ginns",
+    "acceptedName": "Leucogyrophana sororia",
+    "ifCurrent": 316853,
+    "dk": "kortsporet hussvamp"
+   },
+   "sf": {
+    "current": "Leucogyrophana sororia",
+    "currentId": "316853",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "316853"
+   }
+  },
+  "dkOld": null,
+  "dk": "kortsporet hussvamp"
+ },
+ {
+  "n": "Hydnomerulius pinastri",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 5.0,
+   "hi": 6.0,
+   "wlo": 3.5,
+   "whi": 4.5,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     5.0,
+     6.0,
+     null
+    ],
+    "W": [
+     null,
+     3.5,
+     4.5,
+     null
+    ],
+    "verbatim": "Med tykvæggede, svagt dextrinoide, cyanofile, gullige sporer, 5-6 x 3,5-4,5 µm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-16424"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 9074097,
+    "acceptedKey": 9074097,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Hydnomerulius pinastri (Fr.) Jarosch & Besl",
+    "accepted": null,
+    "family": "Paxillaceae",
+    "counts": {
+     "DK": 74,
+     "NO": 41,
+     "SE": 103,
+     "FI": 71,
+     "IS": 6,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Pigget hussvamp"
+     ],
+     [
+      "dan",
+      "Pigget hussvamp"
+     ],
+     [
+      "eng",
+      "Tanned Toothcrust"
+     ],
+     [
+      "nob",
+      "knollnettsopp"
+     ],
+     [
+      "fin",
+      "lautaryppy"
+     ],
+     [
+      "fin",
+      "lautaryppy"
+     ],
+     [
+      "swe",
+      "tandgröppa"
+     ],
+     [
+      "swe",
+      "tandgröppa"
+     ],
+     [
+      "eng",
+      "Tanned Toothcrust"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "474900",
+      "name": "Hydnomerulius pinastri",
+      "authors": "(Fr.) Jarosch & Besl",
+      "year": "2001",
+      "status": "Legitimate",
+      "current": "474900",
+      "currentName": "Hydnomerulius pinastri",
+      "referee": "Kew Mycology (2021)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Hydnomerulius+pinastri&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 16424,
+    "name": "Hydnomerulius pinastri",
+    "author": "(Fr.) Jarosch & Besl",
+    "acceptedName": "Hydnomerulius pinastri",
+    "ifCurrent": 474900,
+    "dk": "pigget hussvamp"
+   },
+   "sf": {
+    "current": "Hydnomerulius pinastri",
+    "currentId": "474900",
+    "referee": "Kew Mycology (2021)",
+    "family": null,
+    "recordId": "474900"
+   }
+  },
+  "dkOld": null,
+  "dk": "pigget hussvamp"
+ },
+ {
+  "n": "Hygrophoropsis pallida",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 6.0,
+   "hi": 9.0,
+   "wlo": 4.0,
+   "whi": 5.0,
+   "lmin": null,
+   "lmax": 10.0,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     6.0,
+     9.0,
+     10.0
+    ],
+    "W": [
+     null,
+     4.0,
+     5.0,
+     null
+    ],
+    "verbatim": "De lidt tykvæggede, dextrinoide sporer måler 6-9(-10) x 4-5 μm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-43713"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 2525707,
+    "acceptedKey": 2525707,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Hygrophoropsis pallida (Cooke) Kreisel",
+    "accepted": null,
+    "family": "Hygrophoropsidaceae",
+    "counts": {
+     "DK": 147,
+     "NO": 83,
+     "SE": 313,
+     "FI": 2,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Bleg orangekantarel"
+     ],
+     [
+      "dan",
+      "Bleg orangekantarel"
+     ],
+     [
+      "nno",
+      "bleik falsk kantarell"
+     ],
+     [
+      "nno",
+      "bleik narrekantarell"
+     ],
+     [
+      "nob",
+      "blek falsk kantarell"
+     ],
+     [
+      "nob",
+      "blek narrekantarell"
+     ],
+     [
+      "swe",
+      "blek narrkantarell"
+     ],
+     [
+      "nno",
+      "bleik narrekantarell"
+     ],
+     [
+      "nob",
+      "blek narrekantarell"
+     ],
+     [
+      "swe",
+      "blek narrkantarell"
+     ],
+     [
+      "nno",
+      "bleik falsk kantarell"
+     ],
+     [
+      "nob",
+      "blek falsk kantarell"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "438483",
+      "name": "Hygrophoropsis pallida",
+      "authors": "(Peck) Kreisel ex Gyosheva & Stoykov",
+      "year": "2017",
+      "status": "Invalid",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Hygrophoropsis+pallida&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 43713,
+    "name": "Hygrophoropsis pallida",
+    "author": "(Peck) Kreisel",
+    "acceptedName": "Hygrophoropsis pallida",
+    "ifCurrent": 438483,
+    "dk": "bleg orangekantarel"
+   },
+   "sf": null
+  },
+  "dkOld": null,
+  "dk": "bleg orangekantarel"
+ },
+ {
+  "n": "Hygrophoropsis rufa",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 5.0,
+   "hi": 6.5,
+   "wlo": 3.0,
+   "whi": 4.0,
+   "lmin": null,
+   "lmax": 7.0,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     5.0,
+     6.5,
+     7.0
+    ],
+    "W": [
+     null,
+     3.0,
+     4.0,
+     null
+    ],
+    "verbatim": "Sporerne er dextrinoide og måler 5-6,5(-7) x 3-4 μm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-14887"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 7705991,
+    "acceptedKey": 7705991,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Hygrophoropsis rufa (D.A.Reid) Knudsen",
+    "accepted": null,
+    "family": "Hygrophoropsidaceae",
+    "counts": {
+     "DK": 107,
+     "NO": 9,
+     "SE": 99,
+     "FI": 85,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Brunfiltet orangekantarel"
+     ],
+     [
+      "dan",
+      "Brunfiltet orangekantarel"
+     ],
+     [
+      "eng",
+      "Foxy False Chanterelle"
+     ],
+     [
+      "swe",
+      "brun narrkantarell"
+     ],
+     [
+      "fin",
+      "ruskovalevahvero"
+     ],
+     [
+      "fin",
+      "ruskovalevahvero"
+     ],
+     [
+      "swe",
+      "brun narrkantarell"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "542257",
+      "name": "Hygrophoropsis rufa",
+      "authors": "(D.A. Reid) Knudsen",
+      "year": "2008",
+      "status": "Legitimate",
+      "current": "542257",
+      "currentName": "Hygrophoropsis rufa",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Hygrophoropsis+rufa&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 14887,
+    "name": "Hygrophoropsis rufa",
+    "author": "(D.A. Reid) Knudsen",
+    "acceptedName": "Hygrophoropsis rufa",
+    "ifCurrent": 542257,
+    "dk": "brunfiltet orangekantarel"
+   },
+   "sf": {
+    "current": "Hygrophoropsis rufa",
+    "currentId": "542257",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "542257"
+   }
+  },
+  "dkOld": null,
+  "dk": "brunfiltet orangekantarel"
+ },
+ {
+  "n": "Paxillus ammoniavirescens",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 7.0,
+   "hi": 11.0,
+   "wlo": 5.0,
+   "whi": 7.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     7.0,
+     11.0,
+     null
+    ],
+    "W": [
+     null,
+     5.0,
+     7.0,
+     null
+    ],
+    "verbatim": "Sporerne måler 7-11 x 5-7 μm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-65211"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 5240008,
+    "acceptedKey": 5240008,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Paxillus ammoniavirescens Contu & Dessì",
+    "accepted": null,
+    "family": "Paxillaceae",
+    "counts": {
+     "DK": 151,
+     "NO": 0,
+     "SE": 20,
+     "FI": 7,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Olivensporet netbladhat"
+     ],
+     [
+      "dan",
+      "Olivensporet netbladhat"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "450099",
+      "name": "Paxillus ammoniavirescens",
+      "authors": "Contu & Dessì",
+      "year": "1999",
+      "status": "Legitimate",
+      "current": "450099",
+      "currentName": "Paxillus ammoniavirescens",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Paxillus+ammoniavirescens&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 65211,
+    "name": "Paxillus ammoniavirescens",
+    "author": "Contu & DessÏ",
+    "acceptedName": "Paxillus ammoniavirescens",
+    "ifCurrent": 450099,
+    "dk": "olivensporet netbladhat"
+   },
+   "sf": {
+    "current": "Paxillus ammoniavirescens",
+    "currentId": "450099",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "450099"
+   }
+  },
+  "dkOld": null,
+  "dk": "olivensporet netbladhat"
+ },
+ {
+  "n": "Chroogomphus mediterraneus",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 15.0,
+   "hi": 18.5,
+   "wlo": 6.0,
+   "whi": 7.5,
+   "lmin": 14.0,
+   "lmax": 20.5,
+   "wmin": 5.0,
+   "wmax": 8.0,
+   "q": [
+    2.11,
+    2.96
+   ],
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "src": "SCAMBLER2018",
+    "L": [
+     14.0,
+     15.0,
+     18.5,
+     20.5
+    ],
+    "W": [
+     5.0,
+     6.0,
+     7.5,
+     8.0
+    ],
+    "Q": [
+     2.11,
+     2.96
+    ],
+    "Qm": 2.57,
+    "mount": "Melzer",
+    "verbatim": "(14.0–)15.0–18.5(–20.5) × (5.0–)6.0–7.5(–8.0) μm, av. 16.9 × 6.6 μm … Q av. 2.57",
+    "note": "Melzer's reagent, ≥ 20 spores per collection from deposits; typical range covers ≥ 90 % of values."
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 9700233,
+    "acceptedKey": 9700233,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Chroogomphus mediterraneus (Finschow) Vila, Pérez-De-Greg. & G.Mir",
+    "accepted": null,
+    "family": "Gomphidiaceae",
+    "counts": {
+     "DK": 1,
+     "NO": 29,
+     "SE": 67,
+     "FI": 48,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "fin",
+      "jänönnuljaska"
+     ],
+     [
+      "fin",
+      "jänönnuljaska"
+     ],
+     [
+      "fin",
+      "jänönnuljaska"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "624017",
+      "name": "Chroogomphus mediterraneus",
+      "authors": "(Finschow) Vila, Pérez-De-Greg. & G. Mir",
+      "year": "2006",
+      "status": "Legitimate",
+      "current": "624017",
+      "currentName": "Chroogomphus mediterraneus",
+      "referee": "Kew Mycology (2016)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Chroogomphus+mediterraneus&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 69644,
+    "name": "Chroogomphus mediterraneus",
+    "author": "(Finschow) Vila, Pérez-De-Greg. & G. Mir",
+    "acceptedName": "Chroogomphus mediterraneus",
+    "ifCurrent": 624017,
+    "dk": null
+   },
+   "sf": {
+    "current": "Chroogomphus mediterraneus",
+    "currentId": "624017",
+    "referee": "Kew Mycology (2016)",
+    "family": null,
+    "recordId": "624017"
+   }
+  },
+  "dkOld": null,
+  "dk": null
+ },
+ {
+  "n": "Chroogomphus subfulmineus",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 17.0,
+   "hi": 24.0,
+   "wlo": 7.0,
+   "whi": 8.0,
+   "lmin": 16.0,
+   "lmax": 26.0,
+   "wmin": 6.0,
+   "wmax": 8.5,
+   "q": [
+    2.18,
+    3.37
+   ],
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "src": "SCAMBLER2018",
+    "L": [
+     16.0,
+     17.0,
+     24.0,
+     26.0
+    ],
+    "W": [
+     6.0,
+     7.0,
+     8.0,
+     8.5
+    ],
+    "Q": [
+     2.18,
+     3.37
+    ],
+    "Qm": 2.81,
+    "mount": "Melzer",
+    "verbatim": "(16.0–)17.0–24.0(–26.0) × (6.0–)7.0–8.0(–8.5) μm, av. 20.6 × 7.0 μm … Q av. 2.81",
+    "note": "Melzer's reagent, ≥ 20 spores per collection from deposits; typical range covers ≥ 90 % of values. Protologue (new species)."
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 10785544,
+    "acceptedKey": 10785544,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Chroogomphus subfulmineus Niskanen, Loizides, Scambler & Liimat.",
+    "accepted": null,
+    "family": "Gomphidiaceae",
+    "counts": {
+     "DK": 0,
+     "NO": 20,
+     "SE": 11,
+     "FI": 85,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "fin",
+      "rusojalkanuljaska"
+     ],
+     [
+      "fin",
+      "rusojalkanuljaska"
+     ],
+     [
+      "fin",
+      "rusojalkanuljaska"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "823599",
+      "name": "Chroogomphus subfulmineus",
+      "authors": "Niskanen, Loizides, Scambler & Liimat.",
+      "year": "2018",
+      "status": "Legitimate",
+      "current": "823599",
+      "currentName": "Chroogomphus subfulmineus",
+      "referee": "Kew Mycology (2018)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Chroogomphus+subfulmineus&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": null,
+   "sf": {
+    "current": "Chroogomphus subfulmineus",
+    "currentId": "823599",
+    "referee": "Kew Mycology (2018)",
+    "family": null,
+    "recordId": "823599"
+   }
+  },
+  "dkOld": null,
+  "dk": null
+ },
+ {
+  "n": "Chroogomphus purpurascens",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 15.0,
+   "hi": 18.0,
+   "wlo": 5.0,
+   "whi": 6.5,
+   "lmin": 14.0,
+   "lmax": 19.0,
+   "wmin": null,
+   "wmax": null,
+   "q": [
+    2.63,
+    3.52
+   ],
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "src": "SCAMBLER2018",
+    "L": [
+     14.0,
+     15.0,
+     18.0,
+     19.0
+    ],
+    "W": [
+     null,
+     5.0,
+     6.5,
+     null
+    ],
+    "Q": [
+     2.63,
+     3.52
+    ],
+    "Qm": 2.95,
+    "mount": "Melzer",
+    "verbatim": "(14.0–)15.0–18.0(–19.0) × 5–6.5 μm, av. = 16.6 × 5.7 μm … Q av. = 2.95",
+    "note": "Melzer's reagent, ≥ 20 spores per collection from deposits; typical range covers ≥ 90 % of values. Treated as C. cf. purpurascens (type not studied)."
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 2524986,
+    "acceptedKey": 2524986,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Chroogomphus purpurascens (Lj.N.Vassiljeva) M.M.Nazarova",
+    "accepted": null,
+    "family": "Gomphidiaceae",
+    "counts": {
+     "DK": 7,
+     "NO": 2,
+     "SE": 27,
+     "FI": 5,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "fin",
+      "purppuranuljaska"
+     ],
+     [
+      "fin",
+      "purppuranuljaska"
+     ],
+     [
+      "fin",
+      "purppuranuljaska"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "129792",
+      "name": "Chroogomphus purpurascens",
+      "authors": "(Lj.N. Vassiljeva) M.M. Nazarova",
+      "year": "1990",
+      "status": "Legitimate",
+      "current": "129792",
+      "currentName": "Chroogomphus purpurascens",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Chroogomphus+purpurascens&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 70804,
+    "name": "Chroogomphus purpurascens",
+    "author": "(Lj.N. Vassiljeva) M.M. Nazarova",
+    "acceptedName": "Chroogomphus purpurascens",
+    "ifCurrent": 129792,
+    "dk": null
+   },
+   "sf": {
+    "current": "Chroogomphus purpurascens",
+    "currentId": "129792",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "129792"
+   }
+  },
+  "dkOld": null,
+  "dk": null
+ },
+ {
+  "n": "Xerocomellus cisalpinus",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 10.5,
+   "hi": 16.0,
+   "wlo": 4.0,
+   "whi": 5.5,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     10.5,
+     16.0,
+     null
+    ],
+    "W": [
+     null,
+     4.0,
+     5.5,
+     null
+    ],
+    "verbatim": "Sporerne er meget fint stribede (x 1000!) og måler 10,5-16 x 4-5,5 μm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-61279"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 7529390,
+    "acceptedKey": 7529390,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Xerocomellus cisalpinus (Simonini, H.Ladurner & Peintner) Klofac",
+    "accepted": null,
+    "family": "Boletaceae",
+    "counts": {
+     "DK": 578,
+     "NO": 15,
+     "SE": 455,
+     "FI": 35,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Finsprukken rørhat"
+     ],
+     [
+      "dan",
+      "Finsprukken rørhat"
+     ],
+     [
+      "eng",
+      "bluefoot bolete"
+     ],
+     [
+      "swe",
+      "blånande rutsopp"
+     ],
+     [
+      "nob",
+      "blånende ruterørsopp"
+     ],
+     [
+      "fin",
+      "kaukotatti"
+     ],
+     [
+      "fin",
+      "kaukotatti"
+     ],
+     [
+      "swe",
+      "blånande rutsopp"
+     ],
+     [
+      "nob",
+      "blånende ruterørsopp"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "563566",
+      "name": "Xerocomellus cisalpinus",
+      "authors": "(Simonini, H. Ladurner & Peintner) Klofac",
+      "year": "2011",
+      "status": "Legitimate",
+      "current": "563566",
+      "currentName": "Xerocomellus cisalpinus",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Xerocomellus+cisalpinus&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 61279,
+    "name": "Xerocomellus cisalpinus",
+    "author": "(Simonini, H. Ladurner & Peintner) Klofac",
+    "acceptedName": "Xerocomellus cisalpinus",
+    "ifCurrent": 563566,
+    "dk": "finsprukken rørhat"
+   },
+   "sf": {
+    "current": "Xerocomellus cisalpinus",
+    "currentId": "563566",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "563566"
+   }
+  },
+  "dkOld": null,
+  "dk": "finsprukken rørhat"
+ },
+ {
+  "n": "Xerocomellus ripariellus",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 12.5,
+   "hi": 14.0,
+   "wlo": 4.5,
+   "whi": 5.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     12.5,
+     14.0,
+     null
+    ],
+    "W": [
+     null,
+     4.5,
+     5.0,
+     null
+    ],
+    "verbatim": "Sporerne har utydelige længdestriber og måler 12,5-14 x 4,5-5 μm, Q-gns 2,9.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-49189"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 8172057,
+    "acceptedKey": 8172057,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Xerocomellus ripariellus (Redeuilh) Šutara",
+    "accepted": null,
+    "family": "Boletaceae",
+    "counts": {
+     "DK": 32,
+     "NO": 1,
+     "SE": 22,
+     "FI": 5,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Sump-rørhat"
+     ],
+     [
+      "dan",
+      "Sump-rørhat"
+     ],
+     [
+      "eng",
+      "riverine bolete"
+     ],
+     [
+      "swe",
+      "sumprutsopp"
+     ],
+     [
+      "swe",
+      "sumprutsopp"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "511899",
+      "name": "Xerocomellus ripariellus",
+      "authors": "(Redeuilh) Šutara",
+      "year": "2008",
+      "status": "Legitimate",
+      "current": "511899",
+      "currentName": "Xerocomellus ripariellus",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Xerocomellus+ripariellus&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 49189,
+    "name": "Xerocomellus ripariellus",
+    "author": "(Redeuilh) Šutara",
+    "acceptedName": "Xerocomellus ripariellus",
+    "ifCurrent": 511899,
+    "dk": "sump-rørhat"
+   },
+   "sf": {
+    "current": "Xerocomellus ripariellus",
+    "currentId": "511899",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "511899"
+   }
+  },
+  "dkOld": null,
+  "dk": "sump-rørhat"
+ },
+ {
+  "n": "Aureoboletus projectellus",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 22.0,
+   "hi": 36.4,
+   "wlo": 7.0,
+   "whi": 13.3,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     22.0,
+     36.0,
+     null
+    ],
+    "W": [
+     null,
+     7.0,
+     13.0,
+     null
+    ],
+    "verbatim": "De kæmpestore sporer måler 22-36 × 7-13 μm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-67753"
+   },
+   {
+    "L": [
+     null,
+     27.3,
+     36.4,
+     null
+    ],
+    "W": [
+     null,
+     7.8,
+     13.3,
+     null
+    ],
+    "verbatim": "The spores are huge: 27.3–36.4 × 7.8–13.3 µm.",
+    "field": "bogtekst_gyldendal_en",
+    "lang": "en",
+    "src": "SA-67753"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 8339825,
+    "acceptedKey": 8339825,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Aureoboletus projectellus (Murrill) Halling",
+    "accepted": null,
+    "family": "Boletaceae",
+    "counts": {
+     "DK": 126,
+     "NO": 29,
+     "SE": 238,
+     "FI": 30,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Ribbestokket guldrørhat"
+     ],
+     [
+      "dan",
+      "Ribbestokket guldrørhat"
+     ],
+     [
+      "dan",
+      "Ribbestokket rørhat"
+     ],
+     [
+      "dan",
+      "Ribbestokket rørhat"
+     ],
+     [
+      "nob",
+      "amerikarørsopp"
+     ],
+     [
+      "swe",
+      "ribbsopp"
+     ],
+     [
+      "fin",
+      "vaskitatti"
+     ],
+     [
+      "fin",
+      "vaskitatti"
+     ],
+     [
+      "dan",
+      "Ribbestokket rørhat"
+     ],
+     [
+      "dan",
+      "Ribbestokket rørhat"
+     ],
+     [
+      "nob",
+      "amerikarørsopp"
+     ],
+     [
+      "swe",
+      "ribbsopp"
+     ],
+     [
+      "swe",
+      "ribbsopp"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "811405",
+      "name": "Aureoboletus projectellus",
+      "authors": "(Murrill) Halling",
+      "year": "2015",
+      "status": "Legitimate",
+      "current": "811405",
+      "currentName": "Aureoboletus projectellus",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Aureoboletus+projectellus&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 67753,
+    "name": "Aureoboletus projectellus",
+    "author": "(Murrill) Halling",
+    "acceptedName": "Aureoboletus projectellus",
+    "ifCurrent": 811405,
+    "dk": "ribbestokket guldrørhat"
+   },
+   "sf": {
+    "current": "Aureoboletus projectellus",
+    "currentId": "811405",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "811405"
+   }
+  },
+  "dkOld": null,
+  "dk": "ribbestokket guldrørhat"
+ },
+ {
+  "n": "Neoboletus xanthopus",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 13.5,
+   "hi": 16.0,
+   "wlo": 4.0,
+   "whi": 5.5,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": [
+    2.8,
+    3.3
+   ],
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     13.5,
+     16.0,
+     null
+    ],
+    "W": [
+     null,
+     4.0,
+     5.5,
+     null
+    ],
+    "verbatim": "The spores measure 13.5–16 × 4–5.5 µm, Q 2.8–3.3.",
+    "Q": [
+     2.8,
+     3.3
+    ],
+    "field": "bogtekst_gyldendal_en",
+    "lang": "en",
+    "src": "SA-67744"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 8371448,
+    "acceptedKey": 8371448,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Neoboletus xanthopus (Klofac & A.Urb.) Klofac & A.Urb.",
+    "accepted": null,
+    "family": "Boletaceae",
+    "counts": {
+     "DK": 151,
+     "NO": 0,
+     "SE": 243,
+     "FI": 1,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Finprikket indigorørhat"
+     ],
+     [
+      "dan",
+      "Finprikket indigorørhat"
+     ],
+     [
+      "eng",
+      "false yellow bolete"
+     ],
+     [
+      "swe",
+      "finprickig blodsopp"
+     ],
+     [
+      "eng",
+      "False Yellow Bolete"
+     ],
+     [
+      "eng",
+      "False Yellow Bolete"
+     ],
+     [
+      "dan",
+      "Finprikket indigorørhat"
+     ],
+     [
+      "swe",
+      "finprickig blodsopp"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "550948",
+      "name": "Neoboletus xanthopus",
+      "authors": "(Klofac & A. Urb.) Klofac & A. Urb.",
+      "year": "2014",
+      "status": "Legitimate",
+      "current": "550948",
+      "currentName": "Neoboletus xanthopus",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Neoboletus+xanthopus&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 67744,
+    "name": "Neoboletus xanthopus",
+    "author": "(Klofac & A. Urb.) Klofac & A. Urb.",
+    "acceptedName": "Neoboletus xanthopus",
+    "ifCurrent": 550948,
+    "dk": "finprikket indigorørhat"
+   },
+   "sf": {
+    "current": "Neoboletus xanthopus",
+    "currentId": "550948",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "550948"
+   }
+  },
+  "dkOld": null,
+  "dk": "finprikket indigorørhat"
+ },
+ {
+  "n": "Suillellus mendax",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 12.5,
+   "hi": 15.5,
+   "wlo": 4.5,
+   "whi": 5.5,
+   "lmin": 12.4,
+   "lmax": null,
+   "wmin": null,
+   "wmax": 5.7,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     12.4,
+     13.3,
+     14.7,
+     15.5
+    ],
+    "W": [
+     4.5,
+     4.9,
+     5.5,
+     5.7
+    ],
+    "verbatim": "Sporerne måler (12,4-)13,3-14,7(-15,5) × (4,5-)4,9-5,5(-5,7) μm, Q-gns 2,6-2,8.",
+    "Qav": [
+     2.6,
+     2.8
+    ],
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-65747"
+   },
+   {
+    "L": [
+     null,
+     12.5,
+     15.5,
+     null
+    ],
+    "W": [
+     null,
+     4.5,
+     5.5,
+     null
+    ],
+    "verbatim": "The spores measure 12.5–15.5 × 4.5–5.5 µm, Qav. 2.6–2.8.",
+    "Qav": [
+     2.6,
+     2.8
+    ],
+    "field": "bogtekst_gyldendal_en",
+    "lang": "en",
+    "src": "SA-65747"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 7796432,
+    "acceptedKey": 7796432,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Suillellus mendax (Simonini & Vizzini) Vizzini, Simonini & Gelardi",
+    "accepted": null,
+    "family": "Boletaceae",
+    "counts": {
+     "DK": 33,
+     "NO": 0,
+     "SE": 44,
+     "FI": 0,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Joker-indigorørhat"
+     ],
+     [
+      "dan",
+      "Joker-indigorørhat"
+     ],
+     [
+      "swe",
+      "glödsopp"
+     ],
+     [
+      "swe",
+      "glödsopp"
+     ],
+     [
+      "swe",
+      "glödsopp"
+     ],
+     [
+      "dan",
+      "Joker-indigorørhat"
+     ],
+     [
+      "dan",
+      "Joker-indigorørhat"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "550746",
+      "name": "Suillellus mendax",
+      "authors": "(Simonini & Vizzini) Vizzini, Simonini & Gelardi",
+      "year": "2014",
+      "status": "Legitimate",
+      "current": "550746",
+      "currentName": "Suillellus mendax",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Suillellus+mendax&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 65747,
+    "name": "Suillellus mendax",
+    "author": "(Simonini & Vizzini) Vizzini, Simonini & Gelardi",
+    "acceptedName": "Suillellus mendax",
+    "ifCurrent": 550746,
+    "dk": "joker-indigorørhat"
+   },
+   "sf": {
+    "current": "Suillellus mendax",
+    "currentId": "550746",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "550746"
+   }
+  },
+  "dkOld": null,
+  "dk": "joker-indigorørhat"
+ },
+ {
+  "n": "Butyriboletus fuscoroseus",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 12.5,
+   "hi": 14.0,
+   "wlo": 4.5,
+   "whi": 5.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     12.5,
+     14.0,
+     null
+    ],
+    "W": [
+     null,
+     4.5,
+     5.0,
+     null
+    ],
+    "verbatim": "Sporerne måler 12,5-14 x 4,5-5 µm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-67274"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 8137685,
+    "acceptedKey": 8137685,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Butyriboletus fuscoroseus (Smotl.) Vizzini & Gelardi",
+    "accepted": null,
+    "family": "Boletaceae",
+    "counts": {
+     "DK": 38,
+     "NO": 0,
+     "SE": 0,
+     "FI": 0,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Brunrosa rørhat"
+     ],
+     [
+      "dan",
+      "Brunrosa rørhat"
+     ],
+     [
+      "swe",
+      "brunrosa sommarsopp"
+     ],
+     [
+      "eng",
+      "pretender"
+     ],
+     [
+      "eng",
+      "the pretender"
+     ],
+     [
+      "dan",
+      "Brunrosa rørhat"
+     ],
+     [
+      "swe",
+      "brunrosa sommarsopp"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "550631",
+      "name": "Butyriboletus fuscoroseus",
+      "authors": "(Smotl.) Vizzini & Gelardi",
+      "year": "2014",
+      "status": "Legitimate",
+      "current": "550631",
+      "currentName": "Butyriboletus fuscoroseus",
+      "referee": "Kew Mycology (2025)",
+      "family": null
+     },
+     {
+      "id": "803322",
+      "name": "Butyriboletus fuscoroseus",
+      "authors": "(Smotl.) Vizzini & Gelardi",
+      "year": "2014",
+      "status": null,
+      "current": "550631",
+      "currentName": null,
+      "referee": null,
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Butyriboletus+fuscoroseus&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 67274,
+    "name": "Butyriboletus fuscoroseus",
+    "author": "(Smotl.) Vizzini & Gelardi",
+    "acceptedName": "Butyriboletus fuscoroseus",
+    "ifCurrent": 550631,
+    "dk": "brunrosa rørhat"
+   },
+   "sf": {
+    "current": "Butyriboletus fuscoroseus",
+    "currentId": "550631",
+    "referee": "Kew Mycology (2025)",
+    "family": null,
+    "recordId": "550631"
+   }
+  },
+  "dkOld": null,
+  "dk": "brunrosa rørhat"
+ },
+ {
+  "n": "Rheubarbariboletus armeniacus",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 11.5,
+   "hi": 13.0,
+   "wlo": 4.5,
+   "whi": 5.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     11.5,
+     13.0,
+     null
+    ],
+    "W": [
+     null,
+     4.5,
+     5.0,
+     null
+    ],
+    "verbatim": "Sporer 11,5-13 x 4,5-5 μm, Q-gns 2,6.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-67755"
+   }
+  ],
+  "flags": [
+   {
+    "k": "nomen-sf",
+    "t": "Species Fungorum gives the current name as Xerocomus armeniacus"
+   }
+  ],
+  "nomen": {
+   "gbif": {
+    "key": 7737877,
+    "acceptedKey": 7737877,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Rheubarbariboletus armeniacus (Quél.) Vizzini, Simonini & Gelardi",
+    "accepted": null,
+    "family": "Boletaceae",
+    "counts": {
+     "DK": 13,
+     "NO": 0,
+     "SE": 8,
+     "FI": 0,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "swe",
+      "aprikossopp"
+     ],
+     [
+      "swe",
+      "aprikossopp"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "551216",
+      "name": "Rheubarbariboletus armeniacus",
+      "authors": "(Quél.) Vizzini, Simonini & Gelardi",
+      "year": "2015",
+      "status": "Legitimate",
+      "current": "415460",
+      "currentName": "Xerocomus armeniacus",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "626251",
+      "name": "Rheubarbariboletus armeniacus f. armeniacus",
+      "authors": "(Quél.) Vizzini, Simonini & Gelardi",
+      "year": "2015",
+      "status": "Legitimate",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "556955",
+      "name": "Rheubarbariboletus armeniacus f. erythrocephalus",
+      "authors": "(Lucand) Klofac",
+      "year": "2018",
+      "status": "Legitimate",
+      "current": "415460",
+      "currentName": "Xerocomus armeniacus",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "818522",
+      "name": "Rheubarbariboletus armeniacus f. luteolus",
+      "authors": "(H. Engel & Antonín) Klofac",
+      "year": "2016",
+      "status": "Legitimate",
+      "current": "415460",
+      "currentName": "Xerocomus armeniacus",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "626252",
+      "name": "Rheubarbariboletus armeniacus var. armeniacus",
+      "authors": "(Quél.) Vizzini, Simonini & Gelardi",
+      "year": "2015",
+      "status": "Legitimate",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "818523",
+      "name": "Rheubarbariboletus armeniacus var. venosipes",
+      "authors": "(Redeuilh) Klofac",
+      "year": "2016",
+      "status": "Legitimate",
+      "current": "415460",
+      "currentName": "Xerocomus armeniacus",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "415460",
+      "name": "Xerocomus armeniacus",
+      "authors": "(Quél.) Quél.",
+      "year": "1888",
+      "status": "Legitimate",
+      "current": "415460",
+      "currentName": "Xerocomus armeniacus",
+      "referee": "Kew Mycology (2026)",
+      "family": "Boletaceae"
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Rheubarbariboletus+armeniacus&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 67755,
+    "name": "Rheubarbariboletus armeniacus",
+    "author": "(Quél.) Vizzini, Simonini & Gelardi",
+    "acceptedName": "Rheubarbariboletus armeniacus",
+    "ifCurrent": 551216,
+    "dk": null
+   },
+   "sf": {
+    "current": "Xerocomus armeniacus",
+    "currentId": "415460",
+    "referee": null,
+    "family": null,
+    "recordId": "551216"
+   }
+  },
+  "dkOld": null,
+  "dk": null
+ },
+ {
+  "n": "Xerocomus silwoodensis",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 9.0,
+   "hi": 14.5,
+   "wlo": 4.0,
+   "whi": 6.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     9.0,
+     14.5,
+     null
+    ],
+    "W": [
+     null,
+     4.0,
+     6.0,
+     null
+    ],
+    "verbatim": "Sporerne måler 9-14,5 x 4-6 μm, Q-gns 2,3.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-65702"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 2524426,
+    "acceptedKey": 2524426,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Xerocomus silwoodensis A.E.Hills, U.Eberh. & A.F.S.Taylor",
+    "accepted": null,
+    "family": "Boletaceae",
+    "counts": {
+     "DK": 10,
+     "NO": 0,
+     "SE": 7,
+     "FI": 2,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Mahognibrun rørhat"
+     ],
+     [
+      "dan",
+      "Mahognibrun rørhat"
+     ],
+     [
+      "eng",
+      "Poplar Bolete"
+     ],
+     [
+      "swe",
+      "aspsammetssopp"
+     ],
+     [
+      "eng",
+      "Poplar Bolete"
+     ],
+     [
+      "swe",
+      "aspsammetssopp"
+     ],
+     [
+      "swe",
+      "aspsammetssopp"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "510312",
+      "name": "Xerocomus silwoodensis",
+      "authors": "A.E. Hills, U. Eberh. & A.F.S. Taylor",
+      "year": "2007",
+      "status": "Legitimate",
+      "current": "510312",
+      "currentName": "Xerocomus silwoodensis",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Xerocomus+silwoodensis&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 65702,
+    "name": "Xerocomus silwoodensis",
+    "author": "A.E. Hills, U. Eberh. & A.F.S. Taylor",
+    "acceptedName": "Xerocomus silwoodensis",
+    "ifCurrent": 510312,
+    "dk": "mahognibrun rørhat"
+   },
+   "sf": {
+    "current": "Xerocomus silwoodensis",
+    "currentId": "510312",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "510312"
+   }
+  },
+  "dkOld": null,
+  "dk": "mahognibrun rørhat"
+ },
+ {
+  "n": "Xerocomus chrysonemus",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 9.0,
+   "hi": 14.5,
+   "wlo": 4.5,
+   "whi": 7.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     9.0,
+     14.5,
+     null
+    ],
+    "W": [
+     null,
+     4.5,
+     7.0,
+     null
+    ],
+    "verbatim": "Sporerne måler 9-14,5 x 4,5-7 μm, Q-gns 2,2.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-65703"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 2524430,
+    "acceptedKey": 2524430,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Xerocomus chrysonemus A.E.Hills & A.F.S.Taylor",
+    "accepted": null,
+    "family": "Boletaceae",
+    "counts": {
+     "DK": 0,
+     "NO": 0,
+     "SE": 15,
+     "FI": 0,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "eng",
+      "Goldenthread Bolete"
+     ],
+     [
+      "swe",
+      "guldsammetssopp"
+     ],
+     [
+      "eng",
+      "Goldenthread Bolete"
+     ],
+     [
+      "swe",
+      "guldsammetssopp"
+     ],
+     [
+      "swe",
+      "guldsammetssopp"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "357432",
+      "name": "Xerocomus chrysonemus",
+      "authors": "A.E. Hills & A.F.S. Taylor",
+      "year": "2006",
+      "status": "Legitimate",
+      "current": "357432",
+      "currentName": "Xerocomus chrysonemus",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Xerocomus+chrysonemus&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 65703,
+    "name": "Xerocomus chrysonemus",
+    "author": "A.E. Hills & A.F.S. Taylor",
+    "acceptedName": "Xerocomus chrysonemus",
+    "ifCurrent": 357432,
+    "dk": null
+   },
+   "sf": {
+    "current": "Xerocomus chrysonemus",
+    "currentId": "357432",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "357432"
+   }
+  },
+  "dkOld": null,
+  "dk": null
+ },
+ {
+  "n": "Buchwaldoboletus lignicola",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 6.5,
+   "hi": 8.5,
+   "wlo": 3.0,
+   "whi": 3.5,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     6.5,
+     8.5,
+     null
+    ],
+    "W": [
+     null,
+     3.0,
+     3.5,
+     null
+    ],
+    "verbatim": "De svagt tenformede, glatte sporer måler 6,5-8,5 x 3-3,5 μm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-61001"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 2524840,
+    "acceptedKey": 2524840,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Buchwaldoboletus lignicola (Kallenb.) Pilát",
+    "accepted": null,
+    "family": "Boletaceae",
+    "counts": {
+     "DK": 138,
+     "NO": 20,
+     "SE": 58,
+     "FI": 33,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Stødrørhat"
+     ],
+     [
+      "dan",
+      "Stødrørhat"
+     ],
+     [
+      "eng",
+      "Wood Bolete"
+     ],
+     [
+      "eng",
+      "Wood Bolete"
+     ],
+     [
+      "eng",
+      "Wood Bolete"
+     ],
+     [
+      "fin",
+      "kantotatti"
+     ],
+     [
+      "fin",
+      "kantotatti"
+     ],
+     [
+      "nob",
+      "stubberørsopp"
+     ],
+     [
+      "nno",
+      "stubberøyrsopp"
+     ],
+     [
+      "swe",
+      "stubbsopp"
+     ],
+     [
+      "eng",
+      "Wood Bolete"
+     ],
+     [
+      "eng",
+      "Wood Bolete"
+     ],
+     [
+      "nob",
+      "stubberørsopp"
+     ],
+     [
+      "nno",
+      "stubberøyrsopp"
+     ],
+     [
+      "swe",
+      "stubbsopp"
+     ],
+     [
+      "swe",
+      "stubbsopp"
+     ],
+     [
+      "swe",
+      "stubbsopp"
+     ],
+     [
+      "eng",
+      "Wood Bolete"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "327206",
+      "name": "Buchwaldoboletus lignicola",
+      "authors": "(Kallenb.) Pilát",
+      "year": "1969",
+      "status": "Legitimate",
+      "current": "327206",
+      "currentName": "Buchwaldoboletus lignicola",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Buchwaldoboletus+lignicola&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 61001,
+    "name": "Buchwaldoboletus lignicola",
+    "author": "(Kallenb.) Pilát",
+    "acceptedName": "Buchwaldoboletus lignicola",
+    "ifCurrent": 327206,
+    "dk": "stødrørhat"
+   },
+   "sf": {
+    "current": "Buchwaldoboletus lignicola",
+    "currentId": "327206",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "327206"
+   }
+  },
+  "dkOld": null,
+  "dk": "stødrørhat"
+ },
+ {
+  "n": "Suillus asiaticus",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 11.0,
+   "hi": 12.0,
+   "wlo": 4.5,
+   "whi": 5.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     11.0,
+     12.0,
+     null
+    ],
+    "W": [
+     null,
+     4.5,
+     5.0,
+     null
+    ],
+    "verbatim": "Sporerne måler 11-12 x 4,5-5 μm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-61577"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": null,
+   "if": null,
+   "sa": {
+    "id": 61577,
+    "name": "Suillus asiaticus",
+    "author": "(Singer) Kretzer & T.D. Bruns",
+    "acceptedName": "Suillus asiaticus",
+    "ifCurrent": 415949,
+    "dk": null
+   },
+   "sf": null
+  },
+  "dkOld": null,
+  "dk": null
+ },
+ {
+  "n": "Leccinum melaneum",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 14.0,
+   "hi": 19.0,
+   "wlo": 5.0,
+   "whi": 6.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": [
+    2.5,
+    3.5
+   ],
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "src": "DENBAKKER2005",
+    "page": "552",
+    "L": [
+     null,
+     14.0,
+     19.0,
+     null
+    ],
+    "W": [
+     null,
+     5.0,
+     6.0,
+     null
+    ],
+    "mount": "water",
+    "verbatim": "Spores 14.0–19.0 × 5.0–6.0 µm, Q = 2.5–3.5, Qav = 2.9–3.2",
+    "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+    "Q": [
+     2.5,
+     3.5
+    ],
+    "Qav": [
+     2.9,
+     3.2
+    ]
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 2524598,
+    "acceptedKey": 2524598,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Leccinum melaneum (Smotl.) Pilát & Dermek",
+    "accepted": null,
+    "family": "Boletaceae",
+    "counts": {
+     "DK": 52,
+     "NO": 83,
+     "SE": 22,
+     "FI": 0,
+     "IS": 1,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Mørk skælrørhat"
+     ],
+     [
+      "dan",
+      "Mørk skælrørhat"
+     ],
+     [
+      "nob",
+      "sotskrubb"
+     ],
+     [
+      "nno",
+      "sotskrubb"
+     ],
+     [
+      "nob",
+      "sotskrubb"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "316418",
+      "name": "Leccinum melaneum",
+      "authors": "(Smotl.) Pilát & Dermek",
+      "year": "1974",
+      "status": "Legitimate",
+      "current": "316418",
+      "currentName": "Leccinum melaneum",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Leccinum+melaneum&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 63619,
+    "name": "Leccinum melaneum",
+    "author": "(Smotl.) Pilát & Dermek",
+    "acceptedName": "Leccinum melaneum",
+    "ifCurrent": 316418,
+    "dk": "mørk skælrørhat"
+   },
+   "sf": {
+    "current": "Leccinum melaneum",
+    "currentId": "316418",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "316418"
+   }
+  },
+  "dkOld": null,
+  "dk": "mørk skælrørhat"
+ },
+ {
+  "n": "Melanogaster ambiguus",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 14.0,
+   "hi": 20.0,
+   "wlo": 8.0,
+   "whi": 10.5,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": 12.0,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     14.0,
+     20.0,
+     null
+    ],
+    "W": [
+     null,
+     8.0,
+     10.5,
+     12.0
+    ],
+    "verbatim": "Sporerne har en sammensnøret ende, der gør dem ± citronformede, de måler 14-20 x 8-10,5 (-12) µm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-16795"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 5240036,
+    "acceptedKey": 5240036,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Melanogaster ambiguus (Vittad.) Tul. & C.Tul.",
+    "accepted": null,
+    "family": "Paxillaceae",
+    "counts": {
+     "DK": 86,
+     "NO": 31,
+     "SE": 129,
+     "FI": 22,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "dan",
+      "Lille slimtrøffel"
+     ],
+     [
+      "dan",
+      "Lille slimtrøffel"
+     ],
+     [
+      "eng",
+      "Stinking Slime Truffle"
+     ],
+     [
+      "nob",
+      "grå slimknoll"
+     ],
+     [
+      "fin",
+      "haisumantumukula"
+     ],
+     [
+      "fin",
+      "haisumantumukula"
+     ],
+     [
+      "swe",
+      "stinkande slemtryffel"
+     ],
+     [
+      "nno",
+      "grå slimknoll"
+     ],
+     [
+      "nob",
+      "grå slimknoll"
+     ],
+     [
+      "swe",
+      "stinkande slemtryffel"
+     ],
+     [
+      "swe",
+      "stinkande slemtryffel"
+     ],
+     [
+      "eng",
+      "Stinking Slime Truffle"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "193085",
+      "name": "Melanogaster ambiguus",
+      "authors": "(Vittad.) Tul. & C. Tul.",
+      "year": "1843",
+      "status": "Legitimate",
+      "current": "193085",
+      "currentName": "Melanogaster ambiguus",
+      "referee": "Kew Mycology (2025)",
+      "family": null
+     },
+     {
+      "id": "423046",
+      "name": "Melanogaster ambiguus var. ambiguus",
+      "authors": "(Vittad.) Tul. & C. Tul.",
+      "year": "1843",
+      "status": "Legitimate",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "181556",
+      "name": "Melanogaster ambiguus var. euryspermus",
+      "authors": "Zeller & C.W. Dodge",
+      "year": "1935",
+      "status": "Legitimate",
+      "current": "264404",
+      "currentName": "Melanogaster euryspermus",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "181788",
+      "name": "Melanogaster ambiguus var. intermedius",
+      "authors": "Berk.",
+      "year": "1844",
+      "status": "Legitimate",
+      "current": "268052",
+      "currentName": "Melanogaster intermedius",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "580119",
+      "name": "Melanogaster ambiguus β intermedius",
+      "authors": "Berk.",
+      "year": "1844",
+      "status": "Orthographic variant",
+      "current": "181788",
+      "currentName": null,
+      "referee": null,
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Melanogaster+ambiguus&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 16795,
+    "name": "Melanogaster ambiguus",
+    "author": "(Vittad.) Tul.",
+    "acceptedName": "Melanogaster ambiguus",
+    "ifCurrent": 193085,
+    "dk": "lille slimtrøffel"
+   },
+   "sf": {
+    "current": "Melanogaster ambiguus",
+    "currentId": "193085",
+    "referee": "Kew Mycology (2025)",
+    "family": null,
+    "recordId": "193085"
+   }
+  },
+  "dkOld": null,
+  "dk": "lille slimtrøffel"
+ },
+ {
+  "n": "Melanogaster broomeanus",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 6.0,
+   "hi": 8.0,
+   "wlo": 3.0,
+   "whi": 4.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     6.0,
+     8.0,
+     null
+    ],
+    "W": [
+     null,
+     3.0,
+     4.0,
+     null
+    ],
+    "verbatim": "De glatte, flåtformede sporer måler 6-8 x 3-4 µm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-16796"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 5240033,
+    "acceptedKey": 5240033,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Melanogaster broomeanus Berk.",
+    "accepted": null,
+    "family": "Paxillaceae",
+    "counts": {
+     "DK": 72,
+     "NO": 63,
+     "SE": 110,
+     "FI": 9,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "eng",
+      "Bath Truffle"
+     ],
+     [
+      "dan",
+      "Broget slimtrøffel"
+     ],
+     [
+      "dan",
+      "Broget slimtrøffel"
+     ],
+     [
+      "eng",
+      "Broome's Slime Truffle"
+     ],
+     [
+      "eng",
+      "Fruity False Truffle"
+     ],
+     [
+      "swe",
+      "aromatisk slemtryffel"
+     ],
+     [
+      "swe",
+      "brokig slemtryffel"
+     ],
+     [
+      "fin",
+      "ryytimantumukula"
+     ],
+     [
+      "fin",
+      "ryytimantumukula"
+     ],
+     [
+      "nob",
+      "slimknoll"
+     ],
+     [
+      "nob",
+      "slimknoll"
+     ],
+     [
+      "nno",
+      "slimknoll"
+     ],
+     [
+      "eng",
+      "Bath Truffle"
+     ],
+     [
+      "eng",
+      "Broome's Slime Truffle"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "188646",
+      "name": "Melanogaster broomeanus",
+      "authors": "Berk.",
+      "year": "1843",
+      "status": "Legitimate",
+      "current": "188646",
+      "currentName": "Melanogaster broomeanus",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     },
+     {
+      "id": "426349",
+      "name": "Melanogaster broomeanus var. broomeanus",
+      "authors": "Berk.",
+      "year": "1843",
+      "status": "Legitimate",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "347136",
+      "name": "Melanogaster broomeanus var. pseudorubescens",
+      "authors": "Svrček",
+      "year": "1958",
+      "status": "Legitimate",
+      "current": "188646",
+      "currentName": "Melanogaster broomeanus",
+      "referee": null,
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Melanogaster+broomeanus&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 16796,
+    "name": "Melanogaster broomeanus",
+    "author": "Berk.",
+    "acceptedName": "Melanogaster broomeanus",
+    "ifCurrent": 188646,
+    "dk": "broget slimtrøffel"
+   },
+   "sf": {
+    "current": "Melanogaster broomeanus",
+    "currentId": "188646",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "188646"
+   }
+  },
+  "dkOld": null,
+  "dk": "broget slimtrøffel"
+ },
+ {
+  "n": "Melanogaster variegatus",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 6.0,
+   "hi": 9.0,
+   "wlo": 3.0,
+   "whi": 6.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": [
+    1.3,
+    1.7
+   ],
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     6.0,
+     9.0,
+     null
+    ],
+    "W": [
+     null,
+     3.0,
+     6.0,
+     null
+    ],
+    "verbatim": "Sporerne er ellipsoidiske og måler 6-9 x 3-6 µm, Q 1,3-1,7.",
+    "Q": [
+     1.3,
+     1.7
+    ],
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-67161"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 5240038,
+    "acceptedKey": 5240038,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Melanogaster variegatus (Vittad.) Tul. & C.Tul.",
+    "accepted": null,
+    "family": "Paxillaceae",
+    "counts": {
+     "DK": 1,
+     "NO": 13,
+     "SE": 12,
+     "FI": 0,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "fin",
+      "ryytimantumukula"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "187851",
+      "name": "Melanogaster variegatus",
+      "authors": "(Vittad.) Tul. & C. Tul.",
+      "year": "1851",
+      "status": "Legitimate",
+      "current": "187851",
+      "currentName": "Melanogaster variegatus",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     },
+     {
+      "id": "500421",
+      "name": "Melanogaster variegatus var. broomeanus",
+      "authors": "(Berk.) Tul. & C. Tul.",
+      "year": "1851",
+      "status": "Legitimate",
+      "current": "188646",
+      "currentName": "Melanogaster broomeanus",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "187674",
+      "name": "Melanogaster variegatus var. broomeianus",
+      "authors": "(Berk.) Tul. & C. Tul.",
+      "year": "1851",
+      "status": "Orthographic variant",
+      "current": "500421",
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "423499",
+      "name": "Melanogaster variegatus var. variegatus",
+      "authors": "(Vittad.) Tul. & C. Tul.",
+      "year": "1851",
+      "status": "Legitimate",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Melanogaster+variegatus&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 67161,
+    "name": "Melanogaster variegatus",
+    "author": "(Vittad.) Tul. & C. Tul.",
+    "acceptedName": "Melanogaster variegatus",
+    "ifCurrent": 187851,
+    "dk": null
+   },
+   "sf": {
+    "current": "Melanogaster variegatus",
+    "currentId": "187851",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "187851"
+   }
+  },
+  "dkOld": null,
+  "dk": null
+ },
+ {
+  "n": "Chamonixia caespitosa",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 18.0,
+   "hi": 20.0,
+   "wlo": 12.0,
+   "whi": 15.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     18.0,
+     20.0,
+     null
+    ],
+    "W": [
+     null,
+     12.0,
+     15.0,
+     null
+    ],
+    "verbatim": "De ribbede, noget citronformede sporer måler 18-20 x 12-15 µm.",
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-11576"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 2524302,
+    "acceptedKey": 2524302,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Chamonixia caespitosa Rolland",
+    "accepted": null,
+    "family": "Boletaceae",
+    "counts": {
+     "DK": 0,
+     "NO": 27,
+     "SE": 205,
+     "FI": 10,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "nob",
+      "blekk-knoll"
+     ],
+     [
+      "swe",
+      "blåtryffel"
+     ],
+     [
+      "fin",
+      "sinimukula"
+     ],
+     [
+      "nno",
+      "blekk-knoll"
+     ],
+     [
+      "nob",
+      "blekk-knoll"
+     ],
+     [
+      "swe",
+      "blåtryffel"
+     ],
+     [
+      "swe",
+      "blåtryffel"
+     ],
+     [
+      "swe",
+      "blåtryffel"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "189693",
+      "name": "Chamonixia caespitosa",
+      "authors": "Rolland",
+      "year": "1899",
+      "status": "Legitimate",
+      "current": "189693",
+      "currentName": "Chamonixia caespitosa",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Chamonixia+caespitosa&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 11576,
+    "name": "Chamonixia caespitosa",
+    "author": "Rolland",
+    "acceptedName": "Chamonixia caespitosa",
+    "ifCurrent": 189693,
+    "dk": null
+   },
+   "sf": {
+    "current": "Chamonixia caespitosa",
+    "currentId": "189693",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "189693"
+   }
+  },
+  "dkOld": null,
+  "dk": null
+ },
+ {
+  "n": "Octaviania asterosperma",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 13.0,
+   "hi": 16.5,
+   "wlo": 13.0,
+   "whi": 16.5,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     13.0,
+     16.5,
+     null
+    ],
+    "W": [
+     null,
+     13.0,
+     16.5,
+     null
+    ],
+    "verbatim": "Sporerne er kuglerunde, gulbrune, med store trekantede pigge, 13-16,5 µm inkl. pigge.",
+    "globose": true,
+    "ornIncluded": true,
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-60994"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 2524712,
+    "acceptedKey": 2524712,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Octaviania asterosperma Vittad.",
+    "accepted": null,
+    "family": "Boletaceae",
+    "counts": {
+     "DK": 73,
+     "NO": 2,
+     "SE": 48,
+     "FI": 1,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "eng",
+      "Chalky False Truffle"
+     ],
+     [
+      "dan",
+      "Vellugtende løvtrøffel"
+     ],
+     [
+      "dan",
+      "Vellugtende løvtrøffel"
+     ],
+     [
+      "fin",
+      "lehtomukula"
+     ],
+     [
+      "fin",
+      "lehtomukula"
+     ],
+     [
+      "swe",
+      "lövtryffel"
+     ],
+     [
+      "swe",
+      "välluktande lövtryffel"
+     ],
+     [
+      "eng",
+      "Chalky False Truffle"
+     ],
+     [
+      "swe",
+      "lövtryffel"
+     ],
+     [
+      "swe",
+      "lövtryffel"
+     ],
+     [
+      "swe",
+      "lövtryffel"
+     ],
+     [
+      "swe",
+      "välluktande lövtryffel"
+     ],
+     [
+      "swe",
+      "välluktande lövtryffel"
+     ],
+     [
+      "swe",
+      "välluktande lövtryffel"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "199741",
+      "name": "Octaviania asterosperma",
+      "authors": "Vittad.",
+      "year": "1831",
+      "status": "Legitimate",
+      "current": "199741",
+      "currentName": "Octaviania asterosperma",
+      "referee": "Kew Mycology (2021)",
+      "family": null
+     },
+     {
+      "id": "426184",
+      "name": "Octaviania asterosperma f. asterosperma",
+      "authors": "Vittad.",
+      "year": "1831",
+      "status": "Legitimate",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "347343",
+      "name": "Octaviania asterosperma f. mutabilis",
+      "authors": "Vacek",
+      "year": "1948",
+      "status": "Legitimate",
+      "current": "199741",
+      "currentName": "Octaviania asterosperma",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "457696",
+      "name": "Octaviania asterosperma var. asterosperma",
+      "authors": "Vittad.",
+      "year": "1831",
+      "status": "Legitimate",
+      "current": null,
+      "currentName": null,
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "199662",
+      "name": "Octaviania asterosperma var. depauperata",
+      "authors": "Tul. & C. Tul.",
+      "year": "1851",
+      "status": "Legitimate",
+      "current": "809660",
+      "currentName": "Octaviania depauperata",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "199437",
+      "name": "Octaviania asterosperma var. hololeuca",
+      "authors": "R. Hesse",
+      "year": "1891",
+      "status": "Legitimate",
+      "current": "199741",
+      "currentName": "Octaviania asterosperma",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "116690",
+      "name": "Octaviania asterosperma var. mutabilis",
+      "authors": "G. Gross",
+      "year": "1980",
+      "status": "Legitimate",
+      "current": "199741",
+      "currentName": "Octaviania asterosperma",
+      "referee": null,
+      "family": null
+     },
+     {
+      "id": "353662",
+      "name": "Octaviania asterosperma var. potteri",
+      "authors": "Singer & A.H. Sm.",
+      "year": "1961",
+      "status": "Legitimate",
+      "current": "836876",
+      "currentName": "Octaviania potteri",
+      "referee": null,
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Octaviania+asterosperma&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 60994,
+    "name": "Octaviania asterosperma",
+    "author": "Vittad.",
+    "acceptedName": "Octaviania asterosperma",
+    "ifCurrent": 355592,
+    "dk": "vellugtende løvtrøffel"
+   },
+   "sf": {
+    "current": "Octaviania asterosperma",
+    "currentId": "199741",
+    "referee": "Kew Mycology (2021)",
+    "family": null,
+    "recordId": "199741"
+   }
+  },
+  "dkOld": null,
+  "dk": "vellugtende løvtrøffel"
+ },
+ {
+  "n": "Sclerogaster hysterangioides",
+  "origin": "added",
+  "legacy": null,
+  "consensus": {
+   "lo": 4.0,
+   "hi": 5.0,
+   "wlo": 4.0,
+   "whi": 5.0,
+   "lmin": null,
+   "lmax": null,
+   "wmin": null,
+   "wmax": null,
+   "q": null,
+   "n_sources": 1
+  },
+  "meas": [
+   {
+    "L": [
+     null,
+     4.0,
+     5.0,
+     null
+    ],
+    "W": [
+     null,
+     4.0,
+     5.0,
+     null
+    ],
+    "verbatim": "De vortede, gullige, runde sporer måler 4-5 µm.",
+    "globose": true,
+    "field": "diagnose",
+    "lang": "da",
+    "src": "SA-47786"
+   }
+  ],
+  "flags": [],
+  "nomen": {
+   "gbif": {
+    "key": 5239750,
+    "acceptedKey": 5239750,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Sclerogaster hysterangioides (Tul. & C.Tul.) Zeller & C.W.Dodge",
+    "accepted": null,
+    "family": "Sclerogastraceae",
+    "counts": {
+     "DK": 0,
+     "NO": 8,
+     "SE": 8,
+     "FI": 0,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "nob",
+      "tofarget strøknoll"
+     ],
+     [
+      "nob",
+      "tofarget strøknoll"
+     ]
+    ],
+    "retrieved": "2026-11-18"
+   },
+   "if": {
+    "records": [
+     {
+      "id": "267599",
+      "name": "Sclerogaster hysterangioides",
+      "authors": "(Tul. & C. Tul.) Zeller & C.W. Dodge",
+      "year": "1935",
+      "status": "Legitimate",
+      "current": "267599",
+      "currentName": "Sclerogaster hysterangioides",
+      "referee": "Kew Mycology (2015)",
+      "family": null
+     }
+    ],
+    "retrieved": "2026-11-18",
+    "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Sclerogaster+hysterangioides&AnywhereInText=false&MaxNumber=20"
+   },
+   "sa": {
+    "id": 47786,
+    "name": "Sclerogaster hysterangioides",
+    "author": "(Tul.) Zeller & H.R. Dodge",
+    "acceptedName": "Sclerogaster hysterangioides",
+    "ifCurrent": 267599,
+    "dk": "tofarvet lædertrøffel"
+   },
+   "sf": {
+    "current": "Sclerogaster hysterangioides",
+    "currentId": "267599",
+    "referee": "Kew Mycology (2015)",
+    "family": null,
+    "recordId": "267599"
+   }
+  },
+  "dkOld": null,
+  "dk": "tofarvet lædertrøffel"
  }
 ]

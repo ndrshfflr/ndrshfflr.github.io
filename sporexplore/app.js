@@ -120,7 +120,7 @@ function dimScore(a,b,x,y,tol){
   const um=(lo+hi)/2, sm=(x+y)/2, half=(y-x)/2;
   return .75*frac+.25*Math.max(0,1-Math.abs(um-sm)/(half+tol));
 }
-function setScore(sel,vals){ if(!sel||!sel.length) return null; const v=new Set(vals||[]); return sel.some(s=>v.has(s))?1:0; }
+function setScore(sel,vals){ if(!sel||!sel.length) return null; vals=(vals||[]).filter(x=>x&&x!=='n/a'); if(!vals.length) return null; const v=new Set(vals); return sel.some(s=>v.has(s))?1:0; }
 const W={len:3,wid:3,q:1.5,shape:1,print:1.5,ft:2,blue:1.2,taste:1,pore:1.2,stipe:1.5,cap:.8,host:1.5,orn:1.6,apex:1.4,wall:.8,melzer:1};
 function score(sp,Q){
   const tol=Q.tol??1.5, parts=[]; let num=0,den=0;
@@ -133,16 +133,16 @@ function score(sp,Q){
     const v=(uq>=qr[0]-.15&&uq<=qr[1]+.15)?1:Math.max(0,1-Math.min(Math.abs(uq-qr[0]),Math.abs(uq-qr[1]))/.8);
     add('q',v,`Q ${qr[0].toFixed(1)}–${qr[1].toFixed(1)}`);
   }
-  const eq=(u,a)=>(u==null||u==='')?null:(u===a?1:0);
+  const eq=(u,a)=>(u==null||u===''||a==null)?null:(u===a?1:0);
   add('shape',eq(Q.shape,sp.sp.shape),`shape ${sp.sp.shape}`);
   add('print',eq(Q.print,sp.sp.print),`print ${sp.sp.print}`);
   ['orn','apex','wall','melzer'].forEach(k=>{const v=eq(Q[k],sp.micro[k]); if(v===null) return;
     add(k,v,`${(LABELS[k][sp.micro[k]]||sp.micro[k]||'').toLowerCase()}${sp.microSrc[k]==='family'?' (family-typical)':''}`);});
   add('ft',eq(Q.ft,sp.ft),(LABELS.ft[sp.ft]||sp.ft||'').toLowerCase());
   add('blue',eq(Q.blue,sp.m.blue),(LABELS.blue[sp.m.blue]||'').toLowerCase());
-  add('taste',eq(Q.taste,sp.m.taste),`taste ${sp.m.taste}`);
+  add('taste',eq(Q.taste,sp.m.taste&&sp.m.taste!=='n/a'?sp.m.taste:null),`taste ${sp.m.taste}`);
   add('pore',setScore(Q.pore,sp.m.pore),`pores ${sp.m.pore.join('/')}`);
-  add('stipe',setScore(Q.stipe,[sp.m.stipe]),`stipe ${nice(sp.m.stipe||'')}`.toLowerCase());
+  add('stipe',setScore(Q.stipe,sp.m.stipe&&sp.m.stipe!=='absent'?[sp.m.stipe]:[]),`stipe ${nice(sp.m.stipe||'')}`.toLowerCase());
   add('cap',setScore(Q.cap,sp.m.cap),`cap ${sp.m.cap.join('/')}`);
   add('host',setScore(Q.host,sp.m.host),`host ${sp.m.host.join('/')}`);
   return {pct:den?num/den:null,parts};

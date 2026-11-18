@@ -47,5 +47,62 @@
   "pages": "271–290",
   "doi": "10.5598/imafungus.2018.09.02.04",
   "method": "Melzer's reagent; 20 mature spores per collection from spore deposits; range covers ≥ 90 % of measurements, extremes in brackets."
+ },
+ "DENBAKKER2005": {
+  "type": "article",
+  "authors": [
+   {
+    "family": "den Bakker",
+    "given": "Henk C."
+   },
+   {
+    "family": "Noordeloos",
+    "given": "Machiel E."
+   }
+  ],
+  "year": 2005,
+  "title": "A revision of European species of <i>Leccinum</i> Gray and notes on extralimital species",
+  "container": "Persoonia",
+  "volume": 18,
+  "issue": 4,
+  "pages": "511–587",
+  "url": "https://repository.naturalis.nl/pub/532241/",
+  "method": "Spores from the pileal hymenium mounted in demineralised water; c. 30 mature spores per collection."
+ },
+ "BIKETOVA2025": {
+  "type": "article",
+  "authors": [
+   {
+    "family": "Biketova",
+    "given": "Alona Yu."
+   }
+  ],
+  "year": 2025,
+  "title": "Morphological and molecular re-assessment of European and Levantine species of the genus <i>Hortiboletus</i> (Boletaceae)",
+  "container": "IMA Fungus",
+  "volume": 16,
+  "article": "e144731",
+  "doi": "10.3897/imafungus.16.144731",
+  "fromCrossref": true,
+  "method": "Dried material in 5 % KOH at ×1000, at least 31 spores per collection; values are the range and mean ± SD of collection means."
+ },
+ "KLOFAC2018": {
+  "type": "article",
+  "authors": [
+   {
+    "family": "Klofac",
+    "given": "Wolfgang"
+   },
+   {
+    "family": "Krisai-Greilhuber",
+    "given": "Irmgard"
+   }
+  ],
+  "year": 2018,
+  "title": "Revised key for the determination of fresh collections of European species of Boletales with tubulate hymenophore",
+  "container": "Österreichische Zeitschrift für Pilzkunde",
+  "volume": 27,
+  "pages": "81–303",
+  "url": "https://www.zobodat.at/pdf/OestZPilz_27_0081-0303.pdf"
  }
 }

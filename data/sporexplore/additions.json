@@ -1,0 +1,1196 @@
+{
+ "_note": "Curated additions for Sporexplore v4. Renames/merges follow agreement of at least two of Species Fungorum, GBIF and Svampeatlas; morphology of added species is taken from the cited Svampeatlas descriptions.",
+ "renames": {
+  "Xerocomellus engelii": {
+   "n": "Hortiboletus engelii",
+   "a": "(Hlaváček) Biketova & Wasser",
+   "syn": "Xerocomellus engelii",
+   "why": "Species Fungorum, GBIF and Svampeatlas all use Hortiboletus engelii; confirmed by Biketova et al. (2025)."
+  },
+  "Pisolithus arhizus": {
+   "n": "Pisolithus capsulifer",
+   "a": "(Sowerby) Watling, Phosri & M.P. Martín",
+   "syn": "Pisolithus arhizus",
+   "why": "Svampeatlas states that the names P. arrhizus and P. tinctorius have been used for this European pine-associated species; GBIF accepts P. capsulifer."
+  }
+ },
+ "merges": {
+  "Leccinum quercinum": "Leccinum aurantiacum"
+ },
+ "countAliases": {
+  "Neoboletus luridiformis": [
+   "Neoboletus erythropus",
+   "Neoboletus praestigiator"
+  ],
+  "Rhizopogon luteolus": [
+   "Rhizopogon obtextus"
+  ],
+  "Pisolithus capsulifer": [
+   "Pisolithus arhizus",
+   "Pisolithus tinctorius"
+  ]
+ },
+ "species": [
+  {
+   "n": "Serpula lacrymans",
+   "a": "(Wulfen) J. Schröt.",
+   "fam": "Serpulaceae",
+   "ft": "resupinate",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": null,
+    "stipe": "absent",
+    "cap": [
+     "olive-brown",
+     "brown"
+    ],
+    "host": [
+     "buildings",
+     "conifer-wood"
+    ],
+    "taste": null
+   },
+   "size": "large",
+   "ed": "inedible",
+   "note": "Dry rot. Thick, wrinkled, olive-brown hymenophore, often with a cap edge; mostly in buildings, where it spreads from damp wood through masonry.",
+   "dk": "ægte hussvamp"
+  },
+  {
+   "n": "Serpula himantioides",
+   "a": "(Fr.) P. Karst.",
+   "fam": "Serpulaceae",
+   "ft": "resupinate",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": null,
+    "stipe": "absent",
+    "cap": [
+     "olive-brown"
+    ],
+    "host": [
+     "conifer-wood",
+     "buildings"
+    ],
+    "taste": null
+   },
+   "size": "medium",
+   "ed": "inedible",
+   "note": "Thin (to 3 mm), wrinkled, olive-brown crust on conifer wood with soil contact; sometimes in houses. Narrower skeletal hyphae than S. lacrymans.",
+   "dk": "tyndkødet hussvamp"
+  },
+  {
+   "n": "Coniophora puteana",
+   "a": "(Schumach.) P. Karst.",
+   "fam": "Coniophoraceae",
+   "ft": "resupinate",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": null,
+    "stipe": "absent",
+    "cap": [
+     "honey",
+     "olive-brown"
+    ],
+    "host": [
+     "conifer-wood",
+     "deciduous-wood",
+     "buildings"
+    ],
+    "taste": null
+   },
+   "size": "medium",
+   "ed": "inedible",
+   "note": "Cellar fungus. Thick, warty, honey-yellow to olive-brown crust with a pale margin and hyphal cords; serious timber decay in houses.",
+   "dk": "gul tømmersvamp"
+  },
+  {
+   "n": "Coniophora arida",
+   "a": "(Fr.) P. Karst.",
+   "fam": "Coniophoraceae",
+   "ft": "resupinate",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": null,
+    "stipe": "absent",
+    "cap": [
+     "olive-grey"
+    ],
+    "host": [
+     "conifer-wood"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "inedible",
+   "note": "Thin, grey-olive crust with a pale margin, mostly on pine wood. Spores paler and strongly dextrinoid compared with C. puteana.",
+   "dk": "tynd tømmersvamp"
+  },
+  {
+   "n": "Coniophora olivacea",
+   "a": "(Berk. & M.A. Curtis) Zmitr., Kalinovskaya & Myasnikov",
+   "fam": "Coniophoraceae",
+   "ft": "resupinate",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": null,
+    "stipe": "absent",
+    "cap": [
+     "grey-brown",
+     "olive-brown"
+    ],
+    "host": [
+     "conifer-wood",
+     "deciduous-wood"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "inedible",
+   "note": "Grey- to olive-brown crust with large, cylindrical, septate cystidia — unique in the genus. Spores with a germ pore.",
+   "dk": "olivenbrun tømmersvamp",
+   "syn": "Penttilamyces olivascens"
+  },
+  {
+   "n": "Coniophora fusispora",
+   "a": "(Cooke & Ellis) Cooke",
+   "fam": "Coniophoraceae",
+   "ft": "resupinate",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": null,
+    "stipe": "absent",
+    "cap": [
+     "cinnamon",
+     "olive-grey"
+    ],
+    "host": [
+     "conifer-wood",
+     "buildings"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "inedible",
+   "note": "Crust dominated by hyphal cords; very dark, sinuous-fusiform spores are unique. Rare; also on timber indoors.",
+   "dk": "tensporet tømmersvamp"
+  },
+  {
+   "n": "Pseudomerulius aureus",
+   "a": "(Fr.) Jülich",
+   "fam": "Tapinellaceae",
+   "ft": "resupinate",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "pale-yellow-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": null,
+    "stipe": "absent",
+    "cap": [
+     "orange",
+     "yellow"
+    ],
+    "host": [
+     "conifer-wood"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "inedible",
+   "note": "Vivid yellow-orange, distinctly wrinkled crust on conifer wood; large open (medallion) clamps.",
+   "dk": "gylden hussvamp"
+  },
+  {
+   "n": "Leucogyrophana mollusca",
+   "a": "(Fr.) Pouzar",
+   "fam": "Hygrophoropsidaceae",
+   "ft": "resupinate",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "pale-yellow-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": null,
+    "stipe": "absent",
+    "cap": [
+     "yellow-brown",
+     "orange-brown"
+    ],
+    "host": [
+     "conifer-wood",
+     "buildings"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "inedible",
+   "note": "Wrinkled, brownish-yellow to brownish-orange crust with a thread-like pale margin; also on construction timber indoors.",
+   "dk": "blød hussvamp"
+  },
+  {
+   "n": "Leucogyrophana sororia",
+   "a": "(Burt) Ginns",
+   "fam": "Hygrophoropsidaceae",
+   "ft": "resupinate",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "pale-yellow-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": null,
+    "stipe": "absent",
+    "cap": [
+     "yellow",
+     "orange"
+    ],
+    "host": [
+     "conifer-wood"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "inedible",
+   "note": "Soft, yellowish to apricot crust with a woolly white margin; small, thick-walled, mostly non-dextrinoid spores.",
+   "dk": "kortsporet hussvamp"
+  },
+  {
+   "n": "Hydnomerulius pinastri",
+   "a": "(Fr.) Jarosch & Besl",
+   "fam": "Paxillaceae",
+   "ft": "resupinate",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "pale-yellow-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": null,
+    "stipe": "absent",
+    "cap": [
+     "pale-brown",
+     "yellow-brown"
+    ],
+    "host": [
+     "conifer-wood"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "inedible",
+   "note": "Soft, toothed to wrinkled, pale yellow-brown crust on rotten conifer wood.",
+   "dk": "pigget hussvamp"
+  },
+  {
+   "n": "Hygrophoropsis pallida",
+   "a": "(Peck) Kreisel",
+   "fam": "Hygrophoropsidaceae",
+   "ft": "agaricoid",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "white"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "pale-brown",
+     "grey"
+    ],
+    "host": [
+     "conifer-wood",
+     "grassland"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "unknown",
+   "note": "Soft, beige false chanterelle with pale, forked, decurrent gills; open, moist places.",
+   "dk": "bleg orangekantarel"
+  },
+  {
+   "n": "Hygrophoropsis rufa",
+   "a": "(D.A. Reid) Knudsen",
+   "fam": "Hygrophoropsidaceae",
+   "ft": "agaricoid",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "white"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "orange",
+     "red-brown"
+    ],
+    "host": [
+     "wood-chips"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "unknown",
+   "note": "Reddish-orange false chanterelle with a dense brown felt on the cap; on old wood chips.",
+   "dk": "brunfiltet orangekantarel"
+  },
+  {
+   "n": "Paxillus ammoniavirescens",
+   "a": "Contu & Dessì",
+   "fam": "Paxillaceae",
+   "ft": "agaricoid",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "purple-brown",
+     "brown"
+    ],
+    "host": [
+     "lime",
+     "hornbeam",
+     "poplar",
+     "willow"
+    ],
+    "taste": null
+   },
+   "size": "large",
+   "ed": "toxic",
+   "note": "Very fleshy, short-stemmed brown-vinaceous Paxillus; flesh turns green in ammonia. Treat all Paxillus as poisonous.",
+   "dk": "olivensporet netbladhat"
+  },
+  {
+   "n": "Chroogomphus mediterraneus",
+   "a": "(Finschow) Vila, Pérez-De-Greg. & G. Mir",
+   "fam": "Gomphidiaceae",
+   "ft": "agaricoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "blackish"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "olive-grey",
+     "pinkish-brown"
+    ],
+    "host": [
+     "pine"
+    ],
+    "taste": null
+   },
+   "size": "medium",
+   "ed": "unknown",
+   "note": "Spike cap with ochre-yellow basal mycelium and deep orange gills that keep their colour long (Scambler et al. 2018)."
+  },
+  {
+   "n": "Chroogomphus subfulmineus",
+   "a": "Niskanen, Loizides, Scambler & Liimat.",
+   "fam": "Gomphidiaceae",
+   "ft": "agaricoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "blackish"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "red-brown",
+     "purple-brown"
+    ],
+    "host": [
+     "pine"
+    ],
+    "taste": null
+   },
+   "size": "large",
+   "ed": "unknown",
+   "note": "Large, dull reddish spike cap, nearly dry cap, orange mycelium; long spores. Described 2018 (Scambler et al.)."
+  },
+  {
+   "n": "Chroogomphus purpurascens",
+   "a": "(Lj.N. Vassiljeva) M.M. Nazarova",
+   "fam": "Gomphidiaceae",
+   "ft": "agaricoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "blackish"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "pink",
+     "purple"
+    ],
+    "host": [
+     "pine"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "unknown",
+   "note": "Spike cap that is pink to purplish when young; the narrowest spores in the genus (Scambler et al. 2018)."
+  },
+  {
+   "n": "Xerocomellus cisalpinus",
+   "a": "(Simonini, H. Ladurner & Peintner) Klofac",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "finely-striate",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "strong",
+    "stipe": "smooth",
+    "cap": [
+     "brown",
+     "red-brown"
+    ],
+    "host": [
+     "beech",
+     "oak"
+    ],
+    "taste": null
+   },
+   "size": "medium",
+   "ed": "edible",
+   "note": "Like a reddish X. chrysenteron but stains strongly blue, especially the stem flesh; spores very finely striate in Melzer's (×1000).",
+   "dk": "finsprukken rørhat"
+  },
+  {
+   "n": "Xerocomellus ripariellus",
+   "a": "(Redeuilh) Šutara",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "finely-striate",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "strong",
+    "stipe": "smooth",
+    "cap": [
+     "red"
+    ],
+    "host": [
+     "willow",
+     "alder"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "unknown",
+   "note": "Very small bolete with a blood-red, white-cracking cap; damp places with willow and alder. Spores with indistinct ridges, Qav 2.9.",
+   "dk": "sump-rørhat"
+  },
+  {
+   "n": "Aureoboletus projectellus",
+   "a": "(Murrill) Halling",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "reticulate-yellow",
+    "cap": [
+     "orange-brown"
+    ],
+    "host": [
+     "pine",
+     "dune"
+    ],
+    "taste": null
+   },
+   "size": "medium",
+   "ed": "unknown",
+   "note": "North American bolete spreading along the Baltic coasts with two-needled pines; very coarse raised reticulum; huge spores (27–36 µm).",
+   "dk": "ribbestokket guldrørhat"
+  },
+  {
+   "n": "Neoboletus xanthopus",
+   "a": "(Klofac & A. Urb.) Klofac & A. Urb.",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "red",
+     "orange"
+    ],
+    "blue": "strong",
+    "stipe": "punctate-red",
+    "cap": [
+     "yellow-brown"
+    ],
+    "host": [
+     "hornbeam",
+     "oak"
+    ],
+    "taste": null
+   },
+   "size": "large",
+   "ed": "toxic-raw",
+   "note": "Large Neoboletus with an almost smooth yellow-brown cap and very finely dotted yellow-orange stem; warm clay soils.",
+   "dk": "finprikket indigorørhat"
+  },
+  {
+   "n": "Suillellus mendax",
+   "a": "(Simonini & Vizzini) Vizzini, Simonini & Gelardi",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "red",
+     "orange"
+    ],
+    "blue": "strong",
+    "stipe": "reticulate-red",
+    "cap": [
+     "purple-brown",
+     "brown"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": null
+   },
+   "size": "large",
+   "ed": "toxic-raw",
+   "note": "Like a purplish S. luridus with a red line above the tubes; the stem net breaks up into dots downwards.",
+   "dk": "joker-indigorørhat"
+  },
+  {
+   "n": "Butyriboletus fuscoroseus",
+   "a": "(Smotl.) Vizzini & Gelardi",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "moderate",
+    "stipe": "reticulate-yellow",
+    "cap": [
+     "pink",
+     "purple-brown"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "note": "Grey-rose to vinaceous-brown butter bolete with a reddish belt on the stem; thermophilic forests, north to southern Denmark.",
+   "dk": "brunrosa rørhat"
+  },
+  {
+   "n": "Rheubarbariboletus armeniacus",
+   "a": "(Quél.) Vizzini, Simonini & Gelardi",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "weak",
+    "stipe": "smooth",
+    "cap": [
+     "red",
+     "orange"
+    ],
+    "host": [
+     "oak",
+     "lime"
+    ],
+    "taste": null
+   },
+   "size": "medium",
+   "ed": "unknown",
+   "note": "Brick-red cap; cap-cuticle hyphae with red spots in Congo red (unique); stem-base flesh dark green with FeSO₄."
+  },
+  {
+   "n": "Xerocomus silwoodensis",
+   "a": "A.E. Hills, U. Eberh. & A.F.S. Taylor",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "reticulate-red",
+    "cap": [
+     "red-brown",
+     "orange-brown"
+    ],
+    "host": [
+     "poplar"
+    ],
+    "taste": null
+   },
+   "size": "medium",
+   "ed": "unknown",
+   "note": "Red-brown felty cap and a pronounced red-brown net on the stem; with poplar.",
+   "dk": "mahognibrun rørhat"
+  },
+  {
+   "n": "Xerocomus chrysonemus",
+   "a": "A.E. Hills & A.F.S. Taylor",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "yellow-brown",
+     "yellow"
+    ],
+    "host": [
+     "oak"
+    ],
+    "taste": null
+   },
+   "size": "medium",
+   "ed": "unknown",
+   "note": "Golden to curry-yellow felty cap; sulphur-yellow flesh and cords at the stem base; with oak in parks."
+  },
+  {
+   "n": "Buchwaldoboletus lignicola",
+   "a": "(Kallenb.) Pilát",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow",
+     "rust"
+    ],
+    "blue": "weak",
+    "stipe": "smooth",
+    "cap": [
+     "cinnamon",
+     "yellow-brown"
+    ],
+    "host": [
+     "conifer-wood",
+     "pine-stumps"
+    ],
+    "taste": null
+   },
+   "size": "large",
+   "ed": "unknown",
+   "note": "On conifer stumps with the brown-rot polypore Phaeolus schweinitzii, which it probably parasitises; decurrent tubes.",
+   "dk": "stødrørhat"
+  },
+  {
+   "n": "Suillus asiaticus",
+   "a": "(Singer) Kretzer & T.D. Bruns",
+   "fam": "Suillaceae",
+   "ft": "boletoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "ring",
+    "cap": [
+     "red"
+    ],
+    "host": [
+     "larch"
+    ],
+    "taste": null
+   },
+   "size": "medium",
+   "ed": "unknown",
+   "note": "Scaly carmine-red cap and stem, decurrent tubes, greasy ring zone; with larch, NE Finland eastwards.",
+   "syn": "Boletinus asiaticus",
+   "sa_names": [
+    "Boletinus asiaticus"
+   ]
+  },
+  {
+   "n": "Leccinum melaneum",
+   "a": "(Smotl.) Pilát & Dermek",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "sp": {
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "grey"
+    ],
+    "blue": "none",
+    "stipe": "scabrous-dark",
+    "cap": [
+     "dark-brown",
+     "black-brown"
+    ],
+    "host": [
+     "birch"
+    ],
+    "taste": null
+   },
+   "size": "medium",
+   "ed": "edible",
+   "note": "Very dark, grey-stemmed form of the brown birch bolete group; with birch.",
+   "dk": "mørk skælrørhat"
+  },
+  {
+   "n": "Melanogaster ambiguus",
+   "a": "(Vittad.) Tul.",
+   "fam": "Paxillaceae",
+   "ft": "gasteroid",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "blackish"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": null,
+    "stipe": "absent",
+    "cap": [
+     "grey-brown"
+    ],
+    "host": [
+     "oak",
+     "beech",
+     "hornbeam"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "inedible",
+   "note": "False truffle with a black-and-white marbled, soon slimy gleba and an unpleasant smell; lemon-shaped spores.",
+   "dk": "lille slimtrøffel"
+  },
+  {
+   "n": "Melanogaster broomeanus",
+   "a": "Berk.",
+   "fam": "Paxillaceae",
+   "ft": "gasteroid",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "blackish"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": null,
+    "stipe": "absent",
+    "cap": [
+     "yellow-brown"
+    ],
+    "host": [
+     "oak",
+     "beech",
+     "lime"
+    ],
+    "taste": null
+   },
+   "size": "medium",
+   "ed": "inedible",
+   "note": "Large, firm, yellow-brown false truffle; dark, pale-veined gleba; small tick-shaped spores (Qav 1.8–2.1).",
+   "dk": "broget slimtrøffel"
+  },
+  {
+   "n": "Melanogaster variegatus",
+   "a": "(Vittad.) Tul. & C. Tul.",
+   "fam": "Paxillaceae",
+   "ft": "gasteroid",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "blackish"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": null,
+    "stipe": "absent",
+    "cap": [
+     "orange-brown"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "inedible",
+   "note": "Orange-brown false truffle with a strong fruity smell; small ellipsoid spores (Qav 1.3–1.7)."
+  },
+  {
+   "n": "Chamonixia caespitosa",
+   "a": "Rolland",
+   "fam": "Boletaceae",
+   "ft": "gasteroid",
+   "sp": {
+    "shape": "ellipsoid",
+    "orn": "verrucose",
+    "print": "brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "strong",
+    "stipe": "absent",
+    "cap": [
+     "whitish"
+    ],
+    "host": [
+     "spruce"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "inedible",
+   "note": "White, quickly blue-staining false truffle with Norway spruce; ribbed, lemon-shaped red-brown spores. Related to Leccinum."
+  },
+  {
+   "n": "Octaviania asterosperma",
+   "a": "Vittad.",
+   "fam": "Boletaceae",
+   "ft": "gasteroid",
+   "sp": {
+    "shape": "globose",
+    "orn": "spiny",
+    "print": "brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "strong",
+    "stipe": "absent",
+    "cap": [
+     "whitish",
+     "black"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "inedible",
+   "note": "White, silky false truffle turning bluish-black; spherical spores with triangular spines (13–16.5 µm incl. spines).",
+   "dk": "vellugtende løvtrøffel"
+  },
+  {
+   "n": "Sclerogaster hysterangioides",
+   "a": "(Tul.) Zeller & H.R. Dodge",
+   "fam": "Sclerogastraceae",
+   "ft": "gasteroid",
+   "sp": {
+    "shape": "globose",
+    "orn": "verrucose",
+    "print": "pale-yellow"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": null,
+    "stipe": "absent",
+    "cap": [
+     "whitish"
+    ],
+    "host": [
+     "conifer-wood",
+     "beech"
+    ],
+    "taste": null
+   },
+   "size": "small",
+   "ed": "inedible",
+   "note": "Small, firm, white false truffle with a stringy white cover; tiny warted spherical spores (4–5 µm).",
+   "dk": "tofarvet lædertrøffel"
+  }
+ ],
+ "notAdded": {
+  "Neoboletus erythropus": "Same species as Neoboletus luridiformis (Svampeatlas treats N. luridiformis as a synonym); records combined.",
+  "Neoboletus praestigiator": "Used for Boletus erythropus sensu auct. (Klofac & Krisai-Greilhuber 2018); records combined with N. luridiformis.",
+  "Hortiboletus engelii": "Already in the app as Xerocomellus engelii; renamed.",
+  "Rhizopogon obtextus": "Svampeatlas: also known as R. luteolus, already in the app; records combined.",
+  "Hygrophoropsis fuscosquamula": "Svampeatlas record carries the H. pallida description and Danish name; treated as the same species.",
+  "Penttilamyces olivascens": "Svampeatlas record carries the Coniophora olivacea description; added once, as C. olivacea.",
+  "Phylloporus rhodoxanthus": "Svampeatlas record carries the P. pelletieri description (North American name misapplied); not added."
+ },
+ "SPORE_OVERRIDE": {
+  "Serpula lacrymans": {
+   "orn": "smooth",
+   "cyano": "cyanophilic",
+   "q": "The smooth, brownish, cyanophilous spores measure 9–12 × 5–7 µm."
+  },
+  "Serpula himantioides": {
+   "wall": "slightly-thickened",
+   "cyano": "cyanophilic",
+   "q": "The rather thick-walled, pale brown, cyanophilous spores measure 9–12 × 5–7 µm."
+  },
+  "Coniophora puteana": {
+   "wall": "thick",
+   "melzer": "dextrinoid",
+   "q": "The brownish, smooth, rather thick-walled, only somewhat dextrinoid spores measure 10–15 × 7–9 µm."
+  },
+  "Coniophora arida": {
+   "melzer": "dextrinoid",
+   "q": "The highly dextrinoid, yellowish spores measure 10–14 × 6–8 µm."
+  },
+  "Coniophora olivacea": {
+   "wall": "thick",
+   "melzer": "dextrinoid",
+   "apex": "truncate",
+   "q": "The ± yellow-brown, thick-walled, somewhat dextrinoid spores have a germ pore"
+  },
+  "Coniophora fusispora": {
+   "wall": "thick",
+   "q": "The very dark, thick-walled spores are distinctly sinuous–fusiform"
+  },
+  "Pseudomerulius aureus": {
+   "wall": "thick",
+   "melzer": "dextrinoid",
+   "cyano": "cyanophilic",
+   "q": "The ± yellowish, ± thick-walled, ± dextrinoid, cyanophilous spores"
+  },
+  "Leucogyrophana mollusca": {
+   "orn": "smooth",
+   "wall": "thick",
+   "melzer": "dextrinoid",
+   "q": "The spores are dextrinoid, smooth and ± thick-walled"
+  },
+  "Leucogyrophana sororia": {
+   "wall": "thick",
+   "melzer": "inamyloid",
+   "q": "thick-walled, yellowish, mostly non-dextrinoid spores"
+  },
+  "Hydnomerulius pinastri": {
+   "wall": "thick",
+   "melzer": "dextrinoid",
+   "cyano": "cyanophilic",
+   "q": "thick-walled, somewhat dextrinoid, cyanophilous, yellowish spores"
+  },
+  "Hygrophoropsis pallida": {
+   "wall": "slightly-thickened",
+   "melzer": "dextrinoid",
+   "q": "The somewhat thick-walled, dextrinoid spores"
+  },
+  "Hygrophoropsis rufa": {
+   "melzer": "dextrinoid",
+   "q": "The spores are dextrinoid"
+  },
+  "Xerocomellus cisalpinus": {
+   "orn": "finely-striate",
+   "q": "The spores are very finely striate"
+  },
+  "Xerocomellus ripariellus": {
+   "orn": "finely-striate",
+   "q": "The spores have indistinct ridges/stripes"
+  },
+  "Buchwaldoboletus lignicola": {
+   "orn": "smooth",
+   "q": "The somewhat fusiform, smooth spores measure 6.5–8.5 × 3–3.5 µm."
+  },
+  "Melanogaster broomeanus": {
+   "orn": "smooth",
+   "q": "The smooth, tick-shaped spores measure 6–8 × 3–4 µm"
+  },
+  "Chamonixia caespitosa": {
+   "orn": "verrucose",
+   "q": "The ribbed, somewhat lemon-shaped, red-brown spores"
+  },
+  "Octaviania asterosperma": {
+   "orn": "spiny",
+   "q": "Spores spherical, yellow-brown, with triangular spines"
+  },
+  "Sclerogaster hysterangioides": {
+   "orn": "verrucose",
+   "q": "The verrucose, yellowish, spherical spores measure 4–5 µm."
+  },
+  "Chroogomphus mediterraneus": {
+   "orn": "smooth",
+   "melzer": "dextrinoid",
+   "q": "smooth, thick-walled, dark, blackish, weakly to strongly dextrinoid"
+  },
+  "Chroogomphus subfulmineus": {
+   "orn": "smooth",
+   "melzer": "dextrinoid",
+   "q": "smooth, thick-walled, dark, blackish, weakly to moderately dextrinoid"
+  },
+  "Chroogomphus purpurascens": {
+   "orn": "smooth",
+   "melzer": "dextrinoid",
+   "q": "smooth, dark, blackish, moderately dextrinoid"
+  }
+ },
+ "vocabAdd": {
+  "host": [
+   "buildings",
+   "deciduous-wood",
+   "wood-chips"
+  ],
+  "cap": [
+   "pinkish-brown"
+  ]
+ }
+}

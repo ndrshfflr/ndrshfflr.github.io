@@ -94,5 +94,443 @@
   "mount": "Melzer",
   "verbatim": "(16.0–)17.0–24.0(–26.0) × (6.0–)7.0–8.0(–8.5) μm, av. 20.6 × 7.0 μm … Q av. 2.81",
   "note": "Melzer's reagent, ≥ 20 spores per collection from deposits; typical range covers ≥ 90 % of values. Protologue (new species)."
+ },
+ {
+  "species": "Leccinum aurantiacum",
+  "src": "DENBAKKER2005",
+  "page": "534",
+  "L": [
+   null,
+   12.5,
+   18.5,
+   22.5
+  ],
+  "W": [
+   null,
+   3.5,
+   5.0,
+   6.0
+  ],
+  "mount": "water",
+  "verbatim": "Spores 12.5–18.5(–22.5) × 3.5–5.0(–6.0) µm, Q = 2.8–4.1, Qav = 3.2–3.6",
+  "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+  "Q": [
+   2.8,
+   4.1
+  ],
+  "Qav": [
+   3.2,
+   3.6
+  ]
+ },
+ {
+  "species": "Leccinum albostipitatum",
+  "src": "DENBAKKER2005",
+  "page": "536",
+  "L": [
+   9.5,
+   11.0,
+   17.0,
+   null
+  ],
+  "W": [
+   null,
+   4.0,
+   5.0,
+   5.5
+  ],
+  "mount": "water",
+  "verbatim": "Spores (9.5–)11.0–17.0 × 4.0–5.0(–5.5) µm, Q = 2.3–3.6(–4.0)",
+  "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+  "Q": [
+   2.3,
+   3.6
+  ]
+ },
+ {
+  "species": "Leccinum vulpinum",
+  "src": "DENBAKKER2005",
+  "page": "539",
+  "L": [
+   9.5,
+   11.0,
+   15.5,
+   null
+  ],
+  "W": [
+   null,
+   3.5,
+   4.5,
+   null
+  ],
+  "mount": "water",
+  "verbatim": "Spores (9.5–)11.0–15.5 × 3.5–4.5 µm, Q = 2.5–3.8, Qav = 3.2–3.4(–3.7)",
+  "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+  "Q": [
+   2.5,
+   3.8
+  ],
+  "Qav": [
+   3.2,
+   3.4
+  ]
+ },
+ {
+  "species": "Leccinum versipelle",
+  "src": "DENBAKKER2005",
+  "page": "542",
+  "L": [
+   9.0,
+   11.5,
+   16.5,
+   null
+  ],
+  "W": [
+   null,
+   3.5,
+   4.0,
+   5.0
+  ],
+  "mount": "water",
+  "verbatim": "Spores (9.0–)11.5–16.5 × 3.5–4.0(–5.0) µm, Q = 2.6–3.8, Qav = 3.0–3.3",
+  "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+  "Q": [
+   2.6,
+   3.8
+  ],
+  "Qav": [
+   3.0,
+   3.3
+  ]
+ },
+ {
+  "species": "Leccinum duriusculum",
+  "src": "DENBAKKER2005",
+  "page": "545",
+  "L": [
+   11.5,
+   12.0,
+   15.5,
+   null
+  ],
+  "W": [
+   null,
+   4.5,
+   6.0,
+   null
+  ],
+  "mount": "water",
+  "verbatim": "Spores (11.5–)12.0–15.5 × 4.5–6.0 µm, on average 13.0–14.0 × 4.8–5.0 µm",
+  "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005)."
+ },
+ {
+  "species": "Leccinum scabrum",
+  "src": "DENBAKKER2005",
+  "page": "547",
+  "L": [
+   13.5,
+   14.5,
+   19.0,
+   22.0
+  ],
+  "W": [
+   4.0,
+   5.0,
+   6.5,
+   null
+  ],
+  "mount": "water",
+  "verbatim": "Spores (13.5–)14.5–19.0(–22.0) × (4.0–)5.0–6.5 µm, Q = 2.5–3.5",
+  "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+  "Q": [
+   2.5,
+   3.5
+  ]
+ },
+ {
+  "species": "Leccinum melaneum",
+  "src": "DENBAKKER2005",
+  "page": "552",
+  "L": [
+   null,
+   14.0,
+   19.0,
+   null
+  ],
+  "W": [
+   null,
+   5.0,
+   6.0,
+   null
+  ],
+  "mount": "water",
+  "verbatim": "Spores 14.0–19.0 × 5.0–6.0 µm, Q = 2.5–3.5, Qav = 2.9–3.2",
+  "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+  "Q": [
+   2.5,
+   3.5
+  ],
+  "Qav": [
+   2.9,
+   3.2
+  ]
+ },
+ {
+  "species": "Leccinum rotundifoliae",
+  "src": "DENBAKKER2005",
+  "page": "554",
+  "L": [
+   11.5,
+   13.5,
+   17.5,
+   20.0
+  ],
+  "W": [
+   null,
+   4.5,
+   7.0,
+   null
+  ],
+  "mount": "water",
+  "verbatim": "Spores (11.5–)13.5–17.5(–20.0) × 4.5–7.0 µm, Q = 2.2–3.2, Qav = 2.5–2.7(–2.9)",
+  "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+  "Q": [
+   2.2,
+   3.2
+  ],
+  "Qav": [
+   2.5,
+   2.7
+  ]
+ },
+ {
+  "species": "Leccinum schistophilum",
+  "src": "DENBAKKER2005",
+  "page": "556",
+  "L": [
+   13.0,
+   13.5,
+   17.0,
+   null
+  ],
+  "W": [
+   null,
+   5.0,
+   6.5,
+   7.5
+  ],
+  "mount": "water",
+  "verbatim": "Spores (13.0–)13.5–17.0 × 5.0–6.5(–7.5) µm, Q = 2.3–3.1(–3.4)",
+  "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+  "Q": [
+   2.3,
+   3.1
+  ]
+ },
+ {
+  "species": "Leccinum variicolor",
+  "src": "DENBAKKER2005",
+  "page": "558",
+  "L": [
+   10.0,
+   13.5,
+   17.5,
+   20.0
+  ],
+  "W": [
+   null,
+   5.0,
+   6.5,
+   null
+  ],
+  "mount": "water",
+  "verbatim": "Spores (10.0–)13.5–17.5(–20.0) × 5.0–6.5 µm, Q = 2.4–3.1, Qav = 2.6–2.8(–2.9)",
+  "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+  "Q": [
+   2.4,
+   3.1
+  ],
+  "Qav": [
+   2.6,
+   2.8
+  ]
+ },
+ {
+  "species": "Leccinum cyaneobasileucum",
+  "src": "DENBAKKER2005",
+  "page": "561",
+  "L": [
+   11.0,
+   14.0,
+   19.5,
+   21.0
+  ],
+  "W": [
+   3.5,
+   4.0,
+   6.5,
+   7.0
+  ],
+  "mount": "water",
+  "verbatim": "Spores (11.0–)14.0–19.5(–21.0) × (3.5–)4.0–6.5(–7.0) µm",
+  "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005)."
+ },
+ {
+  "species": "Leccinum holopus",
+  "src": "DENBAKKER2005",
+  "page": "565",
+  "L": [
+   null,
+   15.5,
+   18.0,
+   null
+  ],
+  "W": [
+   null,
+   5.5,
+   7.0,
+   null
+  ],
+  "mount": "water",
+  "verbatim": "Spores 15.5–18.0 × 5.5–7.0 µm, Q = 2.5–3.0, Qav = 2.6–2.8",
+  "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005).",
+  "Q": [
+   2.5,
+   3.0
+  ],
+  "Qav": [
+   2.6,
+   2.8
+  ]
+ },
+ {
+  "species": "Leccinellum crocipodium",
+  "src": "DENBAKKER2005",
+  "page": "566",
+  "L": [
+   11.5,
+   12.0,
+   15.0,
+   null
+  ],
+  "W": [
+   null,
+   5.0,
+   6.5,
+   null
+  ],
+  "mount": "water",
+  "verbatim": "Spores (11.5–)12.0–15.0 × 5.0–6.5 µm, on average 13–14 × 5.5–6.0 µm (as Leccinum crocipodium)",
+  "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005)."
+ },
+ {
+  "species": "Leccinellum pseudoscabrum",
+  "src": "DENBAKKER2005",
+  "page": "569",
+  "L": [
+   12.5,
+   13.0,
+   18.5,
+   null
+  ],
+  "W": [
+   null,
+   4.5,
+   6.0,
+   null
+  ],
+  "mount": "water",
+  "verbatim": "Spores (12.5–)13.0–18.5 × 4.5–6.0 µm, on average 14.5–15 × 4.8–5.3 µm (as Leccinum pseudoscabrum)",
+  "note": "Water mount, c. 30 mature spores per collection (den Bakker & Noordeloos 2005)."
+ },
+ {
+  "species": "Hortiboletus rubellus",
+  "src": "BIKETOVA2025",
+  "L": [
+   null,
+   10.3,
+   12.8,
+   null
+  ],
+  "W": [
+   null,
+   4.7,
+   5.5,
+   null
+  ],
+  "Qav": [
+   2.07,
+   2.59
+  ],
+  "Qm": 2.31,
+  "mean": [
+   11.6,
+   5.0
+  ],
+  "stat": "collection-means",
+  "n": "561",
+  "mount": "KOH",
+  "verbatim": "(10.3–)11.6 ± 0.6(–12.8) × (4.7–)5.0 ± 0.2(–5.5) μm, Q = (2.07–)2.31 ± 0.12(–2.59)",
+  "note": "Range and mean ± SD of collection means (KOH, ≥ 31 spores per collection); not a range of individual spores, so used for cross-checking only."
+ },
+ {
+  "species": "Hortiboletus bubalinus",
+  "src": "BIKETOVA2025",
+  "L": [
+   null,
+   10.7,
+   13.3,
+   null
+  ],
+  "W": [
+   null,
+   4.3,
+   5.3,
+   null
+  ],
+  "Qav": [
+   2.26,
+   2.7
+  ],
+  "Qm": 2.46,
+  "mean": [
+   11.7,
+   4.8
+  ],
+  "stat": "collection-means",
+  "n": "1020",
+  "mount": "KOH",
+  "verbatim": "(10.7–)11.7 ± 0.6(–13.3) × (4.3–)4.8 ± 0.2(–5.3) μm, Q = (2.26–)2.46 ± 0.10(–2.70)",
+  "note": "Range and mean ± SD of collection means (KOH, ≥ 31 spores per collection); not a range of individual spores, so used for cross-checking only."
+ },
+ {
+  "species": "Hortiboletus engelii",
+  "src": "BIKETOVA2025",
+  "L": [
+   null,
+   10.0,
+   14.2,
+   null
+  ],
+  "W": [
+   null,
+   4.7,
+   5.9,
+   null
+  ],
+  "Qav": [
+   2.04,
+   2.57
+  ],
+  "Qm": 2.35,
+  "mean": [
+   12.1,
+   5.1
+  ],
+  "stat": "collection-means",
+  "n": "1691",
+  "mount": "KOH",
+  "verbatim": "(10.0–)12.1 ± 0.8(–14.2) × (4.7–)5.1 ± 0.3(–5.9) μm, Q = (2.04–)2.35 ± 0.13(–2.57)",
+  "note": "Range and mean ± SD of collection means (KOH, ≥ 31 spores per collection); not a range of individual spores, so used for cross-checking only."
  }
 ]

@@ -74,12 +74,34 @@ def sentences(text):
     return [s.strip() for s in re.split(r"(?<=[.!?])\s+(?=[A-ZÆØÅ])", text) if s.strip()]
 
 
-def parse_spores(text):
-    """Return a list of measurement dicts found in spore sentences of a description."""
+def _genera():
+    g = set()
+    p = os.path.join(RAW, "gbif", "_nordic_boletales.json")
+    if os.path.exists(p):
+        for sp in json.load(open(p, encoding="utf-8"))["species"].values():
+            if sp.get("canonicalName"):
+                g.add(sp["canonicalName"].split()[0])
+    seed = os.path.join(D, "seed_v3.json")
+    if os.path.exists(seed):
+        g |= {s["n"].split()[0] for s in json.load(open(seed, encoding="utf-8"))["species"]}
+    return g
+
+
+GENERA = _genera()
+
+
+def parse_spores(text, names=()):
+    """Return a list of measurement dicts found in spore sentences of a description.
+    Sentences whose subject is another taxon (comparisons: "Serpula pulverulenta has smaller
+    spores, that measure …") are skipped."""
     out = []
     ss = sentences(text)
+    epithets = {n.split()[1] for n in names if n and len(n.split()) > 1}
     for i, s in enumerate(ss):
         if not re.search(r"spor", s, re.I):
+            continue
+        subj = re.match(r"\s*(?:The |De |Hos )?([A-Z][a-z]+|[A-Z]\.) ([a-z-]{3,})\b", s)
+        if subj and epithets and (subj.group(1) in GENERA or subj.group(1).endswith(".")) and subj.group(2) not in epithets:
             continue
         nxt = ss[i + 1] if i + 1 < len(ss) else ""
         m = PAIR.search(s)
@@ -91,7 +113,7 @@ def parse_spores(text):
                 continue
             rec = {"L": L, "W": W, "verbatim": s}
         else:
-            if not ROUND.search(s):
+            if not ROUND.search(s) or re.search(r"more than|less than|larger|smaller|mindre end|større end|over \d|under \d", s, re.I):
                 continue
             cands = []
             for m in ONE.finditer(s):
@@ -120,7 +142,9 @@ def parse_spores(text):
             if src_s is not s and (q or qa):
                 rec["verbatim"] += " " + src_s
         low = s.lower()
-        if "uden ornament" in low or "excluding ornament" in low or "without ornament" in low or "without the ornament" in low:
+        if "including the spines" in low or "including the ornament" in low or "inkl. pigge" in low:
+            rec["ornIncluded"] = True
+        elif "uden ornament" in low or "excluding ornament" in low or "without ornament" in low or "without the ornament" in low:
             rec["ornIncluded"] = False
         elif "inkl. ornament" in low or "including ornament" in low or "med ornament" in low:
             rec["ornIncluded"] = True
@@ -148,17 +172,39 @@ def sa_record(name):
     return {"taxon": t, "retrieved": r.get("retrieved"), "via": via}
 
 
-def sa_measurements(sa):
+BINOMIAL_START = re.compile(r"^\s*([A-Z][a-z]+) ([a-z-]+)\b")
+
+
+def own_text(text, names):
+    """Keep only the part of a Svampeatlas book text that describes the target taxon.
+    Book texts sometimes start with another species (shared plate text) or run on into the
+    next genus/species; measurements from those parts must not be attributed to the target."""
+    text = html.unescape(re.sub(r"<[^>]+>", " ", text or ""))
+    text = re.sub(r"\s+", " ", text).strip()
+    epithets = {n.split()[1] for n in names if len(n.split()) > 1}
+    genera = {n.split()[0] for n in names}
+    m = BINOMIAL_START.match(text)
+    if m and m.group(2) not in epithets and m.group(0) not in names:
+        return ""            # text is about another species
+    # cut where another genus/species description starts ("X is a ...", "X can be separated ...")
+    for mm in re.finditer(r"(?<=[.!?] )([A-Z][a-z]+)(?: ([a-z-]+))? (?:is a|is an|can be separated)", text):
+        g, e = mm.group(1), mm.group(2)
+        if g not in genera or (e and e not in epithets):
+            return text[:mm.start()]
+    return text
+
+
+def sa_measurements(sa, names=()):
     a = (sa["taxon"].get("attributes") or {}) if sa else {}
     if isinstance(a, list):
         a = a[0] if a else {}
+    names = set(names) | {sa["taxon"].get("FullName")} if sa else set(names)
     found = []
     for field, lang in (("diagnose", "da"), ("beskrivelse", "da"), ("BeskrivelseUK", "en"),
                         ("bogtekst_gyldendal_en", "en"), ("bogtekst_gyldendal", "da")):
-        for m in parse_spores(a.get(field) or ""):
+        for m in parse_spores(own_text(a.get(field) or "", names), names):
             m["field"], m["lang"] = field, lang
             found.append(m)
-    # de-duplicate identical numeric statements (book text often repeats the diagnosis)
     uniq, seen = [], set()
     for m in found:
         k = (tuple(m["L"]), tuple(m["W"]))
@@ -222,7 +268,8 @@ def gbif_info(name):
 
 # ------------------------------------------------------------------ consensus
 def consensus(meas):
-    use = [m for m in meas if not m.get("excluded")]
+    allm = [m for m in meas if not m.get("excluded")]
+    use = [m for m in allm if m.get("stat") != "collection-means"] or allm
     if not use:
         return None, []
     lo = min(m["L"][1] for m in use); hi = max(m["L"][2] for m in use)
@@ -236,15 +283,20 @@ def consensus(meas):
          "wmin": min(wmins) if wmins and min(wmins) < wlo else None,
          "wmax": max(wmaxs) if wmaxs and max(wmaxs) > whi else None,
          "q": [min(q[0] for q in qs), max(q[1] for q in qs)] if qs else None,
-         "n_sources": len({m["src"] for m in use})}
+         "n_sources": len({m["src"] for m in allm})}
     flags = []
-    if len({m["src"] for m in use}) > 1:
-        mL = [(m["L"][1] + m["L"][2]) / 2 for m in use]
-        mQ = [((m["L"][1] + m["L"][2]) / 2) / ((m["W"][1] + m["W"][2]) / 2) for m in use]
+    if len({m["src"] for m in allm}) > 1:
+        mid = lambda m, i, a: m["mean"][i] if m.get("mean") else (m[a][1] + m[a][2]) / 2
+        mL = [mid(m, 0, "L") for m in allm]
+        mQ = [mid(m, 0, "L") / mid(m, 1, "W") for m in allm]
         if (max(mL) - min(mL)) / statistics.mean(mL) > 0.15:
             flags.append({"k": "disagree-L", "t": f"Sources differ by {round(100*(max(mL)-min(mL))/statistics.mean(mL))} % in mean spore length"})
         if (max(mQ) - min(mQ)) / statistics.mean(mQ) > 0.15:
             flags.append({"k": "disagree-Q", "t": f"Sources differ by {round(100*(max(mQ)-min(mQ))/statistics.mean(mQ))} % in mean Q"})
+    for m in allm:
+        if m.get("stat") == "collection-means" and m is not use[0]:
+            if m["L"][1] < lo - 0.5 or m["L"][2] > hi + 0.5:
+                flags.append({"k": "cross-check", "t": f'Collection means in a recent study span {m["L"][1]}–{m["L"][2]} µm in length, beyond the {lo}–{hi} µm typical range'})
     return c, flags
 
 
@@ -328,6 +380,16 @@ def main():
                 msg = cr.get("message") or {}
                 if isinstance(msg, dict) and msg.get("DOI"):
                     s["doiVerified"] = True
+                    if s.get("fromCrossref"):
+                        s["authors"] = [{"family": a.get("family"), "given": a.get("given", "")} if a.get("family")
+                                        else {"literal": a.get("name")} for a in msg.get("author", [])]
+                        s["title"] = re.sub(r"\s+", " ", (msg.get("title") or [s["title"]])[0]).strip()
+                        s["container"] = (msg.get("container-title") or [s.get("container")])[0]
+                        s["volume"] = msg.get("volume") or s.get("volume")
+                        s["issue"] = msg.get("issue") or s.get("issue")
+                        if msg.get("page"):
+                            s["pages"] = msg["page"].replace("-", "–")
+                        s["year"] = ((msg.get("issued") or {}).get("date-parts") or [[s["year"]]])[0][0]
                     s["crossref"] = {
                         "title": (msg.get("title") or [""])[0],
                         "year": ((msg.get("issued") or {}).get("date-parts") or [[None]])[0][0],
@@ -338,7 +400,25 @@ def main():
         elif s["type"] != "database-entry":
             s["noDoi"] = True
 
-    species_in = [dict(s, origin="v3") for s in seed["species"]] + [dict(s, origin="added") for s in additions["species"]]
+    renames = additions.get("renames", {})
+    merges = additions.get("merges", {})
+    species_in = []
+    for s in seed["species"]:
+        s = dict(s, origin="v3")
+        if s["n"] in merges:
+            continue
+        if s["n"] in renames:
+            r = renames[s["n"]]
+            s.update({k: v for k, v in r.items() if k != "why"})
+            s["renamedFrom"] = s.get("renamedFrom") or [k for k, v in renames.items() if v is r][0]
+            s["renameWhy"] = r.get("why")
+        species_in.append(s)
+    for target in set(merges.values()):
+        for s in species_in:
+            if s["n"] == target:
+                s["merged"] = sorted(k for k, v in merges.items() if v == target)
+    species_in += [dict(s, origin="added") for s in additions["species"]]
+    count_alias = additions.get("countAliases", {})
     out_species, report = [], []
     lit_by = {}
     for m in literature:
@@ -346,7 +426,7 @@ def main():
 
     for s in species_in:
         name = s["n"]
-        names_to_try = [name] + ([s["syn"]] if s.get("syn") else []) + s.get("sa_names", [])
+        names_to_try = [name] + ([s["syn"]] if s.get("syn") else []) + s.get("sa_names", []) + ([s["renamedFrom"]] if s.get("renamedFrom") else [])
         sa = None
         for nm in names_to_try:
             sa = sa_record(nm)
@@ -362,14 +442,17 @@ def main():
                 "desc": "Taxon description", "site": "Danmarks Svampeatlas",
                 "url": f'https://svampe.databasen.org/taxon/{t["_id"]}',
                 "retrieved": sa["retrieved"] or today, "short": "Danmarks Svampeatlas, n.d."}
-            for m in sa_measurements(sa):
+            for m in sa_measurements(sa, names_to_try + [sa["taxon"].get("FullName") or ""]):
                 m["src"] = sid
                 meas.append(m)
-        for m in lit_by.get(name, []):
+        for m in lit_by.get(name, []) + (lit_by.get(s["renamedFrom"], []) if s.get("renamedFrom") else []):
             mm = {k: v for k, v in m.items() if k != "species"}
             meas.append(mm)
 
         cons, flags = consensus(meas)
+        if cons is None and s["origin"] == "added":
+            report.append({"n": name, "origin": "added", "skipped": "no checkable spore measurement"})
+            continue
         legacy = {"lo": s["sp"]["lo"], "hi": s["sp"]["hi"], "wlo": s["sp"]["wlo"], "whi": s["sp"]["whi"],
                   "q": s["sp"].get("q"), "src": s.get("src")} if "sp" in s and "lo" in s["sp"] else None
         if cons is None and legacy:
@@ -384,6 +467,14 @@ def main():
         sp["ext"] = {k: cons[k] for k in ("lmin", "lmax", "wmin", "wmax")} if cons else {}
 
         g = gbif_info(name)
+        if g and name in count_alias:
+            g = dict(g, counts=dict(g["counts"]))
+            for al in count_alias[name]:
+                ga = gbif_info(al)
+                if ga and ga.get("acceptedKey") != g.get("acceptedKey"):
+                    for c, v in (ga.get("counts") or {}).items():
+                        g["counts"][c] = (g["counts"].get(c) or 0) + (v or 0)
+            g["countNames"] = [name] + count_alias[name]
         ifi = if_info(name)
         nomen = {"gbif": g, "if": ifi,
                  "sa": {"id": sa["taxon"]["_id"], "name": sa["taxon"].get("FullName"),
@@ -413,7 +504,8 @@ def main():
         rec = {k: v for k, v in s.items() if k not in ("src", "sp", "nordic")}
         rec.update({"id": slug(name), "sp": sp, "meas": meas, "flags": flags,
                     "legacy": legacy if (legacy and cons and (abs(legacy["lo"] - cons["lo"]) > 0.4 or abs(legacy["hi"] - cons["hi"]) > 0.4 or abs(legacy["wlo"] - cons["wlo"]) > 0.4 or abs(legacy["whi"] - cons["whi"]) > 0.4)) or (legacy and not cons) else None,
-                    "gbif": {"key": g["acceptedKey"], "counts": g["counts"], "retrieved": g["retrieved"]} if g else None,
+                    "gbif": {"key": g["acceptedKey"], "counts": g["counts"], "retrieved": g["retrieved"],
+                             "names": g.get("countNames")} if g else None,
                     "saId": sa["taxon"]["_id"] if sa else s.get("saId"),
                     "dkSA": nomen["sa"]["dk"] if sa else None,
                     "ifId": (sf or {}).get("currentId") or (sa["taxon"].get("FunIndexCurrUseNumber") if sa else None),
@@ -435,7 +527,7 @@ def main():
             "species": out_species,
             "FAMILY_SPORE": seed["FAMILY_SPORE"],
             "SPORE_OVERRIDE": {**seed["SPORE_OVERRIDE"], **additions.get("SPORE_OVERRIDE", {})},
-            "VOCAB": seed["VOCAB"], "LABELS": seed["LABELS"], "PRINT_COLOR": seed["PRINT_COLOR"]}
+            "VOCAB": {k: v + [x for x in additions.get("vocabAdd", {}).get(k, []) if x not in v] for k, v in seed["VOCAB"].items()}, "LABELS": seed["LABELS"], "PRINT_COLOR": seed["PRINT_COLOR"]}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as fh:
         fh.write("/* Generated by src/sporexplore/build_data.py — do not edit by hand. */\n")
