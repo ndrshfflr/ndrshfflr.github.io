@@ -189,6 +189,19 @@ def dois():
         time.sleep(0.2)
 
 
+def refs():
+    """Crossref bibliographic search for each citation string in refs_query.txt."""
+    for q in lines("refs_query.txt"):
+        k = slug(q)[:80]
+        if os.path.exists(os.path.join(RAW, "crossref_query", k + ".json")):
+            continue
+        r, url = get("https://api.crossref.org/works", {"query.bibliographic": q, "rows": 3,
+                     "select": "DOI,title,author,issued,container-title,volume,issue,page,type,publisher"})
+        save("crossref_query", k, {"retrieved": NOW, "query": q, "url": url,
+                                   "items": (r.get("message") or {}).get("items") if isinstance(r, dict) else r})
+        time.sleep(0.3)
+
+
 if __name__ == "__main__":
     parts = (os.environ.get("HARVEST_PARTS") or "nordic,names,dois").split(",")
     if "nordic" in parts:
@@ -199,6 +212,8 @@ if __name__ == "__main__":
         print(len([n for n in lines("names.txt")
                    if not os.path.exists(os.path.join(RAW, "svampeatlas", slug(n) + ".json"))]))
         sys.exit(0)
+    if "refs" in parts:
+        refs()
     if "dois" in parts:
         dois()
     with open(os.path.join(RAW, "_manifest.json"), "w") as f:

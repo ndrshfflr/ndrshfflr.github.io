@@ -47,5 +47,6 @@ jobs:
               commit "names chunk $i ($left left before)"
             done;;
           esac
+          case "$PARTS" in *refs*) HARVEST_PARTS=refs python3 src/sporexplore/harvest.py; commit "Crossref reference queries";; esac
           case "$PARTS" in *dois*) HARVEST_PARTS=dois python3 src/sporexplore/harvest.py; commit "Crossref DOIs";; esac
           echo "finished" ; date -u
