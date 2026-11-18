@@ -1,0 +1,257 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 2524910,
+  "scientificName": "Tylopilus felleus (Bull.) P.Karst.",
+  "canonicalName": "Tylopilus felleus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; nextMatch=5",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 3354600,
+    "scientificName": "Tylopilus beelii Heinem. & Gooss.-Font.",
+    "canonicalName": "Tylopilus beelii",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 16,
+    "note": "Similarity: name=5; authorship=0; classification=4; rank=6; status=1; score=16",
+    "matchType": "FUZZY",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Boletaceae",
+    "genus": "Tylopilus",
+    "species": "Tylopilus beelii",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8789,
+    "genusKey": 2519844,
+    "speciesKey": 3354600,
+    "class": "Agaricomycetes"
+   },
+   {
+    "usageKey": 6124414,
+    "scientificName": "Tylopilus fellus (Fr.) Karsten",
+    "canonicalName": "Tylopilus fellus",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 16,
+    "note": "Similarity: name=5; authorship=0; classification=4; rank=6; status=1; score=16",
+    "matchType": "FUZZY",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Boletaceae",
+    "genus": "Tylopilus",
+    "species": "Tylopilus fellus",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8789,
+    "genusKey": 2519844,
+    "speciesKey": 6124414,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Tylopilus",
+  "species": "Tylopilus felleus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2519844,
+  "speciesKey": 2524910,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Tylopilus+felleus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 2612,
+  "NO": 1126,
+  "SE": 5095,
+  "FI": 851,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 2524910,
+  "nubKey": 2524910,
+  "nameKey": 17251667,
+  "taxonID": "gbif:2524910",
+  "sourceTaxonKey": 172022584,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Tylopilus",
+  "species": "Tylopilus felleus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2519844,
+  "speciesKey": 2524910,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2519844,
+  "parent": "Tylopilus",
+  "basionymKey": 5955009,
+  "basionym": "Boletus felleus Bull.",
+  "scientificName": "Tylopilus felleus (Bull.) P.Karst.",
+  "canonicalName": "Tylopilus felleus",
+  "vernacularName": "Bitter Bolete",
+  "authorship": "(Bull.) P.Karst.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1881). Revue mycol., Toulouse 3(no. 9): 16.",
+  "numDescendants": 3,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:04.008+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "Bitter Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222045257
+  },
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "Bitter Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Martha's Vineyard species checklist",
+   "sourceTaxonKey": 202601040
+  },
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "Bitter Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011357
+  },
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "Bitter Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874915
+  },
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "Galderørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874915
+  },
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "Galderørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905054
+  },
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "gallerørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874915
+  },
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "gallerøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874915
+  },
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "gallsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874915
+  },
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "sappitatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012901
+  },
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "sappitatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874915
+  },
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "Bitter Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101293,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "gallerørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069439,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "gallerøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069439,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "gallsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019332,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524910,
+   "vernacularName": "Bitter Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945915,
+   "preferred": false
+  }
+ ]
+}

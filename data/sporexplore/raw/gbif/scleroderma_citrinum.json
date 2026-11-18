@@ -1,0 +1,250 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 5239982,
+  "scientificName": "Scleroderma citrinum Pers.",
+  "canonicalName": "Scleroderma citrinum",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Sclerodermataceae",
+  "genus": "Scleroderma",
+  "species": "Scleroderma citrinum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8453,
+  "genusKey": 2524936,
+  "speciesKey": 5239982,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Scleroderma+citrinum&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 4231,
+  "NO": 1063,
+  "SE": 2728,
+  "FI": 108,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 5239982,
+  "nubKey": 5239982,
+  "nameKey": 10196591,
+  "taxonID": "gbif:5239982",
+  "sourceTaxonKey": 172018000,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Sclerodermataceae",
+  "genus": "Scleroderma",
+  "species": "Scleroderma citrinum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8453,
+  "genusKey": 2524936,
+  "speciesKey": 5239982,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2524936,
+  "parent": "Scleroderma",
+  "scientificName": "Scleroderma citrinum Pers.",
+  "canonicalName": "Scleroderma citrinum",
+  "vernacularName": "Common Earthball",
+  "authorship": "Pers.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1801). Syn. Meth. Fung. (Göttingen) 1: 153.",
+  "numDescendants": 4,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:13.432+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "Almindelig bruskbold",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871449
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "Almindelig bruskbold",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905314
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "Common Earthball",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222041271
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "Common Earthball",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871449
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "Common Earthball",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011451
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "Earth Ball",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871449
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "Pigskin Poison Puffball",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871449
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "allmän rottryffel",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871449
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "gul potetrøyksopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871449
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "gul rottryffel",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871449
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "nystymukulakuukunen",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012799
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "nystymukulakuukunen",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871449
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "Common Earthball",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180098823,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "gul potetrøyksopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069236,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "gul potetrøyksopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069236,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "gul rottryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019141,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "Common Earthball",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945373,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "Earth Ball",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180098823,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "Earth Ball",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945373,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "Earth Ball",
+   "language": "eng",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011451,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "Pigskin Poison Puffball",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945373,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5239982,
+   "vernacularName": "allmän rottryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019141,
+   "preferred": false
+  }
+ ]
+}

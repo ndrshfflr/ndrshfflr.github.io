@@ -1,0 +1,200 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 5239851,
+  "scientificName": "Suillus cavipes (Klotzsch) A.H.Sm. & Thiers",
+  "canonicalName": "Suillus cavipes",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Suillaceae",
+  "genus": "Suillus",
+  "species": "Suillus cavipes",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8455,
+  "genusKey": 7414997,
+  "speciesKey": 5239851,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Suillus+cavipes&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 1048,
+  "NO": 172,
+  "SE": 309,
+  "FI": 68,
+  "IS": 0,
+  "FO": 2,
+  "GL": 0
+ },
+ "species": {
+  "key": 5239851,
+  "nubKey": 5239851,
+  "nameKey": 41007481,
+  "taxonID": "gbif:5239851",
+  "sourceTaxonKey": 176033862,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Suillaceae",
+  "genus": "Suillus",
+  "species": "Suillus cavipes",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8455,
+  "genusKey": 7414997,
+  "speciesKey": 5239851,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 7414997,
+  "parent": "Suillus",
+  "basionymKey": 7396544,
+  "basionym": "Boletus cavipes Klotzsch",
+  "scientificName": "Suillus cavipes (Klotzsch) A.H.Sm. & Thiers",
+  "canonicalName": "Suillus cavipes",
+  "vernacularName": "Hollow Bolete",
+  "authorship": "(Klotzsch) A.H.Sm. & Thiers",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1964). Monogr. North Amer. Species Suillus: 30.",
+  "numDescendants": 9,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:00:57.718+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 5239851,
+   "vernacularName": "Hollow Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299870727
+  },
+  {
+   "taxonKey": 5239851,
+   "vernacularName": "Hulstokket slimrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905450
+  },
+  {
+   "taxonKey": 5239851,
+   "vernacularName": "Hulstokket slimrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299870727
+  },
+  {
+   "taxonKey": 5239851,
+   "vernacularName": "holrøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299870727
+  },
+  {
+   "taxonKey": 5239851,
+   "vernacularName": "hulrørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299870727
+  },
+  {
+   "taxonKey": 5239851,
+   "vernacularName": "hålsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299870727
+  },
+  {
+   "taxonKey": 5239851,
+   "vernacularName": "rusko-onttotatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012842
+  },
+  {
+   "taxonKey": 5239851,
+   "vernacularName": "rusko-onttotatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299870727
+  },
+  {
+   "taxonKey": 5239851,
+   "vernacularName": "Hollow Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180102648,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239851,
+   "vernacularName": "Hollow Bolete",
+   "language": "eng",
+   "country": "US",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011428,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239851,
+   "vernacularName": "holrøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069750,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239851,
+   "vernacularName": "hulrørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069750,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239851,
+   "vernacularName": "hålsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Risk assessment of alien taxa in Sweden 2024",
+   "sourceTaxonKey": 318000744,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239851,
+   "vernacularName": "hålsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019070,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239851,
+   "vernacularName": "Hollow Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945212,
+   "preferred": false
+  }
+ ]
+}

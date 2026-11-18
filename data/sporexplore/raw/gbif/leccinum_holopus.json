@@ -1,0 +1,241 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 2524503,
+  "scientificName": "Leccinum holopus (Rostk.) Watling",
+  "canonicalName": "Leccinum holopus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 99,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; nextMatch=0",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 9364298,
+    "acceptedUsageKey": 2524503,
+    "scientificName": "Leccinum holopus (Rostkovius) Walting.",
+    "canonicalName": "Leccinum holopus",
+    "rank": "SPECIES",
+    "status": "SYNONYM",
+    "confidence": 99,
+    "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=0; score=120",
+    "matchType": "EXACT",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Boletaceae",
+    "genus": "Leccinum",
+    "species": "Leccinum holopus",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8789,
+    "genusKey": 2520104,
+    "speciesKey": 2524503,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinum",
+  "species": "Leccinum holopus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2520104,
+  "speciesKey": 2524503,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Leccinum+holopus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 353,
+  "NO": 1230,
+  "SE": 2006,
+  "FI": 287,
+  "IS": 0,
+  "FO": 0,
+  "GL": 5
+ },
+ "species": {
+  "key": 2524503,
+  "nubKey": 2524503,
+  "nameKey": 6068035,
+  "taxonID": "gbif:2524503",
+  "sourceTaxonKey": 176035619,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinum",
+  "species": "Leccinum holopus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2520104,
+  "speciesKey": 2524503,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2520104,
+  "parent": "Leccinum",
+  "basionymKey": 5954870,
+  "basionym": "Boletus holopus Rostk.",
+  "scientificName": "Leccinum holopus (Rostk.) Watling",
+  "canonicalName": "Leccinum holopus",
+  "vernacularName": "Ghost Bolete",
+  "authorship": "(Rostk.) Watling",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1960). Trans. Br. Mycol. Soc. 43(4): 692.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:09.369+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "Ghost Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222044313
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "Ghost Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011339
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "Ghost Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880196
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "Hvid skælrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880196
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "White birch bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880196
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "White bog bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880196
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "kärrsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880196
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "myrskrubb",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880196
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "valkolehmäntatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012910
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "valkolehmäntatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880196
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "Ghost Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180102003,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "kärrsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019373,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "myrskrubb",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069505,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "myrskrubb",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069505,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "Ghost Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945602,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "White birch bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945602,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524503,
+   "vernacularName": "White bog bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945602,
+   "preferred": false
+  }
+ ]
+}

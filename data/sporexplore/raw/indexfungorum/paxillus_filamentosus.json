@@ -1,0 +1,11 @@
+{
+ "retrieved": "2026-11-18",
+ "search": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NewDataSet>\r\n  <IndexFungorum>\r\n    <NAME_x0020_OF_x0020_FUNGUS>Paxillus filamentosus</NAME_x0020_OF_x0020_FUNGUS>\r\n    <AUTHORS>(Scop.) Fr.</AUTHORS>\r\n    <SPECIFIC_x0020_EPITHET>filamentosus</SPECIFIC_x0020_EPITHET>\r\n    <INFRASPECIFIC_x0020_RANK>sp.</INFRASPECIFIC_x0020_RANK>\r\n    <PAGE>317</PAGE>\r\n    <YEAR_x0020_OF_x0020_PUBLICATION>1838</YEAR_x0020_OF_x0020_PUBLICATION>\r\n    <YEAR_x0020_ON_x0020_PUBLICATION>1836-1838</YEAR_x0020_ON_x0020_PUBLICATION>\r\n    <CORRECTION>http://www.cybertruffle.org.uk/cyberliber/02485/0317.htm</CORRECTION>\r\n    <LITERATURE_x0020_LINK>2936</LITERATURE_x0020_LINK>\r\n    <RECORD_x0020_NUMBER>438797</RECORD_x0020_NUMBER>\r\n    <BASIONYM_x0020_RECORD_x0020_NUMBER>490195</BASIONYM_x0020_RECORD_x0020_NUMBER>\r\n    <PROTONYM_x0020_RECORD_x0020_NUMBER>490195</PROTONYM_x0020_RECORD_x0020_NUMBER>\r\n    <NAME_x0020_OF_x0020_FUNGUS_x0020_FUNDIC_x0020_RECORD_x0020_NUMBER>18195</NAME_x0020_OF_x0020_FUNGUS_x0020_FUNDIC_x0020_RECORD_x0020_NUMBER>\r\n    <SQLTimeStamp>AAAAAAhgM/s=</SQLTimeStamp>\r\n    <UpdatedBy />\r\n    <AddedBy />\r\n    <UpdatedDate>2025-08-27T09:57:26.403+01:00</UpdatedDate>\r\n    <AddedDate>2002-09-09T09:58:00+01:00</AddedDate>\r\n    <UUID>c9dabe36-6366-4d5f-9ade-137a41409a61</UUID>\r\n    <NAME_x0020_STATUS>Legitimate</NAME_x0020_STATUS>\r\n  </IndexFungorum>\r\n</NewDataSet>",
+ "full": {
+  "438797": {
+   "url": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameFullByKey?NameLsid=urn%3Alsid%3Aindexfungorum.org%3Anames%3A438797",
+   "xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<string xmlns=\"http://Cabi/FungusServer/\">Paxillus filamentosus (Scop.) Fr.1838</string>"
+  }
+ },
+ "searchUrl": "http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameSearch?SearchText=Paxillus+filamentosus&AnywhereInText=false&MaxNumber=20"
+}

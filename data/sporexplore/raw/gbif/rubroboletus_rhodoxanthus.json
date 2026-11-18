@@ -1,0 +1,193 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 7487519,
+  "scientificName": "Rubroboletus rhodoxanthus (Krombh.) Kuan Zhao & Zhu L.Yang",
+  "canonicalName": "Rubroboletus rhodoxanthus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Rubroboletus",
+  "species": "Rubroboletus rhodoxanthus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7475215,
+  "speciesKey": 7487519,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Rubroboletus+rhodoxanthus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 22,
+  "NO": 12,
+  "SE": 75,
+  "FI": 0,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 7487519,
+  "nubKey": 7487519,
+  "nameKey": 17472028,
+  "taxonID": "gbif:7487519",
+  "sourceTaxonKey": 176035251,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Rubroboletus",
+  "species": "Rubroboletus rhodoxanthus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7475215,
+  "speciesKey": 7487519,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 7475215,
+  "parent": "Rubroboletus",
+  "basionymKey": 6016327,
+  "basionym": "Boletus sanguineus var. rhodoxanthus Krombh.",
+  "scientificName": "Rubroboletus rhodoxanthus (Krombh.) Kuan Zhao & Zhu L.Yang",
+  "canonicalName": "Rubroboletus rhodoxanthus",
+  "vernacularName": "Ruddy Bolete",
+  "authorship": "(Krombh.) Kuan Zhao & Zhu L.Yang",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2014). Phytotaxa 188(2): 70.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:07.373+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 7487519,
+   "vernacularName": "Ruddy Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877209
+  },
+  {
+   "taxonKey": 7487519,
+   "vernacularName": "Rødgul rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877209
+  },
+  {
+   "taxonKey": 7487519,
+   "vernacularName": "Rødgul rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905032
+  },
+  {
+   "taxonKey": 7487519,
+   "vernacularName": "papegøyerørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877209
+  },
+  {
+   "taxonKey": 7487519,
+   "vernacularName": "papegøyerøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877209
+  },
+  {
+   "taxonKey": 7487519,
+   "vernacularName": "rosensopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877209
+  },
+  {
+   "taxonKey": 7487519,
+   "vernacularName": "Ruddy Bolete",
+   "language": "eng",
+   "source": "The IUCN Red List of Threatened Species",
+   "sourceTaxonKey": 176751662,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7487519,
+   "vernacularName": "papegøyerørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069589,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7487519,
+   "vernacularName": "papegøyerøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069589,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7487519,
+   "vernacularName": "rosensopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019220,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7487519,
+   "vernacularName": "rosensopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691143,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7487519,
+   "vernacularName": "rosensopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329737,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7487519,
+   "vernacularName": "Papegøyerørsopp",
+   "language": "nor",
+   "source": "The IUCN Red List of Threatened Species",
+   "sourceTaxonKey": 176751662,
+   "preferred": false
+  },
+  {
+   "taxonKey": 7487519,
+   "vernacularName": "Rosensopp",
+   "language": "swe",
+   "source": "The IUCN Red List of Threatened Species",
+   "sourceTaxonKey": 176751662,
+   "preferred": false
+  }
+ ]
+}

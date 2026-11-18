@@ -1,0 +1,233 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 3355021,
+  "scientificName": "Suillellus luridus (Schaeff.) Murrill",
+  "canonicalName": "Suillellus luridus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; nextMatch=5",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 8313026,
+    "acceptedUsageKey": 8019387,
+    "scientificName": "Suillellus lupinus (Fr.) Blanco-Dios",
+    "canonicalName": "Suillellus lupinus",
+    "rank": "SPECIES",
+    "status": "SYNONYM",
+    "confidence": 93,
+    "note": "Similarity: name=90; authorship=0; classification=4; rank=6; status=0; score=100",
+    "matchType": "FUZZY",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Boletaceae",
+    "genus": "Rubroboletus",
+    "species": "Rubroboletus lupinus",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8789,
+    "genusKey": 7475215,
+    "speciesKey": 8019387,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Suillellus",
+  "species": "Suillellus luridus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7240504,
+  "speciesKey": 3355021,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Suillellus+luridus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 2746,
+  "NO": 306,
+  "SE": 2530,
+  "FI": 66,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 3355021,
+  "nubKey": 3355021,
+  "nameKey": 10875119,
+  "taxonID": "gbif:3355021",
+  "sourceTaxonKey": 176034854,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Suillellus",
+  "species": "Suillellus luridus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7240504,
+  "speciesKey": 3355021,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 7240504,
+  "parent": "Suillellus",
+  "basionymKey": 7988694,
+  "basionym": "Boletus luridus Schaeff.",
+  "scientificName": "Suillellus luridus (Schaeff.) Murrill",
+  "canonicalName": "Suillellus luridus",
+  "vernacularName": "Lurid Bolete",
+  "authorship": "(Schaeff.) Murrill",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1909). Mycologia 1(1): 17.",
+  "numDescendants": 6,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:04.967+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "Kovara",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876648
+  },
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "Lurid Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222045130
+  },
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "Lurid Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876648
+  },
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "Lurid Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011274
+  },
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "Netstokket indigorørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905165
+  },
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "Netstokket indigorørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876648
+  },
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "eldrøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876648
+  },
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "eldsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876648
+  },
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "ildrørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876648
+  },
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "tauriontatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258013020
+  },
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "tauriontatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876648
+  },
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "eldrøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069610,
+   "preferred": true
+  },
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "eldsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019207,
+   "preferred": true
+  },
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "ildrørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069610,
+   "preferred": true
+  },
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "Kovara",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945888,
+   "preferred": false
+  },
+  {
+   "taxonKey": 3355021,
+   "vernacularName": "Lurid Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945888,
+   "preferred": false
+  }
+ ]
+}

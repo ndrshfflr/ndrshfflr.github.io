@@ -1,0 +1,258 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 2524528,
+  "scientificName": "Leccinum vulpinum Watling",
+  "canonicalName": "Leccinum vulpinum",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinum",
+  "species": "Leccinum vulpinum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2520104,
+  "speciesKey": 2524528,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Leccinum+vulpinum&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 149,
+  "NO": 696,
+  "SE": 1913,
+  "FI": 372,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 2524528,
+  "nubKey": 2524528,
+  "nameKey": 6069599,
+  "taxonID": "gbif:2524528",
+  "sourceTaxonKey": 172027385,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinum",
+  "species": "Leccinum vulpinum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2520104,
+  "speciesKey": 2524528,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2520104,
+  "parent": "Leccinum",
+  "scientificName": "Leccinum vulpinum Watling",
+  "canonicalName": "Leccinum vulpinum",
+  "vernacularName": "Foxy Bolete",
+  "authorship": "Watling",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1961). Trans. & Proc. Bot. Soc. Edinb. 39(2): 197 (’1959-60′).",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:09.643+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "Foxy Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011337
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "Foxy Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880226
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "Foxy Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222043979
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "Fyrre-skælrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880226
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "Fyrre-skælrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905195
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "bartreskrubb",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880226
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "furuskrubb",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880226
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "granskrubb",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880226
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "gransopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880226
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "männynpunikkitatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012936
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "männynpunikkitatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880226
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "rävsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880226
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "tallsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880226
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "Foxy Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101966,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "bartreskrubb",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069472,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "tallsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019358,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "Foxy Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945605,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "furuskrubb",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069472,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "furuskrubb",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069472,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "granskrubb",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069472,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "granskrubb",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069472,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "gransopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019358,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524528,
+   "vernacularName": "rävsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019358,
+   "preferred": false
+  }
+ ]
+}

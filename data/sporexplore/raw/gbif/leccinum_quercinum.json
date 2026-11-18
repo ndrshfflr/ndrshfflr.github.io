@@ -1,0 +1,366 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 8142395,
+  "acceptedUsageKey": 2524513,
+  "scientificName": "Leccinum quercinum (Pilát) E.E.Green & Watling",
+  "canonicalName": "Leccinum quercinum",
+  "rank": "SPECIES",
+  "status": "SYNONYM",
+  "confidence": 99,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=0; score=120; 2 synonym homonyms; nextMatch=0",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 8367699,
+    "acceptedUsageKey": 2524513,
+    "scientificName": "Leccinum quercinum Pilát",
+    "canonicalName": "Leccinum quercinum",
+    "rank": "SPECIES",
+    "status": "SYNONYM",
+    "confidence": 99,
+    "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=0; score=120",
+    "matchType": "EXACT",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Boletaceae",
+    "genus": "Leccinum",
+    "species": "Leccinum aurantiacum",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8789,
+    "genusKey": 2520104,
+    "speciesKey": 2524513,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinum",
+  "species": "Leccinum aurantiacum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2520104,
+  "speciesKey": 2524513,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Leccinum+quercinum&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 441,
+  "NO": 675,
+  "SE": 2513,
+  "FI": 279,
+  "IS": 1,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 8142395,
+  "nubKey": 8142395,
+  "nameKey": 17472050,
+  "taxonID": "gbif:8142395",
+  "sourceTaxonKey": 176035819,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinum",
+  "species": "Leccinum aurantiacum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2520104,
+  "speciesKey": 2524513,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2520104,
+  "parent": "Leccinum",
+  "acceptedKey": 2524513,
+  "accepted": "Leccinum aurantiacum (Bull.) Gray",
+  "scientificName": "Leccinum quercinum (Pilát) E.E.Green & Watling",
+  "canonicalName": "Leccinum quercinum",
+  "authorship": "(Pilát) E.E.Green & Watling",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "SYNONYM",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1969). Notes R. Bot. Gdn Edinb. 29(2): 265.",
+  "numDescendants": 0,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:09.308+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Copper-Top",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880549
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Lehtopunikkitatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880549
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Orange Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880549
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Orange Oak Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880549
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Orange Oak Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011338
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Orange Oak Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Martha's Vineyard species checklist",
+   "sourceTaxonKey": 202601021
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Orange Oak Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222044529
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Orange aspe-rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880549
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Orange aspe-rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905211
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Orange-capped Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880549
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Red-capped Scaber Stalk",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880549
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Rustrød skælrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880549
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Rustrød skælrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905211
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "aspsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880549
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "brun aspsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880549
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "eikeskrubb",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880549
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "eksopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880549
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "tammenpunikkitatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880549
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Orange Bolete",
+   "language": "eng",
+   "country": "US",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011338,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Orange Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101852,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Orange Bolete",
+   "language": "eng",
+   "country": "US",
+   "source": "Martha's Vineyard species checklist",
+   "sourceTaxonKey": 202601021,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Red-capped Scaber Stalk",
+   "language": "eng",
+   "country": "US",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011338,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Red-capped Scaber Stalk",
+   "language": "eng",
+   "country": "US",
+   "source": "Martha's Vineyard species checklist",
+   "sourceTaxonKey": 202601021,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "aspsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019380,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "eikeskrubb",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069465,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "eikeskrubb",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069465,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Copper-Top",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945637,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Orange Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945637,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Orange Oak Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101852,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Orange Oak Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945637,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Orange-capped Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945637,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "Red-capped Scaber Stalk",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945637,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524513,
+   "vernacularName": "eksopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019380,
+   "preferred": false
+  }
+ ]
+}

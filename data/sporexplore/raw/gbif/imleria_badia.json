@@ -1,0 +1,222 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 7832732,
+  "scientificName": "Imleria badia (Fr.) Vizzini",
+  "canonicalName": "Imleria badia",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Imleria",
+  "species": "Imleria badia",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7621106,
+  "speciesKey": 7832732,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Imleria+badia&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 5933,
+  "NO": 2195,
+  "SE": 8197,
+  "FI": 762,
+  "IS": 1,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 7832732,
+  "nubKey": 7832732,
+  "nameKey": 5563403,
+  "taxonID": "gbif:7832732",
+  "sourceTaxonKey": 172027074,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Imleria",
+  "species": "Imleria badia",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7621106,
+  "speciesKey": 7832732,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 7621106,
+  "parent": "Imleria",
+  "basionymKey": 11102263,
+  "basionym": "Boletus castaneus subsp. badius Fr.",
+  "scientificName": "Imleria badia (Fr.) Vizzini",
+  "canonicalName": "Imleria badia",
+  "vernacularName": "Bay Bolete",
+  "authorship": "(Fr.) Vizzini",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2014). Index Fungorum 147: 1.",
+  "numDescendants": 18,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:08.734+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "Bay Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011247
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "Bay Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299879998
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "Bay Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222043692
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "Bay Boletus",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299879998
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "Brunstokket rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905125
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "Brunstokket rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299879998
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "brunsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299879998
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "ruskotatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258013037
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "ruskotatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299879998
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "svartbrun rørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299879998
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "svartbrun røyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299879998
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "Bay Bolete",
+   "language": "eng",
+   "source": "The IUCN Red List of Threatened Species",
+   "sourceTaxonKey": 176751671,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "brunsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019264,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "svartbrun rørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069596,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "svartbrun røyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069596,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "Bay Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945571,
+   "preferred": false
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "Bay Boletus",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945571,
+   "preferred": false
+  },
+  {
+   "taxonKey": 7832732,
+   "vernacularName": "Brunsopp",
+   "language": "swe",
+   "source": "The IUCN Red List of Threatened Species",
+   "sourceTaxonKey": 176751671,
+   "preferred": false
+  }
+ ]
+}

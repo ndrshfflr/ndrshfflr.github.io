@@ -1,0 +1,148 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 8352057,
+  "scientificName": "Imperator rhodopurpureus (Smotl.) Assyov, Bellanger, Bertéa, Courtec., Koller, Loizides, G.Marques, J.A.Muñoz, Oppicelli, D.Puddu, F.Rich. & P.-A.Moreau",
+  "canonicalName": "Imperator rhodopurpureus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Imperator",
+  "species": "Imperator rhodopurpureus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7952542,
+  "speciesKey": 8352057,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Imperator+rhodopurpureus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 19,
+  "NO": 0,
+  "SE": 122,
+  "FI": 0,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 8352057,
+  "nubKey": 8352057,
+  "nameKey": 32673110,
+  "taxonID": "gbif:8352057",
+  "sourceTaxonKey": 172027137,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Imperator",
+  "species": "Imperator rhodopurpureus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7952542,
+  "speciesKey": 8352057,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 7952542,
+  "parent": "Imperator",
+  "basionymKey": 5954963,
+  "basionym": "Boletus rhodopurpureus Smotl.",
+  "scientificName": "Imperator rhodopurpureus (Smotl.) Assyov, Bellanger, Bertéa, Courtec., Koller, Loizides, G.Marques, J.A.Muñoz, Oppicelli, D.Puddu, F.Rich. & P.-A.Moreau",
+  "canonicalName": "Imperator rhodopurpureus",
+  "vernacularName": "Oldrose Bolete",
+  "authorship": "(Smotl.) Assyov, Bellanger, Bertéa, Courtec., Koller, Loizides, G.Marques, J.A.Muñoz, Oppicelli, D.Puddu, F.Rich. & P.-A.Moreau",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2015). Index Fungorum 243: 1.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:03.379+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 8352057,
+   "vernacularName": "Oldrose Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884457
+  },
+  {
+   "taxonKey": 8352057,
+   "vernacularName": "Oldrose Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222043729
+  },
+  {
+   "taxonKey": 8352057,
+   "vernacularName": "Purpur-rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905119
+  },
+  {
+   "taxonKey": 8352057,
+   "vernacularName": "Purpur-rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884457
+  },
+  {
+   "taxonKey": 8352057,
+   "vernacularName": "purpursopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884457
+  },
+  {
+   "taxonKey": 8352057,
+   "vernacularName": "purpursopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691078,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8352057,
+   "vernacularName": "purpursopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329679,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8352057,
+   "vernacularName": "purpursopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019260,
+   "preferred": true
+  }
+ ]
+}

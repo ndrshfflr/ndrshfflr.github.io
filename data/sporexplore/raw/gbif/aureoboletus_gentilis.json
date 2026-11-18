@@ -1,0 +1,223 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 2524374,
+  "scientificName": "Aureoboletus gentilis (Quél.) Pouzar",
+  "canonicalName": "Aureoboletus gentilis",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Aureoboletus",
+  "species": "Aureoboletus gentilis",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2519406,
+  "speciesKey": 2524374,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Aureoboletus+gentilis&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 413,
+  "NO": 41,
+  "SE": 351,
+  "FI": 3,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 2524374,
+  "nubKey": 2524374,
+  "nameKey": 1211366,
+  "taxonID": "gbif:2524374",
+  "sourceTaxonKey": 176035998,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Aureoboletus",
+  "species": "Aureoboletus gentilis",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2519406,
+  "speciesKey": 2524374,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2519406,
+  "parent": "Aureoboletus",
+  "basionymKey": 5955000,
+  "basionym": "Boletus sanguineus var. gentilis Quél.",
+  "scientificName": "Aureoboletus gentilis (Quél.) Pouzar",
+  "canonicalName": "Aureoboletus gentilis",
+  "vernacularName": "Gilded Bolete",
+  "authorship": "(Quél.) Pouzar",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1957). ČEská Mykol. 11(1): 48.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:03.517+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "Gilded Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884098
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "Gilded Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222042621
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "Guldrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905109
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "Guldrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884098
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "Kantotatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884098
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "Lille guldrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884098
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "Lille guldrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905109
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "gullrørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884098
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "gullrøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884098
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "gyllensopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884098
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "kultatatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012966
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "kultatatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884098
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "Gilded Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180102312,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "gullrørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069570,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "gullrøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069570,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "gyllensopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691226,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "gyllensopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019327,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524374,
+   "vernacularName": "gyllensopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329776,
+   "preferred": true
+  }
+ ]
+}

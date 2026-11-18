@@ -1,0 +1,230 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 9225326,
+  "scientificName": "Strobilomyces strobilaceus (Scop.) Berk.",
+  "canonicalName": "Strobilomyces strobilaceus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Strobilomyces",
+  "species": "Strobilomyces strobilaceus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2524323,
+  "speciesKey": 9225326,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Strobilomyces+strobilaceus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 1042,
+  "NO": 25,
+  "SE": 902,
+  "FI": 3,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 9225326,
+  "nubKey": 9225326,
+  "nameKey": 10834583,
+  "taxonID": "gbif:9225326",
+  "sourceTaxonKey": 172022980,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Strobilomyces",
+  "species": "Strobilomyces strobilaceus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2524323,
+  "speciesKey": 9225326,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2524323,
+  "parent": "Strobilomyces",
+  "basionymKey": 5239577,
+  "basionym": "Boletus strobilaceus Scop.",
+  "scientificName": "Strobilomyces strobilaceus (Scop.) Berk.",
+  "canonicalName": "Strobilomyces strobilaceus",
+  "vernacularName": "Old Man of The Woods",
+  "authorship": "(Scop.) Berk.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1851). Hooker’s J. Bot. Kew Gard. Misc. 3: 78.",
+  "numDescendants": 6,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:00:59.955+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "Koglerørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905188
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "Koglerørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876974
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "Old Man Of The Woods",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011325
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "Old Man Of The Woods",
+   "language": "eng",
+   "country": "GB",
+   "source": "Martha's Vineyard species checklist",
+   "sourceTaxonKey": 202601016
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "Old Man Of The Woods",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876974
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "Old Man of The Woods",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222045005
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "Old-man-of-the-woods",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876974
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "Suomutatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876974
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "fjällsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876974
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "skjellrørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876974
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "skjelrøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876974
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "Old Man Of The Woods",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101322,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "fjällsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019336,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "skjellrørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069443,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "skjelrøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069443,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "Old Man of The Woods",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101322,
+   "preferred": false
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "Old Man of the Woods",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101322,
+   "preferred": false
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "Old Man of the Woods",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945877,
+   "preferred": false
+  },
+  {
+   "taxonKey": 9225326,
+   "vernacularName": "Old-man-of-the-woods",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945877,
+   "preferred": false
+  }
+ ]
+}

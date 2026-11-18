@@ -1,0 +1,205 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 2519413,
+  "scientificName": "Xerocomellus chrysenteron (Bull.) Šutara",
+  "canonicalName": "Xerocomellus chrysenteron",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Xerocomellus",
+  "species": "Xerocomellus chrysenteron",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7240529,
+  "speciesKey": 2519413,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Xerocomellus+chrysenteron&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 2213,
+  "NO": 699,
+  "SE": 3651,
+  "FI": 31,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 2519413,
+  "nubKey": 2519413,
+  "nameKey": 11896158,
+  "taxonID": "gbif:2519413",
+  "sourceTaxonKey": 172022071,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Xerocomellus",
+  "species": "Xerocomellus chrysenteron",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7240529,
+  "speciesKey": 2519413,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 7240529,
+  "parent": "Xerocomellus",
+  "basionymKey": 5954956,
+  "basionym": "Boletus chrysenteron Bull.",
+  "scientificName": "Xerocomellus chrysenteron (Bull.) Šutara",
+  "canonicalName": "Xerocomellus chrysenteron",
+  "vernacularName": "Red cracking bolete",
+  "authorship": "(Bull.) Šutara",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2008). Czech Mycol. 60(1): 49.",
+  "numDescendants": 9,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:02.362+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "Red cracking bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875851
+  },
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "Red-cracking Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875851
+  },
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "Rødsprukken rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875851
+  },
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "Rødsprukken rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905025
+  },
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "rusoruututatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875851
+  },
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "rusoruututatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258013051
+  },
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "ruterørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875851
+  },
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "ruterøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875851
+  },
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "rutsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875851
+  },
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "ruututatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875851
+  },
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "Red-cracking Bolete",
+   "language": "eng",
+   "country": "US",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011267,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "ruterørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069690,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "ruterøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069690,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "rutsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019252,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "Red cracking bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945929,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2519413,
+   "vernacularName": "Red-cracking Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945929,
+   "preferred": false
+  }
+ ]
+}

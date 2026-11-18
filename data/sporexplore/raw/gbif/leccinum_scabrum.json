@@ -1,0 +1,367 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 9141390,
+  "scientificName": "Leccinum scabrum (Bull.) Gray",
+  "canonicalName": "Leccinum scabrum",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinum",
+  "species": "Leccinum scabrum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2520104,
+  "speciesKey": 9141390,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Leccinum+scabrum&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 2466,
+  "NO": 6339,
+  "SE": 12288,
+  "FI": 1682,
+  "IS": 236,
+  "FO": 1,
+  "GL": 95
+ },
+ "species": {
+  "key": 9141390,
+  "nubKey": 9141390,
+  "nameKey": 6068956,
+  "taxonID": "gbif:9141390",
+  "sourceTaxonKey": 172027481,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinum",
+  "species": "Leccinum scabrum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2520104,
+  "speciesKey": 9141390,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2520104,
+  "parent": "Leccinum",
+  "basionymKey": 8949516,
+  "basionym": "? scabrum Bull.",
+  "scientificName": "Leccinum scabrum (Bull.) Gray",
+  "canonicalName": "Leccinum scabrum",
+  "vernacularName": "Brown Birch Bolete",
+  "authorship": "(Bull.) Gray",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1821). Nat. Arr. Brit. Pl. (London) 1: 647.",
+  "numDescendants": 6,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:09.874+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Blushing Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Brown Birch Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Brown Birch Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222044129
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Brown Birch Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011332
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Brown Birch-Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Brun skælrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Brun skælrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905208
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Mørk skælrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Rødmende birke-rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Rødmende birke-rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905208
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "björksopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "brunskrubb",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "fjellskrubb",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "klæbpils",
+   "language": "nor",
+   "source": "Nordic plant uses from Gunnerus and Høeg",
+   "sourceTaxonKey": 164941658
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "klæbsopp",
+   "language": "nor",
+   "source": "Nordic plant uses from Gunnerus and Høeg",
+   "sourceTaxonKey": 164941658
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "lehmäntatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012947
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "lehmäntatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "mörk björksopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "rodnande strävsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "rusolehmäntatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "rødnende brunskrubb",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "strävsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "vaivaislehmäntatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880417
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Brown Birch Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101669,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "björksopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019382,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "brunskrubb",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069487,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "brunskrubb",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069487,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Blushing Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101669,
+   "preferred": false
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Blushing Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011332,
+   "preferred": false
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Blushing Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945626,
+   "preferred": false
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Brown Birch Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945626,
+   "preferred": false
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Brown Birch-Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945626,
+   "preferred": false
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Brown Birch-Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101669,
+   "preferred": false
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "Mørk skælrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019382,
+   "preferred": false
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "mörk björksopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019382,
+   "preferred": false
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "rodnande strävsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019382,
+   "preferred": false
+  },
+  {
+   "taxonKey": 9141390,
+   "vernacularName": "strävsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019382,
+   "preferred": false
+  }
+ ]
+}
