@@ -1,8 +1,8 @@
 /* ==========================================================================
    The world's reading pages: the Labdiary (blog.html), a post (post.html),
-   the CV and other extra pages (page.html), Bioinformatics.
+   Bioinformatics.
    - Labdiary: the topic buttons filter the posts
-   - post / page: reads the markdown from content/ and shows it
+   - post: reads the markdown from content/posts/ and shows it
    The sky, header and rune language come from assets/world.js.
    ========================================================================== */
 (function () {
@@ -25,8 +25,8 @@
     });
   });
 
-  /* the EN / DA links keep the post or page you're reading */
-  if ((kind === 'post' || kind === 'page') && location.search) {
+  /* the EN / DA links keep the post you're reading */
+  if (kind === 'post' && location.search) {
     W.$$('.lang[data-mode="en"], .lang[data-mode="da"]').forEach(function (a) {
       a.setAttribute('href', a.getAttribute('href').split('?')[0] + location.search);
     });
@@ -47,10 +47,10 @@
     });
     return;
   }
-  if (kind !== 'post' && kind !== 'page') return;
+  if (kind !== 'post') return;
 
-  /* ------------------------------------------------------------------ post / page */
-  var title = '', titleKey = kind === 'post' ? 'post-title' : 'page-title';
+  /* ------------------------------------------------------------------ post */
+  var title = '', titleKey = 'post-title';
   function showTitle() { W.say(titleKey, title || U().loading || ''); }
   W.onRender(showTitle);
   function setTitle(t) {
@@ -70,16 +70,6 @@
       .then(function (r) { if (!r.ok) throw new Error('404'); return r.text(); })
       .then(function (text) { done(window.SiteMD.parseFrontmatter(text)); })
       .catch(notFound);
-  }
-
-  if (kind === 'page') {
-    /* the CV moved to its own page (cv.html); old links land there */
-    if (slug === 'cv') { location.replace((W.page === 'da' ? 'cv.da.html' : 'cv.html') + location.hash); return; }
-    load('content/pages/' + slug + '.md', function (parsed) {
-      setTitle(parsed.meta.title || slug);
-      $('pg-body').innerHTML = window.SiteMD.render(parsed.body);
-    });
-    return;
   }
 
   load('content/posts/' + slug + '.md', function (parsed) {

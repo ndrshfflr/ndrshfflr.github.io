@@ -72,8 +72,6 @@ footer a{color:var(--dim)}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>{{ email }}</a>{% endif %}
     {% if phone %}<a class="btn" href="tel:{{ phone | replace(' ', '') }}">{{ phone }}</a>{% endif %}
     <div class="grid">
-      <a class="btn" href="{{ services_href }}">{{ ui.services }}</a>
-      <a class="btn" href="{{ fungi_href }}">{{ ui.fungi }}</a>
       <a class="btn" href="{{ cv_href }}">{{ ui.cv }}</a>
       {% for s in socials %}<a class="btn" href="{{ s.url }}" rel="noopener">{{ s.label | capitalize }}</a>{% endfor %}
     </div>
