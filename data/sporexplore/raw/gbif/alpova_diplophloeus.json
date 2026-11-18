@@ -1,0 +1,132 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 2525556,
+  "scientificName": "Alpova diplophloeus (Zeller & C.W.Dodge) Trappe & A.H.Sm.",
+  "canonicalName": "Alpova diplophloeus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Paxillaceae",
+  "genus": "Alpova",
+  "species": "Alpova diplophloeus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4195,
+  "genusKey": 2525555,
+  "speciesKey": 2525556,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Alpova+diplophloeus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 0,
+  "NO": 7,
+  "SE": 8,
+  "FI": 1,
+  "IS": 0,
+  "FO": 0,
+  "GL": 4
+ },
+ "species": {
+  "key": 2525556,
+  "nubKey": 2525556,
+  "nameKey": 17256244,
+  "taxonID": "gbif:2525556",
+  "sourceTaxonKey": 172019429,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Paxillaceae",
+  "genus": "Alpova",
+  "species": "Alpova diplophloeus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4195,
+  "genusKey": 2525555,
+  "speciesKey": 2525556,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2525555,
+  "parent": "Alpova",
+  "basionymKey": 2525557,
+  "basionym": "Rhizopogon diplophloeus Zeller & C.W.Dodge",
+  "scientificName": "Alpova diplophloeus (Zeller & C.W.Dodge) Trappe & A.H.Sm.",
+  "canonicalName": "Alpova diplophloeus",
+  "authorship": "(Zeller & C.W.Dodge) Trappe & A.H.Sm.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1975). Beih. Nova Hedwigia 51: 286.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:12.094+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2525556,
+   "vernacularName": "dvergslimknoll",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299872858
+  },
+  {
+   "taxonKey": 2525556,
+   "vernacularName": "dvergslimknoll",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069310,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2525556,
+   "vernacularName": "dvergslimknoll",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069310,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2525556,
+   "vernacularName": "gelétryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691348,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2525556,
+   "vernacularName": "falsk slemtryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691348,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2525556,
+   "vernacularName": "geletryffél",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691348,
+   "preferred": false
+  }
+ ]
+}

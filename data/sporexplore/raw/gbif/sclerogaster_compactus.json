@@ -1,0 +1,137 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 5239752,
+  "scientificName": "Sclerogaster compactus (Tul. & C.Tul.) Sacc.",
+  "canonicalName": "Sclerogaster compactus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Sclerogastraceae",
+  "genus": "Sclerogaster",
+  "species": "Sclerogaster compactus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4196,
+  "genusKey": 9240286,
+  "speciesKey": 5239752,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Sclerogaster+compactus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 1,
+  "NO": 4,
+  "SE": 13,
+  "FI": 3,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 5239752,
+  "nubKey": 5239752,
+  "nameKey": 17256609,
+  "taxonID": "gbif:5239752",
+  "sourceTaxonKey": 172017819,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Sclerogastraceae",
+  "genus": "Sclerogaster",
+  "species": "Sclerogaster compactus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4196,
+  "genusKey": 9240286,
+  "speciesKey": 5239752,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 9240286,
+  "parent": "Sclerogaster",
+  "basionymKey": 2524927,
+  "basionym": "Octaviania compacta Tul. & C.Tul.",
+  "scientificName": "Sclerogaster compactus (Tul. & C.Tul.) Sacc.",
+  "canonicalName": "Sclerogaster compactus",
+  "authorship": "(Tul. & C.Tul.) Sacc.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1895). Syll. Fung. (Abellini) 11: 170.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:12.729+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 5239752,
+   "vernacularName": "gul strøknoll",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871367
+  },
+  {
+   "taxonKey": 5239752,
+   "vernacularName": "hårdtryffel",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871367
+  },
+  {
+   "taxonKey": 5239752,
+   "vernacularName": "luumukula",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258020372
+  },
+  {
+   "taxonKey": 5239752,
+   "vernacularName": "luumukula",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871367
+  },
+  {
+   "taxonKey": 5239752,
+   "vernacularName": "gul strøknoll",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168068958,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239752,
+   "vernacularName": "hårdtryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320322304,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239752,
+   "vernacularName": "hårdtryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160009156,
+   "preferred": true
+  }
+ ]
+}
