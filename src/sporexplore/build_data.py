@@ -130,15 +130,22 @@ def parse_spores(text):
 
 # ------------------------------------------------------------------ Svampeatlas
 def sa_record(name):
+    """The Svampeatlas taxon whose FullName is exactly `name` — or, if that is a synonym,
+    its accepted taxon. Never another taxon from the search results (varieties, look-alikes)."""
     r = raw("svampeatlas", name)
     if not r or not r.get("taxa"):
         return None
-    taxa = [t["data"] for t in r["taxa"].values() if isinstance(t.get("data"), dict) and not t["data"].get("_error")]
-    if not taxa:
+    taxa = {t["data"].get("_id"): t["data"] for t in r["taxa"].values()
+            if isinstance(t.get("data"), dict) and not t["data"].get("_error")}
+    exact = [t for t in taxa.values() if (t.get("FullName") or "").strip() == name]
+    if not exact:
         return None
-    # prefer the accepted taxon that carries attributes
-    taxa.sort(key=lambda t: (t.get("_id") != t.get("accepted_id"), not t.get("attributes")))
-    return {"taxon": taxa[0], "retrieved": r.get("retrieved"), "all": taxa}
+    t = exact[0]
+    via = None
+    if t.get("accepted_id") and t["accepted_id"] != t.get("_id") and t["accepted_id"] in taxa:
+        via = t.get("FullName")
+        t = taxa[t["accepted_id"]]
+    return {"taxon": t, "retrieved": r.get("retrieved"), "via": via}
 
 
 def sa_measurements(sa):
