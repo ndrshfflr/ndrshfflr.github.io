@@ -1,1 +1,1 @@
-names,if,refs,files,dois
+files,dois
