@@ -15864,7 +15864,7 @@
   "flags": [
    {
     "k": "nomen-sa",
-    "t": "Svampeatlas uses Chroogomphus rutilus i bred forstand "
+    "t": "Svampeatlas uses Chroogomphus rutilus i bred forstand"
    },
    {
     "k": "cross-check",
@@ -21905,7 +21905,34 @@
   ],
   "flags": [],
   "nomen": {
-   "gbif": null,
+   "gbif": {
+    "key": 3301120,
+    "acceptedKey": 3301120,
+    "matchType": "EXACT",
+    "status": "ACCEPTED",
+    "scientificName": "Boletinus asiaticus Singer",
+    "accepted": null,
+    "family": "Suillaceae",
+    "counts": {
+     "DK": 0,
+     "NO": 0,
+     "SE": 6,
+     "FI": 137,
+     "IS": 0,
+     "FO": 0,
+     "GL": 0
+    },
+    "vernacular": [
+     [
+      "fin",
+      "punaonttotatti"
+     ]
+    ],
+    "retrieved": "2026-11-18",
+    "countNames": [
+     "Boletinus asiaticus"
+    ]
+   },
    "if": null,
    "sa": {
     "id": 61577,

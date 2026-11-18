@@ -554,8 +554,8 @@ function viewCompare(main){
 /* ================================================================ SOURCES & METHOD */
 function viewSources(main){
   const all=Object.entries(X.sources);
-  const lit=all.filter(([,s])=>s.type!=='database-entry').sort((a,b)=>a[1].apa.replace(/<[^>]+>/g,'').localeCompare(b[1].apa.replace(/<[^>]+>/g,'')));
-  const db=all.filter(([,s])=>s.type==='database-entry').sort((a,b)=>a[1].apa.replace(/<[^>]+>/g,'').localeCompare(b[1].apa.replace(/<[^>]+>/g,'')));
+  const lit=all.filter(([,s])=>s.type!=='database-entry').sort((a,b)=>a[1].apa.replace(/<[^>]+>/g,'').toLowerCase().localeCompare(b[1].apa.replace(/<[^>]+>/g,'').toLowerCase()));
+  const db=all.filter(([,s])=>s.type==='database-entry').sort((a,b)=>a[1].apa.replace(/<[^>]+>/g,'').toLowerCase().localeCompare(b[1].apa.replace(/<[^>]+>/g,'').toLowerCase()));
   const changed=SPECIES.filter(s=>s.legacy&&!s.legacyOnly), legacyOnly=SPECIES.filter(s=>s.legacyOnly), added=SPECIES.filter(s=>s.origin==='added');
   main.innerHTML=`<div class="prose">
   <h2 style="margin-top:0">How the spore values are sourced</h2>

@@ -443,9 +443,15 @@ def main():
         if sa:
             t = sa["taxon"]
             sid = f'SA-{t["_id"]}'
+            full = (t.get("FullName") or "").strip()
+            qual = ""
+            if " i bred forstand" in full:
+                full, qual = full.replace(" i bred forstand", ""), " i bred forstand [in the broad sense]"
+            auth = (t.get("Author") or "").strip()
+            auth = {"Contu & DessÏ": "Contu & Dessì", "den Bakker & Noordel": "den Bakker & Noordel."}.get(auth, auth)
             sources[sid] = {
                 "type": "database-entry", "org": "Danmarks Svampeatlas", "year": "n.d.",
-                "title": f'{ital(t.get("FullName"))}{" " + t["Author"] if t.get("Author") else ""}',
+                "title": f'{ital(full)}{" " + auth if auth else ""}{qual}',
                 "desc": "Taxon description", "site": "Danmarks Svampeatlas",
                 "url": f'https://svampe.databasen.org/taxon/{t["_id"]}',
                 "retrieved": sa["retrieved"] or today, "short": "Danmarks Svampeatlas, n.d."}
@@ -474,7 +480,11 @@ def main():
         sp["ext"] = {k: cons[k] for k in ("lmin", "lmax", "wmin", "wmax")} if cons else {}
 
         g = gbif_info(name)
-        if g and name in count_alias:
+        if not g and name in count_alias:
+            g = next((gbif_info(al) for al in count_alias[name] if gbif_info(al)), None)
+            if g:
+                g = dict(g, countNames=count_alias[name])
+        elif g and name in count_alias:
             g = dict(g, counts=dict(g["counts"]))
             for al in count_alias[name]:
                 ga = gbif_info(al)
@@ -506,7 +516,7 @@ def main():
         if sf and sf["current"] and sf["current"] != name:
             flags.append({"k": "nomen-sf", "t": f'Species Fungorum gives the current name as {sf["current"]}'})
         if sa and nomen["sa"]["name"] and nomen["sa"]["name"] != name:
-            flags.append({"k": "nomen-sa", "t": f'Svampeatlas uses {nomen["sa"]["name"]}'})
+            flags.append({"k": "nomen-sa", "t": f'Svampeatlas uses {nomen["sa"]["name"].strip()}'})
 
         flags += additions.get("flagsExtra", {}).get(name, [])
         rec = {k: v for k, v in s.items() if k not in ("src", "sp", "nordic")}
