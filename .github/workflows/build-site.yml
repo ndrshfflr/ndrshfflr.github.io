@@ -39,7 +39,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install the build tools
-        run: pip install "jinja2>=3.1,<4" "pyyaml>=6,<7"
+        run: pip install "jinja2>=3.1,<4" "pyyaml>=6,<7" "pillow>=10"   # pillow: the photo in card.vcf
 
       - name: Build the pages
         run: python3 src/build.py
