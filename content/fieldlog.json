@@ -128,6 +128,10 @@
     {
       "species": "Lepista nuda",
       "favourite": true
+    },
+    {
+      "species": "Sparassis crispa",
+      "cover": "https://svampe.databasen.org/uploads/2026-10649196_SJkgIU9Cfe.JPG"
     }
   ],
   "hide": [],
