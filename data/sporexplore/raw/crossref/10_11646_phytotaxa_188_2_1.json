@@ -1,0 +1,184 @@
+{
+ "retrieved": "2026-11-18",
+ "doi": "10.11646/phytotaxa.188.2.1",
+ "url": "https://api.crossref.org/works/10.11646/phytotaxa.188.2.1",
+ "message": {
+  "indexed": {
+   "date-parts": [
+    [
+     2026,
+     10,
+     27
+    ]
+   ],
+   "date-time": "2026-10-27T03:10:18Z",
+   "timestamp": 1793070618446,
+   "version": "4.5.0"
+  },
+  "reference-count": 0,
+  "publisher": "Magnolia Press",
+  "issue": "2",
+  "content-domain": {
+   "domain": [],
+   "crossmark-restriction": false
+  },
+  "short-container-title": [
+   "Phytotaxa"
+  ],
+  "abstract": "<jats:p>Rubroboletus is erected as a new genus to accommodate Boletus sinicus and its allies based on morphological and molecular evidence. Morphologically, Rubroboletus differs from the remaining genera in Boletaceae by the combination of a reddish pileal surface, an orange-red to blood red surface of the hymenophore, yellow tubes, pink to red reticula or spots on the yellow background of the stipe, a bluish color-change when injured, a non-amyloid context, smooth spores which are olive-brown in deposit, and an interwoven trichodermal pileipellis. Our phylogenetic analyses based on five gene markers (ITS, nrLSU, tef1-α, rpb1 and rpb2) recognized eight species in the genus, including one new species and seven new combinations. A key to the eight species is provided.</jats:p>",
+  "DOI": "10.11646/phytotaxa.188.2.1",
+  "type": "journal-article",
+  "created": {
+   "date-parts": [
+    [
+     2014,
+     12,
+     9
+    ]
+   ],
+   "date-time": "2014-12-09T23:41:22Z",
+   "timestamp": 1418168482000
+  },
+  "source": "Crossref",
+  "is-referenced-by-count": 50,
+  "title": [
+   "&lt;p class=\"p0\"&gt;A new genus, Rubroboletus, to accommodate Boletus sinicus and its allies"
+  ],
+  "prefix": "10.11646",
+  "volume": "188",
+  "author": [
+   {
+    "given": "Kuan",
+    "family": "Zhao",
+    "sequence": "first",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Gang",
+    "family": "Wu",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "ZhuLiang",
+    "family": "Yang",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   }
+  ],
+  "member": "4913",
+  "published-online": {
+   "date-parts": [
+    [
+     2014,
+     12,
+     10
+    ]
+   ]
+  },
+  "container-title": [
+   "Phytotaxa"
+  ],
+  "original-title": [],
+  "link": [
+   {
+    "URL": "https://phytotaxa.mapress.com/pt/article/download/phytotaxa.188.2.1/1663",
+    "content-type": "application/pdf",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   },
+   {
+    "URL": "https://phytotaxa.mapress.com/pt/article/download/phytotaxa.188.2.1/1663",
+    "content-type": "unspecified",
+    "content-version": "vor",
+    "intended-application": "similarity-checking"
+   }
+  ],
+  "deposited": {
+   "date-parts": [
+    [
+     2025,
+     12,
+     28
+    ]
+   ],
+   "date-time": "2025-12-28T23:26:26Z",
+   "timestamp": 1766964386000
+  },
+  "score": 1,
+  "resource": {
+   "primary": {
+    "URL": "https://phytotaxa.mapress.com/pt/article/view/phytotaxa.188.2.1"
+   }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+   "date-parts": [
+    [
+     2014,
+     12,
+     10
+    ]
+   ]
+  },
+  "references-count": 0,
+  "journal-issue": {
+   "issue": "2",
+   "published-online": {
+    "date-parts": [
+     [
+      2014,
+      12,
+      10
+     ]
+    ]
+   }
+  },
+  "URL": "https://doi.org/10.11646/phytotaxa.188.2.1",
+  "relation": {},
+  "ISSN": [
+   "1179-3163",
+   "1179-3155"
+  ],
+  "issn-type": [
+   {
+    "value": "1179-3163",
+    "type": "electronic"
+   },
+   {
+    "value": "1179-3155",
+    "type": "print"
+   }
+  ],
+  "subject": [],
+  "published": {
+   "date-parts": [
+    [
+     2014,
+     12,
+     10
+    ]
+   ]
+  }
+ },
+ "error": null
+}

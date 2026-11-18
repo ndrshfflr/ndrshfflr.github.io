@@ -1,0 +1,639 @@
+{
+ "retrieved": "2026-11-18",
+ "doi": "10.7872/crym.v32.iss1.2012.033",
+ "url": "https://api.crossref.org/works/10.7872/crym.v32.iss1.2012.033",
+ "message": {
+  "indexed": {
+   "date-parts": [
+    [
+     2026,
+     10,
+     6
+    ]
+   ],
+   "date-time": "2026-10-06T00:03:39Z",
+   "timestamp": 1791245019102,
+   "version": "4.1.0"
+  },
+  "reference-count": 49,
+  "publisher": "Museum National d'Histoire Naturelle, Paris, France",
+  "issue": "1",
+  "content-domain": {
+   "domain": [],
+   "crossmark-restriction": false
+  },
+  "short-container-title": [
+   "Cryptogamie, Mycologie"
+  ],
+  "published-print": {
+   "date-parts": [
+    [
+     2011,
+     3
+    ]
+   ]
+  },
+  "DOI": "10.7872/crym.v32.iss1.2012.033",
+  "type": "journal-article",
+  "created": {
+   "date-parts": [
+    [
+     2013,
+     3,
+     2
+    ]
+   ],
+   "date-time": "2013-03-02T07:26:45Z",
+   "timestamp": 1362209205000
+  },
+  "page": "33-62",
+  "source": "Crossref",
+  "is-referenced-by-count": 16,
+  "title": [
+   "Taxonomy of<i>Alnus</i>-Associated Hypogeous Species of<i>Alpova</i>and<i>Melanogaster</i>(Basidiomycota, Paxillaceae) in Europe"
+  ],
+  "prefix": "10.5252",
+  "volume": "32",
+  "author": [
+   {
+    "given": "Pierre-Arthur",
+    "family": "Moreau",
+    "sequence": "first",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Juliette",
+    "family": "Rochet",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Franck",
+    "family": "Richard",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "François",
+    "family": "Chassagne",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Sophie",
+    "family": "Manzi",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Monique",
+    "family": "Gardes",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   }
+  ],
+  "member": "3209",
+  "reference": [
+   {
+    "issue": "3",
+    "key": "bibr01",
+    "doi-asserted-by": "crossref",
+    "first-page": "573",
+    "DOI": "10.2307/4109617",
+    "volume": "40",
+    "author": "Beaton G.",
+    "year": "1995",
+    "journal-title": "Kew Bulletin"
+   },
+   {
+    "issue": "6",
+    "key": "bibr02",
+    "doi-asserted-by": "crossref",
+    "first-page": "971",
+    "DOI": "10.3852/mycologia.98.6.971",
+    "volume": "98",
+    "author": "Binder M.",
+    "year": "2006",
+    "journal-title": "Mycologia"
+   },
+   {
+    "issue": "3",
+    "key": "bibr03",
+    "first-page": "439",
+    "volume": "14",
+    "author": "Bougher N.L.",
+    "year": "2002",
+    "journal-title": "Australian Journal of Botany"
+   },
+   {
+    "key": "bibr04",
+    "first-page": "111",
+    "volume": "4",
+    "author": "Brunner I.",
+    "year": "1990",
+    "journal-title": "Mycologia helvetica"
+   },
+   {
+    "key": "bibr05",
+    "first-page": "208",
+    "author": "Buyck B.",
+    "year": "2009",
+    "journal-title": "Guide des champignons de la montagne."
+   },
+   {
+    "key": "bibr06",
+    "first-page": "91",
+    "volume": "23",
+    "author": "Calonge",
+    "year": "1998",
+    "journal-title": "Boletín de la Sociedad micologica de Madrid"
+   },
+   {
+    "key": "bibr07",
+    "first-page": "67",
+    "volume": "28",
+    "author": "Cázares E.",
+    "year": "2008",
+    "journal-title": "Revista mexicana de Micologia"
+   },
+   {
+    "issue": "10",
+    "key": "bibr08",
+    "first-page": "155",
+    "volume": "55",
+    "author": "Clémençon H.",
+    "year": "1977",
+    "journal-title": "Zeitschrift für Pilzkunde"
+   },
+   {
+    "key": "bibr10",
+    "doi-asserted-by": "crossref",
+    "first-page": "457",
+    "DOI": "10.2307/2394031",
+    "volume": "18",
+    "author": "Dodge C.W.",
+    "year": "1931",
+    "journal-title": "Annals of the Missouri botanical Garden"
+   },
+   {
+    "issue": "3",
+    "key": "bibr12",
+    "first-page": "255",
+    "volume": "121",
+    "author": "Fannechère G.",
+    "year": "2005",
+    "journal-title": "Bulletin trimestriel de la Société Mycologique de France"
+   },
+   {
+    "issue": "42",
+    "key": "bibr14",
+    "first-page": "325",
+    "volume": "6",
+    "author": "Favre J.",
+    "year": "1960",
+    "journal-title": "Ergebnisse der wissenschaftlischen Untersuchungen schweizerischen Nationalparks"
+   },
+   {
+    "issue": "4",
+    "key": "bibr15",
+    "doi-asserted-by": "crossref",
+    "first-page": "840",
+    "DOI": "10.2307/3758876",
+    "volume": "69",
+    "author": "Fogel R.",
+    "year": "1977",
+    "journal-title": "Mycologia"
+   },
+   {
+    "issue": "4",
+    "key": "bibr16",
+    "first-page": "291",
+    "volume": "44",
+    "author": "Franchi P.",
+    "year": "2001",
+    "journal-title": "Rivista di Micologia"
+   },
+   {
+    "key": "bibr17",
+    "volume-title": "Catalogue des plantes vasculalres de la Corse.",
+    "author": "Gamisans J.",
+    "year": "1993"
+   },
+   {
+    "key": "bibr18",
+    "doi-asserted-by": "crossref",
+    "first-page": "113",
+    "DOI": "10.1111/j.1365-294X.1993.tb00005.x",
+    "volume": "2",
+    "author": "Gardes M.",
+    "year": "1993",
+    "journal-title": "Molecular Ecology"
+   },
+   {
+    "key": "bibr19",
+    "doi-asserted-by": "crossref",
+    "first-page": "4149",
+    "DOI": "10.1128/AEM.64.11.4149-4160.1998",
+    "volume": "64",
+    "author": "Gonzales P.",
+    "year": "1998",
+    "journal-title": "Applied and Environmental Microbiology"
+   },
+   {
+    "issue": "1",
+    "key": "bibr20",
+    "first-page": "21",
+    "volume": "46",
+    "author": "Gross G.",
+    "year": "1980",
+    "journal-title": "Zeitschrift für Mykologie"
+   },
+   {
+    "issue": "1",
+    "key": "bibr21",
+    "doi-asserted-by": "crossref",
+    "first-page": "82",
+    "DOI": "10.2307/3761607",
+    "volume": "93",
+    "author": "Grubisha L.C.",
+    "year": "2001",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "bibr23",
+    "first-page": "754",
+    "volume": "17",
+    "author": "Huelsenbeck J.P.",
+    "year": "2001",
+    "journal-title": "Biometrics"
+   },
+   {
+    "key": "bibr24",
+    "unstructured": "Jamoni P.G., 2008 —Funghi alpinl dette zone alpine superiori e inferiori. Trento, A.M.B. Centro Studi Micologici, 544 p."
+   },
+   {
+    "issue": "23",
+    "key": "bibr25",
+    "doi-asserted-by": "crossref",
+    "first-page": "5216",
+    "DOI": "10.1111/j.1365-294X.2010.04863.x",
+    "volume": "19",
+    "author": "Jargeat P.",
+    "year": "2010",
+    "journal-title": "Molecular Ecology"
+   },
+   {
+    "key": "bibr26",
+    "doi-asserted-by": "crossref",
+    "first-page": "443",
+    "DOI": "10.1055/s-2001-16455",
+    "volume": "3",
+    "author": "Jarosch M.",
+    "year": "2001",
+    "journal-title": "Plant Biology"
+   },
+   {
+    "key": "bibr27",
+    "doi-asserted-by": "crossref",
+    "first-page": "375",
+    "DOI": "10.1046/j.1365-294x.2000.00874-6.x",
+    "volume": "9",
+    "author": "Johannesson H.S.",
+    "year": "2000",
+    "journal-title": "Molecular Ecology"
+   },
+   {
+    "key": "bibr29",
+    "doi-asserted-by": "crossref",
+    "first-page": "511",
+    "DOI": "10.1093/nar/gki198",
+    "volume": "33",
+    "author": "Katoh K.",
+    "year": "2005",
+    "journal-title": "Nucleic Acid Research"
+   },
+   {
+    "key": "bibr30",
+    "first-page": "129",
+    "volume": "75",
+    "author": "Kers L.E.",
+    "year": "1981",
+    "journal-title": "Svensk Botanlsk Tidskrift"
+   },
+   {
+    "issue": "14",
+    "key": "bibr31",
+    "first-page": "30",
+    "volume": "7",
+    "author": "Kers L.E.",
+    "year": "1986",
+    "journal-title": "Agarica"
+   },
+   {
+    "issue": "8",
+    "key": "bibr32",
+    "first-page": "117",
+    "volume": "32",
+    "author": "Knapp A.",
+    "year": "1954",
+    "journal-title": "Schweizerisches Zeitschrift für Pilzkunde"
+   },
+   {
+    "issue": "10",
+    "key": "bibr33",
+    "first-page": "149",
+    "volume": "32",
+    "author": "Knapp A.",
+    "year": "1954",
+    "journal-title": "Schweizerisches Zeitschrift für Pilzkunde"
+   },
+   {
+    "issue": "1",
+    "key": "bibr34",
+    "first-page": "25",
+    "volume": "9",
+    "author": "Liu B.",
+    "year": "1990",
+    "journal-title": "Acta mycologica sinica"
+   },
+   {
+    "key": "bibr35",
+    "first-page": "1",
+    "volume": "8",
+    "author": "Mattirolo O.",
+    "year": "1935",
+    "journal-title": "Beiträge zur Kryptogamenflora der Schweiz"
+   },
+   {
+    "issue": "2",
+    "key": "bibr36",
+    "first-page": "33",
+    "volume": "18",
+    "author": "Montecchi A.",
+    "year": "1989",
+    "journal-title": "Micologia italiana"
+   },
+   {
+    "key": "bibr37",
+    "unstructured": "Montecchi A. & Sarasini M., 2000 —Funghi ipogei d'Europa.Trento, Associazione Micologia Bresadola, 714 p."
+   },
+   {
+    "key": "bibr38",
+    "first-page": "40",
+    "volume": "75",
+    "author": "Moreau P.-A.",
+    "year": "2003",
+    "journal-title": "Miscellanea mycologica"
+   },
+   {
+    "key": "bibr39",
+    "doi-asserted-by": "crossref",
+    "first-page": "1219",
+    "DOI": "10.1016/j.fgb.2008.06.006",
+    "volume": "45",
+    "author": "Mouhamadou B.",
+    "year": "2008",
+    "journal-title": "Fungal Genetics and Biology"
+   },
+   {
+    "issue": "3",
+    "key": "bibr40",
+    "doi-asserted-by": "crossref",
+    "first-page": "598",
+    "DOI": "10.3852/mycologia.97.3.598",
+    "volume": "97",
+    "author": "Nouhra E.R.",
+    "year": "2005",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "bibr41",
+    "unstructured": "Pegler D.N., Spooner B.M. & Young T.W.K., 2000 —British truffles. A revision of British hypogeous fungi. Kew, Royal Botanical Garden, 224 p."
+   },
+   {
+    "key": "bibr42",
+    "first-page": "77",
+    "volume": "12",
+    "author": "Perič B.",
+    "year": "2010",
+    "journal-title": "Mycologica montenegrina"
+   },
+   {
+    "key": "bibr43",
+    "doi-asserted-by": "crossref",
+    "first-page": "817",
+    "DOI": "10.1093/bioinformatics/14.9.817",
+    "volume": "14",
+    "author": "Posada D.",
+    "year": "1998",
+    "journal-title": "Bioinformatics"
+   },
+   {
+    "key": "bibr44",
+    "doi-asserted-by": "crossref",
+    "first-page": "580",
+    "DOI": "10.1080/106351501750435121",
+    "volume": "50",
+    "author": "Posada D.",
+    "year": "2001",
+    "journal-title": "Systematic Biology"
+   },
+   {
+    "key": "bibr45",
+    "doi-asserted-by": "crossref",
+    "first-page": "40",
+    "DOI": "10.1186/1471-2148-11-40",
+    "volume": "11",
+    "author": "Rochet J.",
+    "year": "2011",
+    "journal-title": "BMC evolutionary Biology"
+   },
+   {
+    "key": "bibr46",
+    "first-page": "1",
+    "volume": "8",
+    "author": "Schmid-Heckel H.",
+    "year": "1985",
+    "journal-title": "Nationalparkes Berchtesgaden, Forschungbericht"
+   },
+   {
+    "issue": "11",
+    "key": "bibr47",
+    "first-page": "149",
+    "volume": "25",
+    "author": "SÖhner E.",
+    "year": "1947",
+    "journal-title": "Schweizerisches Zeitschrift zur Pilzkunde"
+   },
+   {
+    "key": "bibr49",
+    "volume-title": "Phylogenetic Analysis Using Parsimony (*and Other Methods). Version 4d10.",
+    "author": "Swofford D.",
+    "year": "2003"
+   },
+   {
+    "key": "bibr50",
+    "first-page": "279",
+    "volume": "51",
+    "author": "Trappe J.M.",
+    "year": "1975",
+    "journal-title": "Beihefte zur Nova Hedwigia"
+   },
+   {
+    "issue": "4",
+    "key": "bibr52",
+    "doi-asserted-by": "crossref",
+    "first-page": "967",
+    "DOI": "10.3852/09-256",
+    "volume": "102",
+    "author": "Vizzini A.",
+    "year": "2010",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "bibr53",
+    "first-page": "449",
+    "volume": "18",
+    "author": "Wang Y.",
+    "year": "1995",
+    "journal-title": "Journal of Shanxi University"
+   },
+   {
+    "key": "bibr54",
+    "first-page": "1",
+    "volume": "5",
+    "author": "Wiedmer E.",
+    "year": "2001",
+    "journal-title": "Description of Ectomycorrhizae"
+   },
+   {
+    "issue": "1",
+    "key": "bibr55",
+    "doi-asserted-by": "crossref",
+    "first-page": "1",
+    "DOI": "10.2307/3754429",
+    "volume": "31",
+    "author": "Zeller S.M.",
+    "year": "1939",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "bibr56",
+    "first-page": "1",
+    "volume": "2",
+    "author": "Zeller S.M.",
+    "year": "1947",
+    "journal-title": "Oregon State Monographs and Studies in Botany"
+   }
+  ],
+  "container-title": [
+   "Cryptogamie, Mycologie"
+  ],
+  "original-title": [],
+  "language": "en",
+  "deposited": {
+   "date-parts": [
+    [
+     2020,
+     7,
+     23
+    ]
+   ],
+   "date-time": "2020-07-23T03:32:43Z",
+   "timestamp": 1595475163000
+  },
+  "score": 1,
+  "resource": {
+   "primary": {
+    "URL": "http://www.bioone.org/doi/abs/10.7872/crym.v32.iss1.2012.033"
+   }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+   "date-parts": [
+    [
+     2011,
+     3
+    ]
+   ]
+  },
+  "references-count": 49,
+  "journal-issue": {
+   "issue": "1",
+   "published-print": {
+    "date-parts": [
+     [
+      2011,
+      3
+     ]
+    ]
+   }
+  },
+  "alternative-id": [
+   "10.7872/crym.v32.iss1.2012.033"
+  ],
+  "URL": "https://doi.org/10.7872/crym.v32.iss1.2012.033",
+  "relation": {},
+  "ISSN": [
+   "0181-1584",
+   "1776-100X"
+  ],
+  "issn-type": [
+   {
+    "value": "0181-1584",
+    "type": "print"
+   },
+   {
+    "value": "1776-100X",
+    "type": "electronic"
+   }
+  ],
+  "subject": [],
+  "published": {
+   "date-parts": [
+    [
+     2011,
+     3
+    ]
+   ]
+  }
+ },
+ "error": null
+}

@@ -1,0 +1,161 @@
+{
+ "retrieved": "2026-11-18",
+ "doi": "10.33585/cmy.65102",
+ "url": "https://api.crossref.org/works/10.33585/cmy.65102",
+ "message": {
+  "indexed": {
+   "date-parts": [
+    [
+     2025,
+     4,
+     5
+    ]
+   ],
+   "date-time": "2025-04-05T04:18:32Z",
+   "timestamp": 1743826712288,
+   "version": "3.40.3"
+  },
+  "reference-count": 0,
+  "publisher": "Czech Scientific Society for Mycology",
+  "issue": "1",
+  "content-domain": {
+   "domain": [],
+   "crossmark-restriction": false
+  },
+  "short-container-title": [
+   "Czech Mycol."
+  ],
+  "abstract": "<jats:p>The rare fungus <jats:italic>Hygrophoropsis rufa</jats:italic> is documented from the Czech Republic for the first time. Both classical and DNA study results have proved that <jats:italic>H. rufa</jats:italic> is a good species, clearly separated from <jats:italic>H. aurantiaca</jats:italic>. Macroscopically, it differs by an orange-brown to dark brown pileus surface. The stability of the observed differences in spores, being slightly smaller and thick-walled in <jats:italic>H. rufa</jats:italic>, has to be confirmed using a larger set of collections. A brief comparison with dark-coloured taxa of the group of <jats:italic>H. aurantiaca</jats:italic> is added. <jats:italic>Hygrophoropsis aurantiaca</jats:italic> var. <jats:italic>atrotomentosa</jats:italic> most probably represents a synonym, but its nomenclatural status has to be clarified.</jats:p>",
+  "DOI": "10.33585/cmy.65102",
+  "type": "journal-article",
+  "created": {
+   "date-parts": [
+    [
+     2019,
+     3,
+     25
+    ]
+   ],
+   "date-time": "2019-03-25T16:59:22Z",
+   "timestamp": 1553533162000
+  },
+  "page": "15-24",
+  "source": "Crossref",
+  "is-referenced-by-count": 3,
+  "title": [
+   "Notes on the identity of <i>Hygrophoropsis rufa</i> (Basidiomycota, <i>Boletales</i>)."
+  ],
+  "prefix": "10.33585",
+  "volume": "65",
+  "author": [
+   {
+    "ORCID": "https://orcid.org/0000-0002-5853-6209",
+    "authenticated-orcid": false,
+    "given": "Jan",
+    "family": "Holec",
+    "sequence": "first",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "ORCID": "https://orcid.org/0000-0003-4016-0335",
+    "authenticated-orcid": false,
+    "given": "Miroslav",
+    "family": "Kolařík",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   }
+  ],
+  "member": "19080",
+  "published-online": {
+   "date-parts": [
+    [
+     2013,
+     6,
+     10
+    ]
+   ]
+  },
+  "container-title": [
+   "Czech Mycology"
+  ],
+  "original-title": [],
+  "deposited": {
+   "date-parts": [
+    [
+     2025,
+     4,
+     4
+    ]
+   ],
+   "date-time": "2025-04-04T16:49:13Z",
+   "timestamp": 1743785353000
+  },
+  "score": 1,
+  "resource": {
+   "primary": {
+    "URL": "https://czechmycology.org/article/65102"
+   }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+   "date-parts": [
+    [
+     2013,
+     6,
+     10
+    ]
+   ]
+  },
+  "references-count": 0,
+  "journal-issue": {
+   "issue": "1",
+   "published-online": {
+    "date-parts": [
+     [
+      2013
+     ]
+    ]
+   }
+  },
+  "URL": "https://doi.org/10.33585/cmy.65102",
+  "relation": {},
+  "ISSN": [
+   "1211-0981",
+   "1805-1421"
+  ],
+  "issn-type": [
+   {
+    "type": "print",
+    "value": "1211-0981"
+   },
+   {
+    "type": "electronic",
+    "value": "1805-1421"
+   }
+  ],
+  "subject": [],
+  "published": {
+   "date-parts": [
+    [
+     2013,
+     6,
+     10
+    ]
+   ]
+  }
+ },
+ "error": null
+}

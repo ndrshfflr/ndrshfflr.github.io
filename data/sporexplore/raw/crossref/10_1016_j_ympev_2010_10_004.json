@@ -1,0 +1,1146 @@
+{
+ "retrieved": "2026-11-18",
+ "doi": "10.1016/j.ympev.2010.10.004",
+ "url": "https://api.crossref.org/works/10.1016/j.ympev.2010.10.004",
+ "message": {
+  "indexed": {
+   "date-parts": [
+    [
+     2026,
+     11,
+     10
+    ]
+   ],
+   "date-time": "2026-11-10T02:07:01Z",
+   "timestamp": 1794276421403,
+   "version": "4.9.0"
+  },
+  "reference-count": 91,
+  "publisher": "Elsevier BV",
+  "issue": "3",
+  "license": [
+   {
+    "start": {
+     "date-parts": [
+      [
+       2010,
+       12,
+       1
+      ]
+     ],
+     "date-time": "2010-12-01T00:00:00Z",
+     "timestamp": 1291161600000
+    },
+    "content-version": "tdm",
+    "delay-in-days": 0,
+    "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+   }
+  ],
+  "content-domain": {
+   "domain": [],
+   "crossmark-restriction": false
+  },
+  "short-container-title": [
+   "Molecular Phylogenetics and Evolution"
+  ],
+  "published-print": {
+   "date-parts": [
+    [
+     2010,
+     12
+    ]
+   ]
+  },
+  "DOI": "10.1016/j.ympev.2010.10.004",
+  "type": "journal-article",
+  "created": {
+   "date-parts": [
+    [
+     2010,
+     10,
+     22
+    ]
+   ],
+   "date-time": "2010-10-22T11:13:15Z",
+   "timestamp": 1287745995000
+  },
+  "page": "1276-1292",
+  "source": "Crossref",
+  "is-referenced-by-count": 120,
+  "title": [
+   "Molecular phylogenetics of porcini mushrooms (Boletus section Boletus)"
+  ],
+  "prefix": "10.1016",
+  "volume": "57",
+  "author": [
+   {
+    "given": "Bryn T.M.",
+    "family": "Dentinger",
+    "sequence": "first",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Joseph F.",
+    "family": "Ammirati",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Ernst E.",
+    "family": "Both",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Dennis E.",
+    "family": "Desjardin",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Roy E.",
+    "family": "Halling",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Terry W.",
+    "family": "Henkel",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Pierre-Arthur",
+    "family": "Moreau",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Eiji",
+    "family": "Nagasawa",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Kasem",
+    "family": "Soytong",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Andy F.",
+    "family": "Taylor",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Roy",
+    "family": "Watling",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Jean-Marc",
+    "family": "Moncalvo",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "David J.",
+    "family": "McLaughlin",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   }
+  ],
+  "member": "78",
+  "reference": [
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0005",
+    "series-title": "Colour atlas of ectomycorrhizae with glossary",
+    "author": "Agerer",
+    "year": "1990"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0010",
+    "doi-asserted-by": "crossref",
+    "first-page": "23",
+    "DOI": "10.3852/mycologia.98.1.23",
+    "article-title": "Characterization and identification of field ectomycorrhizae of Boletus edulis and Cistus ladanifer",
+    "volume": "98",
+    "author": "Águeda",
+    "year": "2006",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0015",
+    "doi-asserted-by": "crossref",
+    "first-page": "443",
+    "DOI": "10.1007/s00572-008-0192-3",
+    "article-title": "Mycorrhizal synthesis between Boletus edulis species complex and rockroses (Cistus sp.)",
+    "volume": "18",
+    "author": "Águeda",
+    "year": "2008",
+    "journal-title": "Mycorrhiza"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0020",
+    "doi-asserted-by": "crossref",
+    "first-page": "407",
+    "DOI": "10.1093/bioinformatics/btg427",
+    "article-title": "Parallel metropolis coupled Markov chain Monte Carlo for Bayesian phylogenetic inference",
+    "volume": "20",
+    "author": "Altekar",
+    "year": "2004",
+    "journal-title": "Bioinformatics"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0025",
+    "doi-asserted-by": "crossref",
+    "unstructured": "Arora, D., 2001. Wild mushrooms and rural economies. Fungal conservation: issues and solutions: a special volume of the British Mycological Society, p. 105.",
+    "DOI": "10.1017/CBO9780511565168.009"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0030",
+    "doi-asserted-by": "crossref",
+    "first-page": "356",
+    "DOI": "10.1007/s12231-008-9050-7",
+    "article-title": "California porcini: three new taxa, observations on their harvest, and the tragedy of no commons",
+    "volume": "62",
+    "author": "Arora",
+    "year": "2008",
+    "journal-title": "Econ. Bot."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0035",
+    "doi-asserted-by": "crossref",
+    "first-page": "7358",
+    "DOI": "10.1073/pnas.96.13.7358",
+    "article-title": "Proposal for a standardized temporal scheme of biological classification for extant species",
+    "volume": "96",
+    "author": "Avise",
+    "year": "1999",
+    "journal-title": "Proc. Natl. Acad. Sci."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0040",
+    "series-title": "First International Workshop on Ascomycete Systematics",
+    "article-title": "18S ribosomal DNA sequence data and dating, classifying and ranking the fungi",
+    "author": "Berbee",
+    "year": "1994"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0045",
+    "series-title": "North American Boletes: a color guide to the fleshy pored mushrooms",
+    "author": "Bessette",
+    "year": "2000"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0050",
+    "doi-asserted-by": "crossref",
+    "first-page": "1",
+    "DOI": "10.3767/003158508X283692",
+    "article-title": "A phylogenetic study of Boletus section Boletus in Europe",
+    "volume": "20",
+    "author": "Beugelsdijk",
+    "year": "2008",
+    "journal-title": "Persoonia"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0055",
+    "series-title": "Zur molekularen Systematik der Boletales: Boletineae und Sclerodermatineae subordo nov",
+    "author": "Binder",
+    "year": "1999"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0065",
+    "doi-asserted-by": "crossref",
+    "first-page": "30",
+    "DOI": "10.1002/1522-239X(200205)113:1/2<30::AID-FEDR30>3.0.CO;2-D",
+    "article-title": "Retiboletus, a new genus for a species-complex in the Boletaceae producing retipolides",
+    "volume": "113",
+    "author": "Binder",
+    "year": "2002",
+    "journal-title": "Feddes Repertorium"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0070",
+    "doi-asserted-by": "crossref",
+    "first-page": "971",
+    "DOI": "10.3852/mycologia.98.6.971",
+    "article-title": "Molecular systematics and biological diversification of Boletales",
+    "volume": "98",
+    "author": "Binder",
+    "year": "2006",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0075",
+    "unstructured": "Boa, E.R., 2004. Wild edible fungi: a global overview of their use and importance to people. Non-wood Forest Products 17, Food and Agriculture Organization of the United Nations, Rome, Italy."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0080",
+    "unstructured": "Both, E.E., 1993. The boletes of North America: a compendium. Buffalo Museum of Science, Buffalo, New York."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0085",
+    "first-page": "265",
+    "article-title": "Three steps of homology assessment",
+    "volume": "12",
+    "author": "Brower",
+    "year": "1996",
+    "journal-title": "Cladistics"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0095",
+    "doi-asserted-by": "crossref",
+    "first-page": "257",
+    "DOI": "10.1046/j.1365-294X.1998.00337.x",
+    "article-title": "A sequence database for the identification of ectomycorrhizal basidiomycetes by phylogenetic analysis",
+    "volume": "7",
+    "author": "Bruns",
+    "year": "1998",
+    "journal-title": "Mol. Ecol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0100",
+    "unstructured": "Buyck, B., 1989. Revision du genre Russula Persoon en Afrique centrale. Rijksuniversiteit Gent, Belgium."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0105",
+    "series-title": "The Boleti of North Carolina",
+    "author": "Coker",
+    "year": "1943"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0110",
+    "series-title": "Boletus in Malaysia",
+    "author": "Corner",
+    "year": "1972"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0115",
+    "first-page": "25",
+    "article-title": "Collection, marketing and cultivation of edible fungi in Spain",
+    "volume": "16",
+    "author": "De Román",
+    "year": "2004",
+    "journal-title": "Micologia Aplicada International"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0120",
+    "doi-asserted-by": "crossref",
+    "first-page": "746",
+    "DOI": "10.3852/mycologia.98.5.746",
+    "article-title": "Reconstructing the Clavariaceae using nuclear large subunit rDNA sequences and a new genus segregated from Clavaria",
+    "volume": "98",
+    "author": "Dentinger",
+    "year": "2006",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0125",
+    "series-title": "Systematics and evolution of porcini and clavarioid mushrooms",
+    "author": "Dentinger",
+    "year": "2007"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0130",
+    "doi-asserted-by": "crossref",
+    "first-page": "628",
+    "DOI": "10.1111/j.1755-0998.2009.02825.x",
+    "article-title": "Rapid and reliable high-throughput methods of DNA extraction for use in barcoding and molecular systematics of mushrooms",
+    "volume": "10",
+    "author": "Dentinger",
+    "year": "2010",
+    "journal-title": "Mol. Ecol. Resour."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0140",
+    "doi-asserted-by": "crossref",
+    "first-page": "699",
+    "DOI": "10.1371/journal.pbio.0040088",
+    "article-title": "Relaxed phylogenetics and dating with confidence",
+    "volume": "4",
+    "author": "Drummond",
+    "year": "2006",
+    "journal-title": "PLoS Biol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0145",
+    "doi-asserted-by": "crossref",
+    "first-page": "214",
+    "DOI": "10.1186/1471-2148-7-214",
+    "article-title": "BEAST: Bayesian evolutionary analysis by sampling trees",
+    "volume": "7",
+    "author": "Drummond",
+    "year": "2007",
+    "journal-title": "BMC Evol. Biol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0150",
+    "doi-asserted-by": "crossref",
+    "first-page": "1792",
+    "DOI": "10.1093/nar/gkh340",
+    "article-title": "MUSCLE: multiple sequence alignment with high accuracy and high throughput",
+    "volume": "32",
+    "author": "Edgar",
+    "year": "2004",
+    "journal-title": "Nucleic Acids Res."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0155",
+    "doi-asserted-by": "crossref",
+    "first-page": "602",
+    "DOI": "10.1016/j.ympev.2005.06.016",
+    "article-title": "Lower level relationships in the mushroom genus Cortinarius (Basidiomycota, Agaricales): a comparison of RPB1, RPB2, and ITS phylogenies",
+    "volume": "37",
+    "author": "Frøslev",
+    "year": "2005",
+    "journal-title": "Mol. Phylogenet. Evol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0160",
+    "doi-asserted-by": "crossref",
+    "first-page": "113",
+    "DOI": "10.1111/j.1365-294X.1993.tb00005.x",
+    "article-title": "ITS primers with enhanced specificity for basidiomycetes – application to the identification of mycorrhizae and rusts",
+    "volume": "2",
+    "author": "Gardes",
+    "year": "1993",
+    "journal-title": "Mol. Ecol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0165",
+    "doi-asserted-by": "crossref",
+    "first-page": "1",
+    "DOI": "10.1186/1471-2148-9-1",
+    "article-title": "Phylogenetic relationships in Cortinarius, section Calochroi, inferred from nuclear DNA sequences",
+    "volume": "9",
+    "author": "Garnica",
+    "year": "2009",
+    "journal-title": "BMC Evol. Biol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0170",
+    "doi-asserted-by": "crossref",
+    "first-page": "652",
+    "DOI": "10.1080/106351500750049752",
+    "article-title": "Likelihood-based tests of topologies in phylogenetics",
+    "volume": "49",
+    "author": "Goldman",
+    "year": "2000",
+    "journal-title": "Syst. Biol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0175",
+    "doi-asserted-by": "crossref",
+    "first-page": "114",
+    "DOI": "10.2307/3757692",
+    "article-title": "A previously unrecognized southern species of Boletus",
+    "volume": "63",
+    "author": "Grand",
+    "year": "1971",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0185",
+    "doi-asserted-by": "crossref",
+    "first-page": "44",
+    "DOI": "10.1007/BF02861294",
+    "article-title": "Ectomycorrhizal fungi with edible fruiting bodies – 2. Boletus edulis",
+    "volume": "52",
+    "author": "Hall",
+    "year": "1998",
+    "journal-title": "Econ. Bot."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0190",
+    "first-page": "111",
+    "article-title": "Boletaceae (Agaricales): latitudinal biodiversity and biological interactions in Costa Rica and Colombia",
+    "volume": "44",
+    "author": "Halling",
+    "year": "1996",
+    "journal-title": "Revista Biol. Trop."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0195",
+    "first-page": "239",
+    "article-title": "Generic affinity of Boletus separans. Contributions to the natural sciences and anthropology: a festschrift in honor of George F. Goodyear",
+    "volume": "36",
+    "author": "Halling",
+    "year": "1998",
+    "journal-title": "Bull. Buffalo Soc. Natural Sci."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0210",
+    "doi-asserted-by": "crossref",
+    "first-page": "97",
+    "DOI": "10.1146/annurev.en.10.010165.000525",
+    "article-title": "Phylogenetic systematics",
+    "volume": "10",
+    "author": "Hennig",
+    "year": "1965",
+    "journal-title": "Ann. Rev. Entomol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0220",
+    "series-title": "Medicinal mushrooms: an exploration of tradition, healing and culture",
+    "author": "Hobbs",
+    "year": "1995"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0225",
+    "doi-asserted-by": "crossref",
+    "first-page": "1",
+    "DOI": "10.1071/BT8310001",
+    "article-title": "Mycogeography in the south-Pacific region – Agaricales, Boletales",
+    "volume": "1",
+    "author": "Horak",
+    "year": "1983",
+    "journal-title": "Aust. J. Bot."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0230",
+    "doi-asserted-by": "crossref",
+    "first-page": "448",
+    "DOI": "10.1016/j.mycres.2007.06.004",
+    "article-title": "Biogeography of Hysterangiales (Phallomycetidae, Basidiomycota)",
+    "volume": "112",
+    "author": "Hosaka",
+    "year": "2008",
+    "journal-title": "Mycol. Res."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0235",
+    "doi-asserted-by": "crossref",
+    "first-page": "818",
+    "DOI": "10.1038/nature05110",
+    "article-title": "Reconstructing the early evolution of Fungi using a six-gene phylogeny",
+    "volume": "443",
+    "author": "James",
+    "year": "2006",
+    "journal-title": "Nature"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0240",
+    "doi-asserted-by": "crossref",
+    "first-page": "586",
+    "DOI": "10.2307/3760995",
+    "article-title": "Molecular revisitation of the genus Gastrosuillus",
+    "volume": "89",
+    "author": "Kretzer",
+    "year": "1997",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0245",
+    "doi-asserted-by": "crossref",
+    "first-page": "483",
+    "DOI": "10.1006/mpev.1999.0680",
+    "article-title": "Use of atp6 in fungal phylogenetics: an example from the Boletales",
+    "volume": "13",
+    "author": "Kretzer",
+    "year": "1999",
+    "journal-title": "Mol. Phylogenet. Evol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0250",
+    "first-page": "16",
+    "article-title": "Chiave analitica e note bibliografiche della micoflora del cisto",
+    "volume": "24",
+    "author": "Lavorato",
+    "year": "1991",
+    "journal-title": "Assoc. Micol. Ecol. Romana"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0255",
+    "doi-asserted-by": "crossref",
+    "first-page": "411",
+    "DOI": "10.1016/j.femsle.2005.01.003",
+    "article-title": "Assessment of inter- and intra-specific variability in the main species of Boletus edulis complex by ITS analysis",
+    "volume": "243",
+    "author": "Leonardi",
+    "year": "2005",
+    "journal-title": "FEMS Microbiol. Lett."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0525",
+    "doi-asserted-by": "crossref",
+    "first-page": "410",
+    "DOI": "10.2307/2446014",
+    "article-title": "Fossil ectomycorrhizae from the Middle Eocene",
+    "volume": "84",
+    "author": "LePage",
+    "year": "1997",
+    "journal-title": "Am. J. Bot."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0260",
+    "first-page": "1",
+    "article-title": "Tumor inhibitors in Boletus edulis and other holobasidiomycetes",
+    "volume": "7",
+    "author": "Lucas",
+    "year": "1957",
+    "journal-title": "Antibiot. Chemother."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0265",
+    "doi-asserted-by": "crossref",
+    "first-page": "810",
+    "DOI": "10.3852/09-016",
+    "article-title": "Fungi evolved right on track",
+    "volume": "101",
+    "author": "Lucking",
+    "year": "2009",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0270",
+    "series-title": "MacClade 4: Analysis of Phylogeny and Character Evolution, Version 4.06",
+    "author": "Maddison",
+    "year": "2003"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0275",
+    "doi-asserted-by": "crossref",
+    "first-page": "321",
+    "DOI": "10.1016/S0308-8146(00)00304-6",
+    "article-title": "Nutritional value of mushrooms widely consumed in Italy",
+    "volume": "73",
+    "author": "Manzi",
+    "year": "2001",
+    "journal-title": "Food Chem."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0280",
+    "doi-asserted-by": "crossref",
+    "first-page": "524",
+    "DOI": "10.1093/sysbio/45.4.524",
+    "article-title": "Testing for phylogenetic conflict among molecular data sets in the tribe Triticeae (Gramineae)",
+    "volume": "45",
+    "author": "Mason-Gamer",
+    "year": "1996",
+    "journal-title": "Syst. Biol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0285",
+    "doi-asserted-by": "crossref",
+    "first-page": "1",
+    "DOI": "10.1016/j.ympev.2004.11.014",
+    "article-title": "Improving phylogenetic inference of mushrooms with RPB1 and RPB2 nucleotide sequences (Inocybe; Agaricales)",
+    "volume": "35",
+    "author": "Matheny",
+    "year": "2005",
+    "journal-title": "Mol. Phylogenet. Evol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0290",
+    "doi-asserted-by": "crossref",
+    "first-page": "577",
+    "DOI": "10.1111/j.1365-2699.2008.02055.x",
+    "article-title": "Out of the Palaeotropics? Historical biogeography and diversification of the cosmopolitan ectomycorrhizal mushroom family Inocybaceae",
+    "volume": "36",
+    "author": "Matheny",
+    "year": "2009",
+    "journal-title": "J. Biogeogr."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0295",
+    "doi-asserted-by": "crossref",
+    "first-page": "688",
+    "DOI": "10.3732/ajb.89.4.688",
+    "article-title": "Using RPB1 sequences to improve phylogenetic inference among mushrooms (Inocybe, Agaricales)",
+    "volume": "89",
+    "author": "Matheny",
+    "year": "2002",
+    "journal-title": "Am. J. Bot."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0300",
+    "doi-asserted-by": "crossref",
+    "first-page": "318",
+    "DOI": "10.1016/j.jbiotec.2005.08.022",
+    "article-title": "ITS primers for the identification of marketable boletes",
+    "volume": "121",
+    "author": "Mello",
+    "year": "2006",
+    "journal-title": "J. Biotechnol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0305",
+    "unstructured": "Miller, M., Holder, M., Vos, R., Midford, P., Liebowitz, T., Chan, L., Hoover, P., Warnow, T., 2009. The CIPRES Portals. CIPRES."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0310",
+    "doi-asserted-by": "crossref",
+    "first-page": "558",
+    "DOI": "10.2307/3761516",
+    "article-title": "New and interesting ectomycorrhizal fungi from Puerto Rico, Mona, and Guana Islands",
+    "volume": "92",
+    "author": "Miller",
+    "year": "2000",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0315",
+    "unstructured": "Milne, J., 2002. Post-fire colonization of Cistus creticus L. seedlings by ectomycorrhizal fungi in Aleppo pine forests in central Greece. PhD thesis, University of Edinburgh, Great Britain."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0320",
+    "doi-asserted-by": "crossref",
+    "first-page": "425",
+    "DOI": "10.1016/j.mycres.2007.12.001",
+    "article-title": "Molecular evidence for long distance dispersal across the Southern Hemisphere in the Ganoderma applanatum–australe species complex (Basidiomycota)",
+    "volume": "112",
+    "author": "Moncalvo",
+    "year": "2008",
+    "journal-title": "Mycol. Res."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0335",
+    "doi-asserted-by": "crossref",
+    "first-page": "569",
+    "DOI": "10.1046/j.1469-8137.2003.00908.x",
+    "article-title": "Genetic diversity of Pisolithus in New Zealand indicates multiple long-distance dispersal from Australia",
+    "volume": "160",
+    "author": "Moyersoen",
+    "year": "2003",
+    "journal-title": "New Phytol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0340",
+    "series-title": "GuÌa de árboles y arbustos de Castilla y León",
+    "author": "Oria de Rueda",
+    "year": "2002"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0345",
+    "doi-asserted-by": "crossref",
+    "first-page": "323",
+    "DOI": "10.1007/s12231-008-9031-x",
+    "article-title": "Bolete productivity of cistaceous scrublands in northwestern Spain 1",
+    "volume": "62",
+    "author": "Oria de Rueda",
+    "year": "2008",
+    "journal-title": "Econ. Bot."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0350",
+    "first-page": "21",
+    "article-title": "Morphological characters and homology",
+    "author": "Patterson",
+    "year": "1982",
+    "journal-title": "Prob. Phylogenet. Reconstr."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0355",
+    "first-page": "73",
+    "article-title": "The boleti of the United States",
+    "volume": "2",
+    "author": "Peck",
+    "year": "1889",
+    "journal-title": "Bull. NY State Museum"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0365",
+    "first-page": "137",
+    "article-title": "Pacific mycogeography: an appraisal",
+    "volume": "10",
+    "author": "Pirozynski",
+    "year": "1983",
+    "journal-title": "Aust. J. Bot. Suppl. Ser."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0370",
+    "doi-asserted-by": "crossref",
+    "first-page": "817",
+    "DOI": "10.1093/bioinformatics/14.9.817",
+    "article-title": "Modeltest: testing the model of DNA substitution",
+    "volume": "14",
+    "author": "Posada",
+    "year": "1998",
+    "journal-title": "Bioinformatics"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0375",
+    "doi-asserted-by": "crossref",
+    "first-page": "1036",
+    "DOI": "10.1016/j.ympev.2004.04.012",
+    "article-title": "Contribution of RPB2 to multilocus phylogenetic studies of the euascomycetes (Pezizomycotina, Fungi) with special emphasis on the lichen-forming Acarosporaceae and evolution of polyspory",
+    "volume": "32",
+    "author": "Reeb",
+    "year": "2004",
+    "journal-title": "Mol. Phylogenet. Evol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0380",
+    "doi-asserted-by": "crossref",
+    "first-page": "1572",
+    "DOI": "10.1093/bioinformatics/btg180",
+    "article-title": "MrBayes 3: Bayesian phylogenetic inference under mixed models",
+    "volume": "19",
+    "author": "Ronquist",
+    "year": "2003",
+    "journal-title": "Bioinformatics"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0385",
+    "unstructured": "Ronquist, F., Huelsenbeck, J.P., van der Mark, P., 2005. MrBayes 3.1 Manual."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0390",
+    "series-title": "Paleogeographic atlas. PALEOMAP Project",
+    "author": "Scotese",
+    "year": "1997"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0395",
+    "doi-asserted-by": "crossref",
+    "first-page": "1114",
+    "DOI": "10.1093/oxfordjournals.molbev.a026201",
+    "article-title": "Multiple comparisons of log-likelihoods with applications to phylogenetic inference",
+    "volume": "16",
+    "author": "Shimodaira",
+    "year": "1999",
+    "journal-title": "Mol. Biol. Evol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0400",
+    "first-page": "148",
+    "article-title": "Two close extraeuropean boletes: Boletus violaceofuscus and Boletus separans",
+    "volume": "162",
+    "author": "Simonini",
+    "year": "2001",
+    "journal-title": "Micol. Vegetazione Mediterranea"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0410",
+    "doi-asserted-by": "crossref",
+    "first-page": "1",
+    "DOI": "10.2307/2421647",
+    "article-title": "The Boletineae of Florida with notes on extralimital species. III",
+    "volume": "37",
+    "author": "Singer",
+    "year": "1947",
+    "journal-title": "Am. Mid. Nat."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0415",
+    "series-title": "The Agaricales in Modern Taxonomy",
+    "author": "Singer",
+    "year": "1986"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0420",
+    "doi-asserted-by": "crossref",
+    "first-page": "307",
+    "DOI": "10.1007/s12231-008-9037-4",
+    "article-title": "Nationalization and globalization trends in the wild mushroom commerce of Italy with emphasis on porcini (Boletus edulis and allied species)",
+    "volume": "62",
+    "author": "Sitta",
+    "year": "2008",
+    "journal-title": "Econ. Bot."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0425",
+    "series-title": "The Boletes of Michigan",
+    "author": "Smith",
+    "year": "1971"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0430",
+    "series-title": "Mycorrhizal Symbiosis",
+    "author": "Smith",
+    "year": "2008"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0435",
+    "unstructured": "Snell, W.H., Dick, E.A., 1970. The boleti of northeastern North America. Lehre, Cramer. Distributed by SH Service Agency, New York."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0440",
+    "doi-asserted-by": "crossref",
+    "first-page": "2688",
+    "DOI": "10.1093/bioinformatics/btl446",
+    "article-title": "RAxML-VI-HPC: maximum likelihood-based phylogenetic analyses with thousands of taxa and mixed models",
+    "volume": "22",
+    "author": "Stamatakis",
+    "year": "2006",
+    "journal-title": "Bioinformatics"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0445",
+    "doi-asserted-by": "crossref",
+    "first-page": "758",
+    "DOI": "10.1080/10635150802429642",
+    "article-title": "A rapid bootstrap algorithm for the RAxML Web servers",
+    "volume": "57",
+    "author": "Stamatakis",
+    "year": "2008",
+    "journal-title": "Syst. Biol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0450",
+    "series-title": "PAUP*: Phylogenetic Analysis using Parsimony (* and other methods), Version 4.0 b10",
+    "author": "Swofford",
+    "year": "2002"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0530",
+    "doi-asserted-by": "crossref",
+    "first-page": "269",
+    "DOI": "10.3852/mycologia.97.1.269",
+    "article-title": "Perithecial ascomycetes from the 400 million year old Rhynie chert: an example of ancestral polymorphism",
+    "volume": "97",
+    "author": "Taylor",
+    "year": "2005",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0455",
+    "doi-asserted-by": "crossref",
+    "first-page": "838",
+    "DOI": "10.3852/mycologia.98.6.838",
+    "article-title": "Dating divergences in the Fungal Tree of Life: review and new analyses",
+    "volume": "98",
+    "author": "Taylor",
+    "year": "2006",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0460",
+    "doi-asserted-by": "crossref",
+    "first-page": "217",
+    "DOI": "10.1007/s00572-009-0274-x",
+    "article-title": "Ectomycorrhizal lifestyle in fungi: global diversity, distribution, and evolution of phylogenetic lineages",
+    "volume": "20",
+    "author": "Tedersoo",
+    "year": "2010",
+    "journal-title": "Mycorrhiza"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0465",
+    "series-title": "California Mushrooms: a Field Guide to the Boletes",
+    "author": "Thiers",
+    "year": "1975"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0475",
+    "doi-asserted-by": "crossref",
+    "first-page": "4238",
+    "DOI": "10.1128/jb.172.8.4238-4246.1990",
+    "article-title": "Rapid genetic identification and mapping of enzymatically amplified ribosomal DNA from several Cryptococcus species",
+    "volume": "172",
+    "author": "Vilgalys",
+    "year": "1990",
+    "journal-title": "J. Bacteriol."
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0480",
+    "first-page": "131",
+    "article-title": "Boletus reticuloceps, a new combination for Aureoboletus reticuloceps",
+    "volume": "57",
+    "author": "Wang",
+    "year": "2005",
+    "journal-title": "Sydowia"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0485",
+    "series-title": "Aspects of Tropical Mycology",
+    "first-page": "171",
+    "article-title": "Comparison of the macromycete biotas in selected tropical areas of Africa and Australia",
+    "author": "Watling",
+    "year": "1993"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0520",
+    "series-title": "PCR Protocols: A Guide to Methods and Applications",
+    "first-page": "315",
+    "article-title": "Amplification and direct sequencing of fungal ribosomal RNA genes for phylogenetics",
+    "author": "White",
+    "year": "1990"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0500",
+    "series-title": "Icons of Medicinal Fungi from China (translated, Yuehan X)",
+    "author": "Ying",
+    "year": "1987"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0535",
+    "first-page": "275",
+    "article-title": "Notes on and additions to Chinese members of the Boletales",
+    "volume": "12",
+    "author": "Zang",
+    "year": "1993",
+    "journal-title": "Acta Mycol. Sinica"
+   },
+   {
+    "key": "10.1016/j.ympev.2010.10.004_b0510",
+    "series-title": "Genetic Algorithm Approaches for the Phylogenetic Analysis of Large Biological Sequence Datasets Under the Maximum Likelihood Criterion",
+    "author": "Zwickl",
+    "year": "2006"
+   }
+  ],
+  "container-title": [
+   "Molecular Phylogenetics and Evolution"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+   {
+    "URL": "https://api.elsevier.com/content/article/PII:S1055790310004100?httpAccept=text/xml",
+    "content-type": "text/xml",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   },
+   {
+    "URL": "https://api.elsevier.com/content/article/PII:S1055790310004100?httpAccept=text/plain",
+    "content-type": "text/plain",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   }
+  ],
+  "deposited": {
+   "date-parts": [
+    [
+     2023,
+     6,
+     3
+    ]
+   ],
+   "date-time": "2023-06-03T23:09:57Z",
+   "timestamp": 1685833797000
+  },
+  "score": 1,
+  "resource": {
+   "primary": {
+    "URL": "https://linkinghub.elsevier.com/retrieve/pii/S1055790310004100"
+   }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+   "date-parts": [
+    [
+     2010,
+     12
+    ]
+   ]
+  },
+  "references-count": 91,
+  "journal-issue": {
+   "issue": "3",
+   "published-print": {
+    "date-parts": [
+     [
+      2010,
+      12
+     ]
+    ]
+   }
+  },
+  "alternative-id": [
+   "S1055790310004100"
+  ],
+  "URL": "https://doi.org/10.1016/j.ympev.2010.10.004",
+  "relation": {},
+  "ISSN": [
+   "1055-7903"
+  ],
+  "issn-type": [
+   {
+    "value": "1055-7903",
+    "type": "print"
+   }
+  ],
+  "subject": [],
+  "published": {
+   "date-parts": [
+    [
+     2010,
+     12
+    ]
+   ]
+  }
+ },
+ "error": null
+}

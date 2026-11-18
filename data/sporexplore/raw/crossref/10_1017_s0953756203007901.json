@@ -1,0 +1,622 @@
+{
+ "retrieved": "2026-11-18",
+ "doi": "10.1017/s0953756203007901",
+ "url": "https://api.crossref.org/works/10.1017/s0953756203007901",
+ "message": {
+  "indexed": {
+   "date-parts": [
+    [
+     2026,
+     4,
+     28
+    ]
+   ],
+   "date-time": "2026-04-28T22:29:56Z",
+   "timestamp": 1777415396621,
+   "version": "3.51.4"
+  },
+  "reference-count": 50,
+  "publisher": "Elsevier BV",
+  "issue": "6",
+  "license": [
+   {
+    "start": {
+     "date-parts": [
+      [
+       2003,
+       6,
+       1
+      ]
+     ],
+     "date-time": "2003-06-01T00:00:00Z",
+     "timestamp": 1054425600000
+    },
+    "content-version": "tdm",
+    "delay-in-days": 0,
+    "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+   }
+  ],
+  "content-domain": {
+   "domain": [],
+   "crossmark-restriction": false
+  },
+  "short-container-title": [
+   "Mycological Research"
+  ],
+  "published-print": {
+   "date-parts": [
+    [
+     2003,
+     6
+    ]
+   ]
+  },
+  "DOI": "10.1017/s0953756203007901",
+  "type": "journal-article",
+  "created": {
+   "date-parts": [
+    [
+     2003,
+     8,
+     7
+    ]
+   ],
+   "date-time": "2003-08-07T11:44:41Z",
+   "timestamp": 1060256681000
+  },
+  "page": "659-679",
+  "source": "Crossref",
+  "is-referenced-by-count": 22,
+  "title": [
+   "Xerocomus cisalpinus sp. nov., and the delimitation of species in the X. chrysenteron complex based on morphology and rDNA-LSU sequences"
+  ],
+  "prefix": "10.1016",
+  "volume": "107",
+  "author": [
+   {
+    "given": "Ursula",
+    "family": "Peintner",
+    "sequence": "first",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Heidi",
+    "family": "Ladurner",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Giampaolo",
+    "family": "Simonini",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   }
+  ],
+  "member": "78",
+  "reference": [
+   {
+    "key": "10.1017/S0953756203007901_bib1",
+    "unstructured": "Binder, M. (1999) Zur molekularen Systematik der Boletales: Boletinae und Sclerodermatinae subordo nov. Dissertation, University of Regensburg."
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib2",
+    "first-page": "79",
+    "article-title": "[‘1997’] Molekularbiologische Charakterisierung der Gattungen Boletellus und Xerocomus: Xerocomus pruinatus und verwandte Arten",
+    "volume": "40",
+    "author": "Binder",
+    "year": "1998",
+    "journal-title": "Bollettino del Gruppo Micologico Bresadola"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib3",
+    "doi-asserted-by": "crossref",
+    "first-page": "85",
+    "DOI": "10.2307/3761848",
+    "article-title": "Derivation of a polymorphic lineage of Gasteromycetes from boletoid ancestors",
+    "volume": "94",
+    "author": "Binder",
+    "year": "2002",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib4",
+    "first-page": "21",
+    "article-title": "Evolutionary switches between brown rotting saprophytes and the ectomycorrhizal symbionts in the Boletales",
+    "volume": "52",
+    "author": "Binder",
+    "year": "2001",
+    "journal-title": "Inoculum"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib5",
+    "doi-asserted-by": "crossref",
+    "first-page": "76",
+    "DOI": "10.1006/mpev.2001.1043",
+    "article-title": "Higher-level phylogenetic relationships of homobasidiomycetes (mushroom-forming fungi) inferred from four rDNA regions",
+    "volume": "22",
+    "author": "Binder",
+    "year": "2002",
+    "journal-title": "Molecular Phylogenetics and Evolution"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib6",
+    "doi-asserted-by": "crossref",
+    "first-page": "99",
+    "DOI": "10.1016/S0007-1536(73)80064-6",
+    "article-title": "Boletaceae of Israel. II. Gyroporus, Xerocomus and Boletus",
+    "volume": "60",
+    "author": "Binyamini",
+    "year": "1973",
+    "journal-title": "Transactions of the Bristish Mycological Society"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib7",
+    "first-page": "263",
+    "article-title": "Mikroskopische Analyse der Hutdeckschichten einiger Agaricales, Boletales und Russulales",
+    "volume": "35",
+    "author": "Bresinsky",
+    "year": "1969",
+    "journal-title": "Zeitschrift für Pilzkunde"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib8",
+    "unstructured": "Bulliard, J. B. F. (1791) Histoire des Champiguous de la France. Paris."
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib9",
+    "unstructured": "Corda, A. C. J. (1837-54) Icones Fungorum hucusque cognitorum. 6 vols. J. G. Calve, Prague."
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib10",
+    "doi-asserted-by": "crossref",
+    "first-page": "610",
+    "DOI": "10.2307/3761246",
+    "article-title": "Molecular phylogeny of Amanita based on large-subunit ribosomal DNA sequences: implications for taxonomy and character evolution",
+    "volume": "91",
+    "author": "Drehmel",
+    "year": "1999",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib11",
+    "series-title": "Schmier- und Filzröhrlinge s.l. in Europa",
+    "author": "Engel",
+    "year": "1996"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib12",
+    "doi-asserted-by": "crossref",
+    "first-page": "783",
+    "DOI": "10.2307/2408678",
+    "article-title": "Confidence limits on phylogenies: An approach using the bootstrap",
+    "volume": "39",
+    "author": "Felsenstein",
+    "year": "1985",
+    "journal-title": "Evolution"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib13",
+    "first-page": "173",
+    "article-title": "On the systematics of the Boletales: Suillus and related genera",
+    "volume": "63",
+    "author": "Fischer",
+    "year": "1997",
+    "journal-title": "Zeitschrift Fuer Mykologie"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib14",
+    "doi-asserted-by": "crossref",
+    "first-page": "82",
+    "DOI": "10.2307/3761607",
+    "article-title": "Biology of the ectomycorrhizal genus Rhizopogon. V. Phylogentic relationships in the Boletales: inferred from LSU rDNA sequences",
+    "volume": "93",
+    "author": "Grubisha",
+    "year": "2001",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib15",
+    "volume": "Vol. 2",
+    "author": "Hansen",
+    "year": "1992"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib16",
+    "first-page": "191",
+    "article-title": "Le genre Boletellus à Madagascar et en Nouvelle-Calédonie",
+    "volume": "28",
+    "author": "Heim",
+    "year": "1963",
+    "journal-title": "Revue de Mycologie"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib17",
+    "doi-asserted-by": "crossref",
+    "first-page": "513",
+    "DOI": "10.2307/3668302",
+    "article-title": "L'ornementation sporale des Xerocomaceae spores dites lisses",
+    "volume": "58",
+    "author": "Heinemann",
+    "year": "1988",
+    "journal-title": "Bulletin du Jardin Botanique Nationale de Belgique"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib18",
+    "doi-asserted-by": "crossref",
+    "first-page": "465",
+    "DOI": "10.2307/3761733",
+    "article-title": "Molecular phylogenetics of Ramaria and related genera: evidence from nuclear large subunit and mitochondrial small subunit rDNA sequences",
+    "volume": "93",
+    "author": "Humpert",
+    "year": "2001",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib19",
+    "doi-asserted-by": "crossref",
+    "first-page": "443",
+    "DOI": "10.1055/s-2001-16455",
+    "article-title": "Leucogyrophana, a polyphyletic genus of the order Boletales (Basidiomycetes)",
+    "volume": "3",
+    "author": "Jarosch",
+    "year": "2001",
+    "journal-title": "Plant Biology"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib20",
+    "first-page": "19",
+    "article-title": "Xerocomus chrysenteron und ähnlich aussehende Röhrlinge",
+    "volume": "1",
+    "author": "Klofac",
+    "year": "1992",
+    "journal-title": "Österreichische Zeitschrift für Pilzkunde"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib21",
+    "series-title": "Methuen Handbook of Colour",
+    "author": "Kornerup",
+    "year": "1978"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib22",
+    "volume": "10 vols",
+    "author": "Krombholz",
+    "year": "1831"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib23",
+    "unstructured": "Ladurner, H. (2001a) The Xerocomoideae of Europe. PhD thesis, University Innsbruck."
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib24",
+    "first-page": "46",
+    "article-title": "La variabilità microscopica di Xerocomus pruinatus e la sua delimitazione da specie simili",
+    "volume": "16",
+    "author": "Ladurner",
+    "year": "2001",
+    "journal-title": "Micologia e Vege-tazione Mediterranea"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib25",
+    "first-page": "11",
+    "article-title": "A new hyphal type found in Xerocomus pruinatus",
+    "volume": "9",
+    "author": "Ladurner",
+    "year": "2000",
+    "journal-title": "Österreichische Zeitschrift für Pilzkunde"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib26",
+    "first-page": "121",
+    "article-title": "Boletellus catalaunicus Pöder, Moreno, Rocabruna et Tabarès: a synonym of Xerocomus ripariellus Redeuilh",
+    "volume": "23",
+    "author": "Ladurner",
+    "year": "2001",
+    "journal-title": "Revista Catalana de Micologia"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib27",
+    "unstructured": "Lannoy, G. & Estades, A. (2001) Les Bolets. Flore Mycologique d'Europe, Amiens."
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib28",
+    "doi-asserted-by": "crossref",
+    "first-page": "48",
+    "DOI": "10.1006/mpev.2000.0782",
+    "article-title": "Variation in modes and rates of evolution in nuclear and mitochondrial ribo-somal DNA in the mushroom genus Amanita (Agaricales, Basi-diomycota): phylogenetic implications",
+    "volume": "16",
+    "author": "Moncalvo",
+    "year": "2000",
+    "journal-title": "Molecular Phylogenetics and Evolution"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib29",
+    "doi-asserted-by": "crossref",
+    "first-page": "278",
+    "DOI": "10.1093/sysbio/49.2.278",
+    "article-title": "Phylogenetic relationships of agaric fungi based on nuclear large subunit ribosomal DNA sequences",
+    "volume": "49",
+    "author": "Moncalvo",
+    "year": "2000",
+    "journal-title": "Systematic Biology"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib30",
+    "doi-asserted-by": "crossref",
+    "first-page": "357",
+    "DOI": "10.1016/S1055-7903(02)00027-1",
+    "article-title": "One hundred and seventeen clades of euagarics",
+    "volume": "23",
+    "author": "Moncalvo",
+    "year": "2002",
+    "journal-title": "Molecular Phylogenetics and Evolution"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib31",
+    "first-page": "245",
+    "article-title": "The taxonomic value of the ornamentation in the Xerocomus group of Boletus",
+    "volume": "14",
+    "author": "Oolbekkink",
+    "year": "1991",
+    "journal-title": "Persoonia"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib32",
+    "volume": "Vol. 2",
+    "author": "Persoon",
+    "year": "1825"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib33",
+    "doi-asserted-by": "crossref",
+    "first-page": "817",
+    "DOI": "10.1093/bioinformatics/14.9.817",
+    "article-title": "Modeltest: testing the model of DNA substitution",
+    "volume": "14",
+    "author": "Posada",
+    "year": "1998",
+    "journal-title": "Bioinformatics"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib34",
+    "unstructured": "Quélet, L. (1895) Quelques especes critiques ou nouvelles de al flore mycologique de la France. Compts Render d' Association francais de Avancement du Science 20."
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib35",
+    "first-page": "30",
+    "article-title": "Xerocomus ripariellus Redeuilh sp. nov",
+    "volume": "26",
+    "author": "Redeuilh",
+    "year": "1997",
+    "journal-title": "Documents Mycologiques"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib36",
+    "first-page": "73",
+    "article-title": "Une nouvelle section dans le genre Xerocomus (Boletaceae). Xerocomus sectio Striatulispori sect. nov",
+    "volume": "28",
+    "author": "Redeuilh",
+    "year": "1998",
+    "journal-title": "Documents Mycologiques"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib37",
+    "unstructured": "Redeuilh, G. & Simonini, G. (1994) Comitato per la unificazione dei nomi dei boleti Europei; Schede Xerocomus. Atti delle II Giornate Europee di Micologia Mediterranea C.E.M.M. (A.E.). Nuoro."
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib38",
+    "first-page": "151",
+    "article-title": "Xerocomus ripariellus für Deutschland nachge-wiesen",
+    "volume": "66",
+    "author": "Schreiner",
+    "year": "2000",
+    "journal-title": "Zeitschrift für Mykologie"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib39",
+    "unstructured": "Seguy, E. (1936) Code Universel des Couleurs. Seguy, Paris."
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib40",
+    "first-page": "205",
+    "article-title": "Boletus dryophilus Thiers, specie nuova oer Europa",
+    "volume": "37",
+    "author": "Simonini",
+    "year": "1994",
+    "journal-title": "Rivista di Micologia"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib41",
+    "first-page": "45",
+    "article-title": "Delimitazione di alcuni Xerocomus, con l'ausilio dell'esame della struttura cuticolare e delle spore",
+    "volume": "2",
+    "author": "Simonini",
+    "year": "1996",
+    "journal-title": "Atti delle Giornate C.E.M.M."
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib42",
+    "first-page": "69",
+    "article-title": "Xerocomus chrysenteron e Xerocomus rubellus: delimitazione e casi di simulazione",
+    "volume": "13",
+    "author": "Simonini",
+    "year": "1998",
+    "journal-title": "Micologia e Vegetazione Mediterranea"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib43",
+    "unstructured": "Simonini, G. (1998b) Fungi non delineati VI: Qualche specie rara o poco conosciuta della Famiglia Boletaceae. Libreria Mykoflora, Alassio."
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib44",
+    "doi-asserted-by": "crossref",
+    "first-page": "797",
+    "DOI": "10.2307/3755143",
+    "article-title": "New Boletaceae from Florida (a preliminary communication)",
+    "volume": "37",
+    "author": "Singer",
+    "year": "1945",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib45",
+    "doi-asserted-by": "crossref",
+    "first-page": "57",
+    "DOI": "10.2307/3756036",
+    "article-title": "Notes on Boletes. X. A few miscellaneous discussions and a new subspecies",
+    "volume": "50",
+    "author": "Snell",
+    "year": "1958",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib46",
+    "unstructured": "Swofford, D. L. (1998) PAUP*4.00: phylogenetic analysis using parsimony (and other methods). Version beta version 4.0d64 Sinauer Associates, Sunderland, MA."
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib47",
+    "doi-asserted-by": "crossref",
+    "first-page": "245",
+    "DOI": "10.1017/S0953756201005445",
+    "article-title": "Anamika, a new mycorrhizal genus of Cortinariaceae from India and its phylogenetic position based on ITS and LSU sequences",
+    "volume": "108",
+    "author": "Thomas",
+    "year": "2002",
+    "journal-title": "Mycological Research"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib48",
+    "doi-asserted-by": "crossref",
+    "first-page": "4238",
+    "DOI": "10.1128/jb.172.8.4238-4246.1990",
+    "article-title": "Rapid genetic identification and mapping of enzymatically amplified ribosomal DNA from several Cryptococcus species",
+    "volume": "172",
+    "author": "Vilgalys",
+    "year": "1990",
+    "journal-title": "Journal of Bacteriology"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib49",
+    "doi-asserted-by": "crossref",
+    "first-page": "773",
+    "DOI": "10.1017/S0953756201004257",
+    "article-title": "Natural groups and a revised system for the European poroid Hymenochaetales (Basidiomycota) supported by nLSU rDNA sequence data",
+    "volume": "105",
+    "author": "Wagner",
+    "year": "2001",
+    "journal-title": "Mycological Research"
+   },
+   {
+    "key": "10.1017/S0953756203007901_bib50",
+    "doi-asserted-by": "crossref",
+    "first-page": "195",
+    "DOI": "10.1128/MCB.6.1.195",
+    "article-title": "Inheritance of DNA methylation in Coprinus cinereus",
+    "volume": "6",
+    "author": "Zolan",
+    "year": "1986",
+    "journal-title": "Molecular and Cellular Biology"
+   }
+  ],
+  "container-title": [
+   "Mycological Research"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+   {
+    "URL": "https://api.elsevier.com/content/article/PII:S0953756208612459?httpAccept=text/xml",
+    "content-type": "text/xml",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   },
+   {
+    "URL": "https://api.elsevier.com/content/article/PII:S0953756208612459?httpAccept=text/plain",
+    "content-type": "text/plain",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   }
+  ],
+  "deposited": {
+   "date-parts": [
+    [
+     2019,
+     3,
+     15
+    ]
+   ],
+   "date-time": "2019-03-15T13:50:39Z",
+   "timestamp": 1552657839000
+  },
+  "score": 1,
+  "resource": {
+   "primary": {
+    "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0953756208612459"
+   }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+   "date-parts": [
+    [
+     2003,
+     6
+    ]
+   ]
+  },
+  "references-count": 50,
+  "journal-issue": {
+   "issue": "6",
+   "published-print": {
+    "date-parts": [
+     [
+      2003,
+      6
+     ]
+    ]
+   }
+  },
+  "alternative-id": [
+   "S0953756208612459"
+  ],
+  "URL": "https://doi.org/10.1017/s0953756203007901",
+  "relation": {},
+  "ISSN": [
+   "0953-7562"
+  ],
+  "issn-type": [
+   {
+    "value": "0953-7562",
+    "type": "print"
+   }
+  ],
+  "subject": [],
+  "published": {
+   "date-parts": [
+    [
+     2003,
+     6
+    ]
+   ]
+  }
+ },
+ "error": null
+}
