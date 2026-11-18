@@ -39,13 +39,13 @@ a{color:inherit}
 .eye-pupil{fill:var(--ember);transform-box:fill-box;transform-origin:center;transition:transform .45s ease}
 .eye-look{transition:transform .14s ease-out}
 .eye-lid{transform-box:view-box;transform-origin:50px 50px}
-.card:has(a:hover,a:active,a:focus-visible) .eye-pupil{transform:scale(1.32)}
-.card:has(a:hover,a:active,a:focus-visible) .eye{filter:drop-shadow(0 0 3px rgba(255,255,255,.85)) drop-shadow(0 0 14px #e39a5cb3)}
+.card:has(a:hover,a:active,a:focus-visible) .eye-pupil,.card.awake .eye-pupil{transform:scale(1.32)}
+.card:has(a:hover,a:active,a:focus-visible) .eye,.card.awake .eye{filter:drop-shadow(0 0 3px rgba(255,255,255,.85)) drop-shadow(0 0 14px #e39a5cb3)}
 @keyframes eyeflicker{0%{opacity:1}7%{opacity:.62}9%{opacity:1}20%{opacity:.85}22%{opacity:1}43%{opacity:.7}45%{opacity:.98}65%{opacity:.6}67%{opacity:1}86%{opacity:.82}100%{opacity:1}}
 @keyframes blink{0%,44%,48%,90%,92.5%,95%,97.5%,100%{transform:scaleY(1)}46%,91.2%,96.2%{transform:scaleY(.06)}}
 @media (prefers-reduced-motion:no-preference){
   .eye-lid{animation:blink 11s ease-in-out infinite}
-  .card:has(a:hover,a:active,a:focus-visible) .eye{animation:eyeflicker 2.6s steps(1,end) infinite}
+  .card:has(a:hover,a:active,a:focus-visible) .eye,.card.awake .eye{animation:eyeflicker 2.6s steps(1,end) infinite}
 }
 h1{font:600 clamp(24px,7vw,30px)/1.15 Cinzel,serif;letter-spacing:.04em;margin:0 0 8px}
 .title{margin:0;color:var(--ember);font:500 14px/1.4 Cinzel,serif;letter-spacing:.14em;text-transform:uppercase}
@@ -106,7 +106,8 @@ footer a{color:var(--dim)}
   <small>{{ ui.qrHint }} · ndrshfflr.github.io/card</small>
 </section>
 <script>
-/* The eye follows the pointer; on touch screens it looks toward the finger and drifts back. */
+/* The eye follows the pointer; on touch screens it looks toward the finger, wakes up (widens, glows,
+   flickers) and drifts back. */
 (function () {
   var look = document.getElementById('eye-look'), eye = document.querySelector('.card .eye');
   if (!look || !eye) return;
@@ -118,9 +119,14 @@ footer a{color:var(--dim)}
     var d = Math.sqrt(dx * dx + dy * dy) || 1, m = Math.min(1, d / 260);
     look.setAttribute('transform', 'translate(' + (dx / d * m * 8).toFixed(2) + ' ' + (dy / d * m * 4.5).toFixed(2) + ')');
   }
+  var card = document.querySelector('.card'), sleep = 0;
   function follow(e) {
     px = e.clientX; py = e.clientY;
-    if (e.pointerType === 'touch') { clearTimeout(back); back = setTimeout(rest, 1600); }
+    if (e.pointerType === 'touch') { clearTimeout(back); back = setTimeout(rest, 2600); }
+    /* phones have no hover: a touch wakes the eye (wider pupil, glow, flicker) for one flicker cycle */
+    if (e.type === 'pointerdown' && e.pointerType !== 'mouse' && card) {
+      card.classList.add('awake'); clearTimeout(sleep); sleep = setTimeout(function () { card.classList.remove('awake'); }, 2600);
+    }
     if (!frame) frame = requestAnimationFrame(aim);
   }
   function rest() { look.removeAttribute('transform'); }
