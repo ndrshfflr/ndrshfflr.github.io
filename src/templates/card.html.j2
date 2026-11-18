@@ -90,7 +90,7 @@ footer a{color:var(--dim)}
     <div class="grid">
       {% for pg in pages %}<a class="btn" href="{{ pg.href }}">{% if pg.rune %}<span class="rune" aria-hidden="true">{{ pg.rune }}</span>{% endif %}{{ pg.name }}</a>
       {% endfor %}
-      {% for s in socials %}<a class="btn" href="{{ s.url }}" rel="noopener">{{ s.label | capitalize }}</a>{% endfor %}
+      {% for s in socials %}<a class="btn" href="{{ s.url }}" rel="noopener">{{ s.label }}</a>{% endfor %}
     </div>
     <a class="btn" href="#qr">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3M21 14v7h-4M14 21v-3"/></svg>{{ ui.showQr }}</a>
