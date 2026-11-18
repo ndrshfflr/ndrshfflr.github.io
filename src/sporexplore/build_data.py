@@ -55,7 +55,7 @@ RANGE = (rf"(?:\(\s*(?P<{{p}}min>{NUM})\s*[-–]?\s*\)\s*)?"
          rf"(?:\s*\(\s*[-–]?\s*(?P<{{p}}max>{NUM})\s*\))?")
 PAIR = re.compile(RANGE.format(p="L") + r"\s*[x×X]\s*" + RANGE.format(p="W") + r"(?=\s*(?:µ|μ|u)m|\s*[,;.]|\s*$)", re.U)
 ONE = re.compile(RANGE.format(p="D") + r"\s*(?:µ|μ|u)m(?!\s*(?:long|lang))", re.U)
-ROUND = re.compile(r"kugle|rund|globose|spheric|subglobose", re.I)
+ROUND = re.compile(r"kugle|rund|globose|spheric|subglobose|diamet", re.I)
 GLOBOSE = re.compile(r"(?:sporer|spores)[^.]{0,120}?(?:måler|measure|are|er)?\s*" + RANGE.format(p="D") +
                      r"\s*(?:µ|μ|u)m", re.U | re.I)
 QRE = re.compile(r"Q\s*(?:=|:)?\s*(?P<qlo>\d+[.,]\d+)\s*[-–]\s*(?P<qhi>\d+[.,]\d+)")
