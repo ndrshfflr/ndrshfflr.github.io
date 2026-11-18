@@ -119,6 +119,10 @@
     {
       "species": "Strix aluco",
       "favourite": true
+    },
+    {
+      "species": "Cerioporus squamosus",
+      "favourite": true
     }
   ],
   "hide": [],
