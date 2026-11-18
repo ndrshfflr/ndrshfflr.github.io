@@ -1,0 +1,137 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 7819247,
+  "scientificName": "Butyriboletus subappendiculatus (Dermek, Lazebn. & J.Veselský) D.Arora & J.L.Frank",
+  "canonicalName": "Butyriboletus subappendiculatus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Butyriboletus",
+  "species": "Butyriboletus subappendiculatus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 8405404,
+  "speciesKey": 7819247,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Butyriboletus+subappendiculatus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 2,
+  "NO": 266,
+  "SE": 39,
+  "FI": 0,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 7819247,
+  "nubKey": 7819247,
+  "nameKey": 32673136,
+  "taxonID": "gbif:7819247",
+  "sourceTaxonKey": 172026060,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Butyriboletus",
+  "species": "Butyriboletus subappendiculatus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 8405404,
+  "speciesKey": 7819247,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 8405404,
+  "parent": "Butyriboletus",
+  "basionymKey": 5954910,
+  "basionym": "Boletus subappendiculatus Dermek, Lazebn. & J.Veselský",
+  "scientificName": "Butyriboletus subappendiculatus (Dermek, Lazebn. & J.Veselský) D.Arora & J.L.Frank",
+  "canonicalName": "Butyriboletus subappendiculatus",
+  "authorship": "(Dermek, Lazebn. & J.Veselský) D.Arora & J.L.Frank",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2014). Mycologia 106(3): 470.",
+  "numDescendants": 2,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:07.798+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 7819247,
+   "vernacularName": "granbronssopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299883481
+  },
+  {
+   "taxonKey": 7819247,
+   "vernacularName": "messingrørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299883481
+  },
+  {
+   "taxonKey": 7819247,
+   "vernacularName": "messingrøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299883481
+  },
+  {
+   "taxonKey": 7819247,
+   "vernacularName": "granbronssopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329631,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7819247,
+   "vernacularName": "granbronssopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019284,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7819247,
+   "vernacularName": "messingrørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069657,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7819247,
+   "vernacularName": "messingrøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069657,
+   "preferred": true
+  }
+ ]
+}

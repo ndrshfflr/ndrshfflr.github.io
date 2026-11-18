@@ -1,0 +1,136 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 7705991,
+  "scientificName": "Hygrophoropsis rufa (D.A.Reid) Knudsen",
+  "canonicalName": "Hygrophoropsis rufa",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Hygrophoropsidaceae",
+  "genus": "Hygrophoropsis",
+  "species": "Hygrophoropsis rufa",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4194,
+  "genusKey": 2525560,
+  "speciesKey": 7705991,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Hygrophoropsis+rufa&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 107,
+  "NO": 9,
+  "SE": 99,
+  "FI": 85,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 7705991,
+  "nubKey": 7705991,
+  "nameKey": 17472016,
+  "taxonID": "gbif:7705991",
+  "sourceTaxonKey": 176036670,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Hygrophoropsidaceae",
+  "genus": "Hygrophoropsis",
+  "species": "Hygrophoropsis rufa",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4194,
+  "genusKey": 2525560,
+  "speciesKey": 7705991,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2525560,
+  "parent": "Hygrophoropsis",
+  "basionymKey": 2525719,
+  "basionym": "Hygrophoropsis aurantiaca var. rufa D.A.Reid",
+  "scientificName": "Hygrophoropsis rufa (D.A.Reid) Knudsen",
+  "canonicalName": "Hygrophoropsis rufa",
+  "vernacularName": "Foxy False Chanterelle",
+  "authorship": "(D.A.Reid) Knudsen",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2008). In Knudsen & Vesterholt, Funga Nordica, Agaricoid, Boletoid and Cyphelloid Genera (Gylling): 913.",
+  "numDescendants": 3,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:00:55.315+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 7705991,
+   "vernacularName": "Brunfiltet orangekantarel",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905358
+  },
+  {
+   "taxonKey": 7705991,
+   "vernacularName": "Brunfiltet orangekantarel",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299873212
+  },
+  {
+   "taxonKey": 7705991,
+   "vernacularName": "Foxy False Chanterelle",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299873212
+  },
+  {
+   "taxonKey": 7705991,
+   "vernacularName": "brun narrkantarell",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299873212
+  },
+  {
+   "taxonKey": 7705991,
+   "vernacularName": "ruskovalevahvero",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012858
+  },
+  {
+   "taxonKey": 7705991,
+   "vernacularName": "ruskovalevahvero",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299873212
+  },
+  {
+   "taxonKey": 7705991,
+   "vernacularName": "brun narrkantarell",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019020,
+   "preferred": true
+  }
+ ]
+}
