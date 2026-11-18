@@ -210,7 +210,8 @@ function shareDecode(t) {
 })();
 /* The owner's share panel: on a device signed in to /admin (or the Photos page) with a sign-in that
    can change the site. Tick what to share, then show a QR code for a personal link, or send the link.
-   The number and the last choice are kept on this device only (localStorage), never in the site. */
+   It always starts with phone, email and LinkedIn ticked. The number is kept on this device only
+   (localStorage), never in the site. */
 (function () {
   var REPO = {{ edit.repo | tojson }};
   function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
@@ -228,7 +229,7 @@ function shareDecode(t) {
     .then(function (r) { return r.ok ? r.json() : null; }).then(function (repo) {
       if (!repo || !repo.permissions || !repo.permissions.push) return; // a sign-in that can't change the site
       phone.value = get('cardSharePhone') || '';
-      var last = (get('cardSharePick') || 'pwel').split('');
+      var last = ['p', 'e', 'l']; // the standard choice: phone, email, LinkedIn
       Array.prototype.forEach.call(boxes, function (b) { b.checked = last.indexOf(b.value) >= 0; });
       form.hidden = false;
     }).catch(function () {});
@@ -238,7 +239,7 @@ function shareDecode(t) {
     var num = phone.value.trim();
     if ((o.t || o.w) && !num) { status.textContent = UI.needPhone; phone.focus(); return null; }
     if (o.t || o.w) o.p = num;
-    put('cardSharePhone', num); put('cardSharePick', picked.join(''));
+    put('cardSharePhone', num);
     var names = picked.map(function (k) { return UI.pick[k]; });
     status.textContent = '';
     return { url: CARD.site + 'card#s=' + shareEncode(o), what: UI.sharing + (names.length ? names.join(', ') : UI.nothing) };
