@@ -119,6 +119,14 @@
     {
       "species": "Strix aluco",
       "favourite": true
+    },
+    {
+      "species": "Cerioporus squamosus",
+      "favourite": true
+    },
+    {
+      "species": "Lepista nuda",
+      "favourite": true
     }
   ],
   "hide": [],
@@ -155,14 +163,6 @@
       "group": "fungi",
       "date": "2026-10-10",
       "place": "Söderåsen National Park"
-    },
-    {
-      "id": "m20260917-8977",
-      "name": "Polyporus squamosus",
-      "commonDa": "Skællet stilkporesvamp",
-      "group": "fungi",
-      "date": "2026-09-17",
-      "place": "Karens Minde"
     },
     {
       "id": "m20260109-3e2d",

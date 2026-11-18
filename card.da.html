@@ -40,7 +40,10 @@ h1{font:600 clamp(24px,7vw,30px)/1.15 Cinzel,serif;letter-spacing:.04em;margin:0
 .btn:active{transform:scale(.99)}
 .btn.primary{background:var(--ember);border-color:var(--ember);color:var(--night)}
 .btn svg{width:18px;height:18px;flex:none}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.grid .btn{padding:12px 10px;letter-spacing:.03em;gap:8px;overflow-wrap:anywhere}
+.rune{color:var(--ember);font:400 17px/1 serif}
+.grid .btn:last-child:nth-child(odd){grid-column:1/-1}
 .mail{font:16px/1.4 "EB Garamond",serif;letter-spacing:0;text-transform:none}
 footer{margin-top:auto;padding-top:28px;color:#6f7d95;font-size:14px}
 footer a{color:var(--dim)}
@@ -69,7 +72,12 @@ footer a{color:var(--dim)}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>pietershiffler@proton.me</a>
     
     <div class="grid">
-      <a class="btn" href="cv.da.html">CV</a>
+      <a class="btn" href="photography.da.html"><span class="rune" aria-hidden="true">ᛋ</span>Fotografi</a>
+      <a class="btn" href="bioinformatics.da.html"><span class="rune" aria-hidden="true">ᚼ</span>Bioinformatik</a>
+      <a class="btn" href="fieldlog.da.html"><span class="rune" aria-hidden="true">ᚱ</span>Feltlog</a>
+      <a class="btn" href="blog.da.html"><span class="rune" aria-hidden="true">ᚬ</span>Labdagbog</a>
+      <a class="btn" href="cv.da.html"><span class="rune" aria-hidden="true">ᛘ</span>CV</a>
+      
       <a class="btn" href="https://instagram.com/shfflr" rel="noopener">Instagram</a>
     </div>
     <a class="btn" href="#qr">
