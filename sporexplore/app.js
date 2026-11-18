@@ -569,7 +569,7 @@ function viewSources(main){
   <h2>How candidates are ranked</h2>
   <p>Each character you enter is scored from 0 to 1 and weighted: length and width 3 each, fruitbody type 2, ornamentation 1.6, Q, spore print, stem and host 1.5 each, spore tip 1.4, bluing and pore colour 1.2 each, shape, taste and Melzer's reaction 1 each, cap colour and wall 0.8 each. A measurement scores highest when it lies inside the species' range and near its middle; one just outside the range gets partial credit within the tolerance you choose. Characters you leave empty are ignored.</p>
   <h2>What changed from version 3</h2>
-  <p>${added.length} Nordic Boletales were added. ${changed.length} species have new spore values after sourcing. ${legacyOnly.length} still show an unverified value.</p>
+  <p>${added.length} Nordic Boletales were added. ${changed.length} species have new spore values after sourcing. ${legacyOnly.length} still show${legacyOnly.length===1?"s":""} an unverified value.</p>
   ${changed.length?`<table class="t"><thead><tr><th>Species</th><th>v3 (µm)</th><th>Now (µm)</th></tr></thead><tbody>${changed.map(s=>`<tr><td><a href="#/species/${s.id}"><i class="sci">${esc(s.n)}</i></a></td><td class="n">${fmt(s.legacy.lo)}–${fmt(s.legacy.hi)} × ${fmt(s.legacy.wlo)}–${fmt(s.legacy.whi)}</td><td class="n">${fmt(s.sp.lo)}–${fmt(s.sp.hi)} × ${fmt(s.sp.wlo)}–${fmt(s.sp.whi)}</td></tr>`).join('')}</tbody></table>`:''}
   <h2>Literature</h2><ol class="refs">${lit.map(([id])=>refItem(id)).join('')||'<li>None yet.</li>'}</ol>
   <h2>Database records</h2>
