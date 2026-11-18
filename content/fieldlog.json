@@ -83,7 +83,8 @@
     },
     {
       "species": "Laetiporus sulphureus",
-      "favourite": true
+      "favourite": true,
+      "cover": "https://svampe.databasen.org/uploads/2026-10649180_SySt1r9Rfg.JPG"
     },
     {
       "species": "Podiceps cristatus",
