@@ -692,11 +692,17 @@ CARD_UI = {
     "en": {"lead": "Indoor microbiology · mould · mycology", "save": "Save contact", "email": "Email",
            "site": "The website",
            "showQr": "Show QR code", "close": "Close", "qrHint": "Scan to open this card",
-           "description": "Digital business card: contact details and CV."},
+           "description": "Digital business card: contact details and CV.", "whatsapp": "WhatsApp",
+           "owner": "Only you see this", "phone": "Phone number", "share": "Share phone & WhatsApp on the card",
+           "saveBtn": "Save", "saving": "Saving…", "saved": "Saved. The card and the contact file update in a minute or two.",
+           "needPhone": "Type the phone number first.", "failed": "Couldn't save: "},
     "da": {"lead": "Indeklima · skimmelsvamp · mykologi", "save": "Gem kontakt", "email": "E-mail",
            "site": "Hjemmesiden",
            "showQr": "Vis QR-kode", "close": "Luk", "qrHint": "Scan for at åbne kortet",
-           "description": "Digitalt visitkort: kontakt og CV."},
+           "description": "Digitalt visitkort: kontakt og CV.", "whatsapp": "WhatsApp",
+           "owner": "Kun du ser dette", "phone": "Telefonnummer", "share": "Del telefon og WhatsApp på kortet",
+           "saveBtn": "Gem", "saving": "Gemmer…", "saved": "Gemt. Kortet og kontaktfilen opdateres om et par minutter.",
+           "needPhone": "Skriv telefonnummeret først.", "failed": "Kunne ikke gemme: "},
 }
 
 
@@ -711,35 +717,78 @@ def card_pages(entry, lang):
     return [dict(menu_item(entry, lang, start, fallback), href=hrefs[lang]) for start, hrefs, fallback in pages]
 
 
+def vcard_fold(line):
+    """vCard lines longer than 75 characters continue on the next line after a space (RFC 2425)."""
+    out = [line[:75]]
+    for i in range(75, len(line), 74):
+        out.append(" " + line[i:i + 74])
+    return "\r\n".join(out)
+
+
+def card_photo(cv):
+    """The CV portrait, shrunk to a small square JPEG for the vCard (base64), or "" when there is none
+    or Pillow isn't installed."""
+    src = (cv.get("portrait") or "").lstrip("/")
+    if not src or not (ROOT / src).exists():
+        return ""
+    try:
+        from PIL import Image, ImageOps
+    except ImportError:
+        print("card.vcf: Pillow not installed, so no photo")
+        return ""
+    import base64
+    import io
+    im = ImageOps.exif_transpose(Image.open(ROOT / src)).convert("RGB")
+    side = min(im.size)  # a centred square, as phones show it round
+    im = im.crop(((im.width - side) // 2, (im.height - side) // 2, (im.width + side) // 2, (im.height + side) // 2))
+    im = im.resize((400, 400), Image.LANCZOS)
+    buf = io.BytesIO()
+    im.save(buf, "JPEG", quality=82, optimize=True, progressive=False)
+    return base64.b64encode(buf.getvalue()).decode("ascii")
+
+
+def whatsapp_link(phone):
+    digits = re.sub(r"\D", "", phone)
+    return "https://wa.me/" + digits if digits else ""
+
+
 def render_card(env, content, entry, versions):
     """card.html / card.da.html + card.vcf: the digital business card the QR code points to
     (assets/card/qr.svg encodes SITE_URL + "card"). Name and title come from the
-    entry page, email and socials from the contact section, so the card follows the site."""
+    entry page, email and socials from the contact section, the photo from the CV portrait, so the
+    card follows the site. The phone number (with a WhatsApp link) is only on the card while
+    "Share phone & WhatsApp on the business card" is on (/admin, or the owner's switch on the card)."""
     name = entry["en"].get("name") or "Pieter Shiffler Carpentier"
-    email = (content["en"].get("contact") or {}).get("email") or ""
-    socials = (content["en"].get("contact") or {}).get("socials") or []
+    contact = content["en"].get("contact") or {}
+    email = contact.get("email") or ""
+    socials = contact.get("socials") or []
+    phone = (contact.get("phone") or "").strip() if contact.get("shareOnCard") else ""
+    whatsapp = whatsapp_link(phone) if phone else ""
     parts = name.split()
     lines = ["BEGIN:VCARD", "VERSION:3.0",
              "N:" + vcard_escape(" ".join(parts[1:])) + ";" + vcard_escape(parts[0]) + ";;;",
              "FN:" + vcard_escape(name),
              "TITLE:" + vcard_escape(entry["en"].get("title") or ""),
-             "URL:" + SITE_URL + CARD["en"]]
+             "URL:" + SITE_URL]
     if email:
         lines.append("EMAIL;TYPE=INTERNET:" + email)
-    phone = (content["en"].get("contact") or {}).get("phone") or ""
     if phone:
-        lines.append("TEL;TYPE=CELL:" + phone.replace(" ", ""))
+        lines.append("TEL;TYPE=CELL:" + re.sub(r"[^\d+]", "", phone))
+        lines.append("X-SOCIALPROFILE;TYPE=whatsapp:" + whatsapp)
     for s in socials:
         lines.append("X-SOCIALPROFILE;TYPE=" + vcard_escape(s.get("label", "").lower()) + ":" + s.get("url", ""))
+    photo = card_photo(load("cv.json"))
+    if photo:
+        lines.append("PHOTO;ENCODING=b;TYPE=JPEG:" + photo)
     lines += ["NOTE:" + vcard_escape(CARD_UI["en"]["lead"]), "END:VCARD"]
-    (ROOT / "card.vcf").write_text("\r\n".join(lines) + "\r\n", encoding="utf-8")
+    (ROOT / "card.vcf").write_text("\r\n".join(vcard_fold(l) for l in lines) + "\r\n", encoding="utf-8")
     print("wrote card.vcf")
     qr = (ROOT / "assets" / "card" / "qr.svg").read_text(encoding="utf-8")
     for lang in ("en", "da"):
         other = "da" if lang == "en" else "en"
         html = env.get_template("card.html.j2").render(
             lang=lang, ui=CARD_UI[lang], name=name, title=entry[lang].get("title") or "", email=email,
-            phone=phone, socials=socials, qr_svg=qr, site_url=SITE_URL, site_host=SITE_HOST, self_href=CARD[lang], other_href=CARD[other],
+            phone=phone, whatsapp=whatsapp, socials=socials, qr_svg=qr, edit=edit_backend(), site_url=SITE_URL, site_host=SITE_HOST, self_href=CARD[lang], other_href=CARD[other],
             entry_href=ENTRY[lang], pages=card_pages(entry, lang),
             year=datetime.date.today().year)
         (ROOT / CARD[lang]).write_text(html, encoding="utf-8")

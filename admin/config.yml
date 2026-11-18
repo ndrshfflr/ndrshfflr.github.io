@@ -70,7 +70,8 @@ collections:
             widget: "object"
             fields:
               - { label: "Email address", name: "email", widget: "string" }
-              - { label: "Phone (optional)", name: "phone", widget: "string", required: false, hint: "e.g. +45 12 34 56 78. Leave empty to hide." }
+              - { label: "Phone (optional)", name: "phone", widget: "string", required: false, hint: "e.g. +45 12 34 56 78, with the country code so the WhatsApp link works. Only shown when the switch below is on." }
+              - { label: "Share phone & WhatsApp on the business card", name: "shareOnCard", widget: "boolean", required: false, default: false, hint: "Adds the number and a WhatsApp link to /card and to the contact file it downloads. The card uses the English texts' values. You can also flip this on the card itself while signed in." }
               - label: "Social / other links"
                 name: "socials"
                 widget: "list"
