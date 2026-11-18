@@ -49,5 +49,6 @@ jobs:
           esac
           case "$PARTS" in *if,*|*if) HARVEST_PARTS=if python3 src/sporexplore/harvest.py; commit "Index Fungorum / Species Fungorum refresh";; esac
           case "$PARTS" in *refs*) HARVEST_PARTS=refs python3 src/sporexplore/harvest.py; commit "Crossref reference queries";; esac
+          case "$PARTS" in *files*) HARVEST_PARTS=files python3 src/sporexplore/harvest.py; commit "open-access publications";; esac
           case "$PARTS" in *dois*) HARVEST_PARTS=dois python3 src/sporexplore/harvest.py; commit "Crossref DOIs";; esac
           echo "finished" ; date -u

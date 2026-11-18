@@ -188,6 +188,41 @@ def if_refresh():
         save("indexfungorum", slug(nm), if_name(nm))
 
 
+def files():
+    """Download open-access publications (PDFs) listed in files.txt; for an HTML landing page,
+    follow its first PDF links. Saved byte-for-byte for local text extraction."""
+    d = os.path.join(RAW, "files")
+    os.makedirs(d, exist_ok=True)
+    for url in lines("files.txt"):
+        key = slug(url)[-90:]
+        if any(f.startswith(key) for f in os.listdir(d)):
+            continue
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=120) as r:
+                body, ctype = r.read(), r.headers.get("Content-Type", "")
+        except Exception as e:  # noqa: BLE001
+            save("files", key + "_error", {"url": url, "error": str(e)})
+            continue
+        if b"%PDF" in body[:1024]:
+            open(os.path.join(d, key + ".pdf"), "wb").write(body)
+            continue
+        html_ = body.decode("utf-8", "replace")
+        links = re.findall(r'href="([^"]+?\.pdf[^"]*)"', html_, re.I)
+        for i, l in enumerate(dict.fromkeys(links)):
+            if i >= 3:
+                break
+            l = urllib.parse.urljoin(url, l)
+            try:
+                with urllib.request.urlopen(urllib.request.Request(l, headers={"User-Agent": UA}), timeout=120) as r:
+                    b = r.read()
+                if b"%PDF" in b[:1024]:
+                    open(os.path.join(d, f"{key}_{i}.pdf"), "wb").write(b)
+            except Exception as e:  # noqa: BLE001
+                save("files", f"{key}_{i}_error", {"url": l, "error": str(e)})
+        save("files", key + "_landing", {"url": url, "pdf_links": links[:20]})
+
+
 def dois():
     for d in lines("dois.txt"):
         d = d.lower().removeprefix("https://doi.org/")
@@ -225,6 +260,8 @@ if __name__ == "__main__":
         if_refresh()
     if "refs" in parts:
         refs()
+    if "files" in parts:
+        files()
     if "dois" in parts:
         dois()
     with open(os.path.join(RAW, "_manifest.json"), "w") as f:
