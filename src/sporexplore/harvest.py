@@ -29,18 +29,18 @@ COUNTRIES = ["DK", "NO", "SE", "FI", "IS", "FO", "GL"]
 NOW = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 
-def get(url, params=None, as_json=True, tries=3):
+def get(url, params=None, as_json=True, tries=2):
     if params:
         url += ("&" if "?" in url else "?") + urllib.parse.urlencode(params)
     for i in range(tries):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json, text/xml, */*"})
-            with urllib.request.urlopen(req, timeout=60) as r:
+            with urllib.request.urlopen(req, timeout=25) as r:
                 body = r.read().decode("utf-8", "replace")
                 return (json.loads(body) if as_json else body), url
         except Exception as e:  # noqa: BLE001
             err = f"{type(e).__name__}: {e}"
-            time.sleep(2 * (i + 1))
+            time.sleep(2)
     return {"_error": err}, url
 
 
@@ -66,6 +66,8 @@ def lines(fn):
 # ---------------------------------------------------------------- Nordic species list
 def nordic():
     """Every species-rank Boletales taxon with GBIF records in a Nordic territory."""
+    if os.path.exists(os.path.join(RAW, "gbif", "_nordic_boletales.json")):
+        return
     m, _ = get("https://api.gbif.org/v1/species/match", {"name": "Boletales", "rank": "ORDER", "kingdom": "Fungi"})
     order_key = m.get("usageKey")
     out = {"retrieved": NOW, "orderKey": order_key, "byCountry": {}, "species": {}}
@@ -79,6 +81,7 @@ def nordic():
         out["byCountry"][c] = {"url": url, "counts": counts}
         time.sleep(0.3)
     keys = sorted({k for c in out["byCountry"].values() for k in c["counts"]}, key=int)
+    save("gbif", "_nordic_boletales", out)  # facets first, so a slow tail never loses them
     for k in keys:
         s, url = get(f"https://api.gbif.org/v1/species/{k}")
         out["species"][k] = {k2: s.get(k2) for k2 in
@@ -119,11 +122,8 @@ def if_name(name):
         for n, nm in zip(nums, names):
             if nm.strip().lower() != name.lower():
                 continue
-            full, furl = get("http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameFullByKey",
-                             {"NameLsid": f"urn:lsid:indexfungorum.org:names:{n}"}, as_json=False)
-            if isinstance(full, dict) or "<" not in str(full):
-                full, furl = get("http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameByKey",
-                                 {"NameKey": n}, as_json=False)
+            full, furl = get("http://www.indexfungorum.org/ixfwebservice/fungus.asmx/NameByKey",
+                             {"NameKey": n}, as_json=False)
             rec["full"][n] = {"url": furl, "xml": full}
             cur = re.search(r"<CURRENT_x0020_NAME_x0020_RECORD_x0020_NUMBER>(\d+)<", str(full))
             if cur and cur.group(1) != n and cur.group(1) not in rec["full"]:
@@ -166,7 +166,9 @@ def sa_name(name):
 
 
 def names():
-    todo = lines("names.txt")
+    todo = [n for n in lines("names.txt")
+            if not os.path.exists(os.path.join(RAW, "svampeatlas", slug(n) + ".json"))]
+    todo = todo[: int(os.environ.get("HARVEST_CHUNK") or 10**6)]
     print(f"names: {len(todo)}")
     for i, nm in enumerate(todo, 1):
         k = slug(nm)
@@ -193,6 +195,10 @@ if __name__ == "__main__":
         nordic()
     if "names" in parts:
         names()
+    if "names-left" in parts:
+        print(len([n for n in lines("names.txt")
+                   if not os.path.exists(os.path.join(RAW, "svampeatlas", slug(n) + ".json"))]))
+        sys.exit(0)
     if "dois" in parts:
         dois()
     with open(os.path.join(RAW, "_manifest.json"), "w") as f:
