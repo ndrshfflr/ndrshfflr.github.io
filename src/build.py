@@ -693,16 +693,18 @@ CARD_UI = {
            "site": "The website",
            "showQr": "Show QR code", "close": "Close", "qrHint": "Scan to open this card",
            "description": "Digital business card: contact details and CV.", "whatsapp": "WhatsApp",
-           "owner": "Only you see this", "phone": "Phone number", "share": "Share phone & WhatsApp on the card",
-           "saveBtn": "Save", "saving": "Saving…", "saved": "Saved. The card and the contact file update in a minute or two.",
-           "needPhone": "Type the phone number first.", "failed": "Couldn't save: "},
+           "owner": "Share this time · only you see this", "phone": "Your phone number (stays on this phone)",
+           "pick": {"p": "Phone", "w": "WhatsApp", "e": "Email", "l": "LinkedIn"},
+           "showShare": "Show QR with this", "sendLink": "Send as a link", "copied": "Link copied.",
+           "needPhone": "Type your phone number first.", "sharing": "This code shares: ", "nothing": "name and photo only"},
     "da": {"lead": "Indeklima · skimmelsvamp · mykologi", "save": "Gem kontakt", "email": "E-mail",
            "site": "Hjemmesiden",
            "showQr": "Vis QR-kode", "close": "Luk", "qrHint": "Scan for at åbne kortet",
            "description": "Digitalt visitkort: kontakt og CV.", "whatsapp": "WhatsApp",
-           "owner": "Kun du ser dette", "phone": "Telefonnummer", "share": "Del telefon og WhatsApp på kortet",
-           "saveBtn": "Gem", "saving": "Gemmer…", "saved": "Gemt. Kortet og kontaktfilen opdateres om et par minutter.",
-           "needPhone": "Skriv telefonnummeret først.", "failed": "Kunne ikke gemme: "},
+           "owner": "Del denne gang · kun du ser dette", "phone": "Dit telefonnummer (bliver på denne telefon)",
+           "pick": {"p": "Telefon", "w": "WhatsApp", "e": "E-mail", "l": "LinkedIn"},
+           "showShare": "Vis QR med dette", "sendLink": "Send som link", "copied": "Link kopieret.",
+           "needPhone": "Skriv dit telefonnummer først.", "sharing": "Koden deler: ", "nothing": "kun navn og foto"},
 }
 
 
@@ -727,7 +729,8 @@ def vcard_fold(line):
 
 def card_photo(cv):
     """The CV portrait, shrunk to a small square JPEG for the vCard (base64), or "" when there is none
-    or Pillow isn't installed."""
+    or Pillow isn't installed. Also written to assets/card/photo.jpg, which the card uses when it builds
+    a contact on the visitor's phone for a personal share link."""
     src = (cv.get("portrait") or "").lstrip("/")
     if not src or not (ROOT / src).exists():
         return ""
@@ -744,6 +747,9 @@ def card_photo(cv):
     im = im.resize((400, 400), Image.LANCZOS)
     buf = io.BytesIO()
     im.save(buf, "JPEG", quality=82, optimize=True, progressive=False)
+    out = ROOT / "assets" / "card" / "photo.jpg"
+    if not out.exists() or out.read_bytes() != buf.getvalue():
+        out.write_bytes(buf.getvalue())
     return base64.b64encode(buf.getvalue()).decode("ascii")
 
 
@@ -757,8 +763,10 @@ def render_card(env, content, entry, versions):
     (assets/card/qr.svg encodes https://me.alkemisten.dk/card; old printed codes with
     https://ndrshfflr.github.io/card redirect here). Name and title come from the
     entry page, email and socials from the contact section, the photo from the CV portrait, so the
-    card follows the site. The phone number (with a WhatsApp link) is only on the card while
-    "Share phone & WhatsApp on the business card" is on (/admin, or the owner's switch on the card)."""
+    card follows the site. The phone number (with a WhatsApp link) is only on the public card while
+    "Share phone & WhatsApp on the business card" is on in /admin. For one person at a time, the owner
+    picks what to share on the card itself (signed in) and shows a QR code for a personal link
+    (card#s=…); the number for that lives only on the owner's phone and in that link."""
     name = entry["en"].get("name") or "Pieter Shiffler Carpentier"
     contact = content["en"].get("contact") or {}
     email = contact.get("email") or ""
@@ -789,7 +797,10 @@ def render_card(env, content, entry, versions):
         other = "da" if lang == "en" else "en"
         html = env.get_template("card.html.j2").render(
             lang=lang, ui=CARD_UI[lang], name=name, title=entry[lang].get("title") or "", email=email,
-            phone=phone, whatsapp=whatsapp, socials=socials, qr_svg=qr, edit=edit_backend(), site_url=SITE_URL, site_host=SITE_HOST, self_href=CARD[lang], other_href=CARD[other],
+            phone=phone, whatsapp=whatsapp, socials=socials, qr_svg=qr, edit=edit_backend(), card_json={
+                "name": name, "first": parts[0], "last": " ".join(parts[1:]), "title": entry["en"].get("title") or "",
+                "note": CARD_UI["en"]["lead"], "email": email, "socials": socials, "site": SITE_URL,
+                "photo": "assets/card/photo.jpg" if photo else ""}, site_url=SITE_URL, site_host=SITE_HOST, self_href=CARD[lang], other_href=CARD[other],
             entry_href=ENTRY[lang], pages=card_pages(entry, lang),
             year=datetime.date.today().year)
         (ROOT / CARD[lang]).write_text(html, encoding="utf-8")
