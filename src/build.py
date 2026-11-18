@@ -21,7 +21,11 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 import cv_page
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE_URL = "https://ndrshfflr.github.io/"
+# The site's public address. With a custom domain, the CNAME file at the repo root holds it
+# (GitHub Pages reads the same file); without one, the github.io address is used.
+_cname = ROOT / "CNAME"
+SITE_HOST = (_cname.read_text(encoding="utf-8").strip() if _cname.exists() else "") or "ndrshfflr.github.io"
+SITE_URL = "https://" + SITE_HOST + "/"
 
 # Words the field log page uses (assets/fieldlog.js).
 UI = {
@@ -709,7 +713,7 @@ def card_pages(entry, lang):
 
 def render_card(env, content, entry, versions):
     """card.html / card.da.html + card.vcf: the digital business card the QR code points to
-    (assets/card/qr.svg encodes https://ndrshfflr.github.io/card). Name and title come from the
+    (assets/card/qr.svg encodes SITE_URL + "card"). Name and title come from the
     entry page, email and socials from the contact section, so the card follows the site."""
     name = entry["en"].get("name") or "Pieter Shiffler Carpentier"
     email = (content["en"].get("contact") or {}).get("email") or ""
@@ -735,7 +739,7 @@ def render_card(env, content, entry, versions):
         other = "da" if lang == "en" else "en"
         html = env.get_template("card.html.j2").render(
             lang=lang, ui=CARD_UI[lang], name=name, title=entry[lang].get("title") or "", email=email,
-            phone=phone, socials=socials, qr_svg=qr, site_url=SITE_URL, self_href=CARD[lang], other_href=CARD[other],
+            phone=phone, socials=socials, qr_svg=qr, site_url=SITE_URL, site_host=SITE_HOST, self_href=CARD[lang], other_href=CARD[other],
             entry_href=ENTRY[lang], pages=card_pages(entry, lang),
             year=datetime.date.today().year)
         (ROOT / CARD[lang]).write_text(html, encoding="utf-8")
@@ -795,7 +799,7 @@ def render_redirects():
 <meta http-equiv="refresh" content="0; url={to}">
 <script>location.replace(/[?&]slug=cv(&|$)/.test(location.search) ? "{cv}" : "{to}");</script>
 </head>
-<body><p><a href="{to}">ndrshfflr.github.io</a></p></body>
+<body><p><a href="{to}">{SITE_HOST}</a></p></body>
 </html>
 """
         (ROOT / out).write_text(html, encoding="utf-8")
@@ -842,6 +846,9 @@ def main():
     sm.append("</urlset>")
     (ROOT / "sitemap.xml").write_text("\n".join(sm) + "\n", encoding="utf-8")
     print("wrote sitemap.xml")
+    (ROOT / "robots.txt").write_text(
+        "User-agent: *\nAllow: /\nDisallow: /upload.html\n\nSitemap: " + SITE_URL + "sitemap.xml\n", encoding="utf-8")
+    print("wrote robots.txt")
 
 
 if __name__ == "__main__":

@@ -96,14 +96,14 @@ footer a{color:var(--dim)}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3M21 14v7h-4M14 21v-3"/></svg>{{ ui.showQr }}</a>
   </div>
 
-  <footer><a href="{{ entry_href }}">{{ ui.site }}</a> · ndrshfflr.github.io</footer>
+  <footer><a href="{{ entry_href }}">{{ ui.site }}</a> · {{ site_host }}</footer>
 </main>
 
 <section class="qr" id="qr" aria-label="QR">
   <a class="close" href="#">{{ ui.close }} ✕</a>
   <div class="code">{{ qr_svg | safe }}</div>
   <p>{{ name }}</p>
-  <small>{{ ui.qrHint }} · ndrshfflr.github.io/card</small>
+  <small>{{ ui.qrHint }} · {{ site_host }}/card</small>
 </section>
 <script>
 /* The eye follows the pointer; on touch screens it looks toward the finger, wakes up (widens, glows,

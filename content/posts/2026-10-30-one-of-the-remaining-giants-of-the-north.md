@@ -2,7 +2,7 @@
 title: One of the last (wild) giants of the North
 date: 2026-10-30
 language: en
-cover: https://ndrshfflr.github.io/images/gallery/2026-10-30-alces-alces-4f1b00.jpg
+cover: /images/gallery/2026-10-30-alces-alces-4f1b00.jpg
 ---
 Slowly, we drove our campervan through the narrow serpentine roads cutting through the landscape. Smålandets Markaryds Älgsafari is one of many for-profit animal parks in Sweden where you can see these giants in the flesh for a modest fee.
 
