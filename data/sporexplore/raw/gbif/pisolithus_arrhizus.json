@@ -1,0 +1,193 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 2525455,
+  "scientificName": "Pisolithus arhizus (Scop.) Rauschert",
+  "canonicalName": "Pisolithus arhizus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 98,
+  "note": "Similarity: name=100; authorship=0; classification=4; rank=6; status=1; score=111; singleMatch=5",
+  "matchType": "FUZZY",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Sclerodermataceae",
+  "genus": "Pisolithus",
+  "species": "Pisolithus arhizus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8453,
+  "genusKey": 2525454,
+  "speciesKey": 2525455,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Pisolithus+arrhizus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 35,
+  "NO": 19,
+  "SE": 284,
+  "FI": 111,
+  "IS": 0,
+  "FO": 0,
+  "GL": 118
+ },
+ "species": {
+  "key": 2525455,
+  "nubKey": 2525455,
+  "nameKey": 8795221,
+  "taxonID": "gbif:2525455",
+  "sourceTaxonKey": 172018268,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Sclerodermataceae",
+  "genus": "Pisolithus",
+  "species": "Pisolithus arhizus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8453,
+  "genusKey": 2525454,
+  "speciesKey": 2525455,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2525454,
+  "parent": "Pisolithus",
+  "scientificName": "Pisolithus arhizus (Scop.) Rauschert",
+  "canonicalName": "Pisolithus arhizus",
+  "vernacularName": "Dyeball",
+  "authorship": "(Scop.) Rauschert",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1959). Z. Pilzk. 25(2): 50.",
+  "numDescendants": 11,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:13.850+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2525455,
+   "vernacularName": "Bohemian Truffle",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871526
+  },
+  {
+   "taxonKey": 2525455,
+   "vernacularName": "Dyeball",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222041343
+  },
+  {
+   "taxonKey": 2525455,
+   "vernacularName": "Dyeball",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871526
+  },
+  {
+   "taxonKey": 2525455,
+   "vernacularName": "Farvebold",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871526
+  },
+  {
+   "taxonKey": 2525455,
+   "vernacularName": "Farvebold",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905299
+  },
+  {
+   "taxonKey": 2525455,
+   "vernacularName": "Gum Puffball",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871526
+  },
+  {
+   "taxonKey": 2525455,
+   "vernacularName": "Horse Dung Fungus",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871526
+  },
+  {
+   "taxonKey": 2525455,
+   "vernacularName": "hernekuukunen",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012808
+  },
+  {
+   "taxonKey": 2525455,
+   "vernacularName": "hernekuukunen",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871526
+  },
+  {
+   "taxonKey": 2525455,
+   "vernacularName": "trollrøyksopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871526
+  },
+  {
+   "taxonKey": 2525455,
+   "vernacularName": "ärtröksvamp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871526
+  },
+  {
+   "taxonKey": 2525455,
+   "vernacularName": "Dyeball",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180098864,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2525455,
+   "vernacularName": "trollrøyksopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069249,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2525455,
+   "vernacularName": "trollrøyksopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069249,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2525455,
+   "vernacularName": "ärtröksvamp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019135,
+   "preferred": true
+  }
+ ]
+}
