@@ -1,0 +1,152 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Kuo Ortiz-Santana 2020 Revision of leccinoid fungi with emphasis on North American taxa based on molecular and morphological data Mycologia",
+ "url": "https://api.crossref.org/works?query.bibliographic=Kuo+Ortiz-Santana+2020+Revision+of+leccinoid+fungi+with+emphasis+on+North+American+taxa+based+on+molecular+and+morphological+data+Mycologia&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Informa UK Limited",
+   "issue": "1",
+   "DOI": "10.1080/00275514.2019.1685351",
+   "type": "journal-article",
+   "page": "197-211",
+   "title": [
+    "Revision of leccinoid fungi, with emphasis on North American taxa, based on molecular and morphological data"
+   ],
+   "volume": "112",
+   "author": [
+    {
+     "ORCID": "https://orcid.org/0000-0002-1993-2591",
+     "authenticated-orcid": false,
+     "given": "Michael",
+     "family": "Kuo",
+     "sequence": "first",
+     "affiliation": [
+      {
+       "name": "The Herbarium of Michael Kuo, P.O. Box 742, Charleston, Illinois 61920"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "ORCID": "https://orcid.org/0000-0003-4545-7162",
+     "authenticated-orcid": false,
+     "given": "Beatriz",
+     "family": "Ortiz-Santana",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Center for Forest Mycology Research, Northern Research Station, United States Department of Agriculture Forest Service, One Gifford Pinchot Drive, Madison, Wisconsin 53726"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycologia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2020,
+      1,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Informa UK Limited",
+   "issue": "1",
+   "DOI": "10.2307/3758923",
+   "type": "journal-article",
+   "page": "220",
+   "title": [
+    "Ramaria Subgenus Lentoramaria with Emphasis on North American Taxa"
+   ],
+   "volume": "68",
+   "author": [
+    {
+     "given": "Currie D.",
+     "family": "Marr",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Ronald H.",
+     "family": "Petersen",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycologia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1976,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Informa UK Limited",
+   "issue": "6",
+   "DOI": "10.2307/3792672",
+   "type": "journal-article",
+   "page": "1108",
+   "title": [
+    "A Nomenclatural Revision of F. J. Seaver's North American Cup-Fungi (Operculates)"
+   ],
+   "volume": "75",
+   "author": [
+    {
+     "given": "D. H.",
+     "family": "Pfister",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycologia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1983,
+      11
+     ]
+    ]
+   }
+  }
+ ]
+}

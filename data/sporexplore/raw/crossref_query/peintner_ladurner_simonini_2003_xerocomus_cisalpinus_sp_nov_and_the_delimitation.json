@@ -1,0 +1,235 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Peintner Ladurner Simonini 2003 Xerocomus cisalpinus sp. nov. and the delimitation of species in the X. chrysenteron complex based on morphology and rDNA-LSU sequences Mycological Research",
+ "url": "https://api.crossref.org/works?query.bibliographic=Peintner+Ladurner+Simonini+2003+Xerocomus+cisalpinus+sp.+nov.+and+the+delimitation+of+species+in+the+X.+chrysenteron+complex+based+on+morphology+and+rDNA-LSU+sequences+Mycological+Research&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Elsevier BV",
+   "issue": "6",
+   "DOI": "10.1017/s0953756203007901",
+   "type": "journal-article",
+   "page": "659-679",
+   "title": [
+    "Xerocomus cisalpinus sp. nov., and the delimitation of species in the X. chrysenteron complex based on morphology and rDNA-LSU sequences"
+   ],
+   "volume": "107",
+   "author": [
+    {
+     "given": "Ursula",
+     "family": "Peintner",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Heidi",
+     "family": "Ladurner",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Giampaolo",
+     "family": "Simonini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycological Research"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2003,
+      6
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Elsevier BV",
+   "issue": "3",
+   "DOI": "10.1016/j.mycres.2005.11.013",
+   "type": "journal-article",
+   "page": "276-287",
+   "title": [
+    "Detection of species within the Xerocomus subtomentosus complex in Europe using rDNA–ITS sequences"
+   ],
+   "volume": "110",
+   "author": [
+    {
+     "given": "Andy F.S.",
+     "family": "Taylor",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Alan E.",
+     "family": "Hills",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Giampaolo",
+     "family": "Simonini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Ernst E.",
+     "family": "Both",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Ursula",
+     "family": "Eberhardt",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycological Research"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2006,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Elsevier BV",
+   "issue": "4",
+   "DOI": "10.1016/j.mycres.2007.01.014",
+   "type": "journal-article",
+   "page": "403-408",
+   "title": [
+    "Xerocomus silwoodensis sp. nov., a new species within the European X. subtomentosus complex"
+   ],
+   "volume": "111",
+   "author": [
+    {
+     "given": "Andy F.S.",
+     "family": "Taylor",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Alan E.",
+     "family": "Hills",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Giampaolo",
+     "family": "Simonini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "José A.",
+     "family": "Muñoz",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Ursula",
+     "family": "Eberhardt",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycological Research"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2007,
+      4
+     ]
+    ]
+   }
+  }
+ ]
+}

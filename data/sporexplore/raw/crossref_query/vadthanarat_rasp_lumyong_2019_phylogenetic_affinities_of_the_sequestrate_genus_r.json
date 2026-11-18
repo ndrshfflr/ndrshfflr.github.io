@@ -1,0 +1,172 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Vadthanarat Raspé Lumyong 2019 Phylogenetic affinities of the sequestrate genus Rhodactina Boletaceae Octaviania",
+ "url": "https://api.crossref.org/works?query.bibliographic=Vadthanarat+Rasp%C3%A9+Lumyong+2019+Phylogenetic+affinities+of+the+sequestrate+genus+Rhodactina+Boletaceae+Octaviania&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "DOI": "10.3897/mycokeys.29.22572.figure2",
+   "title": [
+    "Figure 2 from: Vadthanarat S, Raspé O, Lumyong S (2018) Phylogenetic affinities of the sequestrate genus Rhodactina (Boletaceae), with a new species, R. rostratispora from Thailand. MycoKeys 29: 63-80. https://doi.org/10.3897/mycokeys.29.22572"
+   ],
+   "author": [
+    {
+     "given": "Santhiti",
+     "family": "Vadthanarat",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Olivier",
+     "family": "Raspé",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Saisamorn",
+     "family": "Lumyong",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2018,
+      1,
+      25
+     ]
+    ]
+   },
+   "type": "component",
+   "publisher": "Pensoft Publishers"
+  },
+  {
+   "DOI": "10.3897/mycokeys.29.22572.figure1",
+   "title": [
+    "Figure 1 from: Vadthanarat S, Raspé O, Lumyong S (2018) Phylogenetic affinities of the sequestrate genus Rhodactina (Boletaceae), with a new species, R. rostratispora from Thailand. MycoKeys 29: 63-80. https://doi.org/10.3897/mycokeys.29.22572"
+   ],
+   "author": [
+    {
+     "given": "Santhiti",
+     "family": "Vadthanarat",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Olivier",
+     "family": "Raspé",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Saisamorn",
+     "family": "Lumyong",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2018,
+      1,
+      25
+     ]
+    ]
+   },
+   "type": "component",
+   "publisher": "Pensoft Publishers"
+  },
+  {
+   "DOI": "10.3897/mycokeys.29.22572.figure3",
+   "title": [
+    "Figure 3 from: Vadthanarat S, Raspé O, Lumyong S (2018) Phylogenetic affinities of the sequestrate genus Rhodactina (Boletaceae), with a new species, R. rostratispora from Thailand. MycoKeys 29: 63-80. https://doi.org/10.3897/mycokeys.29.22572"
+   ],
+   "author": [
+    {
+     "given": "Santhiti",
+     "family": "Vadthanarat",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Olivier",
+     "family": "Raspé",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Saisamorn",
+     "family": "Lumyong",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2018,
+      1,
+      25
+     ]
+    ]
+   },
+   "type": "component",
+   "publisher": "Pensoft Publishers"
+  }
+ ]
+}

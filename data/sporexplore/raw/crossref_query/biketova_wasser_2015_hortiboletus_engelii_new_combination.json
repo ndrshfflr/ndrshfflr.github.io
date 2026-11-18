@@ -1,0 +1,604 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Biketova Wasser 2015 Hortiboletus engelii new combination",
+ "url": "https://api.crossref.org/works?query.bibliographic=Biketova+Wasser+2015+Hortiboletus+engelii+new+combination&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "DOI": "10.3897/imafungus.16.144731.figure10",
+   "title": [
+    "Figure 10 from: Biketova AYu, Svetasheva TYu, Taylor AFS, Simonini G, Gelardi M, Morozova OV, Polemis E, Muñoz JA, Albert L, Saitta S, Wasser SP, Nevo E, Zervakis GI, Vizzini A, Dima B (2025) Morphological and molecular re-assessment of European and Levantine species of the genus Hortiboletus (Boletaceae). IMA Fungus 16: e144731. https://doi.org/10.3897/imafungus.16.144731"
+   ],
+   "author": [
+    {
+     "given": "Alona Yu.",
+     "family": "Biketova",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Tatyana Yu.",
+     "family": "Svetasheva",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Andy F. S.",
+     "family": "Taylor",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Giampaolo",
+     "family": "Simonini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Matteo",
+     "family": "Gelardi",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Olga V.",
+     "family": "Morozova",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Elias",
+     "family": "Polemis",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "José A.",
+     "family": "Muñoz",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "László",
+     "family": "Albert",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Salvatore",
+     "family": "Saitta",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Solomon P.",
+     "family": "Wasser",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Eviatar",
+     "family": "Nevo",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Georgios I.",
+     "family": "Zervakis",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Alfredo",
+     "family": "Vizzini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Bálint",
+     "family": "Dima",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2025,
+      6,
+      12
+     ]
+    ]
+   },
+   "type": "component",
+   "publisher": "Pensoft Publishers"
+  },
+  {
+   "DOI": "10.3897/imafungus.16.144731.figure5",
+   "title": [
+    "Figure 5 from: Biketova AYu, Svetasheva TYu, Taylor AFS, Simonini G, Gelardi M, Morozova OV, Polemis E, Muñoz JA, Albert L, Saitta S, Wasser SP, Nevo E, Zervakis GI, Vizzini A, Dima B (2025) Morphological and molecular re-assessment of European and Levantine species of the genus Hortiboletus (Boletaceae). IMA Fungus 16: e144731. https://doi.org/10.3897/imafungus.16.144731"
+   ],
+   "author": [
+    {
+     "given": "Alona Yu.",
+     "family": "Biketova",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Tatyana Yu.",
+     "family": "Svetasheva",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Andy F. S.",
+     "family": "Taylor",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Giampaolo",
+     "family": "Simonini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Matteo",
+     "family": "Gelardi",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Olga V.",
+     "family": "Morozova",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Elias",
+     "family": "Polemis",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "José A.",
+     "family": "Muñoz",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "László",
+     "family": "Albert",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Salvatore",
+     "family": "Saitta",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Solomon P.",
+     "family": "Wasser",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Eviatar",
+     "family": "Nevo",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Georgios I.",
+     "family": "Zervakis",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Alfredo",
+     "family": "Vizzini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Bálint",
+     "family": "Dima",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2025,
+      6,
+      12
+     ]
+    ]
+   },
+   "type": "component",
+   "publisher": "Pensoft Publishers"
+  },
+  {
+   "DOI": "10.3897/imafungus.16.144731.figure13",
+   "title": [
+    "Figure 13 from: Biketova AYu, Svetasheva TYu, Taylor AFS, Simonini G, Gelardi M, Morozova OV, Polemis E, Muñoz JA, Albert L, Saitta S, Wasser SP, Nevo E, Zervakis GI, Vizzini A, Dima B (2025) Morphological and molecular re-assessment of European and Levantine species of the genus Hortiboletus (Boletaceae). IMA Fungus 16: e144731. https://doi.org/10.3897/imafungus.16.144731"
+   ],
+   "author": [
+    {
+     "given": "Alona Yu.",
+     "family": "Biketova",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Tatyana Yu.",
+     "family": "Svetasheva",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Andy F. S.",
+     "family": "Taylor",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Giampaolo",
+     "family": "Simonini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Matteo",
+     "family": "Gelardi",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Olga V.",
+     "family": "Morozova",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Elias",
+     "family": "Polemis",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "José A.",
+     "family": "Muñoz",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "László",
+     "family": "Albert",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Salvatore",
+     "family": "Saitta",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Solomon P.",
+     "family": "Wasser",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Eviatar",
+     "family": "Nevo",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Georgios I.",
+     "family": "Zervakis",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Alfredo",
+     "family": "Vizzini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Bálint",
+     "family": "Dima",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2025,
+      6,
+      12
+     ]
+    ]
+   },
+   "type": "component",
+   "publisher": "Pensoft Publishers"
+  }
+ ]
+}

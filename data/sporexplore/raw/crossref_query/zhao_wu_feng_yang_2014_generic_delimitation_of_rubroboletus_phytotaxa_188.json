@@ -1,0 +1,235 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Zhao Wu Feng Yang 2014 Generic delimitation of Rubroboletus Phytotaxa 188",
+ "url": "https://api.crossref.org/works?query.bibliographic=Zhao+Wu+Feng+Yang+2014+Generic+delimitation+of+Rubroboletus+Phytotaxa+188&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Magnolia Press",
+   "issue": "2",
+   "DOI": "10.11646/phytotaxa.188.2.1",
+   "type": "journal-article",
+   "title": [
+    "&lt;p class=\"p0\"&gt;A new genus, Rubroboletus, to accommodate Boletus sinicus and its allies"
+   ],
+   "volume": "188",
+   "author": [
+    {
+     "given": "Kuan",
+     "family": "Zhao",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Gang",
+     "family": "Wu",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "ZhuLiang",
+     "family": "Yang",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Phytotaxa"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2014,
+      12,
+      10
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Magnolia Press",
+   "issue": "3",
+   "DOI": "10.11646/phytotaxa.303.3.4",
+   "type": "journal-article",
+   "title": [
+    "A new edible bolete, Rubroboletus esculentus, from southwestern China"
+   ],
+   "volume": "303",
+   "author": [
+    {
+     "given": "KUAN",
+     "family": "ZHAO",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "HUI M.",
+     "family": "SHAO",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Phytotaxa"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2017,
+      4,
+      13
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Magnolia Press",
+   "issue": "1",
+   "DOI": "10.11646/phytotaxa.191.1.5",
+   "type": "journal-article",
+   "title": [
+    "The genus Imleria (Boletaceae) in East Asia"
+   ],
+   "volume": "191",
+   "author": [
+    {
+     "given": "Xue-Tai",
+     "family": "Zhu",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Yan-Chun",
+     "family": "Li",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Gang",
+     "family": "Wu",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Bang",
+     "family": "Feng",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Kuan",
+     "family": "Zhao",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Matteo",
+     "family": "Gelardi",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Gerhard W.",
+     "family": "Kost",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Zhu L.",
+     "family": "Yang",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Phytotaxa"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2014,
+      12,
+      30
+     ]
+    ]
+   }
+  }
+ ]
+}

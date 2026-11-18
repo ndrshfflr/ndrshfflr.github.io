@@ -1,0 +1,347 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Nuhn Binder Taylor Halling Hibbett 2013 Phylogenetic overview of the Boletineae Fungal Biology",
+ "url": "https://api.crossref.org/works?query.bibliographic=Nuhn+Binder+Taylor+Halling+Hibbett+2013+Phylogenetic+overview+of+the+Boletineae+Fungal+Biology&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Elsevier BV",
+   "issue": "7-8",
+   "DOI": "10.1016/j.funbio.2013.04.008",
+   "type": "journal-article",
+   "page": "479-511",
+   "title": [
+    "Phylogenetic overview of the Boletineae"
+   ],
+   "volume": "117",
+   "author": [
+    {
+     "given": "Mitchell E.",
+     "family": "Nuhn",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Manfred",
+     "family": "Binder",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Andy F.S.",
+     "family": "Taylor",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Roy E.",
+     "family": "Halling",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "David S.",
+     "family": "Hibbett",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Fungal Biology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2013,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Informa UK Limited",
+   "issue": "4",
+   "DOI": "10.3852/11-376",
+   "type": "journal-article",
+   "page": "951-961",
+   "title": [
+    "<i>Sutorius</i>\n                    : a new genus for\n                    <i>Boletus eximius</i>"
+   ],
+   "volume": "104",
+   "author": [
+    {
+     "given": "Roy E.",
+     "family": "Halling",
+     "sequence": "first",
+     "affiliation": [
+      {
+       "name": "Institute of Systematic Botany, The New York Botanical Garden, Bronx, New York 10458-5126"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Mitchell",
+     "family": "Nuhn",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Department of Biology, Clark University, Worcester, Massachusetts 01610-1477"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Nigel A.",
+     "family": "Fechner",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Queensland Herbarium, Mount Coot-tha Road, Toowong, Brisbane, Queensland 4066, Australia"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Todd W.",
+     "family": "Osmundson",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Berkeley Natural History Museums and Department of Environmental Science, Policy &amp; Management, University of California, Berkeley, California 94702"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Kasem",
+     "family": "Soytong",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Faculty of Agricultural Technology, King Mongkut’s Institute of Technology, Ladkrabang, Bangkok, Thailand"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "David",
+     "family": "Arora",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "P.O. Box 672, Gualala, California 95445"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "David S.",
+     "family": "Hibbett",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Manfred",
+     "family": "Binder",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Department of Biology, Clark University, Worcester, Massachusetts 01610-1477"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycologia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2012,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Elsevier BV",
+   "issue": "1",
+   "DOI": "10.1006/fgbi.2000.1228",
+   "type": "journal-article",
+   "page": "21-32",
+   "title": [
+    "Phylogenetic Species Recognition and Species Concepts in Fungi"
+   ],
+   "volume": "31",
+   "author": [
+    {
+     "given": "John W.",
+     "family": "Taylor",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "David J.",
+     "family": "Jacobson",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Scott",
+     "family": "Kroken",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Takao",
+     "family": "Kasuga",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "David M.",
+     "family": "Geiser",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "David S.",
+     "family": "Hibbett",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Matthew C.",
+     "family": "Fisher",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Fungal Genetics and Biology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2000,
+      10
+     ]
+    ]
+   }
+  }
+ ]
+}

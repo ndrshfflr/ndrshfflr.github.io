@@ -1,0 +1,175 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Martín 1996 The genus Rhizopogon in Europe",
+ "url": "https://api.crossref.org/works?query.bibliographic=Mart%C3%ADn+1996+The+genus+Rhizopogon+in+Europe&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Biodiversity Heritage Library",
+   "DOI": "10.5962/p.414879",
+   "type": "journal-article",
+   "page": "191-244",
+   "title": [
+    "Chorologic database of European Rhizopogon species"
+   ],
+   "volume": "78",
+   "author": [
+    {
+     "given": "M P",
+     "family": "Martín",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycotaxon"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2001
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Finnish Zoological and Botanical Publishing Board",
+   "issue": "1",
+   "DOI": "10.5735/085.060.0110",
+   "type": "journal-article",
+   "page": "67-70",
+   "title": [
+    "Additions to Rhizopogon (Boletales, Basidiomycota) in Finland and Europe Based on Molecular and Morphological Evidence"
+   ],
+   "volume": "60",
+   "author": [
+    {
+     "given": "María P.",
+     "family": "Martín",
+     "sequence": "first",
+     "affiliation": [
+      {
+       "name": "Departmento de Micología, Real Jardín Botánico, RJB-CSIC, Plaza de Murillo 2, ES-28014 Madrid"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Alejandro",
+     "family": "Huang",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Departmento de Micología, Real Jardín Botánico, RJB-CSIC, Plaza de Murillo 2, ES-28014 Madrid"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Miguel A.",
+     "family": "Ortega",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Departmento de Micología, Real Jardín Botánico, RJB-CSIC, Plaza de Murillo 2, ES-28014 Madrid"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Annales Botanici Fennici"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2023,
+      3,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Schweizerbart",
+   "issue": "3-4",
+   "DOI": "10.1127/nova.hedwigia/63/1996/397",
+   "type": "journal-article",
+   "page": "397-415",
+   "title": [
+    "Ectomycorrhizae of Rhizopogon subcaerulescens on Tsuga heterophylla"
+   ],
+   "volume": "63",
+   "author": [
+    {
+     "given": "R.",
+     "family": "Agerer",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "W. R.",
+     "family": "Müller",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "G.",
+     "family": "Bahnweg",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Nova Hedwigia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1996,
+      11,
+      7
+     ]
+    ]
+   }
+  }
+ ]
+}

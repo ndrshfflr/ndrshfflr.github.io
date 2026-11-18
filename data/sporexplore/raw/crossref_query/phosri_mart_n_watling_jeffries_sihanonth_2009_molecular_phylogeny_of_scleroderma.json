@@ -1,0 +1,261 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Phosri Martín Watling Jeffries Sihanonth 2009 Molecular phylogeny of Scleroderma",
+ "url": "https://api.crossref.org/works?query.bibliographic=Phosri+Mart%C3%ADn+Watling+Jeffries+Sihanonth+2009+Molecular+phylogeny+of+Scleroderma&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Editorial CSIC",
+   "issue": "S1",
+   "DOI": "10.3989/ajbm.2199",
+   "type": "journal-article",
+   "page": "83-91",
+   "title": [
+    "Molecular phylogeny and re-assessment of some Scleroderma spp. (Gasteromycetes)"
+   ],
+   "volume": "66",
+   "author": [
+    {
+     "given": "Cherdchai",
+     "family": "Phosri",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "María P.",
+     "family": "Martín",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Roy",
+     "family": "Watling",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Mikael",
+     "family": "Jeppson",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Prakitsin",
+     "family": "Sihanonth",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Anales del Jardín Botánico de Madrid"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2009,
+      12,
+      31
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Elsevier BV",
+   "issue": "3",
+   "DOI": "10.1016/j.mycres.2007.01.004",
+   "type": "journal-article",
+   "page": "275-286",
+   "title": [
+    "Molecular study of the genus Astraeus"
+   ],
+   "volume": "111",
+   "author": [
+    {
+     "given": "Cherdchai",
+     "family": "Phosri",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "María P.",
+     "family": "Martín",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Prakitsin",
+     "family": "Sihanonth",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Anthony J.S.",
+     "family": "Whalley",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Roy",
+     "family": "Watling",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycological Research"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2007,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Biodiversity Heritage Library",
+   "issue": "1",
+   "DOI": "10.5248/120.195",
+   "type": "journal-article",
+   "page": "195-208",
+   "title": [
+    "Pisolithus: a new species from southeast Asia and a new combination"
+   ],
+   "volume": "120",
+   "author": [
+    {
+     "given": "C",
+     "family": "Phosri",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "M P",
+     "family": "Martín",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "N",
+     "family": "Suwannasai",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "P",
+     "family": "Sihanonth",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "ORCID": "https://orcid.org/0000-0002-9426-9064",
+     "authenticated-orcid": false,
+     "given": "Roy.",
+     "family": "Watling",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycotaxon"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2012
+     ]
+    ]
+   }
+  }
+ ]
+}

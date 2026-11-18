@@ -1,0 +1,105 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Arora Frank 2014 Clarifying the butter boletes a new genus Butyriboletus is established to accommodate Boletus sect. Appendiculati Botany",
+ "url": "https://api.crossref.org/works?query.bibliographic=Arora+Frank+2014+Clarifying+the+butter+boletes+a+new+genus+Butyriboletus+is+established+to+accommodate+Boletus+sect.+Appendiculati+Botany&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Informa UK Limited",
+   "issue": "3",
+   "DOI": "10.3852/13-052",
+   "type": "journal-article",
+   "page": "464-480",
+   "title": [
+    "Clarifying the butter Boletes: a new genus,\n                    <i>Butyriboletus</i>\n                    , is established to accommodate Boletus sect.\n                    <i>Appendiculati</i>\n                    , and six new species are described"
+   ],
+   "volume": "106",
+   "author": [
+    {
+     "given": "David",
+     "family": "Arora",
+     "sequence": "first",
+     "affiliation": [
+      {
+       "name": "Casa Madera Institute, P.O. Box 672, Gualala, California 95445"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Jonathan L.",
+     "family": "Frank",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Department of Biology, Southern Oregon University, Ashland, Oregon 97520"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycologia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2014,
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "DOI": "10.2307/jj.7220460.21",
+   "title": [
+    "Genus Butyriboletus Arora &amp; J. L. Frank"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2024,
+      5,
+      15
+     ]
+    ]
+   },
+   "container-title": [
+    "Boletes of Eastern North America, Second Edition"
+   ],
+   "page": "198-203",
+   "type": "book-chapter",
+   "publisher": "Syracuse University Press"
+  },
+  {
+   "DOI": "10.2307/jj.7220460.18",
+   "title": [
+    "Genus Boletus L."
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2024,
+      5,
+      15
+     ]
+    ]
+   },
+   "container-title": [
+    "Boletes of Eastern North America, Second Edition"
+   ],
+   "page": "110-189",
+   "type": "book-chapter",
+   "publisher": "Syracuse University Press"
+  }
+ ]
+}

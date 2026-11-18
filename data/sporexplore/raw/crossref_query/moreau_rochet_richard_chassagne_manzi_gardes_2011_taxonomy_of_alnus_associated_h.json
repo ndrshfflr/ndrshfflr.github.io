@@ -1,0 +1,283 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Moreau Rochet Richard Chassagne Manzi Gardes 2011 Taxonomy of Alnus-associated hypogeous species of Alpova and Melanogaster Mycologia",
+ "url": "https://api.crossref.org/works?query.bibliographic=Moreau+Rochet+Richard+Chassagne+Manzi+Gardes+2011+Taxonomy+of+Alnus-associated+hypogeous+species+of+Alpova+and+Melanogaster+Mycologia&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Museum National d'Histoire Naturelle, Paris, France",
+   "issue": "1",
+   "DOI": "10.7872/crym.v32.iss1.2012.033",
+   "type": "journal-article",
+   "page": "33-62",
+   "title": [
+    "Taxonomy of<i>Alnus</i>-Associated Hypogeous Species of<i>Alpova</i>and<i>Melanogaster</i>(Basidiomycota, Paxillaceae) in Europe"
+   ],
+   "volume": "32",
+   "author": [
+    {
+     "given": "Pierre-Arthur",
+     "family": "Moreau",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Juliette",
+     "family": "Rochet",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Franck",
+     "family": "Richard",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "François",
+     "family": "Chassagne",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Sophie",
+     "family": "Manzi",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Monique",
+     "family": "Gardes",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Cryptogamie, Mycologie"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2011,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Springer Science and Business Media LLC",
+   "issue": "1",
+   "DOI": "10.1186/1471-2148-11-40",
+   "type": "journal-article",
+   "title": [
+    "Comparative phylogenies and host specialization in the alder ectomycorrhizal fungi Alnicola, Alpova and Lactarius (Basidiomycota) in Europe"
+   ],
+   "volume": "11",
+   "author": [
+    {
+     "given": "Juliette",
+     "family": "Rochet",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Pierre-Arthur",
+     "family": "Moreau",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Sophie",
+     "family": "Manzi",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Monique",
+     "family": "Gardes",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "BMC Evolutionary Biology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2011,
+      2,
+      9
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Museum National d'Histoire Naturelle, Paris, France",
+   "issue": "2",
+   "DOI": "10.7872/crym.v34.iss2.2013.149",
+   "type": "journal-article",
+   "page": "149-173",
+   "title": [
+    "Agarics of Alders 2 – Three New Species of<i>Alnicola</i>(Agaricales, Hymenogastraceae) with a Key to Species Associated with<i>Alnus alnobetula</i>in Europe"
+   ],
+   "volume": "34",
+   "author": [
+    {
+     "given": "Pierre-Arthur",
+     "family": "Moreau",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Juliette",
+     "family": "Rochet",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Stéphane",
+     "family": "Welti",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Ursula",
+     "family": "Peintner",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Sophie",
+     "family": "Manzi",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Régis",
+     "family": "Courtecuisse",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Monique",
+     "family": "Gardes",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Cryptogamie, Mycologie"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2013,
+      6
+     ]
+    ]
+   }
+  }
+ ]
+}

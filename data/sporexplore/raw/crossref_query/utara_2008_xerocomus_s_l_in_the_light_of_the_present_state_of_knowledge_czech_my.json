@@ -1,0 +1,141 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Šutara 2008 Xerocomus s. l. in the light of the present state of knowledge Czech Mycology 60",
+ "url": "https://api.crossref.org/works?query.bibliographic=%C5%A0utara+2008+Xerocomus+s.+l.+in+the+light+of+the+present+state+of+knowledge+Czech+Mycology+60&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Czech Scientific Society for Mycology",
+   "issue": "1",
+   "DOI": "10.33585/cmy.60104",
+   "type": "journal-article",
+   "page": "29-62",
+   "title": [
+    "<i>Xerocomus</i> s. l. in the light of the present state of knowledge."
+   ],
+   "volume": "60",
+   "author": [
+    {
+     "given": "Josef",
+     "family": "Šutara",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Czech Mycology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2008,
+      7,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Elsevier BV",
+   "issue": "3",
+   "DOI": "10.1016/s1468-1641(10)60416-1",
+   "type": "journal-article",
+   "page": "77-96",
+   "title": [
+    "The genus Xerocomus"
+   ],
+   "volume": "9",
+   "author": [
+    {
+     "given": "Alan E.",
+     "family": "Hills",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Field Mycology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2008,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Czech Scientific Society for Mycology",
+   "issue": "2",
+   "DOI": "10.33585/cmy.66203",
+   "type": "journal-article",
+   "page": "135-146",
+   "title": [
+    "First records of <i>Xerocomus silwoodensis</i> (<i>Boletaceae</i>) in the Czech Republic."
+   ],
+   "volume": "66",
+   "author": [
+    {
+     "given": "Václav",
+     "family": "Janda",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Martin",
+     "family": "Kříž",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Michal",
+     "family": "Graca",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Czech Mycology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2014,
+      12,
+      23
+     ]
+    ]
+   }
+  }
+ ]
+}

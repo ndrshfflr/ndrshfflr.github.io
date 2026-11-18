@@ -1,0 +1,136 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Jarosch 2001 Zur molekularen Systematik der Boletales Coniophorineae Paxillineae Suillineae Bibliotheca Mycologica",
+ "url": "https://api.crossref.org/works?query.bibliographic=Jarosch+2001+Zur+molekularen+Systematik+der+Boletales+Coniophorineae+Paxillineae+Suillineae+Bibliotheca+Mycologica&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Wiley",
+   "issue": "4",
+   "DOI": "10.1055/s-2001-16455",
+   "type": "journal-article",
+   "page": "443-448",
+   "title": [
+    "<i>Leucogyrophana,</i> a Polyphyletic Genus of the Order Boletales (Basidiomycetes)"
+   ],
+   "volume": "3",
+   "author": [
+    {
+     "given": "M.",
+     "family": "Jarosch",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "H.",
+     "family": "Besl",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Plant Biology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2001,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "DOI": "10.1007/978-3-662-57891-9_4",
+   "title": [
+    "Zoologie – Systematik der Tiere"
+   ],
+   "author": [
+    {
+     "given": "Birgit",
+     "family": "Jarosch",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2019
+     ]
+    ]
+   },
+   "container-title": [
+    "Pocket Guide Biologie – ergänzend zum Purves"
+   ],
+   "page": "79-106",
+   "type": "book-chapter",
+   "publisher": "Springer Berlin Heidelberg"
+  },
+  {
+   "publisher": "Wiley",
+   "issue": "2",
+   "DOI": "10.2307/1222155",
+   "type": "journal-article",
+   "page": "418",
+   "title": [
+    "Zur Biologie und Systematik der Flechtengattungen Heppia und Peltula im sudlichen Afrika, Bibliotheca Lichenologica"
+   ],
+   "volume": "37",
+   "author": [
+    {
+     "given": "Ove",
+     "family": "Almborn",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "B.",
+     "family": "Budel",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Taxon"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1988,
+      5
+     ]
+    ]
+   }
+  }
+ ]
+}

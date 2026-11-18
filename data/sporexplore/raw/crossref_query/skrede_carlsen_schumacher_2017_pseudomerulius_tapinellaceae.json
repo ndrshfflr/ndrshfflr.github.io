@@ -1,0 +1,233 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Skrede Carlsen Schumacher 2017 Pseudomerulius Tapinellaceae",
+ "url": "https://api.crossref.org/works?query.bibliographic=Skrede+Carlsen+Schumacher+2017+Pseudomerulius+Tapinellaceae&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "DOI": "10.30550/j.lil/2022.59.s/2022.09.20",
+   "title": [
+    "Pseudomerulius curtisii (Basidiomycota, Boletales, Tapinellaceae) en Argentina y Paraguay"
+   ],
+   "author": [
+    {
+     "ORCID": "https://orcid.org/0000-0003-4192-0551",
+     "authenticated-orcid": false,
+     "given": "Alex E.",
+     "family": "Somrau",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "ORCID": "https://orcid.org/0000-0002-1258-4096",
+     "authenticated-orcid": false,
+     "given": "Barbara R.",
+     "family": "De Madrignac",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "ORCID": "https://orcid.org/0000-0002-5901-6571",
+     "authenticated-orcid": false,
+     "given": "Natalia A.",
+     "family": "Ramirez",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "ORCID": "https://orcid.org/0000-0001-8809-0159",
+     "authenticated-orcid": false,
+     "given": "Michele G.",
+     "family": "Campi",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "ORCID": "https://orcid.org/0000-0002-3265-7061",
+     "authenticated-orcid": false,
+     "given": "Nicolas",
+     "family": "Niveiro",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2022,
+      10,
+      20
+     ]
+    ]
+   },
+   "container-title": [
+    "Lilloa"
+   ],
+   "page": "331-340",
+   "type": "journal-article",
+   "publisher": "Fundacion Miguel Lillo"
+  },
+  {
+   "publisher": "Westerdijk Fungal Biodiversity Institute",
+   "issue": "1",
+   "DOI": "10.3767/persoonia.2017.39.09",
+   "type": "journal-article",
+   "page": "201-253",
+   "title": [
+    "A synopsis of the saddle fungi (<i>Helvella</i>: <i> Ascomycota</i>) in Europe – species delimitation, taxonomy and typification"
+   ],
+   "volume": "39",
+   "author": [
+    {
+     "given": "I.",
+     "family": "Skrede",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "T.",
+     "family": "Carlsen",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "T.",
+     "family": "Schumacher",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Persoonia - Molecular Phylogeny and Evolution of Fungi"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2017,
+      12,
+      20
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Elsevier BV",
+   "issue": "7",
+   "DOI": "10.1016/j.funbio.2012.04.009",
+   "type": "journal-article",
+   "page": "778-784",
+   "title": [
+    "Genome wide AFLP markers support cryptic species in Coniophora (Boletales)"
+   ],
+   "volume": "116",
+   "author": [
+    {
+     "given": "Inger",
+     "family": "Skrede",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Tor",
+     "family": "Carlsen",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Øyvind",
+     "family": "Stensrud",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Håvard",
+     "family": "Kauserud",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Fungal Biology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2012,
+      7
+     ]
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,230 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Holec Kolařík 2013 Notes on the identity of Hygrophoropsis rufa Czech Mycology",
+ "url": "https://api.crossref.org/works?query.bibliographic=Holec+Kola%C5%99%C3%ADk+2013+Notes+on+the+identity+of+Hygrophoropsis+rufa+Czech+Mycology&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Czech Scientific Society for Mycology",
+   "issue": "1",
+   "DOI": "10.33585/cmy.65102",
+   "type": "journal-article",
+   "page": "15-24",
+   "title": [
+    "Notes on the identity of <i>Hygrophoropsis rufa</i> (Basidiomycota, <i>Boletales</i>)."
+   ],
+   "volume": "65",
+   "author": [
+    {
+     "ORCID": "https://orcid.org/0000-0002-5853-6209",
+     "authenticated-orcid": false,
+     "given": "Jan",
+     "family": "Holec",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "ORCID": "https://orcid.org/0000-0003-4016-0335",
+     "authenticated-orcid": false,
+     "given": "Miroslav",
+     "family": "Kolařík",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Czech Mycology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2013,
+      6,
+      10
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Czech Scientific Society for Mycology",
+   "issue": "1",
+   "DOI": "10.33585/cmy.69101",
+   "type": "journal-article",
+   "page": "1-14",
+   "title": [
+    "First report of <i>Mycena clavata</i> (Fungi, <i>Agaricales</i>) in the Czech Republic including notes on its taxonomy, phylogenetic position and ecology."
+   ],
+   "volume": "69",
+   "author": [
+    {
+     "ORCID": "https://orcid.org/0000-0002-5853-6209",
+     "authenticated-orcid": false,
+     "given": "Jan",
+     "family": "Holec",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "ORCID": "https://orcid.org/0000-0003-4016-0335",
+     "authenticated-orcid": false,
+     "given": "Miroslav",
+     "family": "Kolařík",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Czech Mycology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2017,
+      1,
+      19
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Czech Scientific Society for Mycology",
+   "issue": "1",
+   "DOI": "10.33585/cmy.77104",
+   "type": "journal-article",
+   "page": "37-88",
+   "title": [
+    "A DNA-based checklist of the stipitate hydnoids (<i>Bankeraceae</i> s.l.) of Czechia."
+   ],
+   "volume": "77",
+   "author": [
+    {
+     "given": "Jiří",
+     "family": "Souček",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "ORCID": "https://orcid.org/0000-0002-5853-6209",
+     "authenticated-orcid": false,
+     "given": "Jan",
+     "family": "Holec",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "ORCID": "https://orcid.org/0000-0003-3966-558X",
+     "authenticated-orcid": false,
+     "given": "Jan",
+     "family": "Borovička",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "ORCID": "https://orcid.org/0000-0003-3576-3326",
+     "authenticated-orcid": false,
+     "given": "Daniel",
+     "family": "Dvořák",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Pavel",
+     "family": "Forman",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Petr",
+     "family": "Hrouda",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "ORCID": "https://orcid.org/0000-0003-4016-0335",
+     "authenticated-orcid": false,
+     "given": "Miroslav",
+     "family": "Kolařík",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Czech Mycology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2025,
+      6,
+      24
+     ]
+    ]
+   }
+  }
+ ]
+}

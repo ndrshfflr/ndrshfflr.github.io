@@ -1,0 +1,188 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Wilson Binder Hibbett 2012 Diversity and evolution of ectomycorrhizal host associations in the Sclerodermatineae Boletales Basidiomycota New Phytologist",
+ "url": "https://api.crossref.org/works?query.bibliographic=Wilson+Binder+Hibbett+2012+Diversity+and+evolution+of+ectomycorrhizal+host+associations+in+the+Sclerodermatineae+Boletales+Basidiomycota+New+Phytologist&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Wiley",
+   "issue": "4",
+   "DOI": "10.1111/j.1469-8137.2012.04109.x",
+   "type": "journal-article",
+   "page": "1079-1095",
+   "title": [
+    "Diversity and evolution of ectomycorrhizal host associations in the Sclerodermatineae (Boletales, Basidiomycota)"
+   ],
+   "volume": "194",
+   "author": [
+    {
+     "given": "Andrew W.",
+     "family": "Wilson",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Manfred",
+     "family": "Binder",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "David S.",
+     "family": "Hibbett",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "New Phytologist"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2012,
+      4,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "The Mycological Society of Japan",
+   "issue": "1",
+   "DOI": "10.1007/s10267-006-0325-5",
+   "type": "journal-article",
+   "page": "66-69",
+   "title": [
+    "Phylogenetic placement of Diplocystis wrightii in the Sclerodermatineae (Boletales) based on nuclear ribosomal large subunit DNA sequences"
+   ],
+   "volume": "48",
+   "author": [
+    {
+     "given": "Rebecca",
+     "family": "Louzan",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Andrew W.",
+     "family": "Wilson",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Manfred",
+     "family": "Binder",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "David S.",
+     "family": "Hibbett",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycoscience"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2007,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Wiley",
+   "issue": "4",
+   "DOI": "10.1111/j.1469-8137.1994.tb02961.x",
+   "type": "journal-article",
+   "page": "653-675",
+   "title": [
+    "Biology of the ectomycorrhizal genus, <i>Rhizopogon</i>"
+   ],
+   "volume": "126",
+   "author": [
+    {
+     "given": "RANDY",
+     "family": "MOLINA",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "JAMES M.",
+     "family": "TRAPPE",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "New Phytologist"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1994,
+      4
+     ]
+    ]
+   }
+  }
+ ]
+}

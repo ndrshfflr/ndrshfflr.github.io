@@ -1,0 +1,237 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "den Bakker Noordeloos 2005 A revision of European species of Leccinum Gray and notes on extralimital species Persoonia 18 511",
+ "url": "https://api.crossref.org/works?query.bibliographic=den+Bakker+Noordeloos+2005+A+revision+of+European+species+of+Leccinum+Gray+and+notes+on+extralimital+species+Persoonia+18+511&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Elsevier BV",
+   "issue": "6",
+   "DOI": "10.1016/j.mycres.2007.03.008",
+   "type": "journal-article",
+   "page": "663-672",
+   "title": [
+    "Phylogeographic patterns in Leccinum sect. Scabra and the status of the arctic-alpine species L. rotundifoliae"
+   ],
+   "volume": "111",
+   "author": [
+    {
+     "given": "Henk C.",
+     "family": "den Bakker",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Giuseppe C.",
+     "family": "Zuccarello",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Thomas W.",
+     "family": "Kuyper",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Machiel E.",
+     "family": "Noordeloos",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycological Research"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2007,
+      6
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Westerdijk Fungal Biodiversity Institute",
+   "issue": "1",
+   "DOI": "10.3767/persoonia.2023.50.04",
+   "type": "journal-article",
+   "page": "123-157",
+   "title": [
+    "Overview of the European species of the genus <i>Clitocella</i> (<i>Entolomataceae</i>, <i>Agaricales</i>) with notes on extralimital taxa"
+   ],
+   "volume": "50",
+   "author": [
+    {
+     "given": "A.",
+     "family": "Vizzini",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "G.",
+     "family": "Consiglio",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "M.",
+     "family": "Marchetti",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Persoonia - Molecular Phylogeny and Evolution of Fungi"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2023,
+      6,
+      30
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Westerdijk Fungal Biodiversity Institute",
+   "issue": "1",
+   "DOI": "10.3767/003158508x283692",
+   "type": "journal-article",
+   "page": "1-7",
+   "title": [
+    "A phylogenetic study of\n                    <i>Boletus</i>\n                    section\n                    <i>Boletus</i>\n                    in Europe"
+   ],
+   "volume": "20",
+   "author": [
+    {
+     "given": "D.C.M.",
+     "family": "Beugelsdijk",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "S.",
+     "family": "van der Linde",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "G.C.",
+     "family": "Zuccarello",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "H.C.",
+     "family": "den Bakker",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "S.G.A.",
+     "family": "Draisma",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "M.E.",
+     "family": "Noordeloos",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Persoonia - Molecular Phylogeny and Evolution of Fungi"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2008,
+      6,
+      6
+     ]
+    ]
+   }
+  }
+ ]
+}
