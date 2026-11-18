@@ -1,0 +1,6 @@
+{
+ "retrieved": "2026-11-18",
+ "search": [],
+ "url": "https://svampe.databasen.org/api/taxa?where=%7B%22FullName%22%3A+%22Neoboletus+praestigiator%22%7D&include=%5B%7B%22model%22%3A+%22TaxonAttributes%22%2C+%22as%22%3A+%22attributes%22%7D%2C+%7B%22model%22%3A+%22Taxon%22%2C+%22as%22%3A+%22acceptedTaxon%22%7D%2C+%7B%22model%22%3A+%22Taxon%22%2C+%22as%22%3A+%22synonyms%22%7D%2C+%7B%22model%22%3A+%22TaxonDKnames%22%2C+%22as%22%3A+%22Vernacularname_DK%22%7D%5D&limit=10",
+ "taxa": {}
+}

@@ -1,0 +1,246 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 5240101,
+  "scientificName": "Coniophora puteana (Schumach.) P.Karst.",
+  "canonicalName": "Coniophora puteana",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Coniophoraceae",
+  "genus": "Coniophora",
+  "species": "Coniophora puteana",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8449,
+  "genusKey": 2520081,
+  "speciesKey": 5240101,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Coniophora+puteana&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 1252,
+  "NO": 279,
+  "SE": 1501,
+  "FI": 427,
+  "IS": 3,
+  "FO": 0,
+  "GL": 1
+ },
+ "species": {
+  "key": 5240101,
+  "nubKey": 5240101,
+  "nameKey": 17255734,
+  "taxonID": "gbif:5240101",
+  "sourceTaxonKey": 172021071,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Coniophoraceae",
+  "genus": "Coniophora",
+  "species": "Coniophora puteana",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8449,
+  "genusKey": 2520081,
+  "speciesKey": 5240101,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2520081,
+  "parent": "Coniophora",
+  "basionymKey": 2525788,
+  "basionym": "Thelephora puteana Schumach.",
+  "scientificName": "Coniophora puteana (Schumach.) P.Karst.",
+  "canonicalName": "Coniophora puteana",
+  "vernacularName": "Wet Rot",
+  "authorship": "(Schumach.) P.Karst.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1868). Not. Sällsk. Fauna Et Fl. Fenn. Förh. 9: 370.",
+  "numDescendants": 7,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:16.586+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "Cellar Fungus",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874075
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "Gul tømmersvamp",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874075
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "Gul tømmersvamp",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905473
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "Wet Rot",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222042259
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "Wet Rot",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011468
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "Wet Rot",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874075
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "gul timmersvamp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874075
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "kellarikesikkä",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012782
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "kellarikesikkä",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874075
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "kjellarsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874075
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "kjellersopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874075
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "källarsvamp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874075
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "Wet Rot",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180099750,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "kjellarsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069382,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "kjellersopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069382,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "källarsvamp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019041,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "Cellar Fungus",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180099750,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "Cellar Fungus",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945414,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "Cellar Fungus",
+   "language": "eng",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011468,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "Wet Rot",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945414,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5240101,
+   "vernacularName": "gul timmersvamp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019041,
+   "preferred": false
+  }
+ ]
+}
