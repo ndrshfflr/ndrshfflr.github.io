@@ -1,0 +1,916 @@
+{
+ "retrieved": "2026-11-18",
+ "doi": "10.1007/s11557-013-0896-4",
+ "url": "https://api.crossref.org/works/10.1007/s11557-013-0896-4",
+ "message": {
+  "indexed": {
+   "date-parts": [
+    [
+     2026,
+     1,
+     27
+    ]
+   ],
+   "date-time": "2026-01-27T08:04:57Z",
+   "timestamp": 1769501097570,
+   "version": "3.49.0"
+  },
+  "reference-count": 91,
+  "publisher": "Springer Science and Business Media LLC",
+  "issue": "1",
+  "license": [
+   {
+    "start": {
+     "date-parts": [
+      [
+       2013,
+       4,
+       14
+      ]
+     ],
+     "date-time": "2013-04-14T00:00:00Z",
+     "timestamp": 1365897600000
+    },
+    "content-version": "tdm",
+    "delay-in-days": 0,
+    "URL": "http://www.springer.com/tdm"
+   }
+  ],
+  "content-domain": {
+   "domain": [],
+   "crossmark-restriction": false
+  },
+  "short-container-title": [
+   "Mycol Progress"
+  ],
+  "published-print": {
+   "date-parts": [
+    [
+     2014,
+     2
+    ]
+   ]
+  },
+  "DOI": "10.1007/s11557-013-0896-4",
+  "type": "journal-article",
+  "created": {
+   "date-parts": [
+    [
+     2013,
+     4,
+     12
+    ]
+   ],
+   "date-time": "2013-04-12T22:55:22Z",
+   "timestamp": 1365807322000
+  },
+  "page": "95-109",
+  "source": "Crossref",
+  "is-referenced-by-count": 11,
+  "title": [
+   "Boletus mendax, a new species of Boletus sect. Luridi from Italy and insights on the B. luridus complex"
+  ],
+  "prefix": "10.1007",
+  "volume": "13",
+  "author": [
+   {
+    "given": "Alfredo",
+    "family": "Vizzini",
+    "sequence": "first",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Giampaolo",
+    "family": "Simonini",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Enrico",
+    "family": "Ercole",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Samuele",
+    "family": "Voyron",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   }
+  ],
+  "member": "297",
+  "published-online": {
+   "date-parts": [
+    [
+     2013,
+     4,
+     14
+    ]
+   ]
+  },
+  "reference": [
+   {
+    "key": "896_CR1",
+    "unstructured": "Alessio CL (1985) Boletus Dill. ex L. (sensu lato). Fungi Europaei. Vol. 2. Libreria editrice Biella Giovanna, Saronno"
+   },
+   {
+    "key": "896_CR2",
+    "first-page": "103",
+    "volume": "13",
+    "author": "C Andary",
+    "year": "1992",
+    "unstructured": "Andary C, Cosson L, Bourrier MJ, Wylde R, Heitz A (1992) Chimiotaxonomie des bolets de la section Luridi. Cryptogam Mycol 13:103–114",
+    "journal-title": "Cryptogam Mycol"
+   },
+   {
+    "key": "896_CR3",
+    "unstructured": "Bataille F (1908) Les bolets, classification et détermination des espèces. Besançon"
+   },
+   {
+    "key": "896_CR4",
+    "first-page": "25",
+    "volume": "118",
+    "author": "P Bertéa",
+    "year": "1990",
+    "unstructured": "Bertéa P, Estadès A (1990) Boletus luteocupreus. Bull Fed Mycol Dauphiné-Savoie 118:25–31",
+    "journal-title": "Bull Fed Mycol Dauphiné-Savoie"
+   },
+   {
+    "key": "896_CR5",
+    "volume-title": "Mushrooms of the Southeastern United States",
+    "author": "AE Bessette",
+    "year": "1997",
+    "unstructured": "Bessette AE, Roody WC, Bessette AR, Dunaway DL (1997) Mushrooms of the Southeastern United States. Syracuse University Press, New York"
+   },
+   {
+    "key": "896_CR6",
+    "volume-title": "North American boletes: a color guide to the fleshy pored mushrooms",
+    "author": "AE Bessette",
+    "year": "2000",
+    "unstructured": "Bessette AE, Roody WC, Bessette AR (2000) North American boletes: a color guide to the fleshy pored mushrooms. Syracuse University Press, Syracuse"
+   },
+   {
+    "key": "896_CR7",
+    "unstructured": "Bezdĕk J (1901) Houby jedlé a jim podobné jedovaté: Podrobné popsání důležitějších druhů hub, četné předpisy jich připravování a pěstování. česky, Alois Srdce, Praha, Hranice"
+   },
+   {
+    "key": "896_CR8",
+    "doi-asserted-by": "crossref",
+    "first-page": "971",
+    "DOI": "10.3852/mycologia.98.6.971",
+    "volume": "98",
+    "author": "M Binder",
+    "year": "2006",
+    "unstructured": "Binder M, Hibbett DS (2006) Molecular systematics and biological diversification of Boletales. Mycologia 98:971–981",
+    "journal-title": "Mycologia"
+   },
+   {
+    "issue": "4",
+    "key": "896_CR9",
+    "first-page": "577",
+    "volume": "84",
+    "author": "J Blum",
+    "year": "1968",
+    "unstructured": "Blum J (1968) Révision des Bolets (Deuxième note). Bull Soc Mycol Fr 84(4):577–602",
+    "journal-title": "Bull Soc Mycol Fr"
+   },
+   {
+    "key": "896_CR10",
+    "volume-title": "The Boletes of North America: a compendium",
+    "author": "EE Both",
+    "year": "1993",
+    "unstructured": "Both EE (1993) The Boletes of North America: a compendium. Buffalo Museum of Science, Buffalo"
+   },
+   {
+    "key": "896_CR11",
+    "unstructured": "Bulliard JBF (1791) Histoire des Champignons de la France. Paris"
+   },
+   {
+    "key": "896_CR12",
+    "unstructured": "Cazzoli P 1991 (“1990”) Contributo allo studio dei boleti del gruppo purpureus-torosus. Atti riguardanti il III seminario internazionale di ricerca e studio micologico sugli ordini “Russulales e Boletales”, Il Fungo, A.M.B. Gruppo “R. Franchi”, Reggio Emilia, pp 29–36"
+   },
+   {
+    "key": "896_CR13",
+    "volume-title": "I funghi dal vero",
+    "author": "B Cetto",
+    "year": "1976",
+    "unstructured": "Cetto B (1976) I funghi dal vero, vol 2. Ed. Saturnia, Trento"
+   },
+   {
+    "key": "896_CR14",
+    "volume-title": "1000 funghi",
+    "author": "B Cetto",
+    "year": "1982",
+    "unstructured": "Cetto B (1982) 1000 funghi, vol 1. E.R.P.I, Milano"
+   },
+   {
+    "issue": "2",
+    "key": "896_CR15",
+    "doi-asserted-by": "crossref",
+    "first-page": "199",
+    "DOI": "10.2307/3755085",
+    "volume": "40",
+    "author": "WF Chiu",
+    "year": "1948",
+    "unstructured": "Chiu WF (1948) The boletes of Yunnan. Mycologia 40(2):199–231",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "896_CR16",
+    "volume-title": "Icones of the Yunnan boletes",
+    "author": "WF Chiu",
+    "year": "1957",
+    "unstructured": "Chiu WF (1957) Icones of the Yunnan boletes. Science Press, Beijing"
+   },
+   {
+    "key": "896_CR17",
+    "volume-title": "The Boletaceae of North Carolina",
+    "author": "WC Coker",
+    "year": "1943",
+    "unstructured": "Coker WC, Beers AH (1943) The Boletaceae of North Carolina. Univ. North Carolina Press, Chapel Hill"
+   },
+   {
+    "key": "896_CR18",
+    "volume-title": "Boletus in Malaysia",
+    "author": "EJH Corner",
+    "year": "1972",
+    "unstructured": "Corner EJH (1972) Boletus in Malaysia. GPO, Singapore"
+   },
+   {
+    "key": "896_CR19",
+    "unstructured": "Dermek A (1979) Fungorum Rariorum Icones Coloratae 9: 1–34"
+   },
+   {
+    "key": "896_CR20",
+    "unstructured": "Dermek A (1987) Fungorum Rariorum Icones Coloratae 16, Boletes III: 1–23"
+   },
+   {
+    "key": "896_CR21",
+    "unstructured": "Drummond AJ, Ashton B, Buxton S, Cheung M, Cooper A, Duran C, Field M, Heled J, Kearse M, Markowitz S, Moir R, Stones-Havas S, Sturrock S, Thierer T, Wilson A (2010) Geneious v5.3. Available from http://www.geneious.com/"
+   },
+   {
+    "key": "896_CR22",
+    "unstructured": "Engel H, Krieglsteiner GJ, Dermek A, Watling R (1983) Dickröhrlinge. Die Gattung Boletus in Europa. Heinz Engel Verlag, Weidhausen b. Coburg"
+   },
+   {
+    "key": "896_CR23",
+    "doi-asserted-by": "crossref",
+    "first-page": "783",
+    "DOI": "10.2307/2408678",
+    "volume": "39",
+    "author": "J Felsenstein",
+    "year": "1985",
+    "unstructured": "Felsenstein J (1985) Confidence limits on phylogenies: an approach using the bootstrap. Evolution 39:783–791",
+    "journal-title": "Evolution"
+   },
+   {
+    "key": "896_CR24",
+    "unstructured": "Fries EM 1838 [1836-1838] Epicrisis Systematis Mycologici. Uppsala"
+   },
+   {
+    "key": "896_CR25",
+    "first-page": "101",
+    "volume": "2",
+    "author": "CC Frost",
+    "year": "1874",
+    "unstructured": "Frost CC (1874) Catalogue of boleti of New England, with descriptions of new species. Bull Buffalo Soc Nat Sci 2:101–105",
+    "journal-title": "Bull Buffalo Soc Nat Sci"
+   },
+   {
+    "key": "896_CR26",
+    "volume-title": "I Boleti. Atlante pratico-monografico per la determinazione dei boleti",
+    "author": "R Galli",
+    "year": "2007",
+    "unstructured": "Galli R (2007) I Boleti. Atlante pratico-monografico per la determinazione dei boleti, 3ªth edn. Dalla Natura Ed, Milano",
+    "edition": "3ª"
+   },
+   {
+    "key": "896_CR27",
+    "doi-asserted-by": "crossref",
+    "first-page": "113",
+    "DOI": "10.1111/j.1365-294X.1993.tb00005.x",
+    "volume": "2",
+    "author": "M Gardes",
+    "year": "1993",
+    "unstructured": "Gardes M, Bruns TD (1993) ITS primers with enhanced specificity for basidiomycetes – application to the identification of mycorrhizae and rusts. Mol Ecol 2:113–118",
+    "journal-title": "Mol Ecol"
+   },
+   {
+    "key": "896_CR28",
+    "unstructured": "Gilbert EJ (1931) Les Livres du Mycologue Tome I-IV, Tom. III: Les Bolets. Le François, Paris"
+   },
+   {
+    "key": "896_CR29",
+    "volume-title": "Nova Scotian Boletes",
+    "author": "DW Grund",
+    "year": "1976",
+    "unstructured": "Grund DW, Harrison AK (1976) Nova Scotian Boletes. J. Cramer, Vaduz"
+   },
+   {
+    "issue": "3–4",
+    "key": "896_CR30",
+    "first-page": "277",
+    "volume": "28",
+    "author": "R Heim",
+    "year": "1963",
+    "unstructured": "Heim R (1963) Diagnoses latines des espèces de Champignons, ou nonda, associés à la folie du komugl taï et du ndaadl. Rev Mycol 28(3–4):277–283",
+    "journal-title": "Rev Mycol"
+   },
+   {
+    "issue": "4",
+    "key": "896_CR31",
+    "doi-asserted-by": "crossref",
+    "first-page": "425",
+    "DOI": "10.2307/3667162",
+    "volume": "34",
+    "author": "P Heinemann",
+    "year": "1964",
+    "unstructured": "Heinemann P (1964) Boletineae du Katanga. Bull Jard Bot Etat Brux 34(4):425–478",
+    "journal-title": "Bull Jard Bot Etat Brux"
+   },
+   {
+    "issue": "3",
+    "key": "896_CR32",
+    "first-page": "71",
+    "volume": "60",
+    "author": "J Hlaváček",
+    "year": "1983",
+    "unstructured": "Hlaváček J (1983) Boletus rhodopurpureus Smotlacha a Boletus smotlachianus sp. n. – hřib rudonachový a hřib Smotlachův. Casopis Cescoslovenskych Houbaru 60(3):71–79",
+    "journal-title": "Casopis Cescoslovenskych Houbaru"
+   },
+   {
+    "issue": "3",
+    "key": "896_CR33",
+    "first-page": "83",
+    "volume": "72",
+    "author": "J Hlaváček",
+    "year": "1995",
+    "unstructured": "Hlaváček J (1995) A survey of our Boletales, 29. Mykologický Sborník 72(3):83–90",
+    "journal-title": "Mykologický Sborník"
+   },
+   {
+    "issue": "3",
+    "key": "896_CR34",
+    "first-page": "81",
+    "volume": "73",
+    "author": "J Hlaváček",
+    "year": "1996",
+    "unstructured": "Hlaváček J (1996) Přehled našich hub hřibotvarých (Boletales). Mykologický Sborník 73(3):81–89",
+    "journal-title": "Mykologický Sborník"
+   },
+   {
+    "key": "896_CR35",
+    "first-page": "89",
+    "volume": "17",
+    "author": "T Hongo",
+    "year": "1967",
+    "unstructured": "Hongo T (1967) Notulae Mycologicae (6). Mem Shiga Univ 17:89–95",
+    "journal-title": "Mem Shiga Univ"
+   },
+   {
+    "key": "896_CR36",
+    "doi-asserted-by": "crossref",
+    "first-page": "754",
+    "DOI": "10.1093/bioinformatics/17.8.754",
+    "volume": "17",
+    "author": "JP Huelsenbeck",
+    "year": "2001",
+    "unstructured": "Huelsenbeck JP, Ronquist F (2001) MrBayes: Bayesian inference of phylogeny. Bioinformatics 17:754–755",
+    "journal-title": "Bioinformatics"
+   },
+   {
+    "key": "896_CR37",
+    "first-page": "307",
+    "volume": "50",
+    "author": "L Imler",
+    "year": "1934",
+    "unstructured": "Imler L (1934) Remarques sur un Boletus Queletii Schulz. à pied réticulé. Bull Soc Mycol Fr 50:307",
+    "journal-title": "Bull Soc Mycol Fr"
+   },
+   {
+    "issue": "4",
+    "key": "896_CR38",
+    "first-page": "177",
+    "volume": "66",
+    "author": "L Imler",
+    "year": "1950",
+    "unstructured": "Imler L (1950) Recherches sur les bolets. Bull Soc Mycol Fr 66(4):177–203",
+    "journal-title": "Bull Soc Mycol Fr"
+   },
+   {
+    "key": "896_CR39",
+    "unstructured": "Inzenga G (1869) Funghi Siciliani. Cent. 2, t. 2. Palermo"
+   },
+   {
+    "key": "896_CR40",
+    "doi-asserted-by": "crossref",
+    "first-page": "3059",
+    "DOI": "10.1093/nar/gkf436",
+    "volume": "30",
+    "author": "K Katoh",
+    "year": "2002",
+    "unstructured": "Katoh K, Misawa K, Kuma K, Miyata T (2002) MAFFT: a novel method for rapid multiple sequence alignment based on fast Fourier transform. Nucl Acids Res 30:3059–3066",
+    "journal-title": "Nucl Acids Res"
+   },
+   {
+    "key": "896_CR41",
+    "unstructured": "Kibby G (2011) British boletes with keys to species, privately published by the author, London"
+   },
+   {
+    "key": "896_CR42",
+    "first-page": "187",
+    "volume": "16",
+    "author": "W Klofac",
+    "year": "2007",
+    "unstructured": "Klofac W (2007) Schlüssel zur Bestimmung von Frischfunden der europäischen Arten der Boletales mit röhrigem Hymenophor. Öst Z Pilzk 16:187–279",
+    "journal-title": "Öst Z Pilzk"
+   },
+   {
+    "key": "896_CR43",
+    "unstructured": "Knudsen H, Taylor A (2012) Boletus L.: Fr. In: Knudsen H & Vesterholt J (eds), Funga Nordica, 2nd edition (2-volume set). Agaricoid, boletoid, clavarioid, cyphelloid and gastroid genera. Nordsvamp, Copenhagen, pp 217–222 (Vol. 1)"
+   },
+   {
+    "key": "896_CR44",
+    "volume-title": "Methuen handbook of colour and colour dictionary",
+    "author": "A Kornerup",
+    "year": "1978",
+    "unstructured": "Kornerup A, Wanscher JH (1978) Methuen handbook of colour and colour dictionary, 3rd edn. Eyre Methuen, London",
+    "edition": "3"
+   },
+   {
+    "key": "896_CR45",
+    "unstructured": "Lannoy G, Estades A (2001) Les Bolets. Flore mycologique d’Europe. Documents Mycologique Mémoire Hors série 6: 1–163. Association d’Écologie et de Mycologie, Lille"
+   },
+   {
+    "key": "896_CR46",
+    "volume-title": "Les bolets",
+    "author": "A Leclair",
+    "year": "1969",
+    "unstructured": "Leclair A, Essette H (1969) Les bolets. Ed. Paul Chevalier, Paris"
+   },
+   {
+    "issue": "2",
+    "key": "896_CR47",
+    "first-page": "159",
+    "volume": "26",
+    "author": "R Maire",
+    "year": "1910",
+    "unstructured": "Maire R (1910) Notes critiques sur quelques champignons récoltés pendant la session de Dijon de la Société Mycologique de France (octobre 1909). Bull Soc Mycol Fr 26(2):159–198",
+    "journal-title": "Bull Soc Mycol Fr"
+   },
+   {
+    "issue": "4",
+    "key": "896_CR48",
+    "first-page": "40",
+    "volume": "3",
+    "author": "R Maire",
+    "year": "1937",
+    "unstructured": "Maire R (1937) Fungi Catalaunici Series altera. Contribucion à l’étude de la Flore Mycologique de la Catalogne, Boletaceae. Publ Inst Bot Barcelona 3(4):40–47",
+    "journal-title": "Publ Inst Bot Barcelona"
+   },
+   {
+    "key": "896_CR49",
+    "unstructured": "Marques GM, Pinto CC, Muñoz JA (2010) DNA barcoding Mediterranean Boletales. ECBOL 2, 2010 International Year of Biodiversity, 2 Conference of the European Consortium for the Barcode of Life, 2-4 June 2010, Braga, Portugal, Book of Abstracts: S4P4, p 74"
+   },
+   {
+    "key": "896_CR50",
+    "first-page": "72",
+    "volume": "1914",
+    "author": "GE Massee",
+    "year": "1914",
+    "unstructured": "Massee GE (1914) Fungi Exotici XVII. Bull misc Inf R bot Gdns Kew 1914:72–76",
+    "journal-title": "Bull misc Inf R bot Gdns Kew"
+   },
+   {
+    "key": "896_CR51",
+    "volume-title": "International code of nomenclature for algae, fungi, and plants (Melbourne Code), adopted by the Eighteenth International Botanical Congress Melbourne, Australia, July 2011",
+    "year": "2012",
+    "unstructured": "McNeill J, Barrie FR, Buck WR, Demoulin V, Greuter W, Hawksworth DL, Herendeen PS, Knapp S, Marhold K, Prado J, Prud’homme van Reine WF, Smith GE, Wiersema JH, Turland NJ (eds) (2012) International code of nomenclature for algae, fungi, and plants (Melbourne Code), adopted by the Eighteenth International Botanical Congress Melbourne, Australia, July 2011. Regnum Vegetabile. Gantner Verlag, Ruggell"
+   },
+   {
+    "key": "896_CR52",
+    "unstructured": "Miller MA, Pfeiffer W, Schwartz T (2010) “Creating the CIPRES Science Gateway for inference of large phylogenetic trees” in Proceedings of the Gateway Computing Environments Workshop (GCE), 14 Nov. 2010, New Orleans, LA pp 1–8"
+   },
+   {
+    "key": "896_CR53",
+    "unstructured": "Muñoz JA (2005) Boletus s.l. (excl. Xerocomus). Fungi Europaei 2. Edizioni Candusso, Alassio"
+   },
+   {
+    "key": "896_CR54",
+    "first-page": "21",
+    "volume": "11",
+    "author": "WA Murrill",
+    "year": "1948",
+    "unstructured": "Murrill WA (1948) Florida boletes. Lloydia 11:21–35",
+    "journal-title": "Lloydia"
+   },
+   {
+    "issue": "2",
+    "key": "896_CR55",
+    "first-page": "247",
+    "volume": "27",
+    "author": "B Ortiz-Santana",
+    "year": "2007",
+    "unstructured": "Ortiz-Santana B, Lodge DJ, Baroni TJ, Both EE (2007) Boletes from Belize and the Dominican Republic. Fungal Divers 27(2):247–416",
+    "journal-title": "Fungal Divers"
+   },
+   {
+    "key": "896_CR56",
+    "volume-title": "Traité des Champignons",
+    "author": "JJ Paulet",
+    "year": "1793",
+    "unstructured": "Paulet JJ (1793) Traité des Champignons. Louvre, Paris"
+   },
+   {
+    "issue": "8",
+    "key": "896_CR57",
+    "first-page": "73",
+    "volume": "2",
+    "author": "CH Peck",
+    "year": "1889",
+    "unstructured": "Peck CH (1889) Boleti of the United States. Bull NY St Mus 2(8):73–166",
+    "journal-title": "Bull NY St Mus"
+   },
+   {
+    "key": "896_CR58",
+    "unstructured": "Persoon CH (1825) Mycologia Europaea, vol. II. Erlangen"
+   },
+   {
+    "key": "896_CR59",
+    "unstructured": "Pilát A, Dermek A (1974) Hríbovité huby. Československé hríbovité a sliziakovité huby (Boletaceae – Gomphidiaceae). Veda, Bratislava"
+   },
+   {
+    "issue": "4",
+    "key": "896_CR60",
+    "first-page": "155",
+    "volume": "108",
+    "author": "G Redeuilh",
+    "year": "1992",
+    "unstructured": "Redeuilh G (1992) Contribution à l’étude des bolets II. Étude critique de Boletus torosus et Boletus xanthocyaneus. Bull Soc Mycol Fr 108(4):155–172",
+    "journal-title": "Bull Soc Mycol Fr"
+   },
+   {
+    "key": "896_CR61",
+    "unstructured": "Rostkovius FWT (1844) Deutschlands Flora, Abt. III. Die Pilze Deutschlands. Vol. 5-23/24. Sturm, Nürnberg"
+   },
+   {
+    "key": "896_CR62",
+    "unstructured": "Schaeffer JC (1774) Fungorum qui in Bavaria et Palatinatu circa Ratisbonam nascuntur Icones, Tomo IV. Regensburg"
+   },
+   {
+    "issue": "4",
+    "key": "896_CR63",
+    "first-page": "129",
+    "volume": "24",
+    "author": "S Schulzer",
+    "year": "1885",
+    "unstructured": "Schulzer S (1885) Einige neue Pilz-Species u. varietäten aus Slavonien. Hedwigia 24(4):129–150",
+    "journal-title": "Hedwigia"
+   },
+   {
+    "key": "896_CR64",
+    "first-page": "191",
+    "volume": "26",
+    "author": "S Schulzer",
+    "year": "1887",
+    "unstructured": "Schulzer S (1887) Vier neue Arten aus der Fungi Slavonici adhuc ined. Hedwigia 26:191–193",
+    "journal-title": "Hedwigia"
+   },
+   {
+    "key": "896_CR65",
+    "doi-asserted-by": "crossref",
+    "DOI": "10.5962/bhl.title.3919",
+    "volume-title": "Mycographie Suisse ou Description des champignons qui croissent en Suisse",
+    "author": "L Secretan",
+    "year": "1833",
+    "unstructured": "Secretan L (1833) Mycographie Suisse ou Description des champignons qui croissent en Suisse. Tome troisième, Bonnant"
+   },
+   {
+    "issue": "3",
+    "key": "896_CR66",
+    "first-page": "195",
+    "volume": "35",
+    "author": "G Simonini",
+    "year": "1993",
+    "unstructured": "Simonini G (1993) [1992] Boletus comptus sp. nov. Riv Micol 35(3):195–208",
+    "journal-title": "Riv Micol"
+   },
+   {
+    "issue": "1",
+    "key": "896_CR67",
+    "first-page": "4",
+    "volume": "16",
+    "author": "G Simonini",
+    "year": "2001",
+    "unstructured": "Simonini G (2001) Discussione di alcune raccolte di boleti della sezione Luridi di difficile determinazione. Micol Veg Medit 16(1):4–26",
+    "journal-title": "Micol Veg Medit"
+   },
+   {
+    "key": "896_CR68",
+    "first-page": "1",
+    "volume": "36",
+    "author": "G Simonini",
+    "year": "2012",
+    "unstructured": "Simonini G, Bertolini V (2012) Schede d’identità dei Boleti d’Europa. Gruppo 7: Sottosezione Torosi. Pagine di Micologia 36:1–46",
+    "journal-title": "Pagine di Micologia"
+   },
+   {
+    "issue": "1",
+    "key": "896_CR69",
+    "first-page": "37",
+    "volume": "39",
+    "author": "G Simonini",
+    "year": "1997",
+    "unstructured": "Simonini G, Lavorato C (1997) Boletus flavosanguineus sp. nov. Riv Micol 39(1):37–51",
+    "journal-title": "Riv Micol"
+   },
+   {
+    "issue": "II",
+    "key": "896_CR70",
+    "first-page": "513",
+    "volume": "48",
+    "author": "R Singer",
+    "year": "1931",
+    "unstructured": "Singer R (1931) Pilze aus dem Kaukasus II. Ein Beitrag zur Flora Swanetiens und einiger angrenzender Täler. Bot Zentralbl, Beih 48(II):513–542",
+    "journal-title": "Bot Zentralbl, Beih"
+   },
+   {
+    "key": "896_CR71",
+    "doi-asserted-by": "crossref",
+    "first-page": "797",
+    "DOI": "10.2307/3755143",
+    "volume": "37",
+    "author": "R Singer",
+    "year": "1945",
+    "unstructured": "Singer R (1945) New Boletaceae from Florida. Mycologia 37:797–799",
+    "journal-title": "Mycologia"
+   },
+   {
+    "issue": "1",
+    "key": "896_CR72",
+    "doi-asserted-by": "crossref",
+    "first-page": "1",
+    "DOI": "10.2307/2421647",
+    "volume": "37",
+    "author": "R Singer",
+    "year": "1947",
+    "unstructured": "Singer R (1947) The Boletoideae of Florida. The Boletineae of Florida with notes on extralimital species III. Amer Midland Naturalist 37(1):1–135",
+    "journal-title": "Amer Midland Naturalist"
+   },
+   {
+    "key": "896_CR73",
+    "unstructured": "Singer R (1965) Die Röhrlinge, Teil I. Boletaceae (ohne Boletoideae). Julius Klinkhardt verlag, Bad Heilbrunn"
+   },
+   {
+    "key": "896_CR74",
+    "volume-title": "Die Röhrlinge, Teil II. Die Boletoideae und Strobilomycetaceae",
+    "author": "R Singer",
+    "year": "1967",
+    "unstructured": "Singer R (1967) Die Röhrlinge, Teil II. Die Boletoideae und Strobilomycetaceae. Julius Klinkhardt Verlag, Bad Heilbrunn"
+   },
+   {
+    "key": "896_CR75",
+    "volume-title": "The Agaricales in modern taxonomy",
+    "author": "R Singer",
+    "year": "1986",
+    "unstructured": "Singer R (1986) The Agaricales in modern taxonomy, 4th edn. Koeltz Scientific Books, Koenigstein",
+    "edition": "4"
+   },
+   {
+    "key": "896_CR76",
+    "volume-title": "The boletes of Michigan",
+    "author": "AH Smith",
+    "year": "1971",
+    "unstructured": "Smith AH, Thiers HD (1971) The boletes of Michigan. The University of Michigan Press, Ann Arbor"
+   },
+   {
+    "key": "896_CR77",
+    "unstructured": "Snell WH, Dick EA (1970) The boleti of northeastern North America. J. Cramer, Lehre"
+   },
+   {
+    "key": "896_CR78",
+    "doi-asserted-by": "crossref",
+    "first-page": "2688",
+    "DOI": "10.1093/bioinformatics/btl446",
+    "volume": "22",
+    "author": "A Stamatakis",
+    "year": "2006",
+    "unstructured": "Stamatakis A (2006) RAxML-VI-HPC: Maximum likelihood-based phylogenetic analyses with thousands of taxa and mixed models. Bioinformatics 22:2688–2690",
+    "journal-title": "Bioinformatics"
+   },
+   {
+    "key": "896_CR79",
+    "unstructured": "Šutara J, Mikšík M, Janda V (2009) Hřibovité houby. Čeled’ Boletaceae a rody Gyrodon, Gyroporus, Boletinus a Suillus. Academia, Praha"
+   },
+   {
+    "key": "896_CR80",
+    "doi-asserted-by": "crossref",
+    "first-page": "419",
+    "DOI": "10.1007/S10267-011-0119-2",
+    "volume": "52",
+    "author": "H Takahashi",
+    "year": "2011",
+    "unstructured": "Takahashi H, Taneyama Y, Koyama A (2011) Boletus kermesinus, a new species of Boletus sect. Luridi from central Honshu, Japan. Mycoscience 52:419–424",
+    "journal-title": "Mycoscience"
+   },
+   {
+    "key": "896_CR81",
+    "doi-asserted-by": "crossref",
+    "first-page": "2731",
+    "DOI": "10.1093/molbev/msr121",
+    "volume": "28",
+    "author": "K Tamura",
+    "year": "2011",
+    "unstructured": "Tamura K, Peterson D, Peterson N, Stecher G, Nei M, Kumar S (2011) MEGA5: molecular evolutionary genetics analysis using maximum likelihood, evolutionary distance, and maximum parsimony methods. Mol Biol Evol 28:2731–2739",
+    "journal-title": "Mol Biol Evol"
+   },
+   {
+    "issue": "4",
+    "key": "896_CR82",
+    "doi-asserted-by": "crossref",
+    "first-page": "524",
+    "DOI": "10.2307/3756729",
+    "volume": "57",
+    "author": "HD Thiers",
+    "year": "1965",
+    "unstructured": "Thiers HD (1965) California Boletes. I Mycologia 57(4):524–534",
+    "journal-title": "I Mycologia"
+   },
+   {
+    "key": "896_CR83",
+    "volume-title": "California Mushrooms. A Field Guide to the Boletes",
+    "author": "HD Thiers",
+    "year": "1975",
+    "unstructured": "Thiers HD (1975) California Mushrooms. A Field Guide to the Boletes. Hafner Press, New York"
+   },
+   {
+    "key": "896_CR84",
+    "unstructured": "Thiers B (2013) (continuously updated): Index Herbariorum: a global directory of public herbaria and associated staff, New York Botanical Garden’s Virtual Herbarium. http://sweetgum.nybg.org/ih/"
+   },
+   {
+    "key": "896_CR85",
+    "first-page": "633",
+    "volume": "4–5",
+    "author": "J Velenovský",
+    "year": "1922",
+    "unstructured": "Velenovský J (1922) Ceske Houby 4–5:633–950",
+    "journal-title": "Ceske Houby"
+   },
+   {
+    "key": "896_CR86",
+    "unstructured": "Wang X, Liu P, Yu F (2004) Color atlas of wild commercial mushrooms in Yunnan. Yunnan Science and Technology Press"
+   },
+   {
+    "key": "896_CR87",
+    "volume-title": "British Fungus flora: agarics and boleti",
+    "author": "R Watling",
+    "year": "1970",
+    "unstructured": "Watling R (1970) Boletaceae, Gomphidiaceae and Paxillaceae. In: Henderson DM, Orton PD, Watling R (eds) British Fungus flora: agarics and boleti, vol 1. Royal Botanic Garden, Edinburgh"
+   },
+   {
+    "key": "896_CR88",
+    "unstructured": "Watling R, Hills AE (2005) British Fungus Flora. Agarics and Boleti. 1. Boletes and their allies. Royal Botanic Garden, Edinburgh"
+   },
+   {
+    "key": "896_CR89",
+    "volume-title": "Australian Boletes. A Preliminary Survey",
+    "author": "R Watling",
+    "year": "1999",
+    "unstructured": "Watling R, Li TH (1999) Australian Boletes. A Preliminary Survey. Royal Botanic Garden, Edinburgh"
+   },
+   {
+    "key": "896_CR90",
+    "first-page": "315",
+    "volume-title": "PCR Protocols, a guide to methods and applications",
+    "author": "TJ White",
+    "year": "1990",
+    "unstructured": "White TJ, Bruns TD, Lee S, Taylor J (1990) Amplification and direct sequencing of fungal ribosomal RNA genes for phylogenetics. In: Innis MA, Gelfand D, Sninsky J, White T (eds) PCR Protocols, a guide to methods and applications. Academic, Orlando, pp 315–322"
+   },
+   {
+    "key": "896_CR91",
+    "volume-title": "Flora Fungorum Sinicorum, vol 22. Boletaceae",
+    "year": "2006",
+    "unstructured": "Zang M (ed) (2006) Flora Fungorum Sinicorum, vol 22. Boletaceae. Science Press, Beijing"
+   }
+  ],
+  "container-title": [
+   "Mycological Progress"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+   {
+    "URL": "http://link.springer.com/content/pdf/10.1007/s11557-013-0896-4.pdf",
+    "content-type": "application/pdf",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   },
+   {
+    "URL": "http://link.springer.com/article/10.1007/s11557-013-0896-4/fulltext.html",
+    "content-type": "text/html",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   },
+   {
+    "URL": "http://link.springer.com/content/pdf/10.1007/s11557-013-0896-4",
+    "content-type": "unspecified",
+    "content-version": "vor",
+    "intended-application": "similarity-checking"
+   }
+  ],
+  "deposited": {
+   "date-parts": [
+    [
+     2019,
+     6,
+     1
+    ]
+   ],
+   "date-time": "2019-06-01T12:40:30Z",
+   "timestamp": 1559392830000
+  },
+  "score": 1,
+  "resource": {
+   "primary": {
+    "URL": "http://link.springer.com/10.1007/s11557-013-0896-4"
+   }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+   "date-parts": [
+    [
+     2013,
+     4,
+     14
+    ]
+   ]
+  },
+  "references-count": 91,
+  "journal-issue": {
+   "issue": "1",
+   "published-print": {
+    "date-parts": [
+     [
+      2014,
+      2
+     ]
+    ]
+   }
+  },
+  "alternative-id": [
+   "896"
+  ],
+  "URL": "https://doi.org/10.1007/s11557-013-0896-4",
+  "relation": {},
+  "ISSN": [
+   "1617-416X",
+   "1861-8952"
+  ],
+  "issn-type": [
+   {
+    "value": "1617-416X",
+    "type": "print"
+   },
+   {
+    "value": "1861-8952",
+    "type": "electronic"
+   }
+  ],
+  "subject": [],
+  "published": {
+   "date-parts": [
+    [
+     2013,
+     4,
+     14
+    ]
+   ]
+  }
+ },
+ "error": null
+}

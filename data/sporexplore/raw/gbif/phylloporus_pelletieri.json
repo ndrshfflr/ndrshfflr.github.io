@@ -1,0 +1,239 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 2524468,
+  "scientificName": "Phylloporus pelletieri (Lév.) Quél.",
+  "canonicalName": "Phylloporus pelletieri",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Phylloporus",
+  "species": "Phylloporus pelletieri",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2524119,
+  "speciesKey": 2524468,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Phylloporus+pelletieri&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 200,
+  "NO": 1,
+  "SE": 77,
+  "FI": 1,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 2524468,
+  "nubKey": 2524468,
+  "nameKey": 8677120,
+  "taxonID": "gbif:2524468",
+  "sourceTaxonKey": 176035013,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Phylloporus",
+  "species": "Phylloporus pelletieri",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2524119,
+  "speciesKey": 2524468,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2524119,
+  "parent": "Phylloporus",
+  "basionymKey": 5239621,
+  "basionym": "Agaricus pelletieri Lév.",
+  "scientificName": "Phylloporus pelletieri (Lév.) Quél.",
+  "canonicalName": "Phylloporus pelletieri",
+  "vernacularName": "Golden Gilled Bolete",
+  "authorship": "(Lév.) Quél.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1888). Fl. Mycol. France (Paris): 409.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:10.954+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "Gilled Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299879315
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "Golden Gilled Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222044698
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "Golden Gilled Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299879315
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "Golden-Gilled Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299879315
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "Lamel-rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299879315
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "Lamelrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905131
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "Lamelrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299879315
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "gullskiverørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299879315
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "gullskiverøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299879315
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "skivsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299879315
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "Golden Gilled Bolete",
+   "language": "eng",
+   "source": "The IUCN Red List of Threatened Species",
+   "sourceTaxonKey": 176751598,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "Golden-Gilled Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101463,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "gullskiverørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069415,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "gullskiverøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069415,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "skivsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329751,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "skivsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691187,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "skivsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019237,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "Gilled Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101463,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "Golden Gilled Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101463,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524468,
+   "vernacularName": "Golden-gilled Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101463,
+   "preferred": false
+  }
+ ]
+}

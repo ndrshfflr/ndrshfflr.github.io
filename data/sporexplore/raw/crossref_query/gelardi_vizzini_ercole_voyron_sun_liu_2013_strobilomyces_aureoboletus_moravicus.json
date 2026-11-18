@@ -1,0 +1,262 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Gelardi Vizzini Ercole Voyron Sun Liu 2013 Strobilomyces Aureoboletus moravicus",
+ "url": "https://api.crossref.org/works?query.bibliographic=Gelardi+Vizzini+Ercole+Voyron+Sun+Liu+2013+Strobilomyces+Aureoboletus+moravicus&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Springer Science and Business Media LLC",
+   "issue": "3",
+   "DOI": "10.1007/s11557-012-0865-3",
+   "type": "journal-article",
+   "page": "575-588",
+   "title": [
+    "Strobilomyces echinocephalus sp. nov. (Boletales) from south-western China, and a key to the genus Strobilomyces worldwide"
+   ],
+   "volume": "12",
+   "author": [
+    {
+     "given": "Matteo",
+     "family": "Gelardi",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Alfredo",
+     "family": "Vizzini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Enrico",
+     "family": "Ercole",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Samuele",
+     "family": "Voyron",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Gang",
+     "family": "Wu",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Xing-Zhong",
+     "family": "Liu",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycological Progress"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2012,
+      10,
+      16
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Springer Science and Business Media LLC",
+   "issue": "2",
+   "DOI": "10.1007/s11557-013-0919-1",
+   "type": "journal-article",
+   "page": "333-342",
+   "title": [
+    "Paxillus orientalis sp. nov. (Paxillaceae, Boletales) from south-western China based on morphological and molecular data and proposal of the new subgenus Alnopaxillus"
+   ],
+   "volume": "13",
+   "author": [
+    {
+     "given": "Matteo",
+     "family": "Gelardi",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Alfredo",
+     "family": "Vizzini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Egon",
+     "family": "Horak",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Enrico",
+     "family": "Ercole",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Samuele",
+     "family": "Voyron",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Gang",
+     "family": "Wu",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycological Progress"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2013,
+      9,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Biodiversity Heritage Library",
+   "issue": "1",
+   "DOI": "10.5248/121.393",
+   "type": "journal-article",
+   "page": "393-403",
+   "title": [
+    "<i>Laccariopsis</i>, a new genus for <i>Hydropus mediterraneus</i> (<i>Basidiomycota, Agaricales</i>)"
+   ],
+   "volume": "121",
+   "author": [
+    {
+     "given": "Alfredo",
+     "family": "Vizzini",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Enrico",
+     "family": "Ercole",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Samuele",
+     "family": "Voyron",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycotaxon"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2013,
+      1,
+      9
+     ]
+    ]
+   }
+  }
+ ]
+}

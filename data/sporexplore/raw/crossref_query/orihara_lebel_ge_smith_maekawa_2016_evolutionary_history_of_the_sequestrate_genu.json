@@ -1,0 +1,226 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Orihara Lebel Ge Smith Maekawa 2016 Evolutionary history of the sequestrate genus Rossbeevera Octaviania",
+ "url": "https://api.crossref.org/works?query.bibliographic=Orihara+Lebel+Ge+Smith+Maekawa+2016+Evolutionary+history+of+the+sequestrate+genus+Rossbeevera+Octaviania&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Westerdijk Fungal Biodiversity Institute",
+   "issue": "1",
+   "DOI": "10.3767/003158516x691212",
+   "type": "journal-article",
+   "page": "173-198",
+   "title": [
+    "Evolutionary history of the sequestrate genus <i>Rossbeevera</i> (<i>Boletaceae</i>) reveals a new genus <i>Turmalinea</i> and highlights the utility of ITS minisatellite-like insertions for molecular identification"
+   ],
+   "volume": "37",
+   "author": [
+    {
+     "given": "T.",
+     "family": "Orihara",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "T.",
+     "family": "Lebel",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Z.-W.",
+     "family": "Ge",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "M.E.",
+     "family": "Smith",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "N.",
+     "family": "Maekawa",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Persoonia - Molecular Phylogeny and Evolution of Fungi"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2016,
+      12,
+      28
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "BioAcademic Press Ltd.",
+   "issue": "1",
+   "DOI": "10.1007/s13225-011-0118-9",
+   "type": "journal-article",
+   "page": "73-73",
+   "title": [
+    "Erratum to: The sequestrate genus Rossbeevera T.Lebel &amp; Orihara gen. nov. (Boletaceae) from Australasia and Japan: new species and new combinations"
+   ],
+   "volume": "52",
+   "author": [
+    {
+     "given": "Teresa",
+     "family": "Lebel",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Takamichi",
+     "family": "Orihara",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Nitaro",
+     "family": "Maekawa",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Fungal Diversity"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2011,
+      8,
+      11
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Biodiversity Heritage Library",
+   "issue": "1",
+   "DOI": "10.5248/120.139",
+   "type": "journal-article",
+   "page": "139-147",
+   "title": [
+    "Rossbeevera yunnanensis (Boletaceae, Boletales), a new sequestrate species from southern China"
+   ],
+   "volume": "120",
+   "author": [
+    {
+     "given": "Takamichi",
+     "family": "Orihara",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Matthew E",
+     "family": "Smith",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "ORCID": "https://orcid.org/0000-0003-3184-4604",
+     "authenticated-orcid": false,
+     "given": "Zai-Wei",
+     "family": "Ge",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Nitaro",
+     "family": "Maekawa",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycotaxon"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2012
+     ]
+    ]
+   }
+  }
+ ]
+}

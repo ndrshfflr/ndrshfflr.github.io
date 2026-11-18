@@ -1,0 +1,199 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 9156243,
+  "scientificName": "Chalciporus piperatus (Bull.) Bataille",
+  "canonicalName": "Chalciporus piperatus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Chalciporus",
+  "species": "Chalciporus piperatus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2524865,
+  "speciesKey": 9156243,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Chalciporus+piperatus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 2181,
+  "NO": 2738,
+  "SE": 5732,
+  "FI": 643,
+  "IS": 45,
+  "FO": 8,
+  "GL": 0
+ },
+ "species": {
+  "key": 9156243,
+  "nubKey": 9156243,
+  "nameKey": 2291631,
+  "taxonID": "gbif:9156243",
+  "sourceTaxonKey": 172026384,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Chalciporus",
+  "species": "Chalciporus piperatus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2524865,
+  "speciesKey": 9156243,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2524865,
+  "parent": "Chalciporus",
+  "basionymKey": 5239741,
+  "basionym": "Boletus piperatus Bull.",
+  "scientificName": "Chalciporus piperatus (Bull.) Bataille",
+  "canonicalName": "Chalciporus piperatus",
+  "vernacularName": "Peppery Bolete",
+  "authorship": "(Bull.) Bataille",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1908). Bull. Soc. Hist. Nat. Doubs 15: 39.",
+  "numDescendants": 7,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:06.110+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 9156243,
+   "vernacularName": "Peberrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299881924
+  },
+  {
+   "taxonKey": 9156243,
+   "vernacularName": "Peberrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905080
+  },
+  {
+   "taxonKey": 9156243,
+   "vernacularName": "Peppery Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299881924
+  },
+  {
+   "taxonKey": 9156243,
+   "vernacularName": "Peppery Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011289
+  },
+  {
+   "taxonKey": 9156243,
+   "vernacularName": "Peppery Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222043376
+  },
+  {
+   "taxonKey": 9156243,
+   "vernacularName": "peparrøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299881924
+  },
+  {
+   "taxonKey": 9156243,
+   "vernacularName": "pepparsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299881924
+  },
+  {
+   "taxonKey": 9156243,
+   "vernacularName": "pepperrørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299881924
+  },
+  {
+   "taxonKey": 9156243,
+   "vernacularName": "äikätatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299881924
+  },
+  {
+   "taxonKey": 9156243,
+   "vernacularName": "äikätatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012904
+  },
+  {
+   "taxonKey": 9156243,
+   "vernacularName": "Peppery Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180102389,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9156243,
+   "vernacularName": "peparrøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069521,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9156243,
+   "vernacularName": "pepparsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019414,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9156243,
+   "vernacularName": "pepperrørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069521,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9156243,
+   "vernacularName": "Peppery Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945767,
+   "preferred": false
+  }
+ ]
+}

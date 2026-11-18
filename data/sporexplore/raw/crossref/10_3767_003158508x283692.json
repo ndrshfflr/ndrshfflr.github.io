@@ -1,0 +1,364 @@
+{
+ "retrieved": "2026-11-18",
+ "doi": "10.3767/003158508x283692",
+ "url": "https://api.crossref.org/works/10.3767/003158508x283692",
+ "message": {
+  "indexed": {
+   "date-parts": [
+    [
+     2026,
+     8,
+     18
+    ]
+   ],
+   "date-time": "2026-08-18T05:19:48Z",
+   "timestamp": 1787030388895,
+   "version": "build-2736575974"
+  },
+  "reference-count": 14,
+  "publisher": "Westerdijk Fungal Biodiversity Institute",
+  "issue": "1",
+  "content-domain": {
+   "domain": [],
+   "crossmark-restriction": false
+  },
+  "short-container-title": [
+   "persoonia"
+  ],
+  "published-print": {
+   "date-parts": [
+    [
+     2008,
+     6,
+     6
+    ]
+   ]
+  },
+  "abstract": "<jats:p>\n                    A phylogenetic study of the species in\n                    <jats:italic>Boletus</jats:italic>\n                    sect.\n                    <jats:italic>Boletus</jats:italic>\n                    was undertaken using the molecular markers ITS1-5.8S-ITS2 and GAPDH. Four well-supported lineages, one comprising\n                    <jats:italic>Boletus edulis</jats:italic>\n                    s.l., the others referring to\n                    <jats:italic>B. aereus, B. reticulatus</jats:italic>\n                    and\n                    <jats:italic>B.\n pinophilus</jats:italic>\n                    have been distinguished. The ML and MP trees of ITS showed remarkably low resolution within the\n                    <jats:italic>B. edulis</jats:italic>\n                    clade, and confirmed earlier published results, despite the use of samples from a wider geographical area and different hosts. The results of GAPDH demonstrate clearly\n that this low resolution must be ascribed to a low genetic variability with the\n                    <jats:italic>B. edulis</jats:italic>\n                    clade, and make clear that morphological and ecological characters have been overestimated within this species complex.\n                    <jats:italic>Boletus edulis</jats:italic>\n                    is therefore defined as a variable species with a wide\n morphological, ecological and geographic range, and includes several specific and subspecific taxa described in the literature (e.g.\n                    <jats:italic>B. betulicola, B. persoonii, B. quercicola</jats:italic>\n                    and\n                    <jats:italic>B. venturii</jats:italic>\n                    ). Three other European species (\n                    <jats:italic>B. aereus, B. pinophilus</jats:italic>\n                    and\n                    <jats:italic>B. reticulatus</jats:italic>\n                    )\n are well delimited species based on morphology and our genetic data.\n                  </jats:p>",
+  "DOI": "10.3767/003158508x283692",
+  "type": "journal-article",
+  "created": {
+   "date-parts": [
+    [
+     2008,
+     2,
+     7
+    ]
+   ],
+   "date-time": "2008-02-07T10:35:05Z",
+   "timestamp": 1202380505000
+  },
+  "page": "1-7",
+  "source": "Crossref",
+  "is-referenced-by-count": 24,
+  "title": [
+   "A phylogenetic study of\n                    <i>Boletus</i>\n                    section\n                    <i>Boletus</i>\n                    in Europe"
+  ],
+  "prefix": "10.3114",
+  "volume": "20",
+  "author": [
+   {
+    "given": "D.C.M.",
+    "family": "Beugelsdijk",
+    "sequence": "first",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "S.",
+    "family": "van der Linde",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "G.C.",
+    "family": "Zuccarello",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "H.C.",
+    "family": "den Bakker",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "S.G.A.",
+    "family": "Draisma",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "M.E.",
+    "family": "Noordeloos",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   }
+  ],
+  "member": "1645",
+  "reference": [
+   {
+    "key": "R6_493_709",
+    "doi-asserted-by": "crossref",
+    "first-page": "411",
+    "DOI": "10.1016/j.femsle.2005.01.003",
+    "volume": "243",
+    "year": "2005",
+    "journal-title": "FEMS Microbiology Letters",
+    "ISSN": "https://id.crossref.org/issn/0378-1097",
+    "issn-type": "print"
+   },
+   {
+    "key": "R6_432_680",
+    "doi-asserted-by": "crossref",
+    "first-page": "776",
+    "DOI": "10.1080/00275514.1996.12026715",
+    "volume": "88",
+    "year": "1996",
+    "journal-title": "Mycologia",
+    "ISSN": "https://id.crossref.org/issn/0027-5514",
+    "issn-type": "print"
+   },
+   {
+    "key": "R6_345_651",
+    "doi-asserted-by": "crossref",
+    "first-page": "111",
+    "DOI": "10.1007/BF01731581",
+    "volume": "16",
+    "year": "1980",
+    "journal-title": "Journal of Molecular Evolution",
+    "ISSN": "https://id.crossref.org/issn/0022-2844",
+    "issn-type": "print"
+   },
+   {
+    "key": "R6_534_622",
+    "doi-asserted-by": "crossref",
+    "first-page": "978",
+    "DOI": "10.1080/00275514.1999.12061107",
+    "volume": "91",
+    "year": "1999",
+    "journal-title": "Mycologia",
+    "ISSN": "https://id.crossref.org/issn/0027-5514",
+    "issn-type": "print"
+   },
+   {
+    "key": "R6_405_603",
+    "doi-asserted-by": "crossref",
+    "first-page": "754",
+    "DOI": "10.1093/bioinformatics/17.8.754",
+    "volume": "17",
+    "year": "2001",
+    "journal-title": "Bioinformatics",
+    "ISSN": "https://id.crossref.org/issn/1367-4803",
+    "issn-type": "print"
+   },
+   {
+    "key": "R6_420_574",
+    "doi-asserted-by": "crossref",
+    "first-page": "160",
+    "DOI": "10.1007/BF02101694",
+    "volume": "22",
+    "year": "1985",
+    "journal-title": "Journal of Molecular Evolution",
+    "ISSN": "https://id.crossref.org/issn/0022-2844",
+    "issn-type": "print"
+   },
+   {
+    "key": "R6_355_555",
+    "doi-asserted-by": "crossref",
+    "first-page": "783",
+    "DOI": "10.2307/2408678",
+    "volume": "39",
+    "year": "1985",
+    "journal-title": "Evolution",
+    "ISSN": "https://id.crossref.org/issn/0014-3820",
+    "issn-type": "print"
+   },
+   {
+    "key": "R6_530_526",
+    "doi-asserted-by": "crossref",
+    "first-page": "201",
+    "DOI": "10.1111/j.1469-8137.2004.01090.x",
+    "volume": "163",
+    "year": "2004",
+    "journal-title": "New Phytologist",
+    "ISSN": "https://id.crossref.org/issn/0028-646X",
+    "issn-type": "print"
+   },
+   {
+    "key": "R6_421_507",
+    "first-page": "511",
+    "volume": "18",
+    "year": "2005",
+    "journal-title": "Persoonia",
+    "ISSN": "https://id.crossref.org/issn/0031-5850",
+    "issn-type": "print"
+   },
+   {
+    "key": "R6_459_478",
+    "doi-asserted-by": "crossref",
+    "first-page": "102",
+    "DOI": "10.1080/15572536.2005.11833001",
+    "volume": "96",
+    "year": "2004",
+    "journal-title": "Mycologia",
+    "ISSN": "https://id.crossref.org/issn/0027-5514",
+    "issn-type": "print"
+   },
+   {
+    "key": "R6_342_469",
+    "first-page": "2",
+    "volume": "52",
+    "year": "2001",
+    "journal-title": "Inoculum",
+    "ISSN": "https://id.crossref.org/issn/1067-909X",
+    "issn-type": "print"
+   },
+   {
+    "key": "R7_268_208",
+    "first-page": "4876",
+    "volume": "24",
+    "year": "1997",
+    "journal-title": "Nucleic Acids Research",
+    "ISSN": "https://id.crossref.org/issn/0305-1048",
+    "issn-type": "print"
+   },
+   {
+    "key": "R7_128_150",
+    "doi-asserted-by": "crossref",
+    "first-page": "817",
+    "DOI": "10.1093/bioinformatics/14.9.817",
+    "volume": "14",
+    "year": "1998",
+    "journal-title": "Bioinformatics",
+    "ISSN": "https://id.crossref.org/issn/1367-4803",
+    "issn-type": "print"
+   },
+   {
+    "key": "R7_141_131",
+    "doi-asserted-by": "crossref",
+    "first-page": "257",
+    "DOI": "10.1016/S1055-7903(02)00025-8",
+    "volume": "23",
+    "year": "2002",
+    "journal-title": "Molecular Phylogenetics and Evolution",
+    "ISSN": "https://id.crossref.org/issn/1055-7903",
+    "issn-type": "print"
+   }
+  ],
+  "container-title": [
+   "Persoonia - Molecular Phylogeny and Evolution of Fungi"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+   {
+    "URL": "https://www.ingentaconnect.com/content/wfbi/pimj/2008/00000020/00000001/art00001",
+    "content-type": "unspecified",
+    "content-version": "vor",
+    "intended-application": "similarity-checking"
+   }
+  ],
+  "deposited": {
+   "date-parts": [
+    [
+     2025,
+     6,
+     18
+    ]
+   ],
+   "date-time": "2025-06-18T01:02:29Z",
+   "timestamp": 1750208549000
+  },
+  "score": 1,
+  "resource": {
+   "primary": {
+    "URL": "https://www.ingentaconnect.com/content/10.3767/003158508X283692"
+   }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+   "date-parts": [
+    [
+     2008,
+     6,
+     6
+    ]
+   ]
+  },
+  "references-count": 14,
+  "journal-issue": {
+   "issue": "1",
+   "published-print": {
+    "date-parts": [
+     [
+      2008,
+      6,
+      6
+     ]
+    ]
+   }
+  },
+  "alternative-id": [
+   "0031-5850(20080606)20:1L.1;1-"
+  ],
+  "URL": "https://doi.org/10.3767/003158508x283692",
+  "relation": {},
+  "ISSN": [
+   "0031-5850"
+  ],
+  "issn-type": [
+   {
+    "value": "0031-5850",
+    "type": "print"
+   }
+  ],
+  "subject": [],
+  "published": {
+   "date-parts": [
+    [
+     2008,
+     6,
+     6
+    ]
+   ]
+  }
+ },
+ "error": null
+}

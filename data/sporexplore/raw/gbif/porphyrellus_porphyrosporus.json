@@ -1,0 +1,186 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 2524797,
+  "scientificName": "Porphyrellus porphyrosporus (Fr.) E.-J.Gilbert",
+  "canonicalName": "Porphyrellus porphyrosporus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Porphyrellus",
+  "species": "Porphyrellus porphyrosporus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7240441,
+  "speciesKey": 2524797,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Porphyrellus+porphyrosporus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 391,
+  "NO": 334,
+  "SE": 704,
+  "FI": 0,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 2524797,
+  "nubKey": 2524797,
+  "nameKey": 18517679,
+  "taxonID": "gbif:2524797",
+  "sourceTaxonKey": 172023644,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Porphyrellus",
+  "species": "Porphyrellus porphyrosporus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7240441,
+  "speciesKey": 2524797,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 7240441,
+  "parent": "Porphyrellus",
+  "basionymKey": 5955006,
+  "basionym": "Boletus porphyrosporus Fr.",
+  "scientificName": "Porphyrellus porphyrosporus (Fr.) E.-J.Gilbert",
+  "canonicalName": "Porphyrellus porphyrosporus",
+  "vernacularName": "Dusky Bolete",
+  "authorship": "(Fr.) E.-J.Gilbert",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1931). Les Livres Du Mycologue Tome I-IV, Tom. III: Les Bolets: 99.",
+  "numDescendants": 2,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:02.618+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2524797,
+   "vernacularName": "Dusky Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299878506
+  },
+  {
+   "taxonKey": 2524797,
+   "vernacularName": "Dusky Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222044733
+  },
+  {
+   "taxonKey": 2524797,
+   "vernacularName": "Dusky Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011287
+  },
+  {
+   "taxonKey": 2524797,
+   "vernacularName": "Sodrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299878506
+  },
+  {
+   "taxonKey": 2524797,
+   "vernacularName": "Sodrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905175
+  },
+  {
+   "taxonKey": 2524797,
+   "vernacularName": "dystersopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299878506
+  },
+  {
+   "taxonKey": 2524797,
+   "vernacularName": "falsk brunskrubb",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299878506
+  },
+  {
+   "taxonKey": 2524797,
+   "vernacularName": "Dusky Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101402,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524797,
+   "vernacularName": "dystersopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019344,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524797,
+   "vernacularName": "dystersopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691206,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524797,
+   "vernacularName": "falsk brunskrubb",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069456,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524797,
+   "vernacularName": "falsk brunskrubb",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069456,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524797,
+   "vernacularName": "Dusky Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945785,
+   "preferred": false
+  }
+ ]
+}

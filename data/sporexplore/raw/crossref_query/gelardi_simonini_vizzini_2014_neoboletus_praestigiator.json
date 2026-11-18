@@ -1,0 +1,210 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Gelardi Simonini Vizzini 2014 Neoboletus praestigiator",
+ "url": "https://api.crossref.org/works?query.bibliographic=Gelardi+Simonini+Vizzini+2014+Neoboletus+praestigiator&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "DOI": "10.2307/jj.7220460.34",
+   "title": [
+    "Genus Neoboletus Gelardi, Simonini, &amp; Vizzini"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2024,
+      5,
+      15
+     ]
+    ]
+   },
+   "container-title": [
+    "Boletes of Eastern North America, Second Edition"
+   ],
+   "page": "318-325",
+   "type": "book-chapter",
+   "publisher": "Syracuse University Press"
+  },
+  {
+   "DOI": "10.3897/mycokeys.49.33185.figure3",
+   "title": [
+    "Figure 3 from: Gelardi M, Angelini C, Costanzo F, Dovana F, Ortiz-Santana B, Vizzini A (2019) Neoboletus antillanus sp. nov. (Boletaceae), first report of a red-pored bolete from the Dominican Republic and insights on the genus Neoboletus. MycoKeys 49: 73-67. https://doi.org/10.3897/mycokeys.49.33185"
+   ],
+   "author": [
+    {
+     "given": "Matteo",
+     "family": "Gelardi",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Claudio",
+     "family": "Angelini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Federica",
+     "family": "Costanzo",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Francesco",
+     "family": "Dovana",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Beatriz",
+     "family": "Ortiz-Santana",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Alfredo",
+     "family": "Vizzini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2019,
+      3,
+      29
+     ]
+    ]
+   },
+   "type": "component",
+   "publisher": "Pensoft Publishers"
+  },
+  {
+   "DOI": "10.3897/mycokeys.49.33185.figure2",
+   "title": [
+    "Figure 2 from: Gelardi M, Angelini C, Costanzo F, Dovana F, Ortiz-Santana B, Vizzini A (2019) Neoboletus antillanus sp. nov. (Boletaceae), first report of a red-pored bolete from the Dominican Republic and insights on the genus Neoboletus. MycoKeys 49: 73-67. https://doi.org/10.3897/mycokeys.49.33185"
+   ],
+   "author": [
+    {
+     "given": "Matteo",
+     "family": "Gelardi",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Claudio",
+     "family": "Angelini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Federica",
+     "family": "Costanzo",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Francesco",
+     "family": "Dovana",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Beatriz",
+     "family": "Ortiz-Santana",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Alfredo",
+     "family": "Vizzini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2019,
+      3,
+      29
+     ]
+    ]
+   },
+   "type": "component",
+   "publisher": "Pensoft Publishers"
+  }
+ ]
+}

@@ -1,0 +1,148 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Kotiranta Kytövuori Rhizopogon Finland Karstenia",
+ "url": "https://api.crossref.org/works?query.bibliographic=Kotiranta+Kyt%C3%B6vuori+Rhizopogon+Finland+Karstenia&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Finnish Mycological Society",
+   "issue": "2",
+   "DOI": "10.29203/ka.1982.213",
+   "type": "journal-article",
+   "page": "27-42",
+   "title": [
+    "Polypore survey of Finland 2. The genus Phellinus"
+   ],
+   "volume": "22",
+   "author": [
+    {
+     "given": "Tuomo",
+     "family": "Niemelä",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Heikki",
+     "family": "Kotiranta",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Karstenia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1982
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Finnish Mycological Society",
+   "issue": "2",
+   "DOI": "10.29203/ka.1991.285",
+   "type": "journal-article",
+   "page": "55-68",
+   "title": [
+    "Polypore survey of Finland 5. The genus Polyporus"
+   ],
+   "volume": "31",
+   "author": [
+    {
+     "given": "Tuomo",
+     "family": "Niemelä",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Heikki",
+     "family": "Kotiranta",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Karstenia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1991
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Finnish Mycological Society",
+   "issue": "2",
+   "DOI": "10.29203/ka.1986.245",
+   "type": "journal-article",
+   "page": "57-64",
+   "title": [
+    "Polypore survey of Finland 4. Phaeolus, Fistulina, Ganoderma and Ischnoderma"
+   ],
+   "volume": "26",
+   "author": [
+    {
+     "given": "Tuomo",
+     "family": "Niemelä",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Heikki",
+     "family": "Kotiranta",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Karstenia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1986
+     ]
+    ]
+   }
+  }
+ ]
+}

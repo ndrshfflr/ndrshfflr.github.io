@@ -1,0 +1,422 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 7752730,
+  "acceptedUsageKey": 5954958,
+  "scientificName": "Boletus betulicola (Vassilkov) Pilát & Dermek",
+  "canonicalName": "Boletus betulicola",
+  "rank": "SPECIES",
+  "status": "SYNONYM",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=0; score=120; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Boletus",
+  "species": "Boletus edulis",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 8287374,
+  "speciesKey": 5954958,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Boletus+betulicola&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 6377,
+  "NO": 4804,
+  "SE": 13633,
+  "FI": 2084,
+  "IS": 31,
+  "FO": 5,
+  "GL": 0
+ },
+ "species": {
+  "key": 7752730,
+  "nubKey": 7752730,
+  "nameKey": 1531061,
+  "taxonID": "gbif:7752730",
+  "sourceTaxonKey": 172025684,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Boletus",
+  "species": "Boletus edulis",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 8287374,
+  "speciesKey": 5954958,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 8287374,
+  "parent": "Boletus",
+  "acceptedKey": 5954958,
+  "accepted": "Boletus edulis Bull.",
+  "scientificName": "Boletus betulicola (Vassilkov) Pilát & Dermek",
+  "canonicalName": "Boletus betulicola",
+  "authorship": "(Vassilkov) Pilát & Dermek",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "HETEROTYPIC_SYNONYM",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1974). Hribovité Huby [Boletaceous Fungi] (Bratislava): 96.",
+  "numDescendants": 0,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:01.436+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Cep",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882790
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Cep, Penny Bun",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222042934
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Cep, Penny Bun",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011220
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Karjohanssvamp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882790
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Karljohans svamp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882790
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "King Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882790
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Penny Bun",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882790
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Spiselig rørhat/karl johan",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905067
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Spiselig rørhat/karl johan",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882790
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "bu-sop",
+   "language": "nor",
+   "source": "Nordic plant uses from Gunnerus and Høeg",
+   "sourceTaxonKey": 164940607
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "bu-sop",
+   "language": "nor",
+   "source": "Nordic plant uses from Gunnerus and Høeg",
+   "sourceTaxonKey": 164940605
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "bu-sop",
+   "language": "nor",
+   "source": "Nordic plant uses from Gunnerus and Høeg",
+   "sourceTaxonKey": 164940606
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "herkkutatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012957
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "herkkutatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882790
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "karljohan",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882790
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "keltaherkkutatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882790
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "koivunherkkutatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882790
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "ku-sop",
+   "language": "nor",
+   "source": "Nordic plant uses from Gunnerus and Høeg",
+   "sourceTaxonKey": 164940607
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "ku-sop",
+   "language": "nor",
+   "source": "Nordic plant uses from Gunnerus and Høeg",
+   "sourceTaxonKey": 164940606
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "ku-sop",
+   "language": "nor",
+   "source": "Nordic plant uses from Gunnerus and Høeg",
+   "sourceTaxonKey": 164940605
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "steinsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882790
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "stensopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882790
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "King Bolete",
+   "language": "eng",
+   "country": "US",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011220,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Penny Bun",
+   "language": "eng",
+   "country": "US",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011220,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Penny Bun",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180100441,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Penny Bun",
+   "language": "eng",
+   "source": "The IUCN Red List of Threatened Species",
+   "sourceTaxonKey": 176751705,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "steinsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069546,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "steinsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069546,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "stensopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019426,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Cep",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180100441,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Cep",
+   "language": "eng",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011220,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Cep",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945708,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Cep",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180100441,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Cep",
+   "language": "eng",
+   "source": "The IUCN Red List of Threatened Species",
+   "sourceTaxonKey": 176751705,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Cep, Penny Bun",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945708,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Karjohanssvamp",
+   "language": "swe",
+   "source": "The IUCN Red List of Threatened Species",
+   "sourceTaxonKey": 176751705,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Karljohans svamp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019426,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "King Bolete",
+   "language": "eng",
+   "source": "The IUCN Red List of Threatened Species",
+   "sourceTaxonKey": 176751705,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "King Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945708,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Penny Bun",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945708,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Penny Bun",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180100441,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "Stensopp",
+   "language": "swe",
+   "source": "The IUCN Red List of Threatened Species",
+   "sourceTaxonKey": 176751705,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "karljohan",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019426,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5954958,
+   "vernacularName": "karljohanssvamp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019426,
+   "preferred": false
+  }
+ ]
+}

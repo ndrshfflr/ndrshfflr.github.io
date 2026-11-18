@@ -1,0 +1,189 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Nguyen Vellinga Bruns Kennedy 2016 Phylogenetic assessment of global Suillus ITS sequences supports morphologically defined species and reveals synonymous and undescribed taxa Mycologia",
+ "url": "https://api.crossref.org/works?query.bibliographic=Nguyen+Vellinga+Bruns+Kennedy+2016+Phylogenetic+assessment+of+global+Suillus+ITS+sequences+supports+morphologically+defined+species+and+reveals+synonymous+and+undescribed+taxa+Mycologia&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Informa UK Limited",
+   "issue": "5",
+   "DOI": "10.2307/3760972",
+   "type": "journal-article",
+   "page": "776",
+   "title": [
+    "Internal Transcribed Spacer Sequences from 38 Recognized Species of Suillus sensu lato: Phylogenetic and Taxonomic Implications"
+   ],
+   "volume": "88",
+   "author": [
+    {
+     "given": "Annette",
+     "family": "Kretzer",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Yunan",
+     "family": "Li",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Timothy",
+     "family": "Szaro",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Thomas D.",
+     "family": "Bruns",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycologia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1996,
+      9
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Informa UK Limited",
+   "issue": "5",
+   "DOI": "10.1080/00275514.1996.12026715",
+   "type": "journal-article",
+   "page": "776-785",
+   "title": [
+    "Internal transcribed spacer sequences from 38 recognized species of\n                    <i>Suillus</i>\n                    sensu lato: Phylogenetic and taxonomic implications"
+   ],
+   "volume": "88",
+   "author": [
+    {
+     "given": "Annette",
+     "family": "Kretzer",
+     "sequence": "first",
+     "affiliation": [
+      {
+       "name": ","
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Yunan",
+     "family": "Li",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": ","
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Timothy",
+     "family": "Szaro",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": ","
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Thomas D.",
+     "family": "Bruns",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": ","
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycologia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1996,
+      9
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Informa UK Limited",
+   "issue": "3",
+   "DOI": "10.2307/3761406",
+   "type": "journal-article",
+   "page": "464",
+   "title": [
+    "Erratum: Internal Transcribed Spacer Sequences from 38 Recognized Species of Suillus Sensu Lato: Phylogenetic and Taxonomic Implications"
+   ],
+   "volume": "90",
+   "container-title": [
+    "Mycologia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1998,
+      5
+     ]
+    ]
+   }
+  }
+ ]
+}

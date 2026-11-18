@@ -1,0 +1,518 @@
+{
+ "retrieved": "2026-11-18",
+ "doi": "10.3852/13-052",
+ "url": "https://api.crossref.org/works/10.3852/13-052",
+ "message": {
+  "indexed": {
+   "date-parts": [
+    [
+     2026,
+     11,
+     13
+    ]
+   ],
+   "date-time": "2026-11-13T05:32:34Z",
+   "timestamp": 1794547954007,
+   "version": "4.9.1"
+  },
+  "reference-count": 38,
+  "publisher": "Informa UK Limited",
+  "issue": "3",
+  "content-domain": {
+   "domain": [
+    "www.tandfonline.com"
+   ],
+   "crossmark-restriction": true
+  },
+  "short-container-title": [
+   "Mycologia"
+  ],
+  "published-print": {
+   "date-parts": [
+    [
+     2014,
+     5
+    ]
+   ]
+  },
+  "DOI": "10.3852/13-052",
+  "type": "journal-article",
+  "created": {
+   "date-parts": [
+    [
+     2014,
+     6,
+     4
+    ]
+   ],
+   "date-time": "2014-06-04T12:20:03Z",
+   "timestamp": 1401884403000
+  },
+  "page": "464-480",
+  "update-policy": "https://doi.org/10.1080/tandf_crossmark_01",
+  "source": "Crossref",
+  "is-referenced-by-count": 28,
+  "title": [
+   "Clarifying the butter Boletes: a new genus,\n                    <i>Butyriboletus</i>\n                    , is established to accommodate Boletus sect.\n                    <i>Appendiculati</i>\n                    , and six new species are described"
+  ],
+  "prefix": "10.1080",
+  "volume": "106",
+  "author": [
+   {
+    "given": "David",
+    "family": "Arora",
+    "sequence": "first",
+    "affiliation": [
+     {
+      "name": "Casa Madera Institute, P.O. Box 672, Gualala, California 95445"
+     }
+    ],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Jonathan L.",
+    "family": "Frank",
+    "sequence": "additional",
+    "affiliation": [
+     {
+      "name": "Department of Biology, Southern Oregon University, Ashland, Oregon 97520"
+     }
+    ],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   }
+  ],
+  "member": "301",
+  "published-online": {
+   "date-parts": [
+    [
+     2017,
+     1,
+     20
+    ]
+   ]
+  },
+  "reference": [
+   {
+    "key": "e_1_3_2_2_1",
+    "doi-asserted-by": "publisher",
+    "DOI": "10.1016/S0022-2836(05)80360-2"
+   },
+   {
+    "key": "e_1_3_2_3_1",
+    "first-page": "959",
+    "volume-title": "Mushrooms demystified",
+    "author": "Arora D",
+    "year": "1986",
+    "unstructured": "AroraD. 1986. Mushrooms demystified. 2nd ed. Berkeley, California: Ten Speed Press. 959 p.",
+    "edition": "2"
+   },
+   {
+    "key": "e_1_3_2_4_1",
+    "first-page": "263",
+    "volume-title": "All that the rain promises, and more: a hip pocket guide to western mushrooms",
+    "author": "Arora D",
+    "year": "1991",
+    "unstructured": "AroraD. 1991. All that the rain promises, and more: a hip pocket guide to western mushrooms. Berkeley, California: Ten Speed Press. 263 p."
+   },
+   {
+    "key": "e_1_3_2_5_1",
+    "doi-asserted-by": "publisher",
+    "DOI": "10.1007/s12231-008-9050-7"
+   },
+   {
+    "key": "e_1_3_2_6_1",
+    "first-page": "408",
+    "article-title": "Revision of Boletus section Appendiculati (Boletaceae) in Bulgaria with a key to the Balkan species",
+    "volume": "36",
+    "author": "Assyov B",
+    "year": "2012",
+    "unstructured": "AssyovB. 2012. Revision of Boletus section Appendiculati (Boletaceae) in Bulgaria with a key to the Balkan species. Turk J Bot 36:408–419.",
+    "journal-title": "Turk J Bot"
+   },
+   {
+    "key": "e_1_3_2_7_1",
+    "first-page": "396",
+    "volume-title": "North American Boletes",
+    "author": "Bessette AE",
+    "year": "2000",
+    "unstructured": "BessetteAERoodyWBessetteAR. 2000. North American Boletes. Syracuse, New York: Syracuse Univ. Press. 396 p."
+   },
+   {
+    "key": "e_1_3_2_8_1",
+    "doi-asserted-by": "publisher",
+    "DOI": "10.1002/1522-239X(200205)113:1/2<30::AID-FEDR30>3.0.CO;2-D"
+   },
+   {
+    "key": "e_1_3_2_9_1",
+    "doi-asserted-by": "publisher",
+    "DOI": "10.3852/mycologia.98.6.971"
+   },
+   {
+    "key": "e_1_3_2_10_1",
+    "first-page": "361",
+    "volume-title": "Fungi of Switzerland. Vol. 3. Boletes and agarics",
+    "author": "Breitenbach J",
+    "year": "1991",
+    "unstructured": "BreitenbachJKranzlinF. 1991. Fungi of Switzerland. Vol. 3. Boletes and agarics. Mykologia Lucerne. 361 p."
+   },
+   {
+    "key": "e_1_3_2_11_1",
+    "doi-asserted-by": "publisher",
+    "DOI": "10.2307/3755085"
+   },
+   {
+    "key": "e_1_3_2_12_1",
+    "doi-asserted-by": "publisher",
+    "DOI": "10.1016/j.ympev.2010.10.004"
+   },
+   {
+    "key": "e_1_3_2_13_1",
+    "doi-asserted-by": "publisher",
+    "DOI": "10.1007/BF01734359"
+   },
+   {
+    "key": "e_1_3_2_14_1",
+    "first-page": "100",
+    "article-title": "Catalogue of boleti of New England, with descriptions of new species",
+    "volume": "2",
+    "author": "Frost C",
+    "year": "1874",
+    "unstructured": "FrostC. 1874. Catalogue of boleti of New England, with descriptions of new species. Bull Buffalo Soc Nat Sci 2: 100–105.",
+    "journal-title": "Bull Buffalo Soc Nat Sci"
+   },
+   {
+    "key": "e_1_3_2_15_1",
+    "first-page": "113",
+    "article-title": "ITS primers with enhanced specificity for basidiomycetes—application to the identification of mycorrhizae and roots",
+    "volume": "2",
+    "author": "Gardes M",
+    "year": "1993",
+    "unstructured": "GardesMBrunsT. 1993. ITS primers with enhanced specificity for basidiomycetes—application to the identification of mycorrhizae and roots. Mol Evol 2:113–118.",
+    "journal-title": "Mol Evol"
+   },
+   {
+    "key": "e_1_3_2_16_1",
+    "first-page": "45",
+    "article-title": "Boletus sinopulverulentus, a new species from Shaanxi province (central China) and notes on Boletus and Xerocomus",
+    "volume": "65",
+    "author": "Gelardi M",
+    "year": "2013",
+    "unstructured": "GelardiMVizziniAErcoleEVoyronSSunJ-ZLiuX-Z. 2013. Boletus sinopulverulentus, a new species from Shaanxi province (central China) and notes on Boletus and Xerocomus. Sydowia 65:45–57.",
+    "journal-title": "Sydowia"
+   },
+   {
+    "key": "e_1_3_2_17_1",
+    "first-page": "356",
+    "volume-title": "Los nombres de los hongos y lo relacionado con ellos en América Latina",
+    "author": "Guzmán G",
+    "year": "1997",
+    "unstructured": "GuzmánG. 1997. Los nombres de los hongos y lo relacionado con ellos en América Latina. Mexico: Instituto de Ecología. 356 p."
+   },
+   {
+    "key": "e_1_3_2_18_1",
+    "first-page": "95",
+    "article-title": "BioEdit: a user-friendly biological sequence alignment editor and analysis program for Windows 95/98/NT",
+    "volume": "41",
+    "author": "Hall TA",
+    "year": "1999",
+    "unstructured": "HallTA. 1999. BioEdit: a user-friendly biological sequence alignment editor and analysis program for Windows 95/98/NT. Nucleic Acids Symp Ser 41:95–98.",
+    "journal-title": "Nucleic Acids Symp Ser"
+   },
+   {
+    "key": "e_1_3_2_19_1",
+    "first-page": "97",
+    "article-title": "The Agaricales of Japan 1–2: Rhodophyllaceae, Paxillaceae, Gomphidiaceae, Boletaceae and Strobilomycetaceae",
+    "volume": "18",
+    "author": "Hongo T",
+    "year": "1960",
+    "unstructured": "HongoT. 1960. The Agaricales of Japan 1–2: Rhodophyllaceae, Paxillaceae, Gomphidiaceae, Boletaceae and Strobilomycetaceae. Acta Phytotaxon Geobotan 18: 97–112.",
+    "journal-title": "Acta Phytotaxon Geobotan"
+   },
+   {
+    "key": "e_1_3_2_20_1",
+    "first-page": "624",
+    "volume-title": "Fungi of Japan",
+    "author": "Imazeki R",
+    "year": "1988",
+    "unstructured": "ImazekiROtaniYHongoT. 1988. Fungi of Japan. Tokyo: Yama-Kei Publishers. 624 p."
+   },
+   {
+    "key": "e_1_3_2_21_1",
+    "doi-asserted-by": "publisher",
+    "DOI": "10.1093/nar/gkf436"
+   },
+   {
+    "key": "e_1_3_2_22_1",
+    "first-page": "1",
+    "article-title": "Boletus roseoflavus, a new species of Boletus section Appendiculati from China",
+    "volume": "24",
+    "author": "Li H",
+    "year": "2013",
+    "unstructured": "LiHWeiHPengHDingHWangLHeLFuL. 2013. Boletus roseoflavus, a new species of Boletus section Appendiculati from China. Mycol Prog 24:1–11.",
+    "journal-title": "Mycol Prog"
+   },
+   {
+    "key": "e_1_3_2_23_1",
+    "volume-title": "Mesquite 2.75: a modular system for evolutionary analysis",
+    "author": "Maddison WP",
+    "year": "2011",
+    "unstructured": "MaddisonWPMaddisonDR. 2011. Mesquite 2.75: a modular system for evolutionary analysis. http://mesquiteproject.org"
+   },
+   {
+    "key": "e_1_3_2_24_1",
+    "first-page": "353",
+    "article-title": "Révision des espèces européennes du genre Boletus section Appendiculati. Étude sur la base de caracteres morphologique et d’analyse des polymorphismes des fragments de restriction (PCR-RFLP)",
+    "volume": "122",
+    "author": "Marques G",
+    "year": "2006",
+    "unstructured": "MarquesGMuñozJA. 2006. Révision des espèces européennes du genre Boletus section Appendiculati. Étude sur la base de caracteres morphologique et d’analyse des polymorphismes des fragments de restriction (PCR-RFLP). Bull Trim Soc Mycol Fr 122:353–366.",
+    "journal-title": "Bull Trim Soc Mycol Fr"
+   },
+   {
+    "key": "e_1_3_2_25_1",
+    "volume-title": "Chromas 1.45. Southport",
+    "author": "McCarthy C",
+    "year": "1998",
+    "unstructured": "McCarthyC. 1998. Chromas 1.45. Southport, Queensland, Australia: Griffith Univ."
+   },
+   {
+    "key": "e_1_3_2_26_1",
+    "doi-asserted-by": "publisher",
+    "DOI": "10.1007/s11104-008-9743-9"
+   },
+   {
+    "key": "e_1_3_2_27_1",
+    "first-page": "535",
+    "volume-title": "Keys to Agarics and Boleti [of Europe]",
+    "author": "Moser M",
+    "year": "1983",
+    "unstructured": "MoserM. 1983. Keys to Agarics and Boleti [of Europe]. London: Roger Phillips. 535 p."
+   },
+   {
+    "key": "e_1_3_2_28_1",
+    "doi-asserted-by": "publisher",
+    "DOI": "10.1016/j.funbio.2013.04.008"
+   },
+   {
+    "key": "e_1_3_2_29_1",
+    "first-page": "41",
+    "article-title": "fastDNAml: a tool for construction of phylogenetic trees of DNA sequences using maximum likelihood",
+    "volume": "10",
+    "author": "Olsen GJ",
+    "year": "1994",
+    "unstructured": "OlsenGJMatsudaHHagstromROverbeekR. 1994. fastDNAml: a tool for construction of phylogenetic trees of DNA sequences using maximum likelihood. Comput Appl Biosci 10:41–48.",
+    "journal-title": "Comput Appl Biosci"
+   },
+   {
+    "key": "e_1_3_2_30_1",
+    "first-page": "945",
+    "article-title": "A simple method for estimating and testing minimum evolution trees",
+    "volume": "9",
+    "author": "Rzhetsky A",
+    "year": "1992",
+    "unstructured": "RzhetskyANeiM. 1992. A simple method for estimating and testing minimum evolution trees. Mol Biol Evol 9: 945–967.",
+    "journal-title": "Mol Biol Evol"
+   },
+   {
+    "key": "e_1_3_2_31_1",
+    "first-page": "1",
+    "article-title": "Die Ro¨hrlinge II. Die Boletoideae und Strobilomycetaceae",
+    "volume": "6",
+    "author": "Singer R",
+    "year": "1967",
+    "unstructured": "SingerR. 1967. Die Ro¨hrlinge II. Die Boletoideae und Strobilomycetaceae. In: Die Pilze Mitteleuropas 6:1–151.",
+    "journal-title": "Die Pilze Mitteleuropas"
+   },
+   {
+    "key": "e_1_3_2_32_1",
+    "first-page": "115",
+    "volume-title": "The Boleti of northeastern North America",
+    "author": "Snell W",
+    "year": "1970",
+    "unstructured": "SnellWDickE. 1970. The Boleti of northeastern North America. Lehre, Germany: J. Cramer. 115 p."
+   },
+   {
+    "key": "e_1_3_2_33_1",
+    "volume-title": "PAUP* 4.0: phylogenetic analysis using parsimony and other methods",
+    "author": "Swofford DL",
+    "year": "2002",
+    "unstructured": "SwoffordDL. 2002. PAUP* 4.0: phylogenetic analysis using parsimony and other methods. Sunderland, Massachusetts: Sinauer Associates."
+   },
+   {
+    "key": "e_1_3_2_34_1",
+    "doi-asserted-by": "publisher",
+    "DOI": "10.1093/molbev/msr121"
+   },
+   {
+    "key": "e_1_3_2_35_1",
+    "first-page": "261",
+    "volume-title": "California mushrooms: a field guide to the Boletes",
+    "author": "Thiers HD",
+    "year": "1975",
+    "unstructured": "ThiersHD. 1975. California mushrooms: a field guide to the Boletes. Hafner Press. 261 p."
+   },
+   {
+    "key": "e_1_3_2_36_1",
+    "doi-asserted-by": "publisher",
+    "DOI": "10.1093/nar/25.24.4876"
+   },
+   {
+    "key": "e_1_3_2_37_1",
+    "first-page": "232",
+    "volume-title": "Mushrooms of Idaho and the Pacific Northwest. Vol 2. Non-gilled Hymenomycetes",
+    "author": "Tylutki E",
+    "year": "1987",
+    "unstructured": "TylutkiE. 1987. Mushrooms of Idaho and the Pacific Northwest. Vol 2. Non-gilled Hymenomycetes. Moscow: Univ. Idaho Press. 232 p."
+   },
+   {
+    "key": "e_1_3_2_38_1",
+    "first-page": "136",
+    "volume-title": "Color atlas of wild commercial mushrooms in Yunnan",
+    "author": "Wang X",
+    "year": "2004",
+    "unstructured": "WangXLiuPYuF. 2004. Color atlas of wild commercial mushrooms in Yunnan. Kunming, China: Yunnan Science & Technology Press. 136 p."
+   },
+   {
+    "key": "e_1_3_2_39_1",
+    "doi-asserted-by": "publisher",
+    "DOI": "10.1016/B978-0-12-372180-8.50042-1"
+   }
+  ],
+  "container-title": [
+   "Mycologia"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+   {
+    "URL": "https://www.tandfonline.com/doi/pdf/10.3852/13-052",
+    "content-type": "unspecified",
+    "content-version": "vor",
+    "intended-application": "similarity-checking"
+   }
+  ],
+  "deposited": {
+   "date-parts": [
+    [
+     2026,
+     1,
+     29
+    ]
+   ],
+   "date-time": "2026-01-29T17:44:54Z",
+   "timestamp": 1769708694000
+  },
+  "score": 1,
+  "resource": {
+   "primary": {
+    "URL": "https://www.tandfonline.com/doi/full/10.3852/13-052"
+   }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+   "date-parts": [
+    [
+     2014,
+     5
+    ]
+   ]
+  },
+  "references-count": 38,
+  "journal-issue": {
+   "issue": "3",
+   "published-print": {
+    "date-parts": [
+     [
+      2014,
+      5
+     ]
+    ]
+   }
+  },
+  "alternative-id": [
+   "10.3852/13-052"
+  ],
+  "URL": "https://doi.org/10.3852/13-052",
+  "relation": {},
+  "ISSN": [
+   "0027-5514",
+   "1557-2536"
+  ],
+  "issn-type": [
+   {
+    "value": "0027-5514",
+    "type": "print"
+   },
+   {
+    "value": "1557-2536",
+    "type": "electronic"
+   }
+  ],
+  "subject": [],
+  "published": {
+   "date-parts": [
+    [
+     2014,
+     5
+    ]
+   ]
+  },
+  "assertion": [
+   {
+    "value": "The publishing and review policy for this title is described in its Aims & Scope.",
+    "order": 1,
+    "name": "peerreview_statement",
+    "label": "Peer Review Statement"
+   },
+   {
+    "value": "http://www.tandfonline.com/action/journalInformation?show=aimsScope&journalCode=umyc20",
+    "URL": "http://www.tandfonline.com/action/journalInformation?show=aimsScope&journalCode=umyc20",
+    "order": 2,
+    "name": "aims_and_scope_url",
+    "label": "Aim & Scope"
+   },
+   {
+    "value": "2013-02-10",
+    "order": 0,
+    "name": "received",
+    "label": "Received",
+    "group": {
+     "name": "publication_history",
+     "label": "Publication History"
+    }
+   },
+   {
+    "value": "2013-11-24",
+    "order": 2,
+    "name": "accepted",
+    "label": "Accepted",
+    "group": {
+     "name": "publication_history",
+     "label": "Publication History"
+    }
+   },
+   {
+    "value": "2017-01-20",
+    "order": 3,
+    "name": "published",
+    "label": "Published",
+    "group": {
+     "name": "publication_history",
+     "label": "Publication History"
+    }
+   }
+  ]
+ },
+ "error": null
+}

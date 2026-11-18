@@ -1,0 +1,334 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Wu Feng Xu Hosen Zeng Zhu Yang 2014 Molecular phylogenetic analyses redefine seven major clades and reveal 22 new generic clades in the fungal family Boletaceae Fungal Diversity",
+ "url": "https://api.crossref.org/works?query.bibliographic=Wu+Feng+Xu+Hosen+Zeng+Zhu+Yang+2014+Molecular+phylogenetic+analyses+redefine+seven+major+clades+and+reveal+22+new+generic+clades+in+the+fungal+family+Boletaceae+Fungal+Diversity&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "BioAcademic Press Ltd.",
+   "issue": "1",
+   "DOI": "10.1007/s13225-014-0283-8",
+   "type": "journal-article",
+   "page": "93-115",
+   "title": [
+    "Molecular phylogenetic analyses redefine seven major clades and reveal 22 new generic clades in the fungal family Boletaceae"
+   ],
+   "volume": "69",
+   "author": [
+    {
+     "given": "Gang",
+     "family": "Wu",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Bang",
+     "family": "Feng",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Jianping",
+     "family": "Xu",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Xue-Tai",
+     "family": "Zhu",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Yan-Chun",
+     "family": "Li",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Nian-Kai",
+     "family": "Zeng",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Md. Iqbal",
+     "family": "Hosen",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Zhu L.",
+     "family": "Yang",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Fungal Diversity"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2014,
+      3,
+      11
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "BioAcademic Press Ltd.",
+   "issue": "1",
+   "DOI": "10.1007/s13225-015-0322-0",
+   "type": "journal-article",
+   "page": "1-24",
+   "title": [
+    "Four new genera of the fungal family Boletaceae"
+   ],
+   "volume": "81",
+   "author": [
+    {
+     "given": "Gang",
+     "family": "Wu",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Kuan",
+     "family": "Zhao",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Yan-Chun",
+     "family": "Li",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Nian-Kai",
+     "family": "Zeng",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Bang",
+     "family": "Feng",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Roy E.",
+     "family": "Halling",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Zhu L.",
+     "family": "Yang",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Fungal Diversity"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2015,
+      2,
+      22
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "BioAcademic Press Ltd.",
+   "issue": "1",
+   "DOI": "10.1007/s13225-012-0211-8",
+   "type": "journal-article",
+   "page": "215-226",
+   "title": [
+    "Borofutus, a new genus of Boletaceae from tropical Asia: phylogeny, morphology and taxonomy"
+   ],
+   "volume": "58",
+   "author": [
+    {
+     "given": "Md. Iqbal",
+     "family": "Hosen",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Bang",
+     "family": "Feng",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Gang",
+     "family": "Wu",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Xue Tai",
+     "family": "Zhu",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Yan Chun",
+     "family": "Li",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Zhu L.",
+     "family": "Yang",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Fungal Diversity"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2012,
+      10,
+      30
+     ]
+    ]
+   }
+  }
+ ]
+}

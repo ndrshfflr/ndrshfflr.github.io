@@ -1,0 +1,196 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 2519457,
+  "scientificName": "Xerocomus subtomentosus (L.) Quél.",
+  "canonicalName": "Xerocomus subtomentosus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 99,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; nextMatch=0",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 8110115,
+    "acceptedUsageKey": 2519457,
+    "scientificName": "Xerocomus subtomentosus (L.) Fr.",
+    "canonicalName": "Xerocomus subtomentosus",
+    "rank": "SPECIES",
+    "status": "SYNONYM",
+    "confidence": 99,
+    "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=0; score=120",
+    "matchType": "EXACT",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Boletaceae",
+    "genus": "Xerocomus",
+    "species": "Xerocomus subtomentosus",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8789,
+    "genusKey": 2519224,
+    "speciesKey": 2519457,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Xerocomus",
+  "species": "Xerocomus subtomentosus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2519224,
+  "speciesKey": 2519457,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Xerocomus+subtomentosus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 580,
+  "NO": 1204,
+  "SE": 1212,
+  "FI": 519,
+  "IS": 47,
+  "FO": 0,
+  "GL": 22
+ },
+ "species": {
+  "key": 2519457,
+  "nubKey": 2519457,
+  "nameKey": 11897813,
+  "taxonID": "gbif:2519457",
+  "sourceTaxonKey": 172025026,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Xerocomus",
+  "species": "Xerocomus subtomentosus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2519224,
+  "speciesKey": 2519457,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2519224,
+  "parent": "Xerocomus",
+  "basionymKey": 5954888,
+  "basionym": "Boletus subtomentosus L.",
+  "scientificName": "Xerocomus subtomentosus (L.) Quél.",
+  "canonicalName": "Xerocomus subtomentosus",
+  "vernacularName": "Suede bolete, Brown and yellow bolete, Boring brown bolete, Yellow-cracked bolete",
+  "authorship": "(L.) Quél.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1888). Fl. Mycol. France (Paris): 418.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:07.150+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2519457,
+   "vernacularName": "Suede Bolete, Brown And Yellow Bolete, Boring Brown Bolete, Yellow-cracked Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011376
+  },
+  {
+   "taxonKey": 2519457,
+   "vernacularName": "Suede bolete, Brown and yellow bolete, Boring brown bolete, Yellow-cracked bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222045445
+  },
+  {
+   "taxonKey": 2519457,
+   "vernacularName": "samettitatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012889
+  },
+  {
+   "taxonKey": 2519457,
+   "vernacularName": "samettitatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875429
+  },
+  {
+   "taxonKey": 2519457,
+   "vernacularName": "sammetssopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875429
+  },
+  {
+   "taxonKey": 2519457,
+   "vernacularName": "sørleg fløyelsrøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875429
+  },
+  {
+   "taxonKey": 2519457,
+   "vernacularName": "sørlig fløyelsrørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875429
+  },
+  {
+   "taxonKey": 2519457,
+   "vernacularName": "sammetssopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019301,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2519457,
+   "vernacularName": "sørleg fløyelsrøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069421,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2519457,
+   "vernacularName": "sørlig fløyelsrørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069421,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2519457,
+   "vernacularName": "Suede bolete, Brown and yellow bolete, Boring brown bolete, Yellow-cracked bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945943,
+   "preferred": false
+  }
+ ]
+}

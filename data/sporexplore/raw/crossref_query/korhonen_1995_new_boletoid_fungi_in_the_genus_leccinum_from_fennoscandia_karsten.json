@@ -1,0 +1,160 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Korhonen 1995 New boletoid fungi in the genus Leccinum from Fennoscandia Karstenia 35",
+ "url": "https://api.crossref.org/works?query.bibliographic=Korhonen+1995+New+boletoid+fungi+in+the+genus+Leccinum+from+Fennoscandia+Karstenia+35&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Finnish Mycological Society",
+   "issue": "2",
+   "DOI": "10.29203/ka.1995.310",
+   "type": "journal-article",
+   "page": "53-66",
+   "title": [
+    "New boletoid fungi in the genus Leccinum from Fennoscandia"
+   ],
+   "volume": "35",
+   "author": [
+    {
+     "given": "Mauri",
+     "family": "Korhonen",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Karstenia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1995
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Finnish Mycological Society",
+   "issue": "2",
+   "DOI": "10.29203/ka.2009.433",
+   "type": "journal-article",
+   "page": "41-60",
+   "title": [
+    "A new boletoid fungus, Boletus pinetorum, in the Boletus section Boletus from Fennoscandia (Basidiomycota, Boletales)"
+   ],
+   "volume": "49",
+   "author": [
+    {
+     "given": "Mauri",
+     "family": "Korhonen",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Kare",
+     "family": "Liimatainen",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Tuula",
+     "family": "Niskanen",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Karstenia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2009
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Finnish Mycological Society",
+   "issue": "1",
+   "DOI": "10.29203/ka.1993.296",
+   "type": "journal-article",
+   "page": "1-9",
+   "title": [
+    "Suillus grevillei and S. clintonianus (Gomphidiaceae), two boletoid fungi associated with Larix"
+   ],
+   "volume": "33",
+   "author": [
+    {
+     "given": "Mauri",
+     "family": "Korhonen",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Jaakko",
+     "family": "Hyvönen",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Teuvo",
+     "family": "Ahti",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Karstenia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1993
+     ]
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,151 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 9228008,
+  "scientificName": "Leucogyrophana mollusca (Fr.) Pouzar",
+  "canonicalName": "Leucogyrophana mollusca",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Hygrophoropsidaceae",
+  "genus": "Leucogyrophana",
+  "species": "Leucogyrophana mollusca",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4194,
+  "genusKey": 2524207,
+  "speciesKey": 9228008,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Leucogyrophana+mollusca&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 73,
+  "NO": 159,
+  "SE": 479,
+  "FI": 173,
+  "IS": 0,
+  "FO": 2,
+  "GL": 0
+ },
+ "species": {
+  "key": 9228008,
+  "nubKey": 9228008,
+  "nameKey": 6279401,
+  "taxonID": "gbif:9228008",
+  "sourceTaxonKey": 176036652,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Hygrophoropsidaceae",
+  "genus": "Leucogyrophana",
+  "species": "Leucogyrophana mollusca",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4194,
+  "genusKey": 2524207,
+  "speciesKey": 9228008,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2524207,
+  "parent": "Leucogyrophana",
+  "basionymKey": 7241252,
+  "basionym": "Merulius molluscus Fr.",
+  "scientificName": "Leucogyrophana mollusca (Fr.) Pouzar",
+  "canonicalName": "Leucogyrophana mollusca",
+  "authorship": "(Fr.) Pouzar",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1958). ČEská Mykol. 12(1): 33.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:00:55.532+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 9228008,
+   "vernacularName": "Blød hussvamp",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905352
+  },
+  {
+   "taxonKey": 9228008,
+   "vernacularName": "Blød hussvamp",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299873020
+  },
+  {
+   "taxonKey": 9228008,
+   "vernacularName": "gullnettsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299873020
+  },
+  {
+   "taxonKey": 9228008,
+   "vernacularName": "ryppykesikkä",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299873020
+  },
+  {
+   "taxonKey": 9228008,
+   "vernacularName": "ryppykesikkä",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012865
+  },
+  {
+   "taxonKey": 9228008,
+   "vernacularName": "stor spindelgröppa",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299873020
+  },
+  {
+   "taxonKey": 9228008,
+   "vernacularName": "gullnettsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069338,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9228008,
+   "vernacularName": "gullnettsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069338,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9228008,
+   "vernacularName": "stor spindelgröppa",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019009,
+   "preferred": true
+  }
+ ]
+}

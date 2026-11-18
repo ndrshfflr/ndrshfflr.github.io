@@ -1,0 +1,163 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Klofac Krisai-Greilhuber 2006 Die Gattung Chalciporus Österreichische Zeitschrift für Pilzkunde",
+ "url": "https://api.crossref.org/works?query.bibliographic=Klofac+Krisai-Greilhuber+2006+Die+Gattung+Chalciporus+%C3%96sterreichische+Zeitschrift+f%C3%BCr+Pilzkunde&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Springer Science and Business Media LLC",
+   "issue": "5",
+   "DOI": "10.1007/bf01791224",
+   "type": "journal-article",
+   "page": "205-219",
+   "title": [
+    "Die Culturversuche Heinricher's mitAlectorolophus und deren Bedeutung für die Systematik der Gattung"
+   ],
+   "volume": "53",
+   "author": [
+    {
+     "given": "Jakob",
+     "family": "Sterneck",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Österreichische Botanische Zeitschrift"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1903,
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Informa UK Limited",
+   "issue": "5",
+   "DOI": "10.2307/3755887",
+   "type": "journal-article",
+   "page": "823",
+   "title": [
+    "Die Gattung Phlegmacium (Schleimkopfe)"
+   ],
+   "volume": "52",
+   "author": [
+    {
+     "given": "R.",
+     "family": "Singer",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Meinhard",
+     "family": "Moser",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Deutsche Gesellschaft",
+     "family": "fur Pilzkunde",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Deutsche Botanische",
+     "family": "Gesellschaft",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Verband Schweizerischer Vereine",
+     "family": "fur Pilzkunde",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycologia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1960,
+      9
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Springer Science and Business Media LLC",
+   "issue": "2",
+   "DOI": "10.1007/bf01790409",
+   "type": "journal-article",
+   "page": "59-63",
+   "title": [
+    "Zur Pilzkunde Vorarlbergs"
+   ],
+   "volume": "48",
+   "author": [
+    {
+     "given": "J.",
+     "family": "Rick",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Österreichische Botanische Zeitschrift"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1898,
+      2
+     ]
+    ]
+   }
+  }
+ ]
+}

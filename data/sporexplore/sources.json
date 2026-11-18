@@ -1,0 +1,154 @@
+{
+ "SCAMBLER2018": {
+  "type": "article",
+  "authors": [
+   {
+    "family": "Scambler",
+    "given": "Ross"
+   },
+   {
+    "family": "Niskanen",
+    "given": "Tuula"
+   },
+   {
+    "family": "Assyov",
+    "given": "Boris"
+   },
+   {
+    "family": "Ainsworth",
+    "given": "A. Martyn"
+   },
+   {
+    "family": "Bellanger",
+    "given": "Jean-Michel"
+   },
+   {
+    "family": "Loizides",
+    "given": "Michael"
+   },
+   {
+    "family": "Moreau",
+    "given": "Pierre-Arthur"
+   },
+   {
+    "family": "Kirk",
+    "given": "Paul M."
+   },
+   {
+    "family": "Liimatainen",
+    "given": "Kare"
+   }
+  ],
+  "year": 2018,
+  "title": "Diversity of <i>Chroogomphus</i> (Gomphidiaceae, Boletales) in Europe, and typification of <i>C. rutilus</i>",
+  "container": "IMA Fungus",
+  "volume": 9,
+  "issue": 2,
+  "pages": "271–290",
+  "doi": "10.5598/imafungus.2018.09.02.04",
+  "method": "Melzer's reagent; 20 mature spores per collection from spore deposits; range covers ≥ 90 % of measurements, extremes in brackets."
+ },
+ "DENBAKKER2005": {
+  "type": "article",
+  "authors": [
+   {
+    "family": "den Bakker",
+    "given": "Henk C."
+   },
+   {
+    "family": "Noordeloos",
+    "given": "Machiel E."
+   }
+  ],
+  "year": 2005,
+  "title": "A revision of European species of <i>Leccinum</i> Gray and notes on extralimital species",
+  "container": "Persoonia",
+  "volume": 18,
+  "issue": 4,
+  "pages": "511–587",
+  "url": "https://repository.naturalis.nl/pub/532241/",
+  "method": "Spores from the pileal hymenium mounted in demineralised water; c. 30 mature spores per collection."
+ },
+ "BIKETOVA2025": {
+  "type": "article",
+  "authors": [
+   {
+    "family": "Biketova",
+    "given": "Alona Yu."
+   }
+  ],
+  "year": 2025,
+  "title": "Morphological and molecular re-assessment of European and Levantine species of the genus <i>Hortiboletus</i> (Boletaceae)",
+  "container": "IMA Fungus",
+  "volume": 16,
+  "article": "e144731",
+  "doi": "10.3897/imafungus.16.144731",
+  "fromCrossref": true,
+  "method": "Dried material in 5 % KOH at ×1000, at least 31 spores per collection; values are the range and mean ± SD of collection means."
+ },
+ "KLOFAC2018": {
+  "type": "article",
+  "authors": [
+   {
+    "family": "Klofac",
+    "given": "Wolfgang"
+   },
+   {
+    "family": "Krisai-Greilhuber",
+    "given": "Irmgard"
+   }
+  ],
+  "year": 2018,
+  "title": "Revised key for the determination of fresh collections of European species of Boletales with tubulate hymenophore",
+  "container": "Österreichische Zeitschrift für Pilzkunde",
+  "volume": 27,
+  "pages": "81–303",
+  "url": "https://www.zobodat.at/pdf/OestZPilz_27_0081-0303.pdf"
+ },
+ "KORHONEN2009": {
+  "type": "article",
+  "authors": [
+   {
+    "family": "Korhonen",
+    "given": "Mauri"
+   },
+   {
+    "family": "Liimatainen",
+    "given": "Kare"
+   },
+   {
+    "family": "Niskanen",
+    "given": "Tuula"
+   }
+  ],
+  "year": 2009,
+  "title": "A new boletoid fungus, <i>Boletus pinetorum</i>, in the <i>Boletus</i> section <i>Boletus</i> from Fennoscandia (Basidiomycota, Boletales)",
+  "container": "Karstenia",
+  "volume": 49,
+  "pages": "41–60",
+  "doi": "10.29203/ka.2009.433",
+  "method": "Finnish and Norwegian collections; 50 spores per collection."
+ },
+ "HOLEC2013": {
+  "type": "article",
+  "authors": [
+   {
+    "family": "Holec",
+    "given": "Jan"
+   },
+   {
+    "family": "Kolařík",
+    "given": "Miroslav"
+   }
+  ],
+  "year": 2013,
+  "title": "Notes on the identity of <i>Hygrophoropsis rufa</i> (Basidiomycota, Boletales)",
+  "container": "Czech Mycology",
+  "volume": 65,
+  "issue": 1,
+  "pages": "15–24",
+  "doi": "10.33585/cmy.65102",
+  "fromCrossref": true,
+  "method": "Typical range = 10th–90th percentile; extremes in brackets."
+ }
+}

@@ -1,0 +1,245 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Vizzini Simonini Ercole Voyron 2014 Boletus mendax a new species of Boletus sect. Luridi from Italy and insights on the B. luridus complex Mycological Progress",
+ "url": "https://api.crossref.org/works?query.bibliographic=Vizzini+Simonini+Ercole+Voyron+2014+Boletus+mendax+a+new+species+of+Boletus+sect.+Luridi+from+Italy+and+insights+on+the+B.+luridus+complex+Mycological+Progress&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Springer Science and Business Media LLC",
+   "issue": "1",
+   "DOI": "10.1007/s11557-013-0896-4",
+   "type": "journal-article",
+   "page": "95-109",
+   "title": [
+    "Boletus mendax, a new species of Boletus sect. Luridi from Italy and insights on the B. luridus complex"
+   ],
+   "volume": "13",
+   "author": [
+    {
+     "given": "Alfredo",
+     "family": "Vizzini",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Giampaolo",
+     "family": "Simonini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Enrico",
+     "family": "Ercole",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Samuele",
+     "family": "Voyron",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycological Progress"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2013,
+      4,
+      14
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Informa UK Limited",
+   "issue": "6",
+   "DOI": "10.3852/15-070",
+   "type": "journal-article",
+   "page": "1254-1269",
+   "title": [
+    "<i>Cupreoboletus</i>\n                    (Boletaceae, Boletineae), a new monotypic genus segregated from\n                    <i>Boletus</i>\n                    sect.\n                    <i>Luridi</i>\n                    to reassign the Mediterranean species\n                    <i>B. poikilochromus</i>"
+   ],
+   "volume": "107",
+   "author": [
+    {
+     "given": "Matteo",
+     "family": "Gelardi",
+     "sequence": "first",
+     "affiliation": [
+      {
+       "name": "Via Angelo Custode 4a, I-00061 Anguillara Sabazia (RM), Italy"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Giampaolo",
+     "family": "Simonini",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Via Bell’aria 8, I-42121 Reggio nell’Emilia, Italy"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Enrico",
+     "family": "Ercole",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Dipartimento di Scienze della Vita e Biologia dei Sistemi, Università di Torino, Viale P.A. Mattioli 25, I-10125 Torino, Italy"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Paolo",
+     "family": "Davoli",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Via Pellegrini 2/18, I-41058 Vignola (MO), Italy"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Alfredo",
+     "family": "Vizzini",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Dipartimento di Scienze della Vita e Biologia dei Sistemi, Università di Torino, Viale P.A. Mattioli 25, I-10125 Torino, Italy"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycologia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2015,
+      11
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Springer Science and Business Media LLC",
+   "issue": "3",
+   "DOI": "10.1007/s11557-013-0950-2",
+   "type": "journal-article",
+   "page": "683-690",
+   "title": [
+    "Lepiota sanguineofracta (Basidiomycota, Agaricales), a new species with a hymeniform pileus covering from Italy"
+   ],
+   "volume": "13",
+   "author": [
+    {
+     "given": "Alfredo",
+     "family": "Vizzini",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Enrico",
+     "family": "Ercole",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Samuele",
+     "family": "Voyron",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycological Progress"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2013,
+      12,
+      18
+     ]
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,169 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 5240176,
+  "scientificName": "Coniophora fusispora (Cooke & Ellis) Cooke",
+  "canonicalName": "Coniophora fusispora",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 99,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; nextMatch=0",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 9780294,
+    "acceptedUsageKey": 5240176,
+    "scientificName": "Coniophora fusispora (Cooke & Ellis) Sacc.",
+    "canonicalName": "Coniophora fusispora",
+    "rank": "SPECIES",
+    "status": "SYNONYM",
+    "confidence": 99,
+    "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=0; score=120",
+    "matchType": "EXACT",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Coniophoraceae",
+    "genus": "Coniophora",
+    "species": "Coniophora fusispora",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8449,
+    "genusKey": 2520081,
+    "speciesKey": 5240176,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Coniophoraceae",
+  "genus": "Coniophora",
+  "species": "Coniophora fusispora",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8449,
+  "genusKey": 2520081,
+  "speciesKey": 5240176,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Coniophora+fusispora&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 31,
+  "NO": 10,
+  "SE": 56,
+  "FI": 36,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 5240176,
+  "nubKey": 5240176,
+  "nameKey": 2777110,
+  "taxonID": "gbif:5240176",
+  "sourceTaxonKey": 172021236,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Coniophoraceae",
+  "genus": "Coniophora",
+  "species": "Coniophora fusispora",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8449,
+  "genusKey": 2520081,
+  "speciesKey": 5240176,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2520081,
+  "parent": "Coniophora",
+  "basionymKey": 7981138,
+  "basionym": "Corticium fusisporum Cooke & Ellis",
+  "scientificName": "Coniophora fusispora (Cooke & Ellis) Cooke",
+  "canonicalName": "Coniophora fusispora",
+  "vernacularName": "Spindle Duster",
+  "authorship": "(Cooke & Ellis) Cooke",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1888). In Saccardo, Syll. Fung. (Abellini) 6: 650.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:16.847+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 5240176,
+   "vernacularName": "Spindle Duster",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874152
+  },
+  {
+   "taxonKey": 5240176,
+   "vernacularName": "Tensporet tømmersvamp",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905480
+  },
+  {
+   "taxonKey": 5240176,
+   "vernacularName": "Tensporet tømmersvamp",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874152
+  },
+  {
+   "taxonKey": 5240176,
+   "vernacularName": "kjølsporetømmersopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874152
+  },
+  {
+   "taxonKey": 5240176,
+   "vernacularName": "pikkukesikkä",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874152
+  },
+  {
+   "taxonKey": 5240176,
+   "vernacularName": "sprött pulverskinn",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299874152
+  },
+  {
+   "taxonKey": 5240176,
+   "vernacularName": "Spindle Duster",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180099856,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5240176,
+   "vernacularName": "kjølsporetømmersopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069391,
+   "preferred": true
+  }
+ ]
+}

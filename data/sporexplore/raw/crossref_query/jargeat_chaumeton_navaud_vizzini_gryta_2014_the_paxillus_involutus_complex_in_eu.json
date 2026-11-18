@@ -1,0 +1,263 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Jargeat Chaumeton Navaud Vizzini Gryta 2014 The Paxillus involutus complex in Europe genetic diversity and morphological description of the new species Paxillus cuprinus Fungal Biology",
+ "url": "https://api.crossref.org/works?query.bibliographic=Jargeat+Chaumeton+Navaud+Vizzini+Gryta+2014+The+Paxillus+involutus+complex+in+Europe+genetic+diversity+and+morphological+description+of+the+new+species+Paxillus+cuprinus+Fungal+Biology&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Elsevier BV",
+   "issue": "1",
+   "DOI": "10.1016/j.funbio.2013.10.008",
+   "type": "journal-article",
+   "page": "12-31",
+   "title": [
+    "The Paxillus involutus (Boletales, Paxillaceae) complex in Europe: Genetic diversity and morphological description of the new species Paxillus cuprinus, typification of P. involutus s.s., and synthesis of species boundaries"
+   ],
+   "volume": "118",
+   "author": [
+    {
+     "given": "Patricia",
+     "family": "Jargeat",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Jean-Paul",
+     "family": "Chaumeton",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Olivier",
+     "family": "Navaud",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Alfredo",
+     "family": "Vizzini",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Hervé",
+     "family": "Gryta",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Fungal Biology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2014,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Elsevier BV",
+   "issue": "5",
+   "DOI": "10.1016/j.funbio.2016.02.008",
+   "type": "journal-article",
+   "page": "711-728",
+   "title": [
+    "Paxillus rubicundulus (Boletales, Paxillaceae) and two new alder-specific ectomycorrhizal species, Paxillus olivellus and Paxillus adelphus, from Europe and North Africa"
+   ],
+   "volume": "120",
+   "author": [
+    {
+     "given": "Patricia",
+     "family": "Jargeat",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Pierre-Arthur",
+     "family": "Moreau",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Hervé",
+     "family": "Gryta",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Jean-Paul",
+     "family": "Chaumeton",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Monique",
+     "family": "Gardes",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Fungal Biology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2016,
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Elsevier BV",
+   "issue": "8",
+   "DOI": "10.1016/j.funbio.2024.08.002",
+   "type": "journal-article",
+   "page": "2341-2354",
+   "title": [
+    "Bespoke strategies of Paxillus involutus to extract potassium from diverse phyllosilicates"
+   ],
+   "volume": "128",
+   "author": [
+    {
+     "ORCID": "https://orcid.org/0000-0002-1083-8734",
+     "authenticated-orcid": false,
+     "given": "F.",
+     "family": "Pinzari",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "J.",
+     "family": "Cuadros",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "ORCID": "https://orcid.org/0000-0002-4351-0081",
+     "authenticated-orcid": false,
+     "given": "A.",
+     "family": "Saiardi",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "E.",
+     "family": "Humphreys-Williams",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "A.D.",
+     "family": "Jungblut",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Fungal Biology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2024,
+      12
+     ]
+    ]
+   }
+  }
+ ]
+}

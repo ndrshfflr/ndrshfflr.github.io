@@ -1,0 +1,54 @@
+# Sporexplore data harvest — pulls raw records from GBIF, Index Fungorum /
+# Species Fungorum, Danmarks Svampeatlas and Crossref and commits them, unmodified,
+# to data/sporexplore/raw/ on the same branch, in small resumable chunks.
+# Runs only on the sporexplore-revamp branch (never on main, so it never builds
+# or deploys the site).
+name: Sporexplore harvest
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [sporexplore-revamp]
+    paths: ["data/sporexplore/requests/**", "src/sporexplore/harvest.py"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sporexplore-harvest-v2
+  cancel-in-progress: true
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Harvest in resumable chunks, committing after each
+        run: |
+          git config user.name "sporexplore-harvest"
+          git config user.email "actions@users.noreply.github.com"
+          PARTS="$(cat data/sporexplore/requests/parts.txt)"
+          commit() {
+            git add data/sporexplore/raw
+            git diff --cached --quiet && return 0
+            git commit -qm "Sporexplore harvest: $1"
+            for a in 1 2 3; do git pull -q --rebase origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && break; sleep 5; done
+          }
+          case "$PARTS" in *nordic*) HARVEST_PARTS=nordic python3 src/sporexplore/harvest.py; commit "Nordic Boletales list";; esac
+          case "$PARTS" in *names*)
+            for i in $(seq 1 40); do
+              left=$(HARVEST_PARTS=names-left python3 src/sporexplore/harvest.py | tail -1)
+              [ "$left" = "0" ] && break
+              HARVEST_PARTS=names HARVEST_CHUNK=15 python3 src/sporexplore/harvest.py
+              commit "names chunk $i ($left left before)"
+            done;;
+          esac
+          case "$PARTS" in *if,*|*if) HARVEST_PARTS=if python3 src/sporexplore/harvest.py; commit "Index Fungorum / Species Fungorum refresh";; esac
+          case "$PARTS" in *refs*) HARVEST_PARTS=refs python3 src/sporexplore/harvest.py; commit "Crossref reference queries";; esac
+          case "$PARTS" in *files*) HARVEST_PARTS=files python3 src/sporexplore/harvest.py; commit "open-access publications";; esac
+          case "$PARTS" in *dois*) HARVEST_PARTS=dois python3 src/sporexplore/harvest.py; commit "Crossref DOIs";; esac
+          echo "finished" ; date -u

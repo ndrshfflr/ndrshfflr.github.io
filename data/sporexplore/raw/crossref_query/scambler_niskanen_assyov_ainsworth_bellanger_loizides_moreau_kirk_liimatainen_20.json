@@ -1,0 +1,343 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Scambler Niskanen Assyov Ainsworth Bellanger Loizides Moreau Kirk Liimatainen 2018 Diversity of Chroogomphus Gomphidiaceae Boletales in Europe and typification of C. rutilus IMA Fungus",
+ "url": "https://api.crossref.org/works?query.bibliographic=Scambler+Niskanen+Assyov+Ainsworth+Bellanger+Loizides+Moreau+Kirk+Liimatainen+2018+Diversity+of+Chroogomphus+Gomphidiaceae+Boletales+in+Europe+and+typification+of+C.+rutilus+IMA+Fungus&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Pensoft Publishers",
+   "issue": "2",
+   "DOI": "10.5598/imafungus.2018.09.02.04",
+   "type": "journal-article",
+   "page": "271-290",
+   "title": [
+    "Diversity of Chroogomphus (Gomphidiaceae, Boletales) in Europe, and typification of C. rutilus"
+   ],
+   "volume": "9",
+   "author": [
+    {
+     "given": "Ross",
+     "family": "Scambler",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Tuula",
+     "family": "Niskanen",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Boris",
+     "family": "Assyov",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "A. Martyn",
+     "family": "Ainsworth",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Jean-Michel",
+     "family": "Bellanger",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Michael",
+     "family": "Loizides",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Pierre-Arthur",
+     "family": "Moreau",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Paul M.",
+     "family": "Kirk",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Kare",
+     "family": "Liimatainen",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "IMA Fungus"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2018,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Informa UK Limited",
+   "issue": "8",
+   "DOI": "10.1080/23802359.2021.1950066",
+   "type": "journal-article",
+   "page": "2355-2357",
+   "title": [
+    "The first complete mitochondrial genome of edible and medicinal fungus\n                    <i>Chroogomphus rutilus</i>\n                    (Gomphidiaceae, Boletales) and insights into its phylogeny"
+   ],
+   "volume": "6",
+   "author": [
+    {
+     "given": "Jia",
+     "family": "Fu",
+     "sequence": "first",
+     "affiliation": [
+      {
+       "name": "School of Basic Medical Sciences, Chengdu University",
+       "place": [
+        "Chengdu, P.R. China"
+       ]
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Wenying",
+     "family": "Tu",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "School of Food and Biological Engineering, Chengdu University",
+       "place": [
+        "Chengdu, P.R. China"
+       ]
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Zhijie",
+     "family": "Bao",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "School of Food and Biological Engineering, Chengdu University",
+       "place": [
+        "Chengdu, P.R. China"
+       ]
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Lijiao",
+     "family": "Li",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "School of Food and Biological Engineering, Chengdu University",
+       "place": [
+        "Chengdu, P.R. China"
+       ]
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Qiang",
+     "family": "Li",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "School of Food and Biological Engineering, Chengdu University",
+       "place": [
+        "Chengdu, P.R. China"
+       ]
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mitochondrial DNA Part B"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2021,
+      7,
+      19
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "The Mycological Society of Japan",
+   "issue": "6",
+   "DOI": "10.1016/j.myc.2016.06.004",
+   "type": "journal-article",
+   "page": "384-392",
+   "title": [
+    "Barcoding sequences clearly separate Chroogomphus mediterraneus (Gomphidiaceae, Boletales) from C. rutilus, and allied species"
+   ],
+   "volume": "57",
+   "author": [
+    {
+     "given": "María P.",
+     "family": "Martín",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "José Ll.",
+     "family": "Siquier",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Joan Carles",
+     "family": "Salom",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "M. Teresa",
+     "family": "Telleria",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Günter",
+     "family": "Finschow",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycoscience"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2016,
+      11
+     ]
+    ]
+   }
+  }
+ ]
+}

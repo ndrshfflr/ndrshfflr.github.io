@@ -1,0 +1,213 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 7638487,
+  "scientificName": "Leccinellum crocipodium (Letell.) Della Magg. & Trassin.",
+  "canonicalName": "Leccinellum crocipodium",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 99,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; nextMatch=0",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 2524611,
+    "acceptedUsageKey": 7638487,
+    "scientificName": "Leccinellum crocipodium (Letell.) Bresinsky & Manfr.Binder",
+    "canonicalName": "Leccinellum crocipodium",
+    "rank": "SPECIES",
+    "status": "SYNONYM",
+    "confidence": 99,
+    "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=0; score=120",
+    "matchType": "EXACT",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Boletaceae",
+    "genus": "Leccinellum",
+    "species": "Leccinellum crocipodium",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8789,
+    "genusKey": 2524413,
+    "speciesKey": 7638487,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinellum",
+  "species": "Leccinellum crocipodium",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2524413,
+  "speciesKey": 7638487,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Leccinellum+crocipodium&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 218,
+  "NO": 1,
+  "SE": 182,
+  "FI": 4,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 7638487,
+  "nubKey": 7638487,
+  "nameKey": 32411789,
+  "taxonID": "gbif:7638487",
+  "sourceTaxonKey": 176035502,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinellum",
+  "species": "Leccinellum crocipodium",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2524413,
+  "speciesKey": 7638487,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2524413,
+  "parent": "Leccinellum",
+  "basionymKey": 5954996,
+  "basionym": "Boletus crocipodius Letell.",
+  "scientificName": "Leccinellum crocipodium (Letell.) Della Magg. & Trassin.",
+  "canonicalName": "Leccinellum crocipodium",
+  "vernacularName": "Saffron Bolete",
+  "authorship": "(Letell.) Della Magg. & Trassin.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2014). Index Fungorum 171: 1.",
+  "numDescendants": 3,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:11.677+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 7638487,
+   "vernacularName": "Gul skælrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905240
+  },
+  {
+   "taxonKey": 7638487,
+   "vernacularName": "Gul skælrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880894
+  },
+  {
+   "taxonKey": 7638487,
+   "vernacularName": "Saffron Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222043891
+  },
+  {
+   "taxonKey": 7638487,
+   "vernacularName": "Saffron Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880894
+  },
+  {
+   "taxonKey": 7638487,
+   "vernacularName": "gul strävsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880894
+  },
+  {
+   "taxonKey": 7638487,
+   "vernacularName": "gulskrubb",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880894
+  },
+  {
+   "taxonKey": 7638487,
+   "vernacularName": "keltalehmäntatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012983
+  },
+  {
+   "taxonKey": 7638487,
+   "vernacularName": "keltalehmäntatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880894
+  },
+  {
+   "taxonKey": 7638487,
+   "vernacularName": "gul strävsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329659,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7638487,
+   "vernacularName": "gul strävsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019230,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7638487,
+   "vernacularName": "gul strävsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691037,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7638487,
+   "vernacularName": "gulskrubb",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168646724,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7638487,
+   "vernacularName": "gulskrubb",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168646724,
+   "preferred": true
+  }
+ ]
+}

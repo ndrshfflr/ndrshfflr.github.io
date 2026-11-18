@@ -1,0 +1,1175 @@
+{
+ "retrieved": "2026-11-18",
+ "doi": "10.1016/j.funbio.2013.04.008",
+ "url": "https://api.crossref.org/works/10.1016/j.funbio.2013.04.008",
+ "message": {
+  "indexed": {
+   "date-parts": [
+    [
+     2026,
+     10,
+     27
+    ]
+   ],
+   "date-time": "2026-10-27T03:10:24Z",
+   "timestamp": 1793070624044,
+   "version": "4.5.0"
+  },
+  "reference-count": 94,
+  "publisher": "Elsevier BV",
+  "issue": "7-8",
+  "license": [
+   {
+    "start": {
+     "date-parts": [
+      [
+       2013,
+       7,
+       1
+      ]
+     ],
+     "date-time": "2013-07-01T00:00:00Z",
+     "timestamp": 1372636800000
+    },
+    "content-version": "tdm",
+    "delay-in-days": 0,
+    "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+   }
+  ],
+  "funder": [
+   {
+    "name": "National Science Foundation",
+    "award": [
+     "DEB-1020421"
+    ],
+    "award-info": [
+     {
+      "award-number": [
+       "DEB-1020421"
+      ]
+     }
+    ]
+   }
+  ],
+  "content-domain": {
+   "domain": [
+    "elsevier.com",
+    "sciencedirect.com"
+   ],
+   "crossmark-restriction": true
+  },
+  "short-container-title": [
+   "Fungal Biology"
+  ],
+  "published-print": {
+   "date-parts": [
+    [
+     2013,
+     7
+    ]
+   ]
+  },
+  "DOI": "10.1016/j.funbio.2013.04.008",
+  "type": "journal-article",
+  "created": {
+   "date-parts": [
+    [
+     2013,
+     5,
+     9
+    ]
+   ],
+   "date-time": "2013-05-09T16:01:04Z",
+   "timestamp": 1368115264000
+  },
+  "page": "479-511",
+  "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 147,
+  "title": [
+   "Phylogenetic overview of the Boletineae"
+  ],
+  "prefix": "10.1016",
+  "volume": "117",
+  "author": [
+   {
+    "given": "Mitchell E.",
+    "family": "Nuhn",
+    "sequence": "first",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Manfred",
+    "family": "Binder",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Andy F.S.",
+    "family": "Taylor",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Roy E.",
+    "family": "Halling",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "David S.",
+    "family": "Hibbett",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   }
+  ],
+  "member": "78",
+  "reference": [
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib1",
+    "series-title": "Mushrooms Demystified: a comprehensive guide to the fleshy fungi",
+    "author": "Arora",
+    "year": "1986"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib2",
+    "first-page": "511",
+    "article-title": "A revision of European species of Leccinum Gray and notes on extralimital species",
+    "volume": "18",
+    "author": "Bakker",
+    "year": "2005",
+    "journal-title": "Persoonia-leiden"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib3",
+    "first-page": "311",
+    "article-title": "Notizen über Vorkommen und systematische Bewertung von Pigmenten in höheren Pilzen (2)",
+    "volume": "43",
+    "author": "Besl",
+    "year": "1977",
+    "journal-title": "Zeitschrift fur Pilzkunde"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib4",
+    "first-page": "247",
+    "article-title": "Notizen über Vorkommen und systematische Bewertung von Pigmenten in höheren Pilzen (3). Untersuchungen an Boletales aus Amerika",
+    "volume": "45",
+    "author": "Besl",
+    "year": "1979",
+    "journal-title": "Zeitschrift fur Pilzkunde"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib5",
+    "doi-asserted-by": "crossref",
+    "first-page": "223",
+    "DOI": "10.1007/BF00987949",
+    "article-title": "Chemosystematics of Suillaceae and Gomphidiaceae (suborder Suillineae)",
+    "volume": "206",
+    "author": "Besl",
+    "year": "1997",
+    "journal-title": "Plant Systematics and Evolution"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib6",
+    "first-page": "277",
+    "article-title": "Chemosystematics of the Coniophoraceae",
+    "volume": "52",
+    "author": "Besl",
+    "year": "1986",
+    "journal-title": "Zeitschrift für Mykologie"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib7",
+    "doi-asserted-by": "crossref",
+    "first-page": "784",
+    "DOI": "10.1515/znc-1974-11-1224",
+    "article-title": "Pigments of fungi, XXII Grevillin D, the main pigment of Suillus granulatus, S. luteus and S. placidus (Boletales)",
+    "volume": "29",
+    "author": "Besl",
+    "year": "1974",
+    "journal-title": "Zeitschrift für Naturforschung"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib8",
+    "series-title": "Noth American Boletes: a color guide to the fleshy pored mushrooms",
+    "author": "Bessette",
+    "year": "2000"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib9",
+    "first-page": "71",
+    "article-title": "28S rDNA sequence data and chemotaxonomical analyses on the generic concept of Leccinum (Boletales)",
+    "volume": "2000",
+    "author": "Binder",
+    "year": "2000",
+    "journal-title": "Micologia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib10",
+    "doi-asserted-by": "crossref",
+    "first-page": "85",
+    "DOI": "10.2307/3761848",
+    "article-title": "Derivation of a polymorphic lineage of Gasteromycetes from boletoid ancestors",
+    "volume": "94",
+    "author": "Binder",
+    "year": "2002",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib11",
+    "doi-asserted-by": "crossref",
+    "first-page": "30",
+    "DOI": "10.1002/1522-239X(200205)113:1/2<30::AID-FEDR30>3.0.CO;2-D",
+    "article-title": "Retiboletus, a new genus for a species-complex in the Boletaceae producing retipolides",
+    "volume": "113",
+    "author": "Binder",
+    "year": "2002",
+    "journal-title": "Feddes Repertorium"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib12",
+    "doi-asserted-by": "crossref",
+    "first-page": "76",
+    "DOI": "10.1006/mpev.2001.1043",
+    "article-title": "Higher-level phylogenetic relationships of Homobasidiomycetes (mushroom-forming fungi) inferred from four rDNA regions",
+    "volume": "22",
+    "author": "Binder",
+    "year": "2002",
+    "journal-title": "Molecular Phylogenetics and Evolution"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib13",
+    "doi-asserted-by": "crossref",
+    "first-page": "971",
+    "DOI": "10.3852/mycologia.98.6.971",
+    "article-title": "Molecular systematics and biological diversification of Boletales",
+    "volume": "98",
+    "author": "Binder",
+    "year": "2006",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib14",
+    "doi-asserted-by": "crossref",
+    "first-page": "865",
+    "DOI": "10.3852/09-288",
+    "article-title": "Amylocorticiales ord. nov. and Jaapiales ord. nov.: early diverging clades of Agaricomycetidae dominated by corticioid forms",
+    "volume": "102",
+    "author": "Binder",
+    "year": "2010",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib15",
+    "article-title": "New taxa of boletes and two boletes with identity problems",
+    "volume": "36",
+    "author": "Both",
+    "year": "1998",
+    "journal-title": "Bulletin of the Buffalo Society of Natural Sciences"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib16",
+    "first-page": "247",
+    "article-title": "Notizen über Vorkommen und systematische Bewertung von Pigmenten in Höheren Pilzen (3). Untersuchungen an Boletales aus Amerika",
+    "volume": "45",
+    "author": "Bresinsky",
+    "year": "1978",
+    "journal-title": "Zeitschrift f€ur Mykologie"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib17",
+    "series-title": "Beiträge zu einer Mykoflora Deutschlands: Schlüssel zur Gattungsbestimmung der Blätter-, Leisten- und Röhrenpilze: mit Literaturhinweisen zur Artbestimmung",
+    "author": "Bresinsky",
+    "year": "2003"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib18",
+    "series-title": "The Boleti of North Carolina",
+    "author": "Coker",
+    "year": "1943"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib19",
+    "doi-asserted-by": "crossref",
+    "first-page": "1276",
+    "DOI": "10.1016/j.ympev.2010.10.004",
+    "article-title": "Molecular phylogenetics of porcini mushrooms (Boletus section Boletus)",
+    "volume": "57",
+    "author": "Dentinger",
+    "year": "2010",
+    "journal-title": "Molecular Phylogenetics and Evolution"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib20",
+    "first-page": "1",
+    "article-title": "Spongiforma, a new genus of gasteroid boletes from Thailand",
+    "volume": "37",
+    "author": "Desjardin",
+    "year": "2009",
+    "journal-title": "Fungal Diversity"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib21",
+    "doi-asserted-by": "crossref",
+    "first-page": "1119",
+    "DOI": "10.3852/10-433",
+    "article-title": "Spongiforma squarepantsii, a new species of gasteroid bolete from Borneo",
+    "volume": "103",
+    "author": "Desjardin",
+    "year": "2011",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib22",
+    "doi-asserted-by": "crossref",
+    "first-page": "956",
+    "DOI": "10.3852/08-062",
+    "article-title": "Durianella, a new gasteroid genus of boletes from Malaysia",
+    "volume": "100",
+    "author": "Desjardin",
+    "year": "2008",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib23",
+    "doi-asserted-by": "crossref",
+    "first-page": "1342",
+    "DOI": "10.1017/S0953756203008542",
+    "article-title": "Host-parasite relationships among bolete infecting Hypomyces species",
+    "volume": "107",
+    "author": "Douhan",
+    "year": "2003",
+    "journal-title": "Mycological Research"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib24",
+    "first-page": "17",
+    "article-title": "Molecular phylogeny and biodiversity of the boletes",
+    "volume": "1",
+    "author": "Drehmel",
+    "year": "2008",
+    "journal-title": "FUNGI"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib25",
+    "doi-asserted-by": "crossref",
+    "first-page": "135",
+    "DOI": "10.1007/s00572-011-0388-9",
+    "article-title": "Characterisation of ectomycorrhizal formation by the exotic fungus Amanita muscaria with Nothofagus cunninghamii in Victoria, Australia",
+    "volume": "22",
+    "author": "Dunk",
+    "year": "2012",
+    "journal-title": "Mycorrhiza"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib26",
+    "doi-asserted-by": "crossref",
+    "first-page": "602",
+    "DOI": "10.1016/j.ympev.2005.06.016",
+    "article-title": "Lower level relationships in the mushroom genus Cortinarius (Basidiomycota, Agaricales): a comparison of RPB1, RPB2, and ITS phylogenies",
+    "volume": "37",
+    "author": "Frøslev",
+    "year": "2005",
+    "journal-title": "Molecular Phylogenetics and Evolution"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib27",
+    "series-title": "Bibliotheca Mycologica 120",
+    "first-page": "528",
+    "article-title": "Agaricales s.l. und ihre Mykorrhizen in den Nothofagus-Waldern Mittelchiles",
+    "author": "Garrido",
+    "year": "1988"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib28",
+    "series-title": "Les bolets",
+    "author": "Gilbert",
+    "year": "1931"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib29",
+    "doi-asserted-by": "crossref",
+    "first-page": "252",
+    "DOI": "10.1139/b85-029",
+    "article-title": "Synthesized ectomycorrhizae of aspen: fungal genus level of structural characterization",
+    "volume": "63",
+    "author": "Godbout",
+    "year": "1985",
+    "journal-title": "Canadian Journal of Botany"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib30",
+    "first-page": "239",
+    "article-title": "Generic affinity of Boletus separans. Contributions to the natural sciences and anthropology: a festschrift in honor of George F. Goodyear",
+    "volume": "36",
+    "author": "Halling",
+    "year": "1998",
+    "journal-title": "Bulletin of the Buffalo Society of Natural Sciences"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib31",
+    "doi-asserted-by": "crossref",
+    "first-page": "951",
+    "DOI": "10.3852/11-376",
+    "article-title": "Sutorius: a new genus for Boletus eximius",
+    "volume": "104",
+    "author": "Halling",
+    "year": "2012",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib32",
+    "doi-asserted-by": "crossref",
+    "first-page": "418",
+    "DOI": "10.1071/SB12028",
+    "article-title": "Affinities of the Boletus chromapes group to Royoungia and the description of two new genera, Harrya and Australopilus",
+    "volume": "25",
+    "author": "Halling",
+    "year": "2012",
+    "journal-title": "Australian Systematic Botany"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib33",
+    "doi-asserted-by": "crossref",
+    "first-page": "437",
+    "DOI": "10.1016/j.mycres.2007.11.021",
+    "article-title": "Pacific boletes: implications for biogeographic relationships",
+    "volume": "112",
+    "author": "Halling",
+    "year": "2008",
+    "journal-title": "Mycological Research"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib34",
+    "series-title": "Untersuchungen zur Konstitution, Synthese und Biosynthese von Pilzfarbstoffen",
+    "author": "Herman",
+    "year": "1980"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib35",
+    "doi-asserted-by": "crossref",
+    "first-page": "353",
+    "DOI": "10.1007/s004420050736",
+    "article-title": "Insights into nitrogen and carbon dynamics of ectomycorrhizal and saprotrophic fungi from isotopic evidence",
+    "volume": "118",
+    "author": "Hobbie",
+    "year": "1999",
+    "journal-title": "Oecologia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib36",
+    "doi-asserted-by": "crossref",
+    "first-page": "601",
+    "DOI": "10.1046/j.1469-8137.2001.00134.x",
+    "article-title": "Mycorrhizal vs saprotrophic status of fungi: the isotopic evidence",
+    "volume": "150",
+    "author": "Hobbie",
+    "year": "2001",
+    "journal-title": "New Phytologist"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib37",
+    "doi-asserted-by": "crossref",
+    "first-page": "8534",
+    "DOI": "10.1073/pnas.96.15.8534",
+    "article-title": "Natural 13C abundance reveals trophic status of fungi and host-origin of carbon in mycorrhizal fungi in mixed forests",
+    "volume": "96",
+    "author": "Högberg",
+    "year": "1999",
+    "journal-title": "Proceedings of the National Academy of Sciences"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib38",
+    "doi-asserted-by": "crossref",
+    "first-page": "463",
+    "DOI": "10.1080/0028825X.1971.10430194",
+    "article-title": "Contributions to the knowledge of the Agaricales sl (Fungi) of New Zealand",
+    "volume": "9",
+    "author": "Horak",
+    "year": "1971",
+    "journal-title": "New Zealand Journal of Botany"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib39",
+    "first-page": "1",
+    "article-title": "Borofutus, a new genus of Boletaceae from tropical Asia: phylogeny, morphology and taxonomy",
+    "volume": "58",
+    "author": "Hosen",
+    "year": "2012",
+    "journal-title": "Fungal Diversity"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib40",
+    "series-title": "Zur molekularen Sytematik der Boletales: Coniophorineae, Paxillineae und Suillineae",
+    "author": "Jarosch",
+    "year": "2001"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib41",
+    "doi-asserted-by": "crossref",
+    "first-page": "1567",
+    "DOI": "10.1002/tax.606003",
+    "article-title": "Phylogenetic classification of Trametes (Basidiomycota, Polyporales) based on a five-marker dataset",
+    "volume": "60",
+    "author": "Justo",
+    "year": "2011",
+    "journal-title": "Taxon"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib42",
+    "doi-asserted-by": "crossref",
+    "first-page": "451",
+    "DOI": "10.1007/s005720050146",
+    "article-title": "In vitro ectomycorrhizal formation in Picea glehnii seedlings",
+    "volume": "6",
+    "author": "Kasuya",
+    "year": "1996",
+    "journal-title": "Mycorrhiza"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib43",
+    "doi-asserted-by": "crossref",
+    "DOI": "10.1093/nar/gkf436",
+    "article-title": "MAFFT: a novel method for rapid multiple sequence alignment based on fast Fourier transform",
+    "volume": "30",
+    "author": "Katoh",
+    "year": "2002",
+    "journal-title": "Nucleic Acids Research"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib44",
+    "series-title": "Dictionary of the Fungi",
+    "author": "Kirk",
+    "year": "2008"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib45",
+    "series-title": "Xerocomus s.l.",
+    "author": "Ladurner",
+    "year": "2003"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib46",
+    "doi-asserted-by": "crossref",
+    "first-page": "1095",
+    "DOI": "10.1093/molbev/msh112",
+    "article-title": "A bayesian mixture model for across-site heterogeneities in the amino-acid replacement process",
+    "volume": "21",
+    "author": "Lartillot",
+    "year": "2004",
+    "journal-title": "Molecular Biology and Evolution"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib47",
+    "doi-asserted-by": "crossref",
+    "DOI": "10.1186/1471-2148-7-S1-S4",
+    "article-title": "Suppression of long-branch attraction artefacts in the animal phylogeny using a site-heterogeneous model",
+    "volume": "7",
+    "author": "Lartillot",
+    "year": "2007",
+    "journal-title": "BMC Evolutionary Biology"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib48",
+    "doi-asserted-by": "crossref",
+    "first-page": "195",
+    "DOI": "10.1080/10635150500433722",
+    "article-title": "Computing Bayes factors using thermodynamic integration",
+    "volume": "55",
+    "author": "Lartillot",
+    "year": "2006",
+    "journal-title": "Systematic Biology"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib49",
+    "doi-asserted-by": "crossref",
+    "first-page": "49",
+    "DOI": "10.1007/s13225-011-0109-x",
+    "article-title": "The sequestrate genus Rosbeeva T.Lebel & Orihara gen. nov. (Boletaceae) from Australasia and Japan: new species and new combinations",
+    "volume": "52",
+    "author": "Lebel",
+    "year": "2011",
+    "journal-title": "Fungal Diversity"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib50",
+    "doi-asserted-by": "crossref",
+    "first-page": "125",
+    "DOI": "10.1007/s13225-011-0096-y",
+    "article-title": "Zangia, a new genus of Boletaceae supported by molecular and morphological evidence",
+    "volume": "49",
+    "author": "Li",
+    "year": "2011",
+    "journal-title": "Fungal Diversity"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib51",
+    "series-title": "MacClade: analysis of phylogeny and character evolution",
+    "author": "Maddison",
+    "year": "1992"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib52",
+    "doi-asserted-by": "crossref",
+    "first-page": "688",
+    "DOI": "10.3732/ajb.89.4.688",
+    "article-title": "Using RPB1 sequences to improve phylogenetic inference among mushrooms (Inocybe, Agaricales)",
+    "volume": "89",
+    "author": "Matheny",
+    "year": "2002",
+    "journal-title": "American Journal of Botany"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib53",
+    "doi-asserted-by": "crossref",
+    "first-page": "558",
+    "DOI": "10.2307/3761516",
+    "article-title": "New and interesting ectomycorrhizal fungi from Puerto Rico, Mona, and Guana Islands",
+    "volume": "92",
+    "author": "Miller",
+    "year": "2000",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib54",
+    "series-title": "Zur kenntnis der mykorrhizabildner von kiefer und fichte",
+    "author": "Modess",
+    "year": "1941"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib55",
+    "series-title": "Boletus s.l. (excl. Xerocomus)",
+    "author": "Muñoz",
+    "year": "2005"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib56",
+    "doi-asserted-by": "crossref",
+    "first-page": "140",
+    "DOI": "10.2307/3753125",
+    "article-title": "The Boletaceae of North America: II",
+    "volume": "1",
+    "author": "Murrill",
+    "year": "1909",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib57",
+    "doi-asserted-by": "crossref",
+    "first-page": "109",
+    "DOI": "10.1007/s13225-012-0154-0",
+    "article-title": "The phylogeny of selected Phylloporus species, inferred from NUC-LSU and ITS sequences, and descriptions of new species from the Old World",
+    "volume": "55",
+    "author": "Neves",
+    "year": "2012",
+    "journal-title": "Fungal Diversity"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib58",
+    "doi-asserted-by": "crossref",
+    "first-page": "475",
+    "DOI": "10.5248/113.475",
+    "article-title": "Tylopilus oradivensis sp. nov.: a newly described member of the Tylopilus balloui complex from Costa Rica",
+    "volume": "113",
+    "author": "Osmundson",
+    "year": "2010",
+    "journal-title": "Mycotaxon"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib59",
+    "doi-asserted-by": "crossref",
+    "first-page": "1313",
+    "DOI": "10.1139/b62-124",
+    "article-title": "Cultural studies of Boletaceae: carpophores of Phlebopus lignicola in culture",
+    "volume": "40",
+    "author": "Pantidou",
+    "year": "1962",
+    "journal-title": "Canadian Journal of Botany"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib60",
+    "first-page": "41",
+    "article-title": "Report of the Botanist",
+    "volume": "24",
+    "author": "Peck",
+    "year": "1870",
+    "journal-title": "Annual Report on the New York State Museum of Natural History"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib61",
+    "doi-asserted-by": "crossref",
+    "first-page": "103",
+    "DOI": "10.1016/S0007-1536(81)80013-7",
+    "article-title": "A natural arrangement of the Boletales, with reference to spore morphology",
+    "volume": "76",
+    "author": "Pegler",
+    "year": "1981",
+    "journal-title": "Transactions of the British Mycological Society"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib62",
+    "doi-asserted-by": "crossref",
+    "first-page": "659",
+    "DOI": "10.1017/S0953756203007901",
+    "article-title": "Xerocomus cisalpinus sp. nov., and the delimitation of species in the X. chrysenteron complex based on morphology and rDNA-LSU sequences",
+    "volume": "107",
+    "author": "Peintner",
+    "year": "2003",
+    "journal-title": "Mycological Research"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib63",
+    "first-page": "180",
+    "article-title": "Hřib dřevožijný–Pulveroboletus lignicola (Kallenb.) comb. nov. na Šumavě",
+    "volume": "19",
+    "author": "Pilát",
+    "year": "1965",
+    "journal-title": "Ceská Mykologie"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib64",
+    "first-page": "217",
+    "article-title": "Buchwaldoboletus genus novum Boletacearum",
+    "volume": "9",
+    "author": "Pilát",
+    "year": "1969",
+    "journal-title": "Friesia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib65",
+    "first-page": "48",
+    "article-title": "Nova genera macromycetum I",
+    "volume": "11",
+    "author": "Pouzar",
+    "year": "1957",
+    "journal-title": "Ceská Mykologie"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib66",
+    "first-page": "345",
+    "article-title": "Delle specie nuove di Funghi ritrovatanei contorni di Firenze",
+    "volume": "13",
+    "author": "Raddi",
+    "year": "1807",
+    "journal-title": "Memorie di Matematica e di Fisica della Società Italiana di Scienze Residente in Modena"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib67",
+    "doi-asserted-by": "crossref",
+    "first-page": "84",
+    "DOI": "10.3852/mycologia.97.1.84",
+    "article-title": "A Beauveria phylogeny inferred from nuclear ITS and EF1-α sequences: evidence for cryptic diversification and links to Cordyceps teleomorphs",
+    "volume": "97",
+    "author": "Rehner",
+    "year": "2005",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib68",
+    "first-page": "211",
+    "article-title": "Pinus resinosa ectomycorrhizae: seven host-fungus combinations synthesized in pure culture",
+    "volume": "7",
+    "author": "Richter",
+    "year": "1989",
+    "journal-title": "Symbiosis"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib69",
+    "first-page": "4",
+    "article-title": "First record of Amanita muscaria in Western Australia",
+    "volume": "29",
+    "author": "Robinson",
+    "year": "2010",
+    "journal-title": "Australasian Mycologist"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib70",
+    "doi-asserted-by": "crossref",
+    "first-page": "358",
+    "DOI": "10.2307/3754752",
+    "article-title": "New genera of fungi",
+    "volume": "36",
+    "author": "Singer",
+    "year": "1944",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib71",
+    "first-page": "97",
+    "article-title": "The Boletineae of Florida with notes on extralimital species I. The Strobilomycetaceae",
+    "volume": "2",
+    "author": "Singer",
+    "year": "1945",
+    "journal-title": "Farlowia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib72",
+    "doi-asserted-by": "crossref",
+    "first-page": "1",
+    "DOI": "10.2307/2421647",
+    "article-title": "The Boletoideae of Florida with Notes on extralimital species III",
+    "volume": "37",
+    "author": "Singer",
+    "year": "1947",
+    "journal-title": "American Midland Naturalist"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib73",
+    "series-title": "The Agaricales in Modern Taxonomy",
+    "author": "Singer",
+    "year": "1986"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib74",
+    "first-page": "321",
+    "article-title": "Notes on Michigan Boletaceae",
+    "volume": "7",
+    "author": "Smith",
+    "year": "1973",
+    "journal-title": "Persoonia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib75",
+    "series-title": "The Boletes of Michigan",
+    "author": "Smith",
+    "year": "1971"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib76",
+    "doi-asserted-by": "crossref",
+    "first-page": "23",
+    "DOI": "10.2307/3754732",
+    "article-title": "Notes on Boletes. VI",
+    "volume": "33",
+    "author": "Snell",
+    "year": "1941",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib77",
+    "doi-asserted-by": "crossref",
+    "DOI": "10.1080/10635150802429642",
+    "article-title": "A rapid bootstrap algorithm for the RAxML web servers",
+    "volume": "57",
+    "author": "Stamatakis",
+    "year": "2008",
+    "journal-title": "Systematic Biology"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib78",
+    "doi-asserted-by": "crossref",
+    "first-page": "46",
+    "DOI": "10.1515/znc-1977-1-206",
+    "article-title": "Pigments of fungi, 2,5-diarylcyclopentane-1,3-diones from Chamonixia caespitosa (Basidiomycetes)",
+    "volume": "32",
+    "author": "Steglich",
+    "year": "1977",
+    "journal-title": "Z. Naturf"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib79",
+    "doi-asserted-by": "crossref",
+    "first-page": "1",
+    "DOI": "10.33585/cmy.45101",
+    "article-title": "Pseudoboletus, a new genus of Boletales",
+    "volume": "45",
+    "author": "Šutara",
+    "year": "1991",
+    "journal-title": "Ceská Mykologie"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib80",
+    "first-page": "29",
+    "article-title": "Xerocomus sl in the light of the present state of knowledge",
+    "volume": "60",
+    "author": "Šutara",
+    "year": "2008",
+    "journal-title": "Ceská Mykologie"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib81",
+    "series-title": "Phylogenetic Analysis Using Parsimony (* and Other Methods). Version 4",
+    "author": "Swofford",
+    "year": "2002"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib82",
+    "first-page": "95",
+    "article-title": "Buchwaldoboletus lignicola (Kallenb.) Pilát and Phaeolus schweinitzii (Fr.) Pat.–das Problem ihres gemeinsamen Auftretens",
+    "volume": "50",
+    "author": "Szczepka",
+    "year": "1984",
+    "journal-title": "Z Mykol"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib83",
+    "doi-asserted-by": "crossref",
+    "first-page": "757",
+    "DOI": "10.1046/j.1469-8137.2003.00838.x",
+    "article-title": "Species level patterns in 13C and 15N abundance of ectomycorrhizal and saprotrophic fungal sporocarps",
+    "volume": "159",
+    "author": "Taylor",
+    "year": "2003",
+    "journal-title": "New Phytologist"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib84",
+    "doi-asserted-by": "crossref",
+    "first-page": "217",
+    "DOI": "10.1007/s00572-009-0274-x",
+    "article-title": "Ectomycorrhizal lifestyle in fungi: global diversity, distribution, and evolution of phylogenetic lineages",
+    "volume": "20",
+    "author": "Tedersoo",
+    "year": "2010",
+    "journal-title": "Mycorrhiza"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib85",
+    "doi-asserted-by": "crossref",
+    "first-page": "354",
+    "DOI": "10.1017/S0953756204009700",
+    "article-title": "Genera in the family Agaricaceae: evidence from nrITS and nrLSU sequences",
+    "volume": "108",
+    "author": "Vellinga",
+    "year": "2004",
+    "journal-title": "Mycological Research"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib86",
+    "doi-asserted-by": "crossref",
+    "first-page": "4238",
+    "DOI": "10.1128/jb.172.8.4238-4246.1990",
+    "article-title": "Rapid genetic identification and mapping of enzymatically amplified ribosomal DNA from several Cryptococcus species",
+    "volume": "172",
+    "author": "Vilgalys",
+    "year": "1990",
+    "journal-title": "Journal of Bacteriology"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib87",
+    "doi-asserted-by": "crossref",
+    "first-page": "967",
+    "DOI": "10.3852/09-256",
+    "article-title": "Typification of Octaviania rubescens (Paxillineae, Boletales) and phylogenetic hypotheses for genus Alpova",
+    "volume": "102",
+    "author": "Vizzini",
+    "year": "2010",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib88",
+    "series-title": "A Manual and Source Book on the Boletales and their Alles",
+    "author": "Watling",
+    "year": "2008"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib89",
+    "doi-asserted-by": "crossref",
+    "first-page": "2142",
+    "DOI": "10.1139/b87-295",
+    "article-title": "Studies in the genus Xanthoconium (Boletaceae). I: new species and a new combination",
+    "volume": "65",
+    "author": "Wolfe",
+    "year": "1987",
+    "journal-title": "Canadian Journal of Botany"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib90",
+    "doi-asserted-by": "crossref",
+    "first-page": "2134",
+    "DOI": "10.1139/b88-293",
+    "article-title": "Studies in the genus Xanthoconium (Boletaceae). II. Type studies",
+    "volume": "66",
+    "author": "Wolfe",
+    "year": "1988",
+    "journal-title": "Can. J. Bot."
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib91",
+    "first-page": "75",
+    "article-title": "Studies in the genus Xanthoconium (Boletaceae). III: cultural studies",
+    "volume": "35",
+    "author": "Wolfe",
+    "year": "1989",
+    "journal-title": "Mycotaxon"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib92",
+    "doi-asserted-by": "crossref",
+    "first-page": "187",
+    "DOI": "10.1071/SB9930187",
+    "article-title": "Systematics, mycogeography, and evolutionary history of Tylopilus subg. Roseoscarbra in Australia elucidated by comparison with Asian and American Species",
+    "volume": "6",
+    "author": "Wolfe",
+    "year": "1993",
+    "journal-title": "Australian Systematic Botany"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib93",
+    "doi-asserted-by": "crossref",
+    "first-page": "315",
+    "DOI": "10.1007/BF02268607",
+    "article-title": "Mycorrhizal association of isolates from sporocarps and ectomycorrhizas with Pinus densiflora seedlings",
+    "volume": "36",
+    "author": "Yamada",
+    "year": "1995",
+    "journal-title": "Mycoscience"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.04.008_bib94",
+    "doi-asserted-by": "crossref",
+    "first-page": "419",
+    "DOI": "10.1051/forest:2007019",
+    "article-title": "13C and 15N isotopic fractionation in trees, soils and fungi in a natural forest stand and a Norway spruce plantation",
+    "volume": "64",
+    "author": "Zeller",
+    "year": "2007",
+    "journal-title": "Annals of Forest Science"
+   }
+  ],
+  "container-title": [
+   "Fungal Biology"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+   {
+    "URL": "https://api.elsevier.com/content/article/PII:S1878614613000676?httpAccept=text/xml",
+    "content-type": "text/xml",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   },
+   {
+    "URL": "https://api.elsevier.com/content/article/PII:S1878614613000676?httpAccept=text/plain",
+    "content-type": "text/plain",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   }
+  ],
+  "deposited": {
+   "date-parts": [
+    [
+     2025,
+     4,
+     30
+    ]
+   ],
+   "date-time": "2025-04-30T05:25:11Z",
+   "timestamp": 1745990711000
+  },
+  "score": 1,
+  "resource": {
+   "primary": {
+    "URL": "https://linkinghub.elsevier.com/retrieve/pii/S1878614613000676"
+   }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+   "date-parts": [
+    [
+     2013,
+     7
+    ]
+   ]
+  },
+  "references-count": 94,
+  "journal-issue": {
+   "issue": "7-8",
+   "published-print": {
+    "date-parts": [
+     [
+      2013,
+      7
+     ]
+    ]
+   }
+  },
+  "alternative-id": [
+   "S1878614613000676"
+  ],
+  "URL": "https://doi.org/10.1016/j.funbio.2013.04.008",
+  "relation": {},
+  "ISSN": [
+   "1878-6146"
+  ],
+  "issn-type": [
+   {
+    "value": "1878-6146",
+    "type": "print"
+   }
+  ],
+  "subject": [],
+  "published": {
+   "date-parts": [
+    [
+     2013,
+     7
+    ]
+   ]
+  },
+  "assertion": [
+   {
+    "value": "Elsevier",
+    "name": "publisher",
+    "label": "This article is maintained by"
+   },
+   {
+    "value": "Phylogenetic overview of the Boletineae",
+    "name": "articletitle",
+    "label": "Article Title"
+   },
+   {
+    "value": "Fungal Biology",
+    "name": "journaltitle",
+    "label": "Journal Title"
+   },
+   {
+    "value": "https://doi.org/10.1016/j.funbio.2013.04.008",
+    "name": "articlelink",
+    "label": "CrossRef DOI link to publisher maintained version"
+   },
+   {
+    "value": "article",
+    "name": "content_type",
+    "label": "Content Type"
+   },
+   {
+    "value": "Copyright © 2013 The British Mycological Society. Published by Elsevier Ltd. All rights reserved.",
+    "name": "copyright",
+    "label": "Copyright"
+   }
+  ]
+ },
+ "error": null
+}

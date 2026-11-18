@@ -1,0 +1,169 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 8235150,
+  "scientificName": "Hortiboletus bubalinus (Oolbekk. & Duin) L.Albert & Dima",
+  "canonicalName": "Hortiboletus bubalinus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Hortiboletus",
+  "species": "Hortiboletus bubalinus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7778366,
+  "speciesKey": 8235150,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Hortiboletus+bubalinus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 489,
+  "NO": 51,
+  "SE": 118,
+  "FI": 37,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 8235150,
+  "nubKey": 8235150,
+  "nameKey": 17472035,
+  "taxonID": "gbif:8235150",
+  "sourceTaxonKey": 172027019,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Hortiboletus",
+  "species": "Hortiboletus bubalinus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7778366,
+  "speciesKey": 8235150,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 7778366,
+  "parent": "Hortiboletus",
+  "basionymKey": 6015893,
+  "basionym": "Boletus bubalinus Oolbekk. & Duin",
+  "scientificName": "Hortiboletus bubalinus (Oolbekk. & Duin) L.Albert & Dima",
+  "canonicalName": "Hortiboletus bubalinus",
+  "vernacularName": "Ascot Hat",
+  "authorship": "(Oolbekk. & Duin) L.Albert & Dima",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2015). Index Fungorum 251: 1.",
+  "numDescendants": 2,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:10.496+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 8235150,
+   "vernacularName": "Ascot Hat",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299881149
+  },
+  {
+   "taxonKey": 8235150,
+   "vernacularName": "Aurora-rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905143
+  },
+  {
+   "taxonKey": 8235150,
+   "vernacularName": "Aurora-rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299881149
+  },
+  {
+   "taxonKey": 8235150,
+   "vernacularName": "aurorarørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299881149
+  },
+  {
+   "taxonKey": 8235150,
+   "vernacularName": "aurorarøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299881149
+  },
+  {
+   "taxonKey": 8235150,
+   "vernacularName": "aurorasopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299881149
+  },
+  {
+   "taxonKey": 8235150,
+   "vernacularName": "Aurora-rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019270,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8235150,
+   "vernacularName": "aurorarørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069642,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8235150,
+   "vernacularName": "aurorarørsopp",
+   "language": "nob",
+   "country": "NO",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019270,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8235150,
+   "vernacularName": "aurorarøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069642,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8235150,
+   "vernacularName": "aurorasopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019270,
+   "preferred": true
+  }
+ ]
+}

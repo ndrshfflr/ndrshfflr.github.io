@@ -1,0 +1,293 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 2524490,
+  "scientificName": "Leccinum versipelle (Fr.) Snell",
+  "canonicalName": "Leccinum versipelle",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinum",
+  "species": "Leccinum versipelle",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2520104,
+  "speciesKey": 2524490,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Leccinum+versipelle&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 837,
+  "NO": 4210,
+  "SE": 6809,
+  "FI": 1228,
+  "IS": 12,
+  "FO": 0,
+  "GL": 27
+ },
+ "species": {
+  "key": 2524490,
+  "nubKey": 2524490,
+  "nameKey": 6069557,
+  "taxonID": "gbif:2524490",
+  "sourceTaxonKey": 172027391,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinum",
+  "species": "Leccinum versipelle",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2520104,
+  "speciesKey": 2524490,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2520104,
+  "parent": "Leccinum",
+  "scientificName": "Leccinum versipelle (Fr.) Snell",
+  "canonicalName": "Leccinum versipelle",
+  "vernacularName": "Orange Birch Bolete",
+  "authorship": "(Fr.) Snell",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1944). Lloydia 7(1): 58.",
+  "numDescendants": 8,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:09.461+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "Orange Birch Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880236
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "Orange Birch-Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880236
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "Orange skælrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880236
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "Orange skælrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905198
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "Plettet birke-rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905198
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "Plettet birke-rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880236
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "blek björksopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880236
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "kalvaspunikkitatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880236
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "koivunpunikkitatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012908
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "koivunpunikkitatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880236
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "pohjanpunikkitatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880236
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "raudskrubb",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880236
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "rød birke-rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880236
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "rødskrubb",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880236
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "tegelfärgad björksopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880236
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "tegelröd björksopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880236
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "tegelsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880236
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "Orange Birch Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101562,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "Orange Birch Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011340,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "raudskrubb",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069473,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "rødskrubb",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069473,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "tegelsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019402,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "Orange Birch Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945607,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "Orange Birch-Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945607,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "Orange Birch-Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101562,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "blek björksopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019402,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "tegelfärgad björksopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019402,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524490,
+   "vernacularName": "tegelröd björksopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019402,
+   "preferred": false
+  }
+ ]
+}

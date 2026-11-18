@@ -1,0 +1,223 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 8203051,
+  "scientificName": "Caloboletus calopus (Pers.) Vizzini",
+  "canonicalName": "Caloboletus calopus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Caloboletus",
+  "species": "Caloboletus calopus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 8399317,
+  "speciesKey": 8203051,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Caloboletus+calopus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 1198,
+  "NO": 671,
+  "SE": 1833,
+  "FI": 9,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 8203051,
+  "nubKey": 8203051,
+  "nameKey": 1842653,
+  "taxonID": "gbif:8203051",
+  "sourceTaxonKey": 176035370,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Caloboletus",
+  "species": "Caloboletus calopus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 8399317,
+  "speciesKey": 8203051,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 8399317,
+  "parent": "Caloboletus",
+  "basionymKey": 5954916,
+  "basionym": "Boletus calopus Pers.",
+  "scientificName": "Caloboletus calopus (Pers.) Vizzini",
+  "canonicalName": "Caloboletus calopus",
+  "vernacularName": "Bitter Beech Bolete",
+  "authorship": "(Pers.) Vizzini",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2014). Index Fungorum 146: 1.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:05.342+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "Bitter Beech Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222043325
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "Bitter Beech Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011197
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "Bitter Beech Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882223
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "Skønfodet rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882223
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "Skønfodet rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905279
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "beisk røyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882223
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "besk rørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882223
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "bittersopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882223
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "kaunojalkatatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258013067
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "kaunojalkatatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882223
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "skönfotad sopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882223
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "skönsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299882223
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "beisk røyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069603,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "besk rørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069603,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "bittersopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019278,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "Bitter Beech Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945509,
+   "preferred": false
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "skönfotad sopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019278,
+   "preferred": false
+  },
+  {
+   "taxonKey": 8203051,
+   "vernacularName": "skönsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019278,
+   "preferred": false
+  }
+ ]
+}

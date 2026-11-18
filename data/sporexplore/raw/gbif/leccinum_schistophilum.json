@@ -1,0 +1,178 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 2524564,
+  "scientificName": "Leccinum schistophilum Bon",
+  "canonicalName": "Leccinum schistophilum",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinum",
+  "species": "Leccinum schistophilum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2520104,
+  "speciesKey": 2524564,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Leccinum+schistophilum&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 74,
+  "NO": 152,
+  "SE": 130,
+  "FI": 79,
+  "IS": 0,
+  "FO": 0,
+  "GL": 2
+ },
+ "species": {
+  "key": 2524564,
+  "nubKey": 2524564,
+  "nameKey": 6069118,
+  "taxonID": "gbif:2524564",
+  "sourceTaxonKey": 172027479,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinum",
+  "species": "Leccinum schistophilum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2520104,
+  "speciesKey": 2524564,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2520104,
+  "parent": "Leccinum",
+  "scientificName": "Leccinum schistophilum Bon",
+  "canonicalName": "Leccinum schistophilum",
+  "vernacularName": "Bog Bolete",
+  "authorship": "Bon",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1981). In Bon & Van Haluwyn, Docums Mycol. 11(no. 44): 35.",
+  "numDescendants": 2,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:09.629+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2524564,
+   "vernacularName": "Bog Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880402
+  },
+  {
+   "taxonKey": 2524564,
+   "vernacularName": "Bredsporet skælrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905205
+  },
+  {
+   "taxonKey": 2524564,
+   "vernacularName": "Bredsporet skælrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880402
+  },
+  {
+   "taxonKey": 2524564,
+   "vernacularName": "Smalsporet skælrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905205
+  },
+  {
+   "taxonKey": 2524564,
+   "vernacularName": "Smalsporet skælrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880402
+  },
+  {
+   "taxonKey": 2524564,
+   "vernacularName": "gråskrubb",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880402
+  },
+  {
+   "taxonKey": 2524564,
+   "vernacularName": "harmolehmäntatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012940
+  },
+  {
+   "taxonKey": 2524564,
+   "vernacularName": "harmolehmäntatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880402
+  },
+  {
+   "taxonKey": 2524564,
+   "vernacularName": "mörk kärrsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880402
+  },
+  {
+   "taxonKey": 2524564,
+   "vernacularName": "Bog Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101664,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524564,
+   "vernacularName": "gråskrubb",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069485,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524564,
+   "vernacularName": "gråskrubb",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069485,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524564,
+   "vernacularName": "mörk kärrsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019369,
+   "preferred": true
+  }
+ ]
+}

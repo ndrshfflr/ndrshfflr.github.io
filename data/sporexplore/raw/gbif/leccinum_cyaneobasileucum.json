@@ -1,0 +1,149 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 2524560,
+  "scientificName": "Leccinum cyaneobasileucum Lannoy & Estadès",
+  "canonicalName": "Leccinum cyaneobasileucum",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinum",
+  "species": "Leccinum cyaneobasileucum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2520104,
+  "speciesKey": 2524560,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Leccinum+cyaneobasileucum&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 484,
+  "NO": 19,
+  "SE": 74,
+  "FI": 8,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 2524560,
+  "nubKey": 2524560,
+  "nameKey": 6067741,
+  "taxonID": "gbif:2524560",
+  "sourceTaxonKey": 172027736,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinum",
+  "species": "Leccinum cyaneobasileucum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2520104,
+  "speciesKey": 2524560,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2520104,
+  "parent": "Leccinum",
+  "scientificName": "Leccinum cyaneobasileucum Lannoy & Estadès",
+  "canonicalName": "Leccinum cyaneobasileucum",
+  "vernacularName": "Greyshank Bolete",
+  "authorship": "Lannoy & Estadès",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1991). Docums Mycol. 21(no. 81): 23.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:09.842+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2524560,
+   "vernacularName": "Almindelig skælrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905228
+  },
+  {
+   "taxonKey": 2524560,
+   "vernacularName": "Almindelig skælrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880663
+  },
+  {
+   "taxonKey": 2524560,
+   "vernacularName": "Greyshank Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880663
+  },
+  {
+   "taxonKey": 2524560,
+   "vernacularName": "gråbeinskrubb",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880663
+  },
+  {
+   "taxonKey": 2524560,
+   "vernacularName": "ullfotad kärrsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880663
+  },
+  {
+   "taxonKey": 2524560,
+   "vernacularName": "Almindelig skælrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019396,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524560,
+   "vernacularName": "Greyshank Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180102132,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524560,
+   "vernacularName": "gråbeinskrubb",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069512,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524560,
+   "vernacularName": "ullfotad kärrsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019396,
+   "preferred": true
+  }
+ ]
+}

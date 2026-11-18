@@ -1,0 +1,719 @@
+{
+ "retrieved": "2026-11-18",
+ "doi": "10.1016/j.funbio.2013.10.008",
+ "url": "https://api.crossref.org/works/10.1016/j.funbio.2013.10.008",
+ "message": {
+  "indexed": {
+   "date-parts": [
+    [
+     2026,
+     5,
+     15
+    ]
+   ],
+   "date-time": "2026-05-15T17:39:53Z",
+   "timestamp": 1778866793084,
+   "version": "3.51.4"
+  },
+  "reference-count": 48,
+  "publisher": "Elsevier BV",
+  "issue": "1",
+  "content-domain": {
+   "domain": [
+    "elsevier.com",
+    "sciencedirect.com"
+   ],
+   "crossmark-restriction": true
+  },
+  "short-container-title": [
+   "Fungal Biology"
+  ],
+  "published-print": {
+   "date-parts": [
+    [
+     2014,
+     1
+    ]
+   ]
+  },
+  "DOI": "10.1016/j.funbio.2013.10.008",
+  "type": "journal-article",
+  "created": {
+   "date-parts": [
+    [
+     2013,
+     11,
+     5
+    ]
+   ],
+   "date-time": "2013-11-05T03:30:36Z",
+   "timestamp": 1383622236000
+  },
+  "page": "12-31",
+  "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 28,
+  "title": [
+   "The Paxillus involutus (Boletales, Paxillaceae) complex in Europe: Genetic diversity and morphological description of the new species Paxillus cuprinus, typification of P. involutus s.s., and synthesis of species boundaries"
+  ],
+  "prefix": "10.1016",
+  "volume": "118",
+  "author": [
+   {
+    "given": "Patricia",
+    "family": "Jargeat",
+    "sequence": "first",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Jean-Paul",
+    "family": "Chaumeton",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Olivier",
+    "family": "Navaud",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Alfredo",
+    "family": "Vizzini",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Hervé",
+    "family": "Gryta",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   }
+  ],
+  "member": "78",
+  "reference": [
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib1",
+    "doi-asserted-by": "crossref",
+    "first-page": "118",
+    "DOI": "10.1139/v02-194",
+    "article-title": "A new phenolic metabolite, involutone, isolated from the mushroom Paxillus involutus",
+    "volume": "81",
+    "author": "Anthowiak",
+    "year": "2003",
+    "journal-title": "Canadian Journal of Chemistry"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib2",
+    "doi-asserted-by": "crossref",
+    "first-page": "465",
+    "DOI": "10.1111/j.1469-8137.2011.03927.x",
+    "article-title": "Regional and local patterns of ectomycorrhizal fungal diversity and community structure along an altitudinal gradient in the Hyrcanian forests of northern Iran",
+    "volume": "193",
+    "author": "Bahram",
+    "year": "2012",
+    "journal-title": "New Phytologist"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib3",
+    "series-title": "Elenchus fungorum. Continuatio prima",
+    "author": "Batsch",
+    "year": "1786"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib4",
+    "doi-asserted-by": "crossref",
+    "first-page": "99",
+    "DOI": "10.1007/s00253-010-2585-4",
+    "article-title": "Current states and perspectives of fungal DNA barcoding and rapid identification procedures",
+    "volume": "87",
+    "author": "Begerow",
+    "year": "2010",
+    "journal-title": "Applied Microbiology and Biotechnology"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib5",
+    "doi-asserted-by": "crossref",
+    "first-page": "971",
+    "DOI": "10.3852/mycologia.98.6.971",
+    "article-title": "Molecular systematics and biological diversification of Boletales",
+    "volume": "98",
+    "author": "Binder",
+    "year": "2006",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib6",
+    "first-page": "29",
+    "article-title": "Macromycètes des terrils de charbonnage du Nord de la France. 2ème note (Boletales – Russulales)",
+    "volume": "44",
+    "author": "Bon",
+    "year": "1981",
+    "journal-title": "Documents Mycologiques XI"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib7",
+    "first-page": "1",
+    "article-title": "Observations on mycobiota in Estonia",
+    "volume": "42",
+    "author": "Bresinsky",
+    "year": "2006",
+    "journal-title": "Folia Cryptogamica Estonica"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib8",
+    "doi-asserted-by": "crossref",
+    "first-page": "487",
+    "DOI": "10.1111/j.1469-8137.1990.tb00475.x",
+    "article-title": "Population structure and dynamics in Suillus bovinus as indicated by spatial distribution of fungal clones",
+    "volume": "115",
+    "author": "Dahlberg",
+    "year": "1990",
+    "journal-title": "New Phytologist"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib9",
+    "doi-asserted-by": "crossref",
+    "first-page": "772",
+    "DOI": "10.1038/nmeth.2109",
+    "article-title": "jModelTest 2: more models, new heuristics and parallel computing",
+    "volume": "9",
+    "author": "Darriba",
+    "year": "2012",
+    "journal-title": "Nature Methods"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib10",
+    "doi-asserted-by": "crossref",
+    "first-page": "405",
+    "DOI": "10.2144/000113370",
+    "article-title": "DIVEIN: a web server to analyze phylogenies, sequence divergence, diversity, and informative sites",
+    "volume": "48",
+    "author": "Deng",
+    "year": "2010",
+    "journal-title": "BioTechniques"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib11",
+    "first-page": "121",
+    "article-title": "Paxillus ammoniavirescens spec. nov. con note sul genere Paxillus in Sardegna",
+    "volume": "13",
+    "author": "Dessì",
+    "year": "1999",
+    "journal-title": "Micologia e Vegetazione Mediterranea"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib12",
+    "doi-asserted-by": "crossref",
+    "first-page": "3119",
+    "DOI": "10.1093/bioinformatics/btm500",
+    "article-title": "A congruence index for testing topological similarity between trees",
+    "volume": "23",
+    "author": "De Vienne",
+    "year": "2007",
+    "journal-title": "Bioinformatics"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib13",
+    "doi-asserted-by": "crossref",
+    "first-page": "1792",
+    "DOI": "10.1093/nar/gkh340",
+    "article-title": "MUSCLE: multiple sequence alignment with high accuracy and high throughput",
+    "volume": "32",
+    "author": "Edgar",
+    "year": "2004",
+    "journal-title": "Nucleic Acids Research"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib14",
+    "first-page": "403",
+    "article-title": "Intersterility groups in Paxillus involutus",
+    "volume": "24",
+    "author": "Fries",
+    "year": "1985",
+    "journal-title": "Mycotaxon"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib15",
+    "doi-asserted-by": "crossref",
+    "first-page": "217",
+    "DOI": "10.1016/j.ympev.2006.11.013",
+    "article-title": "Molecular phylogenetics and delimitation of species in Cortinarius section Calochroi (Basidiomycota, Agaricales) in Europe",
+    "volume": "44",
+    "author": "Frøslev",
+    "year": "2007",
+    "journal-title": "Molecular Phylogenetics and Evolution"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib16",
+    "first-page": "543",
+    "article-title": "SEAVIEW and PHYLO_WIN: two graphic tools for sequence alignment and molecular phylogeny",
+    "volume": "12",
+    "author": "Galtier",
+    "year": "1996",
+    "journal-title": "Computer Applied Biosciences"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib17",
+    "first-page": "547",
+    "article-title": "Paxillus involutus f. eburneus f. nov., a molecular confirmed infraspecific taxon in the P. involutus complex from Italy",
+    "volume": "2",
+    "author": "Gelardi",
+    "year": "2011",
+    "journal-title": "Mycosphere"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib18",
+    "doi-asserted-by": "crossref",
+    "first-page": "548",
+    "DOI": "10.1111/j.1469-8137.2012.04066.x",
+    "article-title": "Intercontinental divergence in the Populus-associated ectomycorrhizal fungus Tricholoma populinum",
+    "volume": "194",
+    "author": "Grubisha",
+    "year": "2012",
+    "journal-title": "New Phytologist"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib19",
+    "doi-asserted-by": "crossref",
+    "first-page": "773",
+    "DOI": "10.1111/j.1462-2920.2005.00957.x",
+    "article-title": "Population dynamics of the ectomycorrizal fungal species Tricholoma populinum and Tricoloma scalpturatum associated with black poplar under differing environmental conditions",
+    "volume": "8",
+    "author": "Gryta",
+    "year": "2006",
+    "journal-title": "Environmental Microbiology"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib20",
+    "first-page": "95",
+    "article-title": "BioEdit: a user-friendly biological sequence alignment editor and analysis program for Windows 95/98/NT",
+    "volume": "41",
+    "author": "Hall",
+    "year": "1999",
+    "journal-title": "Nucleic Acids Symposium Series"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib21",
+    "doi-asserted-by": "crossref",
+    "first-page": "241",
+    "DOI": "10.1127/nova.hedwigia/69/1999/241",
+    "article-title": "Studium zum Paxillus involutus Formenkreis",
+    "volume": "69",
+    "author": "Hahn",
+    "year": "1999",
+    "journal-title": "Nova Hedwigia"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib22",
+    "first-page": "9",
+    "article-title": "PAST: paleontological statistics software package for education and data analysis",
+    "volume": "4",
+    "author": "Hammer",
+    "year": "2001",
+    "journal-title": "Paleontologia Electronica"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib23",
+    "doi-asserted-by": "crossref",
+    "first-page": "965",
+    "DOI": "10.1016/j.mycres.2008.01.026",
+    "article-title": "Multiple gene genealogies and species recognition in the ectomycorrhizal fungus Paxillus involutus",
+    "volume": "112",
+    "author": "Hedh",
+    "year": "2008",
+    "journal-title": "Mycological Research"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib111",
+    "doi-asserted-by": "crossref",
+    "first-page": "38",
+    "DOI": "10.1016/j.fbr.2011.01.001",
+    "article-title": "Progress in molecular and morphological taxon discovery in Fungi and options for formal classification of environmental sequences",
+    "volume": "25",
+    "author": "Hibbett",
+    "year": "2011",
+    "journal-title": "Fungal Biology Reviews"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib24",
+    "doi-asserted-by": "crossref",
+    "first-page": "527",
+    "DOI": "10.1111/j.1469-8137.2004.01188.x",
+    "article-title": "Genet distribution of sporocarps and ectomycorrhizas of Suillus pictus in a Japanese white pine plantation",
+    "volume": "164",
+    "author": "Hirose",
+    "year": "2004",
+    "journal-title": "New Phytologist"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib25",
+    "doi-asserted-by": "crossref",
+    "first-page": "139",
+    "DOI": "10.1007/s00374-009-0419-2",
+    "article-title": "Ectomycorrhiza formation and willow growth promotion as affected by associated bacteria: role of microbial metabolites and use of C sources",
+    "volume": "46",
+    "author": "Hrynkiewicz",
+    "year": "2010",
+    "journal-title": "Biology and Fertility of Soils"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib26",
+    "doi-asserted-by": "crossref",
+    "first-page": "5216",
+    "DOI": "10.1111/j.1365-294X.2010.04863.x",
+    "article-title": "Phylogenetic species delimitation in the ectomycorrhizal fungi and implications for barcoding: the case of the Tricholoma scalpturatum complex (Basidiomycota)",
+    "volume": "19",
+    "author": "Jargeat",
+    "year": "2010",
+    "journal-title": "Molecular Ecology"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib27",
+    "doi-asserted-by": "crossref",
+    "first-page": "701",
+    "DOI": "10.1111/j.1438-8677.1999.tb00283.x",
+    "article-title": "Speciation and phylogenetic distances witnin Paxillus s. str. (Basidiomycetes, Boletales)",
+    "volume": "1",
+    "author": "Jarosch",
+    "year": "1999",
+    "journal-title": "Plant Biology"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib28",
+    "doi-asserted-by": "crossref",
+    "first-page": "3",
+    "DOI": "10.1016/S1468-1641(10)60392-1",
+    "article-title": "Fungal portraits No. 33: Paxillus vernalis – first British record",
+    "volume": "9",
+    "author": "Kibby",
+    "year": "2008",
+    "journal-title": "Field Mycology"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib29",
+    "series-title": "Methuen Handbook of Color",
+    "author": "Kornerup",
+    "year": "1967"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib30",
+    "doi-asserted-by": "crossref",
+    "first-page": "1451",
+    "DOI": "10.1093/bioinformatics/btp187",
+    "article-title": "DnaSP v5: a software for comprehensive analysis of DNA polymorphism data",
+    "volume": "25",
+    "author": "Librado",
+    "year": "2009",
+    "journal-title": "Bioinformatics"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib31",
+    "author": "Ludwig",
+    "year": "2000"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib32",
+    "series-title": "Edible Ectomycorrhizal Mushrooms",
+    "first-page": "383",
+    "article-title": "Ten years of genomics for ectomycorrhizal fungi: what have we achieved and where are we heading?",
+    "author": "Martin",
+    "year": "2012"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib33",
+    "doi-asserted-by": "crossref",
+    "first-page": "818",
+    "DOI": "10.1111/j.1469-8137.2011.03688.x",
+    "article-title": "Sequencing the fungal tree of life",
+    "volume": "190",
+    "author": "Martin",
+    "year": "2011",
+    "journal-title": "New Phytologist"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib34",
+    "doi-asserted-by": "crossref",
+    "first-page": "109",
+    "DOI": "10.1007/s11557-012-0818-x",
+    "article-title": "Alpova komoviana (Boletales, Paxillaceae), a new sequestrate fungus from Montenegro, with a revised phylogeny of the genus in Europe",
+    "volume": "12",
+    "author": "Moreau",
+    "year": "2013",
+    "journal-title": "Mycological Progress"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib35",
+    "first-page": "75",
+    "article-title": "Notes on British agarics III",
+    "volume": "29",
+    "author": "Orton",
+    "year": "1969",
+    "journal-title": "Notes from the Royal Botanical Garden Edinburgh"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib36",
+    "doi-asserted-by": "crossref",
+    "first-page": "e62419",
+    "DOI": "10.1371/journal.pone.0062419",
+    "article-title": "Filling gaps in biodiversity knowledge for macrofungi: contributions and assessment of an herbarium collection DNA barcode sequencing project",
+    "volume": "8",
+    "author": "Osmundson",
+    "year": "2013",
+    "journal-title": "PLoS One"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib37",
+    "doi-asserted-by": "crossref",
+    "first-page": "799",
+    "DOI": "10.1641/B580907",
+    "article-title": "Fungal community ecology: a hybrid beast with a molecular master",
+    "volume": "58",
+    "author": "Peay",
+    "year": "2008",
+    "journal-title": "BioSciences"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib38",
+    "doi-asserted-by": "crossref",
+    "first-page": "87",
+    "DOI": "10.1007/s005720000063",
+    "article-title": "Identification and differentiation of isolates of black alder mycorrhizas by sequences analysis of the ITS region",
+    "volume": "10",
+    "author": "Pritsch",
+    "year": "2000",
+    "journal-title": "Mycorrhiza"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib39",
+    "doi-asserted-by": "crossref",
+    "first-page": "40",
+    "DOI": "10.1186/1471-2148-11-40",
+    "article-title": "Comparative phylogenies and host specialization in the alder ectomycorrhizal fungi Alnicola, Alpova and Lactarius (Basidiomycota) in Europe",
+    "volume": "11",
+    "author": "Rochet",
+    "year": "2011",
+    "journal-title": "BMC Evolutionary Biology"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib40",
+    "doi-asserted-by": "crossref",
+    "first-page": "539",
+    "DOI": "10.1093/sysbio/sys029",
+    "article-title": "MrBayes 3.2: efficient Bayesian phylogenetic inference and model choice across a large model space",
+    "volume": "61",
+    "author": "Ronquist",
+    "year": "2012",
+    "journal-title": "Systematic Biology"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib41",
+    "volume": "vol. 1",
+    "author": "Sowerby",
+    "year": "1797"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib42",
+    "doi-asserted-by": "crossref",
+    "first-page": "129",
+    "DOI": "10.33585/cmy.45401",
+    "article-title": "Paxillus albidulus, a new species of the family Paxillaceae",
+    "volume": "45",
+    "author": "Sŭtara",
+    "year": "1992",
+    "journal-title": "Česká Mykologie"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib43",
+    "series-title": "Flora Agaricina Neerlandica",
+    "first-page": "54",
+    "article-title": "Glossary",
+    "author": "Vellinga",
+    "year": "1988"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib44",
+    "doi-asserted-by": "crossref",
+    "first-page": "351",
+    "DOI": "10.5248/119.351",
+    "article-title": "Paxillus albidulus, P. ammoniavirescens, and P. validus revisited",
+    "volume": "119",
+    "author": "Vellinga",
+    "year": "2012",
+    "journal-title": "Mycotaxon"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib45",
+    "series-title": "Compléments à la Flore des champignons supérieurs du Maroc de G. Malençon et R. Bertaut",
+    "first-page": "639",
+    "article-title": "Revisione Gomphidiaceae – Paxillaceae",
+    "author": "Vizzini",
+    "year": "2009"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib46",
+    "first-page": "60",
+    "article-title": "New fungi from Michigan",
+    "volume": "29",
+    "author": "Watling",
+    "year": "1969",
+    "journal-title": "Notes from the Royal Botanical Garden Edinburgh"
+   },
+   {
+    "key": "10.1016/j.funbio.2013.10.008_bib47",
+    "doi-asserted-by": "crossref",
+    "first-page": "935",
+    "DOI": "10.1007/BF01728620",
+    "article-title": "Severe hemolysis caused by antibodies against the mushroom Paxillus involutus and its therapy by plasma exchange",
+    "volume": "64",
+    "author": "Winkelmann",
+    "year": "1986",
+    "journal-title": "Klinische Wochenschrift"
+   }
+  ],
+  "container-title": [
+   "Fungal Biology"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+   {
+    "URL": "https://api.elsevier.com/content/article/PII:S1878614613001505?httpAccept=text/xml",
+    "content-type": "text/xml",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   },
+   {
+    "URL": "https://api.elsevier.com/content/article/PII:S1878614613001505?httpAccept=text/plain",
+    "content-type": "text/plain",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   }
+  ],
+  "deposited": {
+   "date-parts": [
+    [
+     2025,
+     4,
+     30
+    ]
+   ],
+   "date-time": "2025-04-30T19:32:08Z",
+   "timestamp": 1746041528000
+  },
+  "score": 1,
+  "resource": {
+   "primary": {
+    "URL": "https://linkinghub.elsevier.com/retrieve/pii/S1878614613001505"
+   }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+   "date-parts": [
+    [
+     2014,
+     1
+    ]
+   ]
+  },
+  "references-count": 48,
+  "journal-issue": {
+   "issue": "1",
+   "published-print": {
+    "date-parts": [
+     [
+      2014,
+      1
+     ]
+    ]
+   }
+  },
+  "alternative-id": [
+   "S1878614613001505"
+  ],
+  "URL": "https://doi.org/10.1016/j.funbio.2013.10.008",
+  "relation": {},
+  "ISSN": [
+   "1878-6146"
+  ],
+  "issn-type": [
+   {
+    "value": "1878-6146",
+    "type": "print"
+   }
+  ],
+  "subject": [],
+  "published": {
+   "date-parts": [
+    [
+     2014,
+     1
+    ]
+   ]
+  },
+  "assertion": [
+   {
+    "value": "Elsevier",
+    "name": "publisher",
+    "label": "This article is maintained by"
+   },
+   {
+    "value": "The Paxillus involutus (Boletales, Paxillaceae) complex in Europe: Genetic diversity and morphological description of the new species Paxillus cuprinus, typification of P. involutus s.s., and synthesis of species boundaries",
+    "name": "articletitle",
+    "label": "Article Title"
+   },
+   {
+    "value": "Fungal Biology",
+    "name": "journaltitle",
+    "label": "Journal Title"
+   },
+   {
+    "value": "https://doi.org/10.1016/j.funbio.2013.10.008",
+    "name": "articlelink",
+    "label": "CrossRef DOI link to publisher maintained version"
+   },
+   {
+    "value": "article",
+    "name": "content_type",
+    "label": "Content Type"
+   },
+   {
+    "value": "Copyright © 2013 The British Mycological Society. Published by Elsevier Ltd. All rights reserved.",
+    "name": "copyright",
+    "label": "Copyright"
+   }
+  ]
+ },
+ "error": null
+}

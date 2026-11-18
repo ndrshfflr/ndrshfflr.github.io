@@ -1,0 +1,216 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 2525710,
+  "scientificName": "Hygrophoropsis aurantiaca (Wulfen) Maire",
+  "canonicalName": "Hygrophoropsis aurantiaca",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 99,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; nextMatch=0",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 9806953,
+    "acceptedUsageKey": 2525710,
+    "scientificName": "Hygrophoropsis aurantiaca (Wulfen) Maire ex Martin-Sans",
+    "canonicalName": "Hygrophoropsis aurantiaca",
+    "rank": "SPECIES",
+    "status": "SYNONYM",
+    "confidence": 99,
+    "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=0; score=120",
+    "matchType": "EXACT",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Hygrophoropsidaceae",
+    "genus": "Hygrophoropsis",
+    "species": "Hygrophoropsis aurantiaca",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 4194,
+    "genusKey": 2525560,
+    "speciesKey": 2525710,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Hygrophoropsidaceae",
+  "genus": "Hygrophoropsis",
+  "species": "Hygrophoropsis aurantiaca",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4194,
+  "genusKey": 2525560,
+  "speciesKey": 2525710,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Hygrophoropsis+aurantiaca&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 4568,
+  "NO": 2376,
+  "SE": 8414,
+  "FI": 1012,
+  "IS": 0,
+  "FO": 2,
+  "GL": 0
+ },
+ "species": {
+  "key": 2525710,
+  "nubKey": 2525710,
+  "nameKey": 5402747,
+  "taxonID": "gbif:2525710",
+  "sourceTaxonKey": 172020215,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Hygrophoropsidaceae",
+  "genus": "Hygrophoropsis",
+  "species": "Hygrophoropsis aurantiaca",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4194,
+  "genusKey": 2525560,
+  "speciesKey": 2525710,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2525560,
+  "parent": "Hygrophoropsis",
+  "scientificName": "Hygrophoropsis aurantiaca (Wulfen) Maire",
+  "canonicalName": "Hygrophoropsis aurantiaca",
+  "vernacularName": "False Chanterelle",
+  "authorship": "(Wulfen) Maire",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1921). L’Empoisonnem. Champ.: 99.",
+  "numDescendants": 11,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:00:55.384+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2525710,
+   "vernacularName": "Almindelig orangekantarel",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 302171548
+  },
+  {
+   "taxonKey": 2525710,
+   "vernacularName": "Almindelig orangekantarel",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905364
+  },
+  {
+   "taxonKey": 2525710,
+   "vernacularName": "False Chanterelle",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011487
+  },
+  {
+   "taxonKey": 2525710,
+   "vernacularName": "False Chanterelle",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222041956
+  },
+  {
+   "taxonKey": 2525710,
+   "vernacularName": "False Chanterelle",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 302171548
+  },
+  {
+   "taxonKey": 2525710,
+   "vernacularName": "falsk kantarell",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 302171548
+  },
+  {
+   "taxonKey": 2525710,
+   "vernacularName": "narrkantarell",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 302171548
+  },
+  {
+   "taxonKey": 2525710,
+   "vernacularName": "valevahvero",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 302171548
+  },
+  {
+   "taxonKey": 2525710,
+   "vernacularName": "False Chanterelle",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180099358,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2525710,
+   "vernacularName": "falsk kantarell",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069352,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2525710,
+   "vernacularName": "falsk kantarell",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069352,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2525710,
+   "vernacularName": "narrkantarell",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019018,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2525710,
+   "vernacularName": "False Chanterelle",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334946067,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2525710,
+   "vernacularName": "falsk kantarell",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019018,
+   "preferred": false
+  }
+ ]
+}

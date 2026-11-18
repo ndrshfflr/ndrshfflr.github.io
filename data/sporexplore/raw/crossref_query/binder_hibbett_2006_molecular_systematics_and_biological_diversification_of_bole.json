@@ -1,0 +1,203 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Binder Hibbett 2006 Molecular systematics and biological diversification of Boletales Mycologia",
+ "url": "https://api.crossref.org/works?query.bibliographic=Binder+Hibbett+2006+Molecular+systematics+and+biological+diversification+of+Boletales+Mycologia&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Informa UK Limited",
+   "issue": "6",
+   "DOI": "10.1080/15572536.2006.11832626",
+   "type": "journal-article",
+   "page": "971-981",
+   "title": [
+    "Molecular systematics and biological diversification of Boletales"
+   ],
+   "volume": "98",
+   "author": [
+    {
+     "given": "Manfred",
+     "family": "Binder",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "David S.",
+     "family": "Hibbett",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Clark University, Biology Department, Lasry Center for Bioscience, 950 Main Street, Worcester, Massachusetts 01610-1477"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycologia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2006,
+      11
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Informa UK Limited",
+   "issue": "4",
+   "DOI": "10.1080/15572536.2003.11833192",
+   "type": "journal-article",
+   "page": "641-650",
+   "title": [
+    "A new species of<i>Cudonia</i>based on morphological and molecular data"
+   ],
+   "volume": "94",
+   "author": [
+    {
+     "given": "Zheng",
+     "family": "Wang",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Manfred",
+     "family": "Binder",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "David S.",
+     "family": "Hibbett",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Department of Biology, Clark University, 950 Main Street, Worcester, Massachusetts 01610, USA"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycologia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2002,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Informa UK Limited",
+   "issue": "5",
+   "DOI": "10.1080/15572536.2005.11832901",
+   "type": "journal-article",
+   "page": "1010-1014",
+   "title": [
+    "<i>Sparassis cystidiosa</i>\n                    sp. nov. from Thailand is described using morphological and molecular data"
+   ],
+   "volume": "96",
+   "author": [
+    {
+     "given": "Dennis E.",
+     "family": "Desjardin",
+     "sequence": "first",
+     "affiliation": [
+      {
+       "name": "Department of Biology, San Francisco State University, 1600 Holloway Ave., San Francisco, California 94132"
+      }
+     ],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Zheng",
+     "family": "Wang",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Manfred",
+     "family": "Binder",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "David S.",
+     "family": "Hibbett",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Department of Biology, Clark University, 950 Main Street, Worcester, Massachusetts 01610"
+      }
+     ],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycologia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2004,
+      9
+     ]
+    ]
+   }
+  }
+ ]
+}

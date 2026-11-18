@@ -1,0 +1,36 @@
+# Bibliographic queries → Crossref (verify DOI + metadata before citing)
+den Bakker Noordeloos 2005 A revision of European species of Leccinum Gray and notes on extralimital species Persoonia 18 511
+Jargeat Chaumeton Navaud Vizzini Gryta 2014 The Paxillus involutus complex in Europe genetic diversity and morphological description of the new species Paxillus cuprinus Fungal Biology
+Scambler Niskanen Assyov Ainsworth Bellanger Loizides Moreau Kirk Liimatainen 2018 Diversity of Chroogomphus Gomphidiaceae Boletales in Europe and typification of C. rutilus IMA Fungus
+Peintner Ladurner Simonini 2003 Xerocomus cisalpinus sp. nov. and the delimitation of species in the X. chrysenteron complex based on morphology and rDNA-LSU sequences Mycological Research
+Taylor Hills Simonini Both Eberhardt 2006 Detection of species within the Xerocomus subtomentosus complex in Europe using rDNA-ITS sequences Mycological Research
+Beugelsdijk van der Linde Zuccarello den Bakker Draisma Noordeloos 2008 A phylogenetic study of Boletus section Boletus in Europe Persoonia 20
+Nguyen Vellinga Bruns Kennedy 2016 Phylogenetic assessment of global Suillus ITS sequences supports morphologically defined species and reveals synonymous and undescribed taxa Mycologia
+Kuo Ortiz-Santana 2020 Revision of leccinoid fungi with emphasis on North American taxa based on molecular and morphological data Mycologia
+Wu Feng Xu Hosen Zeng Zhu Yang 2014 Molecular phylogenetic analyses redefine seven major clades and reveal 22 new generic clades in the fungal family Boletaceae Fungal Diversity
+Nuhn Binder Taylor Halling Hibbett 2013 Phylogenetic overview of the Boletineae Fungal Biology
+Zhao Wu Feng Yang 2014 Generic delimitation of Rubroboletus Phytotaxa 188
+Arora Frank 2014 Clarifying the butter boletes a new genus Butyriboletus is established to accommodate Boletus sect. Appendiculati Botany
+Huckfeldt Schmidt 2006 Identification key for European strand-forming house-decay fungi Mycologist
+Kauserud Svegården Saetre Knudsen Stensrud Schmidt Doi Sugiyama Högberg 2007 Asian origin and rapid global spread of the destructive dry rot fungus Serpula lacrymans Molecular Ecology
+Šutara 2008 Xerocomus s. l. in the light of the present state of knowledge Czech Mycology 60
+Korhonen 1995 New boletoid fungi in the genus Leccinum from Fennoscandia Karstenia 35
+Vizzini Simonini Ercole Voyron 2014 Boletus mendax a new species of Boletus sect. Luridi from Italy and insights on the B. luridus complex Mycological Progress
+Gelardi Simonini Vizzini 2014 Neoboletus praestigiator
+Loizides Bellanger Assyov Moreau Richard 2019 Present status and future of boletoid fungi Boletaceae on the island of Cyprus cryptic and threatened diversity unravelled by ten-year study Fungal Ecology
+Klofac 2007 Schlüssel zur Bestimmung von Frischfunden der europäischen Arten der Boletales mit röhrigem Hymenophor Österreichische Zeitschrift für Pilzkunde
+Dentinger Ammirati Both Desjardin Halling Henkel Moreau Nagasawa Soytong Taylor Watling Moncalvo McLaughlin 2010 Molecular phylogenetics of porcini mushrooms Boletus section Boletus Molecular Phylogenetics and Evolution
+Binder Hibbett 2006 Molecular systematics and biological diversification of Boletales Mycologia
+Holec Kolařík 2013 Notes on the identity of Hygrophoropsis rufa Czech Mycology
+Kotiranta Kytövuori Rhizopogon Finland Karstenia
+Martín 1996 The genus Rhizopogon in Europe
+Phosri Martín Watling Jeffries Sihanonth 2009 Molecular phylogeny of Scleroderma
+Wilson Binder Hibbett 2012 Diversity and evolution of ectomycorrhizal host associations in the Sclerodermatineae Boletales Basidiomycota New Phytologist
+Moreau Rochet Richard Chassagne Manzi Gardes 2011 Taxonomy of Alnus-associated hypogeous species of Alpova and Melanogaster Mycologia
+Vadthanarat Raspé Lumyong 2019 Phylogenetic affinities of the sequestrate genus Rhodactina Boletaceae Octaviania
+Orihara Lebel Ge Smith Maekawa 2016 Evolutionary history of the sequestrate genus Rossbeevera Octaviania
+Skrede Carlsen Schumacher 2017 Pseudomerulius Tapinellaceae
+Jarosch 2001 Zur molekularen Systematik der Boletales Coniophorineae Paxillineae Suillineae Bibliotheca Mycologica
+Gelardi Vizzini Ercole Voyron Sun Liu 2013 Strobilomyces Aureoboletus moravicus
+Biketova Wasser 2015 Hortiboletus engelii new combination
+Klofac Krisai-Greilhuber 2006 Die Gattung Chalciporus Österreichische Zeitschrift für Pilzkunde

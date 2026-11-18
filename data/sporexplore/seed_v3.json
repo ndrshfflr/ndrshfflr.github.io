@@ -1,0 +1,4266 @@
+{
+ "_note": "Curated morphology carried over from Sporexplore v3 (macro characters, edibility, family micro-character baselines, species-level micro overrides with verbatim quotes). Spore measurements here are the v3 values, kept only for the old→new comparison; the app uses the sourced measurements from build_data.py.",
+ "species": [
+  {
+   "n": "Boletus edulis",
+   "a": "Bull.",
+   "dk": "Almindelig Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11069,
+   "src": "SA",
+   "sp": {
+    "lo": 14,
+    "hi": 17,
+    "wlo": 4.5,
+    "whi": 6,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "yellow",
+     "olive"
+    ],
+    "blue": "none",
+    "stipe": "reticulate-white",
+    "cap": [
+     "brown",
+     "pale-brown"
+    ],
+    "host": [
+     "spruce",
+     "pine",
+     "beech",
+     "oak",
+     "birch"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "choice",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 1,
+    "GL": 0,
+    "FO": 1
+   },
+   "note": "Sej hathud; hvidt net på stok, kød uforanderligt hvidt."
+  },
+  {
+   "n": "Boletus reticulatus",
+   "a": "Schaeff.",
+   "dk": "Sommer-Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11093,
+   "src": "SA",
+   "sp": {
+    "lo": 13,
+    "hi": 17,
+    "wlo": 4,
+    "whi": 5.5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "reticulate-white",
+    "cap": [
+     "pale-brown",
+     "brown"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "choice",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Tør, ofte sprækkende, fint filtet hat; net over hele stokken."
+  },
+  {
+   "n": "Boletus pinophilus",
+   "a": "Pilát & Dermek",
+   "dk": "Rødbrun Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11083,
+   "src": "SA",
+   "sp": {
+    "lo": 15,
+    "hi": 19,
+    "wlo": 4.5,
+    "whi": 5.5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "reticulate-white",
+    "cap": [
+     "red-brown",
+     "dark-brown"
+    ],
+    "host": [
+     "pine",
+     "spruce"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "choice",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Knudret, rødbrun hat; længste sporer i edulis-gruppen."
+  },
+  {
+   "n": "Boletus aereus",
+   "a": "Bull.",
+   "dk": "Bronze-Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11061,
+   "src": "SA",
+   "sp": {
+    "lo": 14,
+    "hi": 17,
+    "wlo": 4.5,
+    "whi": 6,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "reticulate-white",
+    "cap": [
+     "dark-brown",
+     "black-brown"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "choice",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 0,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Tør, mørkt gråbrun, meget fint filtet hat. Sjælden i Norden."
+  },
+  {
+   "n": "Suillellus luridus",
+   "a": "(Schaeff.) Murrill",
+   "syn": "Boletus luridus",
+   "dk": "Netstokket Indigo-Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11078,
+   "src": "LIT",
+   "sp": {
+    "lo": 11,
+    "hi": 15,
+    "wlo": 5,
+    "whi": 6.5,
+    "q": [
+     2.1,
+     2.4
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "orange",
+     "red"
+    ],
+    "blue": "strong",
+    "stipe": "reticulate-red",
+    "cap": [
+     "yellow-brown",
+     "cinnamon",
+     "honey"
+    ],
+    "host": [
+     "oak",
+     "beech",
+     "lime"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "toxic-raw",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Rød linje over rørene (Bataille-linje); orangerødt net langt ned ad stokken. Sporemål fra litteratur — Svampeatlas angiver kun Q 2,1–2,4."
+  },
+  {
+   "n": "Neoboletus luridiformis",
+   "a": "(Rostk.) Gelardi et al.",
+   "syn": "Boletus erythropus",
+   "dk": "Punktstokket Indigo-Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11077,
+   "src": "LIT",
+   "sp": {
+    "lo": 12,
+    "hi": 18,
+    "wlo": 4.5,
+    "whi": 6,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "red",
+     "orange"
+    ],
+    "blue": "strong",
+    "stipe": "punctate-red",
+    "cap": [
+     "red-brown",
+     "dark-brown"
+    ],
+    "host": [
+     "spruce",
+     "beech",
+     "oak",
+     "birch"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "toxic-raw",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Intet net — stok med orangerøde til cinnoberrøde prikker. Sporemål fra litteratur."
+  },
+  {
+   "n": "Rubroboletus satanas",
+   "a": "(Lenz) Kuan Zhao & Zhu L. Yang",
+   "syn": "Boletus satanas",
+   "dk": "Satans Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11096,
+   "src": "LIT",
+   "sp": {
+    "lo": 10,
+    "hi": 15,
+    "wlo": 4.5,
+    "whi": 6,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "red",
+     "orange"
+    ],
+    "blue": "moderate",
+    "stipe": "reticulate-red",
+    "cap": [
+     "whitish",
+     "pale-grey"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "very-large",
+   "ed": "toxic",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Bleg hat, rosa net, kvalmende lugt. Sporemål fra litteratur."
+  },
+  {
+   "n": "Rubroboletus legaliae",
+   "a": "(Pilát) Della Magg. et al.",
+   "syn": "Boletus legaliae",
+   "dk": "Rosahattet Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11074,
+   "src": "LIT",
+   "sp": {
+    "lo": 11,
+    "hi": 15,
+    "wlo": 4.5,
+    "whi": 6,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "orange",
+     "red"
+    ],
+    "blue": "moderate",
+    "stipe": "reticulate-red",
+    "cap": [
+     "pink",
+     "pale-brown"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "toxic",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 0,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Orange rørmundinger, ± blegrosa hat, orange net. Meget sjælden."
+  },
+  {
+   "n": "Rubroboletus rhodoxanthus",
+   "a": "(Krombh.) Kuan Zhao & Zhu L. Yang",
+   "dk": "Rosastokket Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11094,
+   "src": "SA",
+   "sp": {
+    "lo": 10,
+    "hi": 14,
+    "wlo": 4,
+    "whi": 5.5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "orange",
+     "red"
+    ],
+    "blue": "moderate",
+    "stipe": "reticulate-red",
+    "cap": [
+     "pink",
+     "pale-grey"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "very-large",
+   "ed": "toxic",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Kød i stokbasis blåner ikke — kun gult/rødt. Meget sjælden."
+  },
+  {
+   "n": "Suillellus queletii",
+   "a": "(Schulzer) Vizzini et al.",
+   "syn": "Boletus queletii",
+   "dk": "Blodrød Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11090,
+   "src": "LIT",
+   "sp": {
+    "lo": 11,
+    "hi": 15,
+    "wlo": 5,
+    "whi": 6.5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "orange",
+     "red"
+    ],
+    "blue": "strong",
+    "stipe": "smooth",
+    "cap": [
+     "red-brown",
+     "orange-brown"
+    ],
+    "host": [
+     "oak",
+     "lime"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "toxic-raw",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Uden net; beetroot-rødt kød i stokbasis. Sporemål fra litteratur."
+  },
+  {
+   "n": "Imperator rhodopurpureus",
+   "a": "(Smotl.) Assyov et al.",
+   "dk": "Purpur-Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11089,
+   "src": "LIT",
+   "sp": {
+    "lo": 11,
+    "hi": 16,
+    "wlo": 5,
+    "whi": 6.5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow",
+     "red",
+     "orange"
+    ],
+    "blue": "strong",
+    "stipe": "reticulate-red",
+    "cap": [
+     "purple",
+     "pink",
+     "pale-grey"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "toxic",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Blåner momentant og intensivt overalt. Sporemål fra litteratur."
+  },
+  {
+   "n": "Cyanoboletus pulverulentus",
+   "a": "(Opat.) Gelardi et al.",
+   "dk": "Sortblånende Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11088,
+   "src": "SA",
+   "sp": {
+    "lo": 11,
+    "hi": 15,
+    "wlo": 4,
+    "whi": 6,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "strong",
+    "stipe": "smooth",
+    "cap": [
+     "brown",
+     "dark-brown"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "caution",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Blåner omgående i ALLE dele inkl. hatoverfladen — næsten sortblå. Intet net."
+  },
+  {
+   "n": "Caloboletus calopus",
+   "a": "(Pers.) Vizzini",
+   "dk": "Rødstokket Bitterrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11068,
+   "src": "SA",
+   "sp": {
+    "lo": 12,
+    "hi": 16,
+    "wlo": 4.5,
+    "whi": 6,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "moderate",
+    "stipe": "reticulate-red",
+    "cap": [
+     "grey-brown",
+     "pale-brown"
+    ],
+    "host": [
+     "spruce",
+     "pine",
+     "beech",
+     "oak"
+    ],
+    "taste": "bitter"
+   },
+   "size": "large",
+   "ed": "inedible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Meget bitter; karminrød nedre stok med net."
+  },
+  {
+   "n": "Caloboletus radicans",
+   "a": "(Pers.) Vizzini",
+   "dk": "Rodfiltet Bitterrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11091,
+   "src": "SA",
+   "sp": {
+    "lo": 11,
+    "hi": 15,
+    "wlo": 4.5,
+    "whi": 6,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "moderate",
+    "stipe": "reticulate-yellow",
+    "cap": [
+     "whitish",
+     "pale-grey"
+    ],
+    "host": [
+     "oak",
+     "lime",
+     "beech"
+    ],
+    "taste": "bitter"
+   },
+   "size": "very-large",
+   "ed": "inedible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Meget stor, tung, lyst gråbrun; bitter; rodagtig stokbasis."
+  },
+  {
+   "n": "Butyriboletus appendiculatus",
+   "a": "(Schaeff.) D. Arora & J.L. Frank",
+   "dk": "Guldporet Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11062,
+   "src": "SA",
+   "sp": {
+    "lo": 12,
+    "hi": 14.5,
+    "wlo": 3.5,
+    "whi": 4.5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "weak",
+    "stipe": "reticulate-yellow",
+    "cap": [
+     "cinnamon",
+     "brown",
+     "grey-brown"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Kanelbrun til gråbrun; gult kød, svagt blånende; rodende stokbasis."
+  },
+  {
+   "n": "Butyriboletus fechtneri",
+   "a": "(Velen.) D. Arora & J.L. Frank",
+   "dk": "Sølvhvid Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11070,
+   "src": "SA",
+   "sp": {
+    "lo": 12,
+    "hi": 14.5,
+    "wlo": 5,
+    "whi": 5.5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "moderate",
+    "stipe": "reticulate-yellow",
+    "cap": [
+     "whitish",
+     "pale-grey"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Gråligt sølvskinnende hat; fine gule rørmundinger; rød zone i stokbasis."
+  },
+  {
+   "n": "Imleria badia",
+   "a": "(Fr.) Vizzini",
+   "syn": "Boletus badius",
+   "dk": "Brun Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11064,
+   "src": "SA",
+   "sp": {
+    "lo": 12,
+    "hi": 15,
+    "wlo": 4,
+    "whi": 5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "yellow",
+     "olive"
+    ],
+    "blue": "weak",
+    "stipe": "smooth",
+    "cap": [
+     "red-brown",
+     "dark-brown"
+    ],
+    "host": [
+     "spruce",
+     "pine",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "choice",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 1
+   },
+   "note": "Fedtet-slimet hjortebrun hat; rørmundinger blåner ved tryk."
+  },
+  {
+   "n": "Xerocomus subtomentosus",
+   "a": "(L.) Quél.",
+   "dk": "Fløjls-Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11101,
+   "src": "SA",
+   "sp": {
+    "lo": 11,
+    "hi": 13,
+    "wlo": 4.5,
+    "whi": 5.5,
+    "q": [
+     2.5,
+     2.5
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "weak",
+    "stipe": "smooth",
+    "cap": [
+     "olive",
+     "yellow-brown",
+     "brown"
+    ],
+    "host": [
+     "oak",
+     "beech",
+     "spruce",
+     "birch"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Tør, filtet, brungul til oliventonet hat; grove gule porer."
+  },
+  {
+   "n": "Xerocomus ferrugineus",
+   "a": "(Schaeff.) Alessio",
+   "dk": "Brunkødet Fløjls-Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 40854,
+   "src": "LIT",
+   "sp": {
+    "lo": 11,
+    "hi": 15,
+    "wlo": 4,
+    "whi": 5.5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "dark-brown",
+     "olive"
+    ],
+    "host": [
+     "spruce",
+     "beech",
+     "oak"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Mørkere end subtomentosus; hvidt myceliefilt i basis; kød uforanderligt."
+  },
+  {
+   "n": "Xerocomellus chrysenteron",
+   "a": "(Bull.) Šutara",
+   "dk": "Rødsprækket Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11082,
+   "src": "SA",
+   "sp": {
+    "lo": 13,
+    "hi": 14.5,
+    "wlo": 4.5,
+    "whi": 5.5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "weak",
+    "stipe": "smooth",
+    "cap": [
+     "grey-brown",
+     "brown"
+    ],
+    "host": [
+     "beech",
+     "oak",
+     "spruce"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Hat sprækker rødligt op; glatte sporer."
+  },
+  {
+   "n": "Xerocomellus pruinatus",
+   "a": "(Fr. & Hök) Šutara",
+   "dk": "Dugget Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11086,
+   "src": "SA",
+   "sp": {
+    "lo": 13,
+    "hi": 14.5,
+    "wlo": 4.5,
+    "whi": 5.5,
+    "shape": "fusiform",
+    "orn": "finely striate (Melzer)",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "weak",
+    "stipe": "smooth",
+    "cap": [
+     "purple-brown",
+     "red-brown",
+     "grey-brown"
+    ],
+    "host": [
+     "beech",
+     "oak",
+     "spruce"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Dugget hat med smal rødlig rand; sporer fint stribede i Melzers — nøglekarakter."
+  },
+  {
+   "n": "Xerocomellus porosporus",
+   "a": "(Imler) Šutara",
+   "dk": "Afskårensporet Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11085,
+   "src": "SA",
+   "sp": {
+    "lo": 13,
+    "hi": 15,
+    "wlo": 5,
+    "whi": 6,
+    "shape": "truncate",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "weak",
+    "stipe": "smooth",
+    "cap": [
+     "grey-brown",
+     "olive-brown"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Hat sprækker HVIDLIGT (ikke rødt); mange sporer med afskåret spids — diagnostisk."
+  },
+  {
+   "n": "Xerocomellus engelii",
+   "a": "(Hlaváček) Šutara",
+   "dk": "Orangeprikket Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11063,
+   "src": "SA",
+   "sp": {
+    "lo": 12,
+    "hi": 15,
+    "wlo": 4.5,
+    "whi": 5.5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "weak",
+    "stipe": "smooth",
+    "cap": [
+     "grey-brown",
+     "cinnamon",
+     "coral-red"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Små orange prikker i det basale stokkød — nøglekarakter."
+  },
+  {
+   "n": "Hortiboletus rubellus",
+   "a": "(Krombh.) Simonini et al.",
+   "dk": "Blodrød Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11095,
+   "src": "SA",
+   "sp": {
+    "lo": 11.5,
+    "hi": 12.5,
+    "wlo": 5,
+    "whi": 5.5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "weak",
+    "stipe": "smooth",
+    "cap": [
+     "red",
+     "coral-red"
+    ],
+    "host": [
+     "oak",
+     "lime"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Blodrød til koralrød filtet hat; orange prikker i stokbasis."
+  },
+  {
+   "n": "Hortiboletus bubalinus",
+   "a": "(Oolbekk. & Duin) L. Albert & Dima",
+   "dk": "Bøffelbrun Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11067,
+   "src": "SA",
+   "sp": {
+    "lo": 11.5,
+    "hi": 12,
+    "wlo": 4.5,
+    "whi": 5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "weak",
+    "stipe": "smooth",
+    "cap": [
+     "pale-brown",
+     "pink"
+    ],
+    "host": [
+     "oak",
+     "lime",
+     "poplar"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Træbrun til rosabrun, dugget hat; kød rosa i hatten."
+  },
+  {
+   "n": "Aureoboletus gentilis",
+   "a": "(Quél.) Pouzar",
+   "dk": "Guldporet Slimrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 10933,
+   "src": "SA",
+   "sp": {
+    "lo": 11,
+    "hi": 16,
+    "wlo": 4.5,
+    "whi": 6,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow",
+     "golden"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "pink",
+     "pale-brown",
+     "red"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 0,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Syrlig hatslim; blegt rosabrun hat; gyldengule porer. Sjælden."
+  },
+  {
+   "n": "Hemileccinum impolitum",
+   "a": "(Fr.) Šutara",
+   "dk": "Gulporet Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11073,
+   "src": "SA",
+   "sp": {
+    "lo": 11,
+    "hi": 16,
+    "wlo": 4,
+    "whi": 5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "pale-brown",
+     "pink",
+     "ochre"
+    ],
+    "host": [
+     "oak"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 0,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Lugt af jodoform/karbol i stokbasis; kød uforanderligt."
+  },
+  {
+   "n": "Pseudoboletus parasiticus",
+   "a": "(Bull.) Šutara",
+   "dk": "Snylte-Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11081,
+   "src": "SA",
+   "sp": {
+    "lo": 12,
+    "hi": 17.5,
+    "wlo": 4,
+    "whi": 5.5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow",
+     "olive"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "olive",
+     "yellow-brown"
+    ],
+    "host": [
+     "scleroderma"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "inedible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Vokser KUN på Scleroderma citrinum — entydig."
+  },
+  {
+   "n": "Chalciporus piperatus",
+   "a": "(Bull.) Bataille",
+   "dk": "Peber-Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 11573,
+   "src": "SA",
+   "sp": {
+    "lo": 8,
+    "hi": 11,
+    "wlo": 4,
+    "whi": 5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "cinnamon-brown"
+   },
+   "m": {
+    "pore": [
+     "rust",
+     "cinnamon",
+     "red-brown"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "cinnamon",
+     "pale-brown",
+     "pink"
+    ],
+    "host": [
+     "birch",
+     "pine",
+     "spruce"
+    ],
+    "taste": "peppery"
+   },
+   "size": "small",
+   "ed": "inedible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Brændende peberagtig smag; rustrøde porer; gult kød i stokbasis. Små sporer."
+  },
+  {
+   "n": "Chalciporus rubinus",
+   "a": "(W.G. Sm.) Singer",
+   "dk": "Rubin-Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 41333,
+   "src": "LIT",
+   "sp": {
+    "lo": 4,
+    "hi": 5.5,
+    "wlo": 3,
+    "whi": 4,
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "pink-brown"
+   },
+   "m": {
+    "pore": [
+     "red",
+     "pink"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "pale-brown",
+     "olive"
+    ],
+    "host": [
+     "oak"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "inedible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 0,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Meget små, brede sporer (Q~1,4) — helt atypisk for en rørhat. Meget sjælden."
+  },
+  {
+   "n": "Tylopilus felleus",
+   "a": "(Bull.) P. Karst.",
+   "dk": "Gald-Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 21358,
+   "src": "SA",
+   "sp": {
+    "lo": 11,
+    "hi": 15,
+    "wlo": 4,
+    "whi": 5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "pink"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "pink"
+    ],
+    "blue": "none",
+    "stipe": "reticulate-dark",
+    "cap": [
+     "cinnamon",
+     "pale-brown"
+    ],
+    "host": [
+     "spruce",
+     "beech",
+     "oak",
+     "pine"
+    ],
+    "taste": "bitter"
+   },
+   "size": "large",
+   "ed": "inedible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "ROSA sporeaftryk — adskiller straks fra Boletus edulis. Meget bitter; groft mørkt net."
+  },
+  {
+   "n": "Porphyrellus porphyrosporus",
+   "a": "(Fr. & Hök) E.-J. Gilbert",
+   "dk": "Dyster Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 19022,
+   "src": "LIT",
+   "sp": {
+    "lo": 12,
+    "hi": 17,
+    "wlo": 6,
+    "whi": 8,
+    "shape": "ellipsoid-fusiform",
+    "orn": "smooth",
+    "print": "purple-brown"
+   },
+   "m": {
+    "pore": [
+     "grey",
+     "brown",
+     "olive"
+    ],
+    "blue": "weak",
+    "stipe": "smooth",
+    "cap": [
+     "dark-brown",
+     "grey-brown",
+     "black-brown"
+    ],
+    "host": [
+     "spruce",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "inedible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Purpurbrunt sporeaftryk; helt mørkebrun/sodfarvet. Brede sporer."
+  },
+  {
+   "n": "Strobilomyces strobilaceus",
+   "a": "(Scop.) Berk.",
+   "dk": "Kogle-Rørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 20681,
+   "src": "SA",
+   "sp": {
+    "lo": 10,
+    "hi": 12,
+    "wlo": 8.5,
+    "whi": 11,
+    "shape": "subglobose",
+    "orn": "coarse reticulate",
+    "print": "blackish"
+   },
+   "m": {
+    "pore": [
+     "grey",
+     "white"
+    ],
+    "blue": "moderate",
+    "stipe": "shaggy-ringed",
+    "cap": [
+     "dark-grey",
+     "black"
+    ],
+    "host": [
+     "beech",
+     "oak"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Entydig: næsten kugleformede, groft netornamenterede, sorte sporer. Grovskællet grå hat med ring."
+  },
+  {
+   "n": "Phylloporus pelletieri",
+   "a": "(Lév.) Quél.",
+   "dk": "Guldbladet Rørhat",
+   "fam": "Boletaceae",
+   "ft": "agaricoid",
+   "saId": 60908,
+   "src": "LIT",
+   "sp": {
+    "lo": 11,
+    "hi": 15,
+    "wlo": 4,
+    "whi": 5.5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "weak",
+    "stipe": "smooth",
+    "cap": [
+     "brown",
+     "olive-brown"
+    ],
+    "host": [
+     "beech",
+     "oak",
+     "spruce"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Rørhat med LAMELLER — tykke, gyldengule, nedløbende. Sjælden."
+  },
+  {
+   "n": "Leccinum scabrum",
+   "a": "(Bull.) Gray",
+   "dk": "Brun Skælrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 16111,
+   "src": "SA",
+   "sp": {
+    "lo": 14,
+    "hi": 20,
+    "wlo": 5,
+    "whi": 6,
+    "q": [
+     3,
+     3.3
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "snuff-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "grey",
+     "brown"
+    ],
+    "blue": "none",
+    "stipe": "scabrous-dark",
+    "cap": [
+     "brown",
+     "dark-brown"
+    ],
+    "host": [
+     "birch"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 1,
+    "GL": 1,
+    "FO": 1
+   },
+   "note": "Kød uforanderligt eller svagt rødmende, ALDRIG grønt. Gråbrune til gråsorte stokskæl."
+  },
+  {
+   "n": "Leccinum variicolor",
+   "a": "Watling",
+   "dk": "Broget Skælrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 16116,
+   "src": "SA",
+   "sp": {
+    "lo": 13.5,
+    "hi": 17.5,
+    "wlo": 5,
+    "whi": 6.5,
+    "q": [
+     2.6,
+     2.8
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "snuff-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "grey"
+    ],
+    "blue": "none",
+    "stipe": "scabrous-dark",
+    "cap": [
+     "dark-brown",
+     "grey-brown"
+    ],
+    "host": [
+     "birch"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Mørke og lyse „flammer\" på hatten; pletvis grønfarvet eller blånende kød."
+  },
+  {
+   "n": "Leccinum schistophilum",
+   "a": "(Bon) Bon",
+   "dk": "Turkisbasis-Skælrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 16100,
+   "src": "SA",
+   "sp": {
+    "lo": 13.5,
+    "hi": 17,
+    "wlo": 5,
+    "whi": 6.5,
+    "q": [
+     2.8,
+     2.9
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "snuff-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "grey"
+    ],
+    "blue": "none",
+    "stipe": "scabrous-pale",
+    "cap": [
+     "pale-brown",
+     "grey-brown"
+    ],
+    "host": [
+     "birch"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Kød misfarves turkis i stokbasis; ret lyse gråbrune stokskæl."
+  },
+  {
+   "n": "Leccinum holopus",
+   "a": "(Rostk.) Watling",
+   "dk": "Hvid Skælrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 16092,
+   "src": "SA",
+   "sp": {
+    "lo": 17.5,
+    "hi": 20,
+    "wlo": 5.5,
+    "whi": 6.5,
+    "q": [
+     2.6,
+     2.8
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "snuff-brown"
+   },
+   "m": {
+    "pore": [
+     "white"
+    ],
+    "blue": "none",
+    "stipe": "scabrous-pale",
+    "cap": [
+     "whitish",
+     "pale-grey"
+    ],
+    "host": [
+     "birch"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 1,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Hvidlig, i moser/sphagnum under birk. Meget lange sporer."
+  },
+  {
+   "n": "Leccinum cyaneobasileucum",
+   "a": "Lannoy & Estadès",
+   "dk": "Blånende Skælrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 16083,
+   "src": "SA",
+   "sp": {
+    "lo": 14,
+    "hi": 19.5,
+    "wlo": 4,
+    "whi": 6.5,
+    "q": [
+     3.1,
+     3.5
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "snuff-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "grey"
+    ],
+    "blue": "none",
+    "stipe": "scabrous-dark",
+    "cap": [
+     "pale-grey",
+     "grey-brown"
+    ],
+    "host": [
+     "birch"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Pletvist grønfarvet eller blånende kød i stokbasis."
+  },
+  {
+   "n": "Leccinum rotundifoliae",
+   "a": "(Singer) A.H. Sm. et al.",
+   "dk": "Dværgbirke-Skælrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 16107,
+   "src": "SA",
+   "sp": {
+    "lo": 13.5,
+    "hi": 17.5,
+    "wlo": 4.5,
+    "whi": 7,
+    "q": [
+     2.5,
+     2.7
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "snuff-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "grey"
+    ],
+    "blue": "none",
+    "stipe": "scabrous-dark",
+    "cap": [
+     "brown",
+     "pale-brown"
+    ],
+    "host": [
+     "dwarf-birch"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "edible",
+   "nordic": {
+    "DK": 0,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 1,
+    "GL": 1,
+    "FO": 0
+   },
+   "note": "Arktisk-alpin, ved dværgbirk (Betula nana). Nøgleart for Grønland/Island."
+  },
+  {
+   "n": "Leccinum duriusculum",
+   "a": "(Schulzer ex Kalchbr.) Singer",
+   "dk": "Poppel-Skælrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 16090,
+   "src": "SA",
+   "sp": {
+    "lo": 14.5,
+    "hi": 16,
+    "wlo": 4.5,
+    "whi": 6,
+    "q": [
+     2.3,
+     2.7
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "snuff-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "grey"
+    ],
+    "blue": "none",
+    "stipe": "scabrous-dark",
+    "cap": [
+     "brown",
+     "grey-brown"
+    ],
+    "host": [
+     "poplar",
+     "aspen"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Ved poppel/asp; kød rødmer og sortner; lav Q-værdi."
+  },
+  {
+   "n": "Leccinum versipelle",
+   "a": "(Fr. & Hök) Snell",
+   "dk": "Rødbrun Skælrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 16117,
+   "src": "SA",
+   "sp": {
+    "lo": 12.5,
+    "hi": 16,
+    "wlo": 4,
+    "whi": 5,
+    "q": [
+     3,
+     3.3
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "snuff-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "grey"
+    ],
+    "blue": "none",
+    "stipe": "scabrous-dark",
+    "cap": [
+     "orange",
+     "orange-brown"
+    ],
+    "host": [
+     "birch"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "choice",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 1,
+    "GL": 0,
+    "FO": 1
+   },
+   "note": "Brunorange hat med overhængende hathud; SORTE stokskæl; kød sortner. Ved birk."
+  },
+  {
+   "n": "Leccinum albostipitatum",
+   "a": "den Bakker & Noordel.",
+   "dk": "Hvidstokket Skælrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 16080,
+   "src": "SA",
+   "sp": {
+    "lo": 11,
+    "hi": 17,
+    "wlo": 4,
+    "whi": 5,
+    "q": [
+     3.1,
+     3.1
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "snuff-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "grey"
+    ],
+    "blue": "none",
+    "stipe": "scabrous-pale",
+    "cap": [
+     "orange",
+     "orange-brown"
+    ],
+    "host": [
+     "poplar",
+     "aspen"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "choice",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Brunorange hat, HVIDE stokskæl, ved asp/poppel; kød sortner."
+  },
+  {
+   "n": "Leccinum aurantiacum",
+   "a": "(Bull.) Gray",
+   "dk": "Orange Skælrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 16081,
+   "src": "SA",
+   "sp": {
+    "lo": 12.5,
+    "hi": 18.5,
+    "wlo": 3.5,
+    "whi": 5,
+    "q": [
+     3.2,
+     3.6
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "snuff-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "grey"
+    ],
+    "blue": "none",
+    "stipe": "scabrous-brown",
+    "cap": [
+     "orange",
+     "orange-brown"
+    ],
+    "host": [
+     "poplar",
+     "aspen",
+     "oak"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "choice",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Stor, fastkødet, brunorange; høj Q-værdi (slanke sporer)."
+  },
+  {
+   "n": "Leccinum vulpinum",
+   "a": "Watling",
+   "dk": "Ræverød Skælrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 16118,
+   "src": "SA",
+   "sp": {
+    "lo": 12.5,
+    "hi": 15,
+    "wlo": 3,
+    "whi": 4,
+    "q": [
+     3.2,
+     3.4
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "snuff-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "grey"
+    ],
+    "blue": "none",
+    "stipe": "scabrous-brown",
+    "cap": [
+     "red-brown",
+     "orange-brown"
+    ],
+    "host": [
+     "pine",
+     "spruce"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "choice",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Ved nåletræ; brunrøde stokskæl fra start; meget smalle sporer (3–4 µm)."
+  },
+  {
+   "n": "Leccinum quercinum",
+   "a": "(Pilát) E.E. Green & Watling",
+   "dk": "Ege-Skælrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 16105,
+   "src": "SA",
+   "sp": {
+    "lo": 12.5,
+    "hi": 18.5,
+    "wlo": 3.5,
+    "whi": 5,
+    "q": [
+     3.2,
+     3.6
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "snuff-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "grey"
+    ],
+    "blue": "none",
+    "stipe": "scabrous-brown",
+    "cap": [
+     "red-brown",
+     "orange-brown"
+    ],
+    "host": [
+     "oak"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "choice",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Ved eg; rødbrune stokskæl."
+  },
+  {
+   "n": "Leccinellum crocipodium",
+   "a": "(Letell.) Della Magg. & Trassin.",
+   "dk": "Gulporet Skælrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 16088,
+   "src": "SA",
+   "sp": {
+    "lo": 12,
+    "hi": 18,
+    "wlo": 5,
+    "whi": 7,
+    "q": [
+     2.3,
+     2.4
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "snuff-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "scabrous-yellow",
+    "cap": [
+     "yellow",
+     "yellow-brown"
+    ],
+    "host": [
+     "oak"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 0,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Eneste Leccinum med GULE porer; kød sortner. Sjælden."
+  },
+  {
+   "n": "Leccinellum pseudoscabrum",
+   "a": "(Kallenb.) Mikšík",
+   "syn": "Leccinum carpini",
+   "dk": "Avnbøg-Skælrørhat",
+   "fam": "Boletaceae",
+   "ft": "boletoid",
+   "saId": 16084,
+   "src": "LIT",
+   "sp": {
+    "lo": 12,
+    "hi": 18,
+    "wlo": 5,
+    "whi": 6.5,
+    "q": [
+     2.4,
+     2.8
+    ],
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "snuff-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "grey",
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "scabrous-dark",
+    "cap": [
+     "dark-brown",
+     "grey-brown"
+    ],
+    "host": [
+     "hornbeam",
+     "hazel"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Rynket-hamret hat; ved avnbøg/hassel; kød violetsort ved snit."
+  },
+  {
+   "n": "Suillus luteus",
+   "a": "(L.) Roussel",
+   "dk": "Almindelig Slimrørhat",
+   "fam": "Suillaceae",
+   "ft": "boletoid",
+   "saId": 20734,
+   "src": "SA",
+   "sp": {
+    "lo": 7,
+    "hi": 10,
+    "wlo": 3,
+    "whi": 3.5,
+    "shape": "ellipsoid-fusiform",
+    "orn": "smooth",
+    "print": "ochre-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "ring",
+    "cap": [
+     "red-brown",
+     "dark-brown"
+    ],
+    "host": [
+     "pine"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 1,
+    "GL": 0,
+    "FO": 1
+   },
+   "note": "Meget slimet rødbrun hat + tydelig membranøs RING. Ved 2-nålet fyr."
+  },
+  {
+   "n": "Suillus granulatus",
+   "a": "(L.) Roussel",
+   "dk": "Ringløs Slimrørhat",
+   "fam": "Suillaceae",
+   "ft": "boletoid",
+   "saId": 20731,
+   "src": "SA",
+   "sp": {
+    "lo": 8,
+    "hi": 10,
+    "wlo": 2.5,
+    "whi": 3.5,
+    "shape": "ellipsoid-fusiform",
+    "orn": "smooth",
+    "print": "ochre-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "glandular-dots",
+    "cap": [
+     "orange-brown",
+     "cinnamon"
+    ],
+    "host": [
+     "pine"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 1,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Ingen ring; mælkehvide dråber fra porerne når frisk; kirtelprikker på stok."
+  },
+  {
+   "n": "Suillus bovinus",
+   "a": "(L.) Roussel",
+   "dk": "Ru Slimrørhat",
+   "fam": "Suillaceae",
+   "ft": "boletoid",
+   "saId": 20726,
+   "src": "SA",
+   "sp": {
+    "lo": 8,
+    "hi": 10,
+    "wlo": 3,
+    "whi": 4,
+    "shape": "ellipsoid-fusiform",
+    "orn": "smooth",
+    "print": "ochre-brown"
+   },
+   "m": {
+    "pore": [
+     "olive",
+     "yellow",
+     "grey"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "pale-brown",
+     "ochre"
+    ],
+    "host": [
+     "pine"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 1,
+    "GL": 0,
+    "FO": 1
+   },
+   "note": "Grove, sammensatte, olivengrå porer; ofte med Gomphidius roseus."
+  },
+  {
+   "n": "Suillus variegatus",
+   "a": "(Sw.) Richon & Roze",
+   "dk": "Broget Slimrørhat",
+   "fam": "Suillaceae",
+   "ft": "boletoid",
+   "saId": 20739,
+   "src": "SA",
+   "sp": {
+    "lo": 7.5,
+    "hi": 11,
+    "wlo": 3,
+    "whi": 4,
+    "shape": "ellipsoid-fusiform",
+    "orn": "smooth",
+    "print": "ochre-brown"
+   },
+   "m": {
+    "pore": [
+     "olive",
+     "brown"
+    ],
+    "blue": "weak",
+    "stipe": "smooth",
+    "cap": [
+     "ochre",
+     "yellow-brown"
+    ],
+    "host": [
+     "pine"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Næsten tør, småskællet hat; svagt blånende kød; lugt af karbol."
+  },
+  {
+   "n": "Suillus grevillei",
+   "a": "(Klotzsch) Singer",
+   "dk": "Lærke-Slimrørhat",
+   "fam": "Suillaceae",
+   "ft": "boletoid",
+   "saId": 63736,
+   "src": "SA",
+   "sp": {
+    "lo": 8,
+    "hi": 11,
+    "wlo": 3,
+    "whi": 4,
+    "shape": "ellipsoid-fusiform",
+    "orn": "smooth",
+    "print": "ochre-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "ring",
+    "cap": [
+     "yellow",
+     "orange-brown"
+    ],
+    "host": [
+     "larch"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 1,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Kun ved LÆRK; klar gul til brunorange slimet hat med ring."
+  },
+  {
+   "n": "Suillus viscidus",
+   "a": "(L.) Roussel",
+   "syn": "Suillus aeruginascens",
+   "dk": "Grå Slimrørhat",
+   "fam": "Suillaceae",
+   "ft": "boletoid",
+   "saId": 20723,
+   "src": "SA",
+   "sp": {
+    "lo": 10,
+    "hi": 13,
+    "wlo": 4,
+    "whi": 5.5,
+    "shape": "ellipsoid-fusiform",
+    "orn": "smooth",
+    "print": "ochre-brown"
+   },
+   "m": {
+    "pore": [
+     "grey",
+     "olive",
+     "white"
+    ],
+    "blue": "weak",
+    "stipe": "ring",
+    "cap": [
+     "grey",
+     "olive-grey"
+    ],
+    "host": [
+     "larch"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Ved lærk; olivengrå marmoreret hat; største sporer i slægten."
+  },
+  {
+   "n": "Suillus tridentinus",
+   "a": "(Bres.) Singer",
+   "dk": "Orange Slimrørhat",
+   "fam": "Suillaceae",
+   "ft": "boletoid",
+   "saId": 20738,
+   "src": "SA",
+   "sp": {
+    "lo": 9,
+    "hi": 13,
+    "wlo": 4,
+    "whi": 6,
+    "shape": "ellipsoid-fusiform",
+    "orn": "smooth",
+    "print": "ochre-brown"
+   },
+   "m": {
+    "pore": [
+     "orange",
+     "rust"
+    ],
+    "blue": "none",
+    "stipe": "ring",
+    "cap": [
+     "orange",
+     "yellow-brown"
+    ],
+    "host": [
+     "larch"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Ved lærk; orange-rustfarvede porer. Brede sporer. Sjælden."
+  },
+  {
+   "n": "Suillus placidus",
+   "a": "(Bonord.) Singer",
+   "dk": "Hvid Slimrørhat",
+   "fam": "Suillaceae",
+   "ft": "boletoid",
+   "saId": 20736,
+   "src": "SA",
+   "sp": {
+    "lo": 7.5,
+    "hi": 9,
+    "wlo": 3,
+    "whi": 3.5,
+    "shape": "ellipsoid-fusiform",
+    "orn": "smooth",
+    "print": "ochre-brown"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "glandular-dots",
+    "cap": [
+     "whitish",
+     "pale-yellow"
+    ],
+    "host": [
+     "pine"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Hvidlig til lyst lædergul hat; ved 5-nålet fyr (Pinus strobus/cembra)."
+  },
+  {
+   "n": "Suillus flavidus",
+   "a": "(Fr.) J. Presl",
+   "dk": "Mose-Slimrørhat",
+   "fam": "Suillaceae",
+   "ft": "boletoid",
+   "saId": 20730,
+   "src": "SA",
+   "sp": {
+    "lo": 8,
+    "hi": 10,
+    "wlo": 3.5,
+    "whi": 4.5,
+    "shape": "ellipsoid-fusiform",
+    "orn": "smooth",
+    "print": "ochre-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow",
+     "olive"
+    ],
+    "blue": "none",
+    "stipe": "ring",
+    "cap": [
+     "yellow",
+     "ochre"
+    ],
+    "host": [
+     "pine"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Lille, konisk gul hat; i fugtige moser under fyr."
+  },
+  {
+   "n": "Suillus collinitus",
+   "a": "(Fr.) Kuntze",
+   "dk": "Rodfiltet Slimrørhat",
+   "fam": "Suillaceae",
+   "ft": "boletoid",
+   "saId": 20728,
+   "src": "SA",
+   "sp": {
+    "lo": 8.5,
+    "hi": 9.5,
+    "wlo": 3.5,
+    "whi": 4,
+    "shape": "ellipsoid-fusiform",
+    "orn": "smooth",
+    "print": "ochre-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "glandular-dots",
+    "cap": [
+     "cinnamon",
+     "brown"
+    ],
+    "host": [
+     "pine"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Rosa myceliefilt i stokbasis — nøglekarakter mod S. granulatus."
+  },
+  {
+   "n": "Suillus lapponicus",
+   "a": "Kers",
+   "dk": "Lapsk Slimrørhat",
+   "fam": "Suillaceae",
+   "ft": "boletoid",
+   "saId": 20733,
+   "src": "LIT",
+   "sp": {
+    "lo": 8,
+    "hi": 11,
+    "wlo": 3,
+    "whi": 4.5,
+    "shape": "ellipsoid-fusiform",
+    "orn": "smooth",
+    "print": "ochre-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow"
+    ],
+    "blue": "weak",
+    "stipe": "ring",
+    "cap": [
+     "yellow-brown",
+     "olive"
+    ],
+    "host": [
+     "spruce"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 0,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Nordskandinavisk; ved gran i fjeldbirkeskov. Sjælden."
+  },
+  {
+   "n": "Suillus cavipes",
+   "a": "(Opat.) A.H. Sm. & Thiers",
+   "dk": "Hulstokket Slimrørhat",
+   "fam": "Suillaceae",
+   "ft": "boletoid",
+   "saId": 63734,
+   "src": "LIT",
+   "sp": {
+    "lo": 7,
+    "hi": 10,
+    "wlo": 3,
+    "whi": 4,
+    "shape": "ellipsoid-fusiform",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "yellow",
+     "olive"
+    ],
+    "blue": "none",
+    "stipe": "ring",
+    "cap": [
+     "red-brown",
+     "brown"
+    ],
+    "host": [
+     "larch"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 0,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Tør, skællet-filtet hat; HUL stok — entydig. Ved lærk."
+  },
+  {
+   "n": "Gyroporus castaneus",
+   "a": "(Bull.) Quél.",
+   "dk": "Kastanje-Rørhat",
+   "fam": "Gyroporaceae",
+   "ft": "boletoid",
+   "saId": 14462,
+   "src": "SA",
+   "sp": {
+    "lo": 8,
+    "hi": 11,
+    "wlo": 5,
+    "whi": 6,
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "pale-yellow"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "yellow"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "cinnamon",
+     "orange-brown"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "BLEGT GULT sporeaftryk (ikke olivenbrunt) — nøglekarakter. Skør, hul stok."
+  },
+  {
+   "n": "Gyroporus cyanescens",
+   "a": "(Bull.) Quél.",
+   "dk": "Blånende Rørhat",
+   "fam": "Gyroporaceae",
+   "ft": "boletoid",
+   "saId": 14463,
+   "src": "SA",
+   "sp": {
+    "lo": 9,
+    "hi": 11,
+    "wlo": 4.5,
+    "whi": 6,
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "pale-yellow"
+   },
+   "m": {
+    "pore": [
+     "white",
+     "yellow"
+    ],
+    "blue": "strong",
+    "stipe": "smooth",
+    "cap": [
+     "ochre",
+     "pale-brown",
+     "straw"
+    ],
+    "host": [
+     "birch",
+     "oak",
+     "pine"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Blåner momentant koboltblåt; blegt gult sporeaftryk; skør, kammeret stok."
+  },
+  {
+   "n": "Gyrodon lividus",
+   "a": "(Bull.) Sacc.",
+   "dk": "El-Rørhat",
+   "fam": "Paxillaceae",
+   "ft": "boletoid",
+   "saId": 14452,
+   "src": "SA",
+   "sp": {
+    "lo": 4.5,
+    "hi": 6,
+    "wlo": 3,
+    "whi": 4,
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "olive-yellow"
+   },
+   "m": {
+    "pore": [
+     "yellow",
+     "olive"
+    ],
+    "blue": "moderate",
+    "stipe": "smooth",
+    "cap": [
+     "pale-grey",
+     "olive",
+     "ochre"
+    ],
+    "host": [
+     "alder"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "inedible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Kun ved EL; meget små sporer (4,5–6 µm) — entydigt for en rørhat. Nedløbende porer."
+  },
+  {
+   "n": "Paxillus involutus",
+   "a": "(Batsch) Fr.",
+   "dk": "Almindelig Netbladhat",
+   "fam": "Paxillaceae",
+   "ft": "agaricoid",
+   "saId": 18007,
+   "src": "SA",
+   "sp": {
+    "lo": 7,
+    "hi": 11,
+    "wlo": 5,
+    "whi": 6.5,
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "sienna-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "brown",
+     "ochre-brown"
+    ],
+    "host": [
+     "birch",
+     "spruce",
+     "pine"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "deadly",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 1,
+    "GL": 0,
+    "FO": 1
+   },
+   "note": "DØDELIGT GIFTIG (immunhæmolyse). Lameller nedløbende, gaffeldelte, brunplettede ved tryk; indrullet ribbet rand."
+  },
+  {
+   "n": "Paxillus obscurisporus",
+   "a": "C. Hahn",
+   "dk": "Storsporet Netbladhat",
+   "fam": "Paxillaceae",
+   "ft": "agaricoid",
+   "saId": 60821,
+   "src": "SA",
+   "sp": {
+    "lo": 7,
+    "hi": 10.5,
+    "wlo": 5,
+    "whi": 6.5,
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "brown",
+     "dark-brown"
+    ],
+    "host": [
+     "lime",
+     "oak",
+     "birch"
+    ],
+    "taste": "mild"
+   },
+   "size": "large",
+   "ed": "deadly",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Meget kraftig, kort- og tykstokket; ofte vinrøde misfarvninger. Parker og haver."
+  },
+  {
+   "n": "Paxillus filamentosus",
+   "a": "Fr.",
+   "syn": "Paxillus rubicundulus",
+   "dk": "El-Netbladhat",
+   "fam": "Paxillaceae",
+   "ft": "agaricoid",
+   "saId": 18005,
+   "src": "SA",
+   "sp": {
+    "lo": 5.5,
+    "hi": 8.5,
+    "wlo": 4,
+    "whi": 5,
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "sienna-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "ochre",
+     "yellow-brown"
+    ],
+    "host": [
+     "alder"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "deadly",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Kun ved EL; spinklere, stærkt randribbet, gultonet kød. Mindste sporer i slægten."
+  },
+  {
+   "n": "Tapinella atrotomentosa",
+   "a": "(Batsch) Šutara",
+   "syn": "Paxillus atrotomentosus",
+   "dk": "Fløjlsfodet Netbladhat",
+   "fam": "Tapinellaceae",
+   "ft": "agaricoid",
+   "saId": 20828,
+   "src": "LIT",
+   "sp": {
+    "lo": 4.5,
+    "hi": 6,
+    "wlo": 3,
+    "whi": 4,
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "pale-yellow-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "velvety-black",
+    "cap": [
+     "brown",
+     "ochre-brown"
+    ],
+    "host": [
+     "pine-stumps",
+     "conifer-wood"
+    ],
+    "taste": "bitter"
+   },
+   "size": "large",
+   "ed": "inedible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "På nåletræsstubbe; sortbrun fløjlsagtig excentrisk stok — entydig."
+  },
+  {
+   "n": "Tapinella panuoides",
+   "a": "(Fr.) E.-J. Gilbert",
+   "syn": "Paxillus panuoides",
+   "dk": "Stokløs Netbladhat",
+   "fam": "Tapinellaceae",
+   "ft": "agaricoid",
+   "saId": 20829,
+   "src": "LIT",
+   "sp": {
+    "lo": 4,
+    "hi": 6,
+    "wlo": 3,
+    "whi": 4,
+    "shape": "ellipsoid",
+    "orn": "smooth",
+    "print": "pale-yellow-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "absent",
+    "cap": [
+     "ochre",
+     "yellow-brown"
+    ],
+    "host": [
+     "conifer-wood"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "inedible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Vifteformet, uden stok, på nåletræ; stærkt gaffeldelte krusede lameller."
+  },
+  {
+   "n": "Hygrophoropsis aurantiaca",
+   "a": "(Wulfen) Maire",
+   "dk": "Falsk Kantarel",
+   "fam": "Hygrophoropsidaceae",
+   "ft": "agaricoid",
+   "saId": 14886,
+   "src": "SA",
+   "sp": {
+    "lo": 5,
+    "hi": 7,
+    "wlo": 3.5,
+    "whi": 4.5,
+    "shape": "ellipsoid",
+    "orn": "smooth (dextrinoid)",
+    "print": "white"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "smooth",
+    "cap": [
+     "orange"
+    ],
+    "host": [
+     "pine",
+     "spruce",
+     "heath"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "caution",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 1,
+    "GL": 0,
+    "FO": 1
+   },
+   "note": "HVIDT sporeaftryk + DEXTRINOIDE sporer — adskiller fra ægte kantarel og fra Paxillus."
+  },
+  {
+   "n": "Gomphidius glutinosus",
+   "a": "(Schaeff.) Fr.",
+   "dk": "Stor Sløjhat",
+   "fam": "Gomphidiaceae",
+   "ft": "agaricoid",
+   "saId": 14369,
+   "src": "SA",
+   "sp": {
+    "lo": 17,
+    "hi": 20,
+    "wlo": 5.5,
+    "whi": 6.5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "blackish"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "yellow-base",
+    "cap": [
+     "grey-brown",
+     "purple-grey"
+    ],
+    "host": [
+     "spruce"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 1,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Meget slimet grågul hat; KANARIEGUL stokbasis; sorte lameller. Ved gran."
+  },
+  {
+   "n": "Gomphidius roseus",
+   "a": "(Fr.) Fr.",
+   "dk": "Rosa Sløjhat",
+   "fam": "Gomphidiaceae",
+   "ft": "agaricoid",
+   "saId": 14371,
+   "src": "SA",
+   "sp": {
+    "lo": 17,
+    "hi": 20,
+    "wlo": 5,
+    "whi": 5.5,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "blackish"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "white",
+    "cap": [
+     "red",
+     "pink"
+    ],
+    "host": [
+     "pine"
+    ],
+    "taste": "mild"
+   },
+   "size": "small",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Klart rosarød hat; INGEN gul farve i stokkød. Altid sammen med Suillus bovinus."
+  },
+  {
+   "n": "Gomphidius maculatus",
+   "a": "(Scop.) Fr.",
+   "dk": "Plettet Sløjhat",
+   "fam": "Gomphidiaceae",
+   "ft": "agaricoid",
+   "saId": 14370,
+   "src": "SA",
+   "sp": {
+    "lo": 17,
+    "hi": 23,
+    "wlo": 6,
+    "whi": 8,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "blackish"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "yellow-base",
+    "cap": [
+     "ochre-brown",
+     "pale-brown"
+    ],
+    "host": [
+     "larch"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Ved LÆRK; rødmer ved tryk og sortner siden. Største sporer i familien."
+  },
+  {
+   "n": "Chroogomphus rutilus",
+   "a": "(Schaeff.) O.K. Mill.",
+   "dk": "Rødbrun Sløjhat",
+   "fam": "Gomphidiaceae",
+   "ft": "agaricoid",
+   "saId": 11614,
+   "src": "SA",
+   "sp": {
+    "lo": 15,
+    "hi": 22,
+    "wlo": 5.5,
+    "whi": 7,
+    "shape": "fusiform",
+    "orn": "smooth",
+    "print": "blackish"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "ochre",
+    "cap": [
+     "red-brown",
+     "copper"
+    ],
+    "host": [
+     "pine"
+    ],
+    "taste": "mild"
+   },
+   "size": "medium",
+   "ed": "edible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Tykvæggede cylindriske cystider; okkergult til safranfarvet kød. Ved fyr."
+  },
+  {
+   "n": "Scleroderma citrinum",
+   "a": "Pers.",
+   "dk": "Almindelig Bruskbold",
+   "fam": "Sclerodermataceae",
+   "ft": "gasteroid",
+   "saId": 20219,
+   "src": "SA",
+   "sp": {
+    "lo": 10,
+    "hi": 12,
+    "wlo": 10,
+    "whi": 12,
+    "shape": "globose",
+    "orn": "incomplete reticulum",
+    "print": "blackish-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "absent",
+    "cap": [
+     "yellow",
+     "ochre"
+    ],
+    "host": [
+     "oak",
+     "birch",
+     "heath"
+    ],
+    "taste": "n/a"
+   },
+   "size": "medium",
+   "ed": "toxic",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Tykskindet, grovskællet, gullig; INGEN stok. Vært for Pseudoboletus parasiticus."
+  },
+  {
+   "n": "Scleroderma verrucosum",
+   "a": "(Bull.) Pers.",
+   "dk": "Vortet Bruskbold",
+   "fam": "Sclerodermataceae",
+   "ft": "gasteroid",
+   "saId": 20225,
+   "src": "SA",
+   "sp": {
+    "lo": 8,
+    "hi": 11,
+    "wlo": 8,
+    "whi": 11,
+    "shape": "globose",
+    "orn": "spiny",
+    "print": "blackish-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "rooting",
+    "cap": [
+     "brown",
+     "ochre-brown"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "n/a"
+   },
+   "size": "medium",
+   "ed": "toxic",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Kraftig rod-/stokagtig forlængelse; piggede sporer UDEN netmønster."
+  },
+  {
+   "n": "Scleroderma areolatum",
+   "a": "Ehrenb.",
+   "dk": "Netbruskbold",
+   "fam": "Sclerodermataceae",
+   "ft": "gasteroid",
+   "saId": 20216,
+   "src": "SA",
+   "sp": {
+    "lo": 10,
+    "hi": 13,
+    "wlo": 10,
+    "whi": 13,
+    "shape": "globose",
+    "orn": "short-spiny",
+    "print": "blackish-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "rooting",
+    "cap": [
+     "brown",
+     "ochre-brown"
+    ],
+    "host": [
+     "oak",
+     "beech",
+     "willow"
+    ],
+    "taste": "n/a"
+   },
+   "size": "small",
+   "ed": "toxic",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Tyndt peridium med tydelige, små, regelmæssige mørke skæl."
+  },
+  {
+   "n": "Scleroderma bovista",
+   "a": "Fr.",
+   "dk": "Glat Bruskbold",
+   "fam": "Sclerodermataceae",
+   "ft": "gasteroid",
+   "saId": 20217,
+   "src": "SA",
+   "sp": {
+    "lo": 9,
+    "hi": 13,
+    "wlo": 9,
+    "whi": 13,
+    "shape": "globose",
+    "orn": "complete reticulum",
+    "print": "blackish-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "rooting",
+    "cap": [
+     "ochre",
+     "pale-brown"
+    ],
+    "host": [
+     "oak",
+     "grassland"
+    ],
+    "taste": "n/a"
+   },
+   "size": "medium",
+   "ed": "toxic",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "KOMPLET netmønster på sporerne (mod citrinums ufuldstændige). Med øskner."
+  },
+  {
+   "n": "Scleroderma cepa",
+   "a": "Pers.",
+   "dk": "Løg-Bruskbold",
+   "fam": "Sclerodermataceae",
+   "ft": "gasteroid",
+   "saId": 20218,
+   "src": "SA",
+   "sp": {
+    "lo": 10,
+    "hi": 12,
+    "wlo": 10,
+    "whi": 12,
+    "shape": "globose",
+    "orn": "long-spiny (~2µm)",
+    "print": "blackish-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "absent",
+    "cap": [
+     "whitish",
+     "pale-brown"
+    ],
+    "host": [
+     "oak",
+     "beech"
+    ],
+    "taste": "n/a"
+   },
+   "size": "medium",
+   "ed": "toxic",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Kartoffelagtig, uden stok; langpiggede sporer (ca. 2 µm pigge)."
+  },
+  {
+   "n": "Scleroderma septentrionale",
+   "a": "Jeppson",
+   "dk": "Sand-Bruskbold",
+   "fam": "Sclerodermataceae",
+   "ft": "gasteroid",
+   "saId": 20223,
+   "src": "SA",
+   "sp": {
+    "lo": 9,
+    "hi": 15,
+    "wlo": 9,
+    "whi": 15,
+    "shape": "globose",
+    "orn": "complete reticulum",
+    "print": "blackish-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "rooting",
+    "cap": [
+     "ochre",
+     "pale-brown"
+    ],
+    "host": [
+     "dune",
+     "pine"
+    ],
+    "taste": "n/a"
+   },
+   "size": "large",
+   "ed": "toxic",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "I klitsand med kraftig rodagtig forlængelse ned i sandet. Nordisk specialitet."
+  },
+  {
+   "n": "Pisolithus arhizus",
+   "a": "(Scop.) Rauschert",
+   "dk": "Ærtebold",
+   "fam": "Sclerodermataceae",
+   "ft": "gasteroid",
+   "saId": 18788,
+   "src": "SA",
+   "sp": {
+    "lo": 7,
+    "hi": 8,
+    "wlo": 7,
+    "whi": 8,
+    "shape": "globose",
+    "orn": "spiny",
+    "print": "brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "stalked",
+    "cap": [
+     "brown",
+     "ochre"
+    ],
+    "host": [
+     "pine",
+     "birch",
+     "disturbed-ground"
+    ],
+    "taste": "n/a"
+   },
+   "size": "large",
+   "ed": "inedible",
+   "nordic": {
+    "DK": 1,
+    "NO": 0,
+    "SE": 1,
+    "FI": 0,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Indre delt i ærteagtige peridioler; stor stok og udvidet hoved. Meget små runde sporer."
+  },
+  {
+   "n": "Rhizopogon luteolus",
+   "a": "Fr. & Nordholm",
+   "dk": "Gul Skægtrøffel",
+   "fam": "Rhizopogonaceae",
+   "ft": "gasteroid",
+   "saId": 47475,
+   "src": "SA",
+   "sp": {
+    "lo": 5,
+    "hi": 8.5,
+    "wlo": 2,
+    "whi": 4,
+    "shape": "truncate-ellipsoid",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "absent",
+    "cap": [
+     "ochre",
+     "yellow-brown"
+    ],
+    "host": [
+     "pine"
+    ],
+    "taste": "n/a"
+   },
+   "size": "small",
+   "ed": "inedible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Hypogæisk knold med tydeligt mørkere hyfestrenge udenpå. Sporer afskåret i enden."
+  },
+  {
+   "n": "Rhizopogon roseolus",
+   "a": "(Corda) Th. Fr.",
+   "syn": "Rhizopogon rubescens",
+   "dk": "Rødmende Skægtrøffel",
+   "fam": "Rhizopogonaceae",
+   "ft": "gasteroid",
+   "saId": 19807,
+   "src": "SA",
+   "sp": {
+    "lo": 6,
+    "hi": 8,
+    "wlo": 2.5,
+    "whi": 4,
+    "shape": "truncate-ellipsoid",
+    "orn": "smooth",
+    "print": "olive-brown"
+   },
+   "m": {
+    "pore": [
+     "n/a"
+    ],
+    "blue": "none",
+    "stipe": "absent",
+    "cap": [
+     "whitish",
+     "pale-yellow"
+    ],
+    "host": [
+     "pine"
+    ],
+    "taste": "n/a"
+   },
+   "size": "small",
+   "ed": "inedible",
+   "nordic": {
+    "DK": 1,
+    "NO": 1,
+    "SE": 1,
+    "FI": 1,
+    "IS": 0,
+    "GL": 0,
+    "FO": 0
+   },
+   "note": "Lyst gullig, rødmer ved berøring; uden markante hyfestrenge."
+  }
+ ],
+ "FAMILY_SPORE": {
+  "Boletaceae": {
+   "orn": "smooth",
+   "apex": "rounded",
+   "wall": "thin",
+   "melzer": "inamyloid",
+   "cyano": "acyanophilic",
+   "gutt": "often",
+   "sym": "inequilateral"
+  },
+  "Suillaceae": {
+   "orn": "smooth",
+   "apex": "rounded",
+   "wall": "thin",
+   "melzer": "inamyloid",
+   "cyano": "acyanophilic",
+   "gutt": "often",
+   "sym": "inequilateral"
+  },
+  "Gyroporaceae": {
+   "orn": "smooth",
+   "apex": "rounded",
+   "wall": "thin",
+   "melzer": "inamyloid",
+   "cyano": "acyanophilic",
+   "gutt": "often",
+   "sym": "equilateral"
+  },
+  "Paxillaceae": {
+   "orn": "smooth",
+   "apex": "rounded",
+   "wall": "thin",
+   "melzer": "inamyloid",
+   "cyano": "acyanophilic",
+   "gutt": "rare",
+   "sym": "equilateral"
+  },
+  "Tapinellaceae": {
+   "orn": "smooth",
+   "apex": "rounded",
+   "wall": "thin",
+   "melzer": "inamyloid",
+   "cyano": "acyanophilic",
+   "gutt": "rare",
+   "sym": "equilateral"
+  },
+  "Hygrophoropsidaceae": {
+   "orn": "smooth",
+   "apex": "rounded",
+   "wall": "slightly-thickened",
+   "melzer": "dextrinoid",
+   "cyano": "acyanophilic",
+   "gutt": "rare",
+   "sym": "equilateral"
+  },
+  "Gomphidiaceae": {
+   "orn": "smooth",
+   "apex": "tapered",
+   "wall": "slightly-thickened",
+   "melzer": "inamyloid",
+   "cyano": "acyanophilic",
+   "gutt": "rare",
+   "sym": "inequilateral"
+  },
+  "Sclerodermataceae": {
+   "orn": "spiny",
+   "apex": "rounded",
+   "wall": "thick",
+   "melzer": "inamyloid",
+   "cyano": "acyanophilic",
+   "gutt": "absent",
+   "sym": "equilateral"
+  },
+  "Rhizopogonaceae": {
+   "orn": "smooth",
+   "apex": "truncate",
+   "wall": "thin",
+   "melzer": "inamyloid",
+   "cyano": "acyanophilic",
+   "gutt": "rare",
+   "sym": "equilateral"
+  }
+ },
+ "SPORE_OVERRIDE": {
+  "Xerocomellus pruinatus": {
+   "orn": "finely-striate",
+   "q": "very finely striate when seen in Melzer's reagent"
+  },
+  "Xerocomellus porosporus": {
+   "apex": "truncate",
+   "q": "mange sporer med afskåret spids (porospor)"
+  },
+  "Xerocomellus chrysenteron": {
+   "orn": "smooth",
+   "q": "De glatte sporer måler 13-14,5 x 4,5-5,5 μm"
+  },
+  "Strobilomyces strobilaceus": {
+   "orn": "reticulate-coarse",
+   "wall": "thick",
+   "sym": "equilateral",
+   "q": "De stort set kugleformede, mørke sporer har et groft netornament"
+  },
+  "Cyanoboletus pulverulentus": {
+   "orn": "smooth",
+   "q": "De glatte sporer måler 11-15 x 4-6 μm"
+  },
+  "Chalciporus piperatus": {
+   "orn": "smooth",
+   "q": "De glatte, ± tenformede sporer måler 8-11 x 4-5 μm"
+  },
+  "Gyroporus cyanescens": {
+   "orn": "smooth",
+   "q": "De ellipsoidiske, glatte, farveløse sporer"
+  },
+  "Gyrodon lividus": {
+   "orn": "smooth",
+   "q": "De ellipsoidiske, lysebrune sporer måler 4,5-6 x 3-4 μm"
+  },
+  "Paxillus involutus": {
+   "orn": "smooth",
+   "q": "De glatte sporer måler 7-11 x 5-6,5 μm"
+  },
+  "Tylopilus felleus": {
+   "orn": "smooth",
+   "q": "The spores are smooth, ± fusiform"
+  },
+  "Chroogomphus rutilus": {
+   "orn": "smooth",
+   "q": "Sporer glatte, ± tenformede, med tykvæggede, ± cylindriske cystider"
+  },
+  "Hygrophoropsis aurantiaca": {
+   "orn": "smooth",
+   "wall": "slightly-thickened",
+   "melzer": "dextrinoid",
+   "q": "De glatte, lidt tykvæggede, dextrinoide sporer"
+  },
+  "Boletus edulis": {
+   "orn": "smooth",
+   "q": "De svagt tonede, ± tenformede sporer"
+  },
+  "Scleroderma citrinum": {
+   "orn": "reticulate-incomplete",
+   "q": "kuglerunde og har et ikke helt komplet netmønster"
+  },
+  "Scleroderma bovista": {
+   "orn": "reticulate-complete",
+   "q": "Sporer med komplet netmønster, 9-13 µm uden ornament"
+  },
+  "Scleroderma septentrionale": {
+   "orn": "reticulate-complete",
+   "q": "Sporerne har et komplet netmønster og måler 9-15 µm uden ornament"
+  },
+  "Scleroderma verrucosum": {
+   "orn": "spiny",
+   "q": "De ret små, piggede, kuglerunde sporer måler 8-10(-11) µm (uden ornament)"
+  },
+  "Scleroderma areolatum": {
+   "orn": "short-spiny",
+   "q": "De ret kortpiggede sporer måler 10-13 µm uden ornament"
+  },
+  "Scleroderma cepa": {
+   "orn": "long-spiny",
+   "q": "Sporer langpiggede (ca. 2 µm), 10-12 µm"
+  },
+  "Pisolithus arhizus": {
+   "orn": "spiny",
+   "q": "De piggede sporer bliver til sidst samlet i et brunt pulver"
+  },
+  "Rhizopogon luteolus": {
+   "apex": "truncate",
+   "q": "De i enden afskårne sporer måler (4,8-)5-8,5(-11) x 2-4 µm"
+  },
+  "Rhizopogon roseolus": {
+   "apex": "truncate",
+   "q": "Sporerne måler (5-)6-8(-10) x (2-)2,5-4(-5) µm"
+  },
+  "Gomphidius glutinosus": {
+   "orn": "smooth",
+   "q": "The ± fusiform spores measure 17–20 × 5.5–6.5 µm"
+  },
+  "Gomphidius maculatus": {
+   "orn": "smooth",
+   "q": "The ± fusiform spores measure 17–23 × 6–8 µm"
+  },
+  "Gomphidius roseus": {
+   "orn": "smooth",
+   "q": "The ± fusiform spores measure 17–20 × 5–5.5 µm"
+  }
+ },
+ "VOCAB": {
+  "pore": [
+   "white",
+   "yellow",
+   "golden",
+   "olive",
+   "grey",
+   "orange",
+   "red",
+   "pink",
+   "rust",
+   "cinnamon",
+   "brown",
+   "red-brown",
+   "n/a"
+  ],
+  "blue": [
+   "none",
+   "weak",
+   "moderate",
+   "strong"
+  ],
+  "stipe": [
+   "smooth",
+   "reticulate-white",
+   "reticulate-yellow",
+   "reticulate-red",
+   "reticulate-dark",
+   "punctate-red",
+   "glandular-dots",
+   "scabrous-dark",
+   "scabrous-pale",
+   "scabrous-brown",
+   "scabrous-yellow",
+   "ring",
+   "velvety-black",
+   "yellow-base",
+   "ochre",
+   "white",
+   "rooting",
+   "stalked",
+   "shaggy-ringed",
+   "absent"
+  ],
+  "cap": [
+   "whitish",
+   "pale-grey",
+   "grey",
+   "grey-brown",
+   "pale-brown",
+   "brown",
+   "dark-brown",
+   "black-brown",
+   "red-brown",
+   "cinnamon",
+   "orange",
+   "orange-brown",
+   "yellow",
+   "yellow-brown",
+   "honey",
+   "ochre",
+   "ochre-brown",
+   "olive",
+   "olive-brown",
+   "olive-grey",
+   "straw",
+   "pale-yellow",
+   "pink",
+   "purple",
+   "purple-brown",
+   "purple-grey",
+   "red",
+   "coral-red",
+   "copper",
+   "dark-grey",
+   "black"
+  ],
+  "host": [
+   "birch",
+   "dwarf-birch",
+   "oak",
+   "beech",
+   "hornbeam",
+   "hazel",
+   "lime",
+   "poplar",
+   "aspen",
+   "alder",
+   "willow",
+   "pine",
+   "spruce",
+   "larch",
+   "heath",
+   "dune",
+   "grassland",
+   "conifer-wood",
+   "pine-stumps",
+   "scleroderma",
+   "disturbed-ground"
+  ],
+  "taste": [
+   "mild",
+   "bitter",
+   "peppery",
+   "n/a"
+  ],
+  "print": [
+   "olive-brown",
+   "snuff-brown",
+   "ochre-brown",
+   "olive-yellow",
+   "pale-yellow",
+   "pale-yellow-brown",
+   "cinnamon-brown",
+   "pink",
+   "pink-brown",
+   "purple-brown",
+   "sienna-brown",
+   "blackish",
+   "blackish-brown",
+   "brown",
+   "white"
+  ],
+  "ft": [
+   "boletoid",
+   "agaricoid",
+   "gasteroid"
+  ]
+ },
+ "LABELS": {
+  "ft": {
+   "boletoid": "Bolete (pores/tubes)",
+   "agaricoid": "Gilled",
+   "gasteroid": "Puffball-like / hypogeous"
+  },
+  "blue": {
+   "none": "No bluing",
+   "weak": "Weak / slow",
+   "moderate": "Moderate",
+   "strong": "Strong / instant"
+  },
+  "ed": {
+   "choice": "Choice edible",
+   "edible": "Edible",
+   "inedible": "Inedible",
+   "caution": "Caution",
+   "toxic-raw": "Toxic raw",
+   "toxic": "Toxic",
+   "deadly": "Deadly poisonous"
+  }
+ },
+ "PRINT_COLOR": {
+  "olive-brown": "#726b3e",
+  "snuff-brown": "#8a6a3c",
+  "ochre-brown": "#a17a3f",
+  "olive-yellow": "#9c9346",
+  "pale-yellow": "#d8c87c",
+  "pale-yellow-brown": "#c2a86c",
+  "cinnamon-brown": "#a3652f",
+  "pink": "#d99aa6",
+  "pink-brown": "#b98a7c",
+  "purple-brown": "#7c4f5e",
+  "sienna-brown": "#8f5a34",
+  "blackish": "#302f31",
+  "blackish-brown": "#3c2e26",
+  "brown": "#7a5334",
+  "white": "#e8e3da"
+ }
+}

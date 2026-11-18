@@ -1,0 +1,199 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 8308057,
+  "scientificName": "Pseudoboletus parasiticus (Bull.) Šutara",
+  "canonicalName": "Pseudoboletus parasiticus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Pseudoboletus",
+  "species": "Pseudoboletus parasiticus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2524802,
+  "speciesKey": 8308057,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Pseudoboletus+parasiticus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 471,
+  "NO": 67,
+  "SE": 280,
+  "FI": 0,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 8308057,
+  "nubKey": 8308057,
+  "nameKey": 9328980,
+  "taxonID": "gbif:8308057",
+  "sourceTaxonKey": 172023578,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Pseudoboletus",
+  "species": "Pseudoboletus parasiticus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2524802,
+  "speciesKey": 8308057,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2524802,
+  "parent": "Pseudoboletus",
+  "basionymKey": 5239725,
+  "basionym": "Boletus parasiticus Bull.",
+  "scientificName": "Pseudoboletus parasiticus (Bull.) Šutara",
+  "canonicalName": "Pseudoboletus parasiticus",
+  "vernacularName": "Parasitic bolete",
+  "authorship": "(Bull.) Šutara",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1991). ČEská Mykol. 45(1-2): 2.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:02.013+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 8308057,
+   "vernacularName": "Loistatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877858
+  },
+  {
+   "taxonKey": 8308057,
+   "vernacularName": "Parasitic Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011299
+  },
+  {
+   "taxonKey": 8308057,
+   "vernacularName": "Parasitic Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Martha's Vineyard species checklist",
+   "sourceTaxonKey": 202601006
+  },
+  {
+   "taxonKey": 8308057,
+   "vernacularName": "Parasitic Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877858
+  },
+  {
+   "taxonKey": 8308057,
+   "vernacularName": "Parasitic bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222044762
+  },
+  {
+   "taxonKey": 8308057,
+   "vernacularName": "Snyltende rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905181
+  },
+  {
+   "taxonKey": 8308057,
+   "vernacularName": "Snyltende rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877858
+  },
+  {
+   "taxonKey": 8308057,
+   "vernacularName": "parasitsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877858
+  },
+  {
+   "taxonKey": 8308057,
+   "vernacularName": "snylterørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877858
+  },
+  {
+   "taxonKey": 8308057,
+   "vernacularName": "snylterøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877858
+  },
+  {
+   "taxonKey": 8308057,
+   "vernacularName": "Parasitic Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180101386,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8308057,
+   "vernacularName": "parasitsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019241,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8308057,
+   "vernacularName": "snylterørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069452,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8308057,
+   "vernacularName": "snylterøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069452,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8308057,
+   "vernacularName": "Parasitic bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945868,
+   "preferred": false
+  }
+ ]
+}

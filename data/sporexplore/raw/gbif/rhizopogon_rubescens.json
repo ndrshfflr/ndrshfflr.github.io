@@ -1,0 +1,328 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 2524236,
+  "acceptedUsageKey": 2524228,
+  "scientificName": "Rhizopogon rubescens (Tul. & C.Tul.) Tul. & C.Tul.",
+  "canonicalName": "Rhizopogon rubescens",
+  "rank": "SPECIES",
+  "status": "SYNONYM",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=0; score=120; nextMatch=5",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 3356514,
+    "scientificName": "Rhizopogon brunnescens Zeller",
+    "canonicalName": "Rhizopogon brunnescens",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 16,
+    "note": "Similarity: name=5; authorship=0; classification=4; rank=6; status=1; score=16",
+    "matchType": "FUZZY",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Rhizopogonaceae",
+    "genus": "Rhizopogon",
+    "species": "Rhizopogon brunnescens",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8452,
+    "genusKey": 2524218,
+    "speciesKey": 3356514,
+    "class": "Agaricomycetes"
+   },
+   {
+    "usageKey": 3356566,
+    "scientificName": "Rhizopogon lutescens A.H.Sm.",
+    "canonicalName": "Rhizopogon lutescens",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 16,
+    "note": "Similarity: name=5; authorship=0; classification=4; rank=6; status=1; score=16",
+    "matchType": "FUZZY",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Rhizopogonaceae",
+    "genus": "Rhizopogon",
+    "species": "Rhizopogon lutescens",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8452,
+    "genusKey": 2524218,
+    "speciesKey": 3356566,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Rhizopogonaceae",
+  "genus": "Rhizopogon",
+  "species": "Rhizopogon roseolus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8452,
+  "genusKey": 2524218,
+  "speciesKey": 2524228,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Rhizopogon+rubescens&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 60,
+  "NO": 87,
+  "SE": 710,
+  "FI": 126,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 2524236,
+  "nubKey": 2524236,
+  "nameKey": 17256365,
+  "taxonID": "gbif:2524236",
+  "sourceTaxonKey": 172018745,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Rhizopogonaceae",
+  "genus": "Rhizopogon",
+  "species": "Rhizopogon roseolus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8452,
+  "genusKey": 2524218,
+  "speciesKey": 2524228,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2524218,
+  "parent": "Rhizopogon",
+  "acceptedKey": 2524228,
+  "accepted": "Rhizopogon roseolus (Corda) Th.Fr.",
+  "basionymKey": 2524230,
+  "basionym": "Hysterangium rubescens Tul. & C.Tul.",
+  "scientificName": "Rhizopogon rubescens (Tul. & C.Tul.) Tul. & C.Tul.",
+  "canonicalName": "Rhizopogon rubescens",
+  "authorship": "(Tul. & C.Tul.) Tul. & C.Tul.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "SYNONYM",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1844). G. Bot. Ital. 2(1): 58.",
+  "numDescendants": 0,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:15.651+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Blushing Beard Truffle",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871944
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Blushing False Truffle",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871944
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Common Beard Truffle",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871944
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Rosa skægtrøffel",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871944
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Rosa skægtrøffel",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905403
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Rødlig skægtrøffel",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871944
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Rødlig skægtrøffel",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905403
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "rodnande hartryffel",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871944
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "rodnande hartryffel agg.",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871944
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "rosenekornnøtt",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871944
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "suonijänönmukula",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012755
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "suonijänönmukula",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871944
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Blushing False Truffle",
+   "language": "eng",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011459,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Blushing False Truffle",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180098960,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "rodnande hartryffel agg.",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019111,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "rosenekornnøtt",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069267,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "rosenikornnøtt",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069267,
+   "preferred": true
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Blushing Beard Truffle",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180098960,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Blushing Beard Truffle",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945391,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Blushing Beard Truffle",
+   "language": "eng",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011459,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Blushing False Truffle",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945391,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Common Beard Truffle",
+   "language": "eng",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011459,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Common Beard Truffle",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180098960,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "Common Beard Truffle",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945391,
+   "preferred": false
+  },
+  {
+   "taxonKey": 2524228,
+   "vernacularName": "rodnande hartryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019111,
+   "preferred": false
+  }
+ ]
+}

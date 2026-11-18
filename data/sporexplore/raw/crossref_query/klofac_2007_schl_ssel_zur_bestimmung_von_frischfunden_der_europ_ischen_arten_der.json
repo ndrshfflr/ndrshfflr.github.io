@@ -1,0 +1,115 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Klofac 2007 Schlüssel zur Bestimmung von Frischfunden der europäischen Arten der Boletales mit röhrigem Hymenophor Österreichische Zeitschrift für Pilzkunde",
+ "url": "https://api.crossref.org/works?query.bibliographic=Klofac+2007+Schl%C3%BCssel+zur+Bestimmung+von+Frischfunden+der+europ%C3%A4ischen+Arten+der+Boletales+mit+r%C3%B6hrigem+Hymenophor+%C3%96sterreichische+Zeitschrift+f%C3%BCr+Pilzkunde&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Springer Science and Business Media LLC",
+   "issue": "5",
+   "DOI": "10.1007/bf01795015",
+   "type": "journal-article",
+   "page": "167-171",
+   "title": [
+    "Zur Systematik der GattungSorbus. II"
+   ],
+   "volume": "48",
+   "author": [
+    {
+     "given": "Karl",
+     "family": "Fritsch",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Österreichische Botanische Zeitschrift"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1898,
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Springer Science and Business Media LLC",
+   "issue": "12",
+   "DOI": "10.1007/bf01794969",
+   "type": "journal-article",
+   "page": "426-429",
+   "title": [
+    "Zur Systematik der Gattung Sorbus. II"
+   ],
+   "volume": "49",
+   "author": [
+    {
+     "given": "Karl",
+     "family": "Fritsch",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Österreichische Botanische Zeitschrift"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1899,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Springer Science and Business Media LLC",
+   "issue": "11",
+   "DOI": "10.1007/bf01672322",
+   "type": "journal-article",
+   "page": "381-385",
+   "title": [
+    "Zur Systematik der Gattung Sorbus. II"
+   ],
+   "volume": "49",
+   "author": [
+    {
+     "given": "Karl",
+     "family": "Fritsch",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Österreichische Botanische Zeitschrift"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      1899,
+      11
+     ]
+    ]
+   }
+  }
+ ]
+}

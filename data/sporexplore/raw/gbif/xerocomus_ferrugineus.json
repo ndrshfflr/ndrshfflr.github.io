@@ -1,0 +1,202 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 7816100,
+  "scientificName": "Xerocomus ferrugineus (Schaeff.) Alessio",
+  "canonicalName": "Xerocomus ferrugineus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 99,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; nextMatch=0",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 2519484,
+    "acceptedUsageKey": 7816100,
+    "scientificName": "Xerocomus ferrugineus (Schaeff.) Bon",
+    "canonicalName": "Xerocomus ferrugineus",
+    "rank": "SPECIES",
+    "status": "SYNONYM",
+    "confidence": 99,
+    "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=0; score=120",
+    "matchType": "EXACT",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Boletaceae",
+    "genus": "Xerocomus",
+    "species": "Xerocomus ferrugineus",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8789,
+    "genusKey": 2519224,
+    "speciesKey": 7816100,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Xerocomus",
+  "species": "Xerocomus ferrugineus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2519224,
+  "speciesKey": 7816100,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Xerocomus+ferrugineus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 778,
+  "NO": 1821,
+  "SE": 997,
+  "FI": 116,
+  "IS": 9,
+  "FO": 1,
+  "GL": 0
+ },
+ "species": {
+  "key": 7816100,
+  "nubKey": 7816100,
+  "nameKey": 25627058,
+  "taxonID": "gbif:7816100",
+  "sourceTaxonKey": 172025640,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Xerocomus",
+  "species": "Xerocomus ferrugineus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2519224,
+  "speciesKey": 7816100,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2519224,
+  "parent": "Xerocomus",
+  "basionymKey": 5954976,
+  "basionym": "Boletus ferrugineus Schaeff.",
+  "scientificName": "Xerocomus ferrugineus (Schaeff.) Alessio",
+  "canonicalName": "Xerocomus ferrugineus",
+  "vernacularName": "Rusty bolete",
+  "authorship": "(Schaeff.) Alessio",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1985). Boletus Dill. Ex L. (Saronno): 282.",
+  "numDescendants": 3,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:06.968+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 7816100,
+   "vernacularName": "Rusty Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011373
+  },
+  {
+   "taxonKey": 7816100,
+   "vernacularName": "Rusty bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222045545
+  },
+  {
+   "taxonKey": 7816100,
+   "vernacularName": "Vaskeskinds-rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875770
+  },
+  {
+   "taxonKey": 7816100,
+   "vernacularName": "fløyelsrørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875770
+  },
+  {
+   "taxonKey": 7816100,
+   "vernacularName": "fløyelsrøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875770
+  },
+  {
+   "taxonKey": 7816100,
+   "vernacularName": "havusamettitatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875770
+  },
+  {
+   "taxonKey": 7816100,
+   "vernacularName": "rusty bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875770
+  },
+  {
+   "taxonKey": 7816100,
+   "vernacularName": "vitköttig sammetssopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875770
+  },
+  {
+   "taxonKey": 7816100,
+   "vernacularName": "fløyelsrørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069427,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7816100,
+   "vernacularName": "fløyelsrøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069427,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7816100,
+   "vernacularName": "vitköttig sammetssopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019304,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7816100,
+   "vernacularName": "rusty bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945961,
+   "preferred": false
+  }
+ ]
+}

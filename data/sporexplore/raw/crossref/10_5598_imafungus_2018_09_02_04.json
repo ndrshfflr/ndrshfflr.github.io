@@ -1,0 +1,761 @@
+{
+ "retrieved": "2026-11-18",
+ "doi": "10.5598/imafungus.2018.09.02.04",
+ "url": "https://api.crossref.org/works/10.5598/imafungus.2018.09.02.04",
+ "message": {
+  "indexed": {
+   "date-parts": [
+    [
+     2026,
+     3,
+     16
+    ]
+   ],
+   "date-time": "2026-03-16T13:20:01Z",
+   "timestamp": 1773667201247,
+   "version": "3.50.1"
+  },
+  "reference-count": 47,
+  "publisher": "Pensoft Publishers",
+  "issue": "2",
+  "license": [
+   {
+    "start": {
+     "date-parts": [
+      [
+       2018,
+       12,
+       1
+      ]
+     ],
+     "date-time": "2018-12-01T00:00:00Z",
+     "timestamp": 1543622400000
+    },
+    "content-version": "tdm",
+    "delay-in-days": 0,
+    "URL": "http://creativecommons.org/licenses/by/4.0"
+   }
+  ],
+  "content-domain": {
+   "domain": [
+    "link.springer.com"
+   ],
+   "crossmark-restriction": false
+  },
+  "short-container-title": [
+   "IMA Fungus"
+  ],
+  "published-print": {
+   "date-parts": [
+    [
+     2018,
+     12
+    ]
+   ]
+  },
+  "DOI": "10.5598/imafungus.2018.09.02.04",
+  "type": "journal-article",
+  "created": {
+   "date-parts": [
+    [
+     2018,
+     9,
+     6
+    ]
+   ],
+   "date-time": "2018-09-06T01:05:18Z",
+   "timestamp": 1536195918000
+  },
+  "page": "271-290",
+  "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 9,
+  "title": [
+   "Diversity of Chroogomphus (Gomphidiaceae, Boletales) in Europe, and typification of C. rutilus"
+  ],
+  "prefix": "10.3897",
+  "volume": "9",
+  "author": [
+   {
+    "given": "Ross",
+    "family": "Scambler",
+    "sequence": "first",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Tuula",
+    "family": "Niskanen",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Boris",
+    "family": "Assyov",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "A. Martyn",
+    "family": "Ainsworth",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Jean-Michel",
+    "family": "Bellanger",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Michael",
+    "family": "Loizides",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Pierre-Arthur",
+    "family": "Moreau",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Paul M.",
+    "family": "Kirk",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Kare",
+    "family": "Liimatainen",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   }
+  ],
+  "member": "2258",
+  "published-online": {
+   "date-parts": [
+    [
+     2018,
+     12,
+     1
+    ]
+   ]
+  },
+  "reference": [
+   {
+    "key": "902271_CR1",
+    "doi-asserted-by": "publisher",
+    "first-page": "1",
+    "DOI": "10.1127/nova.hedwigia/50/1990/1",
+    "volume": "50",
+    "author": "R Agerer",
+    "year": "1990",
+    "unstructured": "Agerer R (1990) Studies on ectomycorrhizae XXIV. Ectomycorrhizae of Chroogomphus helveticus and C. rutilus (Gomphidiaceae, Basidiomycetes) and their relationship to those of Suillus and Rhizopogon. Nova Hedwigia 50: 1–63.",
+    "journal-title": "Nova Hedwigia"
+   },
+   {
+    "key": "902271_CR2",
+    "doi-asserted-by": "publisher",
+    "first-page": "228",
+    "DOI": "10.2307/25065549",
+    "volume": "55",
+    "author": "MC Aime",
+    "year": "2006",
+    "unstructured": "Aime MC, Miller OK (2006) (1709) Proposal to conserve the name Chroogomphus against Brauniellula (Gomphidiaceae, Agaricales, Basidiomycota). Taxon 55: 228–229.",
+    "journal-title": "Taxon"
+   },
+   {
+    "key": "902271_CR3",
+    "first-page": "1",
+    "volume": "22",
+    "author": "D Antonini",
+    "year": "2002",
+    "unstructured": "Antonini D, Antonini M (2002) Macromiceti nuovi, rari o specifici della regione mediterranea. Fungi non Delineati 22: 1–72.",
+    "journal-title": "Fungi non Delineati"
+   },
+   {
+    "key": "902271_CR4",
+    "doi-asserted-by": "publisher",
+    "first-page": "169",
+    "DOI": "10.1007/s10709-015-9823-8",
+    "volume": "143",
+    "author": "JM Bellanger",
+    "year": "2015",
+    "unstructured": "Bellanger JM, Moreau P-A, Corriol G, Bidaud A, Chalange R, et al. (2015) Plunging hands into the mushroom jar: a phylogenetic framework for Lyophyllaceae (Agaricales, Basidiomycota). Genetica 143: 169–194.",
+    "journal-title": "Genetica"
+   },
+   {
+    "key": "902271_CR5",
+    "unstructured": "Breitenbach J, Kränzlin F (1991) Fungi of Switzerland. Vol. 3. Lucerne: Edition Mykologia."
+   },
+   {
+    "key": "902271_CR6",
+    "unstructured": "Fries EM (1821) Systema Mycologicum. Vol. 1. Griefswald: E. Maritius."
+   },
+   {
+    "key": "902271_CR7",
+    "doi-asserted-by": "publisher",
+    "first-page": "543",
+    "DOI": "10.1093/bioinformatics/12.6.543",
+    "volume": "12",
+    "author": "N Galtier",
+    "year": "1996",
+    "unstructured": "Galtier N, Gouy M, Gautier C (1996) SEAVIEW and PHYLO_WIN: two graphic tools for sequence alignment and molecular phylogeny. Bioinformatics 12: 543–548.",
+    "journal-title": "Bioinformatics"
+   },
+   {
+    "key": "902271_CR8",
+    "doi-asserted-by": "publisher",
+    "first-page": "113",
+    "DOI": "10.1111/j.1365-294X.1993.tb00005.x",
+    "volume": "2",
+    "author": "M Gardes",
+    "year": "1993",
+    "unstructured": "Gardes M, Bruns TD (1993) ITS primers with enhanced specifity for basidiomycetes - application to the identification of mycorrhizae and rusts. Molecular Ecology 2: 113–118.",
+    "journal-title": "Molecular Ecology"
+   },
+   {
+    "key": "902271_CR9",
+    "doi-asserted-by": "publisher",
+    "first-page": "fiw045",
+    "DOI": "10.1093/femsec/fiw045",
+    "volume": "92",
+    "author": "S Garnica",
+    "year": "2016",
+    "unstructured": "Garnica S, Schön ME, Abarenkov K, Riess K, Liimatainen K, et al. (2016) Determining threshold values for barcoding fungi: Lessons from Cortinarius (Basidiomycota), a highly diverse and widespread ectomycorrhizal genus. FEMS Microbiology Ecology 92(4): fiw045.",
+    "journal-title": "FEMS Microbiology Ecology"
+   },
+   {
+    "key": "902271_CR10",
+    "first-page": "1",
+    "volume": "15",
+    "author": "R Heim",
+    "year": "1934",
+    "unstructured": "Heim R, Font Quer P, Codina J (1934) Fungi Iberici: observations sur la flore mycologique Catalane. Trabajos del Museo Nacional de Ciencias Naturales, serie Bot’anica 15: 1–146.",
+    "journal-title": "Trabajos del Museo Nacional de Ciencias Naturales, serie Bot’anica"
+   },
+   {
+    "key": "902271_CR11",
+    "doi-asserted-by": "publisher",
+    "first-page": "772",
+    "DOI": "10.1093/molbev/mst010",
+    "volume": "30",
+    "author": "K Katoh",
+    "year": "2013",
+    "unstructured": "Katoh K, Standley DM (2013) MAFFT Multiple Sequence Alignment Software Version 7: Improvements in Performance and Usability. Molecular Biology and Evolution 30: 772–780.",
+    "journal-title": "Molecular Biology and Evolution"
+   },
+   {
+    "key": "902271_CR12",
+    "doi-asserted-by": "publisher",
+    "first-page": "155",
+    "DOI": "10.1016/S0007-1536(78)80190-9",
+    "volume": "70",
+    "author": "AZMNA Khan",
+    "year": "1978",
+    "unstructured": "Khan AZMNA, Hora FB (1978) Chroogomphus britannicus sp. nov. from Britain. Transactions of the British Mycological Society 70: 155–157.",
+    "journal-title": "Transactions of the British Mycological Society"
+   },
+   {
+    "key": "902271_CR13",
+    "first-page": "198",
+    "volume-title": "Funga Nordica",
+    "author": "H Knudsen",
+    "year": "2012",
+    "unstructured": "Knudsen H, Taylor A (2012) Chroogomphus (Singer) O.K. Miller and Gomphidius Fr. In: Funga Nordica (Knudsen H, Vesterholt J, (eds): 198–199. 2nd edn. Copenhagen: Nordsvamp."
+   },
+   {
+    "key": "902271_CR14",
+    "doi-asserted-by": "publisher",
+    "first-page": "5271",
+    "DOI": "10.1111/mec.12481",
+    "volume": "22",
+    "author": "U Kõljalg",
+    "year": "2013",
+    "unstructured": "Kõljalg U, Nilsson RH, Abarenkov K, Tedersoo L, Taylor AFS, et al. (2013) Towards a unified paradigm for sequence-based identification of Fungi. Molecular Ecology 22: 5271–5277.",
+    "journal-title": "Molecular Ecology"
+   },
+   {
+    "key": "902271_CR15",
+    "volume-title": "Checklist of the British and Irish Basidiomycota",
+    "author": "NW Legon",
+    "year": "2005",
+    "unstructured": "Legon NW, Henrici A (2005) Checklist of the British and Irish Basidiomycota. Kew: Royal Botanic Gardens."
+   },
+   {
+    "key": "902271_CR16",
+    "first-page": "85",
+    "volume": "38",
+    "author": "YC Li",
+    "year": "2009",
+    "unstructured": "Li YC, Yang ZL, Tolgor B (2009) Phylogenetic and biogeographic relationships of Chroogomphus species as inferred from molecular and morphological data. Fungal Diversity 38: 85–104.",
+    "journal-title": "Fungal Diversity"
+   },
+   {
+    "key": "902271_CR17",
+    "doi-asserted-by": "publisher",
+    "first-page": "98",
+    "DOI": "10.3767/003158514X684681",
+    "volume": "33",
+    "author": "K Liimatainen",
+    "year": "2014",
+    "unstructured": "Liimatainen K, Niskanen T, Dima B, Kytövuori I, Ammirati JF, Frøslev T (2014) The largest type study of Agaricales species to date: bringing identification and nomenclature of Phlegmacium (Cortinarius, Agaricales) into the DNA era. Persoonia 33: 98–140.",
+    "journal-title": "Persoonia"
+   },
+   {
+    "key": "902271_CR18",
+    "volume-title": "Edible & Toxic Fungi of Cyprus",
+    "author": "M Loizides",
+    "year": "2011",
+    "unstructured": "Loizides M, Kyriakou T, Tziakouris A (2011) Εδώδιμα και Τοξικά Μανιτάρια της Κύπρου. [Edible & Toxic Fungi of Cyprus]. Cyprus: The Authors."
+   },
+   {
+    "key": "902271_CR19",
+    "doi-asserted-by": "publisher",
+    "first-page": "384",
+    "DOI": "10.1016/j.myc.2016.06.004",
+    "volume": "57",
+    "author": "MP Mart’in",
+    "year": "2016",
+    "unstructured": "Mart’in MP, Siquier JL, Salom JC, Telleria MT, Finschow G (2016) Barcoding sequences clearly separate Chroogomphus mediterraneus (Gomphidiaceae, Boletales) from C. rutilus and allied species. Mycoscience 57: 384–392.",
+    "journal-title": "Mycoscience"
+   },
+   {
+    "key": "902271_CR20",
+    "doi-asserted-by": "publisher",
+    "first-page": "526",
+    "DOI": "10.1080/00275514.1964.12018141",
+    "volume": "56",
+    "author": "OK Miller",
+    "year": "1964",
+    "unstructured": "Miller OK (1964) Monograph of Chroogomphus (Gomphidiaceae). Mycologia 56: 526–549.",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "902271_CR21",
+    "doi-asserted-by": "publisher",
+    "first-page": "176",
+    "DOI": "10.1080/15572536.2004.11833147",
+    "volume": "95",
+    "author": "OK Miller",
+    "year": "2003",
+    "unstructured": "Miller OK (2003) The Gomphidiaceae revisited: a worldwide perspective. Mycologia 95: 176–183.",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "902271_CR22",
+    "first-page": "314",
+    "volume-title": "Trichomycetes and other Fungal Groups",
+    "author": "OK Miller",
+    "year": "2001",
+    "unstructured": "Miller OK, Aime MC (2001) Systematics, ecology and world distribution in the genus Chroogomphus (Gomphidiaceae). In: Trichomycetes and other Fungal Groups (Misra JK, Horn BW, eds): 314–333. Enfield, NH: Science Publishers."
+   },
+   {
+    "key": "902271_CR23",
+    "first-page": "391",
+    "volume": "30",
+    "author": "OK Miller",
+    "year": "1970",
+    "unstructured": "Miller OK, Watling R (1970) A new Chroogomphus from Great Britain. Notes from the Royal Botanic Garden Edinburgh 30: 391–394.",
+    "journal-title": "Notes from the Royal Botanic Garden Edinburgh"
+   },
+   {
+    "key": "902271_CR24",
+    "doi-asserted-by": "publisher",
+    "first-page": "1080",
+    "DOI": "10.3852/10-350",
+    "volume": "103",
+    "author": "T Niskanen",
+    "year": "2011",
+    "unstructured": "Niskanen T, Kytövuori I, Liimatainen K (2011) Cortinarius sect. Armillati in northern Europe. Mycologia 103: 1080–1101.",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "902271_CR25",
+    "doi-asserted-by": "publisher",
+    "first-page": "1372",
+    "DOI": "10.1017/S0953756200002823",
+    "volume": "104",
+    "author": "PA Olsson",
+    "year": "2000",
+    "unstructured": "Olsson PA, Münzenberger B, Mahmood S, Erland S (2000) Molecular and anatomical evidence for a three-way association between Pinus sylvestris and the ectomycorrhizal fungi Suillus bovinus and Gomphidius roseus. Mycological Research 104: 1372–1378.",
+    "journal-title": "Mycological Research"
+   },
+   {
+    "key": "902271_CR26",
+    "volume-title": "Hongos de la Provincial de Buenos Aires y de la capital federal",
+    "author": "J Raithelhuber",
+    "year": "1974",
+    "unstructured": "Raithelhuber J (1974) Hongos de la Provincial de Buenos Aires y de la capital federal. Buenos Aires: J. Raithelhuber."
+   },
+   {
+    "key": "902271_CR27",
+    "doi-asserted-by": "publisher",
+    "first-page": "393",
+    "DOI": "10.21162/PAKJAS/16.2240",
+    "volume": "53",
+    "author": "A Razak",
+    "year": "2016",
+    "unstructured": "Razak A, Ilyas S, Khalid AN (2016) Molecular identification of Chinese Chroogomphus roseolus from Pakistani forests, a mycorrhizal fungus, using ITS-rDNA marker. Pakistan Journal of Agricultural Sciences 53: 393–398.",
+    "journal-title": "Pakistan Journal of Agricultural Sciences"
+   },
+   {
+    "key": "902271_CR28",
+    "doi-asserted-by": "publisher",
+    "first-page": "359",
+    "DOI": "10.3852/14-166",
+    "volume": "107",
+    "author": "F Richard",
+    "year": "2015",
+    "unstructured": "Richard F, Bellanger J-M, Clowez P, Hansen K, O’Donnell K, et al. (2015) True morels (Morchella, Pezizales) of Europe and North America: evolutionary relationships inferred from multilocus data and a unified taxonomy. Mycologia 107: 359–382.",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "902271_CR29",
+    "doi-asserted-by": "publisher",
+    "DOI": "10.5962/bhl.title.144788",
+    "volume-title": "Color Standards and Color Nomenclature",
+    "author": "R Ridgway",
+    "year": "1912",
+    "unstructured": "Ridgway R (1912) Color Standards and Color Nomenclature. Washington DC: R. Ridgway."
+   },
+   {
+    "key": "902271_CR30",
+    "volume-title": "Fungorum qui in Bavaria et Palatinatu circa Ratisbonam nascuntur icones, nativis coloribus expressae III et IV",
+    "author": "JC Schaeffer",
+    "year": "1774",
+    "unstructured": "Schaeffer JC (1774) Fungorum qui in Bavaria et Palatinatu circa Ratisbonam nascuntur icones, nativis coloribus expressae III et IV. Erlangen: J.J. Palm."
+   },
+   {
+    "key": "902271_CR31",
+    "first-page": "1",
+    "volume": "40",
+    "author": "R Singer",
+    "year": "1942",
+    "unstructured": "Singer R (1942) Das System der Agaricales. II. Annales Mycologici 40: 1–132.",
+    "journal-title": "Annales Mycologici"
+   },
+   {
+    "key": "902271_CR32",
+    "first-page": "103",
+    "volume": "32",
+    "author": "R Singer",
+    "year": "1948",
+    "unstructured": "Singer R (1948) [‘1946’] New and interesting species of Basidiomycetes II. Papers of the Michigan Academy of Sciences 32: 103–150.",
+    "journal-title": "Papers of the Michigan Academy of Sciences"
+   },
+   {
+    "key": "902271_CR33",
+    "first-page": "196",
+    "volume": "28",
+    "author": "R Singer",
+    "year": "1950",
+    "unstructured": "Singer R (1950) Zwei neue Pilzarten in den Alpen. Schweizerische Zeitschrift für Pilzkunde 28: 196–200.",
+    "journal-title": "Schweizerische Zeitschrift für Pilzkunde"
+   },
+   {
+    "key": "902271_CR34",
+    "volume-title": "The Agaricales in Modern Taxonomy",
+    "author": "R Singer",
+    "year": "1986",
+    "unstructured": "Singer R (1986) The Agaricales in Modern Taxonomy. 4th edn. Königstein: Koeltz Scientific Books."
+   },
+   {
+    "key": "902271_CR35",
+    "doi-asserted-by": "crossref",
+    "first-page": "81",
+    "DOI": "10.33585/cmy.30202",
+    "volume": "30",
+    "author": "R Singer",
+    "year": "1976",
+    "unstructured": "Singer R, Kuthan J (1976) Notes on Chroogomphus (Gomphidiaceae). Česk’a Mykologie 30: 81–89.",
+    "journal-title": "Česk’a Mykologie"
+   },
+   {
+    "key": "902271_CR36",
+    "first-page": "249",
+    "volume": "59",
+    "author": "JL Siquier",
+    "year": "2016",
+    "unstructured": "Siquier JL, Salom JC, Finschow G, Mart’in MP (2016) Variabilidad y distribuci’on de Chroogomphus mediterraneus en las Islas Baleares y la Pen’insula Ib’erica. Rivista di Mycologia 59: 249–270.",
+    "journal-title": "Rivista di Mycologia"
+   },
+   {
+    "key": "902271_CR37",
+    "doi-asserted-by": "publisher",
+    "first-page": "927",
+    "DOI": "10.1080/00275514.1958.12024784",
+    "volume": "50",
+    "author": "AH Smith",
+    "year": "1958",
+    "unstructured": "Smith AH, Singer R (1958) Studies on secotiaceous fungi. VIII. A new genus in the Secotiaceae related to Gomphidius. Mycologia 50: 927–938.",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "902271_CR38",
+    "doi-asserted-by": "publisher",
+    "first-page": "1312",
+    "DOI": "10.1093/bioinformatics/btu033",
+    "volume": "30",
+    "author": "A Stamatakis",
+    "year": "2014",
+    "unstructured": "Stamatakis A (2014) RAxML Version 8: a tool for phylogenetic analysis and post-analysis of large phylogenies. Bioinformatics 30: 1312–1313.",
+    "journal-title": "Bioinformatics"
+   },
+   {
+    "key": "902271_CR39",
+    "first-page": "188",
+    "volume": "6",
+    "author": "LN Vassiljeva",
+    "year": "1950",
+    "unstructured": "Vassiljeva LN (1950) Species novae fungorum. Notulae Systematicae e sectione Cryptogamica Instituti Botanici Nomine V.L. Komarovii Academiae Scientiarum USSR 6: 188–200.",
+    "journal-title": "Notulae Systematicae e sectione Cryptogamica Instituti Botanici Nomine V.L. Komarovii Academiae Scientiarum USSR"
+   },
+   {
+    "key": "902271_CR40",
+    "first-page": "67",
+    "volume": "3",
+    "author": "J Vila",
+    "year": "2006",
+    "unstructured": "Vila J, P’erez-de-Gregorio MA, Mir G (2006) Gomphidius tyrrhenicus Antonini et M. Antonini, una especie mediterr’anea poco frecuente. Errotari 3: 67–72.",
+    "journal-title": "Errotari"
+   },
+   {
+    "key": "902271_CR41",
+    "first-page": "205",
+    "volume": "62",
+    "author": "M Villareal",
+    "year": "1996",
+    "unstructured": "Villareal M, Heykoop M (1996) Chroogomphus ochraceus (Kauffman) O.K. Mill., the correct name for Chroogomphus fulmineus (R. Heim) Courtec. Zeitschrift für Mykologie 62: 205–212.",
+    "journal-title": "Zeitschrift für Mykologie"
+   },
+   {
+    "key": "902271_CR42",
+    "first-page": "391",
+    "volume": "29",
+    "author": "R Watling",
+    "year": "1969",
+    "unstructured": "Watling R (1969) Records of boleti and notes on their taxonomic positions: III. Notes from the Royal Botanic Garden Edinburgh 29: 391–402.",
+    "journal-title": "Notes from the Royal Botanic Garden Edinburgh"
+   },
+   {
+    "key": "902271_CR43",
+    "unstructured": "Watling R (1970) British Fungus Flora. Agarics and Boleti. Vol. 1. Boletaceae: Gomphidiaceae: Paxillaceae. Edinburgh: Her Majesyty’s Stationery Office."
+   },
+   {
+    "key": "902271_CR44",
+    "doi-asserted-by": "publisher",
+    "first-page": "41",
+    "DOI": "10.1017/S0960428604000058",
+    "volume": "61",
+    "author": "R Watling",
+    "year": "2004",
+    "unstructured": "Watling R (2004) New combinations in Boletaceae and Gomphidiaceae (Boletales). Edinburgh Journal of Botany 61: 41–47.",
+    "journal-title": "Edinburgh Journal of Botany"
+   },
+   {
+    "key": "902271_CR45",
+    "unstructured": "Watling R, Hills AE (2005) British Fungus Flora. Vol. 1. Boletes and their Allies. Rev edn. Edinburgh: Royal Botanic Garden Edinburgh."
+   },
+   {
+    "key": "902271_CR46",
+    "first-page": "315",
+    "volume-title": "PCR Protocols: a guide to methods and applications",
+    "author": "TJ White",
+    "year": "1990",
+    "unstructured": "White TJ, Bruns TD, Lee S, Taylor JW (1990) Amplification and direct sequencing of fungal ribosomal RNA genes for phylogenetics. In: PCR Protocols: a guide to methods and applications (Innis MA, Gelfand DH, Sninsky JJ, White TJ, eds): 315–322. San Diego: Academic Press."
+   },
+   {
+    "key": "902271_CR47",
+    "doi-asserted-by": "publisher",
+    "first-page": "639",
+    "DOI": "10.1080/00275514.1948.12017736",
+    "volume": "40",
+    "author": "SM Zeller",
+    "year": "1948",
+    "unstructured": "Zeller SM (1948) Notes on certain gasteromycetes, including two new orders. Mycologia 40: 639–668.",
+    "journal-title": "Mycologia"
+   }
+  ],
+  "container-title": [
+   "IMA Fungus"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+   {
+    "URL": "http://link.springer.com/content/pdf/10.5598/imafungus.2018.09.02.04.pdf",
+    "content-type": "application/pdf",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   },
+   {
+    "URL": "http://link.springer.com/article/10.5598/imafungus.2018.09.02.04/fulltext.html",
+    "content-type": "text/html",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   },
+   {
+    "URL": "http://www.ingentaconnect.com/content/ima/imafung/10.5598/imafungus.2018.09.02.04",
+    "content-type": "unspecified",
+    "content-version": "vor",
+    "intended-application": "similarity-checking"
+   },
+   {
+    "URL": "http://link.springer.com/content/pdf/10.5598/imafungus.2018.09.02.04.pdf",
+    "content-type": "application/pdf",
+    "content-version": "vor",
+    "intended-application": "similarity-checking"
+   }
+  ],
+  "deposited": {
+   "date-parts": [
+    [
+     2025,
+     7,
+     6
+    ]
+   ],
+   "date-time": "2025-07-06T22:36:14Z",
+   "timestamp": 1751841374000
+  },
+  "score": 1,
+  "resource": {
+   "primary": {
+    "URL": "https://imafungus.biomedcentral.com/articles/10.5598/imafungus.2018.09.02.04"
+   }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+   "date-parts": [
+    [
+     2018,
+     12
+    ]
+   ]
+  },
+  "references-count": 47,
+  "journal-issue": {
+   "issue": "2",
+   "published-print": {
+    "date-parts": [
+     [
+      2018,
+      12
+     ]
+    ]
+   }
+  },
+  "alternative-id": [
+   "902271"
+  ],
+  "URL": "https://doi.org/10.5598/imafungus.2018.09.02.04",
+  "relation": {},
+  "ISSN": [
+   "2210-6359"
+  ],
+  "issn-type": [
+   {
+    "value": "2210-6359",
+    "type": "electronic"
+   }
+  ],
+  "subject": [],
+  "published": {
+   "date-parts": [
+    [
+     2018,
+     12
+    ]
+   ]
+  },
+  "assertion": [
+   {
+    "value": "27 November 2017",
+    "order": 1,
+    "name": "received",
+    "label": "Received",
+    "group": {
+     "name": "ArticleHistory",
+     "label": "Article History"
+    }
+   },
+   {
+    "value": "27 August 2018",
+    "order": 2,
+    "name": "accepted",
+    "label": "Accepted",
+    "group": {
+     "name": "ArticleHistory",
+     "label": "Article History"
+    }
+   },
+   {
+    "value": "1 December 2018",
+    "order": 3,
+    "name": "first_online",
+    "label": "First Online",
+    "group": {
+     "name": "ArticleHistory",
+     "label": "Article History"
+    }
+   }
+  ]
+ },
+ "error": null
+}

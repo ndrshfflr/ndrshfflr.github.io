@@ -1,0 +1,220 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 5239959,
+  "scientificName": "Scleroderma verrucosum (Bull.) Pers.",
+  "canonicalName": "Scleroderma verrucosum",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Sclerodermataceae",
+  "genus": "Scleroderma",
+  "species": "Scleroderma verrucosum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8453,
+  "genusKey": 2524936,
+  "speciesKey": 5239959,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Scleroderma+verrucosum&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 1266,
+  "NO": 80,
+  "SE": 671,
+  "FI": 31,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 5239959,
+  "nubKey": 5239959,
+  "nameKey": 10197378,
+  "taxonID": "gbif:5239959",
+  "sourceTaxonKey": 172017874,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Sclerodermataceae",
+  "genus": "Scleroderma",
+  "species": "Scleroderma verrucosum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8453,
+  "genusKey": 2524936,
+  "speciesKey": 5239959,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2524936,
+  "parent": "Scleroderma",
+  "basionymKey": 5239961,
+  "basionym": "Lycoperdon verrucosum Bull.",
+  "scientificName": "Scleroderma verrucosum (Bull.) Pers.",
+  "canonicalName": "Scleroderma verrucosum",
+  "vernacularName": "Scaly Earthball",
+  "authorship": "(Bull.) Pers.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1801). Syn. Meth. Fung. (Göttingen) 1: 154.",
+  "numDescendants": 3,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:13.488+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "Scaly Earthball",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871413
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "Scaly Earthball",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222041224
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "Stilket bruskbold",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871413
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "Stilket bruskbold",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905307
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "juurtomukulakuukunen",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871413
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "knottrig rottryffel",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871413
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "långfotad rottryffel",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871413
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "stor mørkprikket potetrøyksopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871413
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "Scaly Earthball",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180098717,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "knottrig rottryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019149,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "knottrig rottryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691332,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "knottrig rottryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329614,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "stor mørkprikket potetrøyksopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069234,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "stor mørkprikket potetrøyksopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069234,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "långfotad rottryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691332,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "långfotad rottryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019149,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5239959,
+   "vernacularName": "långfotad rottryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329614,
+   "preferred": false
+  }
+ ]
+}

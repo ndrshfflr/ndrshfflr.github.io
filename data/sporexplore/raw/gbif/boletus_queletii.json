@@ -1,0 +1,249 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 5954937,
+  "acceptedUsageKey": 7888147,
+  "scientificName": "Boletus queletii Schulzer",
+  "canonicalName": "Boletus queletii",
+  "rank": "SPECIES",
+  "status": "SYNONYM",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=0; score=120; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Suillellus",
+  "species": "Suillellus queletii",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7240504,
+  "speciesKey": 7888147,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Boletus+queletii&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 331,
+  "NO": 28,
+  "SE": 66,
+  "FI": 10,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 5954937,
+  "nubKey": 5954937,
+  "nameKey": 1534566,
+  "taxonID": "gbif:5954937",
+  "sourceTaxonKey": 172022790,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Suillellus",
+  "species": "Suillellus queletii",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7240504,
+  "speciesKey": 7888147,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 7240504,
+  "parent": "Suillellus",
+  "acceptedKey": 7888147,
+  "accepted": "Suillellus queletii (Schulzer) Vizzini, Simonini & Gelardi",
+  "scientificName": "Boletus queletii Schulzer",
+  "canonicalName": "Boletus queletii",
+  "vernacularName": "Deceiving Bolete",
+  "authorship": "Schulzer",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "HOMOTYPIC_SYNONYM",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1885). Hedwigia 24(4): 143.",
+  "numDescendants": 0,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:04.943+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "Deceiving Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876742
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "Deceiving Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222045048
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "Deceiving Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011272
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "Glatstokket indigo-rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876742
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "Glatstokket indigorørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905162
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "Glatstokket indigorørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876742
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "flamsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876742
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "häräntatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258013024
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "häräntatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876742
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "oransje blodrørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876742
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "oransje blodrøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876742
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "slätfotad sopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299876742
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "flamsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329762,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "flamsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691100,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "flamsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019213,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "oransje blodrørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069607,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "oransje blodrøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069607,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "Deceiving Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945893,
+   "preferred": false
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "slätfotad sopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691100,
+   "preferred": false
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "slätfotad sopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019213,
+   "preferred": false
+  },
+  {
+   "taxonKey": 7888147,
+   "vernacularName": "slätfotad sopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329762,
+   "preferred": false
+  }
+ ]
+}

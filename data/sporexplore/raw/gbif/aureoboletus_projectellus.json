@@ -1,0 +1,185 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 8339825,
+  "scientificName": "Aureoboletus projectellus (Murrill) Halling",
+  "canonicalName": "Aureoboletus projectellus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Aureoboletus",
+  "species": "Aureoboletus projectellus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2519406,
+  "speciesKey": 8339825,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Aureoboletus+projectellus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 126,
+  "NO": 29,
+  "SE": 238,
+  "FI": 30,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 8339825,
+  "nubKey": 8339825,
+  "nameKey": 1211416,
+  "taxonID": "gbif:8339825",
+  "sourceTaxonKey": 172024341,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Aureoboletus",
+  "species": "Aureoboletus projectellus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2519406,
+  "speciesKey": 8339825,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2519406,
+  "parent": "Aureoboletus",
+  "basionymKey": 6323656,
+  "basionym": "Ceriomyces projectellus Murrill",
+  "scientificName": "Aureoboletus projectellus (Murrill) Halling",
+  "canonicalName": "Aureoboletus projectellus",
+  "authorship": "(Murrill) Halling",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2015). In Halling, Fechner, Nuhn, Osmundson, Soytong, Arora, Binder & Hibbett, Aust. Syst. Bot. 28: 19.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:03.590+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 8339825,
+   "vernacularName": "Ribbestokket guldrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905112
+  },
+  {
+   "taxonKey": 8339825,
+   "vernacularName": "Ribbestokket guldrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884083
+  },
+  {
+   "taxonKey": 8339825,
+   "vernacularName": "Ribbestokket rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905112
+  },
+  {
+   "taxonKey": 8339825,
+   "vernacularName": "Ribbestokket rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884083
+  },
+  {
+   "taxonKey": 8339825,
+   "vernacularName": "amerikarørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884083
+  },
+  {
+   "taxonKey": 8339825,
+   "vernacularName": "ribbsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884083
+  },
+  {
+   "taxonKey": 8339825,
+   "vernacularName": "vaskitatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012970
+  },
+  {
+   "taxonKey": 8339825,
+   "vernacularName": "vaskitatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299884083
+  },
+  {
+   "taxonKey": 8339825,
+   "vernacularName": "Ribbestokket rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "Risk assessment of alien taxa in Sweden 2024",
+   "sourceTaxonKey": 318000784,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8339825,
+   "vernacularName": "Ribbestokket rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019323,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8339825,
+   "vernacularName": "amerikarørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 199515655,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8339825,
+   "vernacularName": "ribbsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Risk assessment of alien taxa in Sweden 2024",
+   "sourceTaxonKey": 318000784,
+   "preferred": true
+  },
+  {
+   "taxonKey": 8339825,
+   "vernacularName": "ribbsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019323,
+   "preferred": true
+  }
+ ]
+}

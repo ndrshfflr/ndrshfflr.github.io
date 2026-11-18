@@ -1,0 +1,298 @@
+{
+ "retrieved": "2026-11-18",
+ "doi": "10.1016/j.mycres.2007.01.014",
+ "url": "https://api.crossref.org/works/10.1016/j.mycres.2007.01.014",
+ "message": {
+  "indexed": {
+   "date-parts": [
+    [
+     2025,
+     10,
+     29
+    ]
+   ],
+   "date-time": "2025-10-29T13:02:01Z",
+   "timestamp": 1761742921261
+  },
+  "reference-count": 10,
+  "publisher": "Elsevier BV",
+  "issue": "4",
+  "license": [
+   {
+    "start": {
+     "date-parts": [
+      [
+       2007,
+       4,
+       1
+      ]
+     ],
+     "date-time": "2007-04-01T00:00:00Z",
+     "timestamp": 1175385600000
+    },
+    "content-version": "tdm",
+    "delay-in-days": 0,
+    "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+   }
+  ],
+  "content-domain": {
+   "domain": [],
+   "crossmark-restriction": false
+  },
+  "short-container-title": [
+   "Mycological Research"
+  ],
+  "published-print": {
+   "date-parts": [
+    [
+     2007,
+     4
+    ]
+   ]
+  },
+  "DOI": "10.1016/j.mycres.2007.01.014",
+  "type": "journal-article",
+  "created": {
+   "date-parts": [
+    [
+     2007,
+     2,
+     5
+    ]
+   ],
+   "date-time": "2007-02-05T12:40:54Z",
+   "timestamp": 1170679254000
+  },
+  "page": "403-408",
+  "source": "Crossref",
+  "is-referenced-by-count": 12,
+  "title": [
+   "Xerocomus silwoodensis sp. nov., a new species within the European X. subtomentosus complex"
+  ],
+  "prefix": "10.1016",
+  "volume": "111",
+  "author": [
+   {
+    "given": "Andy F.S.",
+    "family": "Taylor",
+    "sequence": "first",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Alan E.",
+    "family": "Hills",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Giampaolo",
+    "family": "Simonini",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "José A.",
+    "family": "Muñoz",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   },
+   {
+    "given": "Ursula",
+    "family": "Eberhardt",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "role": "author",
+      "vocabulary": "crossref"
+     }
+    ]
+   }
+  ],
+  "member": "78",
+  "reference": [
+   {
+    "key": "10.1016/j.mycres.2007.01.014_bib1",
+    "series-title": "Schmier- und Filzröhrlinge s. l. in Europa",
+    "author": "Engel",
+    "year": "1996"
+   },
+   {
+    "key": "10.1016/j.mycres.2007.01.014_bib2",
+    "series-title": "Methuen Handbook of Colour.",
+    "author": "Kornerup",
+    "year": "1963"
+   },
+   {
+    "key": "10.1016/j.mycres.2007.01.014_bib3",
+    "unstructured": "Ladurner H, 2001. The Xerocomoideae of Europe. PhD thesis, University Innsbruck."
+   },
+   {
+    "key": "10.1016/j.mycres.2007.01.014_bib4",
+    "series-title": "Xerocomus s.l. [Fungi Europaei Vol. 8]",
+    "author": "Ladurner",
+    "year": "2003"
+   },
+   {
+    "key": "10.1016/j.mycres.2007.01.014_bib5",
+    "doi-asserted-by": "crossref",
+    "first-page": "659",
+    "DOI": "10.1017/S0953756203007901",
+    "article-title": "Xerocomus cisalpinus sp. nov., and the delimitation of species in the X. chrysenteron complex based on morphology and rDNA-LSU sequences",
+    "volume": "107",
+    "author": "Peintner",
+    "year": "2003",
+    "journal-title": "Mycological Research"
+   },
+   {
+    "key": "10.1016/j.mycres.2007.01.014_bib6",
+    "doi-asserted-by": "crossref",
+    "first-page": "817",
+    "DOI": "10.1093/bioinformatics/14.9.817",
+    "article-title": "Modeltest: testing the model of DNA substitution",
+    "volume": "14",
+    "author": "Posada",
+    "year": "1998",
+    "journal-title": "Bioinformatics"
+   },
+   {
+    "key": "10.1016/j.mycres.2007.01.014_bib7",
+    "unstructured": "Redeuilh G, 1994. La reazione ammoniacale nei Boleti del gruppo subtomentosus. Atti delle 2e giornate Confederazione Europea Micologia Mediterranea: 35–44."
+   },
+   {
+    "key": "10.1016/j.mycres.2007.01.014_bib8",
+    "series-title": "PAUP*: phylogenetic analysis using parsimony (*and other methods).",
+    "author": "Swofford",
+    "year": "2002"
+   },
+   {
+    "key": "10.1016/j.mycres.2007.01.014_bib9",
+    "doi-asserted-by": "crossref",
+    "first-page": "276",
+    "DOI": "10.1016/j.mycres.2005.11.013",
+    "article-title": "Detection of species within the Xerocomus subtomentosus complex in Europe using rDNA-ITS sequences",
+    "volume": "110",
+    "author": "Taylor",
+    "year": "2006",
+    "journal-title": "Mycological Research"
+   },
+   {
+    "key": "10.1016/j.mycres.2007.01.014_bib10",
+    "doi-asserted-by": "crossref",
+    "first-page": "4876",
+    "DOI": "10.1093/nar/25.24.4876",
+    "article-title": "The ClustalX windows interface: flexible strategies for multiple sequence alignment aided by quality analysis tools",
+    "volume": "24",
+    "author": "Thompson",
+    "year": "1997",
+    "journal-title": "Nucleic Acids Research"
+   }
+  ],
+  "container-title": [
+   "Mycological Research"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+   {
+    "URL": "https://api.elsevier.com/content/article/PII:S0953756207000354?httpAccept=text/xml",
+    "content-type": "text/xml",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   },
+   {
+    "URL": "https://api.elsevier.com/content/article/PII:S0953756207000354?httpAccept=text/plain",
+    "content-type": "text/plain",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   }
+  ],
+  "deposited": {
+   "date-parts": [
+    [
+     2019,
+     1,
+     9
+    ]
+   ],
+   "date-time": "2019-01-09T13:21:32Z",
+   "timestamp": 1547040092000
+  },
+  "score": 1,
+  "resource": {
+   "primary": {
+    "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0953756207000354"
+   }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+   "date-parts": [
+    [
+     2007,
+     4
+    ]
+   ]
+  },
+  "references-count": 10,
+  "journal-issue": {
+   "issue": "4",
+   "published-print": {
+    "date-parts": [
+     [
+      2007,
+      4
+     ]
+    ]
+   }
+  },
+  "alternative-id": [
+   "S0953756207000354"
+  ],
+  "URL": "https://doi.org/10.1016/j.mycres.2007.01.014",
+  "relation": {},
+  "ISSN": [
+   "0953-7562"
+  ],
+  "issn-type": [
+   {
+    "value": "0953-7562",
+    "type": "print"
+   }
+  ],
+  "subject": [],
+  "published": {
+   "date-parts": [
+    [
+     2007,
+     4
+    ]
+   ]
+  }
+ },
+ "error": null
+}

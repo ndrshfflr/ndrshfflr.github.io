@@ -1,0 +1,110 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Huckfeldt Schmidt 2006 Identification key for European strand-forming house-decay fungi Mycologist",
+ "url": "https://api.crossref.org/works?query.bibliographic=Huckfeldt+Schmidt+2006+Identification+key+for+European+strand-forming+house-decay+fungi+Mycologist&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Elsevier BV",
+   "issue": "2",
+   "DOI": "10.1016/j.mycol.2006.03.012",
+   "type": "journal-article",
+   "page": "42-56",
+   "title": [
+    "Identification key for European strand-forming house-rot fungi"
+   ],
+   "volume": "20",
+   "author": [
+    {
+     "given": "Tobias",
+     "family": "Huckfeldt",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Olaf",
+     "family": "Schmidt",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycologist"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2006,
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "DOI": "10.1016/j.mycol.2005.11.006",
+   "title": [
+    "REMOVED: Profiles of Fungi"
+   ],
+   "author": [
+    {
+     "given": "N.W.",
+     "family": "Legon",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2006,
+      2
+     ]
+    ]
+   },
+   "container-title": [
+    "Mycologist"
+   ],
+   "type": "journal-article",
+   "publisher": "Elsevier BV"
+  },
+  {
+   "publisher": "Elsevier BV",
+   "issue": "4",
+   "DOI": "10.1016/j.mycol.2006.08.001",
+   "type": "journal-article",
+   "page": "183-184",
+   "title": [
+    "Profiles of Fungi"
+   ],
+   "volume": "20",
+   "container-title": [
+    "Mycologist"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2006,
+      11
+     ]
+    ]
+   }
+  }
+ ]
+}

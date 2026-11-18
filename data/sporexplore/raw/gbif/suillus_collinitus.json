@@ -1,0 +1,113 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 9104622,
+  "scientificName": "Suillus collinitus (Fr.) Kuntze",
+  "canonicalName": "Suillus collinitus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Suillaceae",
+  "genus": "Suillus",
+  "species": "Suillus collinitus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8455,
+  "genusKey": 7414997,
+  "speciesKey": 9104622,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Suillus+collinitus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 168,
+  "NO": 0,
+  "SE": 107,
+  "FI": 0,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 9104622,
+  "nubKey": 9104622,
+  "nameKey": 10875896,
+  "taxonID": "gbif:9104622",
+  "sourceTaxonKey": 172016879,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Suillaceae",
+  "genus": "Suillus",
+  "species": "Suillus collinitus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8455,
+  "genusKey": 7414997,
+  "speciesKey": 9104622,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 7414997,
+  "parent": "Suillus",
+  "basionymKey": 6101707,
+  "basionym": "Boletus collinitus Fr.",
+  "scientificName": "Suillus collinitus (Fr.) Kuntze",
+  "canonicalName": "Suillus collinitus",
+  "authorship": "(Fr.) Kuntze",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1898). Revis. Gen. Pl. (Leipzig) 3(3): 536.",
+  "numDescendants": 2,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:00:56.953+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 9104622,
+   "vernacularName": "Rosafodet slimrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871027
+  },
+  {
+   "taxonKey": 9104622,
+   "vernacularName": "Rosafodet slimrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905447
+  },
+  {
+   "taxonKey": 9104622,
+   "vernacularName": "mörk grynsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871027
+  },
+  {
+   "taxonKey": 9104622,
+   "vernacularName": "mörk grynsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019054,
+   "preferred": true
+  }
+ ]
+}

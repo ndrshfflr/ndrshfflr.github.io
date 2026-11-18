@@ -1,0 +1,194 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 7722553,
+  "scientificName": "Rubroboletus satanas (Lenz) Kuan Zhao & Zhu L.Yang",
+  "canonicalName": "Rubroboletus satanas",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Rubroboletus",
+  "species": "Rubroboletus satanas",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7475215,
+  "speciesKey": 7722553,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Rubroboletus+satanas&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 712,
+  "NO": 0,
+  "SE": 767,
+  "FI": 0,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 7722553,
+  "nubKey": 7722553,
+  "nameKey": 17472027,
+  "taxonID": "gbif:7722553",
+  "sourceTaxonKey": 172023147,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Rubroboletus",
+  "species": "Rubroboletus satanas",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7475215,
+  "speciesKey": 7722553,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 7475215,
+  "parent": "Rubroboletus",
+  "basionymKey": 5954954,
+  "basionym": "Boletus satanas Lenz",
+  "scientificName": "Rubroboletus satanas (Lenz) Kuan Zhao & Zhu L.Yang",
+  "canonicalName": "Rubroboletus satanas",
+  "vernacularName": "Devil's Bolete",
+  "authorship": "(Lenz) Kuan Zhao & Zhu L.Yang",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2014). Phytotaxa 188(2): 70.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:07.397+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 7722553,
+   "vernacularName": "Devil's Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877258
+  },
+  {
+   "taxonKey": 7722553,
+   "vernacularName": "Devil's Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222044866
+  },
+  {
+   "taxonKey": 7722553,
+   "vernacularName": "Devil's Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011258
+  },
+  {
+   "taxonKey": 7722553,
+   "vernacularName": "Satans rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877258
+  },
+  {
+   "taxonKey": 7722553,
+   "vernacularName": "Satans rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905035
+  },
+  {
+   "taxonKey": 7722553,
+   "vernacularName": "djävulssopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877258
+  },
+  {
+   "taxonKey": 7722553,
+   "vernacularName": "piruntatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877258
+  },
+  {
+   "taxonKey": 7722553,
+   "vernacularName": "satansopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299877258
+  },
+  {
+   "taxonKey": 7722553,
+   "vernacularName": "djävulssopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329745,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7722553,
+   "vernacularName": "djävulssopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019219,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7722553,
+   "vernacularName": "djävulssopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691159,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7722553,
+   "vernacularName": "satansopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069587,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7722553,
+   "vernacularName": "satansopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069587,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7722553,
+   "vernacularName": "Devil's Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945792,
+   "preferred": false
+  }
+ ]
+}

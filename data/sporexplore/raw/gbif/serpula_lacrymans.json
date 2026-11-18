@@ -1,0 +1,230 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 5239534,
+  "scientificName": "Serpula lacrymans (Wulfen) J.Schröt.",
+  "canonicalName": "Serpula lacrymans",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 99,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; nextMatch=3",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 9050139,
+    "scientificName": "Serpula lacrymans (Wulfen) P.Karst., 1884",
+    "canonicalName": "Serpula lacrymans",
+    "rank": "SPECIES",
+    "status": "DOUBTFUL",
+    "confidence": 97,
+    "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=-5; score=115",
+    "matchType": "EXACT",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Serpulaceae",
+    "genus": "Serpula",
+    "species": "Serpula lacrymans",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8454,
+    "genusKey": 2521517,
+    "speciesKey": 9050139,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Serpulaceae",
+  "genus": "Serpula",
+  "species": "Serpula lacrymans",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8454,
+  "genusKey": 2521517,
+  "speciesKey": 5239534,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Serpula+lacrymans&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 47,
+  "NO": 197,
+  "SE": 183,
+  "FI": 144,
+  "IS": 0,
+  "FO": 1,
+  "GL": 0
+ },
+ "species": {
+  "key": 5239534,
+  "nubKey": 5239534,
+  "nameKey": 17256693,
+  "taxonID": "gbif:5239534",
+  "sourceTaxonKey": 172017449,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Serpulaceae",
+  "genus": "Serpula",
+  "species": "Serpula lacrymans",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8454,
+  "genusKey": 2521517,
+  "speciesKey": 5239534,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2521517,
+  "parent": "Serpula",
+  "scientificName": "Serpula lacrymans (Wulfen) J.Schröt.",
+  "canonicalName": "Serpula lacrymans",
+  "vernacularName": "Dry Rot",
+  "authorship": "(Wulfen) J.Schröt.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1888). In Cohn, Krypt.-Fl. Schlesien (Breslau) 3.1(25–32): 466 (’1889′).",
+  "numDescendants": 2,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:00:58.121+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "Dry Rot",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011444
+  },
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "Dry Rot",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871258
+  },
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "Dry Rot",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222042485
+  },
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "ekte hussopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871258
+  },
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "hussvamp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871258
+  },
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "lattiasieni",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871258
+  },
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "lattiasieni",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012818
+  },
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "Ægte hussvamp",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334904983
+  },
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "Ægte hussvamp",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871258
+  },
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "äkta hussvamp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871258
+  },
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "Dry Rot",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180098548,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "ekte hussopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069216,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "ekte hussopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069216,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "hussvamp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160018997,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "Dry Rot",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945354,
+   "preferred": false
+  },
+  {
+   "taxonKey": 5239534,
+   "vernacularName": "äkta hussvamp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160018997,
+   "preferred": false
+  }
+ ]
+}

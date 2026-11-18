@@ -1,0 +1,271 @@
+{
+ "retrieved": "2026-11-18",
+ "doi": "10.5735/085.060.0110",
+ "url": "https://api.crossref.org/works/10.5735/085.060.0110",
+ "message": {
+  "indexed": {
+   "date-parts": [
+    [
+     2026,
+     10,
+     31
+    ]
+   ],
+   "date-time": "2026-10-31T06:34:02Z",
+   "timestamp": 1793428442860,
+   "version": "4.5.0"
+  },
+  "reference-count": 17,
+  "publisher": "Finnish Zoological and Botanical Publishing Board",
+  "issue": "1",
+  "content-domain": {
+   "domain": [],
+   "crossmark-restriction": false
+  },
+  "short-container-title": [
+   "Annales Botanici Fennici"
+  ],
+  "published-print": {
+   "date-parts": [
+    [
+     2023,
+     3,
+     3
+    ]
+   ]
+  },
+  "abstract": "<jats:p>Based on barcoding (ITS nrDNA) and morphological studies of specimens deposited in H and OULU, basidiomycetes Rhizopogon evadens and R. ochroleucoides are recorded for the first time for Europe, R. graveolens and R. verii for Finland, and R. mohelnensis for Estonia.</jats:p>",
+  "DOI": "10.5735/085.060.0110",
+  "type": "journal-article",
+  "created": {
+   "date-parts": [
+    [
+     2023,
+     3,
+     16
+    ]
+   ],
+   "date-time": "2023-03-16T04:46:36Z",
+   "timestamp": 1678941996000
+  },
+  "page": "67-70",
+  "source": "Crossref",
+  "is-referenced-by-count": 2,
+  "title": [
+   "Additions to Rhizopogon (Boletales, Basidiomycota) in Finland and Europe Based on Molecular and Morphological Evidence"
+  ],
+  "prefix": "10.5735",
+  "volume": "60",
+  "author": [
+   {
+    "given": "María P.",
+    "family": "Martín",
+    "sequence": "first",
+    "affiliation": [
+     {
+      "name": "Departmento de Micología, Real Jardín Botánico, RJB-CSIC, Plaza de Murillo 2, ES-28014 Madrid"
+     }
+    ],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Alejandro",
+    "family": "Huang",
+    "sequence": "additional",
+    "affiliation": [
+     {
+      "name": "Departmento de Micología, Real Jardín Botánico, RJB-CSIC, Plaza de Murillo 2, ES-28014 Madrid"
+     }
+    ],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Miguel A.",
+    "family": "Ortega",
+    "sequence": "additional",
+    "affiliation": [
+     {
+      "name": "Departmento de Micología, Real Jardín Botánico, RJB-CSIC, Plaza de Murillo 2, ES-28014 Madrid"
+     }
+    ],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   }
+  ],
+  "member": "3726",
+  "reference": [
+   {
+    "key": "2",
+    "doi-asserted-by": "crossref",
+    "unstructured": "M. Binder  and D.S. Hibbett  \"Mycologia.\"  98, \"Molecular systematics and biological diversification of Boletales.\" 971 (2006)",
+    "DOI": "10.1080/15572536.2006.11832626"
+   },
+   {
+    "key": "1",
+    "doi-asserted-by": "crossref",
+    "unstructured": "K.J. Beiler, D.M. Durall, S.W. Simard, et al.  \"New Phytologist.\"  185, \"Architecture of the wood-wide web: Rhizopogon spp. genets link multiple Douglas-fir cohorts.\" 543 (2010)",
+    "DOI": "10.1111/j.1469-8137.2009.03069.x"
+   },
+   {
+    "key": "3",
+    "doi-asserted-by": "crossref",
+    "unstructured": "J.D. Birch, S.W. Simard, K.J. Beiler, et al.  \"Journal of Ecology.\"  109, \"Beyond seedlings: ectomycorrhizal fungal networks and growth of mature Pseudotsuga menziesii.\" 806 (2021)",
+    "DOI": "10.1111/1365-2745.13507"
+   },
+   {
+    "key": "4",
+    "doi-asserted-by": "crossref",
+    "unstructured": "L.C. Grubisha, J.M. Trappe, R. Molina, et al.  \"Mycologia.\"  94, \"Biology of the ectomycorrhizal genus Rhizopogon. VI. Re-examination of infrageneric relationships inferred from phylogenetic analyses of ITS sequences.\" 607 (2002)",
+    "DOI": "10.1080/15572536.2003.11833189"
+   },
+   {
+    "key": "5",
+    "doi-asserted-by": "crossref",
+    "unstructured": "I.L. Kałucka, A.M. Jagodziński, M. Nowiński,  \"Acta Mycologica.\"  51, \"Biodiversity of ectomycorrhizal fungi in surface mine spoil restoration stands in Poland — first time recorded, rare, and red-listed species.\" 1080 (2016)",
+    "DOI": "10.5586/am.1080"
+   },
+   {
+    "key": "6",
+    "unstructured": "C.G. Lloyd,  \"Mycological Notes.\"  68, \"Species of rare occurrence.\" 1171 (1923)"
+   },
+   {
+    "key": "7",
+    "unstructured": "M.P. Martín,  \"Edicions specials de la Societat Catalana de Micologia.\"  5, \"The genus Rhizopogon in Europe.\" (1996)"
+   },
+   {
+    "key": "8",
+    "doi-asserted-by": "crossref",
+    "unstructured": "M.P. Martín,  \"Karstenia.\"  41, \"The genus Rhizopogon in Finland: R. abietis and R. ochraceorubens.\" 23 (2001)",
+    "DOI": "10.29203/ka.2001.374"
+   },
+   {
+    "key": "9",
+    "unstructured": "M.P. Martín,  \"Funga Nordica.\"  \"Rhizopogonaceae Gäum. & C. W. Dodge.\" 200 (2012)"
+   },
+   {
+    "key": "10",
+    "unstructured": "M.P. Martín,  \"Funga Nordica.\"  \"Rhizopogonaceae Gäum. & C. W. Dodge.\" 200 (2018)"
+   },
+   {
+    "key": "11",
+    "doi-asserted-by": "crossref",
+    "unstructured": "M.P. Martín  and M.A. García  \"Mycotaxon.\"  109, \"How many species in the Rhizopogon roseolus group?\" 111 (2009)",
+    "DOI": "10.5248/109.111"
+   },
+   {
+    "key": "12",
+    "doi-asserted-by": "crossref",
+    "unstructured": "R. Molina  and J.M. Trappe  \"New Phytologist.\"  126, \"Biology of the ectomycorrhizal genus Rhizopogon: I. Host associations, host-specificity and pure culture syntheses.\" 653 (1994)",
+    "DOI": "10.1111/j.1469-8137.1994.tb02961.x"
+   },
+   {
+    "key": "13",
+    "unstructured": "G. Pacioni,  \"Bulletin de la Société Mycologique France.\"  100, \"Champignons hypogés nouveaux pour l'Afrique du nord.\" 111 (1984)"
+   },
+   {
+    "key": "14",
+    "unstructured": "A.H. Smith  and M. Zeller  \"Memoirs of the New York Botanical Garden.\"  14, \"A preliminary account of the North American species of Rhizopogon.\" 1 (1966)"
+   },
+   {
+    "key": "15",
+    "doi-asserted-by": "crossref",
+    "unstructured": "M.A. Sulzbacher, T. Grebenc, M.A. García, et al.  \"Mycorrhiza.\"  26, \"Molecular and morphological analyses confirm Rhizopogon verii as a widely distributed ectomycorrhizal false truffle in Europe, and its presence in South America.\" 377 (2016)",
+    "DOI": "10.1007/s00572-015-0678-8"
+   },
+   {
+    "key": "16",
+    "unstructured": "J. Velenovský,  \"Mykologia, Praha.\"  8, \"České druhy rodu Rhizopogon Fr.\" 89 (1931)"
+   },
+   {
+    "key": "17",
+    "unstructured": "C. Vittadini,  \"Notizie naturali e civili su la Lombardia.\"  I, \"Fungi.\" 340 (1844)"
+   }
+  ],
+  "container-title": [
+   "Annales Botanici Fennici"
+  ],
+  "original-title": [],
+  "deposited": {
+   "date-parts": [
+    [
+     2026,
+     10,
+     31
+    ]
+   ],
+   "date-time": "2026-10-31T06:13:01Z",
+   "timestamp": 1793427181000
+  },
+  "score": 1,
+  "resource": {
+   "primary": {
+    "URL": "https://bioone.org/journals/annales-botanici-fennici/volume-60/issue-1/085.060.0110/Additions-to-Rhizopogon-Boletales-Basidiomycota-in-Finland-and-Europe-Based/10.5735/085.060.0110.full"
+   }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+   "date-parts": [
+    [
+     2023,
+     3,
+     3
+    ]
+   ]
+  },
+  "references-count": 17,
+  "journal-issue": {
+   "issue": "1",
+   "published-online": {
+    "date-parts": [
+     [
+      2023,
+      1,
+      1
+     ]
+    ]
+   }
+  },
+  "URL": "https://doi.org/10.5735/085.060.0110",
+  "relation": {},
+  "ISSN": [
+   "0003-3847",
+   "1797-2442"
+  ],
+  "issn-type": [
+   {
+    "value": "0003-3847",
+    "type": "print"
+   },
+   {
+    "value": "1797-2442",
+    "type": "electronic"
+   }
+  ],
+  "subject": [],
+  "published": {
+   "date-parts": [
+    [
+     2023,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ "error": null
+}

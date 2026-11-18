@@ -1,0 +1,211 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 5239875,
+  "acceptedUsageKey": 5239873,
+  "scientificName": "Suillus aeruginascens Secr. ex Snell",
+  "canonicalName": "Suillus aeruginascens",
+  "rank": "SPECIES",
+  "status": "SYNONYM",
+  "confidence": 99,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=0; score=120; 2 synonym homonyms; nextMatch=0",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 8505262,
+    "acceptedUsageKey": 5239873,
+    "scientificName": "Suillus aeruginascens Secr.",
+    "canonicalName": "Suillus aeruginascens",
+    "rank": "SPECIES",
+    "status": "SYNONYM",
+    "confidence": 99,
+    "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=0; score=120",
+    "matchType": "EXACT",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Suillaceae",
+    "genus": "Suillus",
+    "species": "Suillus viscidus",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8455,
+    "genusKey": 7414997,
+    "speciesKey": 5239873,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Suillaceae",
+  "genus": "Suillus",
+  "species": "Suillus viscidus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8455,
+  "genusKey": 7414997,
+  "speciesKey": 5239873,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Suillus+aeruginascens&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 382,
+  "NO": 9,
+  "SE": 263,
+  "FI": 33,
+  "IS": 0,
+  "FO": 0,
+  "GL": 1
+ },
+ "species": {
+  "key": 5239875,
+  "nubKey": 5239875,
+  "nameKey": 10876416,
+  "taxonID": "gbif:5239875",
+  "sourceTaxonKey": 176033944,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Suillaceae",
+  "genus": "Suillus",
+  "species": "Suillus viscidus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8455,
+  "genusKey": 7414997,
+  "speciesKey": 5239873,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 7414997,
+  "parent": "Suillus",
+  "acceptedKey": 5239873,
+  "accepted": "Suillus viscidus (L.) Roussel",
+  "scientificName": "Suillus aeruginascens Secr. ex Snell",
+  "canonicalName": "Suillus aeruginascens",
+  "authorship": "Secr. ex Snell",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "HETEROTYPIC_SYNONYM",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1944). In Slipp & Snell, Lloydia 7(1): 25.",
+  "numDescendants": 0,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:00:56.637+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 5239873,
+   "vernacularName": "Sticky Bolete",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011421
+  },
+  {
+   "taxonKey": 5239873,
+   "vernacularName": "Sticky Bolete",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222040542
+  },
+  {
+   "taxonKey": 5239873,
+   "vernacularName": "Sticky Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299870805
+  },
+  {
+   "taxonKey": 5239873,
+   "vernacularName": "grå lerkesopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299870805
+  },
+  {
+   "taxonKey": 5239873,
+   "vernacularName": "grå lärksopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299870805
+  },
+  {
+   "taxonKey": 5239873,
+   "vernacularName": "harmotatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012828
+  },
+  {
+   "taxonKey": 5239873,
+   "vernacularName": "harmotatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299870805
+  },
+  {
+   "taxonKey": 5239873,
+   "vernacularName": "Sticky Bolete",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180102454,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239873,
+   "vernacularName": "grå lerkesopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069713,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239873,
+   "vernacularName": "grå lerkesopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069713,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239873,
+   "vernacularName": "grå lärksopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Risk assessment of alien taxa in Sweden 2024",
+   "sourceTaxonKey": 318000751,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239873,
+   "vernacularName": "grå lärksopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019075,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239873,
+   "vernacularName": "Sticky Bolete",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945236,
+   "preferred": false
+  }
+ ]
+}

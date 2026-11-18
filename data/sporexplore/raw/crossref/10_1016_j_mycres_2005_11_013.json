@@ -1,0 +1,507 @@
+{
+ "retrieved": "2026-11-18",
+ "doi": "10.1016/j.mycres.2005.11.013",
+ "url": "https://api.crossref.org/works/10.1016/j.mycres.2005.11.013",
+ "message": {
+  "indexed": {
+   "date-parts": [
+    [
+     2026,
+     8,
+     18
+    ]
+   ],
+   "date-time": "2026-08-18T16:00:07Z",
+   "timestamp": 1787068807390,
+   "version": "build-2736575974"
+  },
+  "reference-count": 34,
+  "publisher": "Elsevier BV",
+  "issue": "3",
+  "license": [
+   {
+    "start": {
+     "date-parts": [
+      [
+       2006,
+       3,
+       1
+      ]
+     ],
+     "date-time": "2006-03-01T00:00:00Z",
+     "timestamp": 1141171200000
+    },
+    "content-version": "tdm",
+    "delay-in-days": 0,
+    "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+   }
+  ],
+  "content-domain": {
+   "domain": [],
+   "crossmark-restriction": false
+  },
+  "short-container-title": [
+   "Mycological Research"
+  ],
+  "published-print": {
+   "date-parts": [
+    [
+     2006,
+     3
+    ]
+   ]
+  },
+  "DOI": "10.1016/j.mycres.2005.11.013",
+  "type": "journal-article",
+  "created": {
+   "date-parts": [
+    [
+     2006,
+     2,
+     20
+    ]
+   ],
+   "date-time": "2006-02-20T10:57:23Z",
+   "timestamp": 1140433043000
+  },
+  "page": "276-287",
+  "source": "Crossref",
+  "is-referenced-by-count": 25,
+  "title": [
+   "Detection of species within the Xerocomus subtomentosus complex in Europe using rDNA–ITS sequences"
+  ],
+  "prefix": "10.1016",
+  "volume": "110",
+  "author": [
+   {
+    "given": "Andy F.S.",
+    "family": "Taylor",
+    "sequence": "first",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Alan E.",
+    "family": "Hills",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Giampaolo",
+    "family": "Simonini",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Ernst E.",
+    "family": "Both",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   },
+   {
+    "given": "Ursula",
+    "family": "Eberhardt",
+    "sequence": "additional",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   }
+  ],
+  "member": "78",
+  "reference": [
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib1",
+    "doi-asserted-by": "crossref",
+    "first-page": "284",
+    "DOI": "10.1017/S0953756201003628",
+    "article-title": "A widely distributed ITS polymorphism within a biological species of the ectomycorrhizal fungus Hebeloma velutipes",
+    "volume": "105",
+    "author": "Aanen",
+    "year": "2001",
+    "journal-title": "Mycological Research"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib2",
+    "series-title": "Boletus, Dill. ex L.",
+    "author": "Alessio",
+    "year": "1985"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib3",
+    "doi-asserted-by": "crossref",
+    "first-page": "7323",
+    "DOI": "10.1073/pnas.77.12.7323",
+    "article-title": "Molecular evidence for genetic exchange among ribosomal genes on non-homologous chromosomes in man and apes",
+    "volume": "77",
+    "author": "Arnheim",
+    "year": "1980",
+    "journal-title": "Proceedings of the National Academy of Sciences, USA"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib4",
+    "series-title": "Mushrooms Demystified",
+    "author": "Arora",
+    "year": "1986"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib5",
+    "unstructured": "Binder M, 1999. Zur molekularen systematik der Boletales: Boletineae und Sclerodermatineae subordo nov. PhD thesis, Universität Regensburg."
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib6",
+    "unstructured": "Eberhardt U, 2000. Molekulare Analysen zur Verwandtschaft der agaricoiden Russulaceen im Vergleich mit Mykorrhiza- und Fruchtkörpermerkmalen. PhD thesis, University of Tübingen."
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib7",
+    "doi-asserted-by": "crossref",
+    "first-page": "201",
+    "DOI": "10.1007/s11557-006-0019-6",
+    "article-title": "Molecular kinship analyses of the agaricoid Russulaceae: correspondence with mycorrhizal anatomy and sporocarp features in the genus Russula",
+    "volume": "1",
+    "author": "Eberhardt",
+    "year": "2002",
+    "journal-title": "Mycological Progress"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib8",
+    "series-title": "Schmier- und Filzröhrlinge s. l. in Europa",
+    "author": "Engel",
+    "year": "1996"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib9",
+    "doi-asserted-by": "crossref",
+    "first-page": "783",
+    "DOI": "10.2307/2408678",
+    "article-title": "Confidence limits on phylogenies: an approach using the bootstrap",
+    "volume": "39",
+    "author": "Felsenstein",
+    "year": "1985",
+    "journal-title": "Evolution"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib10",
+    "doi-asserted-by": "crossref",
+    "first-page": "406",
+    "DOI": "10.1093/sysbio/20.4.406",
+    "article-title": "Toward defining the course of evolution: minimum change for a specific tree topology",
+    "volume": "20",
+    "author": "Fitch",
+    "year": "1971",
+    "journal-title": "Systematic Biology"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib11",
+    "doi-asserted-by": "crossref",
+    "first-page": "113",
+    "DOI": "10.1111/j.1365-294X.1993.tb00005.x",
+    "article-title": "ITS primers with enhanced specificity for basidiomycetes—application to the identification of mycorrhizae and rusts",
+    "volume": "2",
+    "author": "Gardes",
+    "year": "1993",
+    "journal-title": "Molecular Ecology"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib12",
+    "doi-asserted-by": "crossref",
+    "first-page": "1155",
+    "DOI": "10.2307/3761917",
+    "article-title": "Phylogenetic relationships of European Phlegmacium species (Cortinarius, Agaricales)",
+    "volume": "95",
+    "author": "Garnica",
+    "year": "2003",
+    "journal-title": "Mycologia"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib13",
+    "volume": "vol. 2",
+    "author": "Hansen",
+    "year": "1992"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib14",
+    "doi-asserted-by": "crossref",
+    "first-page": "1313",
+    "DOI": "10.1046/j.1469-8137.1997.00742.x",
+    "article-title": "Inter- and intraspecific variation in the ITS region of ectomycorrhizal fungi in Fennoscandia as detected by endonuclease analysis",
+    "volume": "136",
+    "author": "Kårén",
+    "year": "1997",
+    "journal-title": "New Phytologist"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib15",
+    "doi-asserted-by": "crossref",
+    "first-page": "1063",
+    "DOI": "10.1111/j.1469-8137.2005.01376.x",
+    "article-title": "UNITE—a database providing web based methods for the molecular identification of ectomycorrhizal fungi",
+    "volume": "166",
+    "author": "Kõljalg",
+    "year": "2005",
+    "journal-title": "New Phytologist"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib16",
+    "series-title": "Methuen Handbook of Colour",
+    "author": "Kornerup",
+    "year": "1963"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib17",
+    "unstructured": "Ladurner H, 2001. The Xerocomoideae of Europe. PhD thesis, University Innsbruck."
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib18",
+    "first-page": "11",
+    "article-title": "A new hyphal type found in Xerocomus pruinatus",
+    "volume": "9",
+    "author": "Ladurner",
+    "year": "2000",
+    "journal-title": "Österreichische Zeitschrift für Pilzkunde"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib19",
+    "series-title": "Xerocomus s. l.",
+    "author": "Ladurner",
+    "year": "2003"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib20",
+    "doi-asserted-by": "crossref",
+    "first-page": "411",
+    "DOI": "10.1016/j.femsle.2005.01.003",
+    "article-title": "Assessment of inter- and intra-specific variability in the main species of Boletus edulis complex by ITS analysis",
+    "volume": "243",
+    "author": "Leonardi",
+    "year": "2005",
+    "journal-title": "FEMS Microbiology Letters"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib21",
+    "unstructured": "Nuytinck J, Verbeken A. Species delimitation and phylogenetic relationships in Lactarius sect. Deliciosi in Europe. Mycological Research, in press."
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib22",
+    "doi-asserted-by": "crossref",
+    "first-page": "465",
+    "DOI": "10.1093/oxfordjournals.molbev.a025783",
+    "article-title": "Variation in the ribosomal transcribedspacer and 5.8 S rDNA among five species of Acropora (Cnidaria: Scleractinia): patterns of variation consistent with reticulate evolution",
+    "volume": "14",
+    "author": "Odorico",
+    "year": "1997",
+    "journal-title": "Molecular Biology and Evolution"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib23",
+    "first-page": "245",
+    "article-title": "The taxonomic value of the ornamentation in the Xerocomus group of Boletus",
+    "volume": "14",
+    "author": "Oolbekkink",
+    "year": "1991",
+    "journal-title": "Persoonia"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib24",
+    "doi-asserted-by": "crossref",
+    "first-page": "659",
+    "DOI": "10.1017/S0953756203007901",
+    "article-title": "Xerocomus cisalpinus sp. nov., and the delimitation of species in the X. chrysenteron complex based on morphology and rDNA–LSU sequences",
+    "volume": "107",
+    "author": "Peintner",
+    "year": "2003",
+    "journal-title": "Mycological Research"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib25",
+    "doi-asserted-by": "crossref",
+    "first-page": "817",
+    "DOI": "10.1093/bioinformatics/14.9.817",
+    "article-title": "Modeltest: testing the model of DNA substitution",
+    "volume": "14",
+    "author": "Posada",
+    "year": "1998",
+    "journal-title": "Bioinformatics"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib26",
+    "unstructured": "Redeuilh G, 1994. La reazione ammoniacale nei Boleti del gruppo subtomentosus, in Atti delle 2e giornate Confederazione Europea Micologia Mediterranea: 35–44."
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib27",
+    "doi-asserted-by": "crossref",
+    "first-page": "775",
+    "DOI": "10.1046/j.1469-8137.2003.00829.x",
+    "article-title": "Vertical distribution of ectomycorrhizal fungal taxa in a podzol soil profile",
+    "volume": "159",
+    "author": "Rosling",
+    "year": "2003",
+    "journal-title": "New Phytologist"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib28",
+    "first-page": "406",
+    "article-title": "The neighbor-joining method: a new method for reconstructing phylogenetic trees",
+    "volume": "4",
+    "author": "Saitou",
+    "year": "1987",
+    "journal-title": "Molecular Biology and Evolution"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib29",
+    "first-page": "97",
+    "article-title": "The Boletineae of Florida with notes on extralimital species",
+    "volume": "2",
+    "author": "Singer",
+    "year": "1945",
+    "journal-title": "Farlowia"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib30",
+    "series-title": "The Boleti of Northeastern North America",
+    "author": "Snell",
+    "year": "1970"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib31",
+    "series-title": "PAUP∗: phylogenetic analysis using parsimony (∗and other methods)",
+    "author": "Swofford",
+    "year": "2002"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib32",
+    "doi-asserted-by": "crossref",
+    "first-page": "4876",
+    "DOI": "10.1093/nar/25.24.4876",
+    "article-title": "The ClustalX windows interface: flexible strategies for multiple sequence alignment aided by quality analysis tools",
+    "volume": "24",
+    "author": "Thompson",
+    "year": "1997",
+    "journal-title": "Nucleic Acids Research"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib33",
+    "article-title": "Boletaceae: Gomphidiaceae: Paxillaceae",
+    "volume": "Vol. 1",
+    "author": "Watling",
+    "year": "1970"
+   },
+   {
+    "key": "10.1016/j.mycres.2005.11.013_bib34",
+    "series-title": "PCR Protocols: A Guide to Methods and Applications",
+    "first-page": "315",
+    "article-title": "Amplification and direct sequencing of fungal ribosomal RNA genes for phylogenetics",
+    "author": "White",
+    "year": "1990"
+   }
+  ],
+  "container-title": [
+   "Mycological Research"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+   {
+    "URL": "https://api.elsevier.com/content/article/PII:S0953756205000584?httpAccept=text/xml",
+    "content-type": "text/xml",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   },
+   {
+    "URL": "https://api.elsevier.com/content/article/PII:S0953756205000584?httpAccept=text/plain",
+    "content-type": "text/plain",
+    "content-version": "vor",
+    "intended-application": "text-mining"
+   }
+  ],
+  "deposited": {
+   "date-parts": [
+    [
+     2019,
+     1,
+     18
+    ]
+   ],
+   "date-time": "2019-01-18T05:58:53Z",
+   "timestamp": 1547791133000
+  },
+  "score": 1,
+  "resource": {
+   "primary": {
+    "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0953756205000584"
+   }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+   "date-parts": [
+    [
+     2006,
+     3
+    ]
+   ]
+  },
+  "references-count": 34,
+  "journal-issue": {
+   "issue": "3",
+   "published-print": {
+    "date-parts": [
+     [
+      2006,
+      3
+     ]
+    ]
+   }
+  },
+  "alternative-id": [
+   "S0953756205000584"
+  ],
+  "URL": "https://doi.org/10.1016/j.mycres.2005.11.013",
+  "relation": {},
+  "ISSN": [
+   "0953-7562"
+  ],
+  "issn-type": [
+   {
+    "value": "0953-7562",
+    "type": "print"
+   }
+  ],
+  "subject": [],
+  "published": {
+   "date-parts": [
+    [
+     2006,
+     3
+    ]
+   ]
+  }
+ },
+ "error": null
+}

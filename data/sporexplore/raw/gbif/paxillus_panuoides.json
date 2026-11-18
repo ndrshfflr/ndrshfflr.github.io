@@ -1,0 +1,186 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 5244297,
+  "acceptedUsageKey": 5244293,
+  "scientificName": "Paxillus panuoides (Fr.) Fr.",
+  "canonicalName": "Paxillus panuoides",
+  "rank": "SPECIES",
+  "status": "SYNONYM",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=0; score=120; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Tapinellaceae",
+  "genus": "Tapinella",
+  "species": "Tapinella panuoides",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4187,
+  "genusKey": 2525650,
+  "speciesKey": 5244293,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Paxillus+panuoides&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 375,
+  "NO": 151,
+  "SE": 575,
+  "FI": 173,
+  "IS": 0,
+  "FO": 0,
+  "GL": 1
+ },
+ "species": {
+  "key": 5244297,
+  "nubKey": 5244297,
+  "nameKey": 8315057,
+  "taxonID": "gbif:5244297",
+  "sourceTaxonKey": 176036456,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Tapinellaceae",
+  "genus": "Tapinella",
+  "species": "Tapinella panuoides",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4187,
+  "genusKey": 2525650,
+  "speciesKey": 5244293,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2525650,
+  "parent": "Tapinella",
+  "acceptedKey": 5244293,
+  "accepted": "Tapinella panuoides (Fr.) E.-J.Gilbert",
+  "basionymKey": 5244299,
+  "basionym": "Agaricus panuoides Fr.",
+  "scientificName": "Paxillus panuoides (Fr.) Fr.",
+  "canonicalName": "Paxillus panuoides",
+  "authorship": "(Fr.) Fr.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "HETEROTYPIC_SYNONYM",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1838). Epicr. Syst. Mycol. (Upsaliae): 318 (’1836-1838′).",
+  "numDescendants": 0,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:17.118+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 5244293,
+   "vernacularName": "Oyster Rollrim",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871189
+  },
+  {
+   "taxonKey": 5244293,
+   "vernacularName": "Tømmer-viftesvamp",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905381
+  },
+  {
+   "taxonKey": 5244293,
+   "vernacularName": "Tømmer-viftesvamp",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871189
+  },
+  {
+   "taxonKey": 5244293,
+   "vernacularName": "huspluggsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871189
+  },
+  {
+   "taxonKey": 5244293,
+   "vernacularName": "källarkantarell",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871189
+  },
+  {
+   "taxonKey": 5244293,
+   "vernacularName": "vinokaspulkkosieni",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012878
+  },
+  {
+   "taxonKey": 5244293,
+   "vernacularName": "vinokaspulkkosieni",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871189
+  },
+  {
+   "taxonKey": 5244293,
+   "vernacularName": "Oyster Rollrim",
+   "language": "eng",
+   "country": "US",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011527,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5244293,
+   "vernacularName": "Oyster Rollrim",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180098439,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5244293,
+   "vernacularName": "huspluggsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069191,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5244293,
+   "vernacularName": "huspluggsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069191,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5244293,
+   "vernacularName": "källarkantarell",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019026,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5244293,
+   "vernacularName": "Oyster Rollrim",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945971,
+   "preferred": false
+  }
+ ]
+}

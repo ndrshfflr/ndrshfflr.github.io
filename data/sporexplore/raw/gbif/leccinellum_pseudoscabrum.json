@@ -1,0 +1,193 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 9712569,
+  "scientificName": "Leccinellum pseudoscabrum (Kallenb.) Mikšík",
+  "canonicalName": "Leccinellum pseudoscabrum",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 99,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; nextMatch=0",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 12146292,
+    "acceptedUsageKey": 9712569,
+    "scientificName": "Leccinellum pseudoscabrum (Kallenb.) Mik",
+    "canonicalName": "Leccinellum pseudoscabrum",
+    "rank": "SPECIES",
+    "status": "SYNONYM",
+    "confidence": 99,
+    "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=0; score=120",
+    "matchType": "EXACT",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Boletaceae",
+    "genus": "Leccinellum",
+    "species": "Leccinellum pseudoscabrum",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8789,
+    "genusKey": 2524413,
+    "speciesKey": 9712569,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinellum",
+  "species": "Leccinellum pseudoscabrum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2524413,
+  "speciesKey": 9712569,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Leccinellum+pseudoscabrum&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 245,
+  "NO": 548,
+  "SE": 1661,
+  "FI": 25,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 9712569,
+  "nubKey": 9712569,
+  "nameKey": 32474396,
+  "taxonID": "gbif:9712569",
+  "sourceTaxonKey": 176035482,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Leccinellum",
+  "species": "Leccinellum pseudoscabrum",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 2524413,
+  "speciesKey": 9712569,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2524413,
+  "parent": "Leccinellum",
+  "basionymKey": 9099381,
+  "basionym": "? pseudoscabrum Kallenb.",
+  "scientificName": "Leccinellum pseudoscabrum (Kallenb.) Mikšík",
+  "canonicalName": "Leccinellum pseudoscabrum",
+  "vernacularName": "Hazel Bolete",
+  "authorship": "(Kallenb.) Mikšík",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2017). Index Fungorum 338: 1.",
+  "numDescendants": 3,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:11.606+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 9712569,
+   "vernacularName": "Avnbøg-skælrørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905237
+  },
+  {
+   "taxonKey": 9712569,
+   "vernacularName": "Avnbøg-skælrørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880826
+  },
+  {
+   "taxonKey": 9712569,
+   "vernacularName": "Hazel Bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880826
+  },
+  {
+   "taxonKey": 9712569,
+   "vernacularName": "avnbøg-rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880826
+  },
+  {
+   "taxonKey": 9712569,
+   "vernacularName": "hasselskrubb",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880826
+  },
+  {
+   "taxonKey": 9712569,
+   "vernacularName": "hasselsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880826
+  },
+  {
+   "taxonKey": 9712569,
+   "vernacularName": "pähkinäntatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012988
+  },
+  {
+   "taxonKey": 9712569,
+   "vernacularName": "pähkinäntatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299880826
+  },
+  {
+   "taxonKey": 9712569,
+   "vernacularName": "hasselskrubb",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168646723,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9712569,
+   "vernacularName": "hasselskrubb",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168646723,
+   "preferred": true
+  },
+  {
+   "taxonKey": 9712569,
+   "vernacularName": "hasselsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019234,
+   "preferred": true
+  }
+ ]
+}

@@ -1,0 +1,298 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Kauserud Svegården Saetre Knudsen Stensrud Schmidt Doi Sugiyama Högberg 2007 Asian origin and rapid global spread of the destructive dry rot fungus Serpula lacrymans Molecular Ecology",
+ "url": "https://api.crossref.org/works?query.bibliographic=Kauserud+Sveg%C3%A5rden+Saetre+Knudsen+Stensrud+Schmidt+Doi+Sugiyama+H%C3%B6gberg+2007+Asian+origin+and+rapid+global+spread+of+the+destructive+dry+rot+fungus+Serpula+lacrymans+Molecular+Ecology&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Wiley",
+   "issue": "16",
+   "DOI": "10.1111/j.1365-294x.2007.03387.x",
+   "type": "journal-article",
+   "page": "3350-3360",
+   "title": [
+    "Asian origin and rapid global spread of the destructive dry rot fungus <i>Serpula lacrymans</i>"
+   ],
+   "volume": "16",
+   "author": [
+    {
+     "given": "HÅVARD",
+     "family": "KAUSERUD",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "INGEBORG BJORVAND",
+     "family": "SVEGÅRDEN",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "GLENN‐PETER",
+     "family": "SÆTRE",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "HENNING",
+     "family": "KNUDSEN",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "ØYVIND",
+     "family": "STENSRUD",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "OLAF",
+     "family": "SCHMIDT",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "SHUICHI",
+     "family": "DOI",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "TOMOAKI",
+     "family": "SUGIYAMA",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "NILS",
+     "family": "HÖGBERG",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Molecular Ecology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2007,
+      7,
+      17
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Wiley",
+   "issue": "4",
+   "DOI": "10.1111/j.1365-294x.2009.04505.x",
+   "type": "journal-article",
+   "page": "706-715",
+   "title": [
+    "Two invasive populations of the dry rot fungus<i>Serpula lacrymans</i>show divergent population genetic structures"
+   ],
+   "volume": "19",
+   "author": [
+    {
+     "given": "INGEBORG BJORVAND",
+     "family": "ENGH",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "TOR",
+     "family": "CARLSEN",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "GLENN-PETER",
+     "family": "SAETRE",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "NILS",
+     "family": "HÖGBERG",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "SHUICHI",
+     "family": "DOI",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "HÅVARD",
+     "family": "KAUSERUD",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Molecular Ecology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2010,
+      1,
+      20
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Wiley",
+   "issue": "4",
+   "DOI": "10.1111/j.1471-8286.2006.01416.x",
+   "type": "journal-article",
+   "page": "1022-1024",
+   "title": [
+    "Isolation and characterization of 15 polymorphic microsatellite markers for the devastating dry rot fungus, <i>Serpula lacrymans</i>"
+   ],
+   "volume": "6",
+   "author": [
+    {
+     "given": "N.",
+     "family": "HÖGBERG",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "I. B.",
+     "family": "SVEGÅRDEN",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "H.",
+     "family": "KAUSERUD",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Molecular Ecology Notes"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2006,
+      7,
+      7
+     ]
+    ]
+   }
+  }
+ ]
+}

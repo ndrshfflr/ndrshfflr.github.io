@@ -1,0 +1,294 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Loizides Bellanger Assyov Moreau Richard 2019 Present status and future of boletoid fungi Boletaceae on the island of Cyprus cryptic and threatened diversity unravelled by ten-year study Fungal Ecology",
+ "url": "https://api.crossref.org/works?query.bibliographic=Loizides+Bellanger+Assyov+Moreau+Richard+2019+Present+status+and+future+of+boletoid+fungi+Boletaceae+on+the+island+of+Cyprus+cryptic+and+threatened+diversity+unravelled+by+ten-year+study+Fungal+Ecology&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Elsevier BV",
+   "DOI": "10.1016/j.funeco.2019.03.008",
+   "type": "journal-article",
+   "page": "65-81",
+   "title": [
+    "Present status and future of boletoid fungi (Boletaceae) on the island of Cyprus: Cryptic and threatened diversity unravelled by ten-year study"
+   ],
+   "volume": "41",
+   "author": [
+    {
+     "given": "Michael",
+     "family": "Loizides",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Jean-Michel",
+     "family": "Bellanger",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Boris",
+     "family": "Assyov",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Pierre-Arthur",
+     "family": "Moreau",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    },
+    {
+     "given": "Franck",
+     "family": "Richard",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "role": "author",
+       "vocabulary": "crossref"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Fungal Ecology"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2019,
+      10
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Elsevier BV",
+   "DOI": "10.1016/j.dib.2019.104115",
+   "type": "journal-article",
+   "page": "104115",
+   "title": [
+    "Phylogenetic and distributional data on boletoid fungi (Boletaceae) in Cyprus and description of a new sampling methodology"
+   ],
+   "volume": "25",
+   "author": [
+    {
+     "given": "Michael",
+     "family": "Loizides",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Jean-Michel",
+     "family": "Bellanger",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Boris",
+     "family": "Assyov",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Pierre-Arthur",
+     "family": "Moreau",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Franck",
+     "family": "Richard",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Data in Brief"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2019,
+      8
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Westerdijk Fungal Biodiversity Institute",
+   "issue": "1",
+   "DOI": "10.3767/persoonia.2021.46.10",
+   "type": "journal-article",
+   "page": "272-312",
+   "title": [
+    "<i>Hygrophorus</i> sect. <i>Olivaceoumbrini</i>: new boundaries, extended biogeography and unexpected diversity unravelled by transatlantic studies"
+   ],
+   "volume": "46",
+   "author": [
+    {
+     "given": "J.-M.",
+     "family": "Bellanger",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "R.",
+     "family": "Lebeuf",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "E.",
+     "family": "Sesli",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "M.",
+     "family": "Loizides",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "C.",
+     "family": "Schwarz",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "P.-A.",
+     "family": "Moreau",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "K.",
+     "family": "Liimatainen",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "E.",
+     "family": "Larsson",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Persoonia - Molecular Phylogeny and Evolution of Fungi"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2021,
+      6,
+      30
+     ]
+    ]
+   }
+  }
+ ]
+}

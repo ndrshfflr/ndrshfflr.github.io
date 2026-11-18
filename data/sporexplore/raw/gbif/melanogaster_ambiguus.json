@@ -1,0 +1,176 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 5240036,
+  "scientificName": "Melanogaster ambiguus (Vittad.) Tul. & C.Tul.",
+  "canonicalName": "Melanogaster ambiguus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Paxillaceae",
+  "genus": "Melanogaster",
+  "species": "Melanogaster ambiguus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4195,
+  "genusKey": 2524217,
+  "speciesKey": 5240036,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Melanogaster+ambiguus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 86,
+  "NO": 31,
+  "SE": 129,
+  "FI": 22,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 5240036,
+  "nubKey": 5240036,
+  "nameKey": 17255874,
+  "taxonID": "gbif:5240036",
+  "sourceTaxonKey": 172019805,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Paxillaceae",
+  "genus": "Melanogaster",
+  "species": "Melanogaster ambiguus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4195,
+  "genusKey": 2524217,
+  "speciesKey": 5240036,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2524217,
+  "parent": "Melanogaster",
+  "basionymKey": 2525636,
+  "basionym": "Octaviania ambigua Vittad.",
+  "scientificName": "Melanogaster ambiguus (Vittad.) Tul. & C.Tul.",
+  "canonicalName": "Melanogaster ambiguus",
+  "vernacularName": "Stinking Slime Truffle",
+  "authorship": "(Vittad.) Tul. & C.Tul.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1843). Annls Sci. Nat., Bot., Sér. 2 19: 378.",
+  "numDescendants": 6,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:12.403+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 5240036,
+   "vernacularName": "Lille slimtrøffel",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299872563
+  },
+  {
+   "taxonKey": 5240036,
+   "vernacularName": "Lille slimtrøffel",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334904926
+  },
+  {
+   "taxonKey": 5240036,
+   "vernacularName": "Stinking Slime Truffle",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299872563
+  },
+  {
+   "taxonKey": 5240036,
+   "vernacularName": "grå slimknoll",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299872563
+  },
+  {
+   "taxonKey": 5240036,
+   "vernacularName": "haisumantumukula",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299872563
+  },
+  {
+   "taxonKey": 5240036,
+   "vernacularName": "haisumantumukula",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258013134
+  },
+  {
+   "taxonKey": 5240036,
+   "vernacularName": "stinkande slemtryffel",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299872563
+  },
+  {
+   "taxonKey": 5240036,
+   "vernacularName": "grå slimknoll",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069302,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5240036,
+   "vernacularName": "grå slimknoll",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069302,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5240036,
+   "vernacularName": "stinkande slemtryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691360,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5240036,
+   "vernacularName": "stinkande slemtryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019188,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5240036,
+   "vernacularName": "Stinking Slime Truffle",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180099170,
+   "preferred": false
+  }
+ ]
+}

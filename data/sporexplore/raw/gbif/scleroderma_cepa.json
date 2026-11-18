@@ -1,0 +1,239 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 5239938,
+  "scientificName": "Scleroderma cepa Pers.",
+  "canonicalName": "Scleroderma cepa",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; nextMatch=5",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 5239953,
+    "scientificName": "Scleroderma reae Guzmán",
+    "canonicalName": "Scleroderma reae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 16,
+    "note": "Similarity: name=5; authorship=0; classification=4; rank=6; status=1; score=16",
+    "matchType": "FUZZY",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Sclerodermataceae",
+    "genus": "Scleroderma",
+    "species": "Scleroderma reae",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8453,
+    "genusKey": 2524936,
+    "speciesKey": 5239953,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Sclerodermataceae",
+  "genus": "Scleroderma",
+  "species": "Scleroderma cepa",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8453,
+  "genusKey": 2524936,
+  "speciesKey": 5239938,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Scleroderma+cepa&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 50,
+  "NO": 3,
+  "SE": 96,
+  "FI": 4,
+  "IS": 0,
+  "FO": 0,
+  "GL": 222
+ },
+ "species": {
+  "key": 5239938,
+  "nubKey": 5239938,
+  "nameKey": 10196475,
+  "taxonID": "gbif:5239938",
+  "sourceTaxonKey": 172017980,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Sclerodermataceae",
+  "genus": "Scleroderma",
+  "species": "Scleroderma cepa",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8453,
+  "genusKey": 2524936,
+  "speciesKey": 5239938,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2524936,
+  "parent": "Scleroderma",
+  "scientificName": "Scleroderma cepa Pers.",
+  "canonicalName": "Scleroderma cepa",
+  "vernacularName": "Onion Earthball",
+  "authorship": "Pers.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1801). Syn. Meth. Fung. (Göttingen) 1: 155.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:13.527+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "Onion Earthball",
+   "language": "eng",
+   "country": "GB",
+   "source": "Checklist of Vermont Fungi",
+   "sourceTaxonKey": 245011456
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "Onion Earthball",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871442
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "Onion Earthball",
+   "language": "eng",
+   "country": "GB",
+   "area": "eng",
+   "source": "TAXREF",
+   "sourceTaxonKey": 222041279
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "Rødbrun bruskbold",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905317
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "Rødbrun bruskbold",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871442
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "raudbrun potetrøyksopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871442
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "rödbrun rottryffel",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871442
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "rødbrun potetrøyksopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871442
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "takkumukulakuukunen",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012801
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "takkumukulakuukunen",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871442
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "Onion Earthball",
+   "language": "eng",
+   "source": "United Kingdom Species Inventory (UKSI)",
+   "sourceTaxonKey": 180098768,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "raudbrun potetrøyksopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069239,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "rödbrun rottryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329619,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "rödbrun rottryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691323,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "rödbrun rottryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019146,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "rødbrun potetrøyksopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069239,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239938,
+   "vernacularName": "Onion Earthball",
+   "language": "eng",
+   "source": "Checklist of Vermont Species",
+   "sourceTaxonKey": 334945378,
+   "preferred": false
+  }
+ ]
+}

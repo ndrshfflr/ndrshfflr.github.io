@@ -1,0 +1,140 @@
+{
+ "retrieved": "2026-11-18",
+ "doi": "10.33585/cmy.60104",
+ "url": "https://api.crossref.org/works/10.33585/cmy.60104",
+ "message": {
+  "indexed": {
+   "date-parts": [
+    [
+     2026,
+     9,
+     23
+    ]
+   ],
+   "date-time": "2026-09-23T14:22:46Z",
+   "timestamp": 1790173366630,
+   "version": "4.1.0"
+  },
+  "reference-count": 0,
+  "publisher": "Czech Scientific Society for Mycology",
+  "issue": "1",
+  "content-domain": {
+   "domain": [],
+   "crossmark-restriction": false
+  },
+  "short-container-title": [
+   "Czech Mycol."
+  ],
+  "published-print": {
+   "date-parts": [
+    [
+     2008,
+     7,
+     4
+    ]
+   ]
+  },
+  "abstract": "<jats:p>The definition of the generic limits of <jats:italic>Xerocomus</jats:italic> s. l. and particularly the delimitation of this genus from <jats:italic>Boletus</jats:italic> is very unclear and controversial. During his study of European species of the <jats:italic>Boletaceae</jats:italic>, the author has come to the conclusion that <jats:italic>Xerocomus</jats:italic> in a wide concept is a heterogeneous mixture of several groups of species. These groups are separated from each other by different anatomical and some other characters. Also recent molecular studies show that <jats:italic>Xerocomus</jats:italic> s. l. is not a monophyletic group. In agreement with these facts, the European species of <jats:italic>Xerocomus</jats:italic> s. l. whose anatomy was studied by the present author are here classified into the following, more distinctly delimited genera: <jats:italic>Xerocomus</jats:italic> s. str., <jats:italic>Phylloporus</jats:italic>, <jats:italic>Xerocomellus</jats:italic> gen. nov., <jats:italic>Hemileccinum</jats:italic> gen. nov. and <jats:italic>Pseudoboletus.Boletus badius</jats:italic> and <jats:italic>Boletus moravicus</jats:italic>, also often treated as species of <jats:italic>Xerocomus</jats:italic>, are retained for the present in the genus <jats:italic>Boletus</jats:italic>. The differences between <jats:italic>Xerocomus</jats:italic> s. str., <jats:italic>Phylloporus</jats:italic>, <jats:italic>Xerocomellus</jats:italic>, <jats:italic>Hemileccinum, Pseudoboletus</jats:italic> and <jats:italic>Boletus</jats:italic> (which is related to this group of genera) are discussed in detail. Two new genera, <jats:italic>Xerocomellus</jats:italic> and <jats:italic>Hemileccinum,</jats:italic> and necessary new combinations of species names are proposed.</jats:p>",
+  "DOI": "10.33585/cmy.60104",
+  "type": "journal-article",
+  "created": {
+   "date-parts": [
+    [
+     2019,
+     3,
+     25
+    ]
+   ],
+   "date-time": "2019-03-25T16:59:22Z",
+   "timestamp": 1553533162000
+  },
+  "page": "29-62",
+  "source": "Crossref",
+  "is-referenced-by-count": 51,
+  "title": [
+   "<i>Xerocomus</i> s. l. in the light of the present state of knowledge."
+  ],
+  "prefix": "10.33585",
+  "volume": "60",
+  "author": [
+   {
+    "given": "Josef",
+    "family": "Šutara",
+    "sequence": "first",
+    "affiliation": [],
+    "role": [
+     {
+      "vocabulary": "crossref",
+      "role": "author"
+     }
+    ]
+   }
+  ],
+  "member": "19080",
+  "container-title": [
+   "Czech Mycology"
+  ],
+  "original-title": [],
+  "deposited": {
+   "date-parts": [
+    [
+     2025,
+     4,
+     4
+    ]
+   ],
+   "date-time": "2025-04-04T16:48:43Z",
+   "timestamp": 1743785323000
+  },
+  "score": 1,
+  "resource": {
+   "primary": {
+    "URL": "https://czechmycology.org/article/60104"
+   }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+   "date-parts": [
+    [
+     2008,
+     7,
+     4
+    ]
+   ]
+  },
+  "references-count": 0,
+  "journal-issue": {
+   "issue": "1",
+   "published-print": {
+    "date-parts": [
+     [
+      2008
+     ]
+    ]
+   }
+  },
+  "URL": "https://doi.org/10.33585/cmy.60104",
+  "relation": {},
+  "ISSN": [
+   "1211-0981"
+  ],
+  "issn-type": [
+   {
+    "value": "1211-0981",
+    "type": "print"
+   }
+  ],
+  "subject": [],
+  "published": {
+   "date-parts": [
+    [
+     2008,
+     7,
+     4
+    ]
+   ]
+  }
+ },
+ "error": null
+}

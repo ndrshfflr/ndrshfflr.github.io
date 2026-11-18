@@ -1,0 +1,152 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 12244168,
+  "scientificName": "Alpova larskersii Jeppson & E.Larss.",
+  "canonicalName": "Alpova larskersii",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Paxillaceae",
+  "genus": "Alpova",
+  "species": "Alpova larskersii",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4195,
+  "genusKey": 2525555,
+  "speciesKey": 12244168,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Alpova+larskersii&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 0,
+  "NO": 0,
+  "SE": 34,
+  "FI": 0,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 12244168,
+  "nameKey": 116982744,
+  "taxonID": "gbif:12244168",
+  "sourceTaxonKey": 210297671,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Paxillaceae",
+  "genus": "Alpova",
+  "species": "Alpova larskersii",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 4195,
+  "genusKey": 2525555,
+  "speciesKey": 12244168,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2525555,
+  "parent": "Alpova",
+  "scientificName": "Alpova larskersii Jeppson & E.Larss.",
+  "canonicalName": "Alpova larskersii",
+  "authorship": "Jeppson & E.Larss.",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2022). In Crous Et al., Persoonia 48: 303.",
+  "numDescendants": 0,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:12.127+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 12244168,
+   "vernacularName": "falsk slemtryffel",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299872928
+  },
+  {
+   "taxonKey": 12244168,
+   "vernacularName": "geletryffél",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299872928
+  },
+  {
+   "taxonKey": 12244168,
+   "vernacularName": "gelétryffel",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299872928
+  },
+  {
+   "taxonKey": 12244168,
+   "vernacularName": "gelétryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329794,
+   "preferred": true
+  },
+  {
+   "taxonKey": 12244168,
+   "vernacularName": "gelétryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019197,
+   "preferred": true
+  },
+  {
+   "taxonKey": 12244168,
+   "vernacularName": "falsk slemtryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329794,
+   "preferred": false
+  },
+  {
+   "taxonKey": 12244168,
+   "vernacularName": "falsk slemtryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019197,
+   "preferred": false
+  },
+  {
+   "taxonKey": 12244168,
+   "vernacularName": "geletryffél",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019197,
+   "preferred": false
+  },
+  {
+   "taxonKey": 12244168,
+   "vernacularName": "geletryffél",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329794,
+   "preferred": false
+  }
+ ]
+}

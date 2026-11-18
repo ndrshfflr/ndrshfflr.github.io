@@ -1,0 +1,379 @@
+{
+ "retrieved": "2026-11-18",
+ "query": "Dentinger Ammirati Both Desjardin Halling Henkel Moreau Nagasawa Soytong Taylor Watling Moncalvo McLaughlin 2010 Molecular phylogenetics of porcini mushrooms Boletus section Boletus Molecular Phylogenetics and Evolution",
+ "url": "https://api.crossref.org/works?query.bibliographic=Dentinger+Ammirati+Both+Desjardin+Halling+Henkel+Moreau+Nagasawa+Soytong+Taylor+Watling+Moncalvo+McLaughlin+2010+Molecular+phylogenetics+of+porcini+mushrooms+Boletus+section+Boletus+Molecular+Phylogenetics+and+Evolution&rows=3&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2Ctype%2Cpublisher",
+ "items": [
+  {
+   "publisher": "Elsevier BV",
+   "issue": "3",
+   "DOI": "10.1016/j.ympev.2010.10.004",
+   "type": "journal-article",
+   "page": "1276-1292",
+   "title": [
+    "Molecular phylogenetics of porcini mushrooms (Boletus section Boletus)"
+   ],
+   "volume": "57",
+   "author": [
+    {
+     "given": "Bryn T.M.",
+     "family": "Dentinger",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Joseph F.",
+     "family": "Ammirati",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Ernst E.",
+     "family": "Both",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Dennis E.",
+     "family": "Desjardin",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Roy E.",
+     "family": "Halling",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Terry W.",
+     "family": "Henkel",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Pierre-Arthur",
+     "family": "Moreau",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Eiji",
+     "family": "Nagasawa",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Kasem",
+     "family": "Soytong",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Andy F.",
+     "family": "Taylor",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Roy",
+     "family": "Watling",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Jean-Marc",
+     "family": "Moncalvo",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "David J.",
+     "family": "McLaughlin",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Molecular Phylogenetics and Evolution"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2010,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Informa UK Limited",
+   "issue": "4",
+   "DOI": "10.3852/13-340",
+   "type": "journal-article",
+   "page": "830-834",
+   "title": [
+    "New Porcini (<i>Boletus</i> sect. <i>Boletus</i>) from Australia and Thailand"
+   ],
+   "volume": "106",
+   "author": [
+    {
+     "given": "Roy E.",
+     "family": "Halling",
+     "sequence": "first",
+     "affiliation": [
+      {
+       "name": "Institute of Systematic Botany, The New York Botanical Garden, Bronx, New York 10458"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Dennis E.",
+     "family": "Desjardin",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Department of Biology, San Francisco State University, 1600 Holloway Ave., San Francisco, California 94132"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Nigel",
+     "family": "Fechner",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Queensland Herbarium, Mt Coot-tha Road, Toowong, Brisbane, Qld 4066, Australia"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "David",
+     "family": "Arora",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "PO Box 672, Gualala, California 95445"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Kasem",
+     "family": "Soytong",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Faculty of Agricultural Technology, King Mongkut’s Institute of Technology, Ladkrabang, Bangkok, Thailand"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Bryn T.M.",
+     "family": "Dentinger",
+     "sequence": "additional",
+     "affiliation": [
+      {
+       "name": "Jodrell Laboratory, Royal Botanic Gardens, Kew, Richmond, Surrey TW9 3DS, UK"
+      }
+     ],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Mycologia"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2014,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "publisher": "Elsevier BV",
+   "issue": "2",
+   "DOI": "10.1016/j.ympev.2007.11.004",
+   "type": "journal-article",
+   "page": "415-429",
+   "title": [
+    "The mushroom family Psathyrellaceae: Evidence for large-scale polyphyly of the genus Psathyrella"
+   ],
+   "volume": "46",
+   "author": [
+    {
+     "given": "Mahajabeen",
+     "family": "Padamsee",
+     "sequence": "first",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "P. Brandon",
+     "family": "Matheny",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "Bryn T.M.",
+     "family": "Dentinger",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    },
+    {
+     "given": "David J.",
+     "family": "McLaughlin",
+     "sequence": "additional",
+     "affiliation": [],
+     "role": [
+      {
+       "vocabulary": "crossref",
+       "role": "author"
+      }
+     ]
+    }
+   ],
+   "container-title": [
+    "Molecular Phylogenetics and Evolution"
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2008,
+      2
+     ]
+    ]
+   }
+  }
+ ]
+}

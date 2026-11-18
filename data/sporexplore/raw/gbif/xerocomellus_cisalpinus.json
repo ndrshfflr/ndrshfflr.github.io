@@ -1,0 +1,151 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 7529390,
+  "scientificName": "Xerocomellus cisalpinus (Simonini, H.Ladurner & Peintner) Klofac",
+  "canonicalName": "Xerocomellus cisalpinus",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; singleMatch=5",
+  "matchType": "EXACT",
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Xerocomellus",
+  "species": "Xerocomellus cisalpinus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7240529,
+  "speciesKey": 7529390,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Xerocomellus+cisalpinus&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 578,
+  "NO": 15,
+  "SE": 455,
+  "FI": 35,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 7529390,
+  "nubKey": 7529390,
+  "nameKey": 17472030,
+  "taxonID": "gbif:7529390",
+  "sourceTaxonKey": 172022065,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Xerocomellus",
+  "species": "Xerocomellus cisalpinus",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7240529,
+  "speciesKey": 7529390,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 7240529,
+  "parent": "Xerocomellus",
+  "basionymKey": 2519564,
+  "basionym": "Xerocomus cisalpinus Simonini, H.Ladurner & Peintner",
+  "scientificName": "Xerocomellus cisalpinus (Simonini, H.Ladurner & Peintner) Klofac",
+  "canonicalName": "Xerocomellus cisalpinus",
+  "vernacularName": "bluefoot bolete",
+  "authorship": "(Simonini, H.Ladurner & Peintner) Klofac",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2011). Öst. Z. Pilzk. 20: 38.",
+  "numDescendants": 3,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:02.091+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 7529390,
+   "vernacularName": "Finsprukken rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905022
+  },
+  {
+   "taxonKey": 7529390,
+   "vernacularName": "Finsprukken rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875951
+  },
+  {
+   "taxonKey": 7529390,
+   "vernacularName": "bluefoot bolete",
+   "language": "eng",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875951
+  },
+  {
+   "taxonKey": 7529390,
+   "vernacularName": "blånande rutsopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875951
+  },
+  {
+   "taxonKey": 7529390,
+   "vernacularName": "blånende ruterørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875951
+  },
+  {
+   "taxonKey": 7529390,
+   "vernacularName": "kaukotatti",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258013049
+  },
+  {
+   "taxonKey": 7529390,
+   "vernacularName": "kaukotatti",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299875951
+  },
+  {
+   "taxonKey": 7529390,
+   "vernacularName": "blånande rutsopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019254,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7529390,
+   "vernacularName": "blånende ruterørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069688,
+   "preferred": true
+  }
+ ]
+}

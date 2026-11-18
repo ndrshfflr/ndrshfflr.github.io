@@ -1,0 +1,192 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 5239949,
+  "scientificName": "Scleroderma septentrionale Jeppson",
+  "canonicalName": "Scleroderma septentrionale",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; nextMatch=5",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 10212018,
+    "acceptedUsageKey": 5239949,
+    "scientificName": "Scleroderma septentrionalis",
+    "canonicalName": "Scleroderma septentrionalis",
+    "rank": "SPECIES",
+    "status": "SYNONYM",
+    "confidence": 96,
+    "note": "Similarity: name=100; authorship=0; classification=4; rank=6; status=0; score=110",
+    "matchType": "FUZZY",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Sclerodermataceae",
+    "genus": "Scleroderma",
+    "species": "Scleroderma septentrionale",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8453,
+    "genusKey": 2524936,
+    "speciesKey": 5239949,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Sclerodermataceae",
+  "genus": "Scleroderma",
+  "species": "Scleroderma septentrionale",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8453,
+  "genusKey": 2524936,
+  "speciesKey": 5239949,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Scleroderma+septentrionale&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 31,
+  "NO": 1,
+  "SE": 206,
+  "FI": 47,
+  "IS": 1,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 5239949,
+  "nubKey": 5239949,
+  "nameKey": 10197145,
+  "taxonID": "gbif:5239949",
+  "sourceTaxonKey": 172017922,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Sclerodermataceae",
+  "genus": "Scleroderma",
+  "species": "Scleroderma septentrionale",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8453,
+  "genusKey": 2524936,
+  "speciesKey": 5239949,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 2524936,
+  "parent": "Scleroderma",
+  "scientificName": "Scleroderma septentrionale Jeppson",
+  "canonicalName": "Scleroderma septentrionale",
+  "authorship": "Jeppson",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(1998). Karstenia 38(2): 37.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:13.578+00:00",
+  "issues": [],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 5239949,
+   "vernacularName": "Sand-bruskbold",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905310
+  },
+  {
+   "taxonKey": 5239949,
+   "vernacularName": "Sand-bruskbold",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871514
+  },
+  {
+   "taxonKey": 5239949,
+   "vernacularName": "dyynimukulakuukunen",
+   "language": "fin",
+   "country": "FI",
+   "source": "The FinBIF checklist of Finnish species",
+   "sourceTaxonKey": 258012797
+  },
+  {
+   "taxonKey": 5239949,
+   "vernacularName": "dyynimukulakuukunen",
+   "language": "fin",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871514
+  },
+  {
+   "taxonKey": 5239949,
+   "vernacularName": "sandpotetrøyksopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871514
+  },
+  {
+   "taxonKey": 5239949,
+   "vernacularName": "sandrottryffel",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299871514
+  },
+  {
+   "taxonKey": 5239949,
+   "vernacularName": "sandpotetrøyksopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069235,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239949,
+   "vernacularName": "sandpotetrøyksopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069235,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239949,
+   "vernacularName": "sandrottryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2025",
+   "sourceTaxonKey": 320329624,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239949,
+   "vernacularName": "sandrottryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019140,
+   "preferred": true
+  },
+  {
+   "taxonKey": 5239949,
+   "vernacularName": "sandrottryffel",
+   "language": "swe",
+   "country": "SE",
+   "source": "The Swedish Red List 2020",
+   "sourceTaxonKey": 164691317,
+   "preferred": true
+  }
+ ]
+}

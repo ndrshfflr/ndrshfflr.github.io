@@ -1,0 +1,188 @@
+{
+ "retrieved": "2026-11-18",
+ "match": {
+  "usageKey": 7525078,
+  "scientificName": "Hortiboletus engelii (Hlaváček) Biketova & Wasser",
+  "canonicalName": "Hortiboletus engelii",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "confidence": 100,
+  "note": "Similarity: name=110; authorship=0; classification=4; rank=6; status=1; score=121; nextMatch=5",
+  "matchType": "EXACT",
+  "alternatives": [
+   {
+    "usageKey": 10927603,
+    "acceptedUsageKey": 7525078,
+    "scientificName": "Hortiboletus englerii",
+    "canonicalName": "Hortiboletus englerii",
+    "rank": "SPECIES",
+    "status": "SYNONYM",
+    "confidence": 93,
+    "note": "Similarity: name=90; authorship=0; classification=4; rank=6; status=0; score=100",
+    "matchType": "FUZZY",
+    "kingdom": "Fungi",
+    "phylum": "Basidiomycota",
+    "order": "Boletales",
+    "family": "Boletaceae",
+    "genus": "Hortiboletus",
+    "species": "Hortiboletus engelii",
+    "kingdomKey": 5,
+    "phylumKey": 34,
+    "classKey": 186,
+    "orderKey": 1063,
+    "familyKey": 8789,
+    "genusKey": 7778366,
+    "speciesKey": 7525078,
+    "class": "Agaricomycetes"
+   }
+  ],
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Hortiboletus",
+  "species": "Hortiboletus engelii",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7778366,
+  "speciesKey": 7525078,
+  "class": "Agaricomycetes"
+ },
+ "matchUrl": "https://api.gbif.org/v1/species/match?name=Hortiboletus+engelii&kingdom=Fungi&verbose=true",
+ "counts": {
+  "DK": 262,
+  "NO": 5,
+  "SE": 115,
+  "FI": 5,
+  "IS": 0,
+  "FO": 0,
+  "GL": 0
+ },
+ "species": {
+  "key": 7525078,
+  "nubKey": 7525078,
+  "nameKey": 15772057,
+  "taxonID": "gbif:7525078",
+  "sourceTaxonKey": 172027002,
+  "kingdom": "Fungi",
+  "phylum": "Basidiomycota",
+  "order": "Boletales",
+  "family": "Boletaceae",
+  "genus": "Hortiboletus",
+  "species": "Hortiboletus engelii",
+  "kingdomKey": 5,
+  "phylumKey": 34,
+  "classKey": 186,
+  "orderKey": 1063,
+  "familyKey": 8789,
+  "genusKey": 7778366,
+  "speciesKey": 7525078,
+  "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+  "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+  "parentKey": 7778366,
+  "parent": "Hortiboletus",
+  "basionymKey": 6016151,
+  "basionym": "Boletus engelii Hlaváček",
+  "scientificName": "Hortiboletus engelii (Hlaváček) Biketova & Wasser",
+  "canonicalName": "Hortiboletus engelii",
+  "authorship": "(Hlaváček) Biketova & Wasser",
+  "nameType": "SCIENTIFIC",
+  "rank": "SPECIES",
+  "origin": "SOURCE",
+  "taxonomicStatus": "ACCEPTED",
+  "nomenclaturalStatus": [],
+  "remarks": "",
+  "publishedIn": "(2015). Index Fungorum 257: 1.",
+  "numDescendants": 1,
+  "lastCrawled": "2023-08-22T23:20:59.545+00:00",
+  "lastInterpreted": "2023-08-22T23:01:10.607+00:00",
+  "issues": [
+   "ORIGINAL_NAME_DERIVED"
+  ],
+  "class": "Agaricomycetes"
+ },
+ "vernacular": [
+  {
+   "taxonKey": 7525078,
+   "vernacularName": "Fersken-rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "National Checklist of all species occurring in Denmark",
+   "sourceTaxonKey": 334905146
+  },
+  {
+   "taxonKey": 7525078,
+   "vernacularName": "Fersken-rørhat",
+   "language": "dan",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299881137
+  },
+  {
+   "taxonKey": 7525078,
+   "vernacularName": "oliven fløyelsrørsopp",
+   "language": "nob",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299881137
+  },
+  {
+   "taxonKey": 7525078,
+   "vernacularName": "oliven fløyelsrøyrsopp",
+   "language": "nno",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299881137
+  },
+  {
+   "taxonKey": 7525078,
+   "vernacularName": "parksopp",
+   "language": "swe",
+   "source": "Catalogue of Life",
+   "sourceTaxonKey": 299881137
+  },
+  {
+   "taxonKey": 7525078,
+   "vernacularName": "Fersken-rørhat",
+   "language": "dan",
+   "country": "DK",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019302,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7525078,
+   "vernacularName": "oliven fløyelsrørsopp",
+   "language": "nob",
+   "country": "NO",
+   "sourceTaxonKey": 168069635,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7525078,
+   "vernacularName": "oliven fløyelsrørsopp",
+   "language": "nob",
+   "country": "NO",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019302,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7525078,
+   "vernacularName": "oliven fløyelsrøyrsopp",
+   "language": "nno",
+   "country": "NO",
+   "sourceTaxonKey": 168069635,
+   "preferred": true
+  },
+  {
+   "taxonKey": 7525078,
+   "vernacularName": "parksopp",
+   "language": "swe",
+   "country": "SE",
+   "source": "Dyntaxa. Svensk taxonomisk databas",
+   "sourceTaxonKey": 160019302,
+   "preferred": true
+  }
+ ]
+}
