@@ -2,7 +2,12 @@
   "contact": {
     "email": "pietershiffler@proton.me",
     "phone": "",
-    "socials": []
+    "socials": [
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/pietershiffler/"
+      }
+    ]
   },
   "blog": {
     "intro": "Fund fra skoven, det der gror på arbejdsbordet, livet i terrarierne, og det jeg læser og arbejder med.",

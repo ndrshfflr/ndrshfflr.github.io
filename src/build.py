@@ -726,7 +726,7 @@ def render_card(env, content, entry, versions):
     if phone:
         lines.append("TEL;TYPE=CELL:" + phone.replace(" ", ""))
     for s in socials:
-        lines.append("X-SOCIALPROFILE;TYPE=" + vcard_escape(s.get("label", "")) + ":" + s.get("url", ""))
+        lines.append("X-SOCIALPROFILE;TYPE=" + vcard_escape(s.get("label", "").lower()) + ":" + s.get("url", ""))
     lines += ["NOTE:" + vcard_escape(CARD_UI["en"]["lead"]), "END:VCARD"]
     (ROOT / "card.vcf").write_text("\r\n".join(lines) + "\r\n", encoding="utf-8")
     print("wrote card.vcf")
